@@ -1,9 +1,10 @@
 {
+  "MD013": false,
   "MD033": false,
   "MD009": false,
   "ul-indent": {
-  "indent": [
-    "4"
-  ]
+    "indent": [
+      "4"
+    ]
   }
 }
