@@ -24,6 +24,39 @@
 <h2 id="月28日水"><a href="#28">11月28日(水)</a> <a id="28"></a></h2>
 <p>久しぶりに公開日記をつけてみることにした。なんかTwitterやブログのような「人との関わり」を前提とする仕組みが息苦しくなった。三日坊主になる気がするが、まぁ始めてみて、ダメだったらやめよう。</p>
 <p>もともと2000年から公開日記をつけていた。記録では2017年9月までつけてたことになっている。前職で持っていたサーバは2019年3月まで動いていたはずだが、その前に記録をやめたようだ。</p>
+<p>もともと「やらなければならないこと」だけで一日が終わらないようにと始めたはずの日記だが、いつの頃か初心を忘れていた。markdownからブログにするサービスをいろいろ探したが、いまいちピンとくるのがなかったので、自分で作ることに。まずはMDをpandocでhtmlにする仕組みをつくって、GitHub Actionsを設定してみた。YAMLファイルはこんな感じ。</p>
+<div class="sourceCode"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span class="co"># This is a basic workflow to help you get started with Actions</span>
+
+<span class="fu">name:</span><span class="at"> Deploy GitHub Pages</span>
+
+<span class="co"># Controls when the action will run. Triggers the workflow on push or pull request</span>
+<span class="co"># events but only for the main branch</span>
+<span class="fu">on:</span>
+  <span class="fu">push:</span>
+    <span class="fu">branches:</span><span class="at"> </span><span class="kw">[</span> main <span class="kw">]</span>
+
+<span class="co"># A workflow run is made up of one or more jobs that can run sequentially or in parallel</span>
+<span class="fu">jobs:</span>
+  <span class="co"># This workflow contains a single job called &quot;build&quot;</span>
+  <span class="fu">build:</span>
+    <span class="co"># The type of runner that the job will run on</span>
+    <span class="fu">runs-on:</span><span class="at"> ubuntu-latest</span>
+
+    <span class="co"># Steps represent a sequence of tasks that will be executed as part of the job</span>
+    <span class="fu">steps:</span>
+      <span class="co"># Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it</span>
+      <span class="kw">-</span> <span class="fu">uses:</span><span class="at"> actions/checkout@v2</span>
+
+      <span class="co"># Runs a single command using the runners shell</span>
+      <span class="kw">-</span> <span class="fu">name:</span><span class="at"> install make and pandoc</span>
+        <span class="fu">run:</span><span class="at"> sudo apt-get install -y make pandoc</span>
+      <span class="kw">-</span> <span class="fu">name:</span><span class="at"> Run a one-line script</span>
+        <span class="fu">run:</span><span class="at"> make</span>
+      <span class="kw">-</span> <span class="fu">uses:</span><span class="at"> peaceiris/actions-gh-pages@v3</span>
+        <span class="fu">with:</span>
+          <span class="fu">github_token:</span><span class="at"> ${{ secrets.GITHUB_TOKEN }}</span>
+          <span class="fu">publish_dir:</span><span class="at"> ./docs</span></code></pre></div>
+<p><code>peaceiris/actions-gh-pages@v3</code>を使うことで非常に簡単にデプロイできる。毎回pandocをインストールするのがアホらしいが、これは後でなんとかしよう。デフォルトでgh_pagesというブランチにpublishされ、<code>publish_dir</code>で指定したディレクトリがルートディレクトリとなる。なので、GitHub Pagesでページを公開する時には、Branchをgh_pages、ディレクトリは/(root)にしてやる必要がある。</p>
           </article>
   </body>
 
