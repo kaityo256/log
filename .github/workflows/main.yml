@@ -23,7 +23,7 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: install make and pandoc
-        run: apt-get install -y make pandoc
+        run: sudo apt-get install -y make pandoc
       - name: Run a one-line script
         run: make
       - uses: peaceiris/actions-gh-pages@v3
