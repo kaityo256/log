@@ -1,0 +1,48 @@
+<STYLE TYPE="text/css">
+<!--
+html {background-color:transparent;}
+body {line-height: 120%;  background-color:#ffffd2; color: black}
+A:link { text-decoration:underline; font-weight:bold; color:#161FFA }
+A:visited { text-decoration:underline;font-weight:bold; color:#06AAFF }
+A:active { text-decoration:underline; font-weight:bold; color:#8470FF }
+A:hover {  text-decoration:underline;font-weight:bold; color:#FF707F }
+H1 {text-align: center}
+pre  {line-height: 120% ;color: black; background: #a3ffd2;}
+div.code  {
+  margin-left: 10px;
+  padding-left: 8px;
+  padding-top: 4px; 
+  padding-bottom: 4px;  
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color:#F0F0F0;
+  border-left: solid 3px #4DB56A;
+  white-space:pre;
+}
+div.console {
+  margin-left: 10px;
+  padding-left: 8px; 
+
+  padding-bottom: 8px;  
+  background-color:black;
+  color: white;
+  white-space:pre;
+}
+div.notice {font-weight:bold;color:red}
+span.notice {font-weight:bold;color:red}
+img {border:none;}
+dt {font-weight:bold;}
+li {line-height: 130%;}
+.Comment { color: #8080ff; }
+.PreProc { color: #ff40ff; }
+.Constant { color: #ff6060; }
+.Type { color: darkgreen; }
+.Statement { color: blue; }
+.Identifier { color: blue; }
+.Special { color: #ff40ff; }
+p {line-height: 120%;  background-color:#ffffd2; color: black}
+blockquote {padding:10px;margin-left: 10pt;border: solid 1px #AAAAAA;}
+span.refer {color: gray;}
+
+-->
+</STYLE>
