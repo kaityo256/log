@@ -4,6 +4,7 @@ MD=$(shell ls log/*.md | sed 's/log/docs/g')
 HTML=$(MD:.md=.html)
 
 all: $(HTML)
+	cp -r log/images docs
 
 docs/index_in.md: log/index.md
 	sed -e 's/\(^\*.*\)\(d*\)\.md/\1\2.html/g' $< > $@
@@ -19,3 +20,4 @@ docs/%.html: log/%.md
 
 clean:
 	rm $(HTML)
+	rm -rf docs/images
