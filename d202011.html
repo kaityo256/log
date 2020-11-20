@@ -25,6 +25,15 @@
 <h2 id="月20日木"><a href="#20">11月20日(木)</a> <a id="20"></a></h2>
 <p>レポートの採点。やっぱり数時間かかってしまう。</p>
 <p>とりあえずこのログをレスポンシブに対応してみた。具体的には画像とコードがはみ出さないように修正。</p>
+<p>Kaggleもくもく会。いい加減Titanicにあきたので、Getting Startedから家の値段を調べる奴に挑戦。とりあえず回帰してみたが全然ダメだった。次は過学習してもいいからget_dummiesで全部のせでやってみるかな。</p>
+<p><code>np.tensordot</code>で、潰した軸が一番右にずれるの忘れてた。</p>
+<div class="sourceCode"><pre class="sourceCode py"><code class="sourceCode python"><span class="im">import</span> numpy <span class="im">as</span> np
+
+A <span class="op">=</span> np.zeros((<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>))
+B <span class="op">=</span> np.zeros((<span class="dv">2</span>, <span class="dv">5</span>))
+C <span class="op">=</span> np.tensordot(A, B, (<span class="dv">0</span>, <span class="dv">0</span>))
+<span class="bu">print</span>(C.shape)  <span class="co"># =&gt; (3,4,5)</span></code></pre></div>
+<p>最後、shapeが(5,3,4)になることが期待されるところ、(3,4,5)と移動してしまっている。</p>
 <h2 id="月19日木"><a href="#19">11月19日(木)</a> <a id="19"></a></h2>
 <p>イメージ貼り付けテスト。Paste Imageでは、デフォルトでは「YYYY-MM-DD-HH-MM-SS.png」という名前になるが、VS Codeでテキストを選択した状態で貼り付けると、その名前が採用される。なんか「この画像を何時何分に貼り付けたか」が見えるのってちょっとイヤなので、原則として名前をつけよう。</p>
 <div class="figure">
