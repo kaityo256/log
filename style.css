@@ -16,9 +16,39 @@ H1 {text-align: center}
   font-size: 1.2em;
   border-top: 1px solid #eaecef;
 }
+
+.markdown-body img {
+  max-width: 100%;
+  box-sizing: content-box;
+  background-color: #fff;
+}
+
+
 div.sourceCode {
   background-color: rgba(27,31,35,0.05);
 }
+
+.markdown-body pre {
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  border-radius: 3px;
+}
+
+
+.markdown-body pre code {
+  display: inline;
+  max-width: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  line-height: inherit;
+  word-wrap: normal;
+  background-color: transparent;
+  border: 0;
+}
+
 
 code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code > span.dt { color: #902000; } /* DataType */
