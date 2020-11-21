@@ -22,7 +22,17 @@
     <article class="markdown-body">
                         <h1 id="ログ">ログ</h1>
 <p><a href="index.html">ログ一覧</a></p>
-<h2 id="月20日木"><a href="#20">11月20日(木)</a> <a id="20"></a></h2>
+<h2 id="月21日土"><a href="#21">11月21日(土)</a> <a id="21"></a></h2>
+<p>多数あるTeXの処理系の違いや、TeXとLaTeXの違いが良く分からなくなったので調べた。これまでずっと曖昧にしてきた。</p>
+<ul>
+<li><a href="https://qiita.com/yyu/items/6404656f822ce14db935">TeX処理系御伽話</a> 多数のTeXの処理系の関係</li>
+<li><a href="https://blog.wtsnjp.com/2016/12/19/tex-and-latex/">TeX と LaTeX の違い</a></li>
+</ul>
+<p>TeX言語は低レベルな組版処理系であり、LaTeXはTeX言語で作られたマクロ体系、という理解で良いらしい。LaTexはTeX言語で書かれているため、それを処理するTeX処理系は複数あり得る。Cで書かれたプログラムと、C言語処理系の関係みたいなイメージでいいのかしら。TeXがギリシャ文字の「タウ―イプシロン―カイ」であることも、TeXがWEB言語という言語で作られていることも知らなかった。WEB言語は、Knuth先生が文芸的プログラミングを実践するためにPascalにマクロを追加したものらしい。</p>
+<p>学生さんに教える段になって自分が全く分かっていないことに気づく、最近そんなことばかり。</p>
+<p>卒論テンプレートを作りはじめる。一年目はいろいろ大変だ。</p>
+<p>このlog、pushするたびにGitHub ActivityにGitHub Pagesのデプロイのアナウンスが出るんだけど、この表示消せないのかな。</p>
+<h2 id="月20日金"><a href="#20">11月20日(金)</a> <a id="20"></a></h2>
 <p>レポートの採点。やっぱり数時間かかってしまう。</p>
 <p>とりあえずこのログをレスポンシブに対応してみた。具体的には画像とコードがはみ出さないように修正。</p>
 <p>Kaggleもくもく会。いい加減Titanicにあきたので、Getting Startedから家の値段を調べる奴に挑戦。とりあえず回帰してみたが全然ダメだった。次は過学習してもいいからget_dummiesで全部のせでやってみるかな。</p>
@@ -34,6 +44,7 @@ B <span class="op">=</span> np.zeros((<span class="dv">2</span>, <span class="dv
 C <span class="op">=</span> np.tensordot(A, B, (<span class="dv">0</span>, <span class="dv">0</span>))
 <span class="bu">print</span>(C.shape)  <span class="co"># =&gt; (3,4,5)</span></code></pre></div>
 <p>最後、shapeが(5,3,4)になることが期待されるところ、(3,4,5)と移動してしまっている。</p>
+<p>「卒論の書き方」のスライド作りはじめた。</p>
 <h2 id="月19日木"><a href="#19">11月19日(木)</a> <a id="19"></a></h2>
 <p>イメージ貼り付けテスト。Paste Imageでは、デフォルトでは「YYYY-MM-DD-HH-MM-SS.png」という名前になるが、VS Codeでテキストを選択した状態で貼り付けると、その名前が採用される。なんか「この画像を何時何分に貼り付けたか」が見えるのってちょっとイヤなので、原則として名前をつけよう。</p>
 <div class="figure">
