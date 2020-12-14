@@ -22,6 +22,139 @@
     <article class="markdown-body">
                         <h1 id="ログ">ログ</h1>
 <p><a href="index.html">ログ一覧</a></p>
+<h2 id="月14日月"><a href="#14">12月14日(月)</a> <a id="14"></a></h2>
+<p>重い腰をあげて英語メール書いたぞ。</p>
+<p>Macのgnuplotでpdf表示がおかしくなる問題、Pangoが原因らしい。Cairoに由来するのでpngcairoもダメ。</p>
+<p>まずバージョン確認。</p>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash">$ <span class="ex">brew</span> info pango
+<span class="ex">pango</span>: stable 1.46.1 (bottled), <span class="ex">HEAD</span>
+
+$ <span class="ex">gnuplot</span> --versio
+<span class="ex">gnuplot</span> 5.2 patchlevel 8
+
+$ <span class="ex">brew</span> info gnuplot
+<span class="ex">gnuplot</span>: stable 5.4.0 (bottled), <span class="ex">HEAD</span></code></pre></div>
+<p>あれ？gnuplotのバージョンがおかしい。pango、1.46.1なら良さそうだけどな。この状態で、以下のgnuplotファイルを食わせる。</p>
+<pre class="gnuplot"><code>set term pdf
+set out &quot;test.pdf&quot;
+p sin(x)</code></pre>
+<p>こうなっちゃう。</p>
+<div class="figure">
+<img src="images/201214_before.png" alt="before" />
+<p class="caption">before</p>
+</div>
+<p>これはcairoが依存するpangoが原因なので、pngcairoもダメ。</p>
+<p>さて、アンインストールして再インストール。</p>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash">$ <span class="ex">brew</span> uninstall gnuplot
+$ <span class="ex">brew</span> install gnuplot
+<span class="kw">(</span><span class="ex">snip</span><span class="kw">)</span>
+==<span class="op">&gt;</span> <span class="ex">Pouring</span> python@3.9-3.9.1.big_sur.bottle.tar.gz
+<span class="ex">Error</span>: An unexpected error occurred during the <span class="kw">`</span><span class="ex">brew</span> link<span class="kw">`</span> step
+<span class="ex">The</span> formula built, but is not symlinked into /usr/local
+<span class="ex">Permission</span> denied @ dir_s_mkdir - /usr/local/Frameworks
+<span class="ex">Error</span>: Permission denied @ dir_s_mkdir - /usr/local/Frameworks</code></pre></div>
+<p>こけた。</p>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash">$ <span class="ex">brew</span> doctor
+
+<span class="ex">Warning</span>: Your Command Line Tools are too outdated.
+<span class="ex">Update</span> them from Software Update in System Preferences or run:
+  <span class="ex">softwareupdate</span> --all --install --force</code></pre></div>
+<p>古いそうだ。アップデートしろと言われるのでしてみる。</p>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash">$ <span class="ex">softwareupdate</span> --all --install --force
+<span class="ex">Software</span> Update Tool
+
+<span class="ex">Finding</span> available software
+<span class="ex">No</span> updates are available.</code></pre></div>
+<p>ダメだ。brew doctorは</p>
+<pre class="txt"><code>If that doesn&#39;t show you an update run:
+  sudo rm -rf /Library/Developer/CommandLineTools
+  sudo xcode-select --install</code></pre>
+<p>と言ってるが、Xcodeの再インストールか・・・。するか。</p>
+<pre class="txt"><code>sudo rm -rf /Library/Developer/CommandLineTools 
+sudo xcode-select --instal</code></pre>
+<p>あらためてソフトウェアアップデート。</p>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash">$ <span class="ex">softwareupdate</span> --all --install --force
+<span class="ex">Software</span> Update Tool
+
+<span class="ex">Finding</span> available software
+
+<span class="ex">Downloading</span> Command Line Tools for Xcode
+<span class="ex">Downloaded</span> Command Line Tools for Xcode
+<span class="ex">Installing</span> Command Line Tools for Xcode
+<span class="ex">Done</span> with Command Line Tools for Xcode
+<span class="ex">Done.</span></code></pre></div>
+<p>結構時間かかった。あらためてbrew doctor。</p>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash">$ <span class="ex">brew</span> doctor
+<span class="kw">(</span><span class="ex">snip</span><span class="kw">)</span>
+<span class="ex">Warning</span>: You have unlinked kegs in your Cellar.
+<span class="ex">Leaving</span> kegs unlinked can lead to build-trouble and cause brews that depend on
+<span class="ex">those</span> kegs to fail to run properly once built. Run <span class="kw">`</span><span class="ex">brew</span> link<span class="kw">`</span> on these:
+  <span class="ex">w3m</span>
+  <span class="ex">docker</span>
+  <span class="ex">libmpc@0.8</span>
+  <span class="ex">pango</span>
+  <span class="ex">isl@0.11</span>
+  <span class="ex">mpfr@2</span>
+  <span class="ex">gmp@4</span>
+  <span class="ex">unbound</span>
+  <span class="ex">gcc@4.9</span>
+  <span class="ex">python@3.9</span>
+<span class="kw">(</span><span class="ex">snip</span><span class="kw">)</span>
+<span class="ex">Warning</span>: Broken symlinks were found. Remove them with <span class="kw">`</span><span class="ex">brew</span> cleanup<span class="kw">`</span>:
+  <span class="ex">/usr/local/bin/texdist</span></code></pre></div>
+<p>ほほう。まずは消そう。</p>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="ex">brew</span> cleanup</code></pre></div>
+<p>次はリンク。</p>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash">$ <span class="ex">brew</span> link w3m docker libmpc@0.8 pango isl@0.11 mpfr@2 gmp@4 unbound gcc@4.9 python@3.9
+<span class="ex">Linking</span> /usr/local/Cellar/w3m/0.5.3_6... 8 symlinks created
+<span class="ex">Linking</span> /usr/local/Cellar/docker/18.09.6... 
+<span class="ex">Error</span>: Could not symlink bin/docker
+<span class="ex">Target</span> /usr/local/bin/docker
+<span class="ex">already</span> exists. You may want to remove it:
+  <span class="fu">rm</span> <span class="st">&#39;/usr/local/bin/docker&#39;</span>
+
+<span class="ex">To</span> force the link and overwrite all conflicting files:
+  <span class="ex">brew</span> link --overwrite docker
+
+<span class="ex">To</span> list all files that would be deleted:
+  <span class="ex">brew</span> link --overwrite --dry-run docker</code></pre></div>
+<p>なんやねん。まずはこれを解決するか。</p>
+<pre class="txt"><code>Warning: The following directories do not exist:
+/usr/local/Frameworks
+/usr/local/sbin
+
+You should create these directories and change their ownership to your account.
+  sudo mkdir -p /usr/local/Frameworks /usr/local/sbin
+  sudo chown -R $(whoami) /usr/local/Frameworks /usr/local/sbin</code></pre>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="fu">sudo</span> mkdir -p /usr/local/Frameworks /usr/local/sbin
+<span class="fu">sudo</span> chown -R <span class="va">$(</span><span class="fu">whoami</span><span class="va">)</span> /usr/local/Frameworks /usr/local/sbin</code></pre></div>
+<p>あと、以下の問題を解決する。pangoやeigen3を手で入れたのが問題をおこしていた。</p>
+<pre class="txt"><code>Warning: Unbrewed dylibs were found in /usr/local/lib.
+Warning: Unbrewed header files were found in /usr/local/include.</code></pre>
+<p>brew doctorの指示に従ってこんな作業をする。</p>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="fu">rm</span> -rf /usr/local/include/pango-1.0 
+<span class="fu">sudo</span> rm -rf /usr/local/include/pango-1.0  
+<span class="fu">rm</span> /usr/local/lib/pkgconfig/pango.pc  
+<span class="fu">rm</span> /usr/local/lib/pkgconfig/pangocairo.pc 
+<span class="fu">rm</span> /usr/local/lib/pkgconfig/pangoft2.pc
+<span class="ex">brew</span> install gdk-pixbuf librsvg</code></pre></div>
+<p>gdk-pixbuf librsvgのインストール、すごく時間かかる。なんか最初にこんなことを言われたのが気になる。</p>
+<pre class="txt"><code>Error: homebrew-core is a shallow clone. To `brew update` first run:
+  git -C &quot;/usr/local/Homebrew/Library/Taps/homebrew/homebrew-core&quot; fetch --unshallow</code></pre>
+<p>なんかbrew使うたびにこれを言われるので、やる。</p>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="fu">git</span> -C <span class="st">&quot;/usr/local/Homebrew/Library/Taps/homebrew/homebrew-core&quot;</span> fetch --unshallow</code></pre></div>
+<p>あらためてインストール。</p>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash">$ <span class="ex">brew</span> install gnuplot
+<span class="ex">Error</span>: homebrew-cask is a shallow clone. To <span class="kw">`</span><span class="ex">brew</span> update<span class="kw">`</span> first run:
+  <span class="fu">git</span> -C <span class="st">&quot;/usr/local/Homebrew/Library/Taps/homebrew/homebrew-cask&quot;</span> fetch --unshallow</code></pre></div>
+<p>homebrew-caskもかよ。</p>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="bu">echo</span> <span class="st">&#39;export PATH=&quot;/usr/local/opt/qt/bin:$PATH&quot;&#39;</span> <span class="op">&gt;&gt;</span> ~/.zshrc.mine </code></pre></div>
+<p>いずれにせよ、ごちゃごちゃやってたらgnuplotが 5.4、pangoが1.48.0になった。もう一度試す。</p>
+<div class="figure">
+<img src="images/201214_after.png" alt="after" />
+<p class="caption">after</p>
+</div>
+<p>おおー、治った。良かった。</p>
 <h2 id="月13日日"><a href="#13">12月13日(日)</a> <a id="13"></a></h2>
 <p>NOP</p>
 <p>メール処理とかが遅れがちで厳しい。</p>
