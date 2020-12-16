@@ -22,6 +22,48 @@
     <article class="markdown-body">
                         <h1 id="ログ">ログ</h1>
 <p><a href="index.html">ログ一覧</a></p>
+<h2 id="月16日水"><a href="#16">12月16日(水)</a> <a id="16"></a></h2>
+<p>体がどうにも重い。</p>
+<p>会議。</p>
+<p>メールたくさん書いた。</p>
+<p>ARM SVEのプレディケートレジスタがわかった気がするぞ。</p>
+<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span>
+<span class="pp">#include </span><span class="im">&lt;arm_sve.h&gt;</span>
+<span class="pp">#include </span><span class="im">&lt;vector&gt;</span>
+
+<span class="dt">void</span> show_ppr(<span class="dt">svbool_t</span> tp){
+  <span class="bu">std::</span>vector&lt;<span class="dt">int8_t</span>&gt; a(<span class="dv">64</span>);
+  <span class="bu">std::</span>vector&lt;<span class="dt">int8_t</span>&gt; b(<span class="dv">64</span>);
+  <span class="bu">std::</span>fill(a.begin(), a.end(), <span class="dv">1</span>);
+  <span class="bu">std::</span>fill(b.begin(), b.end(), <span class="dv">0</span>);
+  <span class="dt">svint8_t</span> va = svld1_s8(tp, a.data());
+  svst1_s8(tp, b.data(), va);
+  <span class="cf">for</span>(<span class="dt">int</span> i=<span class="dv">0</span>;i&lt;<span class="dv">64</span>;i++){
+    <span class="bu">std::</span>cout &lt;&lt; (<span class="dt">int</span>)b[<span class="dv">63</span>-i];
+  }
+  <span class="bu">std::</span>cout &lt;&lt; <span class="bu">std::</span>endl;
+}
+
+<span class="dt">int</span> main(){
+  <span class="bu">std::</span>cout &lt;&lt; <span class="st">&quot;svptrue_b8&quot;</span> &lt;&lt; <span class="bu">std::</span>endl;
+  show_ppr(svptrue_b8());
+  <span class="bu">std::</span>cout &lt;&lt; <span class="st">&quot;svptrue_b16&quot;</span> &lt;&lt; <span class="bu">std::</span>endl;
+  show_ppr(svptrue_b16());
+  <span class="bu">std::</span>cout &lt;&lt; <span class="st">&quot;svptrue_b32&quot;</span> &lt;&lt; <span class="bu">std::</span>endl;
+  show_ppr(svptrue_b32());
+  <span class="bu">std::</span>cout &lt;&lt; <span class="st">&quot;svptrue_b64&quot;</span> &lt;&lt; <span class="bu">std::</span>endl;
+  show_ppr(svptrue_b64());
+}</code></pre></div>
+<p>実行するとこうなる。</p>
+<pre class="txt"><code>svptrue_b8
+1111111111111111111111111111111111111111111111111111111111111111
+svptrue_b16
+0101010101010101010101010101010101010101010101010101010101010101
+svptrue_b32
+0001000100010001000100010001000100010001000100010001000100010001
+svptrue_b64
+0000000100000001000000010000000100000001000000010000000100000001</code></pre>
+<p>パターンを食わせるバージョンも理解できた。</p>
 <h2 id="月15日火"><a href="#15">12月15日(火)</a> <a id="15"></a></h2>
 <p>組み込み関数の件、メール書いた。</p>
 <p>分子シミュレーション討論会。Remoというウェブ会議システムを使ったが、なかなかおもしろい。ウェブ上に建物の図が出ており、ブースをクリックすると自分のアイコンが椅子につく。同じブースにいる人は話が繋がる。Zoomと違って、「場所」の概念があるウェブ会議システム。WhiteboardにPDFをはりつけたり、Share Screenでpptxを表示したり。お久しぶりな方にも何人かお会いできた。</p>
