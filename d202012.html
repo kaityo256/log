@@ -22,6 +22,15 @@
     <article class="markdown-body">
                         <h1 id="ログ">ログ</h1>
 <p><a href="index.html">ログ一覧</a></p>
+<h2 id="月29日火"><a href="#29">12月29日(火)</a> <a id="29"></a></h2>
+<p>年賀状出した。卒論もう一人チェック。査読も返した。</p>
+<p>メールの返事がこないな、と思ってたら、また大事なメールがSPAMに入ってた。もうGmailダメだ。フォワードしよう。</p>
+<p>卒論もう一人チェックした。これで一応「月曜日から火曜日に返します」という約束を果たしたぞ。</p>
+<p>WSL2でXが飛ばせない問題、</p>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="bu">export</span> <span class="va">DISPLAY=</span><span class="kw">`</span><span class="fu">hostname</span> <span class="kw">|</span> <span class="fu">xargs</span> dig +short <span class="kw">|</span> <span class="fu">grep</span> 192.168.<span class="kw">`</span>:0.0</code></pre></div>
+<p>で解決。WSL側の172.25...のアドレスではなく、Windows側の192.168のアドレスを取ってくるのがキモ。っていうかなぜ二つアドレスがあり、どのようにつながっているのかいまいち理解できていない。</p>
+<p>VMDを研究室サーバにインストールしようとしたら、既にインストールされた形跡が。自分は起動できるが、他の人は起動できない。パスが通っていなかったようだ。パスを通すように伝えておしまい。</p>
+<p>しかし、VMDは再配布可能なライセンスにして欲しいなぁ。better VMDを作って配布するしかないんだけど。</p>
 <h2 id="月28日月"><a href="#28">12月28日(月)</a> <a id="28"></a></h2>
 <p>卒論二人分チェック。すみません、いろいろあって手が回らず・・・。</p>
 <p>なぜかWSLではビルドできず、WindowsのGit Bashではビルドできるファイルが。PDFの扱いに問題があるらしい。後で原因を確認すること。他にもMacではビルドできるがWindowsではできない問題がががが。</p>
