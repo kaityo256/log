@@ -22,6 +22,35 @@
     <article class="markdown-body">
                         <h1 id="ログ">ログ</h1>
 <p><a href="index.html">ログ一覧</a></p>
+<h2 id="月9日土"><a href="#9">1月9日(土)</a> <a id="09"></a></h2>
+<p>僕がbashではなくzshを使う一番の理由がCtrl+P/Nによるヒストリーサーチだったんだけど、スパコンとかではbashをそのまま使ったほうが良くて、どうせzshにあるならbashにもあるはずと思って調べたらあった。</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="bu">bind</span> <span class="st">&#39;&quot;\C-n&quot;: history-search-forward&#39;</span>
+<span class="bu">bind</span> <span class="st">&#39;&quot;\C-p&quot;: history-search-backward&#39;</span>
+<span class="va">HISTSIZE=</span>100000</code></pre></div>
+<p>いや、絶対あるとは思ってたんだけど、なんか腰が重くていままで探していなかった。</p>
+<p>ohtakaのセットアップ。</p>
+<p>.gitconfigを作ってからdotfilesをクローン。deinもインストール。</p>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="fu">git</span> clone --depth 1 https://github.com/llvm/llvm-project.git
+<span class="bu">cd</span> llvm-project
+<span class="fu">mkdir</span> build
+<span class="bu">cd</span> build
+<span class="fu">cmake</span> -G <span class="st">&quot;Unix Makefiles&quot;</span> -DCMAKE_INSTALL_PREFIX=~/usr/local
+<span class="ex">Make</span> 3.13.4 or higher is required.  You are running version 3.11.4</code></pre></div>
+<p>まじすか。</p>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="fu">mkdir</span> usr
+<span class="bu">cd</span> usr
+<span class="fu">wget</span> https://github.com/Kitware/CMake/releases/download/v3.19.2/cmake-3.19.2-Linux-x86_64.tar.gz
+<span class="fu">tar</span> xvzf cmake-3.19.2-Linux-x86_64.tar.gz 
+<span class="fu">mv</span> cmake-3.19.2-Linux-x86_64 local
+<span class="bu">export</span> <span class="va">CMAKE_ROOT=</span>~/usr/local
+<span class="bu">export</span> <span class="va">PATH=</span>~/usr/local/bin:<span class="va">$PATH</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="fu">git</span> clone --depth 1 https://github.com/llvm/llvm-project.git
+<span class="bu">cd</span> llvm-project
+<span class="fu">mkdir</span> build
+<span class="bu">cd</span> build
+<span class="fu">cmake</span> -G <span class="st">&quot;Unix Makefiles&quot;</span> -DCMAKE_INSTALL_PREFIX=~/usr/local ../llvm
+<span class="fu">make</span></code></pre></div>
+<p>なんかできているっぽい。一時間くらい経過して50%くらいしか進んでないけど。</p>
 <h2 id="月8日金"><a href="#8">1月8日(金)</a> <a id="08"></a></h2>
 <p>どうにも集中力を欠いているなぁ。</p>
 <p>Macでgdbが使えないの面倒くさい・・・。</p>
