@@ -82,6 +82,14 @@ Multiplicativeなノイズを持つLangevin方程式とIto/Stratonovich解釈
 </ul>
 <p>わりと書いたつもりが、ここ5年で最も書いていない年だった。っていうか2017年の99本マジか。ほぼ3〜4日に一回記事書いてるじゃん。2017年はナンプレとか、malloc関係が多いな。これで伝説の人と知り合えたと思うと、書いた甲斐はあったんだろうな。</p>
 <h2 id="月30日水"><a href="#30">12月30日(水)</a> <a id="30"></a></h2>
+<p>学生さんのコードの動作がおかしいと言われて確認。多分できたと思う。</p>
+<p>しかし、学生さんのコードがGitHubで管理されており、それにコラボレータとして招待してもらってclone、内容をチェックって、やってるところはやってるんだろうけど、なんかちゃんとしてて良くない？</p>
+<p>Docker内で自分のリポジトリにコミットしてpushしたいが、Dockerイメージ内に認証情報を置きたくない場合、環境変数を使う方法がある。GIT_USERにユーザ名、GIT_TOKENにアクセストークン、GIT_REPOSITORYにリポジトリ(例えばkaityo256/log.git)を環境変数として入れておいて、</p>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="fu">git</span> push -u https://<span class="va">${GIT_USER}</span>:<span class="va">${GIT_TOKEN}</span>@github.com/<span class="va">${GIT_REPOSITORY}</span></code></pre></div>
+<p>とすればpushできる。以後、認証情報が残るのでgit pushだけで行ける。</p>
+<p>ホスト側でこれらの環境変数を設定しておき、</p>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="ex">docker</span> run -e GIT_USER=<span class="va">${GIT_USER}</span> -e GIT_TOKEN=<span class="va">${GIT_TOKEN}</span> -it imagename</code></pre></div>
+<p>として渡してやればOK。面倒なので先のgit pushコマンドはgpとしてエイリアスしておいた。これでいろいろ捗るぞ・・・と。</p>
 <p>Gmailがまた大事なメールをSPAMに。ダメだ。来年はもうforwardしよう。</p>
 <h2 id="月29日火"><a href="#29">12月29日(火)</a> <a id="29"></a></h2>
 <p>年賀状出した。卒論もう一人チェック。査読も返した。</p>
