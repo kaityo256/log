@@ -22,10 +22,32 @@
     <article class="markdown-body">
                         <h1 id="ログ">ログ</h1>
 <p><a href="index.html">ログ一覧</a></p>
+<h2 id="月17日日"><a href="#17">1月17日(日)</a> <a id="17"></a></h2>
+<p>卒論チェック。</p>
+<p>CentOSにpovrayのインストール。とりあえずローカルで。</p>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="fu">mkdir</span> local
+<span class="bu">cd</span> local
+<span class="fu">mkdir</span> lib
+<span class="bu">cd</span> lib
+<span class="fu">wget</span> http://www.povray.org/redirect/www.povray.org/ftp/pub/povray/Old-Versions/Official-3.62/Linux/povlinux-3.6.tgz
+<span class="fu">tar</span> xvzf povlinux-3.6.tgz</code></pre></div>
+<p>その後、<code>~/local/bin</code>にpovrayへのシンボリックリンクをはってから</p>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="bu">export</span> <span class="va">PATH=</span>~/local/bin:<span class="va">$PATH</span></code></pre></div>
+<p>でパスを通した。さらに、<code>~/.povrayrc</code>に、</p>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="ex">Width</span> = 320
+<span class="ex">Height</span> = 240
+<span class="va">Library_Path=</span>/home/watanabe/local/lib/povray-3.6/
+<span class="va">Library_Path=</span>/home/watanabe/local/lib/povray-3.6/include</code></pre></div>
+<p>このパスを通しておかないと、<code>#include</code>が通らない(povrayがcolors.incを見つけられない)。</p>
+<h2 id="月16日土"><a href="#16">1月16日(土)</a> <a id="16"></a></h2>
+<p>塩漬け論文の続き。MCの基本的なことがわかっていなかったことが判明。ただ、僕の計算が間違っていたわけではないことがわかって安心。</p>
+<p>卒論チェック。</p>
 <h2 id="月15日金"><a href="#15">1月15日(金)</a> <a id="15"></a></h2>
 <p>PDFからテキスト抜き出し。</p>
 <div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="ex">brew</span> install poppler
 <span class="ex">pdftotxt</span> hoge.pdf</code></pre></div>
+<p>これでispellとかaspellが使える。</p>
+<p>D論審査。そのあとすぐに柏に書類を取りに行く。帰り、渋滞に巻き込まれて大変だった。</p>
 <h2 id="月14日木"><a href="#14">1月14日(木)</a> <a id="14"></a></h2>
 <p>研究室ミーティング。論文紹介の仕方について。あとはGPT-3のスケーリング論文の紹介とか。</p>
 <p>学生さんのMacを受け取った。Windowsも決めないと。</p>
@@ -50,7 +72,8 @@ $ <span class="ex">brew</span> info git
 <p>学生さんの卒論の概要をチェック。</p>
 <p>塩漬けになっていた研究を再開。</p>
 <h2 id="月10日日"><a href="#10">1月10日(日)</a> <a id="10"></a></h2>
-<p>学生さんの卒論の概要をチェック。</p>
+<p>学生さんの卒論の概要をチェック。 ## <a href="#10">1月10日(日)</a> <a id="10"></a></p>
+<p>ohtaaでclang-formatをビルドして~/usr/localに入れたが、vimと連携できてない。なぜだ。</p>
 <h2 id="月9日土"><a href="#9">1月9日(土)</a> <a id="09"></a></h2>
 <p>僕がbashではなくzshを使う一番の理由がCtrl+P/Nによるヒストリーサーチだったんだけど、スパコンとかではbashをそのまま使ったほうが良くて、どうせzshにあるならbashにもあるはずと思って調べたらあった。</p>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="bu">bind</span> <span class="st">&#39;&quot;\C-n&quot;: history-search-forward&#39;</span>
