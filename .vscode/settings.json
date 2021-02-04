@@ -1,3 +1,6 @@
 {
+  "[markdown]": {
+    "editor.quickSuggestions": true
+  },
   "pasteImage.path": "${currentFileDir}/images"
 }

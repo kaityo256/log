@@ -1,0 +1,11 @@
+{
+	"Print to console": {
+		"scope": "markdown, md",
+		"prefix": "date",
+		"body": [
+			"## [$CURRENT_MONTH月$CURRENT_DATE日($CURRENT_DAY_NAME_SHORT)](#$CURRENT_DATE) <a id=\"$CURRENT_DATE\"></a>",
+			"$2"
+		],
+		"description": "diary header"
+	}
+}
