@@ -22,6 +22,23 @@
     <article class="markdown-body">
                         <h1 id="ログ">ログ</h1>
 <p><a href="index.html">ログ一覧</a></p>
+<h2 id="月17日水"><a href="#17">02月17日(水)</a> <a id="17"></a></h2>
+<p>これで2日連続日付挿入スニペットを使ったぞ。</p>
+<p>卒論の製本依頼した。表紙を別紙に用意したが、申込用紙の「表紙」にバツマークをつけて「マーク有」と書けば、ペンマークを入れてくれる。</p>
+<p>研究室ミーティング。なるほど、面白い。</p>
+<p>その後、B3のPCセットアップ。</p>
+<p>Anacondaのインストール画面が違う。</p>
+<p>pyenvでanacondaはM1にうまく入らなかったっぽい。</p>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="ex">brew</span> install pyenv
+<span class="ex">pyenv</span> install 3.9.1</code></pre></div>
+<p>これでいけるはず。</p>
+<p>また、lammpsをbrewで入れた時のパスが違う。</p>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="bu">cd</span>
+<span class="fu">mkdir</span> lammps
+<span class="bu">cd</span> lammps
+<span class="fu">cp</span> -r /opt/homebrew/Cellar/lammps/2020-10-29/share/lammps/examples/melt .
+<span class="bu">cd</span> melt</code></pre></div>
+<p>WSL2のインストールも書かないと。</p>
 <h2 id="月16日火"><a href="#16">02月16日(火)</a> <a id="16"></a></h2>
 <p>二週間くらいぶりに日付挿入スニペット使った。せめてこれからは毎日、このスニペットを使うことにしよう。っていうか、このスニペット使った回数を記録しておけば、日付通りに日記を書いた回数がわかるのか。</p>
 <p>共著者の議論のために粘性を調べてて見つけた。</p>
