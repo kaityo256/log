@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="generator" content="pandoc">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-                <title></title>
+                <title>d202101</title>
     <style type="text/css">
       code {
         white-space: pre;
@@ -71,19 +71,19 @@
 <h2 id="月17日日"><a href="#17">1月17日(日)</a> <a id="17"></a></h2>
 <p>卒論チェック。</p>
 <p>CentOSにpovrayのインストール。とりあえずローカルで。</p>
-<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="fu">mkdir</span> local
-<span class="bu">cd</span> local
-<span class="fu">mkdir</span> lib
-<span class="bu">cd</span> lib
-<span class="fu">wget</span> http://www.povray.org/redirect/www.povray.org/ftp/pub/povray/Old-Versions/Official-3.62/Linux/povlinux-3.6.tgz
-<span class="fu">tar</span> xvzf povlinux-3.6.tgz</code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1"><span class="fu">mkdir</span> local</a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="bu">cd</span> local</a>
+<a class="sourceLine" id="cb1-3" title="3"><span class="fu">mkdir</span> lib</a>
+<a class="sourceLine" id="cb1-4" title="4"><span class="bu">cd</span> lib</a>
+<a class="sourceLine" id="cb1-5" title="5"><span class="fu">wget</span> http://www.povray.org/redirect/www.povray.org/ftp/pub/povray/Old-Versions/Official-3.62/Linux/povlinux-3.6.tgz</a>
+<a class="sourceLine" id="cb1-6" title="6"><span class="fu">tar</span> xvzf povlinux-3.6.tgz</a></code></pre></div>
 <p>その後、<code>~/local/bin</code>にpovrayへのシンボリックリンクをはってから</p>
-<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="bu">export</span> <span class="va">PATH=</span>~/local/bin:<span class="va">$PATH</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1"><span class="bu">export</span> <span class="va">PATH=</span>~/local/bin:<span class="va">$PATH</span></a></code></pre></div>
 <p>でパスを通した。さらに、<code>~/.povrayrc</code>に、</p>
-<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="ex">Width</span> = 320
-<span class="ex">Height</span> = 240
-<span class="va">Library_Path=</span>/home/watanabe/local/lib/povray-3.6/
-<span class="va">Library_Path=</span>/home/watanabe/local/lib/povray-3.6/include</code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" title="1"><span class="ex">Width</span> = 320</a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="ex">Height</span> = 240</a>
+<a class="sourceLine" id="cb3-3" title="3"><span class="va">Library_Path=</span>/home/watanabe/local/lib/povray-3.6/</a>
+<a class="sourceLine" id="cb3-4" title="4"><span class="va">Library_Path=</span>/home/watanabe/local/lib/povray-3.6/include</a></code></pre></div>
 <p>このパスを通しておかないと、<code>#include</code>が通らない(povrayがcolors.incを見つけられない)。</p>
 <p>スパコンにジョブを投げる。</p>
 <h2 id="月16日土"><a href="#16">1月16日(土)</a> <a id="16"></a></h2>
@@ -91,8 +91,8 @@
 <p>卒論チェック。</p>
 <h2 id="月15日金"><a href="#15">1月15日(金)</a> <a id="15"></a></h2>
 <p>PDFからテキスト抜き出し。</p>
-<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="ex">brew</span> install poppler
-<span class="ex">pdftotxt</span> hoge.pdf</code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb4-1" title="1"><span class="ex">brew</span> install poppler</a>
+<a class="sourceLine" id="cb4-2" title="2"><span class="ex">pdftotxt</span> hoge.pdf</a></code></pre></div>
 <p>これでispellとかaspellが使える。</p>
 <p>D論審査。そのあとすぐに柏に書類を取りに行く。帰り、渋滞に巻き込まれて大変だった。</p>
 <h2 id="月14日木"><a href="#14">1月14日(木)</a> <a id="14"></a></h2>
@@ -100,14 +100,14 @@
 <p>学生さんのMacを受け取った。Windowsも決めないと。</p>
 <p>机と椅子の見積もりを依頼したぞ。</p>
 <p>いつのまにかMacでgit submoduleが使えなくなっている。</p>
-<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash">$ <span class="fu">git</span> submodule
-<span class="ex">pyenv</span>: git-submodule: command not found</code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb5-1" title="1">$ <span class="fu">git</span> submodule</a>
+<a class="sourceLine" id="cb5-2" title="2"><span class="ex">pyenv</span>: git-submodule: command not found</a></code></pre></div>
 <p>gitのバージョンが古いっぽい。updateしてみるか。</p>
-<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash">$ <span class="fu">git</span> --version
-<span class="fu">git</span> version 2.22.0
-
-$ <span class="ex">brew</span> info git
-<span class="ex">git</span>: stable 2.29.2 (bottled), <span class="ex">HEAD</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb6-1" title="1">$ <span class="fu">git</span> --version</a>
+<a class="sourceLine" id="cb6-2" title="2"><span class="fu">git</span> version 2.22.0</a>
+<a class="sourceLine" id="cb6-3" title="3"></a>
+<a class="sourceLine" id="cb6-4" title="4">$ <span class="ex">brew</span> info git</a>
+<a class="sourceLine" id="cb6-5" title="5"><span class="ex">git</span>: stable 2.29.2 (bottled), <span class="ex">HEAD</span></a></code></pre></div>
 <p>後回し。</p>
 <p>塩漬け論文の続き。なんかおかしい。</p>
 <h2 id="月13日水"><a href="#13">1月13日(水)</a> <a id="13"></a></h2>
@@ -123,32 +123,32 @@ $ <span class="ex">brew</span> info git
 <p>ohtakaでclang-formatをビルドして~/usr/localに入れたが、vimと連携できてない。なぜだ。</p>
 <h2 id="月9日土"><a href="#9">1月9日(土)</a> <a id="09"></a></h2>
 <p>僕がbashではなくzshを使う一番の理由がCtrl+P/Nによるヒストリーサーチだったんだけど、スパコンとかではbashをそのまま使ったほうが良くて、どうせzshにあるならbashにもあるはずと思って調べたらあった。</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="bu">bind</span> <span class="st">&#39;&quot;\C-n&quot;: history-search-forward&#39;</span>
-<span class="bu">bind</span> <span class="st">&#39;&quot;\C-p&quot;: history-search-backward&#39;</span>
-<span class="va">HISTSIZE=</span>100000</code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb7-1" title="1"><span class="bu">bind</span> <span class="st">&#39;&quot;\C-n&quot;: history-search-forward&#39;</span></a>
+<a class="sourceLine" id="cb7-2" title="2"><span class="bu">bind</span> <span class="st">&#39;&quot;\C-p&quot;: history-search-backward&#39;</span></a>
+<a class="sourceLine" id="cb7-3" title="3"><span class="va">HISTSIZE=</span>100000</a></code></pre></div>
 <p>いや、絶対あるとは思ってたんだけど、なんか腰が重くていままで探していなかった。</p>
 <p>ohtakaのセットアップ。</p>
 <p>.gitconfigを作ってからdotfilesをクローン。deinもインストール。</p>
-<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="fu">git</span> clone --depth 1 https://github.com/llvm/llvm-project.git
-<span class="bu">cd</span> llvm-project
-<span class="fu">mkdir</span> build
-<span class="bu">cd</span> build
-<span class="fu">cmake</span> -G <span class="st">&quot;Unix Makefiles&quot;</span> -DCMAKE_INSTALL_PREFIX=~/usr/local
-<span class="ex">Make</span> 3.13.4 or higher is required.  You are running version 3.11.4</code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb8-1" title="1"><span class="fu">git</span> clone --depth 1 https://github.com/llvm/llvm-project.git</a>
+<a class="sourceLine" id="cb8-2" title="2"><span class="bu">cd</span> llvm-project</a>
+<a class="sourceLine" id="cb8-3" title="3"><span class="fu">mkdir</span> build</a>
+<a class="sourceLine" id="cb8-4" title="4"><span class="bu">cd</span> build</a>
+<a class="sourceLine" id="cb8-5" title="5"><span class="fu">cmake</span> -G <span class="st">&quot;Unix Makefiles&quot;</span> -DCMAKE_INSTALL_PREFIX=~/usr/local</a>
+<a class="sourceLine" id="cb8-6" title="6"><span class="ex">Make</span> 3.13.4 or higher is required.  You are running version 3.11.4</a></code></pre></div>
 <p>まじすか。</p>
-<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="fu">mkdir</span> usr
-<span class="bu">cd</span> usr
-<span class="fu">wget</span> https://github.com/Kitware/CMake/releases/download/v3.19.2/cmake-3.19.2-Linux-x86_64.tar.gz
-<span class="fu">tar</span> xvzf cmake-3.19.2-Linux-x86_64.tar.gz 
-<span class="fu">mv</span> cmake-3.19.2-Linux-x86_64 local
-<span class="bu">export</span> <span class="va">CMAKE_ROOT=</span>~/usr/local
-<span class="bu">export</span> <span class="va">PATH=</span>~/usr/local/bin:<span class="va">$PATH</span></code></pre></div>
-<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="fu">git</span> clone --depth 1 https://github.com/llvm/llvm-project.git
-<span class="bu">cd</span> llvm-project
-<span class="fu">mkdir</span> build
-<span class="bu">cd</span> build
-<span class="fu">cmake</span> -G <span class="st">&quot;Unix Makefiles&quot;</span> -DCMAKE_INSTALL_PREFIX=~/usr/local ../llvm
-<span class="fu">make</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb9-1" title="1"><span class="fu">mkdir</span> usr</a>
+<a class="sourceLine" id="cb9-2" title="2"><span class="bu">cd</span> usr</a>
+<a class="sourceLine" id="cb9-3" title="3"><span class="fu">wget</span> https://github.com/Kitware/CMake/releases/download/v3.19.2/cmake-3.19.2-Linux-x86_64.tar.gz</a>
+<a class="sourceLine" id="cb9-4" title="4"><span class="fu">tar</span> xvzf cmake-3.19.2-Linux-x86_64.tar.gz </a>
+<a class="sourceLine" id="cb9-5" title="5"><span class="fu">mv</span> cmake-3.19.2-Linux-x86_64 local</a>
+<a class="sourceLine" id="cb9-6" title="6"><span class="bu">export</span> <span class="va">CMAKE_ROOT=</span>~/usr/local</a>
+<a class="sourceLine" id="cb9-7" title="7"><span class="bu">export</span> <span class="va">PATH=</span>~/usr/local/bin:<span class="va">$PATH</span></a></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb10-1" title="1"><span class="fu">git</span> clone --depth 1 https://github.com/llvm/llvm-project.git</a>
+<a class="sourceLine" id="cb10-2" title="2"><span class="bu">cd</span> llvm-project</a>
+<a class="sourceLine" id="cb10-3" title="3"><span class="fu">mkdir</span> build</a>
+<a class="sourceLine" id="cb10-4" title="4"><span class="bu">cd</span> build</a>
+<a class="sourceLine" id="cb10-5" title="5"><span class="fu">cmake</span> -G <span class="st">&quot;Unix Makefiles&quot;</span> -DCMAKE_INSTALL_PREFIX=~/usr/local ../llvm</a>
+<a class="sourceLine" id="cb10-6" title="6"><span class="fu">make</span></a></code></pre></div>
 <p>なんかできているっぽい。一時間くらい経過して50%くらいしか進んでないけど。</p>
 <h2 id="月8日金"><a href="#8">1月8日(金)</a> <a id="08"></a></h2>
 <p>どうにも集中力を欠いているなぁ。</p>
