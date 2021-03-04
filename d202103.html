@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+                <title>d202103</title>
+    <style type="text/css">
+      code {
+        white-space: pre;
+      }
+    </style>
+        <style type="text/css"></style>
+
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- link rel="stylesheet" href="github-markdown.css" type="text/css" / -->
+          </head>
+
+  <body>
+    <article class="markdown-body">
+                        <h1 id="ログ">ログ</h1>
+<p><a href="index.html">ログ一覧</a></p>
+<h2 id="月04日木"><a href="#04">03月04日(木)</a> <a id="04"></a></h2>
+<p>ハンズオン。論文の読み方。</p>
+<p>研究室ミーティング。</p>
+<p>輪講。</p>
+<p>TAの募集出した。</p>
+<h2 id="月03日水"><a href="#03">03月03日(水)</a> <a id="03"></a></h2>
+<p>在宅ワーク(後で書く)。</p>
+<h2 id="月02日火"><a href="#02">03月02日(火)</a> <a id="02"></a></h2>
+<p>Macのg++-10がいつのまにか使えなくなっていたのに対応。</p>
+<p>現象。</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1">$ <span class="ex">g++-10</span> test.cpp </a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="ex">In</span> file included from /usr/local/Cellar/gcc/10.1.0/include/c++/10.1.0/bits/stl_algo.h:59,</a>
+<a class="sourceLine" id="cb1-3" title="3">                 <span class="ex">from</span> /usr/local/Cellar/gcc/10.1.0/include/c++/10.1.0/algorithm:62,</a>
+<a class="sourceLine" id="cb1-4" title="4">                 <span class="ex">from</span> ../sdouble.hpp:29,</a>
+<a class="sourceLine" id="cb1-5" title="5">                 <span class="ex">from</span> test.cpp:1:</a>
+<a class="sourceLine" id="cb1-6" title="6"><span class="ex">/usr/local/Cellar/gcc/10.1.0/include/c++/10.1.0</span>/cstdlib:<span class="ex">75</span>:15: fatal error: stdlib.h: No such file or directory</a>
+<a class="sourceLine" id="cb1-7" title="7">   <span class="ex">75</span> <span class="kw">|</span> <span class="co">#include_next &lt;stdlib.h&gt;</span></a>
+<a class="sourceLine" id="cb1-8" title="8">      <span class="kw">|</span>               ^<span class="ex">~~~~~~~~~</span></a>
+<a class="sourceLine" id="cb1-9" title="9"><span class="ex">compilation</span> terminated.</a></code></pre></div>
+<p>などと言われ、ヘッダファイルのパスが見つからない。アンインストールしようとしたら、</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1">$ <span class="ex">brew</span> uninstall gcc</a>
+<a class="sourceLine" id="cb2-2" title="2"><span class="ex">Error</span>: Refusing to uninstall /usr/local/Cellar/gcc/10.1.0</a>
+<a class="sourceLine" id="cb2-3" title="3"><span class="ex">because</span> it is required by boost-mpi, fftw, kim-api, lammps, open-mpi, openblas and r, which are currently installed.</a>
+<a class="sourceLine" id="cb2-4" title="4"><span class="ex">You</span> can override this and force removal with:</a>
+<a class="sourceLine" id="cb2-5" title="5">  <span class="ex">brew</span> uninstall --ignore-dependencies gcc</a></code></pre></div>
+<p>などと怒られたので、再インストールしてみる。</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" title="1"><span class="ex">brew</span> reinstall gcc</a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb4-1" title="1"><span class="ex">g++-10</span> test.cpp</a></code></pre></div>
+<p>コンパイルして、ヘッダが見つからないと言われないことを確認。なおってよかった。</p>
+<p>なんかデフォルトブランチがmainとmasterが混在していて鬱陶しいので少しずつmainに修正。</p>
+<p><code>stat::sdouble</code>ライブラリを修正。やっぱり<code>&lt;&lt;</code>で値を追加する必要はないと判断。普通に<code>std::vector&lt;double&gt;</code>を使うことにして、ライブラリでは誤差伝搬だけを考えることにする。</p>
+<h2 id="月01日月"><a href="#01">03月01日(月)</a> <a id="01"></a></h2>
+<p>え？もう三月なの？マジで？</p>
+<p>一応「日記」も足掛け5ヶ月目になるのか(11/18スタートだからまだ4ヶ月分書いてないけど)。これなら三日坊主にはなってないかな。</p>
+<p>学振PD受け入れ書類提出。ちょっと遅れてしまった。申し訳ない。</p>
+<p>「スパコンで食えるか(仮)」みたいなタイトルで話すことに。ほんとにこのタイトルで行くかは謎。</p>
+<p>新年度の準備。輪講とハンズオンの連絡とか。論文紹介用の論文もリストアップしておかないとな。</p>
+<p>みずほのATMに障害。関連してSuicaシステムは優れているという話を聞いてちょっと調べた。<a href="https://www.jstage.jst.go.jp/article/ieiej/31/6/31_408/_pdf/-char/en">Suicaシステムの概要(pdf)</a>。普通にシステムを組むなら不正利用を防ぐためにカードにはIDだけ入れておいて、サーバに情報をすべて置いて置きたくなるが、それだとサーバが死んだら完全に交通が麻痺してしまうため、カード内、各駅のサーバ、そしてセンターサーバそれぞれに情報を貯める自立分散システムを構築。センターサーバと駅サーバの回線が切れたり、センターサーバが死んでも一部の業務を除いて運用継続が可能。また、ラッシュアワーなど、通信負荷がかかる場合でも、駅サーバが「キャッシュ」の役割を果たし、後でサーバと同期を取ることでセンターサーバの負担を軽減する。なるほど。</p>
+<p>Suicaに比べて不正操作の影響が大きい銀行ATMと直接比べることはできないが、たしかによくできたシステム。</p>
+<p>プリンタ、キャプチャデバイスの見積もり依頼。キャプチャデバイスはZoomとハンディカムの接続用。届いたらテストしなくては。</p>
+<p>忘れてた。いつの間にかMacでgit submoduleが使えなくなっていたんだ。忙しくて放置していた。</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb5-1" title="1">$ <span class="fu">git</span> submodule update --init --recursive </a>
+<a class="sourceLine" id="cb5-2" title="2"><span class="ex">pyenv</span>: git-submodule: command not found</a></code></pre></div>
+<p>とにかく困るので対処。</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb6-1" title="1">$ <span class="fu">which</span> git</a>
+<a class="sourceLine" id="cb6-2" title="2"><span class="ex">/usr/local/bin/git</span></a>
+<a class="sourceLine" id="cb6-3" title="3"></a>
+<a class="sourceLine" id="cb6-4" title="4">$ <span class="fu">git</span> --version</a>
+<a class="sourceLine" id="cb6-5" title="5"><span class="fu">git</span> version 2.30.0</a>
+<a class="sourceLine" id="cb6-6" title="6"></a>
+<a class="sourceLine" id="cb6-7" title="7">$ <span class="ex">brew</span> uninstall git</a>
+<a class="sourceLine" id="cb6-8" title="8"><span class="ex">Uninstalling</span> /usr/local/Cellar/git/2.30.0... (1,486 files, 40.5MB)</a>
+<a class="sourceLine" id="cb6-9" title="9"></a>
+<a class="sourceLine" id="cb6-10" title="10"><span class="ex">Warning</span>: The following may be git configuration files and have not been removed!</a>
+<a class="sourceLine" id="cb6-11" title="11"><span class="ex">If</span> desired, remove them manually with <span class="kw">`</span><span class="fu">rm</span> -rf<span class="kw">`</span>:</a>
+<a class="sourceLine" id="cb6-12" title="12">  <span class="ex">/usr/local/etc/gitconfig</span></a>
+<a class="sourceLine" id="cb6-13" title="13"></a>
+<a class="sourceLine" id="cb6-14" title="14">$ <span class="fu">rm</span> -rf /usr/local/etc/gitconfig</a>
+<a class="sourceLine" id="cb6-15" title="15"></a>
+<a class="sourceLine" id="cb6-16" title="16">$ <span class="fu">which</span> git</a>
+<a class="sourceLine" id="cb6-17" title="17"><span class="ex">/usr/bin/git</span></a>
+<a class="sourceLine" id="cb6-18" title="18"></a>
+<a class="sourceLine" id="cb6-19" title="19">$ <span class="fu">git</span> --version</a>
+<a class="sourceLine" id="cb6-20" title="20"><span class="fu">git</span> version 2.24.3 (Apple Git-128)</a></code></pre></div>
+<p>あるやん。brewで入れたgitが<code>/usr/local/bin/git</code>に入っており、そいつが問題をおこしていた？</p>
+<p>Gitのバージョンは下がったが、submoduleは使えるようになった。</p>
+<p>Jackknifeによるバイアス補正、物性研にジョブ投げたぞ。これでうまく行ってそうなら本番コードを全部修正してデータを再取得しておしまいだ。</p>
+          </article>
+  </body>
+
+  </html>

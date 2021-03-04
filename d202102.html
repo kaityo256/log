@@ -23,7 +23,8 @@
                         <h1 id="ログ">ログ</h1>
 <p><a href="index.html">ログ一覧</a></p>
 <h2 id="月28日日"><a href="#28">02月28日(日)</a> <a id="28"></a></h2>
-<p>JackknifeのC++版の実装完了。共分散の影響を考え落としてて結果がおかしかった。これで論文が書けるはず。</p>
+<p>JackknifeのC++版の実装完了。共分散の影響を考え落としてて結果がおかしかった(らしい)。これで論文が書けるはず。</p>
+<p>Qiita、完全に過疎ってる気がする。zenn.devに民族大移動？僕も移るかな。</p>
 <h2 id="月27日土"><a href="#27">02月27日(土)</a> <a id="27"></a></h2>
 <p>JackknifeのC++版の実装。Pythonから入るとSTLのコンテナ操作系の使いづらさが際立つ。</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb1-1" title="1"><span class="bu">std::</span>transform(r.begin(), r.end(), r2.begin(), [](<span class="dt">double</span> x) { <span class="cf">return</span> x * x; });</a></code></pre></div>
@@ -32,6 +33,21 @@
 <p>でいいじゃん。もっというなら</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb3-1" title="1"><span class="kw">auto</span> r2 = <span class="bu">std::</span>transform(r, [](<span class="dt">double</span> x) { <span class="cf">return</span> x * x; });</a></code></pre></div>
 <p>でいいじゃんね。</p>
+<p><code>std::accumulate</code>で、<code>double</code>を積算するのに初期値に「0」を入れて、積算が<code>int</code>で行われている、というバグを入れてたのにしばらく気づかなかった。こんなの。</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb4-1" title="1"><span class="pp">#include </span><span class="im">&lt;algorithm&gt;</span></a>
+<a class="sourceLine" id="cb4-2" title="2"><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></a>
+<a class="sourceLine" id="cb4-3" title="3"><span class="pp">#include </span><span class="im">&lt;numeric&gt;</span></a>
+<a class="sourceLine" id="cb4-4" title="4"><span class="pp">#include </span><span class="im">&lt;vector&gt;</span></a>
+<a class="sourceLine" id="cb4-5" title="5"></a>
+<a class="sourceLine" id="cb4-6" title="6"><span class="dt">int</span> main() {</a>
+<a class="sourceLine" id="cb4-7" title="7">  <span class="bu">std::</span>vector&lt;<span class="dt">double</span>&gt; v = {<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">10</span>};</a>
+<a class="sourceLine" id="cb4-8" title="8">  <span class="bu">std::</span>cout &lt;&lt; <span class="bu">std::</span>accumulate(v.begin(), v.end(), <span class="dv">0</span>) &lt;&lt; <span class="bu">std::</span>endl;</a>
+<a class="sourceLine" id="cb4-9" title="9">  <span class="bu">std::</span>transform(v.begin(), v.end(), v.begin(), [](<span class="dt">double</span> x) { <span class="cf">return</span> <span class="fl">0.5</span> * x; });</a>
+<a class="sourceLine" id="cb4-10" title="10"></a>
+<a class="sourceLine" id="cb4-11" title="11">  <span class="bu">std::</span>cout &lt;&lt; <span class="bu">std::</span>accumulate(v.begin(), v.end(), <span class="dv">0</span>) &lt;&lt; <span class="bu">std::</span>endl;  <span class="co">// =&gt; 25</span></a>
+<a class="sourceLine" id="cb4-12" title="12">  <span class="bu">std::</span>cout &lt;&lt; <span class="bu">std::</span>accumulate(v.begin(), v.end(), <span class="fl">0.0</span>) &lt;&lt; <span class="bu">std::</span>endl; <span class="co">// =&gt; 27.5</span></a>
+<a class="sourceLine" id="cb4-13" title="13">}</a></code></pre></div>
+<p>初期値に0と0.0を入れた時で答えが変わる。最初のテストでは整数しか入れてなかったので答えがあってて見落とした。コンパイラは何も言わないし、計算も普通にできるんだけど、微妙に答えがおかしくなるのですごくイヤなバグ。</p>
 <h2 id="月26日金"><a href="#26">02月26日(金)</a> <a id="26"></a></h2>
 <p>昨日、会議があったのを忘れててすっぽかしたorz</p>
 <p>Google Calendarに入力してたのに。凹む。</p>
@@ -44,7 +60,7 @@
 <p>Jackknife、ほぼ理解できたと思う。あとひと押し。</p>
 <h2 id="月24日水"><a href="#24">02月24日(水)</a> <a id="24"></a></h2>
 <p>GitHub Typoという、GitHubにあるリポジトリのありがちなタイポを見つけてリンクするという、とてもおせっかいなサイトに捕捉されたので修正する。ispellとaspell試したけど、aspellの方が使いやすいな。ただ、オプションが面倒。こんな感じかな。</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb4-1" title="1"><span class="ex">aspell</span> --lang=en -x -c -t fiename</a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb5-1" title="1"><span class="ex">aspell</span> --lang=en -x -c -t fiename</a></code></pre></div>
 <ul>
 <li><code>--lang=en</code> 英語にする</li>
 <li><code>-t</code> モードをTexモードにする</li>
@@ -52,9 +68,9 @@
 <li><code>-c</code> Spell check a single file.</li>
 </ul>
 <p>一気に調べるには</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb5-1" title="1"><span class="ex">aspell</span> --lang=en -t list <span class="op">&lt;</span> ワイルドカード <span class="kw">|</span> <span class="fu">sort</span> -u <span class="kw">|</span><span class="fu">less</span></a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb6-1" title="1"><span class="ex">aspell</span> --lang=en -t list <span class="op">&lt;</span> ワイルドカード <span class="kw">|</span> <span class="fu">sort</span> -u <span class="kw">|</span><span class="fu">less</span></a></code></pre></div>
 <p>が便利。例えば<code>**/*.md</code>で調べるなら、</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb6-1" title="1"><span class="ex">aspell</span> --lang=en -t list <span class="op">&lt;</span> **/*.md <span class="kw">|</span> <span class="fu">sort</span> -u <span class="kw">|</span><span class="fu">less</span></a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb7-1" title="1"><span class="ex">aspell</span> --lang=en -t list <span class="op">&lt;</span> **/*.md <span class="kw">|</span> <span class="fu">sort</span> -u <span class="kw">|</span><span class="fu">less</span></a></code></pre></div>
 <p>これで出てきた一覧のうち、明らかにTypoなのをgrepで場所を特定して修正するのが便利。</p>
 <p>データベースを作って、論文として出版するという方法。</p>
 <p>Scientific data (Nature) IF 5.541</p>
@@ -97,15 +113,15 @@
 <p>その後、B3のPCセットアップ。</p>
 <p>Anacondaのインストール画面が違う。</p>
 <p>pyenvでanacondaはM1にうまく入らなかったっぽい。</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb7-1" title="1"><span class="ex">brew</span> install pyenv</a>
-<a class="sourceLine" id="cb7-2" title="2"><span class="ex">pyenv</span> install 3.9.1</a></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb8-1" title="1"><span class="ex">brew</span> install pyenv</a>
+<a class="sourceLine" id="cb8-2" title="2"><span class="ex">pyenv</span> install 3.9.1</a></code></pre></div>
 <p>これでいけるはず。</p>
 <p>また、lammpsをbrewで入れた時のパスが違う。</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb8-1" title="1"><span class="bu">cd</span></a>
-<a class="sourceLine" id="cb8-2" title="2"><span class="fu">mkdir</span> lammps</a>
-<a class="sourceLine" id="cb8-3" title="3"><span class="bu">cd</span> lammps</a>
-<a class="sourceLine" id="cb8-4" title="4"><span class="fu">cp</span> -r /opt/homebrew/Cellar/lammps/2020-10-29/share/lammps/examples/melt .</a>
-<a class="sourceLine" id="cb8-5" title="5"><span class="bu">cd</span> melt</a></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb9-1" title="1"><span class="bu">cd</span></a>
+<a class="sourceLine" id="cb9-2" title="2"><span class="fu">mkdir</span> lammps</a>
+<a class="sourceLine" id="cb9-3" title="3"><span class="bu">cd</span> lammps</a>
+<a class="sourceLine" id="cb9-4" title="4"><span class="fu">cp</span> -r /opt/homebrew/Cellar/lammps/2020-10-29/share/lammps/examples/melt .</a>
+<a class="sourceLine" id="cb9-5" title="5"><span class="bu">cd</span> melt</a></code></pre></div>
 <p>WSL2のインストールも書かないと。</p>
 <h2 id="月16日火"><a href="#16">02月16日(火)</a> <a id="16"></a></h2>
 <p>二週間くらいぶりに日付挿入スニペット使った。せめてこれからは毎日、このスニペットを使うことにしよう。っていうか、このスニペット使った回数を記録しておけば、日付通りに日記を書いた回数がわかるのか。</p>
@@ -148,86 +164,86 @@
 <p>講義の成績登録した。みなさんよくがんばりました。</p>
 <h2 id="月04日thu"><a href="#04">02月04日(Thu)</a> <a id="04"></a></h2>
 <p>いい加減ここの日付を書くのに手書きはアホ過ぎるのでスニペットを作ろう。まず、ローカル設定にしたいので、ローカルの.vscodeに作る。以下の内容で<code>.vscode/md.code-snippets</code>を作った。</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode json"><code class="sourceCode json"><a class="sourceLine" id="cb9-1" title="1"><span class="fu">{</span></a>
-<a class="sourceLine" id="cb9-2" title="2">  <span class="dt">&quot;Print to console&quot;</span><span class="fu">:</span> <span class="fu">{</span></a>
-<a class="sourceLine" id="cb9-3" title="3">    <span class="dt">&quot;scope&quot;</span><span class="fu">:</span> <span class="st">&quot;markdown, md&quot;</span><span class="fu">,</span></a>
-<a class="sourceLine" id="cb9-4" title="4">    <span class="dt">&quot;prefix&quot;</span><span class="fu">:</span> <span class="st">&quot;date&quot;</span><span class="fu">,</span></a>
-<a class="sourceLine" id="cb9-5" title="5">    <span class="dt">&quot;body&quot;</span><span class="fu">:</span> <span class="ot">[</span></a>
-<a class="sourceLine" id="cb9-6" title="6">      <span class="st">&quot;## [$CURRENT_MONTH月$CURRENT_DATE日($CURRENT_DAY_NAME_SHORT)](#$CURRENT_DATE) &lt;a id=</span><span class="ch">\&quot;</span><span class="st">$CURRENT_DATE</span><span class="ch">\&quot;</span><span class="st">&gt;&lt;/a&gt;&quot;</span><span class="ot">,</span></a>
-<a class="sourceLine" id="cb9-7" title="7">      <span class="st">&quot;$2&quot;</span></a>
-<a class="sourceLine" id="cb9-8" title="8">    <span class="ot">]</span><span class="fu">,</span></a>
-<a class="sourceLine" id="cb9-9" title="9">    <span class="dt">&quot;description&quot;</span><span class="fu">:</span> <span class="st">&quot;diary header&quot;</span></a>
-<a class="sourceLine" id="cb9-10" title="10">  <span class="fu">}</span></a>
-<a class="sourceLine" id="cb9-11" title="11"><span class="fu">}</span></a></code></pre></div>
-<p>また、デフォルトではMarkdownでスニペット呼び出しができないので、<code>.vscode/settings.json</code>に以下を追加。</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode json"><code class="sourceCode json"><a class="sourceLine" id="cb10-1" title="1"><span class="fu">{</span></a>
-<a class="sourceLine" id="cb10-2" title="2">  <span class="dt">&quot;[markdown]&quot;</span><span class="fu">:</span> <span class="fu">{</span></a>
-<a class="sourceLine" id="cb10-3" title="3">    <span class="dt">&quot;editor.quickSuggestions&quot;</span><span class="fu">:</span> <span class="kw">true</span></a>
-<a class="sourceLine" id="cb10-4" title="4">  <span class="fu">},</span></a>
-<a class="sourceLine" id="cb10-5" title="5"><span class="fu">}</span></a></code></pre></div>
+<a class="sourceLine" id="cb10-2" title="2">  <span class="dt">&quot;Print to console&quot;</span><span class="fu">:</span> <span class="fu">{</span></a>
+<a class="sourceLine" id="cb10-3" title="3">    <span class="dt">&quot;scope&quot;</span><span class="fu">:</span> <span class="st">&quot;markdown, md&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb10-4" title="4">    <span class="dt">&quot;prefix&quot;</span><span class="fu">:</span> <span class="st">&quot;date&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb10-5" title="5">    <span class="dt">&quot;body&quot;</span><span class="fu">:</span> <span class="ot">[</span></a>
+<a class="sourceLine" id="cb10-6" title="6">      <span class="st">&quot;## [$CURRENT_MONTH月$CURRENT_DATE日($CURRENT_DAY_NAME_SHORT)](#$CURRENT_DATE) &lt;a id=</span><span class="ch">\&quot;</span><span class="st">$CURRENT_DATE</span><span class="ch">\&quot;</span><span class="st">&gt;&lt;/a&gt;&quot;</span><span class="ot">,</span></a>
+<a class="sourceLine" id="cb10-7" title="7">      <span class="st">&quot;$2&quot;</span></a>
+<a class="sourceLine" id="cb10-8" title="8">    <span class="ot">]</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb10-9" title="9">    <span class="dt">&quot;description&quot;</span><span class="fu">:</span> <span class="st">&quot;diary header&quot;</span></a>
+<a class="sourceLine" id="cb10-10" title="10">  <span class="fu">}</span></a>
+<a class="sourceLine" id="cb10-11" title="11"><span class="fu">}</span></a></code></pre></div>
+<p>また、デフォルトではMarkdownでスニペット呼び出しができないので、<code>.vscode/settings.json</code>に以下を追加。</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode json"><code class="sourceCode json"><a class="sourceLine" id="cb11-1" title="1"><span class="fu">{</span></a>
+<a class="sourceLine" id="cb11-2" title="2">  <span class="dt">&quot;[markdown]&quot;</span><span class="fu">:</span> <span class="fu">{</span></a>
+<a class="sourceLine" id="cb11-3" title="3">    <span class="dt">&quot;editor.quickSuggestions&quot;</span><span class="fu">:</span> <span class="kw">true</span></a>
+<a class="sourceLine" id="cb11-4" title="4">  <span class="fu">},</span></a>
+<a class="sourceLine" id="cb11-5" title="5"><span class="fu">}</span></a></code></pre></div>
 <p>これで「date(タブ)」と入力すると<code>## [02月04日(Thu)](#04) &lt;a id="04"&gt;&lt;/a&gt;</code>みたいな文字列が出てくるようになった。「木」ではなく「Thu」が出てしまったりするが、まぁ良いことにしよう。dateで出るのが鬱陶しくなったらprefix変えよう。</p>
 <p>Macでなぜかnpmが動かない。</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb11-1" title="1">$ <span class="ex">npm</span> init --yes</a>
-<a class="sourceLine" id="cb11-2" title="2"><span class="ex">dyld</span>: Library not loaded: /usr/local/opt/icu4c/lib/libicui18n.64.dylib</a>
-<a class="sourceLine" id="cb11-3" title="3">  <span class="ex">Referenced</span> from: /usr/local/bin/node</a>
-<a class="sourceLine" id="cb11-4" title="4">  <span class="ex">Reason</span>: image not found</a>
-<a class="sourceLine" id="cb11-5" title="5"><span class="ex">zsh</span>: abort      npm init --yes</a></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb12-1" title="1">$ <span class="ex">npm</span> init --yes</a>
+<a class="sourceLine" id="cb12-2" title="2"><span class="ex">dyld</span>: Library not loaded: /usr/local/opt/icu4c/lib/libicui18n.64.dylib</a>
+<a class="sourceLine" id="cb12-3" title="3">  <span class="ex">Referenced</span> from: /usr/local/bin/node</a>
+<a class="sourceLine" id="cb12-4" title="4">  <span class="ex">Reason</span>: image not found</a>
+<a class="sourceLine" id="cb12-5" title="5"><span class="ex">zsh</span>: abort      npm init --yes</a></code></pre></div>
 <p>最近これ系(ダイナミックリンクライブラリがらみ)のエラー多いな。</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb12-1" title="1">$ <span class="ex">brew</span> install npm</a>
-<a class="sourceLine" id="cb12-2" title="2"><span class="kw">(</span><span class="ex">snip</span><span class="kw">)</span></a>
-<a class="sourceLine" id="cb12-3" title="3"><span class="ex">Error</span>: node 12.9.1 is already installed</a>
-<a class="sourceLine" id="cb12-4" title="4"><span class="ex">To</span> upgrade to 15.8.0, run:</a>
-<a class="sourceLine" id="cb12-5" title="5">  <span class="ex">brew</span> upgrade node</a></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb13-1" title="1">$ <span class="ex">brew</span> install npm</a>
+<a class="sourceLine" id="cb13-2" title="2"><span class="kw">(</span><span class="ex">snip</span><span class="kw">)</span></a>
+<a class="sourceLine" id="cb13-3" title="3"><span class="ex">Error</span>: node 12.9.1 is already installed</a>
+<a class="sourceLine" id="cb13-4" title="4"><span class="ex">To</span> upgrade to 15.8.0, run:</a>
+<a class="sourceLine" id="cb13-5" title="5">  <span class="ex">brew</span> upgrade node</a></code></pre></div>
 <p>ほほう。</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb13-1" title="1">$  <span class="ex">brew</span> upgrade node</a>
-<a class="sourceLine" id="cb13-2" title="2">==<span class="op">&gt;</span> <span class="ex">Upgrading</span> 1 outdated package:</a>
-<a class="sourceLine" id="cb13-3" title="3"><span class="ex">node</span> 12.9.1 -<span class="op">&gt;</span> 15.8.0</a>
-<a class="sourceLine" id="cb13-4" title="4">==<span class="op">&gt;</span> <span class="ex">Upgrading</span> node 12.9.1 -<span class="op">&gt;</span> 15.8.0 </a>
-<a class="sourceLine" id="cb13-5" title="5">==<span class="op">&gt;</span> <span class="ex">Downloading</span> https://homebrew.bintray.com/bottles/node-15.8.0.big_sur.bottle.</a>
-<a class="sourceLine" id="cb13-6" title="6"><span class="ex">Already</span> downloaded: /Users/watanabe/Library/Caches/Homebrew/downloads/9bf57615654f850ea19d76c53dee4b63bc00f11a242813b95b8450e45942a12b--node-15.8.0.big_sur.bottle.tar.gz</a>
-<a class="sourceLine" id="cb13-7" title="7">==<span class="op">&gt;</span> <span class="ex">Pouring</span> node-15.8.0.big_sur.bottle.tar.gz</a>
-<a class="sourceLine" id="cb13-8" title="8">🍺  <span class="ex">/usr/local/Cellar/node</span>/15.8.0: <span class="ex">3</span>,336 files, 55.9MB</a>
-<a class="sourceLine" id="cb13-9" title="9"><span class="ex">Removing</span>: /usr/local/Cellar/node/12.9.1... (4,629 files, 53.4MB)</a></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb14-1" title="1">$  <span class="ex">brew</span> upgrade node</a>
+<a class="sourceLine" id="cb14-2" title="2">==<span class="op">&gt;</span> <span class="ex">Upgrading</span> 1 outdated package:</a>
+<a class="sourceLine" id="cb14-3" title="3"><span class="ex">node</span> 12.9.1 -<span class="op">&gt;</span> 15.8.0</a>
+<a class="sourceLine" id="cb14-4" title="4">==<span class="op">&gt;</span> <span class="ex">Upgrading</span> node 12.9.1 -<span class="op">&gt;</span> 15.8.0 </a>
+<a class="sourceLine" id="cb14-5" title="5">==<span class="op">&gt;</span> <span class="ex">Downloading</span> https://homebrew.bintray.com/bottles/node-15.8.0.big_sur.bottle.</a>
+<a class="sourceLine" id="cb14-6" title="6"><span class="ex">Already</span> downloaded: /Users/watanabe/Library/Caches/Homebrew/downloads/9bf57615654f850ea19d76c53dee4b63bc00f11a242813b95b8450e45942a12b--node-15.8.0.big_sur.bottle.tar.gz</a>
+<a class="sourceLine" id="cb14-7" title="7">==<span class="op">&gt;</span> <span class="ex">Pouring</span> node-15.8.0.big_sur.bottle.tar.gz</a>
+<a class="sourceLine" id="cb14-8" title="8">🍺  <span class="ex">/usr/local/Cellar/node</span>/15.8.0: <span class="ex">3</span>,336 files, 55.9MB</a>
+<a class="sourceLine" id="cb14-9" title="9"><span class="ex">Removing</span>: /usr/local/Cellar/node/12.9.1... (4,629 files, 53.4MB)</a></code></pre></div>
 <p>できたかな？</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb14-1" title="1">$ <span class="ex">npm</span></a>
-<a class="sourceLine" id="cb14-2" title="2"><span class="kw">(</span><span class="ex">snip</span><span class="kw">)</span></a>
-<a class="sourceLine" id="cb14-3" title="3"><span class="ex">npm</span> notice </a>
-<a class="sourceLine" id="cb14-4" title="4"><span class="ex">npm</span> notice New patch version of npm available! 7.5.0 -<span class="op">&gt;</span> 7.5.2</a>
-<a class="sourceLine" id="cb14-5" title="5"><span class="ex">npm</span> notice Changelog: https://github.com/npm/cli/releases/tag/v7.5.2</a>
-<a class="sourceLine" id="cb14-6" title="6"><span class="ex">npm</span> notice Run npm install -g npm@7.5.2 to update!</a>
-<a class="sourceLine" id="cb14-7" title="7"><span class="ex">npm</span> notice </a></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb15-1" title="1">$ <span class="ex">npm</span></a>
+<a class="sourceLine" id="cb15-2" title="2"><span class="kw">(</span><span class="ex">snip</span><span class="kw">)</span></a>
+<a class="sourceLine" id="cb15-3" title="3"><span class="ex">npm</span> notice </a>
+<a class="sourceLine" id="cb15-4" title="4"><span class="ex">npm</span> notice New patch version of npm available! 7.5.0 -<span class="op">&gt;</span> 7.5.2</a>
+<a class="sourceLine" id="cb15-5" title="5"><span class="ex">npm</span> notice Changelog: https://github.com/npm/cli/releases/tag/v7.5.2</a>
+<a class="sourceLine" id="cb15-6" title="6"><span class="ex">npm</span> notice Run npm install -g npm@7.5.2 to update!</a>
+<a class="sourceLine" id="cb15-7" title="7"><span class="ex">npm</span> notice </a></code></pre></div>
 <p>ふむ。</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb15-1" title="1"><span class="ex">npm</span> install -g npm@7.5.2</a></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb16-1" title="1"><span class="ex">npm</span> install -g npm@7.5.2</a></code></pre></div>
 <p>もう一度。</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb16-1" title="1"><span class="ex">npm</span> install zenn-cli </a></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb17-1" title="1"><span class="ex">npm</span> install zenn-cli </a></code></pre></div>
 <p>無事に通った。</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb17-1" title="1">$ <span class="ex">npx</span> zenn preview</a>
-<a class="sourceLine" id="cb17-2" title="2">👀<span class="ex">Preview</span> on http://localhost:8000</a></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb18-1" title="1">$ <span class="ex">npx</span> zenn preview</a>
+<a class="sourceLine" id="cb18-2" title="2">👀<span class="ex">Preview</span> on http://localhost:8000</a></code></pre></div>
 <p>これで<code>http://localhost:8000</code>を見たらちゃんと見えた。よしよし。</p>
 <p>ついでにhttpサーバの確認。</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb18-1" title="1">$ <span class="ex">telnet</span> localhost 8000</a>
-<a class="sourceLine" id="cb18-2" title="2"><span class="ex">Trying</span> ::1...</a>
-<a class="sourceLine" id="cb18-3" title="3"><span class="ex">Connected</span> to localhost.</a>
-<a class="sourceLine" id="cb18-4" title="4"><span class="ex">Escape</span> character is <span class="st">&#39;^]&#39;</span>.</a>
-<a class="sourceLine" id="cb18-5" title="5"><span class="ex">HEAD</span> / HTTP/1.0</a>
-<a class="sourceLine" id="cb18-6" title="6"></a>
-<a class="sourceLine" id="cb18-7" title="7"><span class="ex">HTTP/1.1</span> 200 OK</a>
-<a class="sourceLine" id="cb18-8" title="8"><span class="ex">X-Powered-By</span>: Next.js</a>
-<a class="sourceLine" id="cb18-9" title="9"><span class="ex">ETag</span>: <span class="st">&quot;159e-WBZEF7rtwOl9mxryAKtsz2EiX+8&quot;</span></a>
-<a class="sourceLine" id="cb18-10" title="10"><span class="ex">Content-Type</span>: text/html<span class="kw">;</span> <span class="va">charset=</span>utf-8</a>
-<a class="sourceLine" id="cb18-11" title="11"><span class="ex">Content-Length</span>: 5534</a>
-<a class="sourceLine" id="cb18-12" title="12"><span class="ex">Cache-Control</span>: private, no-cache, no-store, max-age=0, must-revalidate</a>
-<a class="sourceLine" id="cb18-13" title="13"><span class="ex">Vary</span>: Accept-Encoding</a>
-<a class="sourceLine" id="cb18-14" title="14"><span class="ex">Date</span>: Thu, 04 Feb 2021 04:12:16 GMT</a>
-<a class="sourceLine" id="cb18-15" title="15"><span class="ex">Connection</span>: close</a>
-<a class="sourceLine" id="cb18-16" title="16"></a>
-<a class="sourceLine" id="cb18-17" title="17"><span class="ex">Connection</span> closed by foreign host.</a></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb19-1" title="1">$ <span class="ex">telnet</span> localhost 8000</a>
+<a class="sourceLine" id="cb19-2" title="2"><span class="ex">Trying</span> ::1...</a>
+<a class="sourceLine" id="cb19-3" title="3"><span class="ex">Connected</span> to localhost.</a>
+<a class="sourceLine" id="cb19-4" title="4"><span class="ex">Escape</span> character is <span class="st">&#39;^]&#39;</span>.</a>
+<a class="sourceLine" id="cb19-5" title="5"><span class="ex">HEAD</span> / HTTP/1.0</a>
+<a class="sourceLine" id="cb19-6" title="6"></a>
+<a class="sourceLine" id="cb19-7" title="7"><span class="ex">HTTP/1.1</span> 200 OK</a>
+<a class="sourceLine" id="cb19-8" title="8"><span class="ex">X-Powered-By</span>: Next.js</a>
+<a class="sourceLine" id="cb19-9" title="9"><span class="ex">ETag</span>: <span class="st">&quot;159e-WBZEF7rtwOl9mxryAKtsz2EiX+8&quot;</span></a>
+<a class="sourceLine" id="cb19-10" title="10"><span class="ex">Content-Type</span>: text/html<span class="kw">;</span> <span class="va">charset=</span>utf-8</a>
+<a class="sourceLine" id="cb19-11" title="11"><span class="ex">Content-Length</span>: 5534</a>
+<a class="sourceLine" id="cb19-12" title="12"><span class="ex">Cache-Control</span>: private, no-cache, no-store, max-age=0, must-revalidate</a>
+<a class="sourceLine" id="cb19-13" title="13"><span class="ex">Vary</span>: Accept-Encoding</a>
+<a class="sourceLine" id="cb19-14" title="14"><span class="ex">Date</span>: Thu, 04 Feb 2021 04:12:16 GMT</a>
+<a class="sourceLine" id="cb19-15" title="15"><span class="ex">Connection</span>: close</a>
+<a class="sourceLine" id="cb19-16" title="16"></a>
+<a class="sourceLine" id="cb19-17" title="17"><span class="ex">Connection</span> closed by foreign host.</a></code></pre></div>
 <p><code>Next.js</code>で動いているみたいですね。しかし、最近の若人はこういうの、何で調べてるんだろ？</p>
 <p>WSL2でapt-get updateができない問題、日付がずれているのが原因だった。</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb19-1" title="1"><span class="fu">date</span></a>
-<a class="sourceLine" id="cb19-2" title="2"><span class="ex">2021</span>年　1月 30日 土曜日 04:03:43 JST</a></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb20-1" title="1"><span class="fu">date</span></a>
+<a class="sourceLine" id="cb20-2" title="2"><span class="ex">2021</span>年　1月 30日 土曜日 04:03:43 JST</a></code></pre></div>
 <p>なんでやねん。</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb20-1" title="1"><span class="fu">sudo</span> hwclock -s</a></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb21-1" title="1"><span class="fu">sudo</span> hwclock -s</a></code></pre></div>
 <p>で治った。これでnpmやzenn-cliを入れたところ、WLS2でnpx zenn previewが通った。全部WSL2の日付の問題であったらしい。</p>
 <h2 id="月3日水"><a href="#3">2月3日(水)</a> <a id="03"></a></h2>
 <p>卒論発表。昨日に引き続き、レベルの高い発表があって驚きました。とにかく無事に終わってよかったです。みなさんお疲れ様でした。</p>
