@@ -30,6 +30,12 @@
 <div class="sourceCode" id="cb1"><pre class="sourceCode txt"><code class="sourceCode default"><a class="sourceLine" id="cb1-1" title="1">[interop]</a>
 <a class="sourceLine" id="cb1-2" title="2">appendWindowsPath = false</a></code></pre></div>
 <p>と書いてログインしなおせばかなり早くなる。ただし、当然のことながらWindowsから引き継いだパスに由来するコードが使えなくなるので、自分で設定するかシンボリックリンクが必要。特に<code>code</code>が使えなくなるのが面倒。他にも副作用がありそうなので、とりあえず元に戻した。tmuxはしばらくあきらめよう。</p>
+<p>tmuxとの関連は不明だが、なんかシェルが死んで、WSLを再起動したら</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1"><span class="ex">zsh</span>: corrupt history file /home/myusername/.zsh_history</a></code></pre></div>
+<p>とか言われてzshが動かなくなった。<a href="https://superuser.com/questions/957913/how-to-fix-and-recover-a-corrupt-history-file-in-zsh">ここ</a>の記述の通り、</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" title="1"><span class="fu">mv</span> .zsh_history .zsh_history_bad</a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="fu">strings</span> .zsh_history_bad <span class="op">&gt;</span> .zsh_history</a></code></pre></div>
+<p>で解決。</p>
 <h2 id="月11日木"><a href="#11">03月11日(木)</a> <a id="11"></a></h2>
 <p>Vimハンズオン。</p>
 <p>研究室ミーティング。</p>
@@ -40,26 +46,26 @@
 <p>免許の住所変更した。</p>
 <p>マイナンバーカード4人分申請した。</p>
 <p>論文を書こうとしたのだが、なんかWSL2でビルドできない。あと、texindentを入れようとしたら、tlmgrが古いとか言われる。</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1">$ <span class="ex">tlmgr</span> update --self</a>
-<a class="sourceLine" id="cb2-2" title="2"><span class="kw">(</span><span class="ex">running</span> on Debian, switching to user mode!<span class="kw">)</span></a>
-<a class="sourceLine" id="cb2-3" title="3"><span class="ex">tlmgr</span>: Remote repository is newer than local (2017 <span class="op">&lt;</span> 2020)</a>
-<a class="sourceLine" id="cb2-4" title="4"><span class="ex">Cross</span> release updates are only supported with</a>
-<a class="sourceLine" id="cb2-5" title="5">  <span class="ex">update-tlmgr-latest</span>(.sh/.exe) <span class="ex">--update</span></a>
-<a class="sourceLine" id="cb2-6" title="6"><span class="ex">Please</span> see https://tug.org/texlive/upgrade.html for details.</a></code></pre></div>
-<div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" title="1">$ <span class="fu">sudo</span> apt update</a>
-<a class="sourceLine" id="cb3-2" title="2">$ <span class="fu">sudo</span> apt upgrade</a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb4-1" title="1">$ <span class="ex">tlmgr</span> update --self</a>
+<a class="sourceLine" id="cb4-2" title="2"><span class="kw">(</span><span class="ex">running</span> on Debian, switching to user mode!<span class="kw">)</span></a>
+<a class="sourceLine" id="cb4-3" title="3"><span class="ex">tlmgr</span>: Remote repository is newer than local (2017 <span class="op">&lt;</span> 2020)</a>
+<a class="sourceLine" id="cb4-4" title="4"><span class="ex">Cross</span> release updates are only supported with</a>
+<a class="sourceLine" id="cb4-5" title="5">  <span class="ex">update-tlmgr-latest</span>(.sh/.exe) <span class="ex">--update</span></a>
+<a class="sourceLine" id="cb4-6" title="6"><span class="ex">Please</span> see https://tug.org/texlive/upgrade.html for details.</a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb5-1" title="1">$ <span class="fu">sudo</span> apt update</a>
+<a class="sourceLine" id="cb5-2" title="2">$ <span class="fu">sudo</span> apt upgrade</a></code></pre></div>
 <p>でも、upgradableを見る限りTeXLiveは入っていない気がする？フルインストールしちゃえ。</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb4-1" title="1"><span class="fu">sudo</span> apt install texlive-full</a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb6-1" title="1"><span class="fu">sudo</span> apt install texlive-full</a></code></pre></div>
 <p>Windowsだと死ぬほど時間かかるけど、WSL2だとどうだろう？</p>
 <p>入った。これでlatexindentが入るかな？</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb5-1" title="1">$ <span class="ex">latexindent</span> --version</a>
-<a class="sourceLine" id="cb5-2" title="2"><span class="ex">3.4.1</span>, 2018-01-18</a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb7-1" title="1">$ <span class="ex">latexindent</span> --version</a>
+<a class="sourceLine" id="cb7-2" title="2"><span class="ex">3.4.1</span>, 2018-01-18</a></code></pre></div>
 <p>入ったみたい。</p>
 <p>ダメだ。WindowsのWSL:UbuntuでVS CodeからLaTeX Buildしようとしてもどうしてもうまくいかない。実行マークが永遠にくるくる回るだけ。VS Codeのターミナルから開いて実行したらうまくいくのだが。</p>
 <p>やむを得ず、VS Code保存時のビルドを切った。</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode json"><code class="sourceCode json"><a class="sourceLine" id="cb6-1" title="1"><span class="fu">{</span></a>
-<a class="sourceLine" id="cb6-2" title="2">    <span class="dt">&quot;latex-workshop.latex.autoBuild.run&quot;</span><span class="fu">:</span> <span class="st">&quot;never&quot;</span><span class="fu">,</span></a>
-<a class="sourceLine" id="cb6-3" title="3"><span class="fu">}</span></a></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode json"><code class="sourceCode json"><a class="sourceLine" id="cb8-1" title="1"><span class="fu">{</span></a>
+<a class="sourceLine" id="cb8-2" title="2">    <span class="dt">&quot;latex-workshop.latex.autoBuild.run&quot;</span><span class="fu">:</span> <span class="st">&quot;never&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb8-3" title="3"><span class="fu">}</span></a></code></pre></div>
 <h2 id="月08日月"><a href="#08">03月08日(月)</a> <a id="08"></a></h2>
 <p>予算締めた。</p>
 <p>卒論郵送した。一言コメント付き。</p>
@@ -84,24 +90,24 @@
 <h2 id="月02日火"><a href="#02">03月02日(火)</a> <a id="02"></a></h2>
 <p>Macのg++-10がいつのまにか使えなくなっていたのに対応。</p>
 <p>現象。</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb7-1" title="1">$ <span class="ex">g++-10</span> test.cpp </a>
-<a class="sourceLine" id="cb7-2" title="2"><span class="ex">In</span> file included from /usr/local/Cellar/gcc/10.1.0/include/c++/10.1.0/bits/stl_algo.h:59,</a>
-<a class="sourceLine" id="cb7-3" title="3">                 <span class="ex">from</span> /usr/local/Cellar/gcc/10.1.0/include/c++/10.1.0/algorithm:62,</a>
-<a class="sourceLine" id="cb7-4" title="4">                 <span class="ex">from</span> ../sdouble.hpp:29,</a>
-<a class="sourceLine" id="cb7-5" title="5">                 <span class="ex">from</span> test.cpp:1:</a>
-<a class="sourceLine" id="cb7-6" title="6"><span class="ex">/usr/local/Cellar/gcc/10.1.0/include/c++/10.1.0</span>/cstdlib:<span class="ex">75</span>:15: fatal error: stdlib.h: No such file or directory</a>
-<a class="sourceLine" id="cb7-7" title="7">   <span class="ex">75</span> <span class="kw">|</span> <span class="co">#include_next &lt;stdlib.h&gt;</span></a>
-<a class="sourceLine" id="cb7-8" title="8">      <span class="kw">|</span>               ^<span class="ex">~~~~~~~~~</span></a>
-<a class="sourceLine" id="cb7-9" title="9"><span class="ex">compilation</span> terminated.</a></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb9-1" title="1">$ <span class="ex">g++-10</span> test.cpp </a>
+<a class="sourceLine" id="cb9-2" title="2"><span class="ex">In</span> file included from /usr/local/Cellar/gcc/10.1.0/include/c++/10.1.0/bits/stl_algo.h:59,</a>
+<a class="sourceLine" id="cb9-3" title="3">                 <span class="ex">from</span> /usr/local/Cellar/gcc/10.1.0/include/c++/10.1.0/algorithm:62,</a>
+<a class="sourceLine" id="cb9-4" title="4">                 <span class="ex">from</span> ../sdouble.hpp:29,</a>
+<a class="sourceLine" id="cb9-5" title="5">                 <span class="ex">from</span> test.cpp:1:</a>
+<a class="sourceLine" id="cb9-6" title="6"><span class="ex">/usr/local/Cellar/gcc/10.1.0/include/c++/10.1.0</span>/cstdlib:<span class="ex">75</span>:15: fatal error: stdlib.h: No such file or directory</a>
+<a class="sourceLine" id="cb9-7" title="7">   <span class="ex">75</span> <span class="kw">|</span> <span class="co">#include_next &lt;stdlib.h&gt;</span></a>
+<a class="sourceLine" id="cb9-8" title="8">      <span class="kw">|</span>               ^<span class="ex">~~~~~~~~~</span></a>
+<a class="sourceLine" id="cb9-9" title="9"><span class="ex">compilation</span> terminated.</a></code></pre></div>
 <p>などと言われ、ヘッダファイルのパスが見つからない。アンインストールしようとしたら、</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb8-1" title="1">$ <span class="ex">brew</span> uninstall gcc</a>
-<a class="sourceLine" id="cb8-2" title="2"><span class="ex">Error</span>: Refusing to uninstall /usr/local/Cellar/gcc/10.1.0</a>
-<a class="sourceLine" id="cb8-3" title="3"><span class="ex">because</span> it is required by boost-mpi, fftw, kim-api, lammps, open-mpi, openblas and r, which are currently installed.</a>
-<a class="sourceLine" id="cb8-4" title="4"><span class="ex">You</span> can override this and force removal with:</a>
-<a class="sourceLine" id="cb8-5" title="5">  <span class="ex">brew</span> uninstall --ignore-dependencies gcc</a></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb10-1" title="1">$ <span class="ex">brew</span> uninstall gcc</a>
+<a class="sourceLine" id="cb10-2" title="2"><span class="ex">Error</span>: Refusing to uninstall /usr/local/Cellar/gcc/10.1.0</a>
+<a class="sourceLine" id="cb10-3" title="3"><span class="ex">because</span> it is required by boost-mpi, fftw, kim-api, lammps, open-mpi, openblas and r, which are currently installed.</a>
+<a class="sourceLine" id="cb10-4" title="4"><span class="ex">You</span> can override this and force removal with:</a>
+<a class="sourceLine" id="cb10-5" title="5">  <span class="ex">brew</span> uninstall --ignore-dependencies gcc</a></code></pre></div>
 <p>などと怒られたので、再インストールしてみる。</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb9-1" title="1"><span class="ex">brew</span> reinstall gcc</a></code></pre></div>
-<div class="sourceCode" id="cb10"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb10-1" title="1"><span class="ex">g++-10</span> test.cpp</a></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb11-1" title="1"><span class="ex">brew</span> reinstall gcc</a></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb12-1" title="1"><span class="ex">g++-10</span> test.cpp</a></code></pre></div>
 <p>コンパイルして、ヘッダが見つからないと言われないことを確認。なおってよかった。</p>
 <p>なんかデフォルトブランチがmainとmasterが混在していて鬱陶しいので少しずつmainに修正。</p>
 <p><code>stat::sdouble</code>ライブラリを修正。やっぱり<code>&lt;&lt;</code>で値を追加する必要はないと判断。普通に<code>std::vector&lt;double&gt;</code>を使うことにして、ライブラリでは誤差伝搬だけを考えることにする。</p>
@@ -115,29 +121,29 @@
 <p>Suicaに比べて不正操作の影響が大きい銀行ATMと直接比べることはできないが、たしかによくできたシステム。</p>
 <p>プリンタ、キャプチャデバイスの見積もり依頼。キャプチャデバイスはZoomとハンディカムの接続用。届いたらテストしなくては。</p>
 <p>忘れてた。いつの間にかMacでgit submoduleが使えなくなっていたんだ。忙しくて放置していた。</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb11-1" title="1">$ <span class="fu">git</span> submodule update --init --recursive </a>
-<a class="sourceLine" id="cb11-2" title="2"><span class="ex">pyenv</span>: git-submodule: command not found</a></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb13-1" title="1">$ <span class="fu">git</span> submodule update --init --recursive </a>
+<a class="sourceLine" id="cb13-2" title="2"><span class="ex">pyenv</span>: git-submodule: command not found</a></code></pre></div>
 <p>とにかく困るので対処。</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb12-1" title="1">$ <span class="fu">which</span> git</a>
-<a class="sourceLine" id="cb12-2" title="2"><span class="ex">/usr/local/bin/git</span></a>
-<a class="sourceLine" id="cb12-3" title="3"></a>
-<a class="sourceLine" id="cb12-4" title="4">$ <span class="fu">git</span> --version</a>
-<a class="sourceLine" id="cb12-5" title="5"><span class="fu">git</span> version 2.30.0</a>
-<a class="sourceLine" id="cb12-6" title="6"></a>
-<a class="sourceLine" id="cb12-7" title="7">$ <span class="ex">brew</span> uninstall git</a>
-<a class="sourceLine" id="cb12-8" title="8"><span class="ex">Uninstalling</span> /usr/local/Cellar/git/2.30.0... (1,486 files, 40.5MB)</a>
-<a class="sourceLine" id="cb12-9" title="9"></a>
-<a class="sourceLine" id="cb12-10" title="10"><span class="ex">Warning</span>: The following may be git configuration files and have not been removed!</a>
-<a class="sourceLine" id="cb12-11" title="11"><span class="ex">If</span> desired, remove them manually with <span class="kw">`</span><span class="fu">rm</span> -rf<span class="kw">`</span>:</a>
-<a class="sourceLine" id="cb12-12" title="12">  <span class="ex">/usr/local/etc/gitconfig</span></a>
-<a class="sourceLine" id="cb12-13" title="13"></a>
-<a class="sourceLine" id="cb12-14" title="14">$ <span class="fu">rm</span> -rf /usr/local/etc/gitconfig</a>
-<a class="sourceLine" id="cb12-15" title="15"></a>
-<a class="sourceLine" id="cb12-16" title="16">$ <span class="fu">which</span> git</a>
-<a class="sourceLine" id="cb12-17" title="17"><span class="ex">/usr/bin/git</span></a>
-<a class="sourceLine" id="cb12-18" title="18"></a>
-<a class="sourceLine" id="cb12-19" title="19">$ <span class="fu">git</span> --version</a>
-<a class="sourceLine" id="cb12-20" title="20"><span class="fu">git</span> version 2.24.3 (Apple Git-128)</a></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb14-1" title="1">$ <span class="fu">which</span> git</a>
+<a class="sourceLine" id="cb14-2" title="2"><span class="ex">/usr/local/bin/git</span></a>
+<a class="sourceLine" id="cb14-3" title="3"></a>
+<a class="sourceLine" id="cb14-4" title="4">$ <span class="fu">git</span> --version</a>
+<a class="sourceLine" id="cb14-5" title="5"><span class="fu">git</span> version 2.30.0</a>
+<a class="sourceLine" id="cb14-6" title="6"></a>
+<a class="sourceLine" id="cb14-7" title="7">$ <span class="ex">brew</span> uninstall git</a>
+<a class="sourceLine" id="cb14-8" title="8"><span class="ex">Uninstalling</span> /usr/local/Cellar/git/2.30.0... (1,486 files, 40.5MB)</a>
+<a class="sourceLine" id="cb14-9" title="9"></a>
+<a class="sourceLine" id="cb14-10" title="10"><span class="ex">Warning</span>: The following may be git configuration files and have not been removed!</a>
+<a class="sourceLine" id="cb14-11" title="11"><span class="ex">If</span> desired, remove them manually with <span class="kw">`</span><span class="fu">rm</span> -rf<span class="kw">`</span>:</a>
+<a class="sourceLine" id="cb14-12" title="12">  <span class="ex">/usr/local/etc/gitconfig</span></a>
+<a class="sourceLine" id="cb14-13" title="13"></a>
+<a class="sourceLine" id="cb14-14" title="14">$ <span class="fu">rm</span> -rf /usr/local/etc/gitconfig</a>
+<a class="sourceLine" id="cb14-15" title="15"></a>
+<a class="sourceLine" id="cb14-16" title="16">$ <span class="fu">which</span> git</a>
+<a class="sourceLine" id="cb14-17" title="17"><span class="ex">/usr/bin/git</span></a>
+<a class="sourceLine" id="cb14-18" title="18"></a>
+<a class="sourceLine" id="cb14-19" title="19">$ <span class="fu">git</span> --version</a>
+<a class="sourceLine" id="cb14-20" title="20"><span class="fu">git</span> version 2.24.3 (Apple Git-128)</a></code></pre></div>
 <p>あるやん。brewで入れたgitが<code>/usr/local/bin/git</code>に入っており、そいつが問題をおこしていた？</p>
 <p>Gitのバージョンは下がったが、submoduleは使えるようになった。</p>
 <p>Jackknifeによるバイアス補正、物性研にジョブ投げたぞ。これでうまく行ってそうなら本番コードを全部修正してデータを再取得しておしまいだ。</p>
