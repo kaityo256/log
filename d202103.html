@@ -22,6 +22,12 @@
     <article class="markdown-body">
                         <h1 id="ログ">ログ</h1>
 <p><a href="index.html">ログ一覧</a></p>
+<h2 id="月26日金"><a href="#26">03月26日(金)</a> <a id="26"></a></h2>
+<p>物理情報専修の修了式。対面でできて良かった。</p>
+<p>いろいろ予定がごちゃごちゃしてて整理できていない。</p>
+<h2 id="月26日木"><a href="#25">03月26日(木)</a> <a id="25"></a></h2>
+<p>午前はgnuplotハンズオン。午後に物理情報工学特別講義の録画。そのあと研究室ミーティング。さらに輪講。</p>
+<p>輪講の余談は微分形式。余談を記事にまとめようと思っていたのだが、とてもそんな余裕がない。</p>
 <h2 id="月24日水"><a href="#24">03月24日(水)</a> <a id="24"></a></h2>
 <p>VS CodeのMarkdown Preview、いつのまにか画像が更新された時にプレビューが自動で更新されるようになってる。便利。</p>
 <p>gnuplotハンズオンの準備できた。</p>
@@ -51,20 +57,28 @@
 <p>車検証のコピー、最初は事務室のスキャナ使おうかと思ったけれど、Office Lensでいいやと思ってそれでやった。地味に便利。</p>
 <p>いやしかし、Microsoft、Office LensとかVS Codeとか、良いアプリを作るようになった。以前はかなりプロプライエタリ路線だったと思うんだけど、ここ最近(5〜10年くらい？)OSS路線になったきがする。個人的には歓迎だけど、どこでマネタイズしてるんだろう。</p>
 <p>前職でお世話になった秘書の方が退職されるとのことでメッセージを送った。子供がとてもお世話になりました。</p>
+<h2 id="月23日火"><a href="#23">03月23日(火)</a> <a id="23"></a></h2>
+<p>家のマシンにBLASやLAPACKが入っておらず、原田さんのBSAが動かなかったので入れる。</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb5-1" title="1"><span class="fu">sudo</span> apt install libblas-dev</a>
+<a class="sourceLine" id="cb5-2" title="2"><span class="fu">sudo</span> apt -y install libatlas3-base libatlas-base-dev</a></code></pre></div>
+<p>これでBSA/CC2がビルドできた。</p>
+<h2 id="月22日月-1"><a href="#22">03月22日(月)</a> <a id="22"></a></h2>
+<p>メール処理とかたくさんした。</p>
+<p>リアル中野さんと会った。夏の学校はだいぶ前だと思ってたけど、まだ5年前とかそんなものか。</p>
 <h2 id="月21日日"><a href="#21">03月21日(日)</a> <a id="21"></a></h2>
 <p>しばらく前に「Let’s Encrypt Expiry Bot」というのからLet’s encriptの期限が切れるよ、という連絡が来ていたので調べる。</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb5-1" title="1">$ <span class="fu">sudo</span> certbot renew</a>
-<a class="sourceLine" id="cb5-2" title="2"><span class="kw">(</span><span class="ex">snip</span><span class="kw">)</span></a>
-<a class="sourceLine" id="cb5-3" title="3"><span class="ex">ongratulations</span>, all renewals succeeded. The following certs have been renewed:</a>
-<a class="sourceLine" id="cb5-4" title="4">  <span class="ex">/etc/letsencrypt/live/domainname/fullchain.pem</span> (success)</a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb6-1" title="1">$ <span class="fu">sudo</span> certbot renew</a>
+<a class="sourceLine" id="cb6-2" title="2"><span class="kw">(</span><span class="ex">snip</span><span class="kw">)</span></a>
+<a class="sourceLine" id="cb6-3" title="3"><span class="ex">ongratulations</span>, all renewals succeeded. The following certs have been renewed:</a>
+<a class="sourceLine" id="cb6-4" title="4">  <span class="ex">/etc/letsencrypt/live/domainname/fullchain.pem</span> (success)</a></code></pre></div>
 <p>あ、期限を確認しようとして更新しちゃった。</p>
 <p>確認方法はこちら。</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb6-1" title="1"><span class="fu">sudo</span> openssl x509 -in /etc/letsencrypt/live/domainname/fullchain.pem -noout -dates</a>
-<a class="sourceLine" id="cb6-2" title="2"><span class="va">notBefore=</span>Mar <span class="ex">21</span> 04:43:17 2021 GMT</a>
-<a class="sourceLine" id="cb6-3" title="3"><span class="va">notAfter=</span>Jun <span class="ex">19</span> 04:43:17 2021 GMT</a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb7-1" title="1"><span class="fu">sudo</span> openssl x509 -in /etc/letsencrypt/live/domainname/fullchain.pem -noout -dates</a>
+<a class="sourceLine" id="cb7-2" title="2"><span class="va">notBefore=</span>Mar <span class="ex">21</span> 04:43:17 2021 GMT</a>
+<a class="sourceLine" id="cb7-3" title="3"><span class="va">notAfter=</span>Jun <span class="ex">19</span> 04:43:17 2021 GMT</a></code></pre></div>
 <p>notAfterの日付が証明書の有効期限。今日更新したから、90日後になっているように見える。</p>
 <p>しかし、cronで毎月更新しているはずなのに、なんでうまくいかなかったんだろう？単に実行だけしていたのを、ログも残すようにしよう。</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb7-1" title="1"><span class="ex">00</span> 04 * * * certbot renew <span class="op">&gt;&gt;</span> /home/username/log/certbot.log</a></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb8-1" title="1"><span class="ex">00</span> 04 * * * certbot renew <span class="op">&gt;&gt;</span> /home/username/log/certbot.log</a></code></pre></div>
 <p>毎月にしていたのを毎日にして、ログを残すようにした。</p>
 <h2 id="月22日土"><a href="#20">03月22日(土)</a> <a id="20"></a></h2>
 <p>共著論文ひとつ見た。</p>
@@ -78,10 +92,10 @@
 <p>本読み輪講。</p>
 <h2 id="月17日水"><a href="#17">03月17日(水)</a> <a id="17"></a></h2>
 <p>研究室サーバでDockerを使おうとしたら</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode txt"><code class="sourceCode default"><a class="sourceLine" id="cb8-1" title="1">Error response from daemon: Get https://registry-1.docker.io/v2/: net/http: request canceled while waiting for connection (Client.Timeout exceeded while awaiting headers)</a></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode txt"><code class="sourceCode default"><a class="sourceLine" id="cb9-1" title="1">Error response from daemon: Get https://registry-1.docker.io/v2/: net/http: request canceled while waiting for connection (Client.Timeout exceeded while awaiting headers)</a></code></pre></div>
 <p>と言われて死んでいる。どうしよう？</p>
 <p><code>etc/resolv.conf</code>に</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode txt"><code class="sourceCode default"><a class="sourceLine" id="cb9-1" title="1">nameserver 8.8.8.8</a></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode txt"><code class="sourceCode default"><a class="sourceLine" id="cb10-1" title="1">nameserver 8.8.8.8</a></code></pre></div>
 <p>を追加したら通った。デフォルトのnameserverがおかしい？</p>
 <p>明日のDockerハンズオンの準備完了。</p>
 <p>明日のもう一つのスライド作った。SIMDのクラスターアルゴリズムについて。</p>
@@ -95,31 +109,31 @@
 <p>Yahooトップページの広告に「ねじのおはなし」という広告があり、おそらく生まれて初めて自分の意思で広告をクリックした。飛んだ先は鍋屋バイテック株式会社の<a href="https://www.nbk1560.com/resources/nedzicom_topics/?SelectedLanguage=ja-JP">ねじのおはなし</a>。内容が面白い。この前の攪拌の奴もそうだけど、分かりやすく書こうと努力しつつ結局内容がガチになるところが良い。こういうのが増えていくと素敵だな、と思う。</p>
 <h2 id="月13日土"><a href="#13">03月13日(土)</a> <a id="13"></a></h2>
 <p>Rubyのヒアドキュメント中に引用符を書きたい場合がある。こんなの。</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode rb"><code class="sourceCode ruby"><a class="sourceLine" id="cb10-1" title="1">t = [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</a>
-<a class="sourceLine" id="cb10-2" title="2">puts &lt;&lt;<span class="kw">&quot;TEST&quot;</span></a>
-<a class="sourceLine" id="cb10-3" title="3"><span class="ot">#{</span>t.join(<span class="st">&quot;,&quot;</span>)<span class="ot">}</span></a>
-<a class="sourceLine" id="cb10-4" title="4"><span class="ot">TEST</span></a></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode rb"><code class="sourceCode ruby"><a class="sourceLine" id="cb11-1" title="1">t = [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</a>
+<a class="sourceLine" id="cb11-2" title="2">puts &lt;&lt;<span class="kw">&quot;TEST&quot;</span></a>
+<a class="sourceLine" id="cb11-3" title="3"><span class="ot">#{</span>t.join(<span class="st">&quot;,&quot;</span>)<span class="ot">}</span></a>
+<a class="sourceLine" id="cb11-4" title="4"><span class="ot">TEST</span></a></code></pre></div>
 <p>ここで<code>t.join(",")</code>の引用符を、Rubocopはデフォルトでシングルクォーツにしろと怒ってくる。</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode txt"><code class="sourceCode default"><a class="sourceLine" id="cb11-1" title="1">test.rb:3:10: C: Style/StringLiteralsInInterpolation: Prefer single-quoted strings inside interpolations.</a>
-<a class="sourceLine" id="cb11-2" title="2">#{t.join(&quot;,&quot;)}</a>
-<a class="sourceLine" id="cb11-3" title="3">         ^^^</a></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode txt"><code class="sourceCode default"><a class="sourceLine" id="cb12-1" title="1">test.rb:3:10: C: Style/StringLiteralsInInterpolation: Prefer single-quoted strings inside interpolations.</a>
+<a class="sourceLine" id="cb12-2" title="2">#{t.join(&quot;,&quot;)}</a>
+<a class="sourceLine" id="cb12-3" title="3">         ^^^</a></code></pre></div>
 <p>でも、rufoはここをデフォルトでダブルクォーツに直してくる。VimのALEがチェックにrubocopを、フォーマッタにrufoを使うので、保存時にrufoが直してはrubocopが怒る、というループになる。</p>
 <p>結局、<code>.rubocop.yml</code>に</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb12-1" title="1"><span class="fu">Style/StringLiteralsInInterpolation:</span></a>
-<a class="sourceLine" id="cb12-2" title="2">  <span class="fu">EnforcedStyle:</span><span class="at"> double_quotes</span></a></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb13-1" title="1"><span class="fu">Style/StringLiteralsInInterpolation:</span></a>
+<a class="sourceLine" id="cb13-2" title="2">  <span class="fu">EnforcedStyle:</span><span class="at"> double_quotes</span></a></code></pre></div>
 <p>と書いて、rubocopをrufoに歩み寄らせた。</p>
 <h2 id="月12日金"><a href="#12">03月12日(金)</a> <a id="12"></a></h2>
 <p>論文の図の修正。共著者さんの結果を自分の結果に入れ替え。ものすごく時間かかったぞ。</p>
 <p>追加計算用コードを書いてスパコンに投げた。cos(4π/3)の符号を間違えていたせいでしばらく混乱していた。ひどいもんだ。</p>
 <p>WSL2でtmuxを使うと激重になるの、Windowsのパスが通っているせいだったらしい。<a href="https://amaya382.hatenablog.jp/entry/2019/12/27/120057">ここ</a>の記述にしたがって<code>/etc/wsl.conf</code>に</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode txt"><code class="sourceCode default"><a class="sourceLine" id="cb13-1" title="1">[interop]</a>
-<a class="sourceLine" id="cb13-2" title="2">appendWindowsPath = false</a></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode txt"><code class="sourceCode default"><a class="sourceLine" id="cb14-1" title="1">[interop]</a>
+<a class="sourceLine" id="cb14-2" title="2">appendWindowsPath = false</a></code></pre></div>
 <p>と書いてログインしなおせばかなり早くなる。ただし、当然のことながらWindowsから引き継いだパスに由来するコードが使えなくなるので、自分で設定するかシンボリックリンクが必要。特に<code>code</code>が使えなくなるのが面倒。他にも副作用がありそうなので、とりあえず元に戻した。tmuxはしばらくあきらめよう。</p>
 <p>tmuxとの関連は不明だが、なんかシェルが死んで、WSLを再起動したら</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb14-1" title="1"><span class="ex">zsh</span>: corrupt history file /home/myusername/.zsh_history</a></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb15-1" title="1"><span class="ex">zsh</span>: corrupt history file /home/myusername/.zsh_history</a></code></pre></div>
 <p>とか言われてzshが動かなくなった。<a href="https://superuser.com/questions/957913/how-to-fix-and-recover-a-corrupt-history-file-in-zsh">ここ</a>の記述の通り、</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb15-1" title="1"><span class="fu">mv</span> .zsh_history .zsh_history_bad</a>
-<a class="sourceLine" id="cb15-2" title="2"><span class="fu">strings</span> .zsh_history_bad <span class="op">&gt;</span> .zsh_history</a></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb16-1" title="1"><span class="fu">mv</span> .zsh_history .zsh_history_bad</a>
+<a class="sourceLine" id="cb16-2" title="2"><span class="fu">strings</span> .zsh_history_bad <span class="op">&gt;</span> .zsh_history</a></code></pre></div>
 <p>で解決。</p>
 <h2 id="月11日木"><a href="#11">03月11日(木)</a> <a id="11"></a></h2>
 <p>Vimハンズオン。</p>
@@ -131,26 +145,26 @@
 <p>免許の住所変更した。</p>
 <p>マイナンバーカード4人分申請した。</p>
 <p>論文を書こうとしたのだが、なんかWSL2でビルドできない。あと、texindentを入れようとしたら、tlmgrが古いとか言われる。</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb16-1" title="1">$ <span class="ex">tlmgr</span> update --self</a>
-<a class="sourceLine" id="cb16-2" title="2"><span class="kw">(</span><span class="ex">running</span> on Debian, switching to user mode!<span class="kw">)</span></a>
-<a class="sourceLine" id="cb16-3" title="3"><span class="ex">tlmgr</span>: Remote repository is newer than local (2017 <span class="op">&lt;</span> 2020)</a>
-<a class="sourceLine" id="cb16-4" title="4"><span class="ex">Cross</span> release updates are only supported with</a>
-<a class="sourceLine" id="cb16-5" title="5">  <span class="ex">update-tlmgr-latest</span>(.sh/.exe) <span class="ex">--update</span></a>
-<a class="sourceLine" id="cb16-6" title="6"><span class="ex">Please</span> see https://tug.org/texlive/upgrade.html for details.</a></code></pre></div>
-<div class="sourceCode" id="cb17"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb17-1" title="1"><span class="fu">sudo</span> apt update</a>
-<a class="sourceLine" id="cb17-2" title="2"><span class="fu">sudo</span> apt upgrade</a></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb17-1" title="1">$ <span class="ex">tlmgr</span> update --self</a>
+<a class="sourceLine" id="cb17-2" title="2"><span class="kw">(</span><span class="ex">running</span> on Debian, switching to user mode!<span class="kw">)</span></a>
+<a class="sourceLine" id="cb17-3" title="3"><span class="ex">tlmgr</span>: Remote repository is newer than local (2017 <span class="op">&lt;</span> 2020)</a>
+<a class="sourceLine" id="cb17-4" title="4"><span class="ex">Cross</span> release updates are only supported with</a>
+<a class="sourceLine" id="cb17-5" title="5">  <span class="ex">update-tlmgr-latest</span>(.sh/.exe) <span class="ex">--update</span></a>
+<a class="sourceLine" id="cb17-6" title="6"><span class="ex">Please</span> see https://tug.org/texlive/upgrade.html for details.</a></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb18-1" title="1"><span class="fu">sudo</span> apt update</a>
+<a class="sourceLine" id="cb18-2" title="2"><span class="fu">sudo</span> apt upgrade</a></code></pre></div>
 <p>でも、upgradableを見る限りTeXLiveは入っていない気がする？フルインストールしちゃえ。</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb18-1" title="1"><span class="fu">sudo</span> apt install texlive-full</a></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb19-1" title="1"><span class="fu">sudo</span> apt install texlive-full</a></code></pre></div>
 <p>Windowsだと死ぬほど時間かかるけど、WSL2だとどうだろう？</p>
 <p>入った。これでlatexindentが入るかな？</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb19-1" title="1">$ <span class="ex">latexindent</span> --version</a>
-<a class="sourceLine" id="cb19-2" title="2"><span class="ex">3.4.1</span>, 2018-01-18</a></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb20-1" title="1">$ <span class="ex">latexindent</span> --version</a>
+<a class="sourceLine" id="cb20-2" title="2"><span class="ex">3.4.1</span>, 2018-01-18</a></code></pre></div>
 <p>入ったみたい。</p>
 <p>ダメだ。WindowsのWSL:UbuntuでVS CodeからLaTeX Buildしようとしてもどうしてもうまくいかない。実行マークが永遠にくるくる回るだけ。VS Codeのターミナルから開いて実行したらうまくいくのだが。</p>
 <p>やむを得ず、VS Code保存時のビルドを切った。</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode json"><code class="sourceCode json"><a class="sourceLine" id="cb20-1" title="1"><span class="fu">{</span></a>
-<a class="sourceLine" id="cb20-2" title="2">    <span class="dt">&quot;latex-workshop.latex.autoBuild.run&quot;</span><span class="fu">:</span> <span class="st">&quot;never&quot;</span><span class="fu">,</span></a>
-<a class="sourceLine" id="cb20-3" title="3"><span class="fu">}</span></a></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode json"><code class="sourceCode json"><a class="sourceLine" id="cb21-1" title="1"><span class="fu">{</span></a>
+<a class="sourceLine" id="cb21-2" title="2">    <span class="dt">&quot;latex-workshop.latex.autoBuild.run&quot;</span><span class="fu">:</span> <span class="st">&quot;never&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb21-3" title="3"><span class="fu">}</span></a></code></pre></div>
 <h2 id="月08日月"><a href="#08">03月08日(月)</a> <a id="08"></a></h2>
 <p>予算締めた。</p>
 <p>卒論郵送した。一言コメント付き。</p>
@@ -175,24 +189,24 @@
 <h2 id="月02日火"><a href="#02">03月02日(火)</a> <a id="02"></a></h2>
 <p>Macのg++-10がいつのまにか使えなくなっていたのに対応。</p>
 <p>現象。</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb21-1" title="1">$ <span class="ex">g++-10</span> test.cpp </a>
-<a class="sourceLine" id="cb21-2" title="2"><span class="ex">In</span> file included from /usr/local/Cellar/gcc/10.1.0/include/c++/10.1.0/bits/stl_algo.h:59,</a>
-<a class="sourceLine" id="cb21-3" title="3">                 <span class="ex">from</span> /usr/local/Cellar/gcc/10.1.0/include/c++/10.1.0/algorithm:62,</a>
-<a class="sourceLine" id="cb21-4" title="4">                 <span class="ex">from</span> ../sdouble.hpp:29,</a>
-<a class="sourceLine" id="cb21-5" title="5">                 <span class="ex">from</span> test.cpp:1:</a>
-<a class="sourceLine" id="cb21-6" title="6"><span class="ex">/usr/local/Cellar/gcc/10.1.0/include/c++/10.1.0</span>/cstdlib:<span class="ex">75</span>:15: fatal error: stdlib.h: No such file or directory</a>
-<a class="sourceLine" id="cb21-7" title="7">   <span class="ex">75</span> <span class="kw">|</span> <span class="co">#include_next &lt;stdlib.h&gt;</span></a>
-<a class="sourceLine" id="cb21-8" title="8">      <span class="kw">|</span>               ^<span class="ex">~~~~~~~~~</span></a>
-<a class="sourceLine" id="cb21-9" title="9"><span class="ex">compilation</span> terminated.</a></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb22-1" title="1">$ <span class="ex">g++-10</span> test.cpp </a>
+<a class="sourceLine" id="cb22-2" title="2"><span class="ex">In</span> file included from /usr/local/Cellar/gcc/10.1.0/include/c++/10.1.0/bits/stl_algo.h:59,</a>
+<a class="sourceLine" id="cb22-3" title="3">                 <span class="ex">from</span> /usr/local/Cellar/gcc/10.1.0/include/c++/10.1.0/algorithm:62,</a>
+<a class="sourceLine" id="cb22-4" title="4">                 <span class="ex">from</span> ../sdouble.hpp:29,</a>
+<a class="sourceLine" id="cb22-5" title="5">                 <span class="ex">from</span> test.cpp:1:</a>
+<a class="sourceLine" id="cb22-6" title="6"><span class="ex">/usr/local/Cellar/gcc/10.1.0/include/c++/10.1.0</span>/cstdlib:<span class="ex">75</span>:15: fatal error: stdlib.h: No such file or directory</a>
+<a class="sourceLine" id="cb22-7" title="7">   <span class="ex">75</span> <span class="kw">|</span> <span class="co">#include_next &lt;stdlib.h&gt;</span></a>
+<a class="sourceLine" id="cb22-8" title="8">      <span class="kw">|</span>               ^<span class="ex">~~~~~~~~~</span></a>
+<a class="sourceLine" id="cb22-9" title="9"><span class="ex">compilation</span> terminated.</a></code></pre></div>
 <p>などと言われ、ヘッダファイルのパスが見つからない。アンインストールしようとしたら、</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb22-1" title="1">$ <span class="ex">brew</span> uninstall gcc</a>
-<a class="sourceLine" id="cb22-2" title="2"><span class="ex">Error</span>: Refusing to uninstall /usr/local/Cellar/gcc/10.1.0</a>
-<a class="sourceLine" id="cb22-3" title="3"><span class="ex">because</span> it is required by boost-mpi, fftw, kim-api, lammps, open-mpi, openblas and r, which are currently installed.</a>
-<a class="sourceLine" id="cb22-4" title="4"><span class="ex">You</span> can override this and force removal with:</a>
-<a class="sourceLine" id="cb22-5" title="5">  <span class="ex">brew</span> uninstall --ignore-dependencies gcc</a></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb23-1" title="1">$ <span class="ex">brew</span> uninstall gcc</a>
+<a class="sourceLine" id="cb23-2" title="2"><span class="ex">Error</span>: Refusing to uninstall /usr/local/Cellar/gcc/10.1.0</a>
+<a class="sourceLine" id="cb23-3" title="3"><span class="ex">because</span> it is required by boost-mpi, fftw, kim-api, lammps, open-mpi, openblas and r, which are currently installed.</a>
+<a class="sourceLine" id="cb23-4" title="4"><span class="ex">You</span> can override this and force removal with:</a>
+<a class="sourceLine" id="cb23-5" title="5">  <span class="ex">brew</span> uninstall --ignore-dependencies gcc</a></code></pre></div>
 <p>などと怒られたので、再インストールしてみる。</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb23-1" title="1"><span class="ex">brew</span> reinstall gcc</a></code></pre></div>
-<div class="sourceCode" id="cb24"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb24-1" title="1"><span class="ex">g++-10</span> test.cpp</a></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb24-1" title="1"><span class="ex">brew</span> reinstall gcc</a></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb25-1" title="1"><span class="ex">g++-10</span> test.cpp</a></code></pre></div>
 <p>コンパイルして、ヘッダが見つからないと言われないことを確認。なおってよかった。</p>
 <p>なんかデフォルトブランチがmainとmasterが混在していて鬱陶しいので少しずつmainに修正。</p>
 <p><code>stat::sdouble</code>ライブラリを修正。やっぱり<code>&lt;&lt;</code>で値を追加する必要はないと判断。普通に<code>std::vector&lt;double&gt;</code>を使うことにして、ライブラリでは誤差伝搬だけを考えることにする。</p>
@@ -206,29 +220,29 @@
 <p>Suicaに比べて不正操作の影響が大きい銀行ATMと直接比べることはできないが、たしかによくできたシステム。</p>
 <p>プリンタ、キャプチャデバイスの見積もり依頼。キャプチャデバイスはZoomとハンディカムの接続用。届いたらテストしなくては。</p>
 <p>忘れてた。いつの間にかMacでgit submoduleが使えなくなっていたんだ。忙しくて放置していた。</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb25-1" title="1">$ <span class="fu">git</span> submodule update --init --recursive </a>
-<a class="sourceLine" id="cb25-2" title="2"><span class="ex">pyenv</span>: git-submodule: command not found</a></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb26-1" title="1">$ <span class="fu">git</span> submodule update --init --recursive </a>
+<a class="sourceLine" id="cb26-2" title="2"><span class="ex">pyenv</span>: git-submodule: command not found</a></code></pre></div>
 <p>とにかく困るので対処。</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb26-1" title="1">$ <span class="fu">which</span> git</a>
-<a class="sourceLine" id="cb26-2" title="2"><span class="ex">/usr/local/bin/git</span></a>
-<a class="sourceLine" id="cb26-3" title="3"></a>
-<a class="sourceLine" id="cb26-4" title="4">$ <span class="fu">git</span> --version</a>
-<a class="sourceLine" id="cb26-5" title="5"><span class="fu">git</span> version 2.30.0</a>
-<a class="sourceLine" id="cb26-6" title="6"></a>
-<a class="sourceLine" id="cb26-7" title="7">$ <span class="ex">brew</span> uninstall git</a>
-<a class="sourceLine" id="cb26-8" title="8"><span class="ex">Uninstalling</span> /usr/local/Cellar/git/2.30.0... (1,486 files, 40.5MB)</a>
-<a class="sourceLine" id="cb26-9" title="9"></a>
-<a class="sourceLine" id="cb26-10" title="10"><span class="ex">Warning</span>: The following may be git configuration files and have not been removed!</a>
-<a class="sourceLine" id="cb26-11" title="11"><span class="ex">If</span> desired, remove them manually with <span class="kw">`</span><span class="fu">rm</span> -rf<span class="kw">`</span>:</a>
-<a class="sourceLine" id="cb26-12" title="12">  <span class="ex">/usr/local/etc/gitconfig</span></a>
-<a class="sourceLine" id="cb26-13" title="13"></a>
-<a class="sourceLine" id="cb26-14" title="14">$ <span class="fu">rm</span> -rf /usr/local/etc/gitconfig</a>
-<a class="sourceLine" id="cb26-15" title="15"></a>
-<a class="sourceLine" id="cb26-16" title="16">$ <span class="fu">which</span> git</a>
-<a class="sourceLine" id="cb26-17" title="17"><span class="ex">/usr/bin/git</span></a>
-<a class="sourceLine" id="cb26-18" title="18"></a>
-<a class="sourceLine" id="cb26-19" title="19">$ <span class="fu">git</span> --version</a>
-<a class="sourceLine" id="cb26-20" title="20"><span class="fu">git</span> version 2.24.3 (Apple Git-128)</a></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb27-1" title="1">$ <span class="fu">which</span> git</a>
+<a class="sourceLine" id="cb27-2" title="2"><span class="ex">/usr/local/bin/git</span></a>
+<a class="sourceLine" id="cb27-3" title="3"></a>
+<a class="sourceLine" id="cb27-4" title="4">$ <span class="fu">git</span> --version</a>
+<a class="sourceLine" id="cb27-5" title="5"><span class="fu">git</span> version 2.30.0</a>
+<a class="sourceLine" id="cb27-6" title="6"></a>
+<a class="sourceLine" id="cb27-7" title="7">$ <span class="ex">brew</span> uninstall git</a>
+<a class="sourceLine" id="cb27-8" title="8"><span class="ex">Uninstalling</span> /usr/local/Cellar/git/2.30.0... (1,486 files, 40.5MB)</a>
+<a class="sourceLine" id="cb27-9" title="9"></a>
+<a class="sourceLine" id="cb27-10" title="10"><span class="ex">Warning</span>: The following may be git configuration files and have not been removed!</a>
+<a class="sourceLine" id="cb27-11" title="11"><span class="ex">If</span> desired, remove them manually with <span class="kw">`</span><span class="fu">rm</span> -rf<span class="kw">`</span>:</a>
+<a class="sourceLine" id="cb27-12" title="12">  <span class="ex">/usr/local/etc/gitconfig</span></a>
+<a class="sourceLine" id="cb27-13" title="13"></a>
+<a class="sourceLine" id="cb27-14" title="14">$ <span class="fu">rm</span> -rf /usr/local/etc/gitconfig</a>
+<a class="sourceLine" id="cb27-15" title="15"></a>
+<a class="sourceLine" id="cb27-16" title="16">$ <span class="fu">which</span> git</a>
+<a class="sourceLine" id="cb27-17" title="17"><span class="ex">/usr/bin/git</span></a>
+<a class="sourceLine" id="cb27-18" title="18"></a>
+<a class="sourceLine" id="cb27-19" title="19">$ <span class="fu">git</span> --version</a>
+<a class="sourceLine" id="cb27-20" title="20"><span class="fu">git</span> version 2.24.3 (Apple Git-128)</a></code></pre></div>
 <p>あるやん。brewで入れたgitが<code>/usr/local/bin/git</code>に入っており、そいつが問題をおこしていた？</p>
 <p>Gitのバージョンは下がったが、submoduleは使えるようになった。</p>
 <p>Jackknifeによるバイアス補正、物性研にジョブ投げたぞ。これでうまく行ってそうなら本番コードを全部修正してデータを再取得しておしまいだ。</p>
