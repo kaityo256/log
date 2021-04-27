@@ -27,7 +27,7 @@
 <div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1"><span class="ex">ffmpeg</span> -i aiyoshi02.mp4 -threads 32 -crf 24 aiyoshi02_low.mp4  5570.32s user 132.12s system 1230% cpu 7:43.29 total</a></code></pre></div>
 <p>CPUは12コアちょっとしか使っていないのに、</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1">$ <span class="fu">cat</span> /proc/<span class="va">$(</span><span class="ex">pgrep</span> ffmpeg<span class="va">)</span>/status <span class="kw">|</span> <span class="fu">grep</span> Threads</a>
-<a class="sourceLine" id="cb2-2" title="2"><span class="ex">Threads</span>:    116</a></code></pre></div>
+<a class="sourceLine" id="cb2-2" title="2"><span class="ex">Threads</span>: 116</a></code></pre></div>
 <p>使っているのは116スレッド、マジか。</p>
 <p>mediainfoをCentOSに入れる。</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" title="1"><span class="fu">sudo</span> yum --enablerepo extras install epel-release </a>
