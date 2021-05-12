@@ -22,6 +22,28 @@
     <article class="markdown-body">
                         <h1 id="ログ">ログ</h1>
 <p><a href="index.html">ログ一覧</a></p>
+<h2 id="月12日水"><a href="#12">05月12日(水)</a> <a id="12"></a></h2>
+<p>物理情報工学特別講義の接続テストした。事前テストしてよかった。</p>
+<p>というわけで車輪の再開発記事<a href="https://zenn.dev/kaityo256/articles/zsh-vcs-prompt">ZshでプロンプトにGitリポジトリの情報を表示する</a>を公開したら、<a href="https://github.com/romkatv/powerlevel10k">Powerlevel10k</a>というのを教えていただいた。なんかプロンプトがかっちょいい。</p>
+<p>こういう自作系記事を書いた時、「○○使わないの？」みたいな揶揄をする人が結構いてアレなんだけど、こういう「自作も良いけどこれもおすすめです」みたいなコメントはうれしいなぁ。</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1"><span class="ex">brew</span> install make imagemagick</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1"><span class="fu">sudo</span> apt-get update</a>
+<a class="sourceLine" id="cb2-2" title="2"><span class="fu">sudo</span> apt install -y make build-essential imagemagick</a>
+<a class="sourceLine" id="cb2-3" title="3"><span class="fu">sudo</span> apt-get install python3-pip</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" title="1"><span class="ex">python3</span> -m pip install --upgrade pip</a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="ex">python3</span> -m pip install numpy matplotlib</a></code></pre></div>
+<p>上記あたり、lab_startupに入れないとな。</p>
+<p>だめだ。うちのWSL2のUbuntuでimagemagickがインストールできず、404になる。おそらく18.04から20.04にアップグレードしたせいだ。</p>
+<p>いろいろやったが、最終的にキャッシュを消したらうまくいった。</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb4-1" title="1"><span class="bu">cd</span> /var/lib/apt</a>
+<a class="sourceLine" id="cb4-2" title="2"><span class="fu">sudo</span> mv lists lists.org</a>
+<a class="sourceLine" id="cb4-3" title="3"><span class="fu">sudo</span> apt-update</a></code></pre></div>
+<p>やれやれだ。</p>
+<p>次、WSL2でJupyter Notebook。</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb5-1" title="1"><span class="fu">sudo</span> apt install -y jupyter-notebook</a></code></pre></div>
+<p>WSL2の時間がまたずれた。</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb6-1" title="1"><span class="fu">sudo</span> hwclock -s</a></code></pre></div>
+<p>でなおった。.zshrcに入れるべきか。</p>
 <h2 id="月11日火"><a href="#11">05月11日(火)</a> <a id="11"></a></h2>
 <p>昨日間に合わなかった動画編集して公開した。</p>
 <p>Gitのリポジトリ状態をプロンプトに表示する記事、やっぱり書こう。「車輪の再開発」をバカにされることを恐れるなんて僕らしくない。ちょっと気持ちが萎えていた。無知を恐れず、やったことはどんどん公開し、バカにする人にはさせておけばいいんだ。</p>
@@ -31,21 +53,21 @@
 <p>push忘れは<code>git status -b</code>を使う。</p>
 <p>以下、再チェックが必要。</p>
 <p>上流ブランチなし。</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1">$ <span class="fu">git</span> status -sb</a>
-<a class="sourceLine" id="cb1-2" title="2"><span class="co">## main</span></a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb7-1" title="1">$ <span class="fu">git</span> status -sb</a>
+<a class="sourceLine" id="cb7-2" title="2"><span class="co">## main</span></a></code></pre></div>
 <p>未プッシュなし、未コミットあり。</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1">$ <span class="fu">git</span> status -sb</a>
-<a class="sourceLine" id="cb2-2" title="2"> <span class="ex">M</span> log/d202105.md</a></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb8-1" title="1">$ <span class="fu">git</span> status -sb</a>
+<a class="sourceLine" id="cb8-2" title="2"> <span class="ex">M</span> log/d202105.md</a></code></pre></div>
 <p>↓コミット</p>
 <p>未プッシュあり、未コミットなし。</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" title="1">$ <span class="fu">git</span> status -sb</a>
-<a class="sourceLine" id="cb3-2" title="2"><span class="co">## main...origin/main [ahead 1]</span></a></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb9-1" title="1">$ <span class="fu">git</span> status -sb</a>
+<a class="sourceLine" id="cb9-2" title="2"><span class="co">## main...origin/main [ahead 1]</span></a></code></pre></div>
 <p>↓プッシュ</p>
 <p>未プッシュなし、未コミットなし。</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb4-1" title="1">$ <span class="fu">git</span> status -sb</a>
-<a class="sourceLine" id="cb4-2" title="2"><span class="co">## main...origin/main</span></a></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb10-1" title="1">$ <span class="fu">git</span> status -sb</a>
+<a class="sourceLine" id="cb10-2" title="2"><span class="co">## main...origin/main</span></a></code></pre></div>
 <p>多分これだけで未プッシュコミットがあるか確認できる気がするが、念の為<code>git log</code>で未プッシュログがあるかどうかを確認している。</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb5-1" title="1"><span class="fu">git</span> log origin/main..main</a></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb11-1" title="1"><span class="fu">git</span> log origin/main..main</a></code></pre></div>
 <p>この表示があるかないかで未プッシュコミットがあるかどうか調べることができる。これ、やっぱりいらん気がするな。</p>
 <h2 id="月09日日"><a href="#09">05月09日(日)</a> <a id="09"></a></h2>
 <p>Gitのpush忘れ防止スクリプトを追加した。記事にしようかと思ったけど、これ、全部シェルスクリプトで自前で書いてるんだよね。「なんでgit prompt使わないの？」「 vcs_info使えば？」と言われそうだから止めよう。</p>
@@ -55,22 +77,22 @@
 <p>自動車税払った。Yahoo公金支払い便利。納税証明書は電子化され、紙では発行されないとのこと。</p>
 <p>自動車税の住所変更した。これで来年から新住所に送られるはず。</p>
 <p>push忘れ防止機能つけた。以下は覚え書き。</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb6-1" title="1"><span class="va">name=</span><span class="kw">`</span><span class="fu">git</span> symbolic-ref HEAD <span class="op">2&gt;</span> /dev/null <span class="kw">|</span> <span class="fu">sed</span> -e <span class="st">&quot;s/refs\/heads\///g&quot;</span> <span class="kw">`</span></a>
-<a class="sourceLine" id="cb6-2" title="2"><span class="va">upstream=</span><span class="kw">`</span><span class="fu">git</span> status -sb <span class="kw">|</span> <span class="fu">grep</span> -E <span class="st">&quot;## .*\.\.\.&quot;</span> <span class="kw">|</span> <span class="fu">sed</span> -e <span class="st">&quot;s/^##.*\.\.\.//&quot;</span><span class="kw">`</span></a>
-<a class="sourceLine" id="cb6-3" title="3"><span class="kw">if [[</span> <span class="ot">-z</span> <span class="va">$upstream</span><span class="kw"> ]]</span>; <span class="kw">then</span></a>
-<a class="sourceLine" id="cb6-4" title="4">  <span class="bu">echo</span> <span class="st">&quot;We do not have an upstream branch.&quot;</span></a>
-<a class="sourceLine" id="cb6-5" title="5"><span class="kw">else</span></a>
-<a class="sourceLine" id="cb6-6" title="6">  <span class="kw">if [[</span> <span class="ot">-z</span> <span class="kw">`</span><span class="fu">git</span> log <span class="va">${upstream}</span>..<span class="va">${name}</span><span class="kw">` ]]</span>; <span class="kw">then</span></a>
-<a class="sourceLine" id="cb6-7" title="7">    <span class="bu">echo</span> <span class="st">&quot;Already pushed&quot;</span></a>
-<a class="sourceLine" id="cb6-8" title="8">  <span class="kw">else</span></a>
-<a class="sourceLine" id="cb6-9" title="9">    <span class="bu">echo</span> <span class="st">&quot;We have unpushed commits.&quot;</span></a>
-<a class="sourceLine" id="cb6-10" title="10">  <span class="kw">fi</span></a>
-<a class="sourceLine" id="cb6-11" title="11"><span class="kw">fi</span></a></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb12-1" title="1"><span class="va">name=</span><span class="kw">`</span><span class="fu">git</span> symbolic-ref HEAD <span class="op">2&gt;</span> /dev/null <span class="kw">|</span> <span class="fu">sed</span> -e <span class="st">&quot;s/refs\/heads\///g&quot;</span> <span class="kw">`</span></a>
+<a class="sourceLine" id="cb12-2" title="2"><span class="va">upstream=</span><span class="kw">`</span><span class="fu">git</span> status -sb <span class="kw">|</span> <span class="fu">grep</span> -E <span class="st">&quot;## .*\.\.\.&quot;</span> <span class="kw">|</span> <span class="fu">sed</span> -e <span class="st">&quot;s/^##.*\.\.\.//&quot;</span><span class="kw">`</span></a>
+<a class="sourceLine" id="cb12-3" title="3"><span class="kw">if [[</span> <span class="ot">-z</span> <span class="va">$upstream</span><span class="kw"> ]]</span>; <span class="kw">then</span></a>
+<a class="sourceLine" id="cb12-4" title="4">  <span class="bu">echo</span> <span class="st">&quot;We do not have an upstream branch.&quot;</span></a>
+<a class="sourceLine" id="cb12-5" title="5"><span class="kw">else</span></a>
+<a class="sourceLine" id="cb12-6" title="6">  <span class="kw">if [[</span> <span class="ot">-z</span> <span class="kw">`</span><span class="fu">git</span> log <span class="va">${upstream}</span>..<span class="va">${name}</span><span class="kw">` ]]</span>; <span class="kw">then</span></a>
+<a class="sourceLine" id="cb12-7" title="7">    <span class="bu">echo</span> <span class="st">&quot;Already pushed&quot;</span></a>
+<a class="sourceLine" id="cb12-8" title="8">  <span class="kw">else</span></a>
+<a class="sourceLine" id="cb12-9" title="9">    <span class="bu">echo</span> <span class="st">&quot;We have unpushed commits.&quot;</span></a>
+<a class="sourceLine" id="cb12-10" title="10">  <span class="kw">fi</span></a>
+<a class="sourceLine" id="cb12-11" title="11"><span class="kw">fi</span></a></code></pre></div>
 <h2 id="月07日金"><a href="#07">05月07日(金)</a> <a id="07"></a></h2>
 <p>本当は良くないらしいが、sudo pip3ですべてのユーザにインストール。</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb7-1" title="1"><span class="fu">sudo</span> yum install -y python3</a>
-<a class="sourceLine" id="cb7-2" title="2"><span class="fu">sudo</span> python3 -m pip install --upgrade pip</a>
-<a class="sourceLine" id="cb7-3" title="3"><span class="fu">sudo</span> /usr/local/bin/pip3 --no-warn-script-location install numpy pandas matplotlib h5py tensorflow</a></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb13-1" title="1"><span class="fu">sudo</span> yum install -y python3</a>
+<a class="sourceLine" id="cb13-2" title="2"><span class="fu">sudo</span> python3 -m pip install --upgrade pip</a>
+<a class="sourceLine" id="cb13-3" title="3"><span class="fu">sudo</span> /usr/local/bin/pip3 --no-warn-script-location install numpy pandas matplotlib h5py tensorflow</a></code></pre></div>
 <p>やっぱりメールに比べてSlackの方がコミュニケーションが圧倒的に早いよな。なにか聞いて、回答があった時、メールだと「○○です。回答をありがとうございます。この内容で○○させていただきます。どうぞよろしくお願いします」的なことを書くけど、Slackだとお辞儀マーク一個つけておしまい。</p>
 <p>LinuxとRubyのデュアルコミッタがどのくらいレアか調べたい。Linuxのcontributerは2017年で15637人。RubyはGitHub上でのcontributerが336人。Rubyはすぐにリストを作れそうだが、Linuxは難しそうだなぁ。</p>
 <h2 id="月06日木"><a href="#06">05月06日(木)</a> <a id="06"></a></h2>
@@ -83,36 +105,36 @@
 <p>あ、レポートの締め切りは明日か。今日だと思ってた。</p>
 <h2 id="月04日火"><a href="#04">05月04日(火)</a> <a id="04"></a></h2>
 <p><code>tldr</code>というコマンドを知った。manの表示をわかりやすくしてくれる。Macならbrewで入る。sshの説明ならこう。</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb8-1" title="1">$ <span class="ex">tldr</span> ssh</a>
-<a class="sourceLine" id="cb8-2" title="2"></a>
-<a class="sourceLine" id="cb8-3" title="3"><span class="fu">ssh</span></a>
-<a class="sourceLine" id="cb8-4" title="4"></a>
-<a class="sourceLine" id="cb8-5" title="5"><span class="ex">Secure</span> Shell is a protocol used to securely log onto remote systems.</a>
-<a class="sourceLine" id="cb8-6" title="6"><span class="ex">It</span> can be used for logging or executing commands on a remote server.</a>
-<a class="sourceLine" id="cb8-7" title="7"></a>
-<a class="sourceLine" id="cb8-8" title="8"><span class="ex">-</span> Connect to a remote server:</a>
-<a class="sourceLine" id="cb8-9" title="9">    <span class="fu">ssh</span> username@remote_host</a>
-<a class="sourceLine" id="cb8-10" title="10"></a>
-<a class="sourceLine" id="cb8-11" title="11"><span class="ex">-</span> Connect to a remote server with a specific identity (private key)<span class="bu">:</span></a>
-<a class="sourceLine" id="cb8-12" title="12">    <span class="fu">ssh</span> -i path/to/key_file username@remote_host</a>
-<a class="sourceLine" id="cb8-13" title="13"></a>
-<a class="sourceLine" id="cb8-14" title="14"><span class="ex">-</span> Connect to a remote server using a specific port:</a>
-<a class="sourceLine" id="cb8-15" title="15">    <span class="fu">ssh</span> username@remote_host -p 2222</a>
-<a class="sourceLine" id="cb8-16" title="16"></a>
-<a class="sourceLine" id="cb8-17" title="17"><span class="ex">-</span> Run a command on a remote server:</a>
-<a class="sourceLine" id="cb8-18" title="18">    <span class="fu">ssh</span> remote_host command -with -flags</a>
-<a class="sourceLine" id="cb8-19" title="19"></a>
-<a class="sourceLine" id="cb8-20" title="20"><span class="ex">-</span> SSH tunneling: Dynamic port forwarding (SOCKS proxy on localhost:1080)<span class="bu">:</span></a>
-<a class="sourceLine" id="cb8-21" title="21">    <span class="fu">ssh</span> -D 1080 username@remote_host</a>
-<a class="sourceLine" id="cb8-22" title="22"></a>
-<a class="sourceLine" id="cb8-23" title="23"><span class="ex">-</span> SSH tunneling: Forward a specific port (localhost:9999 to example.org:80) <span class="ex">along</span> with disabling pseudo-[t]ty allocation and executio[n] of remote commands:</a>
-<a class="sourceLine" id="cb8-24" title="24">    <span class="fu">ssh</span> -L 9999:example.org:80 -N -T username@remote_host</a>
-<a class="sourceLine" id="cb8-25" title="25"></a>
-<a class="sourceLine" id="cb8-26" title="26"><span class="ex">-</span> SSH jumping: Connect through a jumphost to a remote server (Multiple jump hops may be specified separated by comma characters)<span class="bu">:</span></a>
-<a class="sourceLine" id="cb8-27" title="27">    <span class="fu">ssh</span> -J username@jump_host username@remote_host</a>
-<a class="sourceLine" id="cb8-28" title="28"></a>
-<a class="sourceLine" id="cb8-29" title="29"><span class="ex">-</span> Agent forwarding: Forward the authentication information to the remote machine (see <span class="kw">`</span><span class="fu">man</span> ssh_config<span class="kw">`</span> for available options)<span class="bu">:</span></a>
-<a class="sourceLine" id="cb8-30" title="30">    <span class="fu">ssh</span> -A username@remote_host</a></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb14-1" title="1">$ <span class="ex">tldr</span> ssh</a>
+<a class="sourceLine" id="cb14-2" title="2"></a>
+<a class="sourceLine" id="cb14-3" title="3"><span class="fu">ssh</span></a>
+<a class="sourceLine" id="cb14-4" title="4"></a>
+<a class="sourceLine" id="cb14-5" title="5"><span class="ex">Secure</span> Shell is a protocol used to securely log onto remote systems.</a>
+<a class="sourceLine" id="cb14-6" title="6"><span class="ex">It</span> can be used for logging or executing commands on a remote server.</a>
+<a class="sourceLine" id="cb14-7" title="7"></a>
+<a class="sourceLine" id="cb14-8" title="8"><span class="ex">-</span> Connect to a remote server:</a>
+<a class="sourceLine" id="cb14-9" title="9">    <span class="fu">ssh</span> username@remote_host</a>
+<a class="sourceLine" id="cb14-10" title="10"></a>
+<a class="sourceLine" id="cb14-11" title="11"><span class="ex">-</span> Connect to a remote server with a specific identity (private key)<span class="bu">:</span></a>
+<a class="sourceLine" id="cb14-12" title="12">    <span class="fu">ssh</span> -i path/to/key_file username@remote_host</a>
+<a class="sourceLine" id="cb14-13" title="13"></a>
+<a class="sourceLine" id="cb14-14" title="14"><span class="ex">-</span> Connect to a remote server using a specific port:</a>
+<a class="sourceLine" id="cb14-15" title="15">    <span class="fu">ssh</span> username@remote_host -p 2222</a>
+<a class="sourceLine" id="cb14-16" title="16"></a>
+<a class="sourceLine" id="cb14-17" title="17"><span class="ex">-</span> Run a command on a remote server:</a>
+<a class="sourceLine" id="cb14-18" title="18">    <span class="fu">ssh</span> remote_host command -with -flags</a>
+<a class="sourceLine" id="cb14-19" title="19"></a>
+<a class="sourceLine" id="cb14-20" title="20"><span class="ex">-</span> SSH tunneling: Dynamic port forwarding (SOCKS proxy on localhost:1080)<span class="bu">:</span></a>
+<a class="sourceLine" id="cb14-21" title="21">    <span class="fu">ssh</span> -D 1080 username@remote_host</a>
+<a class="sourceLine" id="cb14-22" title="22"></a>
+<a class="sourceLine" id="cb14-23" title="23"><span class="ex">-</span> SSH tunneling: Forward a specific port (localhost:9999 to example.org:80) <span class="ex">along</span> with disabling pseudo-[t]ty allocation and executio[n] of remote commands:</a>
+<a class="sourceLine" id="cb14-24" title="24">    <span class="fu">ssh</span> -L 9999:example.org:80 -N -T username@remote_host</a>
+<a class="sourceLine" id="cb14-25" title="25"></a>
+<a class="sourceLine" id="cb14-26" title="26"><span class="ex">-</span> SSH jumping: Connect through a jumphost to a remote server (Multiple jump hops may be specified separated by comma characters)<span class="bu">:</span></a>
+<a class="sourceLine" id="cb14-27" title="27">    <span class="fu">ssh</span> -J username@jump_host username@remote_host</a>
+<a class="sourceLine" id="cb14-28" title="28"></a>
+<a class="sourceLine" id="cb14-29" title="29"><span class="ex">-</span> Agent forwarding: Forward the authentication information to the remote machine (see <span class="kw">`</span><span class="fu">man</span> ssh_config<span class="kw">`</span> for available options)<span class="bu">:</span></a>
+<a class="sourceLine" id="cb14-30" title="30">    <span class="fu">ssh</span> -A username@remote_host</a></code></pre></div>
 <p>おお、わかりやすい。</p>
 <p>基礎実験。</p>
 <p>物性研スパコンハンズオン、資料を作ったぞ。すげー時間かかった。</p>
