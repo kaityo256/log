@@ -27,10 +27,34 @@
 <li>若手奨励賞の申し込みを忘れない</li>
 <li><a href="https://www.toyoag.co.jp/jps/">日本物理学会の申請</a> 5/18〜 6/3</li>
 </ul>
+<h2 id="月27日木"><a href="#27">05月27日(木)</a> <a id="27"></a></h2>
+<p>多分火曜日と水曜日の日記書いたけど、家に置いてきた。も〜。</p>
+<p>昨日、ついかっとなって<a href="https://zenn.dev/kaityo256/articles/trigonometric_function">三角関数の話</a>を書いてしまった。そんな暇全然無いんだけど。なんというか、三角関数不要論に限らないけど、世の中を「わかってる人」「わかってない人」にわけて、自分が「わかってる人」に分類されることを確認して安心する、というプロセス、やりたくなる気持ちはわからないではないけど、なんにも生み出さないよ。</p>
+<p>ParaViewのハンズオン、動作確認。Pythonまわりの記述が古かったのを修正。</p>
+<p>ParaViewを研究室サーバにインストール。<code>ParaView-5.9.1-MPI-Linux-Python3.8-64bit.tar.gz</code>をダウンロード。</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1"><span class="bu">cd</span> build</a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="fu">tar</span> xvzf ParaView-5.9.1-MPI-Linux-Python3.8-64bit.tar.gz </a>
+<a class="sourceLine" id="cb1-3" title="3"><span class="bu">cd</span> ParaView-5.9.1-MPI-Linux-Python3.8-64bit</a>
+<a class="sourceLine" id="cb1-4" title="4"><span class="bu">cd</span> bin</a>
+<a class="sourceLine" id="cb1-5" title="5"><span class="ex">./paraview</span></a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1">$ <span class="ex">./paraview</span></a>
+<a class="sourceLine" id="cb2-2" title="2"><span class="ex">libGL</span> error: No matching fbConfigs or visuals found</a>
+<a class="sourceLine" id="cb2-3" title="3"><span class="ex">libGL</span> error: failed to load driver: swrast</a>
+<a class="sourceLine" id="cb2-4" title="4"><span class="kw">(</span>   <span class="ex">9.209s</span><span class="kw">)</span> [<span class="ex">paraview</span>        ]vtkOpenGLRenderWindow.c:471    ERR<span class="kw">|</span> <span class="ex">vtkXOpenGLRenderWindow</span> (0x14de0490)<span class="bu">:</span> Unable to find a valid OpenGL 3.2 or later implementation. Please update your video card driver to the latest version. If you are using Mesa please make sure you have version 11.2 or later and make sure your driver in Mesa supports OpenGL 3.2 such as llvmpipe or openswr. If you are on windows and using Microsoft remote desktop note that it only supports OpenGL 3.2 with nvidia quadro cards. You can use other remoting software such as nomachine to avoid this issue.</a>
+<a class="sourceLine" id="cb2-5" title="5"><span class="ex">libGL</span> error: No matching fbConfigs or visuals found</a>
+<a class="sourceLine" id="cb2-6" title="6"><span class="ex">libGL</span> error: failed to load driver: swrast</a>
+<a class="sourceLine" id="cb2-7" title="7"><span class="ex">libGL</span> error: No matching fbConfigs or visuals found</a>
+<a class="sourceLine" id="cb2-8" title="8"><span class="ex">libGL</span> error: failed to load driver: swrast</a>
+<a class="sourceLine" id="cb2-9" title="9"><span class="kw">(</span>  <span class="ex">10.143s</span><span class="kw">)</span> [<span class="ex">paraview</span>        ]vtkOpenGLRenderWindow.c:471    ERR<span class="kw">|</span> <span class="ex">vtkXOpenGLRenderWindow</span> (0x15f6c120)<span class="bu">:</span> Unable to find a valid OpenGL 3.2 or later implementation. Please update your video card driver to the latest version. If you are using Mesa please make sure you have version 11.2 or later and make sure your driver in Mesa supports OpenGL 3.2 such as llvmpipe or openswr. If you are on windows and using Microsoft remote desktop note that it only supports OpenGL 3.2 with nvidia quadro cards. You can use other remoting software such as nomachine to avoid this issue.</a>
+<a class="sourceLine" id="cb2-10" title="10"></a>
+<a class="sourceLine" id="cb2-11" title="11"><span class="ex">Loguru</span> caught a signal: SIGSEGV</a></code></pre></div>
+<p>SIGSEGVで死んだ。MacのOpenGLのせいかと思ってWSLから接続してもダメ。諦めた方が良いかな？</p>
+<p>一応試すか。Qtをインストール・・・しようとしたらログインを要求された。なんかも〜。</p>
 <h2 id="月24日月"><a href="#24">05月24日(月)</a> <a id="24"></a></h2>
 <p>木曜日から日記が止まっていた。今は「date + tab」で当日のヘッダを出すスニペットにしてるけど、もう「最後に書いた日記の日付から連番でヘッダを出力する」スニペットを作ろうかなぁ。</p>
 <p>富岳のオンライン対面認証した。あとは誓約書か。</p>
 <p>物理情報工学特別講義の動画編集した。そろそろiMovieだと苦しい気がするが、ギリギリいけてるので新しいソフトを導入するのも腰が重い。どうしたもんか。</p>
+<p>Dockerに行ってみた。<a href="https://hub.docker.com/r/kitware/paraview/tags?page=1&amp;ordering=last_updated">DockerHub</a>で、適当なタブをpull。したが、なんか実行できない。M1 Macの人も実行できたっぽいので諦め。</p>
 <h2 id="月23日日"><a href="#23">05月23日(日)</a> <a id="23"></a></h2>
 <p>NOP</p>
 <h2 id="月22日土"><a href="#22">05月22日(土)</a> <a id="22"></a></h2>
@@ -44,13 +68,13 @@
 <p>実験レポート採点。昨日やらなきゃいけなかったが忙しかったんですよ(言い訳)。</p>
 <p>ハンズオン。今日はPBS。</p>
 <p>Zennの記事を書こうとしたらライブラリに文句を言われた。</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1">$ <span class="ex">npx</span> zenn new:article --slug large-scale-hpc</a>
-<a class="sourceLine" id="cb1-2" title="2"><span class="ex">dyld</span>: Library not loaded: /usr/local/opt/icu4c/lib/libicui18n.68.dylib</a>
-<a class="sourceLine" id="cb1-3" title="3">  <span class="ex">Referenced</span> from: /usr/local/bin/node</a>
-<a class="sourceLine" id="cb1-4" title="4">  <span class="ex">Reason</span>: image not found</a>
-<a class="sourceLine" id="cb1-5" title="5"><span class="ex">zsh</span>: abort      npx zenn new:article --slug large-scale-hpc</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" title="1">$ <span class="ex">npx</span> zenn new:article --slug large-scale-hpc</a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="ex">dyld</span>: Library not loaded: /usr/local/opt/icu4c/lib/libicui18n.68.dylib</a>
+<a class="sourceLine" id="cb3-3" title="3">  <span class="ex">Referenced</span> from: /usr/local/bin/node</a>
+<a class="sourceLine" id="cb3-4" title="4">  <span class="ex">Reason</span>: image not found</a>
+<a class="sourceLine" id="cb3-5" title="5"><span class="ex">zsh</span>: abort      npx zenn new:article --slug large-scale-hpc</a></code></pre></div>
 <p>またか。</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1"><span class="ex">brew</span> reinstall npm</a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb4-1" title="1"><span class="ex">brew</span> reinstall npm</a></code></pre></div>
 <p>これでちゃんと動いた。なんかMac使いづらくなったなぁ。</p>
 <p>学生さんの物理学会での発表の件、手配した。自分も発表したいのだが、準備できるだろうか。</p>
 <p>富岳の対面認証用の書類とか作ったらえっらい時間かかった。全員分の写真付き身分証を整理するだけなんだけど。</p>
@@ -67,9 +91,9 @@
 <p>重い腰をあげて、ようやく富岳の対面認証申し込んだ。わかってしまえば手続き自体は簡単なんだけど、読むべきドキュメントが多くて全容を把握するのが難しい。</p>
 <h2 id="月18日火"><a href="#18">05月18日(火)</a> <a id="18"></a></h2>
 <p>WSL2をすべてアップデートしたら学校のマシンでもできた。Macだとディスクイメージが作れないっぽい。WSL2で作ったイメージをロードしたらできた。あとでディスクユーティリティで</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" title="1"><span class="fu">mkdir</span> -p /Volumes/MIKAN\ OS/EFI/BOOT</a>
-<a class="sourceLine" id="cb3-2" title="2"><span class="fu">cp</span> BOOTX64.EFI /Volumes/MIKAN\ OS/EFI/BOOT</a>
-<a class="sourceLine" id="cb3-3" title="3"><span class="ex">diskutil</span> unmount /Volumes/MIKAN\ OS</a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb5-1" title="1"><span class="fu">mkdir</span> -p /Volumes/MIKAN\ OS/EFI/BOOT</a>
+<a class="sourceLine" id="cb5-2" title="2"><span class="fu">cp</span> BOOTX64.EFI /Volumes/MIKAN\ OS/EFI/BOOT</a>
+<a class="sourceLine" id="cb5-3" title="3"><span class="ex">diskutil</span> unmount /Volumes/MIKAN\ OS</a></code></pre></div>
 <p>としてアンマウントすると中身がおかしくなる？Finderからアンマウントすると大丈夫。どういうこっちゃ？</p>
 <p>あと、dosfstoolsを入れたあと、<code>mkfs.fat</code>にデフォルトでパスが通らないの、なぜなんだぜ？</p>
 <h2 id="月17日月"><a href="#17">05月17日(月)</a> <a id="17"></a></h2>
@@ -90,29 +114,29 @@
 <p>物理情報工学特別講義の接続テストした。事前テストしてよかった。</p>
 <p>というわけで車輪の再開発記事<a href="https://zenn.dev/kaityo256/articles/zsh-vcs-prompt">ZshでプロンプトにGitリポジトリの情報を表示する</a>を公開したら、<a href="https://github.com/romkatv/powerlevel10k">Powerlevel10k</a>というのを教えていただいた。なんかプロンプトがかっちょいい。</p>
 <p>こういう自作系記事を書いた時、「○○使わないの？」みたいな揶揄をする人が結構いてアレなんだけど、こういう「自作も良いけどこれもおすすめです」みたいなコメントはうれしいなぁ。</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb4-1" title="1"><span class="ex">brew</span> install make imagemagick</a></code></pre></div>
-<div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb5-1" title="1"><span class="fu">sudo</span> apt-get update</a>
-<a class="sourceLine" id="cb5-2" title="2"><span class="fu">sudo</span> apt install -y make build-essential imagemagick</a>
-<a class="sourceLine" id="cb5-3" title="3"><span class="fu">sudo</span> apt-get install python3-pip</a></code></pre></div>
-<div class="sourceCode" id="cb6"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb6-1" title="1"><span class="ex">python3</span> -m pip install --upgrade pip</a>
-<a class="sourceLine" id="cb6-2" title="2"><span class="ex">python3</span> -m pip install numpy matplotlib</a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb6-1" title="1"><span class="ex">brew</span> install make imagemagick</a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb7-1" title="1"><span class="fu">sudo</span> apt-get update</a>
+<a class="sourceLine" id="cb7-2" title="2"><span class="fu">sudo</span> apt install -y make build-essential imagemagick</a>
+<a class="sourceLine" id="cb7-3" title="3"><span class="fu">sudo</span> apt-get install python3-pip</a></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb8-1" title="1"><span class="ex">python3</span> -m pip install --upgrade pip</a>
+<a class="sourceLine" id="cb8-2" title="2"><span class="ex">python3</span> -m pip install numpy matplotlib</a></code></pre></div>
 <p>上記あたり、lab_startupに入れないとな。</p>
 <p>だめだ。うちのWSL2のUbuntuでimagemagickがインストールできず、404になる。おそらく18.04から20.04にアップグレードしたせいだ。</p>
 <p>いろいろやったが、最終的にキャッシュを消したらうまくいった。</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb7-1" title="1"><span class="bu">cd</span> /var/lib/apt</a>
-<a class="sourceLine" id="cb7-2" title="2"><span class="fu">sudo</span> mv lists lists.org</a>
-<a class="sourceLine" id="cb7-3" title="3"><span class="fu">sudo</span> apt-update</a></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb9-1" title="1"><span class="bu">cd</span> /var/lib/apt</a>
+<a class="sourceLine" id="cb9-2" title="2"><span class="fu">sudo</span> mv lists lists.org</a>
+<a class="sourceLine" id="cb9-3" title="3"><span class="fu">sudo</span> apt-update</a></code></pre></div>
 <p>やれやれだ。</p>
 <p>次、WSL2でJupyter Notebook。</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb8-1" title="1"><span class="fu">sudo</span> apt install -y jupyter-notebook</a></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb10-1" title="1"><span class="fu">sudo</span> apt install -y jupyter-notebook</a></code></pre></div>
 <p>WSL2の時間がまたずれた。</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb9-1" title="1"><span class="fu">sudo</span> hwclock -s</a></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb11-1" title="1"><span class="fu">sudo</span> hwclock -s</a></code></pre></div>
 <p>でなおった。.zshrcに入れるべきか。</p>
 <p>Powerlevel10k、試してみたが、残念ながらデフォルトではSubversionに対応していないようだ。p9kの機能は使えるとのこと。とりあえず使うのは見送り。使うには以下を.zshrcに入れること。</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb10-1" title="1"><span class="bu">source</span> ~/powerlevel10k/powerlevel10k.zsh-theme</a>
-<a class="sourceLine" id="cb10-2" title="2"></a>
-<a class="sourceLine" id="cb10-3" title="3"><span class="co"># To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.</span></a>
-<a class="sourceLine" id="cb10-4" title="4"><span class="kw">[[</span> <span class="ot">!</span> <span class="ot">-f</span> ~/.p10k.zsh<span class="kw"> ]]</span> <span class="kw">||</span> <span class="bu">source</span> ~/.p10k.zsh</a></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb12-1" title="1"><span class="bu">source</span> ~/powerlevel10k/powerlevel10k.zsh-theme</a>
+<a class="sourceLine" id="cb12-2" title="2"></a>
+<a class="sourceLine" id="cb12-3" title="3"><span class="co"># To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.</span></a>
+<a class="sourceLine" id="cb12-4" title="4"><span class="kw">[[</span> <span class="ot">!</span> <span class="ot">-f</span> ~/.p10k.zsh<span class="kw"> ]]</span> <span class="kw">||</span> <span class="bu">source</span> ~/.p10k.zsh</a></code></pre></div>
 <p>lab_startupのPython設定書いた。28日漬け込んだissueを閉じたぞ。</p>
 <p>実験のレポートを採点した。</p>
 <h2 id="月11日火"><a href="#11">05月11日(火)</a> <a id="11"></a></h2>
@@ -124,21 +148,21 @@
 <p>push忘れは<code>git status -b</code>を使う。</p>
 <p>以下、再チェックが必要。</p>
 <p>上流ブランチなし。</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb11-1" title="1">$ <span class="fu">git</span> status -sb</a>
-<a class="sourceLine" id="cb11-2" title="2"><span class="co">## main</span></a></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb13-1" title="1">$ <span class="fu">git</span> status -sb</a>
+<a class="sourceLine" id="cb13-2" title="2"><span class="co">## main</span></a></code></pre></div>
 <p>未プッシュなし、未コミットあり。</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb12-1" title="1">$ <span class="fu">git</span> status -sb</a>
-<a class="sourceLine" id="cb12-2" title="2"> <span class="ex">M</span> log/d202105.md</a></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb14-1" title="1">$ <span class="fu">git</span> status -sb</a>
+<a class="sourceLine" id="cb14-2" title="2"> <span class="ex">M</span> log/d202105.md</a></code></pre></div>
 <p>↓コミット</p>
 <p>未プッシュあり、未コミットなし。</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb13-1" title="1">$ <span class="fu">git</span> status -sb</a>
-<a class="sourceLine" id="cb13-2" title="2"><span class="co">## main...origin/main [ahead 1]</span></a></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb15-1" title="1">$ <span class="fu">git</span> status -sb</a>
+<a class="sourceLine" id="cb15-2" title="2"><span class="co">## main...origin/main [ahead 1]</span></a></code></pre></div>
 <p>↓プッシュ</p>
 <p>未プッシュなし、未コミットなし。</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb14-1" title="1">$ <span class="fu">git</span> status -sb</a>
-<a class="sourceLine" id="cb14-2" title="2"><span class="co">## main...origin/main</span></a></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb16-1" title="1">$ <span class="fu">git</span> status -sb</a>
+<a class="sourceLine" id="cb16-2" title="2"><span class="co">## main...origin/main</span></a></code></pre></div>
 <p>多分これだけで未プッシュコミットがあるか確認できる気がするが、念の為<code>git log</code>で未プッシュログがあるかどうかを確認している。</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb15-1" title="1"><span class="fu">git</span> log origin/main..main</a></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb17-1" title="1"><span class="fu">git</span> log origin/main..main</a></code></pre></div>
 <p>この表示があるかないかで未プッシュコミットがあるかどうか調べることができる。これ、やっぱりいらん気がするな。</p>
 <h2 id="月09日日"><a href="#09">05月09日(日)</a> <a id="09"></a></h2>
 <p>Gitのpush忘れ防止スクリプトを追加した。記事にしようかと思ったけど、これ、全部シェルスクリプトで自前で書いてるんだよね。「なんでgit prompt使わないの？」「 vcs_info使えば？」と言われそうだから止めよう。</p>
@@ -148,22 +172,22 @@
 <p>自動車税払った。Yahoo公金支払い便利。納税証明書は電子化され、紙では発行されないとのこと。</p>
 <p>自動車税の住所変更した。これで来年から新住所に送られるはず。</p>
 <p>push忘れ防止機能つけた。以下は覚え書き。</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb16-1" title="1"><span class="va">name=</span><span class="kw">`</span><span class="fu">git</span> symbolic-ref HEAD <span class="op">2&gt;</span> /dev/null <span class="kw">|</span> <span class="fu">sed</span> -e <span class="st">&quot;s/refs\/heads\///g&quot;</span> <span class="kw">`</span></a>
-<a class="sourceLine" id="cb16-2" title="2"><span class="va">upstream=</span><span class="kw">`</span><span class="fu">git</span> status -sb <span class="kw">|</span> <span class="fu">grep</span> -E <span class="st">&quot;## .*\.\.\.&quot;</span> <span class="kw">|</span> <span class="fu">sed</span> -e <span class="st">&quot;s/^##.*\.\.\.//&quot;</span><span class="kw">`</span></a>
-<a class="sourceLine" id="cb16-3" title="3"><span class="kw">if [[</span> <span class="ot">-z</span> <span class="va">$upstream</span><span class="kw"> ]]</span>; <span class="kw">then</span></a>
-<a class="sourceLine" id="cb16-4" title="4">  <span class="bu">echo</span> <span class="st">&quot;We do not have an upstream branch.&quot;</span></a>
-<a class="sourceLine" id="cb16-5" title="5"><span class="kw">else</span></a>
-<a class="sourceLine" id="cb16-6" title="6">  <span class="kw">if [[</span> <span class="ot">-z</span> <span class="kw">`</span><span class="fu">git</span> log <span class="va">${upstream}</span>..<span class="va">${name}</span><span class="kw">` ]]</span>; <span class="kw">then</span></a>
-<a class="sourceLine" id="cb16-7" title="7">    <span class="bu">echo</span> <span class="st">&quot;Already pushed&quot;</span></a>
-<a class="sourceLine" id="cb16-8" title="8">  <span class="kw">else</span></a>
-<a class="sourceLine" id="cb16-9" title="9">    <span class="bu">echo</span> <span class="st">&quot;We have unpushed commits.&quot;</span></a>
-<a class="sourceLine" id="cb16-10" title="10">  <span class="kw">fi</span></a>
-<a class="sourceLine" id="cb16-11" title="11"><span class="kw">fi</span></a></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb18-1" title="1"><span class="va">name=</span><span class="kw">`</span><span class="fu">git</span> symbolic-ref HEAD <span class="op">2&gt;</span> /dev/null <span class="kw">|</span> <span class="fu">sed</span> -e <span class="st">&quot;s/refs\/heads\///g&quot;</span> <span class="kw">`</span></a>
+<a class="sourceLine" id="cb18-2" title="2"><span class="va">upstream=</span><span class="kw">`</span><span class="fu">git</span> status -sb <span class="kw">|</span> <span class="fu">grep</span> -E <span class="st">&quot;## .*\.\.\.&quot;</span> <span class="kw">|</span> <span class="fu">sed</span> -e <span class="st">&quot;s/^##.*\.\.\.//&quot;</span><span class="kw">`</span></a>
+<a class="sourceLine" id="cb18-3" title="3"><span class="kw">if [[</span> <span class="ot">-z</span> <span class="va">$upstream</span><span class="kw"> ]]</span>; <span class="kw">then</span></a>
+<a class="sourceLine" id="cb18-4" title="4">  <span class="bu">echo</span> <span class="st">&quot;We do not have an upstream branch.&quot;</span></a>
+<a class="sourceLine" id="cb18-5" title="5"><span class="kw">else</span></a>
+<a class="sourceLine" id="cb18-6" title="6">  <span class="kw">if [[</span> <span class="ot">-z</span> <span class="kw">`</span><span class="fu">git</span> log <span class="va">${upstream}</span>..<span class="va">${name}</span><span class="kw">` ]]</span>; <span class="kw">then</span></a>
+<a class="sourceLine" id="cb18-7" title="7">    <span class="bu">echo</span> <span class="st">&quot;Already pushed&quot;</span></a>
+<a class="sourceLine" id="cb18-8" title="8">  <span class="kw">else</span></a>
+<a class="sourceLine" id="cb18-9" title="9">    <span class="bu">echo</span> <span class="st">&quot;We have unpushed commits.&quot;</span></a>
+<a class="sourceLine" id="cb18-10" title="10">  <span class="kw">fi</span></a>
+<a class="sourceLine" id="cb18-11" title="11"><span class="kw">fi</span></a></code></pre></div>
 <h2 id="月07日金"><a href="#07">05月07日(金)</a> <a id="07"></a></h2>
 <p>本当は良くないらしいが、sudo pip3ですべてのユーザにインストール。</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb17-1" title="1"><span class="fu">sudo</span> yum install -y python3</a>
-<a class="sourceLine" id="cb17-2" title="2"><span class="fu">sudo</span> python3 -m pip install --upgrade pip</a>
-<a class="sourceLine" id="cb17-3" title="3"><span class="fu">sudo</span> /usr/local/bin/pip3 --no-warn-script-location install numpy pandas matplotlib h5py tensorflow</a></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb19-1" title="1"><span class="fu">sudo</span> yum install -y python3</a>
+<a class="sourceLine" id="cb19-2" title="2"><span class="fu">sudo</span> python3 -m pip install --upgrade pip</a>
+<a class="sourceLine" id="cb19-3" title="3"><span class="fu">sudo</span> /usr/local/bin/pip3 --no-warn-script-location install numpy pandas matplotlib h5py tensorflow</a></code></pre></div>
 <p>やっぱりメールに比べてSlackの方がコミュニケーションが圧倒的に早いよな。なにか聞いて、回答があった時、メールだと「○○です。回答をありがとうございます。この内容で○○させていただきます。どうぞよろしくお願いします」的なことを書くけど、Slackだとお辞儀マーク一個つけておしまい。</p>
 <p>LinuxとRubyのデュアルコミッタがどのくらいレアか調べたい。Linuxのcontributerは2017年で15637人。RubyはGitHub上でのcontributerが336人。Rubyはすぐにリストを作れそうだが、Linuxは難しそうだなぁ。</p>
 <h2 id="月06日木"><a href="#06">05月06日(木)</a> <a id="06"></a></h2>
@@ -176,36 +200,36 @@
 <p>あ、レポートの締め切りは明日か。今日だと思ってた。</p>
 <h2 id="月04日火"><a href="#04">05月04日(火)</a> <a id="04"></a></h2>
 <p><code>tldr</code>というコマンドを知った。manの表示をわかりやすくしてくれる。Macならbrewで入る。sshの説明ならこう。</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb18-1" title="1">$ <span class="ex">tldr</span> ssh</a>
-<a class="sourceLine" id="cb18-2" title="2"></a>
-<a class="sourceLine" id="cb18-3" title="3"><span class="fu">ssh</span></a>
-<a class="sourceLine" id="cb18-4" title="4"></a>
-<a class="sourceLine" id="cb18-5" title="5"><span class="ex">Secure</span> Shell is a protocol used to securely log onto remote systems.</a>
-<a class="sourceLine" id="cb18-6" title="6"><span class="ex">It</span> can be used for logging or executing commands on a remote server.</a>
-<a class="sourceLine" id="cb18-7" title="7"></a>
-<a class="sourceLine" id="cb18-8" title="8"><span class="ex">-</span> Connect to a remote server:</a>
-<a class="sourceLine" id="cb18-9" title="9">    <span class="fu">ssh</span> username@remote_host</a>
-<a class="sourceLine" id="cb18-10" title="10"></a>
-<a class="sourceLine" id="cb18-11" title="11"><span class="ex">-</span> Connect to a remote server with a specific identity (private key)<span class="bu">:</span></a>
-<a class="sourceLine" id="cb18-12" title="12">    <span class="fu">ssh</span> -i path/to/key_file username@remote_host</a>
-<a class="sourceLine" id="cb18-13" title="13"></a>
-<a class="sourceLine" id="cb18-14" title="14"><span class="ex">-</span> Connect to a remote server using a specific port:</a>
-<a class="sourceLine" id="cb18-15" title="15">    <span class="fu">ssh</span> username@remote_host -p 2222</a>
-<a class="sourceLine" id="cb18-16" title="16"></a>
-<a class="sourceLine" id="cb18-17" title="17"><span class="ex">-</span> Run a command on a remote server:</a>
-<a class="sourceLine" id="cb18-18" title="18">    <span class="fu">ssh</span> remote_host command -with -flags</a>
-<a class="sourceLine" id="cb18-19" title="19"></a>
-<a class="sourceLine" id="cb18-20" title="20"><span class="ex">-</span> SSH tunneling: Dynamic port forwarding (SOCKS proxy on localhost:1080)<span class="bu">:</span></a>
-<a class="sourceLine" id="cb18-21" title="21">    <span class="fu">ssh</span> -D 1080 username@remote_host</a>
-<a class="sourceLine" id="cb18-22" title="22"></a>
-<a class="sourceLine" id="cb18-23" title="23"><span class="ex">-</span> SSH tunneling: Forward a specific port (localhost:9999 to example.org:80) <span class="ex">along</span> with disabling pseudo-[t]ty allocation and executio[n] of remote commands:</a>
-<a class="sourceLine" id="cb18-24" title="24">    <span class="fu">ssh</span> -L 9999:example.org:80 -N -T username@remote_host</a>
-<a class="sourceLine" id="cb18-25" title="25"></a>
-<a class="sourceLine" id="cb18-26" title="26"><span class="ex">-</span> SSH jumping: Connect through a jumphost to a remote server (Multiple jump hops may be specified separated by comma characters)<span class="bu">:</span></a>
-<a class="sourceLine" id="cb18-27" title="27">    <span class="fu">ssh</span> -J username@jump_host username@remote_host</a>
-<a class="sourceLine" id="cb18-28" title="28"></a>
-<a class="sourceLine" id="cb18-29" title="29"><span class="ex">-</span> Agent forwarding: Forward the authentication information to the remote machine (see <span class="kw">`</span><span class="fu">man</span> ssh_config<span class="kw">`</span> for available options)<span class="bu">:</span></a>
-<a class="sourceLine" id="cb18-30" title="30">    <span class="fu">ssh</span> -A username@remote_host</a></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb20-1" title="1">$ <span class="ex">tldr</span> ssh</a>
+<a class="sourceLine" id="cb20-2" title="2"></a>
+<a class="sourceLine" id="cb20-3" title="3"><span class="fu">ssh</span></a>
+<a class="sourceLine" id="cb20-4" title="4"></a>
+<a class="sourceLine" id="cb20-5" title="5"><span class="ex">Secure</span> Shell is a protocol used to securely log onto remote systems.</a>
+<a class="sourceLine" id="cb20-6" title="6"><span class="ex">It</span> can be used for logging or executing commands on a remote server.</a>
+<a class="sourceLine" id="cb20-7" title="7"></a>
+<a class="sourceLine" id="cb20-8" title="8"><span class="ex">-</span> Connect to a remote server:</a>
+<a class="sourceLine" id="cb20-9" title="9">    <span class="fu">ssh</span> username@remote_host</a>
+<a class="sourceLine" id="cb20-10" title="10"></a>
+<a class="sourceLine" id="cb20-11" title="11"><span class="ex">-</span> Connect to a remote server with a specific identity (private key)<span class="bu">:</span></a>
+<a class="sourceLine" id="cb20-12" title="12">    <span class="fu">ssh</span> -i path/to/key_file username@remote_host</a>
+<a class="sourceLine" id="cb20-13" title="13"></a>
+<a class="sourceLine" id="cb20-14" title="14"><span class="ex">-</span> Connect to a remote server using a specific port:</a>
+<a class="sourceLine" id="cb20-15" title="15">    <span class="fu">ssh</span> username@remote_host -p 2222</a>
+<a class="sourceLine" id="cb20-16" title="16"></a>
+<a class="sourceLine" id="cb20-17" title="17"><span class="ex">-</span> Run a command on a remote server:</a>
+<a class="sourceLine" id="cb20-18" title="18">    <span class="fu">ssh</span> remote_host command -with -flags</a>
+<a class="sourceLine" id="cb20-19" title="19"></a>
+<a class="sourceLine" id="cb20-20" title="20"><span class="ex">-</span> SSH tunneling: Dynamic port forwarding (SOCKS proxy on localhost:1080)<span class="bu">:</span></a>
+<a class="sourceLine" id="cb20-21" title="21">    <span class="fu">ssh</span> -D 1080 username@remote_host</a>
+<a class="sourceLine" id="cb20-22" title="22"></a>
+<a class="sourceLine" id="cb20-23" title="23"><span class="ex">-</span> SSH tunneling: Forward a specific port (localhost:9999 to example.org:80) <span class="ex">along</span> with disabling pseudo-[t]ty allocation and executio[n] of remote commands:</a>
+<a class="sourceLine" id="cb20-24" title="24">    <span class="fu">ssh</span> -L 9999:example.org:80 -N -T username@remote_host</a>
+<a class="sourceLine" id="cb20-25" title="25"></a>
+<a class="sourceLine" id="cb20-26" title="26"><span class="ex">-</span> SSH jumping: Connect through a jumphost to a remote server (Multiple jump hops may be specified separated by comma characters)<span class="bu">:</span></a>
+<a class="sourceLine" id="cb20-27" title="27">    <span class="fu">ssh</span> -J username@jump_host username@remote_host</a>
+<a class="sourceLine" id="cb20-28" title="28"></a>
+<a class="sourceLine" id="cb20-29" title="29"><span class="ex">-</span> Agent forwarding: Forward the authentication information to the remote machine (see <span class="kw">`</span><span class="fu">man</span> ssh_config<span class="kw">`</span> for available options)<span class="bu">:</span></a>
+<a class="sourceLine" id="cb20-30" title="30">    <span class="fu">ssh</span> -A username@remote_host</a></code></pre></div>
 <p>おお、わかりやすい。</p>
 <p>基礎実験。</p>
 <p>物性研スパコンハンズオン、資料を作ったぞ。すげー時間かかった。</p>
