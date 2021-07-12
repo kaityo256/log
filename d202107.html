@@ -29,6 +29,38 @@
 <h2 id="月12日月"><a href="#12">07月12日(月)</a> <a id="12"></a></h2>
 <p>その、「禁煙にはこうすれば良いですよ。自分は喫煙したことないですけど」みたいな「アドバイス」をしたがる人が多いのはなぜだろうか。なんか、「なにかの役に立ちたい。でも自分には特にスキルはない」という人が、焦ってなにかをしようとするとろくなことがない気がする。デマの拡散とか。</p>
 <p>最近著しく集中力を欠いている。集中力を欠くと、↑こういうこと(ネットの闇成分への反応)を言いがちなので良くない。自覚はあるんですよ。</p>
+<p>追加予算執行の確認した。メールもした。</p>
+<p>WSL2のDISPLAY、hostname.mshome.netで取れるという記事をみて試したんだけど、hostname + mshome.netで取れるIPアドレスが172.23.96.1とかで、それだとなぜうちの環境ではダメ。192.168の、Windows側のIPじゃないとXが通じなかった。172はWSL側のIPアドレスだと思うんだけど、そのあたりの関係がどうなっているかよくわかってない。</p>
+<p>C++の一様初期化というのを知った。C++11で導入。こんなコードを考える。</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb1-1" title="1"><span class="pp">#include </span><span class="im">&lt;cstdio&gt;</span></a>
+<a class="sourceLine" id="cb1-2" title="2"></a>
+<a class="sourceLine" id="cb1-3" title="3"><span class="kw">struct</span> Hoge {</a>
+<a class="sourceLine" id="cb1-4" title="4">};</a>
+<a class="sourceLine" id="cb1-5" title="5"></a>
+<a class="sourceLine" id="cb1-6" title="6"><span class="dt">int</span> main(){</a>
+<a class="sourceLine" id="cb1-7" title="7">  Hoge h();</a>
+<a class="sourceLine" id="cb1-8" title="8">}</a></code></pre></div>
+<p>これは、おそらく無引数のクラス<code>Hoge</code>の型の変数<code>h</code>の宣言を意図しているが、実際には<code>Hoge</code>を返す関数<code>h</code>のプロトタイプ宣言とみなされる。clang++は昔から、gccは11から警告<code>-Wvexing-parse</code>が導入、デフォルトでオンなっているため、警告が出る。</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode txt"><code class="sourceCode default"><a class="sourceLine" id="cb2-1" title="1">prog.cc: In function &#39;int main()&#39;:</a>
+<a class="sourceLine" id="cb2-2" title="2">prog.cc:7:9: warning: empty parentheses were disambiguated as a function declaration [-Wvexing-parse]</a>
+<a class="sourceLine" id="cb2-3" title="3">    7 |   Hoge h();</a>
+<a class="sourceLine" id="cb2-4" title="4">      |         ^~</a>
+<a class="sourceLine" id="cb2-5" title="5">prog.cc:7:9: note: remove parentheses to default-initialize a variable</a>
+<a class="sourceLine" id="cb2-6" title="6">    7 |   Hoge h();</a>
+<a class="sourceLine" id="cb2-7" title="7">      |         ^~</a>
+<a class="sourceLine" id="cb2-8" title="8">      |         --</a>
+<a class="sourceLine" id="cb2-9" title="9">prog.cc:7:9: note: or replace parentheses with braces to aggregate-initialize a variable</a>
+<a class="sourceLine" id="cb2-10" title="10">0</a></code></pre></div>
+<p>C++11から、コンストラクタ呼び出しに中括弧を使える。</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb3-1" title="1"><span class="pp">#include </span><span class="im">&lt;cstdio&gt;</span></a>
+<a class="sourceLine" id="cb3-2" title="2"></a>
+<a class="sourceLine" id="cb3-3" title="3"><span class="kw">struct</span> Hoge {</a>
+<a class="sourceLine" id="cb3-4" title="4">};</a>
+<a class="sourceLine" id="cb3-5" title="5"></a>
+<a class="sourceLine" id="cb3-6" title="6"><span class="dt">int</span> main(){</a>
+<a class="sourceLine" id="cb3-7" title="7">  Hoge h{};</a>
+<a class="sourceLine" id="cb3-8" title="8">}</a></code></pre></div>
+<p>これで紛れがなくなる。他にも使い捨て構造体を作るのに便利らしい。なるほど。</p>
 <h2 id="月11日日"><a href="#11">07月11日(日)</a> <a id="11"></a></h2>
 <p>学生の論文を見ようとしたが、集中力を欠いた。厳しい。</p>
 <h2 id="月10日土"><a href="#10">07月10日(土)</a> <a id="10"></a></h2>
