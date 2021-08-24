@@ -22,6 +22,10 @@
     <article class="markdown-body">
                         <h1 id="ログ">ログ</h1>
 <p><a href="index.html">ログ一覧</a></p>
+<h2 id="月24日火"><a href="#24">08月24日(火)</a> <a id="24"></a></h2>
+<p>書類一個提出したぞ。</p>
+<p>学生さんの立替払い確認。とりあえず出してみないとよくわからないな。</p>
+<p>大学院の講義を考えててさっぱりわからんくなった。</p>
 <h2 id="月23日月"><a href="#23">08月23日(月)</a> <a id="23"></a></h2>
 <p>修論中間発表会。書類仕事が溜まってきたが、正直疲れている。明日にしよう。</p>
 <p><a href="https://github.com/kaityo256/osmokumoku/blob/main/log.md#8%E6%9C%8823%E6%97%A5">OS自作もくもく会</a>。ついに参加者二人になってしまった・・・</p>
@@ -242,7 +246,7 @@
 <a class="sourceLine" id="cb6-80" title="80">[<span class="ex">name.of.server</span>:202109] PMIX ERROR: OUT-OF-RESOURCE in file client/pmix_client.c at line 223</a></code></pre></div>
 <p>まず、エラーを出しているのがPMIXで、その実装はおそらく<a href="https://github.com/openpmix/openpmix">OpenPMIx</a>、これはProcess Management Interfaceらしい。</p>
 <p>ftraceを入れてみる。</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb7-1" title="1">$ <span class="fu">sudo</span> yum install -y trace-cmd</a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb7-1" title="1"><span class="fu">sudo</span> yum install -y trace-cmd</a></code></pre></div>
 <p>ディスク容量が足りずに失敗し、それでディスクが一杯になっていることに気が付く。これが原因か。</p>
 <p>うーん、logwatchを入れるべきか。</p>
 <h2 id="月01日日"><a href="#01">08月01日(日)</a> <a id="01"></a></h2>
