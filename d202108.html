@@ -22,6 +22,17 @@
     <article class="markdown-body">
                         <h1 id="ログ">ログ</h1>
 <p><a href="index.html">ログ一覧</a></p>
+<h2 id="月27日金"><a href="#27">08月27日(金)</a> <a id="27"></a></h2>
+<p>RevTeX、Ubuntuだと。</p>
+<p>WSL2のUbuntuでチェック。まずlatexmkを入れる。</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1"><span class="fu">sudo</span> apt-get update -y</a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="fu">sudo</span> apt-get install -y latexmk</a></code></pre></div>
+<p>RevTeX入ってないな。dkpg -lで調べる。</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1"><span class="ex">dpkg</span> -l <span class="kw">|</span> <span class="fu">grep</span> texlive</a></code></pre></div>
+<p>texlive-publishersが入ってないな。入れる。</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" title="1"><span class="fu">sudo</span> apt-get install -y texlive-publishers</a></code></pre></div>
+<p>でビルド。あれ？。</p>
+<p>GitHub演習の講義ノート続き。いま見たら「Gitはファイルシステムの一種である。ファイルシステムといえばext4である。だからとりあえずinodeについて説明する」とか書いてあって、「それはないな」と正気にかえった。</p>
 <h2 id="月26日木"><a href="#26">08月26日(木)</a> <a id="26"></a></h2>
 <p>JPSJ論文投稿覚書。</p>
 <ul>
@@ -82,21 +93,21 @@
 <p>講義ノートを余談から書いていくスタイル。</p>
 <h2 id="月19日木"><a href="#19">08月19日(木)</a> <a id="19"></a></h2>
 <p>VSCodeのmarkdownlintの設定。インデントをスペース4つ分にする。</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode json"><code class="sourceCode json"><a class="sourceLine" id="cb1-1" title="1">    <span class="er">&quot;markdownlint.config&quot;:</span> <span class="fu">{</span></a>
-<a class="sourceLine" id="cb1-2" title="2">        <span class="dt">&quot;MD007&quot;</span><span class="fu">:</span> <span class="fu">{</span></a>
-<a class="sourceLine" id="cb1-3" title="3">            <span class="dt">&quot;indent&quot;</span><span class="fu">:</span> <span class="dv">4</span></a>
-<a class="sourceLine" id="cb1-4" title="4">        <span class="fu">}</span></a>
-<a class="sourceLine" id="cb1-5" title="5">    <span class="fu">}</span></a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode json"><code class="sourceCode json"><a class="sourceLine" id="cb4-1" title="1">    <span class="er">&quot;markdownlint.config&quot;:</span> <span class="fu">{</span></a>
+<a class="sourceLine" id="cb4-2" title="2">        <span class="dt">&quot;MD007&quot;</span><span class="fu">:</span> <span class="fu">{</span></a>
+<a class="sourceLine" id="cb4-3" title="3">            <span class="dt">&quot;indent&quot;</span><span class="fu">:</span> <span class="dv">4</span></a>
+<a class="sourceLine" id="cb4-4" title="4">        <span class="fu">}</span></a>
+<a class="sourceLine" id="cb4-5" title="5">    <span class="fu">}</span></a></code></pre></div>
 <p>なんか<code>.markdownlint.json</code>が効かなかったので、VSCodeに直接設定。</p>
 <p>理科設備費は、Excelの一覧だけメール。後は紙で。</p>
 <p>VSCodeのMarkdownのタブサイズ変更が効かなかったの、エディタが開いたファイルで自動的にタブサイズを認識していたからだった。</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode json"><code class="sourceCode json"><a class="sourceLine" id="cb2-1" title="1">    <span class="er">&quot;</span><span class="ot">[</span><span class="er">markdown</span><span class="ot">]</span><span class="er">&quot;:</span> <span class="fu">{</span></a>
-<a class="sourceLine" id="cb2-2" title="2">        <span class="dt">&quot;editor.detectIndentation&quot;</span><span class="fu">:</span> <span class="kw">false</span><span class="fu">,</span></a>
-<a class="sourceLine" id="cb2-3" title="3">        <span class="dt">&quot;editor.tabSize&quot;</span><span class="fu">:</span> <span class="dv">4</span><span class="fu">,</span></a>
-<a class="sourceLine" id="cb2-4" title="4">        <span class="dt">&quot;editor.insertSpaces&quot;</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></a>
-<a class="sourceLine" id="cb2-5" title="5">        <span class="dt">&quot;editor.wordWrap&quot;</span><span class="fu">:</span> <span class="st">&quot;on&quot;</span><span class="fu">,</span></a>
-<a class="sourceLine" id="cb2-6" title="6">        <span class="dt">&quot;editor.quickSuggestions&quot;</span><span class="fu">:</span> <span class="kw">false</span></a>
-<a class="sourceLine" id="cb2-7" title="7">    <span class="fu">}</span></a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode json"><code class="sourceCode json"><a class="sourceLine" id="cb5-1" title="1">    <span class="er">&quot;</span><span class="ot">[</span><span class="er">markdown</span><span class="ot">]</span><span class="er">&quot;:</span> <span class="fu">{</span></a>
+<a class="sourceLine" id="cb5-2" title="2">        <span class="dt">&quot;editor.detectIndentation&quot;</span><span class="fu">:</span> <span class="kw">false</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb5-3" title="3">        <span class="dt">&quot;editor.tabSize&quot;</span><span class="fu">:</span> <span class="dv">4</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb5-4" title="4">        <span class="dt">&quot;editor.insertSpaces&quot;</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb5-5" title="5">        <span class="dt">&quot;editor.wordWrap&quot;</span><span class="fu">:</span> <span class="st">&quot;on&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb5-6" title="6">        <span class="dt">&quot;editor.quickSuggestions&quot;</span><span class="fu">:</span> <span class="kw">false</span></a>
+<a class="sourceLine" id="cb5-7" title="7">    <span class="fu">}</span></a></code></pre></div>
 <h2 id="月18日水"><a href="#18">08月18日(水)</a> <a id="18"></a></h2>
 <p>研究室サーバのポート増設。予算執行計画の確認。研費使用説明会の動画見た。まだ知らないことがあった。</p>
 <p>いろいろバタバタしてダメだ。</p>
@@ -130,8 +141,8 @@
 <p>Gitのインデックスの中身について<a href="https://zenn.dev/kaityo256/articles/inside_the_index">覚書を書いた</a>。</p>
 <h2 id="月12日木"><a href="#12">08月12日(木)</a> <a id="12"></a></h2>
 <p>colordiffなど、色つきのターミナルの結果をそのまま保存したいことがある。いろいろ調べたが、一番楽なのはahaを使うこと。Ubuntu(WSL)ならaptで、Macならbrewで入る。</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" title="1"><span class="fu">sudo</span> apt install -y aha</a></code></pre></div>
-<div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb4-1" title="1"><span class="ex">brew</span> install aha</a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb6-1" title="1"><span class="fu">sudo</span> apt install -y aha</a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb7-1" title="1"><span class="ex">brew</span> install aha</a></code></pre></div>
 <p><a href="https://zenn.dev/kaityo256/articles/colored_terminal_output">忘れないうちに記事にまとめた</a></p>
 <h2 id="月13日水"><a href="#13">08月13日(水)</a> <a id="13"></a></h2>
 <p>いろいろバタバタして、ミーティングをバッティングしてしまった。</p>
@@ -139,9 +150,9 @@
 <h2 id="月10日火"><a href="#10">08月10日(火)</a> <a id="10"></a></h2>
 <p>Oh、またpush忘れた。プロンプトに表示してあるのに。</p>
 <p>Gitでブランチをmasterからmainに変えたときに、</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb5-1" title="1"><span class="ex">fatal</span>: ambiguous argument <span class="st">&#39;origin/main..main&#39;</span>: unknown revision or path not in the working tree.</a>
-<a class="sourceLine" id="cb5-2" title="2"><span class="ex">Use</span> <span class="st">&#39;--&#39;</span> to separate paths from revisions, like this:</a>
-<a class="sourceLine" id="cb5-3" title="3"><span class="st">&#39;git &lt;command&gt; [&lt;revision&gt;...] -- [&lt;file&gt;...]&#39;</span></a></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb8-1" title="1"><span class="ex">fatal</span>: ambiguous argument <span class="st">&#39;origin/main..main&#39;</span>: unknown revision or path not in the working tree.</a>
+<a class="sourceLine" id="cb8-2" title="2"><span class="ex">Use</span> <span class="st">&#39;--&#39;</span> to separate paths from revisions, like this:</a>
+<a class="sourceLine" id="cb8-3" title="3"><span class="st">&#39;git &lt;command&gt; [&lt;revision&gt;...] -- [&lt;file&gt;...]&#39;</span></a></code></pre></div>
 <p>というエラーが出て困っていたが、これには2つの理由があった。</p>
 <p>まず、プロンプトでpush忘れを防ぐために<code>git log origin/master..master</code>コマンドが自動で実行されるようになっていた。この状態で、<code>git branch -m main</code>として、ローカルのmasterをmainに変えてしまった。upstreamのブランチ名がローカルと違うことを想定していなかったので、<code>git log origin/main..main</code>というコマンドが実行されてしまい、そんなパス無いよ、と怒られた。</p>
 <p>秋学期の講義の予定をカレンダーに突っ込んだ。やはりHPCI報告会と講義がぶつかるので、事務局に相談。</p>
@@ -180,89 +191,89 @@
 <p>学生さんと1on1ミーティング。進捗いい感じ。</p>
 <p>BGM代わりにYouTube開いているんだけど、なぜかおすすめされた<a href="https://www.youtube.com/watch?v=3qF4MZniyO0">つまようじ造構造物耐震コンテスト2010（崇城大学）</a>が面白かった。こういうコンテスト系、やってみたいなぁ。</p>
 <p>研究室サーバの調子が悪い。</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb6-1" title="1">$ <span class="ex">mpirun</span> -np 4 ./a.out</a>
-<a class="sourceLine" id="cb6-2" title="2">[<span class="ex">name.of.server</span>:202001] PMIX ERROR: OUT-OF-RESOURCE in file gds_dstore.c at line 1178</a>
-<a class="sourceLine" id="cb6-3" title="3">[<span class="ex">name.of.server</span>:202001] PMIX ERROR: OUT-OF-RESOURCE in file gds_dstore.c at line 1313</a>
-<a class="sourceLine" id="cb6-4" title="4">[<span class="ex">name.of.server</span>:202001] PMIX ERROR: OUT-OF-RESOURCE in file gds_dstore.c at line 2331</a>
-<a class="sourceLine" id="cb6-5" title="5">[<span class="ex">name.of.server</span>:202001] PMIX ERROR: OUT-OF-RESOURCE in file gds_dstore.c at line 3148</a>
-<a class="sourceLine" id="cb6-6" title="6">[<span class="ex">name.of.server</span>:202001] PMIX ERROR: OUT-OF-RESOURCE in file gds_dstore.c at line 3180</a>
-<a class="sourceLine" id="cb6-7" title="7">[<span class="ex">name.of.server</span>:202001] PMIX ERROR: OUT-OF-RESOURCE in file server/pmix_server.c at line 2170</a>
-<a class="sourceLine" id="cb6-8" title="8">[<span class="ex">name.of.server</span>:202006] PMIX ERROR: OUT-OF-RESOURCE in file client/pmix_client.c at line 223</a>
-<a class="sourceLine" id="cb6-9" title="9">[<span class="ex">name.of.server</span>:202001] PMIX ERROR: OUT-OF-RESOURCE in file gds_dstore.c at line 1178</a>
-<a class="sourceLine" id="cb6-10" title="10">[<span class="ex">name.of.server</span>:202001] PMIX ERROR: OUT-OF-RESOURCE in file gds_dstore.c at line 1313</a>
-<a class="sourceLine" id="cb6-11" title="11">[<span class="ex">name.of.server</span>:202006] OPAL ERROR: Error in file pmix2x_client.c at line 112</a>
-<a class="sourceLine" id="cb6-12" title="12">[<span class="ex">name.of.server</span>:202001] PMIX ERROR: OUT-OF-RESOURCE in file gds_dstore.c at line 2331</a>
-<a class="sourceLine" id="cb6-13" title="13">[<span class="ex">name.of.server</span>:202001] PMIX ERROR: OUT-OF-RESOURCE in file gds_dstore.c at line 3148</a>
-<a class="sourceLine" id="cb6-14" title="14">[<span class="ex">name.of.server</span>:202001] PMIX ERROR: OUT-OF-RESOURCE in file gds_dstore.c at line 3180</a>
-<a class="sourceLine" id="cb6-15" title="15">[<span class="ex">name.of.server</span>:202001] PMIX ERROR: OUT-OF-RESOURCE in file server/pmix_server.c at line 2170</a>
-<a class="sourceLine" id="cb6-16" title="16">[<span class="ex">name.of.server</span>:202001] PMIX ERROR: OUT-OF-RESOURCE in file gds_dstore.c at line 1178</a>
-<a class="sourceLine" id="cb6-17" title="17">[<span class="ex">name.of.server</span>:202001] PMIX ERROR: OUT-OF-RESOURCE in file gds_dstore.c at line 1313</a>
-<a class="sourceLine" id="cb6-18" title="18">[<span class="ex">name.of.server</span>:202001] PMIX ERROR: OUT-OF-RESOURCE in file gds_dstore.c at line 2331</a>
-<a class="sourceLine" id="cb6-19" title="19">[<span class="ex">name.of.server</span>:202001] PMIX ERROR: OUT-OF-RESOURCE in file gds_dstore.c at line 3148</a>
-<a class="sourceLine" id="cb6-20" title="20">[<span class="ex">name.of.server</span>:202008] PMIX ERROR: OUT-OF-RESOURCE in file client/pmix_client.c at line 223</a>
-<a class="sourceLine" id="cb6-21" title="21">[<span class="ex">name.of.server</span>:202001] PMIX ERROR: OUT-OF-RESOURCE in file gds_dstore.c at line 3180</a>
-<a class="sourceLine" id="cb6-22" title="22">[<span class="ex">name.of.server</span>:202001] PMIX ERROR: OUT-OF-RESOURCE in file server/pmix_server.c at line 2170</a>
-<a class="sourceLine" id="cb6-23" title="23">[<span class="ex">name.of.server</span>:202008] OPAL ERROR: Error in file pmix2x_client.c at line 112</a>
-<a class="sourceLine" id="cb6-24" title="24">[<span class="ex">name.of.server</span>:202007] PMIX ERROR: OUT-OF-RESOURCE in file client/pmix_client.c at line 223</a>
-<a class="sourceLine" id="cb6-25" title="25"><span class="ex">***</span> An error occurred in MPI_Init</a>
-<a class="sourceLine" id="cb6-26" title="26"><span class="ex">***</span> on a NULL communicator</a>
-<a class="sourceLine" id="cb6-27" title="27"><span class="ex">***</span> MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,</a>
-<a class="sourceLine" id="cb6-28" title="28"><span class="ex">***</span>    and potentially your MPI job)</a>
-<a class="sourceLine" id="cb6-29" title="29">[<span class="ex">name.of.server</span>:202006] Local abort before MPI_INIT completed completed successfully, but am not able to aggregate error messages, and not able to guarantee that all other processes were killed!</a>
-<a class="sourceLine" id="cb6-30" title="30">[<span class="ex">name.of.server</span>:202007] OPAL ERROR: Error in file pmix2x_client.c at line 112</a>
-<a class="sourceLine" id="cb6-31" title="31"><span class="ex">***</span> An error occurred in MPI_Init</a>
-<a class="sourceLine" id="cb6-32" title="32"><span class="ex">***</span> on a NULL communicator</a>
-<a class="sourceLine" id="cb6-33" title="33"><span class="ex">***</span> MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,</a>
-<a class="sourceLine" id="cb6-34" title="34"><span class="ex">***</span>    and potentially your MPI job)</a>
-<a class="sourceLine" id="cb6-35" title="35">[<span class="ex">name.of.server</span>:202008] Local abort before MPI_INIT completed completed successfully, but am not able to aggregate error messages, and not able to guarantee that all other processes were killed!</a>
-<a class="sourceLine" id="cb6-36" title="36">[<span class="ex">name.of.server</span>:202001] PMIX ERROR: OUT-OF-RESOURCE in file gds_dstore.c at line 1178</a>
-<a class="sourceLine" id="cb6-37" title="37">[<span class="ex">name.of.server</span>:202001] PMIX ERROR: OUT-OF-RESOURCE in file gds_dstore.c at line 1313</a>
-<a class="sourceLine" id="cb6-38" title="38">[<span class="ex">name.of.server</span>:202001] PMIX ERROR: OUT-OF-RESOURCE in file gds_dstore.c at line 2331</a>
-<a class="sourceLine" id="cb6-39" title="39">[<span class="ex">name.of.server</span>:202001] PMIX ERROR: OUT-OF-RESOURCE in file gds_dstore.c at line 3148</a>
-<a class="sourceLine" id="cb6-40" title="40">[<span class="ex">name.of.server</span>:202001] PMIX ERROR: OUT-OF-RESOURCE in file gds_dstore.c at line 3180</a>
-<a class="sourceLine" id="cb6-41" title="41"><span class="ex">***</span> An error occurred in MPI_Init</a>
-<a class="sourceLine" id="cb6-42" title="42"><span class="ex">***</span> on a NULL communicator</a>
-<a class="sourceLine" id="cb6-43" title="43"><span class="ex">***</span> MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,</a>
-<a class="sourceLine" id="cb6-44" title="44"><span class="ex">***</span>    and potentially your MPI job)</a>
-<a class="sourceLine" id="cb6-45" title="45">[<span class="ex">name.of.server</span>:202001] PMIX ERROR: OUT-OF-RESOURCE in file server/pmix_server.c at line 2170</a>
-<a class="sourceLine" id="cb6-46" title="46">[<span class="ex">name.of.server</span>:202007] Local abort before MPI_INIT completed completed successfully, but am not able to aggregate error messages, and not able to guarantee that all other processes were killed!</a>
-<a class="sourceLine" id="cb6-47" title="47">[<span class="ex">name.of.server</span>:202009] PMIX ERROR: OUT-OF-RESOURCE in file client/pmix_client.c at line 223</a>
-<a class="sourceLine" id="cb6-48" title="48">[<span class="ex">name.of.server</span>:202009] OPAL ERROR: Error in file pmix2x_client.c at line 112</a>
-<a class="sourceLine" id="cb6-49" title="49"><span class="ex">***</span> An error occurred in MPI_Init</a>
-<a class="sourceLine" id="cb6-50" title="50"><span class="ex">***</span> on a NULL communicator</a>
-<a class="sourceLine" id="cb6-51" title="51"><span class="ex">***</span> MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,</a>
-<a class="sourceLine" id="cb6-52" title="52"><span class="ex">***</span>    and potentially your MPI job)</a>
-<a class="sourceLine" id="cb6-53" title="53">[<span class="ex">name.of.server</span>:202009] Local abort before MPI_INIT completed completed successfully, but am not able to aggregate error messages, and not able to guarantee that all other processes were killed!</a>
-<a class="sourceLine" id="cb6-54" title="54"><span class="ex">--------------------------------------------------------------------------</span></a>
-<a class="sourceLine" id="cb6-55" title="55"><span class="ex">Primary</span> job  terminated normally, but 1 process returned</a>
-<a class="sourceLine" id="cb6-56" title="56"><span class="ex">a</span> non-zero exit code. Per user-direction, the job has been aborted.</a>
-<a class="sourceLine" id="cb6-57" title="57"><span class="ex">--------------------------------------------------------------------------</span></a>
-<a class="sourceLine" id="cb6-58" title="58"><span class="ex">--------------------------------------------------------------------------</span></a>
-<a class="sourceLine" id="cb6-59" title="59"><span class="ex">mpirun</span> detected that one or more processes exited with non-zero status, thus causing</a>
-<a class="sourceLine" id="cb6-60" title="60"><span class="ex">the</span> job to be terminated. The first process to do so was:</a>
-<a class="sourceLine" id="cb6-61" title="61"></a>
-<a class="sourceLine" id="cb6-62" title="62">  <span class="ex">Process</span> name: [[46247,1],0]</a>
-<a class="sourceLine" id="cb6-63" title="63">  <span class="ex">Exit</span> code:    1</a>
-<a class="sourceLine" id="cb6-64" title="64"><span class="ex">--------------------------------------------------------------------------</span></a>
-<a class="sourceLine" id="cb6-65" title="65">[<span class="ex">watanabe@watanabe-login</span> ~]$ mpirun -np 2 ./a.out</a>
-<a class="sourceLine" id="cb6-66" title="66">[<span class="ex">name.of.server</span>:202103] PMIX ERROR: OUT-OF-RESOURCE in file gds_dstore.c at line 1178</a>
-<a class="sourceLine" id="cb6-67" title="67">[<span class="ex">name.of.server</span>:202103] PMIX ERROR: OUT-OF-RESOURCE in file gds_dstore.c at line 1313</a>
-<a class="sourceLine" id="cb6-68" title="68">[<span class="ex">name.of.server</span>:202103] PMIX ERROR: OUT-OF-RESOURCE in file gds_dstore.c at line 2331</a>
-<a class="sourceLine" id="cb6-69" title="69">[<span class="ex">name.of.server</span>:202103] PMIX ERROR: OUT-OF-RESOURCE in file gds_dstore.c at line 3148</a>
-<a class="sourceLine" id="cb6-70" title="70">[<span class="ex">name.of.server</span>:202103] PMIX ERROR: OUT-OF-RESOURCE in file gds_dstore.c at line 3180</a>
-<a class="sourceLine" id="cb6-71" title="71">[<span class="ex">name.of.server</span>:202103] PMIX ERROR: OUT-OF-RESOURCE in file server/pmix_server.c at line 2170</a>
-<a class="sourceLine" id="cb6-72" title="72">[<span class="ex">name.of.server</span>:202103] PMIX ERROR: OUT-OF-RESOURCE in file gds_dstore.c at line 1178</a>
-<a class="sourceLine" id="cb6-73" title="73">[<span class="ex">name.of.server</span>:202103] PMIX ERROR: OUT-OF-RESOURCE in file gds_dstore.c at line 1313</a>
-<a class="sourceLine" id="cb6-74" title="74">[<span class="ex">name.of.server</span>:202103] PMIX ERROR: OUT-OF-RESOURCE in file gds_dstore.c at line 2331</a>
-<a class="sourceLine" id="cb6-75" title="75">[<span class="ex">name.of.server</span>:202103] PMIX ERROR: OUT-OF-RESOURCE in file gds_dstore.c at line 3148</a>
-<a class="sourceLine" id="cb6-76" title="76">[<span class="ex">name.of.server</span>:202103] PMIX ERROR: OUT-OF-RESOURCE in file gds_dstore.c at line 3180</a>
-<a class="sourceLine" id="cb6-77" title="77">[<span class="ex">name.of.server</span>:202108] PMIX ERROR: OUT-OF-RESOURCE in file client/pmix_client.c at line 223</a>
-<a class="sourceLine" id="cb6-78" title="78">[<span class="ex">name.of.server</span>:202108] OPAL ERROR: Error in file pmix2x_client.c at line 112</a>
-<a class="sourceLine" id="cb6-79" title="79">[<span class="ex">name.of.server</span>:202103] PMIX ERROR: OUT-OF-RESOURCE in file server/pmix_server.c at line 2170</a>
-<a class="sourceLine" id="cb6-80" title="80">[<span class="ex">name.of.server</span>:202109] PMIX ERROR: OUT-OF-RESOURCE in file client/pmix_client.c at line 223</a></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb9-1" title="1">$ <span class="ex">mpirun</span> -np 4 ./a.out</a>
+<a class="sourceLine" id="cb9-2" title="2">[<span class="ex">name.of.server</span>:202001] PMIX ERROR: OUT-OF-RESOURCE in file gds_dstore.c at line 1178</a>
+<a class="sourceLine" id="cb9-3" title="3">[<span class="ex">name.of.server</span>:202001] PMIX ERROR: OUT-OF-RESOURCE in file gds_dstore.c at line 1313</a>
+<a class="sourceLine" id="cb9-4" title="4">[<span class="ex">name.of.server</span>:202001] PMIX ERROR: OUT-OF-RESOURCE in file gds_dstore.c at line 2331</a>
+<a class="sourceLine" id="cb9-5" title="5">[<span class="ex">name.of.server</span>:202001] PMIX ERROR: OUT-OF-RESOURCE in file gds_dstore.c at line 3148</a>
+<a class="sourceLine" id="cb9-6" title="6">[<span class="ex">name.of.server</span>:202001] PMIX ERROR: OUT-OF-RESOURCE in file gds_dstore.c at line 3180</a>
+<a class="sourceLine" id="cb9-7" title="7">[<span class="ex">name.of.server</span>:202001] PMIX ERROR: OUT-OF-RESOURCE in file server/pmix_server.c at line 2170</a>
+<a class="sourceLine" id="cb9-8" title="8">[<span class="ex">name.of.server</span>:202006] PMIX ERROR: OUT-OF-RESOURCE in file client/pmix_client.c at line 223</a>
+<a class="sourceLine" id="cb9-9" title="9">[<span class="ex">name.of.server</span>:202001] PMIX ERROR: OUT-OF-RESOURCE in file gds_dstore.c at line 1178</a>
+<a class="sourceLine" id="cb9-10" title="10">[<span class="ex">name.of.server</span>:202001] PMIX ERROR: OUT-OF-RESOURCE in file gds_dstore.c at line 1313</a>
+<a class="sourceLine" id="cb9-11" title="11">[<span class="ex">name.of.server</span>:202006] OPAL ERROR: Error in file pmix2x_client.c at line 112</a>
+<a class="sourceLine" id="cb9-12" title="12">[<span class="ex">name.of.server</span>:202001] PMIX ERROR: OUT-OF-RESOURCE in file gds_dstore.c at line 2331</a>
+<a class="sourceLine" id="cb9-13" title="13">[<span class="ex">name.of.server</span>:202001] PMIX ERROR: OUT-OF-RESOURCE in file gds_dstore.c at line 3148</a>
+<a class="sourceLine" id="cb9-14" title="14">[<span class="ex">name.of.server</span>:202001] PMIX ERROR: OUT-OF-RESOURCE in file gds_dstore.c at line 3180</a>
+<a class="sourceLine" id="cb9-15" title="15">[<span class="ex">name.of.server</span>:202001] PMIX ERROR: OUT-OF-RESOURCE in file server/pmix_server.c at line 2170</a>
+<a class="sourceLine" id="cb9-16" title="16">[<span class="ex">name.of.server</span>:202001] PMIX ERROR: OUT-OF-RESOURCE in file gds_dstore.c at line 1178</a>
+<a class="sourceLine" id="cb9-17" title="17">[<span class="ex">name.of.server</span>:202001] PMIX ERROR: OUT-OF-RESOURCE in file gds_dstore.c at line 1313</a>
+<a class="sourceLine" id="cb9-18" title="18">[<span class="ex">name.of.server</span>:202001] PMIX ERROR: OUT-OF-RESOURCE in file gds_dstore.c at line 2331</a>
+<a class="sourceLine" id="cb9-19" title="19">[<span class="ex">name.of.server</span>:202001] PMIX ERROR: OUT-OF-RESOURCE in file gds_dstore.c at line 3148</a>
+<a class="sourceLine" id="cb9-20" title="20">[<span class="ex">name.of.server</span>:202008] PMIX ERROR: OUT-OF-RESOURCE in file client/pmix_client.c at line 223</a>
+<a class="sourceLine" id="cb9-21" title="21">[<span class="ex">name.of.server</span>:202001] PMIX ERROR: OUT-OF-RESOURCE in file gds_dstore.c at line 3180</a>
+<a class="sourceLine" id="cb9-22" title="22">[<span class="ex">name.of.server</span>:202001] PMIX ERROR: OUT-OF-RESOURCE in file server/pmix_server.c at line 2170</a>
+<a class="sourceLine" id="cb9-23" title="23">[<span class="ex">name.of.server</span>:202008] OPAL ERROR: Error in file pmix2x_client.c at line 112</a>
+<a class="sourceLine" id="cb9-24" title="24">[<span class="ex">name.of.server</span>:202007] PMIX ERROR: OUT-OF-RESOURCE in file client/pmix_client.c at line 223</a>
+<a class="sourceLine" id="cb9-25" title="25"><span class="ex">***</span> An error occurred in MPI_Init</a>
+<a class="sourceLine" id="cb9-26" title="26"><span class="ex">***</span> on a NULL communicator</a>
+<a class="sourceLine" id="cb9-27" title="27"><span class="ex">***</span> MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,</a>
+<a class="sourceLine" id="cb9-28" title="28"><span class="ex">***</span>    and potentially your MPI job)</a>
+<a class="sourceLine" id="cb9-29" title="29">[<span class="ex">name.of.server</span>:202006] Local abort before MPI_INIT completed completed successfully, but am not able to aggregate error messages, and not able to guarantee that all other processes were killed!</a>
+<a class="sourceLine" id="cb9-30" title="30">[<span class="ex">name.of.server</span>:202007] OPAL ERROR: Error in file pmix2x_client.c at line 112</a>
+<a class="sourceLine" id="cb9-31" title="31"><span class="ex">***</span> An error occurred in MPI_Init</a>
+<a class="sourceLine" id="cb9-32" title="32"><span class="ex">***</span> on a NULL communicator</a>
+<a class="sourceLine" id="cb9-33" title="33"><span class="ex">***</span> MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,</a>
+<a class="sourceLine" id="cb9-34" title="34"><span class="ex">***</span>    and potentially your MPI job)</a>
+<a class="sourceLine" id="cb9-35" title="35">[<span class="ex">name.of.server</span>:202008] Local abort before MPI_INIT completed completed successfully, but am not able to aggregate error messages, and not able to guarantee that all other processes were killed!</a>
+<a class="sourceLine" id="cb9-36" title="36">[<span class="ex">name.of.server</span>:202001] PMIX ERROR: OUT-OF-RESOURCE in file gds_dstore.c at line 1178</a>
+<a class="sourceLine" id="cb9-37" title="37">[<span class="ex">name.of.server</span>:202001] PMIX ERROR: OUT-OF-RESOURCE in file gds_dstore.c at line 1313</a>
+<a class="sourceLine" id="cb9-38" title="38">[<span class="ex">name.of.server</span>:202001] PMIX ERROR: OUT-OF-RESOURCE in file gds_dstore.c at line 2331</a>
+<a class="sourceLine" id="cb9-39" title="39">[<span class="ex">name.of.server</span>:202001] PMIX ERROR: OUT-OF-RESOURCE in file gds_dstore.c at line 3148</a>
+<a class="sourceLine" id="cb9-40" title="40">[<span class="ex">name.of.server</span>:202001] PMIX ERROR: OUT-OF-RESOURCE in file gds_dstore.c at line 3180</a>
+<a class="sourceLine" id="cb9-41" title="41"><span class="ex">***</span> An error occurred in MPI_Init</a>
+<a class="sourceLine" id="cb9-42" title="42"><span class="ex">***</span> on a NULL communicator</a>
+<a class="sourceLine" id="cb9-43" title="43"><span class="ex">***</span> MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,</a>
+<a class="sourceLine" id="cb9-44" title="44"><span class="ex">***</span>    and potentially your MPI job)</a>
+<a class="sourceLine" id="cb9-45" title="45">[<span class="ex">name.of.server</span>:202001] PMIX ERROR: OUT-OF-RESOURCE in file server/pmix_server.c at line 2170</a>
+<a class="sourceLine" id="cb9-46" title="46">[<span class="ex">name.of.server</span>:202007] Local abort before MPI_INIT completed completed successfully, but am not able to aggregate error messages, and not able to guarantee that all other processes were killed!</a>
+<a class="sourceLine" id="cb9-47" title="47">[<span class="ex">name.of.server</span>:202009] PMIX ERROR: OUT-OF-RESOURCE in file client/pmix_client.c at line 223</a>
+<a class="sourceLine" id="cb9-48" title="48">[<span class="ex">name.of.server</span>:202009] OPAL ERROR: Error in file pmix2x_client.c at line 112</a>
+<a class="sourceLine" id="cb9-49" title="49"><span class="ex">***</span> An error occurred in MPI_Init</a>
+<a class="sourceLine" id="cb9-50" title="50"><span class="ex">***</span> on a NULL communicator</a>
+<a class="sourceLine" id="cb9-51" title="51"><span class="ex">***</span> MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,</a>
+<a class="sourceLine" id="cb9-52" title="52"><span class="ex">***</span>    and potentially your MPI job)</a>
+<a class="sourceLine" id="cb9-53" title="53">[<span class="ex">name.of.server</span>:202009] Local abort before MPI_INIT completed completed successfully, but am not able to aggregate error messages, and not able to guarantee that all other processes were killed!</a>
+<a class="sourceLine" id="cb9-54" title="54"><span class="ex">--------------------------------------------------------------------------</span></a>
+<a class="sourceLine" id="cb9-55" title="55"><span class="ex">Primary</span> job  terminated normally, but 1 process returned</a>
+<a class="sourceLine" id="cb9-56" title="56"><span class="ex">a</span> non-zero exit code. Per user-direction, the job has been aborted.</a>
+<a class="sourceLine" id="cb9-57" title="57"><span class="ex">--------------------------------------------------------------------------</span></a>
+<a class="sourceLine" id="cb9-58" title="58"><span class="ex">--------------------------------------------------------------------------</span></a>
+<a class="sourceLine" id="cb9-59" title="59"><span class="ex">mpirun</span> detected that one or more processes exited with non-zero status, thus causing</a>
+<a class="sourceLine" id="cb9-60" title="60"><span class="ex">the</span> job to be terminated. The first process to do so was:</a>
+<a class="sourceLine" id="cb9-61" title="61"></a>
+<a class="sourceLine" id="cb9-62" title="62">  <span class="ex">Process</span> name: [[46247,1],0]</a>
+<a class="sourceLine" id="cb9-63" title="63">  <span class="ex">Exit</span> code:    1</a>
+<a class="sourceLine" id="cb9-64" title="64"><span class="ex">--------------------------------------------------------------------------</span></a>
+<a class="sourceLine" id="cb9-65" title="65">[<span class="ex">watanabe@watanabe-login</span> ~]$ mpirun -np 2 ./a.out</a>
+<a class="sourceLine" id="cb9-66" title="66">[<span class="ex">name.of.server</span>:202103] PMIX ERROR: OUT-OF-RESOURCE in file gds_dstore.c at line 1178</a>
+<a class="sourceLine" id="cb9-67" title="67">[<span class="ex">name.of.server</span>:202103] PMIX ERROR: OUT-OF-RESOURCE in file gds_dstore.c at line 1313</a>
+<a class="sourceLine" id="cb9-68" title="68">[<span class="ex">name.of.server</span>:202103] PMIX ERROR: OUT-OF-RESOURCE in file gds_dstore.c at line 2331</a>
+<a class="sourceLine" id="cb9-69" title="69">[<span class="ex">name.of.server</span>:202103] PMIX ERROR: OUT-OF-RESOURCE in file gds_dstore.c at line 3148</a>
+<a class="sourceLine" id="cb9-70" title="70">[<span class="ex">name.of.server</span>:202103] PMIX ERROR: OUT-OF-RESOURCE in file gds_dstore.c at line 3180</a>
+<a class="sourceLine" id="cb9-71" title="71">[<span class="ex">name.of.server</span>:202103] PMIX ERROR: OUT-OF-RESOURCE in file server/pmix_server.c at line 2170</a>
+<a class="sourceLine" id="cb9-72" title="72">[<span class="ex">name.of.server</span>:202103] PMIX ERROR: OUT-OF-RESOURCE in file gds_dstore.c at line 1178</a>
+<a class="sourceLine" id="cb9-73" title="73">[<span class="ex">name.of.server</span>:202103] PMIX ERROR: OUT-OF-RESOURCE in file gds_dstore.c at line 1313</a>
+<a class="sourceLine" id="cb9-74" title="74">[<span class="ex">name.of.server</span>:202103] PMIX ERROR: OUT-OF-RESOURCE in file gds_dstore.c at line 2331</a>
+<a class="sourceLine" id="cb9-75" title="75">[<span class="ex">name.of.server</span>:202103] PMIX ERROR: OUT-OF-RESOURCE in file gds_dstore.c at line 3148</a>
+<a class="sourceLine" id="cb9-76" title="76">[<span class="ex">name.of.server</span>:202103] PMIX ERROR: OUT-OF-RESOURCE in file gds_dstore.c at line 3180</a>
+<a class="sourceLine" id="cb9-77" title="77">[<span class="ex">name.of.server</span>:202108] PMIX ERROR: OUT-OF-RESOURCE in file client/pmix_client.c at line 223</a>
+<a class="sourceLine" id="cb9-78" title="78">[<span class="ex">name.of.server</span>:202108] OPAL ERROR: Error in file pmix2x_client.c at line 112</a>
+<a class="sourceLine" id="cb9-79" title="79">[<span class="ex">name.of.server</span>:202103] PMIX ERROR: OUT-OF-RESOURCE in file server/pmix_server.c at line 2170</a>
+<a class="sourceLine" id="cb9-80" title="80">[<span class="ex">name.of.server</span>:202109] PMIX ERROR: OUT-OF-RESOURCE in file client/pmix_client.c at line 223</a></code></pre></div>
 <p>まず、エラーを出しているのがPMIXで、その実装はおそらく<a href="https://github.com/openpmix/openpmix">OpenPMIx</a>、これはProcess Management Interfaceらしい。</p>
 <p>ftraceを入れてみる。</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb7-1" title="1"><span class="fu">sudo</span> yum install -y trace-cmd</a></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb10-1" title="1"><span class="fu">sudo</span> yum install -y trace-cmd</a></code></pre></div>
 <p>ディスク容量が足りずに失敗し、それでディスクが一杯になっていることに気が付く。これが原因か。</p>
 <p>うーん、logwatchを入れるべきか。</p>
 <h2 id="月01日日"><a href="#01">08月01日(日)</a> <a id="01"></a></h2>
