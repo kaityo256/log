@@ -28,6 +28,31 @@
 <p>健康診断の予約したぞ。</p>
 <p>久しぶりに迷惑メールみたら、8月16日に友人から久しぶりに来てたメールが迷惑メールに振り分けられているのを発見。Gmailの迷惑メール判定、もう信頼できない(偽陽性が多すぎる)ので、数日に一度は見に行かないとダメだな……</p>
 <p>git rebaseの説明をZennに書いた。こうしてトピックごとにZennに書いて、思考を整理してから講義ノートにまとめていくスタイル。</p>
+<p>Linuxのコマンドグルーピングというものを知った。echoの結果とcatの結果を、この順番でファイルに落としたい。</p>
+<p>普通にやるなら中間ファイルが必要。</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1"><span class="bu">echo</span> <span class="st">&quot;Hoge&quot;</span> <span class="op">&gt;</span> head.txt</a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="fu">cat</span> head.txt tail.txt <span class="op">&gt;</span> total.txt</a></code></pre></div>
+<p>しかし、中括弧で囲むとこんなことができる。</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1">{<span class="ex">echo</span> <span class="st">&quot;Hoge&quot;</span><span class="kw">;</span> <span class="fu">cat</span> head.txt<span class="kw">;</span>} <span class="op">&gt;</span> <span class="ex">total.txt</span></a></code></pre></div>
+<p>これで、Gitのハッシュを調べることができる。こんなファイルを考える。</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode txt"><code class="sourceCode default"><a class="sourceLine" id="cb3-1" title="1">Hello Git!</a></code></pre></div>
+<p>Gitのハッシュを調べる。</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb4-1" title="1">$ <span class="fu">git</span> hash-object test.txt</a>
+<a class="sourceLine" id="cb4-2" title="2"><span class="ex">106287c47fd25ad9a0874670a0d5c6eacf1bfe4e</span></a></code></pre></div>
+<p>Gitのハッシュはsha1sumなのだが、このまま食わせると違うものになる。</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb5-1" title="1">$ <span class="ex">shasum</span> test.txt</a>
+<a class="sourceLine" id="cb5-2" title="2"><span class="ex">871fc2d049fbfab104eeca13c37ff938a1ffaf3d</span>  test.txt</a></code></pre></div>
+<p>これは、頭に<code>blob filesize\0</code>というヘッダがついているから。filesizeはファイルサイズ。<code>\0</code>はヌル文字。</p>
+<p>ファイルサイズを調べる。</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb6-1" title="1">$ <span class="fu">wc</span> -c <span class="op">&lt;</span> test.txt</a>
+<a class="sourceLine" id="cb6-2" title="2">      <span class="ex">11</span></a></code></pre></div>
+<p>11バイトなので、<code>blob 11\0</code>をヘッダとして追加し、それを<code>shasum</code>にかける。</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb7-1" title="1">$ <span class="kw">{</span> <span class="bu">echo</span> -en <span class="st">&#39;blob 11\0&#39;</span><span class="kw">;</span> <span class="fu">cat</span> test.txt<span class="kw">;</span> <span class="kw">}</span> <span class="kw">|</span> <span class="ex">shasum</span></a>
+<a class="sourceLine" id="cb7-2" title="2"><span class="ex">106287c47fd25ad9a0874670a0d5c6eacf1bfe4e</span>  -</a>
+<a class="sourceLine" id="cb7-3" title="3"></a>
+<a class="sourceLine" id="cb7-4" title="4">$ <span class="fu">git</span> hash-object test.txt</a>
+<a class="sourceLine" id="cb7-5" title="5"><span class="ex">106287c47fd25ad9a0874670a0d5c6eacf1bfe4e</span></a></code></pre></div>
+<p>よしよし、無事に一致した。</p>
           </article>
   </body>
 
