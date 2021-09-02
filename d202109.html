@@ -22,6 +22,69 @@
     <article class="markdown-body">
                         <h1 id="ログ">ログ</h1>
 <p><a href="index.html">ログ一覧</a></p>
+<h2 id="月02日木"><a href="#02">09月02日(木)</a> <a id="02"></a></h2>
+<p>Windowsのプリンター関連の「モニタリングツール」というのが入っているのだが、それがアップデートを要求してきた。何の気なしに「更新履歴」を見てみたら「社名変更」だけでずっこけてしまった。</p>
+<p>なんかBoxeditというアプリが常駐してて何かと思ったら、Box上のファイルをローカルで開くためのツールらしい。要するにローカルにダウンロードしたファイルを監視し、変更があったら裏でアップロードするツール。うーむ。</p>
+<p><a href="https://zenn.dev/wx257osn2/articles/rip_cxx_amp-ksaudhawigubweinfwklaeiuhfawelifh">C++ AMPの死について</a></p>
+<p>なんか、Intelの奴も死んでなかったっけ？</p>
+<p>思い出した、<a href="https://www.isus.jp/products/c-compilers/goodbye-cilk-plus-01/">Intel Cilk Plus</a>だ。</p>
+<p>研究室ミーティング。本読み輪講。一冊終わりそう。素晴らしい。</p>
+<p>Gitのハッシュがどうしても合わないと悩んでいたら、Vimが保存時に行末に改行コードを自動的に付与するという仕様のせいだった。しらなかった。</p>
+<p>Pro Gitのハッシュ値の計算をする例をPythonで書き直す。</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode py"><code class="sourceCode python"><a class="sourceLine" id="cb1-1" title="1"><span class="im">import</span> hashlib</a>
+<a class="sourceLine" id="cb1-2" title="2">content <span class="op">=</span> <span class="st">&quot;what is up, doc?&quot;</span></a>
+<a class="sourceLine" id="cb1-3" title="3">store <span class="op">=</span> <span class="ss">f&quot;blob </span><span class="sc">{</span><span class="bu">len</span>(content)<span class="sc">}</span><span class="ch">\0</span><span class="sc">{</span>content<span class="sc">}</span><span class="ss">&quot;</span>.encode(<span class="st">&quot;utf-8&quot;</span>)</a>
+<a class="sourceLine" id="cb1-4" title="4"><span class="bu">hash</span> <span class="op">=</span> hashlib.sha1(store).hexdigest()</a>
+<a class="sourceLine" id="cb1-5" title="5"><span class="bu">print</span>(<span class="bu">hash</span>) <span class="co">#=&gt; bd9dbf5aae1a3862dd1526723246b20206e5fc37    </span></a></code></pre></div>
+<p>できた。続き。</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode py"><code class="sourceCode python"><a class="sourceLine" id="cb2-1" title="1"><span class="im">import</span> zlib</a>
+<a class="sourceLine" id="cb2-2" title="2">data <span class="op">=</span> zlib.compress(store)</a>
+<a class="sourceLine" id="cb2-3" title="3"><span class="bu">print</span>(<span class="bu">bytes</span>.<span class="bu">hex</span>(data)) <span class="co">#=&gt; 789c4bcac94f5230346328cf482c51c82c56282dd05148c94fb607005f1c079d</span></a></code></pre></div>
+<p>こっちもできた。gitの作るオブジェクトと比べる。</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" title="1"><span class="fu">git</span> init</a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="bu">echo</span> -n <span class="st">&quot;what is up, doc?&quot;</span> <span class="op">&gt;</span> test.txt</a>
+<a class="sourceLine" id="cb3-3" title="3"><span class="fu">git</span> add test.txt </a></code></pre></div>
+<p>この時点で「bd9dbf5aae1a3862dd1526723246b20206e5fc37」というオブジェクトができて、中身が「789c4bcac94f5230346328cf482c51c82c56282dd05148c94fb607005f1c079d」になっているはず。</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb4-1" title="1">$ <span class="fu">od</span> -tx1 .git/objects/bd/9dbf5aae1a3862dd1526723246b20206e5fc37 </a>
+<a class="sourceLine" id="cb4-2" title="2"><span class="ex">0000000</span>    78  01  4b  ca  c9  4f  52  30  34  63  28  cf  48  2c  51  c8</a>
+<a class="sourceLine" id="cb4-3" title="3"><span class="ex">0000020</span>    2c  56  28  2d  d0  51  48  c9  4f  b6  07  00  5f  1c  07  9d</a>
+<a class="sourceLine" id="cb4-4" title="4"><span class="ex">0000040</span></a></code></pre></div>
+<p>なってますね。</p>
+<p>もう一度、`Hello Git!"でやりなおす。</p>
+<p>ハッシュ値が一致することを確認。</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb5-1" title="1">$ <span class="bu">echo</span> -n <span class="st">&#39;Hello Git!&#39;</span> <span class="op">&gt;</span> test.txt</a>
+<a class="sourceLine" id="cb5-2" title="2">$ <span class="fu">git</span> hash-object test.txt </a>
+<a class="sourceLine" id="cb5-3" title="3"><span class="ex">fdc3d3cd37c23aeb665aa995f395d9c6979bd508</span></a>
+<a class="sourceLine" id="cb5-4" title="4"></a>
+<a class="sourceLine" id="cb5-5" title="5">$ <span class="kw">{</span> <span class="bu">echo</span> -n <span class="st">&#39;blob 10\0&#39;</span><span class="kw">;</span><span class="fu">cat</span> test.txt<span class="kw">}</span> <span class="kw">|</span> <span class="ex">shasum</span> </a>
+<a class="sourceLine" id="cb5-6" title="6"><span class="ex">fdc3d3cd37c23aeb665aa995f395d9c6979bd508</span>  -</a></code></pre></div>
+<p>中身が一致することを確認。</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb6-1" title="1">$ <span class="fu">git</span> init</a>
+<a class="sourceLine" id="cb6-2" title="2">$ <span class="fu">git</span> add test.txt</a>
+<a class="sourceLine" id="cb6-3" title="3">$ <span class="fu">od</span> -tx1 .git/objects/fd/c3d3cd37c23aeb665aa995f395d9c6979bd508</a>
+<a class="sourceLine" id="cb6-4" title="4"><span class="ex">0000000</span>    78  01  4b  ca  c9  4f  52  30  34  60  f0  48  cd  c9  c9  57</a>
+<a class="sourceLine" id="cb6-5" title="5"><span class="ex">0000020</span>    70  cf  2c  51  04  00  34  98  05  7a                        </a>
+<a class="sourceLine" id="cb6-6" title="6"><span class="ex">0000032</span></a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode py"><code class="sourceCode python"><a class="sourceLine" id="cb7-1" title="1"><span class="im">import</span> zlib</a>
+<a class="sourceLine" id="cb7-2" title="2">content <span class="op">=</span> <span class="st">&quot;Hello Git!&quot;</span></a>
+<a class="sourceLine" id="cb7-3" title="3">store <span class="op">=</span> <span class="ss">f&quot;blob </span><span class="sc">{</span><span class="bu">len</span>(content)<span class="sc">}</span><span class="ch">\0</span><span class="sc">{</span>content<span class="sc">}</span><span class="ss">&quot;</span>.encode(<span class="st">&quot;utf-8&quot;</span>)</a>
+<a class="sourceLine" id="cb7-4" title="4">data <span class="op">=</span> zlib.compress(store)</a>
+<a class="sourceLine" id="cb7-5" title="5"><span class="bu">print</span>(<span class="bu">bytes</span>.<span class="bu">hex</span>(data))</a></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb8-1" title="1">$ <span class="ex">python3</span> test.py</a>
+<a class="sourceLine" id="cb8-2" title="2"><span class="ex">789c4bcac94f52303460f048cdc9c95770cf2c5104003498057a</span></a></code></pre></div>
+<p>一致していますね。めでたい。これでGit内部についてはおしまいかな。</p>
+<p>Gitのblobは<code>binary large object</code>の略らしい。ほんとか？</p>
+<p>少なくとも<a href="https://docs.github.com/en/rest/reference/git#blobs">GitHubはそう言っている</a>と。</p>
+<p>Gitのコミットオブジェクトは</p>
+<ul>
+<li>スナップショット全体を保存するtreeオブジェクト</li>
+<li>親コミット</li>
+<li>著者やメールアドレス</li>
+<li>コミットメッセージ</li>
+</ul>
+<p>を含んでいる。</p>
+<p>スナップショットを保存するtreeオブジェクトは、ワーキングツリーのファイルとディレクトリを保存している。ディレクトリはtree、ファイルはblobオブジェクトとして保存。blobオブジェクトはファイル名を保存しておらず、blobとファイル名を結びつけるのはtree。したがって、同じ内容で異なるファイル名を持つファイルがワーキングツリーにある場合、blobオブジェクトは一つになり、treeオブジェクトが二つのファイルとして認識する。</p>
+<p>よし、Gitの内部状態についてはもうだいたい理解したな。</p>
 <h2 id="月01日水"><a href="#01">09月01日(水)</a> <a id="01"></a></h2>
 <p>9月になってしまった。</p>
 <p>科研費の独立基盤形成の書類を一つ提出。これであとひとつのはず。</p>
@@ -30,28 +93,28 @@
 <p>git rebaseの説明をZennに書いた。こうしてトピックごとにZennに書いて、思考を整理してから講義ノートにまとめていくスタイル。</p>
 <p>Linuxのコマンドグルーピングというものを知った。echoの結果とcatの結果を、この順番でファイルに落としたい。</p>
 <p>普通にやるなら中間ファイルが必要。</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1"><span class="bu">echo</span> <span class="st">&quot;Hoge&quot;</span> <span class="op">&gt;</span> head.txt</a>
-<a class="sourceLine" id="cb1-2" title="2"><span class="fu">cat</span> head.txt tail.txt <span class="op">&gt;</span> total.txt</a></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb9-1" title="1"><span class="bu">echo</span> <span class="st">&quot;Hoge&quot;</span> <span class="op">&gt;</span> head.txt</a>
+<a class="sourceLine" id="cb9-2" title="2"><span class="fu">cat</span> head.txt tail.txt <span class="op">&gt;</span> total.txt</a></code></pre></div>
 <p>しかし、中括弧で囲むとこんなことができる。</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1">{<span class="ex">echo</span> <span class="st">&quot;Hoge&quot;</span><span class="kw">;</span> <span class="fu">cat</span> head.txt<span class="kw">;</span>} <span class="op">&gt;</span> <span class="ex">total.txt</span></a></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb10-1" title="1">{<span class="ex">echo</span> <span class="st">&quot;Hoge&quot;</span><span class="kw">;</span> <span class="fu">cat</span> tail.txt<span class="kw">;</span>} <span class="op">&gt;</span> <span class="ex">total.txt</span></a></code></pre></div>
 <p>これで、Gitのハッシュを調べることができる。こんなファイルを考える。</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode txt"><code class="sourceCode default"><a class="sourceLine" id="cb3-1" title="1">Hello Git!</a></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode txt"><code class="sourceCode default"><a class="sourceLine" id="cb11-1" title="1">Hello Git!</a></code></pre></div>
 <p>Gitのハッシュを調べる。</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb4-1" title="1">$ <span class="fu">git</span> hash-object test.txt</a>
-<a class="sourceLine" id="cb4-2" title="2"><span class="ex">106287c47fd25ad9a0874670a0d5c6eacf1bfe4e</span></a></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb12-1" title="1">$ <span class="fu">git</span> hash-object test.txt</a>
+<a class="sourceLine" id="cb12-2" title="2"><span class="ex">106287c47fd25ad9a0874670a0d5c6eacf1bfe4e</span></a></code></pre></div>
 <p>Gitのハッシュはsha1sumなのだが、このまま食わせると違うものになる。</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb5-1" title="1">$ <span class="ex">shasum</span> test.txt</a>
-<a class="sourceLine" id="cb5-2" title="2"><span class="ex">871fc2d049fbfab104eeca13c37ff938a1ffaf3d</span>  test.txt</a></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb13-1" title="1">$ <span class="ex">shasum</span> test.txt</a>
+<a class="sourceLine" id="cb13-2" title="2"><span class="ex">871fc2d049fbfab104eeca13c37ff938a1ffaf3d</span>  test.txt</a></code></pre></div>
 <p>これは、頭に<code>blob filesize\0</code>というヘッダがついているから。filesizeはファイルサイズ。<code>\0</code>はヌル文字。</p>
 <p>ファイルサイズを調べる。</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb6-1" title="1">$ <span class="fu">wc</span> -c <span class="op">&lt;</span> test.txt</a>
-<a class="sourceLine" id="cb6-2" title="2">      <span class="ex">11</span></a></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb14-1" title="1">$ <span class="fu">wc</span> -c <span class="op">&lt;</span> test.txt</a>
+<a class="sourceLine" id="cb14-2" title="2">      <span class="ex">11</span></a></code></pre></div>
 <p>11バイトなので、<code>blob 11\0</code>をヘッダとして追加し、それを<code>shasum</code>にかける。</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb7-1" title="1">$ <span class="kw">{</span> <span class="bu">echo</span> -en <span class="st">&#39;blob 11\0&#39;</span><span class="kw">;</span> <span class="fu">cat</span> test.txt<span class="kw">;</span> <span class="kw">}</span> <span class="kw">|</span> <span class="ex">shasum</span></a>
-<a class="sourceLine" id="cb7-2" title="2"><span class="ex">106287c47fd25ad9a0874670a0d5c6eacf1bfe4e</span>  -</a>
-<a class="sourceLine" id="cb7-3" title="3"></a>
-<a class="sourceLine" id="cb7-4" title="4">$ <span class="fu">git</span> hash-object test.txt</a>
-<a class="sourceLine" id="cb7-5" title="5"><span class="ex">106287c47fd25ad9a0874670a0d5c6eacf1bfe4e</span></a></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb15-1" title="1">$ <span class="kw">{</span> <span class="bu">echo</span> -en <span class="st">&#39;blob 11\0&#39;</span><span class="kw">;</span> <span class="fu">cat</span> test.txt<span class="kw">;</span> <span class="kw">}</span> <span class="kw">|</span> <span class="ex">shasum</span></a>
+<a class="sourceLine" id="cb15-2" title="2"><span class="ex">106287c47fd25ad9a0874670a0d5c6eacf1bfe4e</span>  -</a>
+<a class="sourceLine" id="cb15-3" title="3"></a>
+<a class="sourceLine" id="cb15-4" title="4">$ <span class="fu">git</span> hash-object test.txt</a>
+<a class="sourceLine" id="cb15-5" title="5"><span class="ex">106287c47fd25ad9a0874670a0d5c6eacf1bfe4e</span></a></code></pre></div>
 <p>よしよし、無事に一致した。</p>
           </article>
   </body>
