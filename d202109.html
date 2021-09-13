@@ -22,6 +22,10 @@
     <article class="markdown-body">
                         <h1 id="ログ">ログ</h1>
 <p><a href="index.html">ログ一覧</a></p>
+<h2 id="月13日月"><a href="#13">09月13日(月)</a> <a id="13"></a></h2>
+<p>いろいろ忙しい。学会発表来週か。いつスライド作るんだ？</p>
+<p>10月1日までには、最低でも2つ講義ビデオを録画しておかないといけない。10月5日までにプログラミング基礎同演習の講義を最低1つ、できれば2つ録画しておきたい。</p>
+<p>わりとスケジュール破綻してない？とにかくGitHub演習の講義作らないといろいろ進まないぞ。</p>
 <h2 id="月12日日"><a href="#12">09月12日(日)</a> <a id="12"></a></h2>
 <p>講義の準備がほとんとできず。子供の相手をして疲れた。体が重い。</p>
 <h2 id="月11日土"><a href="#11">09月11日(土)</a> <a id="11"></a></h2>
@@ -100,7 +104,7 @@
 <div class="sourceCode" id="cb23"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb23-1" title="1">$ <span class="fu">pidof</span> systemd</a>
 <a class="sourceLine" id="cb23-2" title="2"><span class="ex">262</span></a></code></pre></div>
 <p>うん、一つになった。snapにログインする。</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb24-1" title="1">$ <span class="bu">exec</span> sudo nsenter -t <span class="va">$(</span><span class="fu">pidof</span> systemd<span class="va">)</span> -a su - <span class="va">$LOGNAME</span></a></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb24-1" title="1"><span class="bu">exec</span> sudo nsenter -t <span class="va">$(</span><span class="fu">pidof</span> systemd<span class="va">)</span> -a su - <span class="va">$LOGNAME</span></a></code></pre></div>
 <p>できた。</p>
 <div class="sourceCode" id="cb25"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb25-1" title="1">$ <span class="ex">snap</span> list</a>
 <a class="sourceLine" id="cb25-2" title="2"><span class="ex">Name</span>    Version   Rev    Tracking       Publisher   Notes</a>
@@ -119,6 +123,8 @@
 <a class="sourceLine" id="cb28-5" title="5"><span class="ex">This</span> is free software<span class="kw">;</span> <span class="ex">see</span> the source code for copying conditions. There is</a>
 <a class="sourceLine" id="cb28-6" title="6"><span class="ex">NO</span> warranty, not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.</a></code></pre></div>
 <p>無事に入ったぞ。よかった。</p>
+<p><a href="https://qiita.com/matarillo/items/f036a9561a4839275e5f">WLS2のUbuntuでsystemdを使う</a>。</p>
+<p>unshareにより、隔離された名前空間でデーモンとなるので、nsenterでその中に入る。</p>
 <h2 id="月08日水"><a href="#08">09月08日(水)</a> <a id="08"></a></h2>
 <p>WSL2のUbuntuでpdftkを使いたい。そのためにはsnapが必要。しかし、WSL2のUbuntuではsnapdが走っていない。走らせるには<a href="https://github.com/microsoft/WSL/issues/5126#issuecomment-653715201">以下のようにすれば良いらしい</a>。</p>
 <div class="sourceCode" id="cb29"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb29-1" title="1"><span class="fu">sudo</span> apt-get update <span class="kw">&amp;&amp;</span> <span class="fu">sudo</span> apt-get install -yqq daemonize dbus-user-session fontconfig</a>
