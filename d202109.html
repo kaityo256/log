@@ -22,6 +22,48 @@
     <article class="markdown-body">
                         <h1 id="ログ">ログ</h1>
 <p><a href="index.html">ログ一覧</a></p>
+<h2 id="月21日火"><a href="#21">09月21日(火)</a> <a id="21"></a></h2>
+<p>学会発表。久しぶりだ。</p>
+<p>座長。つつがなく。</p>
+<p>なんかMacのアップデートをして、macOS Big Sur 11.6にしたら、Cisco系のアプリケーションが全てマルウェアとして判定されるように。うまくアンインストールもできない。以下の様に、ターミナルからsuduで消したらうまくいった。</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1"><span class="fu">sudo</span> /opt/cisco/anyconnect/bin/vpn_uninstall.sh</a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="fu">sudo</span> /opt/cisco/anyconnect/bin/dart_uninstall.sh </a>
+<a class="sourceLine" id="cb1-3" title="3"><span class="fu">sudo</span> /opt/cisco/anyconnect/bin/websecurity_uninstall.sh</a>
+<a class="sourceLine" id="cb1-4" title="4"><span class="fu">sudo</span> /opt/cisco/anyconnect/bin/amp_uninstall.sh</a>
+<a class="sourceLine" id="cb1-5" title="5"><span class="fu">sudo</span> /opt/cisco/anyconnect/bin/nvm_uninstall.sh</a>
+<a class="sourceLine" id="cb1-6" title="6"><span class="fu">sudo</span> /opt/cisco/anyconnect/bin/umbrella_uninstall.sh</a>
+<a class="sourceLine" id="cb1-7" title="7"><span class="fu">sudo</span> /opt/cisco/anyconnect/bin/iseposture_uninstall.sh</a>
+<a class="sourceLine" id="cb1-8" title="8"><span class="fu">sudo</span> /opt/cisco/hostscan/bin64/csd_uninstall.sh</a></code></pre></div>
+<p>root権限が無いところに、Zshをソースから入れる。</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1"><span class="fu">mkdir</span> build</a>
+<a class="sourceLine" id="cb2-2" title="2"><span class="bu">cd</span> build</a>
+<a class="sourceLine" id="cb2-3" title="3"><span class="fu">wget</span> ftp://ftp.gnu.org/gnu/ncurses/ncurses-6.1.tar.gz</a>
+<a class="sourceLine" id="cb2-4" title="4"><span class="fu">tar</span> xf ncurses-6.1.tar.gz</a>
+<a class="sourceLine" id="cb2-5" title="5"><span class="bu">cd</span> ncurses-6.1</a>
+<a class="sourceLine" id="cb2-6" title="6"><span class="ex">./configure</span> --prefix=<span class="va">$HOME</span>/local CXXFLAGS=<span class="st">&quot;-fPIC&quot;</span> CFLAGS=<span class="st">&quot;-fPIC&quot;</span></a>
+<a class="sourceLine" id="cb2-7" title="7"><span class="fu">make</span> -j <span class="kw">&amp;&amp;</span> <span class="fu">make</span> install</a>
+<a class="sourceLine" id="cb2-8" title="8"><span class="bu">cd</span> ..</a>
+<a class="sourceLine" id="cb2-9" title="9"></a>
+<a class="sourceLine" id="cb2-10" title="10"><span class="va">ZSH_SRC_NAME=$HOME</span>/packages/zsh.tar.xz</a>
+<a class="sourceLine" id="cb2-11" title="11"><span class="va">ZSH_PACK_DIR=$HOME</span>/packages/zsh</a>
+<a class="sourceLine" id="cb2-12" title="12"><span class="va">ZSH_LINK=</span><span class="st">&quot;https://sourceforge.net/projects/zsh/files/latest/download&quot;</span></a>
+<a class="sourceLine" id="cb2-13" title="13"></a>
+<a class="sourceLine" id="cb2-14" title="14"><span class="kw">if [[</span> <span class="ot">!</span> <span class="ot">-d</span> <span class="st">&quot;</span><span class="va">$ZSH_PACK_DIR</span><span class="st">&quot;</span><span class="kw"> ]]</span>; <span class="kw">then</span></a>
+<a class="sourceLine" id="cb2-15" title="15">    <span class="bu">echo</span> <span class="st">&quot;Creating zsh directory under packages directory&quot;</span></a>
+<a class="sourceLine" id="cb2-16" title="16">    <span class="fu">mkdir</span> -p <span class="st">&quot;</span><span class="va">$ZSH_PACK_DIR</span><span class="st">&quot;</span></a>
+<a class="sourceLine" id="cb2-17" title="17"><span class="kw">fi</span></a>
+<a class="sourceLine" id="cb2-18" title="18"></a>
+<a class="sourceLine" id="cb2-19" title="19"><span class="kw">if [[</span> <span class="ot">!</span> <span class="ot">-f</span> <span class="va">$ZSH_SRC_NAME</span><span class="kw"> ]]</span>; <span class="kw">then</span></a>
+<a class="sourceLine" id="cb2-20" title="20">    <span class="ex">curl</span> -Lo <span class="st">&quot;</span><span class="va">$ZSH_SRC_NAME</span><span class="st">&quot;</span> <span class="st">&quot;</span><span class="va">$ZSH_LINK</span><span class="st">&quot;</span></a>
+<a class="sourceLine" id="cb2-21" title="21"><span class="kw">fi</span></a>
+<a class="sourceLine" id="cb2-22" title="22"></a>
+<a class="sourceLine" id="cb2-23" title="23"><span class="fu">tar</span> xJvf <span class="st">&quot;</span><span class="va">$ZSH_SRC_NAME</span><span class="st">&quot;</span> -C <span class="st">&quot;</span><span class="va">$ZSH_PACK_DIR</span><span class="st">&quot;</span> --strip-components 1</a>
+<a class="sourceLine" id="cb2-24" title="24"><span class="bu">cd</span> <span class="st">&quot;</span><span class="va">$ZSH_PACK_DIR</span><span class="st">&quot;</span></a>
+<a class="sourceLine" id="cb2-25" title="25"></a>
+<a class="sourceLine" id="cb2-26" title="26"><span class="ex">./configure</span> --prefix=<span class="st">&quot;</span><span class="va">$HOME</span><span class="st">/local&quot;</span> \</a>
+<a class="sourceLine" id="cb2-27" title="27">    CPPFLAGS=<span class="st">&quot;-I</span><span class="va">$HOME</span><span class="st">/local/include&quot;</span> \</a>
+<a class="sourceLine" id="cb2-28" title="28">    LDFLAGS=<span class="st">&quot;-L</span><span class="va">$HOME</span><span class="st">/local/lib&quot;</span></a>
+<a class="sourceLine" id="cb2-29" title="29"><span class="fu">make</span> -j <span class="kw">&amp;&amp;</span> <span class="fu">make</span> install</a></code></pre></div>
 <h2 id="月20日月"><a href="#20">09月20日(月)</a> <a id="20"></a></h2>
 <p>GBドラキュラ伝説2のドラキュラ城後半のBGM、ドビュッシーの「パスピエ」という曲だということを初めて知った。ソレイユとのボス戦がクラシックだろうな、とは思ってた(バッハだそうだ)が、そっちは予想外。</p>
 <p>GitHub演習パート、あと少しちょっと・・・。</p>
@@ -31,195 +73,196 @@
 <p>Git/GitHub演習、「Gitの操作(応用編)」あらかた書いた。</p>
 <h2 id="月17日金"><a href="#17">09月17日(金)</a> <a id="17"></a></h2>
 <p>ISSP ohtakaでTensorFlow。</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1"><span class="fu">mkdir</span> tftest</a>
-<a class="sourceLine" id="cb1-2" title="2"><span class="bu">cd</span> tftest</a>
-<a class="sourceLine" id="cb1-3" title="3"><span class="ex">python3</span> -m venv tf</a>
-<a class="sourceLine" id="cb1-4" title="4"><span class="bu">source</span> tf/bin/activate</a>
-<a class="sourceLine" id="cb1-5" title="5"><span class="ex">python3</span> -m pip install --upgrade pip</a>
-<a class="sourceLine" id="cb1-6" title="6"><span class="ex">python3</span> -m pip install tensorflow tensorflowjs</a>
-<a class="sourceLine" id="cb1-7" title="7"><span class="ex">python3</span> -m pip install ipython</a></code></pre></div>
-<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1"><span class="fu">git</span> clone git@github.com:kaityo256/fashion_mnist_check.git</a>
-<a class="sourceLine" id="cb2-2" title="2"><span class="bu">cd</span> fashion_mnist_check</a>
-<a class="sourceLine" id="cb2-3" title="3"><span class="ex">python3</span> -m venv tf</a>
-<a class="sourceLine" id="cb2-4" title="4"><span class="bu">source</span> tf/bin/activate</a>
-<a class="sourceLine" id="cb2-5" title="5"><span class="ex">python3</span> -m pip install --upgrade pip</a>
-<a class="sourceLine" id="cb2-6" title="6"><span class="ex">python3</span> -m pip install tensorflow tensorflowjs</a>
-<a class="sourceLine" id="cb2-7" title="7"><span class="ex">python3</span> train.py</a>
-<a class="sourceLine" id="cb2-8" title="8"><span class="ex">python3</span> export.py</a></code></pre></div>
-<p>ここまで動いた。</p>
-<p>ローカルでの確認。</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" title="1"><span class="fu">git</span> clone https://github.com/kaityo256/fashion_mnist_check.git</a>
-<a class="sourceLine" id="cb3-2" title="2"><span class="bu">cd</span> fashion_mnist_check</a>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" title="1"><span class="fu">mkdir</span> tftest</a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="bu">cd</span> tftest</a>
 <a class="sourceLine" id="cb3-3" title="3"><span class="ex">python3</span> -m venv tf</a>
 <a class="sourceLine" id="cb3-4" title="4"><span class="bu">source</span> tf/bin/activate</a>
 <a class="sourceLine" id="cb3-5" title="5"><span class="ex">python3</span> -m pip install --upgrade pip</a>
 <a class="sourceLine" id="cb3-6" title="6"><span class="ex">python3</span> -m pip install tensorflow tensorflowjs</a>
-<a class="sourceLine" id="cb3-7" title="7"><span class="ex">python3</span> train.py</a>
-<a class="sourceLine" id="cb3-8" title="8"><span class="ex">python3</span> export.py</a></code></pre></div>
-<p>バッチ処理の確認。</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb4-1" title="1"><span class="co">#!/bin/sh</span></a>
-<a class="sourceLine" id="cb4-2" title="2"><span class="co">#SBATCH -p i8cpu</span></a>
-<a class="sourceLine" id="cb4-3" title="3"><span class="co">#SBATCH -N 1</span></a>
-<a class="sourceLine" id="cb4-4" title="4"><span class="co">#SBATCH -n 1</span></a>
-<a class="sourceLine" id="cb4-5" title="5"></a>
-<a class="sourceLine" id="cb4-6" title="6"><span class="bu">source</span> tf/bin/activate</a>
+<a class="sourceLine" id="cb3-7" title="7"><span class="ex">python3</span> -m pip install ipython</a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb4-1" title="1"><span class="fu">git</span> clone git@github.com:kaityo256/fashion_mnist_check.git</a>
+<a class="sourceLine" id="cb4-2" title="2"><span class="bu">cd</span> fashion_mnist_check</a>
+<a class="sourceLine" id="cb4-3" title="3"><span class="ex">python3</span> -m venv tf</a>
+<a class="sourceLine" id="cb4-4" title="4"><span class="bu">source</span> tf/bin/activate</a>
+<a class="sourceLine" id="cb4-5" title="5"><span class="ex">python3</span> -m pip install --upgrade pip</a>
+<a class="sourceLine" id="cb4-6" title="6"><span class="ex">python3</span> -m pip install tensorflow tensorflowjs</a>
 <a class="sourceLine" id="cb4-7" title="7"><span class="ex">python3</span> train.py</a>
 <a class="sourceLine" id="cb4-8" title="8"><span class="ex">python3</span> export.py</a></code></pre></div>
-<div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb5-1" title="1"><span class="ex">sbatch</span> test.sh</a></code></pre></div>
+<p>ここまで動いた。</p>
+<p>ローカルでの確認。</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb5-1" title="1"><span class="fu">git</span> clone https://github.com/kaityo256/fashion_mnist_check.git</a>
+<a class="sourceLine" id="cb5-2" title="2"><span class="bu">cd</span> fashion_mnist_check</a>
+<a class="sourceLine" id="cb5-3" title="3"><span class="ex">python3</span> -m venv tf</a>
+<a class="sourceLine" id="cb5-4" title="4"><span class="bu">source</span> tf/bin/activate</a>
+<a class="sourceLine" id="cb5-5" title="5"><span class="ex">python3</span> -m pip install --upgrade pip</a>
+<a class="sourceLine" id="cb5-6" title="6"><span class="ex">python3</span> -m pip install tensorflow tensorflowjs</a>
+<a class="sourceLine" id="cb5-7" title="7"><span class="ex">python3</span> train.py</a>
+<a class="sourceLine" id="cb5-8" title="8"><span class="ex">python3</span> export.py</a></code></pre></div>
+<p>バッチ処理の確認。</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb6-1" title="1"><span class="co">#!/bin/sh</span></a>
+<a class="sourceLine" id="cb6-2" title="2"><span class="co">#SBATCH -p i8cpu</span></a>
+<a class="sourceLine" id="cb6-3" title="3"><span class="co">#SBATCH -N 1</span></a>
+<a class="sourceLine" id="cb6-4" title="4"><span class="co">#SBATCH -n 1</span></a>
+<a class="sourceLine" id="cb6-5" title="5"></a>
+<a class="sourceLine" id="cb6-6" title="6"><span class="bu">source</span> tf/bin/activate</a>
+<a class="sourceLine" id="cb6-7" title="7"><span class="ex">python3</span> train.py</a>
+<a class="sourceLine" id="cb6-8" title="8"><span class="ex">python3</span> export.py</a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb7-1" title="1"><span class="ex">sbatch</span> test.sh</a></code></pre></div>
 <p>問題なく実行できた。</p>
 <p>WSL2のGitのバージョンが古くて(2.25.1)デフォルトブランチを変更できないのでバージョンアップする。</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb6-1" title="1">$ <span class="fu">sudo</span> add-apt-repository ppa:git-core/ppa</a>
-<a class="sourceLine" id="cb6-2" title="2">$ <span class="fu">sudo</span> apt update</a>
-<a class="sourceLine" id="cb6-3" title="3">$ <span class="fu">sudo</span> apt upgrade</a>
-<a class="sourceLine" id="cb6-4" title="4">$ <span class="fu">git</span> --version</a>
-<a class="sourceLine" id="cb6-5" title="5"><span class="fu">git</span> version 2.33.0</a></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb8-1" title="1">$ <span class="fu">sudo</span> add-apt-repository ppa:git-core/ppa</a>
+<a class="sourceLine" id="cb8-2" title="2">$ <span class="fu">sudo</span> apt update</a>
+<a class="sourceLine" id="cb8-3" title="3">$ <span class="fu">sudo</span> apt upgrade</a>
+<a class="sourceLine" id="cb8-4" title="4">$ <span class="fu">git</span> --version</a>
+<a class="sourceLine" id="cb8-5" title="5"><span class="fu">git</span> version 2.33.0</a></code></pre></div>
 <p>できたできた。</p>
+<p>学会スライド作った。</p>
 <h2 id="月16日木"><a href="#16">09月16日(木)</a> <a id="16"></a></h2>
 <p>研究室ミーティング。</p>
 <p>VS CodeのWorkspaceの信頼がどうたらというもの。とりあえずオフる。設定で<code>workspace</code>で検索して「Security › Workspace › Trust:」をオフれば良い。</p>
 <h2 id="月15日水"><a href="#15">09月15日(水)</a> <a id="15"></a></h2>
 <p>断固今日中に座学を終わらせないと絶対にヤバい。</p>
 <p>GitでfetchとpushのURLを変える。まず、リモート二つとローカル一つを作る</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb7-1" title="1"><span class="fu">git</span> init --bare test1.git</a>
-<a class="sourceLine" id="cb7-2" title="2"><span class="fu">git</span> init --bare test2.git</a>
-<a class="sourceLine" id="cb7-3" title="3"><span class="fu">git</span> init test</a></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb9-1" title="1"><span class="fu">git</span> init --bare test1.git</a>
+<a class="sourceLine" id="cb9-2" title="2"><span class="fu">git</span> init --bare test2.git</a>
+<a class="sourceLine" id="cb9-3" title="3"><span class="fu">git</span> init test</a></code></pre></div>
 <p>testでリモートを追加する。</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb8-1" title="1"><span class="bu">cd</span> test</a>
-<a class="sourceLine" id="cb8-2" title="2"><span class="fu">git</span> remote add origin ../test.git</a></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb10-1" title="1"><span class="bu">cd</span> test</a>
+<a class="sourceLine" id="cb10-2" title="2"><span class="fu">git</span> remote add origin ../test.git</a></code></pre></div>
 <p>fetchもpushも同じURLになる。</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb9-1" title="1">$ <span class="fu">git</span> remote -v</a>
-<a class="sourceLine" id="cb9-2" title="2"><span class="ex">origin</span>  ../test.git (fetch)</a>
-<a class="sourceLine" id="cb9-3" title="3"><span class="ex">origin</span>  ../test.git (push)</a></code></pre></div>
-<p>originという名前で、プッシュだけ別の場所にする。</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb10-1" title="1"><span class="fu">git</span> remote set-url --push origin ../test2.git</a></code></pre></div>
 <div class="sourceCode" id="cb11"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb11-1" title="1">$ <span class="fu">git</span> remote -v</a>
 <a class="sourceLine" id="cb11-2" title="2"><span class="ex">origin</span>  ../test.git (fetch)</a>
-<a class="sourceLine" id="cb11-3" title="3"><span class="ex">origin</span>  ../test2.git (push)</a></code></pre></div>
+<a class="sourceLine" id="cb11-3" title="3"><span class="ex">origin</span>  ../test.git (push)</a></code></pre></div>
+<p>originという名前で、プッシュだけ別の場所にする。</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb12-1" title="1"><span class="fu">git</span> remote set-url --push origin ../test2.git</a></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb13-1" title="1">$ <span class="fu">git</span> remote -v</a>
+<a class="sourceLine" id="cb13-2" title="2"><span class="ex">origin</span>  ../test.git (fetch)</a>
+<a class="sourceLine" id="cb13-3" title="3"><span class="ex">origin</span>  ../test2.git (push)</a></code></pre></div>
 <p>同じ名前でfetchとpushが別のURLになった。</p>
 <p>リモートを追加し、上流ブランチを設定せずにpush。</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb12-1" title="1"><span class="fu">git</span> push origin main</a></code></pre></div>
-<div class="sourceCode" id="cb13"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb13-1" title="1">$ <span class="fu">git</span> branch -vva</a>
-<a class="sourceLine" id="cb13-2" title="2"><span class="ex">*</span> main                90bdb0e initial commit</a>
-<a class="sourceLine" id="cb13-3" title="3">  <span class="ex">remotes/origin/main</span> 90bdb0e initial commit</a>
-<a class="sourceLine" id="cb13-4" title="4"></a>
-<a class="sourceLine" id="cb13-5" title="5">$ <span class="fu">git</span> status -b</a>
-<a class="sourceLine" id="cb13-6" title="6">ブランチ <span class="ex">master</span></a>
-<a class="sourceLine" id="cb13-7" title="7"><span class="ex">nothing</span> to commit, working tree clean</a>
-<a class="sourceLine" id="cb13-8" title="8"></a>
-<a class="sourceLine" id="cb13-9" title="9">$ <span class="fu">git</span> status -sb</a>
-<a class="sourceLine" id="cb13-10" title="10"><span class="co">## main</span></a></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb14-1" title="1"><span class="fu">git</span> push origin main</a></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb15-1" title="1">$ <span class="fu">git</span> branch -vva</a>
+<a class="sourceLine" id="cb15-2" title="2"><span class="ex">*</span> main                90bdb0e initial commit</a>
+<a class="sourceLine" id="cb15-3" title="3">  <span class="ex">remotes/origin/main</span> 90bdb0e initial commit</a>
+<a class="sourceLine" id="cb15-4" title="4"></a>
+<a class="sourceLine" id="cb15-5" title="5">$ <span class="fu">git</span> status -b</a>
+<a class="sourceLine" id="cb15-6" title="6">ブランチ <span class="ex">master</span></a>
+<a class="sourceLine" id="cb15-7" title="7"><span class="ex">nothing</span> to commit, working tree clean</a>
+<a class="sourceLine" id="cb15-8" title="8"></a>
+<a class="sourceLine" id="cb15-9" title="9">$ <span class="fu">git</span> status -sb</a>
+<a class="sourceLine" id="cb15-10" title="10"><span class="co">## main</span></a></code></pre></div>
 <p>上流ブランチを設定してもう一度。</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb14-1" title="1">$ <span class="fu">git</span> branch -u origin/main</a>
-<a class="sourceLine" id="cb14-2" title="2"><span class="ex">Branch</span> <span class="st">&#39;main&#39;</span> set up to track remote branch <span class="st">&#39;main&#39;</span> from <span class="st">&#39;origin&#39;</span>.</a>
-<a class="sourceLine" id="cb14-3" title="3"></a>
-<a class="sourceLine" id="cb14-4" title="4">$ <span class="fu">git</span> branch -vva</a>
-<a class="sourceLine" id="cb14-5" title="5"><span class="ex">*</span> main                90bdb0e [origin/main] initial commit</a>
-<a class="sourceLine" id="cb14-6" title="6">  <span class="ex">remotes/origin/main</span> 90bdb0e initial commit</a>
-<a class="sourceLine" id="cb14-7" title="7"></a>
-<a class="sourceLine" id="cb14-8" title="8">$ <span class="fu">git</span> status -b</a>
-<a class="sourceLine" id="cb14-9" title="9">ブランチ <span class="ex">main</span></a>
-<a class="sourceLine" id="cb14-10" title="10"><span class="ex">Your</span> branch is up to date with <span class="st">&#39;origin/main&#39;</span>.</a>
-<a class="sourceLine" id="cb14-11" title="11"></a>
-<a class="sourceLine" id="cb14-12" title="12"><span class="ex">nothing</span> to commit, working tree clean</a>
-<a class="sourceLine" id="cb14-13" title="13"></a>
-<a class="sourceLine" id="cb14-14" title="14">$ <span class="fu">git</span> status -sb</a>
-<a class="sourceLine" id="cb14-15" title="15"><span class="co">## main...origin/main</span></a></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb16-1" title="1">$ <span class="fu">git</span> branch -u origin/main</a>
+<a class="sourceLine" id="cb16-2" title="2"><span class="ex">Branch</span> <span class="st">&#39;main&#39;</span> set up to track remote branch <span class="st">&#39;main&#39;</span> from <span class="st">&#39;origin&#39;</span>.</a>
+<a class="sourceLine" id="cb16-3" title="3"></a>
+<a class="sourceLine" id="cb16-4" title="4">$ <span class="fu">git</span> branch -vva</a>
+<a class="sourceLine" id="cb16-5" title="5"><span class="ex">*</span> main                90bdb0e [origin/main] initial commit</a>
+<a class="sourceLine" id="cb16-6" title="6">  <span class="ex">remotes/origin/main</span> 90bdb0e initial commit</a>
+<a class="sourceLine" id="cb16-7" title="7"></a>
+<a class="sourceLine" id="cb16-8" title="8">$ <span class="fu">git</span> status -b</a>
+<a class="sourceLine" id="cb16-9" title="9">ブランチ <span class="ex">main</span></a>
+<a class="sourceLine" id="cb16-10" title="10"><span class="ex">Your</span> branch is up to date with <span class="st">&#39;origin/main&#39;</span>.</a>
+<a class="sourceLine" id="cb16-11" title="11"></a>
+<a class="sourceLine" id="cb16-12" title="12"><span class="ex">nothing</span> to commit, working tree clean</a>
+<a class="sourceLine" id="cb16-13" title="13"></a>
+<a class="sourceLine" id="cb16-14" title="14">$ <span class="fu">git</span> status -sb</a>
+<a class="sourceLine" id="cb16-15" title="15"><span class="co">## main...origin/main</span></a></code></pre></div>
 <p>リベース後にpushするのに失敗する例。</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb15-1" title="1"><span class="fu">git</span> init --bare test.git</a>
-<a class="sourceLine" id="cb15-2" title="2"><span class="fu">git</span> init test</a>
-<a class="sourceLine" id="cb15-3" title="3"><span class="bu">cd</span> test</a>
-<a class="sourceLine" id="cb15-4" title="4"><span class="bu">echo</span> <span class="st">&quot;Hello&quot;</span> <span class="op">&gt;</span> test.txt</a>
-<a class="sourceLine" id="cb15-5" title="5"><span class="fu">git</span> add test.txt</a>
-<a class="sourceLine" id="cb15-6" title="6"><span class="fu">git</span> commit -m <span class="st">&quot;c1&quot;</span></a>
-<a class="sourceLine" id="cb15-7" title="7"><span class="bu">echo</span> <span class="st">&quot;Hello2&quot;</span> <span class="op">&gt;</span> test.txt</a>
-<a class="sourceLine" id="cb15-8" title="8"><span class="fu">git</span> commit -am <span class="st">&quot;c2&quot;</span></a>
-<a class="sourceLine" id="cb15-9" title="9"><span class="fu">git</span> branch feature</a>
-<a class="sourceLine" id="cb15-10" title="10"><span class="bu">echo</span> <span class="st">&quot;Hello3&quot;</span> <span class="op">&gt;</span> test.txt</a>
-<a class="sourceLine" id="cb15-11" title="11"><span class="fu">git</span> commit -am <span class="st">&quot;c3&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb17-1" title="1"><span class="fu">git</span> init --bare test.git</a>
+<a class="sourceLine" id="cb17-2" title="2"><span class="fu">git</span> init test</a>
+<a class="sourceLine" id="cb17-3" title="3"><span class="bu">cd</span> test</a>
+<a class="sourceLine" id="cb17-4" title="4"><span class="bu">echo</span> <span class="st">&quot;Hello&quot;</span> <span class="op">&gt;</span> test.txt</a>
+<a class="sourceLine" id="cb17-5" title="5"><span class="fu">git</span> add test.txt</a>
+<a class="sourceLine" id="cb17-6" title="6"><span class="fu">git</span> commit -m <span class="st">&quot;c1&quot;</span></a>
+<a class="sourceLine" id="cb17-7" title="7"><span class="bu">echo</span> <span class="st">&quot;Hello2&quot;</span> <span class="op">&gt;</span> test.txt</a>
+<a class="sourceLine" id="cb17-8" title="8"><span class="fu">git</span> commit -am <span class="st">&quot;c2&quot;</span></a>
+<a class="sourceLine" id="cb17-9" title="9"><span class="fu">git</span> branch feature</a>
+<a class="sourceLine" id="cb17-10" title="10"><span class="bu">echo</span> <span class="st">&quot;Hello3&quot;</span> <span class="op">&gt;</span> test.txt</a>
+<a class="sourceLine" id="cb17-11" title="11"><span class="fu">git</span> commit -am <span class="st">&quot;c3&quot;</span></a></code></pre></div>
 <p>ここまででこんな歴史ができた。</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb16-1" title="1">$ <span class="fu">git</span> log --oneline</a>
-<a class="sourceLine" id="cb16-2" title="2"><span class="ex">3f3255e</span> (HEAD -<span class="op">&gt;</span> master) <span class="ex">c3</span></a>
-<a class="sourceLine" id="cb16-3" title="3"><span class="ex">8ac3073</span> (feature) <span class="ex">c2</span></a>
-<a class="sourceLine" id="cb16-4" title="4"><span class="ex">8269d34</span> c1</a></code></pre></div>
-<p>リモートを追加してpush。</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb17-1" title="1"><span class="fu">git</span> remote add origin ../test.git</a>
-<a class="sourceLine" id="cb17-2" title="2"><span class="fu">git</span> push -u origin master</a></code></pre></div>
 <div class="sourceCode" id="cb18"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb18-1" title="1">$ <span class="fu">git</span> log --oneline</a>
-<a class="sourceLine" id="cb18-2" title="2"><span class="ex">3f3255e</span> (HEAD -<span class="op">&gt;</span> master, origin/master) <span class="ex">c3</span></a>
+<a class="sourceLine" id="cb18-2" title="2"><span class="ex">3f3255e</span> (HEAD -<span class="op">&gt;</span> master) <span class="ex">c3</span></a>
 <a class="sourceLine" id="cb18-3" title="3"><span class="ex">8ac3073</span> (feature) <span class="ex">c2</span></a>
 <a class="sourceLine" id="cb18-4" title="4"><span class="ex">8269d34</span> c1</a></code></pre></div>
+<p>リモートを追加してpush。</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb19-1" title="1"><span class="fu">git</span> remote add origin ../test.git</a>
+<a class="sourceLine" id="cb19-2" title="2"><span class="fu">git</span> push -u origin master</a></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb20-1" title="1">$ <span class="fu">git</span> log --oneline</a>
+<a class="sourceLine" id="cb20-2" title="2"><span class="ex">3f3255e</span> (HEAD -<span class="op">&gt;</span> master, origin/master) <span class="ex">c3</span></a>
+<a class="sourceLine" id="cb20-3" title="3"><span class="ex">8ac3073</span> (feature) <span class="ex">c2</span></a>
+<a class="sourceLine" id="cb20-4" title="4"><span class="ex">8269d34</span> c1</a></code></pre></div>
 <p>featureブランチを伸ばす。</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb19-1" title="1"><span class="fu">git</span> switch feature</a>
-<a class="sourceLine" id="cb19-2" title="2"><span class="bu">echo</span> <span class="st">&quot;test&quot;</span> <span class="op">&gt;</span> test2.txt</a>
-<a class="sourceLine" id="cb19-3" title="3"><span class="fu">git</span> add test2.txt</a>
-<a class="sourceLine" id="cb19-4" title="4"><span class="fu">git</span> commit -m <span class="st">&quot;f1&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb21-1" title="1"><span class="fu">git</span> switch feature</a>
+<a class="sourceLine" id="cb21-2" title="2"><span class="bu">echo</span> <span class="st">&quot;test&quot;</span> <span class="op">&gt;</span> test2.txt</a>
+<a class="sourceLine" id="cb21-3" title="3"><span class="fu">git</span> add test2.txt</a>
+<a class="sourceLine" id="cb21-4" title="4"><span class="fu">git</span> commit -m <span class="st">&quot;f1&quot;</span></a></code></pre></div>
 <p>こうなった。</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb20-1" title="1">$ <span class="fu">git</span> switch master</a>
-<a class="sourceLine" id="cb20-2" title="2">$ <span class="fu">git</span> log --graph --all --oneline</a>
-<a class="sourceLine" id="cb20-3" title="3"><span class="ex">*</span> 7ade9dd (feature) <span class="ex">f1</span></a>
-<a class="sourceLine" id="cb20-4" title="4"><span class="kw">|</span> <span class="ex">*</span> 3f3255e (HEAD -<span class="op">&gt;</span> master, origin/master) <span class="ex">c3</span></a>
-<a class="sourceLine" id="cb20-5" title="5"><span class="kw">|</span><span class="ex">/</span></a>
-<a class="sourceLine" id="cb20-6" title="6"><span class="ex">*</span> 8ac3073 c2</a>
-<a class="sourceLine" id="cb20-7" title="7"><span class="ex">*</span> 8269d34 c1</a></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb22-1" title="1">$ <span class="fu">git</span> switch master</a>
+<a class="sourceLine" id="cb22-2" title="2">$ <span class="fu">git</span> log --graph --all --oneline</a>
+<a class="sourceLine" id="cb22-3" title="3"><span class="ex">*</span> 7ade9dd (feature) <span class="ex">f1</span></a>
+<a class="sourceLine" id="cb22-4" title="4"><span class="kw">|</span> <span class="ex">*</span> 3f3255e (HEAD -<span class="op">&gt;</span> master, origin/master) <span class="ex">c3</span></a>
+<a class="sourceLine" id="cb22-5" title="5"><span class="kw">|</span><span class="ex">/</span></a>
+<a class="sourceLine" id="cb22-6" title="6"><span class="ex">*</span> 8ac3073 c2</a>
+<a class="sourceLine" id="cb22-7" title="7"><span class="ex">*</span> 8269d34 c1</a></code></pre></div>
 <p>masterからfeatureへrebaseする。</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb21-1" title="1">$ <span class="fu">git</span> rebase feature</a>
-<a class="sourceLine" id="cb21-2" title="2"><span class="ex">First</span>, rewinding head to replay your work on top of it...</a>
-<a class="sourceLine" id="cb21-3" title="3"><span class="ex">Applying</span>: c3</a>
-<a class="sourceLine" id="cb21-4" title="4"></a>
-<a class="sourceLine" id="cb21-5" title="5">$ <span class="fu">git</span> log --graph --all --oneline</a>
-<a class="sourceLine" id="cb21-6" title="6"><span class="ex">*</span> adcc72b (HEAD -<span class="op">&gt;</span> master) <span class="ex">c3</span></a>
-<a class="sourceLine" id="cb21-7" title="7"><span class="ex">*</span> 7ade9dd (feature) <span class="ex">f1</span></a>
-<a class="sourceLine" id="cb21-8" title="8"><span class="kw">|</span> <span class="ex">*</span> 3f3255e (origin/master) <span class="ex">c3</span></a>
-<a class="sourceLine" id="cb21-9" title="9"><span class="kw">|</span><span class="ex">/</span></a>
-<a class="sourceLine" id="cb21-10" title="10"><span class="ex">*</span> 8ac3073 c2</a>
-<a class="sourceLine" id="cb21-11" title="11"><span class="ex">*</span> 8269d34 c1</a></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb23-1" title="1">$ <span class="fu">git</span> rebase feature</a>
+<a class="sourceLine" id="cb23-2" title="2"><span class="ex">First</span>, rewinding head to replay your work on top of it...</a>
+<a class="sourceLine" id="cb23-3" title="3"><span class="ex">Applying</span>: c3</a>
+<a class="sourceLine" id="cb23-4" title="4"></a>
+<a class="sourceLine" id="cb23-5" title="5">$ <span class="fu">git</span> log --graph --all --oneline</a>
+<a class="sourceLine" id="cb23-6" title="6"><span class="ex">*</span> adcc72b (HEAD -<span class="op">&gt;</span> master) <span class="ex">c3</span></a>
+<a class="sourceLine" id="cb23-7" title="7"><span class="ex">*</span> 7ade9dd (feature) <span class="ex">f1</span></a>
+<a class="sourceLine" id="cb23-8" title="8"><span class="kw">|</span> <span class="ex">*</span> 3f3255e (origin/master) <span class="ex">c3</span></a>
+<a class="sourceLine" id="cb23-9" title="9"><span class="kw">|</span><span class="ex">/</span></a>
+<a class="sourceLine" id="cb23-10" title="10"><span class="ex">*</span> 8ac3073 c2</a>
+<a class="sourceLine" id="cb23-11" title="11"><span class="ex">*</span> 8269d34 c1</a></code></pre></div>
 <p>なんか変なことを言われたが、想定通りの歴史になった。この状態でpushを試みる。</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb22-1" title="1">$ <span class="fu">git</span> push</a>
-<a class="sourceLine" id="cb22-2" title="2"> ! [<span class="ex">rejected</span>]        master -<span class="op">&gt;</span> master (non-fast-forward)</a>
-<a class="sourceLine" id="cb22-3" title="3"><span class="ex">error</span>: failed to push some refs to <span class="st">&#39;../test.git&#39;</span></a>
-<a class="sourceLine" id="cb22-4" title="4"><span class="ex">hint</span>: Updates were rejected because the tip of your current branch is behind</a>
-<a class="sourceLine" id="cb22-5" title="5"><span class="ex">hint</span>: its remote counterpart. Integrate the remote changes (e.g.</a>
-<a class="sourceLine" id="cb22-6" title="6"><span class="ex">hint</span>: <span class="st">&#39;git pull ...&#39;</span>) <span class="ex">before</span> pushing again.</a>
-<a class="sourceLine" id="cb22-7" title="7"><span class="ex">hint</span>: See the <span class="st">&#39;Note about fast-forwards&#39;</span> in <span class="st">&#39;git push --help&#39;</span> for details.</a></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb24-1" title="1">$ <span class="fu">git</span> push</a>
+<a class="sourceLine" id="cb24-2" title="2"> ! [<span class="ex">rejected</span>]        master -<span class="op">&gt;</span> master (non-fast-forward)</a>
+<a class="sourceLine" id="cb24-3" title="3"><span class="ex">error</span>: failed to push some refs to <span class="st">&#39;../test.git&#39;</span></a>
+<a class="sourceLine" id="cb24-4" title="4"><span class="ex">hint</span>: Updates were rejected because the tip of your current branch is behind</a>
+<a class="sourceLine" id="cb24-5" title="5"><span class="ex">hint</span>: its remote counterpart. Integrate the remote changes (e.g.</a>
+<a class="sourceLine" id="cb24-6" title="6"><span class="ex">hint</span>: <span class="st">&#39;git pull ...&#39;</span>) <span class="ex">before</span> pushing again.</a>
+<a class="sourceLine" id="cb24-7" title="7"><span class="ex">hint</span>: See the <span class="st">&#39;Note about fast-forwards&#39;</span> in <span class="st">&#39;git push --help&#39;</span> for details.</a></code></pre></div>
 <p>git mergeしたらgit pushできた。</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb23-1" title="1">$ <span class="fu">git</span> merge</a>
-<a class="sourceLine" id="cb23-2" title="2">$ <span class="fu">git</span> l</a>
-<a class="sourceLine" id="cb23-3" title="3"><span class="ex">91a23b1</span> (HEAD -<span class="op">&gt;</span> master) <span class="ex">Merge</span> remote-tracking branch <span class="st">&#39;refs/remotes/origin/master&#39;</span></a>
-<a class="sourceLine" id="cb23-4" title="4"><span class="ex">adcc72b</span> c3</a>
-<a class="sourceLine" id="cb23-5" title="5"><span class="ex">7ade9dd</span> (feature) <span class="ex">f1</span></a>
-<a class="sourceLine" id="cb23-6" title="6"><span class="ex">3f3255e</span> (origin/master) <span class="ex">c3</span></a>
-<a class="sourceLine" id="cb23-7" title="7"><span class="ex">8ac3073</span> c2</a>
-<a class="sourceLine" id="cb23-8" title="8"><span class="ex">8269d34</span> c1</a>
-<a class="sourceLine" id="cb23-9" title="9">$ <span class="fu">git</span> push</a></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb25-1" title="1">$ <span class="fu">git</span> merge</a>
+<a class="sourceLine" id="cb25-2" title="2">$ <span class="fu">git</span> l</a>
+<a class="sourceLine" id="cb25-3" title="3"><span class="ex">91a23b1</span> (HEAD -<span class="op">&gt;</span> master) <span class="ex">Merge</span> remote-tracking branch <span class="st">&#39;refs/remotes/origin/master&#39;</span></a>
+<a class="sourceLine" id="cb25-4" title="4"><span class="ex">adcc72b</span> c3</a>
+<a class="sourceLine" id="cb25-5" title="5"><span class="ex">7ade9dd</span> (feature) <span class="ex">f1</span></a>
+<a class="sourceLine" id="cb25-6" title="6"><span class="ex">3f3255e</span> (origin/master) <span class="ex">c3</span></a>
+<a class="sourceLine" id="cb25-7" title="7"><span class="ex">8ac3073</span> c2</a>
+<a class="sourceLine" id="cb25-8" title="8"><span class="ex">8269d34</span> c1</a>
+<a class="sourceLine" id="cb25-9" title="9">$ <span class="fu">git</span> push</a></code></pre></div>
 <p>うーん、良い例にはならなかったな。</p>
 <p>コミット済みの奴をgit commit –amendしてもpushできなくなるな。</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb24-1" title="1"><span class="fu">git</span> init --bare test.git</a>
-<a class="sourceLine" id="cb24-2" title="2"><span class="fu">git</span> init test</a>
-<a class="sourceLine" id="cb24-3" title="3"><span class="bu">cd</span> test</a>
-<a class="sourceLine" id="cb24-4" title="4"><span class="bu">echo</span> <span class="st">&quot;Hello&quot;</span> <span class="op">&gt;</span> test.txt</a>
-<a class="sourceLine" id="cb24-5" title="5"><span class="fu">git</span> add test.txt</a>
-<a class="sourceLine" id="cb24-6" title="6"><span class="fu">git</span> commit -m <span class="st">&quot;c1&quot;</span></a>
-<a class="sourceLine" id="cb24-7" title="7"><span class="bu">echo</span> <span class="st">&quot;Hello2&quot;</span> <span class="op">&gt;</span> test.txt</a>
-<a class="sourceLine" id="cb24-8" title="8"><span class="fu">git</span> commit -am <span class="st">&quot;c2&quot;</span></a>
-<a class="sourceLine" id="cb24-9" title="9"><span class="fu">git</span> remote add origin ../test.git</a>
-<a class="sourceLine" id="cb24-10" title="10"><span class="fu">git</span> push -u origin master</a>
-<a class="sourceLine" id="cb24-11" title="11"><span class="fu">git</span> commit --amend -m <span class="st">&quot;c2&#39;&quot;</span></a></code></pre></div>
-<p>これで歴史が改変されて分岐する。git pushできなくなる。git mergeすれば歴史を共有できる。</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb25-1" title="1"><span class="fu">git</span> merge -m <span class="st">&quot;merge&quot;</span></a>
-<a class="sourceLine" id="cb25-2" title="2"><span class="fu">git</span> push</a></code></pre></div>
-<p>rebase版。</p>
 <div class="sourceCode" id="cb26"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb26-1" title="1"><span class="fu">git</span> init --bare test.git</a>
 <a class="sourceLine" id="cb26-2" title="2"><span class="fu">git</span> init test</a>
 <a class="sourceLine" id="cb26-3" title="3"><span class="bu">cd</span> test</a>
 <a class="sourceLine" id="cb26-4" title="4"><span class="bu">echo</span> <span class="st">&quot;Hello&quot;</span> <span class="op">&gt;</span> test.txt</a>
 <a class="sourceLine" id="cb26-5" title="5"><span class="fu">git</span> add test.txt</a>
 <a class="sourceLine" id="cb26-6" title="6"><span class="fu">git</span> commit -m <span class="st">&quot;c1&quot;</span></a>
-<a class="sourceLine" id="cb26-7" title="7"><span class="fu">git</span> branch feature</a>
-<a class="sourceLine" id="cb26-8" title="8"><span class="bu">echo</span> <span class="st">&quot;Hello2&quot;</span> <span class="op">&gt;</span> test.txt</a>
-<a class="sourceLine" id="cb26-9" title="9"><span class="fu">git</span> commit -am <span class="st">&quot;c2&quot;</span></a>
-<a class="sourceLine" id="cb26-10" title="10"><span class="fu">git</span> remote add origin ../test.git</a>
-<a class="sourceLine" id="cb26-11" title="11"><span class="fu">git</span> push -u origin master</a>
-<a class="sourceLine" id="cb26-12" title="12"><span class="fu">git</span> rebase -i feature</a></code></pre></div>
+<a class="sourceLine" id="cb26-7" title="7"><span class="bu">echo</span> <span class="st">&quot;Hello2&quot;</span> <span class="op">&gt;</span> test.txt</a>
+<a class="sourceLine" id="cb26-8" title="8"><span class="fu">git</span> commit -am <span class="st">&quot;c2&quot;</span></a>
+<a class="sourceLine" id="cb26-9" title="9"><span class="fu">git</span> remote add origin ../test.git</a>
+<a class="sourceLine" id="cb26-10" title="10"><span class="fu">git</span> push -u origin master</a>
+<a class="sourceLine" id="cb26-11" title="11"><span class="fu">git</span> commit --amend -m <span class="st">&quot;c2&#39;&quot;</span></a></code></pre></div>
+<p>これで歴史が改変されて分岐する。git pushできなくなる。git mergeすれば歴史を共有できる。</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb27-1" title="1"><span class="fu">git</span> merge -m <span class="st">&quot;merge&quot;</span></a>
+<a class="sourceLine" id="cb27-2" title="2"><span class="fu">git</span> push</a></code></pre></div>
+<p>rebase版。</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb28-1" title="1"><span class="fu">git</span> init --bare test.git</a>
+<a class="sourceLine" id="cb28-2" title="2"><span class="fu">git</span> init test</a>
+<a class="sourceLine" id="cb28-3" title="3"><span class="bu">cd</span> test</a>
+<a class="sourceLine" id="cb28-4" title="4"><span class="bu">echo</span> <span class="st">&quot;Hello&quot;</span> <span class="op">&gt;</span> test.txt</a>
+<a class="sourceLine" id="cb28-5" title="5"><span class="fu">git</span> add test.txt</a>
+<a class="sourceLine" id="cb28-6" title="6"><span class="fu">git</span> commit -m <span class="st">&quot;c1&quot;</span></a>
+<a class="sourceLine" id="cb28-7" title="7"><span class="fu">git</span> branch feature</a>
+<a class="sourceLine" id="cb28-8" title="8"><span class="bu">echo</span> <span class="st">&quot;Hello2&quot;</span> <span class="op">&gt;</span> test.txt</a>
+<a class="sourceLine" id="cb28-9" title="9"><span class="fu">git</span> commit -am <span class="st">&quot;c2&quot;</span></a>
+<a class="sourceLine" id="cb28-10" title="10"><span class="fu">git</span> remote add origin ../test.git</a>
+<a class="sourceLine" id="cb28-11" title="11"><span class="fu">git</span> push -u origin master</a>
+<a class="sourceLine" id="cb28-12" title="12"><span class="fu">git</span> rebase -i feature</a></code></pre></div>
 <h2 id="月14日火"><a href="#14">09月14日(火)</a> <a id="14"></a></h2>
 <p>朝から発表会。その後会議。メール処理。</p>
 <p>なんかぼーっとしてしまう。</p>
@@ -242,118 +285,118 @@
 <p>講義の準備。ブランチ操作をあらかた書いたことにする。</p>
 <h2 id="月10日金"><a href="#10">09月10日(金)</a> <a id="10"></a></h2>
 <p>certbotがエラーを出している。</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode txt"><code class="sourceCode default"><a class="sourceLine" id="cb27-1" title="1">Your system is not supported by certbot-auto anymore.</a></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode txt"><code class="sourceCode default"><a class="sourceLine" id="cb29-1" title="1">Your system is not supported by certbot-auto anymore.</a></code></pre></div>
 <p>ログインして確認。</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb28-1" title="1">$ <span class="fu">sudo</span> certbot renew --dry-run</a>
-<a class="sourceLine" id="cb28-2" title="2"><span class="kw">(</span><span class="ex">snip</span><span class="kw">)</span></a>
-<a class="sourceLine" id="cb28-3" title="3"><span class="ex">All</span> renewal attempts failed. The following certs could not be renewed:</a>
-<a class="sourceLine" id="cb28-4" title="4"><span class="kw">(</span><span class="ex">snip</span><span class="kw">)</span></a></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb30-1" title="1">$ <span class="fu">sudo</span> certbot renew --dry-run</a>
+<a class="sourceLine" id="cb30-2" title="2"><span class="kw">(</span><span class="ex">snip</span><span class="kw">)</span></a>
+<a class="sourceLine" id="cb30-3" title="3"><span class="ex">All</span> renewal attempts failed. The following certs could not be renewed:</a>
+<a class="sourceLine" id="cb30-4" title="4"><span class="kw">(</span><span class="ex">snip</span><span class="kw">)</span></a></code></pre></div>
 <p>おっと。なんかバージョンが古いのが問題らしい。</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb29-1" title="1">$ <span class="ex">certbot</span> --version</a>
-<a class="sourceLine" id="cb29-2" title="2"><span class="ex">certbot</span> 0.31.0</a></code></pre></div>
-<p>バージョンをあげてみる。</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb30-1" title="1"><span class="ex">yum</span> install --enablerepo=epel certbot</a></code></pre></div>
 <div class="sourceCode" id="cb31"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb31-1" title="1">$ <span class="ex">certbot</span> --version</a>
-<a class="sourceLine" id="cb31-2" title="2"><span class="ex">An</span> unexpected error occurred:</a>
-<a class="sourceLine" id="cb31-3" title="3"><span class="ex">AttributeError</span>: <span class="st">&#39;module&#39;</span> object has no attribute <span class="st">&#39;TLSSNI01&#39;</span></a>
-<a class="sourceLine" id="cb31-4" title="4"><span class="ex">Please</span> see the logfile <span class="st">&#39;/tmp/tmpjRf06l/log&#39;</span> for more details.</a></code></pre></div>
-<p>うげ、バージョンを上げたら動かなくなったぞ。python2-certbotをアップデートすれば良いらしい。</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb32-1" title="1"><span class="fu">sudo</span> yum update python2-certbot*</a></code></pre></div>
+<a class="sourceLine" id="cb31-2" title="2"><span class="ex">certbot</span> 0.31.0</a></code></pre></div>
+<p>バージョンをあげてみる。</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb32-1" title="1"><span class="ex">yum</span> install --enablerepo=epel certbot</a></code></pre></div>
 <div class="sourceCode" id="cb33"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb33-1" title="1">$ <span class="ex">certbot</span> --version</a>
-<a class="sourceLine" id="cb33-2" title="2"><span class="ex">certbot</span> 1.11.0</a></code></pre></div>
+<a class="sourceLine" id="cb33-2" title="2"><span class="ex">An</span> unexpected error occurred:</a>
+<a class="sourceLine" id="cb33-3" title="3"><span class="ex">AttributeError</span>: <span class="st">&#39;module&#39;</span> object has no attribute <span class="st">&#39;TLSSNI01&#39;</span></a>
+<a class="sourceLine" id="cb33-4" title="4"><span class="ex">Please</span> see the logfile <span class="st">&#39;/tmp/tmpjRf06l/log&#39;</span> for more details.</a></code></pre></div>
+<p>うげ、バージョンを上げたら動かなくなったぞ。python2-certbotをアップデートすれば良いらしい。</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb34-1" title="1"><span class="fu">sudo</span> yum update python2-certbot*</a></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb35-1" title="1">$ <span class="ex">certbot</span> --version</a>
+<a class="sourceLine" id="cb35-2" title="2"><span class="ex">certbot</span> 1.11.0</a></code></pre></div>
 <p>よしよし、動いた。</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb34-1" title="1">$ <span class="fu">sudo</span> certbot renew --dry-run</a>
-<a class="sourceLine" id="cb34-2" title="2"><span class="kw">(</span><span class="ex">snip</span><span class="kw">)</span></a>
-<a class="sourceLine" id="cb34-3" title="3"><span class="ex">Congratulations</span>, all simulated renewals succeeded:</a></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb36-1" title="1">$ <span class="fu">sudo</span> certbot renew --dry-run</a>
+<a class="sourceLine" id="cb36-2" title="2"><span class="kw">(</span><span class="ex">snip</span><span class="kw">)</span></a>
+<a class="sourceLine" id="cb36-3" title="3"><span class="ex">Congratulations</span>, all simulated renewals succeeded:</a></code></pre></div>
 <p>動いた。よかった。焦った。</p>
 <h2 id="月09日木"><a href="#09">09月09日(木)</a> <a id="09"></a></h2>
 <p>本の購入。</p>
 <p>プレ技の発表練習。輪講。一冊読み終わった。素晴らしい。そして浸透圧について何もわかっていなかったことがわかった。</p>
 <p>なんか呆然としてしまって、手が動かないぞ。</p>
 <p>学校のPCにsnapを入れる確認。</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb35-1" title="1">$ <span class="fu">which</span> snap</a>
-<a class="sourceLine" id="cb35-2" title="2"><span class="ex">/usr/bin/snap</span></a></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb37-1" title="1">$ <span class="fu">which</span> snap</a>
+<a class="sourceLine" id="cb37-2" title="2"><span class="ex">/usr/bin/snap</span></a></code></pre></div>
 <p>snapはデフォルトで入っている。しかし、そのままでは返答しない。</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb36-1" title="1"><span class="ex">snap</span> --version <span class="co"># 処理が返ってこない。</span></a></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb38-1" title="1"><span class="ex">snap</span> --version <span class="co"># 処理が返ってこない。</span></a></code></pre></div>
 <p>というわけでsnapを入れる。まだ時間が遅れてたので、まず直す。</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb37-1" title="1"><span class="fu">sudo</span> hwclock -s</a></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb39-1" title="1"><span class="fu">sudo</span> hwclock -s</a></code></pre></div>
 <p>daemonize dbus-user-session fontconfigの三つをインストール。</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb38-1" title="1"><span class="fu">sudo</span> apt-get update</a>
-<a class="sourceLine" id="cb38-2" title="2"><span class="fu">sudo</span> apt-get install -yqq daemonize dbus-user-session fontconfig</a></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb40-1" title="1"><span class="fu">sudo</span> apt-get update</a>
+<a class="sourceLine" id="cb40-2" title="2"><span class="fu">sudo</span> apt-get install -yqq daemonize dbus-user-session fontconfig</a></code></pre></div>
 <p>demonizeを起動。</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb39-1" title="1"><span class="fu">sudo</span> daemonize /usr/bin/unshare --fork --pid --mount-proc /lib/systemd/systemd --system-unit=basic.target</a></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb41-1" title="1"><span class="fu">sudo</span> daemonize /usr/bin/unshare --fork --pid --mount-proc /lib/systemd/systemd --system-unit=basic.target</a></code></pre></div>
 <p>snapが返事をするようになる。</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb40-1" title="1">$ <span class="ex">snap</span> version</a>
-<a class="sourceLine" id="cb40-2" title="2"><span class="ex">snap</span>    2.48.3+20.04</a>
-<a class="sourceLine" id="cb40-3" title="3"><span class="ex">snapd</span>   2.48.3+20.04</a>
-<a class="sourceLine" id="cb40-4" title="4"><span class="ex">series</span>  16</a>
-<a class="sourceLine" id="cb40-5" title="5"><span class="ex">ubuntu</span>  20.04</a>
-<a class="sourceLine" id="cb40-6" title="6"><span class="ex">kernel</span>  4.19.128-microsoft-standard</a></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb42-1" title="1">$ <span class="ex">snap</span> version</a>
+<a class="sourceLine" id="cb42-2" title="2"><span class="ex">snap</span>    2.48.3+20.04</a>
+<a class="sourceLine" id="cb42-3" title="3"><span class="ex">snapd</span>   2.48.3+20.04</a>
+<a class="sourceLine" id="cb42-4" title="4"><span class="ex">series</span>  16</a>
+<a class="sourceLine" id="cb42-5" title="5"><span class="ex">ubuntu</span>  20.04</a>
+<a class="sourceLine" id="cb42-6" title="6"><span class="ex">kernel</span>  4.19.128-microsoft-standard</a></code></pre></div>
 <p>ログインしていないと、listなどが見られない。</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb41-1" title="1">$ <span class="ex">snap</span> list</a>
-<a class="sourceLine" id="cb41-2" title="2"><span class="ex">error</span>: access denied (try with sudo)</a></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb43-1" title="1">$ <span class="ex">snap</span> list</a>
+<a class="sourceLine" id="cb43-2" title="2"><span class="ex">error</span>: access denied (try with sudo)</a></code></pre></div>
 <p>sudoを試せと言ってくるが、listを見るにはroot権限は不要で、ログインが必要。この状態でsudoしてもダメと言われる。</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb42-1" title="1">$ <span class="fu">sudo</span> snap list</a>
-<a class="sourceLine" id="cb42-2" title="2"><span class="ex">error</span>: access denied (see <span class="st">&#39;snap help login&#39;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb44-1" title="1">$ <span class="fu">sudo</span> snap list</a>
+<a class="sourceLine" id="cb44-2" title="2"><span class="ex">error</span>: access denied (see <span class="st">&#39;snap help login&#39;</span>)</a></code></pre></div>
 <p>ログインしようとしたら以下のコマンドで死ぬ。</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb43-1" title="1"><span class="bu">exec</span> sudo nsenter -t <span class="va">$(</span><span class="fu">pidof</span> systemd<span class="va">)</span> -a su - <span class="va">$LOGNAME</span></a></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb45-1" title="1"><span class="bu">exec</span> sudo nsenter -t <span class="va">$(</span><span class="fu">pidof</span> systemd<span class="va">)</span> -a su - <span class="va">$LOGNAME</span></a></code></pre></div>
 <p>調べてみると、systemdが二つ動いている。</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb44-1" title="1">$ <span class="fu">pidof</span> systemd</a>
-<a class="sourceLine" id="cb44-2" title="2"><span class="ex">32692</span> 30864</a></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb46-1" title="1">$ <span class="fu">pidof</span> systemd</a>
+<a class="sourceLine" id="cb46-2" title="2"><span class="ex">32692</span> 30864</a></code></pre></div>
 <p>ssh-agentはたくさん動いてる。</p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb45-1" title="1">$ <span class="fu">pidof</span> ssh-agent</a>
-<a class="sourceLine" id="cb45-2" title="2"><span class="ex">33686</span> 33657 33572 32677 29135 28925 27485 24655 24530 23881 16910 10516 13</a></code></pre></div>
-<p>再起動してみるかな。PowerShellから</p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb46-1" title="1"><span class="ex">wsl</span> --shutdown</a></code></pre></div>
-<p>を実行。</p>
 <div class="sourceCode" id="cb47"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb47-1" title="1">$ <span class="fu">pidof</span> ssh-agent</a>
-<a class="sourceLine" id="cb47-2" title="2"><span class="ex">16</span></a>
-<a class="sourceLine" id="cb47-3" title="3">$ <span class="fu">pidof</span> systemd</a></code></pre></div>
+<a class="sourceLine" id="cb47-2" title="2"><span class="ex">33686</span> 33657 33572 32677 29135 28925 27485 24655 24530 23881 16910 10516 13</a></code></pre></div>
+<p>再起動してみるかな。PowerShellから</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb48-1" title="1"><span class="ex">wsl</span> --shutdown</a></code></pre></div>
+<p>を実行。</p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb49-1" title="1">$ <span class="fu">pidof</span> ssh-agent</a>
+<a class="sourceLine" id="cb49-2" title="2"><span class="ex">16</span></a>
+<a class="sourceLine" id="cb49-3" title="3">$ <span class="fu">pidof</span> systemd</a></code></pre></div>
 <p>ssh-agentが一つ、systemdは動いていない状態になった。demonizeでsystemdを起動。</p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb48-1" title="1"><span class="fu">sudo</span> daemonize /usr/bin/unshare --fork --pid --mount-proc /lib/systemd/systemd --system-unit=basic.target</a></code></pre></div>
-<div class="sourceCode" id="cb49"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb49-1" title="1">$ <span class="fu">pidof</span> systemd</a>
-<a class="sourceLine" id="cb49-2" title="2"><span class="ex">262</span></a></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb50-1" title="1"><span class="fu">sudo</span> daemonize /usr/bin/unshare --fork --pid --mount-proc /lib/systemd/systemd --system-unit=basic.target</a></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb51-1" title="1">$ <span class="fu">pidof</span> systemd</a>
+<a class="sourceLine" id="cb51-2" title="2"><span class="ex">262</span></a></code></pre></div>
 <p>うん、一つになった。snapにログインする。</p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb50-1" title="1"><span class="bu">exec</span> sudo nsenter -t <span class="va">$(</span><span class="fu">pidof</span> systemd<span class="va">)</span> -a su - <span class="va">$LOGNAME</span></a></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb52-1" title="1"><span class="bu">exec</span> sudo nsenter -t <span class="va">$(</span><span class="fu">pidof</span> systemd<span class="va">)</span> -a su - <span class="va">$LOGNAME</span></a></code></pre></div>
 <p>できた。</p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb51-1" title="1">$ <span class="ex">snap</span> list</a>
-<a class="sourceLine" id="cb51-2" title="2"><span class="ex">Name</span>    Version   Rev    Tracking       Publisher   Notes</a>
-<a class="sourceLine" id="cb51-3" title="3"><span class="ex">core18</span>  20200707  1880   latest/stable  canonical✓  base</a>
-<a class="sourceLine" id="cb51-4" title="4"><span class="ex">lxd</span>     4.0.2     16558  4.0/stable/…   canonical✓  -</a>
-<a class="sourceLine" id="cb51-5" title="5"><span class="ex">snapd</span>   2.45.2    8542   latest/stable  canonical✓  snapd</a></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb53-1" title="1">$ <span class="ex">snap</span> list</a>
+<a class="sourceLine" id="cb53-2" title="2"><span class="ex">Name</span>    Version   Rev    Tracking       Publisher   Notes</a>
+<a class="sourceLine" id="cb53-3" title="3"><span class="ex">core18</span>  20200707  1880   latest/stable  canonical✓  base</a>
+<a class="sourceLine" id="cb53-4" title="4"><span class="ex">lxd</span>     4.0.2     16558  4.0/stable/…   canonical✓  -</a>
+<a class="sourceLine" id="cb53-5" title="5"><span class="ex">snapd</span>   2.45.2    8542   latest/stable  canonical✓  snapd</a></code></pre></div>
 <p>実行できた。</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb52-1" title="1">$ <span class="ex">snap</span> search pdftk</a>
-<a class="sourceLine" id="cb52-2" title="2"><span class="ex">pdftk</span>  2.02-4   smoser     -      command-line tool for working with PDF files</a></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb54-1" title="1">$ <span class="ex">snap</span> search pdftk</a>
+<a class="sourceLine" id="cb54-2" title="2"><span class="ex">pdftk</span>  2.02-4   smoser     -      command-line tool for working with PDF files</a></code></pre></div>
 <p>pdftkを見つけた。インストールする(rootが必要)。</p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb53-1" title="1"><span class="fu">sudo</span> snap install pdftk</a></code></pre></div>
-<div class="sourceCode" id="cb54"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb54-1" title="1">$ <span class="ex">pdftk</span> --version</a>
-<a class="sourceLine" id="cb54-2" title="2"></a>
-<a class="sourceLine" id="cb54-3" title="3"><span class="ex">pdftk</span> 2.02 a Handy Tool for Manipulating PDF Documents</a>
-<a class="sourceLine" id="cb54-4" title="4"><span class="ex">Copyright</span> (c) <span class="ex">2003-13</span> Steward and Lee, LLC - Please Visit: www.pdftk.com</a>
-<a class="sourceLine" id="cb54-5" title="5"><span class="ex">This</span> is free software<span class="kw">;</span> <span class="ex">see</span> the source code for copying conditions. There is</a>
-<a class="sourceLine" id="cb54-6" title="6"><span class="ex">NO</span> warranty, not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.</a></code></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb55-1" title="1"><span class="fu">sudo</span> snap install pdftk</a></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb56-1" title="1">$ <span class="ex">pdftk</span> --version</a>
+<a class="sourceLine" id="cb56-2" title="2"></a>
+<a class="sourceLine" id="cb56-3" title="3"><span class="ex">pdftk</span> 2.02 a Handy Tool for Manipulating PDF Documents</a>
+<a class="sourceLine" id="cb56-4" title="4"><span class="ex">Copyright</span> (c) <span class="ex">2003-13</span> Steward and Lee, LLC - Please Visit: www.pdftk.com</a>
+<a class="sourceLine" id="cb56-5" title="5"><span class="ex">This</span> is free software<span class="kw">;</span> <span class="ex">see</span> the source code for copying conditions. There is</a>
+<a class="sourceLine" id="cb56-6" title="6"><span class="ex">NO</span> warranty, not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.</a></code></pre></div>
 <p>無事に入ったぞ。よかった。</p>
 <p><a href="https://qiita.com/matarillo/items/f036a9561a4839275e5f">WLS2のUbuntuでsystemdを使う</a>。</p>
 <p>unshareにより、隔離された名前空間でデーモンとなるので、nsenterでその中に入る。</p>
 <h2 id="月08日水"><a href="#08">09月08日(水)</a> <a id="08"></a></h2>
 <p>WSL2のUbuntuでpdftkを使いたい。そのためにはsnapが必要。しかし、WSL2のUbuntuではsnapdが走っていない。走らせるには<a href="https://github.com/microsoft/WSL/issues/5126#issuecomment-653715201">以下のようにすれば良いらしい</a>。</p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb55-1" title="1"><span class="fu">sudo</span> apt-get update <span class="kw">&amp;&amp;</span> <span class="fu">sudo</span> apt-get install -yqq daemonize dbus-user-session fontconfig</a>
-<a class="sourceLine" id="cb55-2" title="2"><span class="fu">sudo</span> daemonize /usr/bin/unshare --fork --pid --mount-proc /lib/systemd/systemd --system-unit=basic.target</a>
-<a class="sourceLine" id="cb55-3" title="3"><span class="bu">exec</span> sudo nsenter -t <span class="va">$(</span><span class="fu">pidof</span> systemd<span class="va">)</span> -a su - <span class="va">$LOGNAME</span></a></code></pre></div>
-<div class="sourceCode" id="cb56"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb56-1" title="1">$ <span class="ex">snap</span> version</a>
-<a class="sourceLine" id="cb56-2" title="2"><span class="ex">snap</span>    2.49.2+20.04</a>
-<a class="sourceLine" id="cb56-3" title="3"><span class="ex">snapd</span>   2.49.2+20.04</a>
-<a class="sourceLine" id="cb56-4" title="4"><span class="ex">series</span>  16</a>
-<a class="sourceLine" id="cb56-5" title="5"><span class="ex">ubuntu</span>  20.04</a>
-<a class="sourceLine" id="cb56-6" title="6"><span class="ex">kernel</span>  4.19.128-microsoft-standard</a></code></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb57-1" title="1"><span class="fu">sudo</span> apt-get update <span class="kw">&amp;&amp;</span> <span class="fu">sudo</span> apt-get install -yqq daemonize dbus-user-session fontconfig</a>
+<a class="sourceLine" id="cb57-2" title="2"><span class="fu">sudo</span> daemonize /usr/bin/unshare --fork --pid --mount-proc /lib/systemd/systemd --system-unit=basic.target</a>
+<a class="sourceLine" id="cb57-3" title="3"><span class="bu">exec</span> sudo nsenter -t <span class="va">$(</span><span class="fu">pidof</span> systemd<span class="va">)</span> -a su - <span class="va">$LOGNAME</span></a></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb58-1" title="1">$ <span class="ex">snap</span> version</a>
+<a class="sourceLine" id="cb58-2" title="2"><span class="ex">snap</span>    2.49.2+20.04</a>
+<a class="sourceLine" id="cb58-3" title="3"><span class="ex">snapd</span>   2.49.2+20.04</a>
+<a class="sourceLine" id="cb58-4" title="4"><span class="ex">series</span>  16</a>
+<a class="sourceLine" id="cb58-5" title="5"><span class="ex">ubuntu</span>  20.04</a>
+<a class="sourceLine" id="cb58-6" title="6"><span class="ex">kernel</span>  4.19.128-microsoft-standard</a></code></pre></div>
 <p>動いた。</p>
-<div class="sourceCode" id="cb57"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb57-1" title="1"><span class="fu">sudo</span> snap install pdftk</a></code></pre></div>
-<div class="sourceCode" id="cb58"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb58-1" title="1">$ <span class="ex">pdftk</span> --version</a>
-<a class="sourceLine" id="cb58-2" title="2"></a>
-<a class="sourceLine" id="cb58-3" title="3"><span class="ex">pdftk</span> 2.02 a Handy Tool for Manipulating PDF Documents</a>
-<a class="sourceLine" id="cb58-4" title="4"><span class="ex">Copyright</span> (c) <span class="ex">2003-13</span> Steward and Lee, LLC - Please Visit: www.pdftk.com</a>
-<a class="sourceLine" id="cb58-5" title="5"><span class="ex">This</span> is free software<span class="kw">;</span> <span class="ex">see</span> the source code for copying conditions. There is</a>
-<a class="sourceLine" id="cb58-6" title="6"><span class="ex">NO</span> warranty, not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.</a></code></pre></div>
+<div class="sourceCode" id="cb59"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb59-1" title="1"><span class="fu">sudo</span> snap install pdftk</a></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb60-1" title="1">$ <span class="ex">pdftk</span> --version</a>
+<a class="sourceLine" id="cb60-2" title="2"></a>
+<a class="sourceLine" id="cb60-3" title="3"><span class="ex">pdftk</span> 2.02 a Handy Tool for Manipulating PDF Documents</a>
+<a class="sourceLine" id="cb60-4" title="4"><span class="ex">Copyright</span> (c) <span class="ex">2003-13</span> Steward and Lee, LLC - Please Visit: www.pdftk.com</a>
+<a class="sourceLine" id="cb60-5" title="5"><span class="ex">This</span> is free software<span class="kw">;</span> <span class="ex">see</span> the source code for copying conditions. There is</a>
+<a class="sourceLine" id="cb60-6" title="6"><span class="ex">NO</span> warranty, not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.</a></code></pre></div>
 <p>わーい、入った。</p>
 <h2 id="月07日火"><a href="#07">09月07日(火)</a> <a id="07"></a></h2>
 <p>書類発送した。</p>
@@ -368,7 +411,7 @@
 <p>作業中のBGMにYouTube聞いてるんだけど、一時期出なくなってたHero Warsがまた頻繁に出始めた。広告設定見ると、ちゃんとブロックしていることになっているんだけど。広告主がそれをわかってて、別のタイトルの広告として出しているのかなぁ。</p>
 <p>僕は「はてブコメント」は悪だと思ってる。少しブックマークされると、「ホットエントリ(ホッテントリとも)」としてトレンドに乗って、それで大勢の目に触れて、さらにブックマークされることになる。で、技術系の記事が「ホットエントリ」に入ると、必ずといって良いほど、一行マウント系のコメントがつく。よくあるパターンが「なんでこんなのがいまさらホッテントリに？」みたいに、「俺はこんなの前から知ってたぜ」という奴。後、「いろいろ間違っている気が」という「俺は著者よりも詳しいぜ」というにおわせ系。どちらも「自分の能力のアピール」になっており、どちらも「ネットになんら新しい情報を増やしていない」という点で共通しており、さらに記事の著者のやる気をそぐ。</p>
 <p>たまに自分の記事がホットエントリに入っているようだが、はてブコメントを見ると気分が悪くなるので<code>etc/hosts</code>に</p>
-<div class="sourceCode" id="cb59"><pre class="sourceCode txt"><code class="sourceCode default"><a class="sourceLine" id="cb59-1" title="1">127.0.0.1       b.hatena.ne.jp</a></code></pre></div>
+<div class="sourceCode" id="cb61"><pre class="sourceCode txt"><code class="sourceCode default"><a class="sourceLine" id="cb61-1" title="1">127.0.0.1       b.hatena.ne.jp</a></code></pre></div>
 <p>を指定してしまっている。しかし、スマホだと見られてしまうので、たまに見に行ってしまう(そして気分が悪くなる)。この、「見ると気分が悪くなるのがわかっているのに、つい見に行ってしまう」のは、なんらかの報酬機構のせいだと聞いた(予想が当たることで云々とか)。とりあえずスマホでもブロックしてしまうかな。BlockSiteというアプリが良いらしい。</p>
 <h2 id="月04日土"><a href="#04">09月04日(土)</a> <a id="04"></a></h2>
 <p><a href="https://zenn.dev/kaityo256/articles/objects_of_git">Gitのオブジェクトの中身についての記事</a>書いた。そろそろGitを人に教えてもおこがましくない知識を得られただろうか。</p>
@@ -383,47 +426,47 @@
 <p>研究室ミーティング。本読み輪講。一冊終わりそう。素晴らしい。</p>
 <p>Gitのハッシュがどうしても合わないと悩んでいたら、Vimが保存時に行末に改行コードを自動的に付与するという仕様のせいだった。しらなかった。</p>
 <p>Pro Gitのハッシュ値の計算をする例をPythonで書き直す。</p>
-<div class="sourceCode" id="cb60"><pre class="sourceCode py"><code class="sourceCode python"><a class="sourceLine" id="cb60-1" title="1"><span class="im">import</span> hashlib</a>
-<a class="sourceLine" id="cb60-2" title="2">content <span class="op">=</span> <span class="st">&quot;what is up, doc?&quot;</span></a>
-<a class="sourceLine" id="cb60-3" title="3">store <span class="op">=</span> <span class="ss">f&quot;blob </span><span class="sc">{</span><span class="bu">len</span>(content)<span class="sc">}</span><span class="ch">\0</span><span class="sc">{</span>content<span class="sc">}</span><span class="ss">&quot;</span>.encode(<span class="st">&quot;utf-8&quot;</span>)</a>
-<a class="sourceLine" id="cb60-4" title="4"><span class="bu">hash</span> <span class="op">=</span> hashlib.sha1(store).hexdigest()</a>
-<a class="sourceLine" id="cb60-5" title="5"><span class="bu">print</span>(<span class="bu">hash</span>) <span class="co">#=&gt; bd9dbf5aae1a3862dd1526723246b20206e5fc37    </span></a></code></pre></div>
+<div class="sourceCode" id="cb62"><pre class="sourceCode py"><code class="sourceCode python"><a class="sourceLine" id="cb62-1" title="1"><span class="im">import</span> hashlib</a>
+<a class="sourceLine" id="cb62-2" title="2">content <span class="op">=</span> <span class="st">&quot;what is up, doc?&quot;</span></a>
+<a class="sourceLine" id="cb62-3" title="3">store <span class="op">=</span> <span class="ss">f&quot;blob </span><span class="sc">{</span><span class="bu">len</span>(content)<span class="sc">}</span><span class="ch">\0</span><span class="sc">{</span>content<span class="sc">}</span><span class="ss">&quot;</span>.encode(<span class="st">&quot;utf-8&quot;</span>)</a>
+<a class="sourceLine" id="cb62-4" title="4"><span class="bu">hash</span> <span class="op">=</span> hashlib.sha1(store).hexdigest()</a>
+<a class="sourceLine" id="cb62-5" title="5"><span class="bu">print</span>(<span class="bu">hash</span>) <span class="co">#=&gt; bd9dbf5aae1a3862dd1526723246b20206e5fc37    </span></a></code></pre></div>
 <p>できた。続き。</p>
-<div class="sourceCode" id="cb61"><pre class="sourceCode py"><code class="sourceCode python"><a class="sourceLine" id="cb61-1" title="1"><span class="im">import</span> zlib</a>
-<a class="sourceLine" id="cb61-2" title="2">data <span class="op">=</span> zlib.compress(store)</a>
-<a class="sourceLine" id="cb61-3" title="3"><span class="bu">print</span>(<span class="bu">bytes</span>.<span class="bu">hex</span>(data)) <span class="co">#=&gt; 789c4bcac94f5230346328cf482c51c82c56282dd05148c94fb607005f1c079d</span></a></code></pre></div>
+<div class="sourceCode" id="cb63"><pre class="sourceCode py"><code class="sourceCode python"><a class="sourceLine" id="cb63-1" title="1"><span class="im">import</span> zlib</a>
+<a class="sourceLine" id="cb63-2" title="2">data <span class="op">=</span> zlib.compress(store)</a>
+<a class="sourceLine" id="cb63-3" title="3"><span class="bu">print</span>(<span class="bu">bytes</span>.<span class="bu">hex</span>(data)) <span class="co">#=&gt; 789c4bcac94f5230346328cf482c51c82c56282dd05148c94fb607005f1c079d</span></a></code></pre></div>
 <p>こっちもできた。gitの作るオブジェクトと比べる。</p>
-<div class="sourceCode" id="cb62"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb62-1" title="1"><span class="fu">git</span> init</a>
-<a class="sourceLine" id="cb62-2" title="2"><span class="bu">echo</span> -n <span class="st">&quot;what is up, doc?&quot;</span> <span class="op">&gt;</span> test.txt</a>
-<a class="sourceLine" id="cb62-3" title="3"><span class="fu">git</span> add test.txt </a></code></pre></div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb64-1" title="1"><span class="fu">git</span> init</a>
+<a class="sourceLine" id="cb64-2" title="2"><span class="bu">echo</span> -n <span class="st">&quot;what is up, doc?&quot;</span> <span class="op">&gt;</span> test.txt</a>
+<a class="sourceLine" id="cb64-3" title="3"><span class="fu">git</span> add test.txt </a></code></pre></div>
 <p>この時点で「bd9dbf5aae1a3862dd1526723246b20206e5fc37」というオブジェクトができて、中身が「789c4bcac94f5230346328cf482c51c82c56282dd05148c94fb607005f1c079d」になっているはず。</p>
-<div class="sourceCode" id="cb63"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb63-1" title="1">$ <span class="fu">od</span> -tx1 .git/objects/bd/9dbf5aae1a3862dd1526723246b20206e5fc37 </a>
-<a class="sourceLine" id="cb63-2" title="2"><span class="ex">0000000</span>    78  01  4b  ca  c9  4f  52  30  34  63  28  cf  48  2c  51  c8</a>
-<a class="sourceLine" id="cb63-3" title="3"><span class="ex">0000020</span>    2c  56  28  2d  d0  51  48  c9  4f  b6  07  00  5f  1c  07  9d</a>
-<a class="sourceLine" id="cb63-4" title="4"><span class="ex">0000040</span></a></code></pre></div>
+<div class="sourceCode" id="cb65"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb65-1" title="1">$ <span class="fu">od</span> -tx1 .git/objects/bd/9dbf5aae1a3862dd1526723246b20206e5fc37 </a>
+<a class="sourceLine" id="cb65-2" title="2"><span class="ex">0000000</span>    78  01  4b  ca  c9  4f  52  30  34  63  28  cf  48  2c  51  c8</a>
+<a class="sourceLine" id="cb65-3" title="3"><span class="ex">0000020</span>    2c  56  28  2d  d0  51  48  c9  4f  b6  07  00  5f  1c  07  9d</a>
+<a class="sourceLine" id="cb65-4" title="4"><span class="ex">0000040</span></a></code></pre></div>
 <p>なってますね。</p>
 <p>もう一度、`Hello Git!"でやりなおす。</p>
 <p>ハッシュ値が一致することを確認。</p>
-<div class="sourceCode" id="cb64"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb64-1" title="1">$ <span class="bu">echo</span> -n <span class="st">&#39;Hello Git!&#39;</span> <span class="op">&gt;</span> test.txt</a>
-<a class="sourceLine" id="cb64-2" title="2">$ <span class="fu">git</span> hash-object test.txt </a>
-<a class="sourceLine" id="cb64-3" title="3"><span class="ex">fdc3d3cd37c23aeb665aa995f395d9c6979bd508</span></a>
-<a class="sourceLine" id="cb64-4" title="4"></a>
-<a class="sourceLine" id="cb64-5" title="5">$ <span class="kw">{</span> <span class="bu">echo</span> -n <span class="st">&#39;blob 10\0&#39;</span><span class="kw">;</span><span class="fu">cat</span> test.txt<span class="kw">}</span> <span class="kw">|</span> <span class="ex">shasum</span> </a>
-<a class="sourceLine" id="cb64-6" title="6"><span class="ex">fdc3d3cd37c23aeb665aa995f395d9c6979bd508</span>  -</a></code></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb66-1" title="1">$ <span class="bu">echo</span> -n <span class="st">&#39;Hello Git!&#39;</span> <span class="op">&gt;</span> test.txt</a>
+<a class="sourceLine" id="cb66-2" title="2">$ <span class="fu">git</span> hash-object test.txt </a>
+<a class="sourceLine" id="cb66-3" title="3"><span class="ex">fdc3d3cd37c23aeb665aa995f395d9c6979bd508</span></a>
+<a class="sourceLine" id="cb66-4" title="4"></a>
+<a class="sourceLine" id="cb66-5" title="5">$ <span class="kw">{</span> <span class="bu">echo</span> -n <span class="st">&#39;blob 10\0&#39;</span><span class="kw">;</span><span class="fu">cat</span> test.txt<span class="kw">}</span> <span class="kw">|</span> <span class="ex">shasum</span> </a>
+<a class="sourceLine" id="cb66-6" title="6"><span class="ex">fdc3d3cd37c23aeb665aa995f395d9c6979bd508</span>  -</a></code></pre></div>
 <p>中身が一致することを確認。</p>
-<div class="sourceCode" id="cb65"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb65-1" title="1">$ <span class="fu">git</span> init</a>
-<a class="sourceLine" id="cb65-2" title="2">$ <span class="fu">git</span> add test.txt</a>
-<a class="sourceLine" id="cb65-3" title="3">$ <span class="fu">od</span> -tx1 .git/objects/fd/c3d3cd37c23aeb665aa995f395d9c6979bd508</a>
-<a class="sourceLine" id="cb65-4" title="4"><span class="ex">0000000</span>    78  01  4b  ca  c9  4f  52  30  34  60  f0  48  cd  c9  c9  57</a>
-<a class="sourceLine" id="cb65-5" title="5"><span class="ex">0000020</span>    70  cf  2c  51  04  00  34  98  05  7a                        </a>
-<a class="sourceLine" id="cb65-6" title="6"><span class="ex">0000032</span></a></code></pre></div>
-<div class="sourceCode" id="cb66"><pre class="sourceCode py"><code class="sourceCode python"><a class="sourceLine" id="cb66-1" title="1"><span class="im">import</span> zlib</a>
-<a class="sourceLine" id="cb66-2" title="2">content <span class="op">=</span> <span class="st">&quot;Hello Git!&quot;</span></a>
-<a class="sourceLine" id="cb66-3" title="3">store <span class="op">=</span> <span class="ss">f&quot;blob </span><span class="sc">{</span><span class="bu">len</span>(content)<span class="sc">}</span><span class="ch">\0</span><span class="sc">{</span>content<span class="sc">}</span><span class="ss">&quot;</span>.encode(<span class="st">&quot;utf-8&quot;</span>)</a>
-<a class="sourceLine" id="cb66-4" title="4">data <span class="op">=</span> zlib.compress(store)</a>
-<a class="sourceLine" id="cb66-5" title="5"><span class="bu">print</span>(<span class="bu">bytes</span>.<span class="bu">hex</span>(data))</a></code></pre></div>
-<div class="sourceCode" id="cb67"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb67-1" title="1">$ <span class="ex">python3</span> test.py</a>
-<a class="sourceLine" id="cb67-2" title="2"><span class="ex">789c4bcac94f52303460f048cdc9c95770cf2c5104003498057a</span></a></code></pre></div>
+<div class="sourceCode" id="cb67"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb67-1" title="1">$ <span class="fu">git</span> init</a>
+<a class="sourceLine" id="cb67-2" title="2">$ <span class="fu">git</span> add test.txt</a>
+<a class="sourceLine" id="cb67-3" title="3">$ <span class="fu">od</span> -tx1 .git/objects/fd/c3d3cd37c23aeb665aa995f395d9c6979bd508</a>
+<a class="sourceLine" id="cb67-4" title="4"><span class="ex">0000000</span>    78  01  4b  ca  c9  4f  52  30  34  60  f0  48  cd  c9  c9  57</a>
+<a class="sourceLine" id="cb67-5" title="5"><span class="ex">0000020</span>    70  cf  2c  51  04  00  34  98  05  7a                        </a>
+<a class="sourceLine" id="cb67-6" title="6"><span class="ex">0000032</span></a></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode py"><code class="sourceCode python"><a class="sourceLine" id="cb68-1" title="1"><span class="im">import</span> zlib</a>
+<a class="sourceLine" id="cb68-2" title="2">content <span class="op">=</span> <span class="st">&quot;Hello Git!&quot;</span></a>
+<a class="sourceLine" id="cb68-3" title="3">store <span class="op">=</span> <span class="ss">f&quot;blob </span><span class="sc">{</span><span class="bu">len</span>(content)<span class="sc">}</span><span class="ch">\0</span><span class="sc">{</span>content<span class="sc">}</span><span class="ss">&quot;</span>.encode(<span class="st">&quot;utf-8&quot;</span>)</a>
+<a class="sourceLine" id="cb68-4" title="4">data <span class="op">=</span> zlib.compress(store)</a>
+<a class="sourceLine" id="cb68-5" title="5"><span class="bu">print</span>(<span class="bu">bytes</span>.<span class="bu">hex</span>(data))</a></code></pre></div>
+<div class="sourceCode" id="cb69"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb69-1" title="1">$ <span class="ex">python3</span> test.py</a>
+<a class="sourceLine" id="cb69-2" title="2"><span class="ex">789c4bcac94f52303460f048cdc9c95770cf2c5104003498057a</span></a></code></pre></div>
 <p>一致していますね。めでたい。これでGit内部についてはおしまいかな。</p>
 <p>Gitのblobは<code>binary large object</code>の略らしい。ほんとか？</p>
 <p>少なくとも<a href="https://docs.github.com/en/rest/reference/git#blobs">GitHubはそう言っている</a>と。</p>
@@ -445,28 +488,28 @@
 <p>git rebaseの説明をZennに書いた。こうしてトピックごとにZennに書いて、思考を整理してから講義ノートにまとめていくスタイル。</p>
 <p>Linuxのコマンドグルーピングというものを知った。echoの結果とcatの結果を、この順番でファイルに落としたい。</p>
 <p>普通にやるなら中間ファイルが必要。</p>
-<div class="sourceCode" id="cb68"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb68-1" title="1"><span class="bu">echo</span> <span class="st">&quot;Hoge&quot;</span> <span class="op">&gt;</span> head.txt</a>
-<a class="sourceLine" id="cb68-2" title="2"><span class="fu">cat</span> head.txt tail.txt <span class="op">&gt;</span> total.txt</a></code></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb70-1" title="1"><span class="bu">echo</span> <span class="st">&quot;Hoge&quot;</span> <span class="op">&gt;</span> head.txt</a>
+<a class="sourceLine" id="cb70-2" title="2"><span class="fu">cat</span> head.txt tail.txt <span class="op">&gt;</span> total.txt</a></code></pre></div>
 <p>しかし、中括弧で囲むとこんなことができる。</p>
-<div class="sourceCode" id="cb69"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb69-1" title="1">{<span class="ex">echo</span> <span class="st">&quot;Hoge&quot;</span><span class="kw">;</span> <span class="fu">cat</span> tail.txt<span class="kw">;</span>} <span class="op">&gt;</span> <span class="ex">total.txt</span></a></code></pre></div>
+<div class="sourceCode" id="cb71"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb71-1" title="1">{<span class="ex">echo</span> <span class="st">&quot;Hoge&quot;</span><span class="kw">;</span> <span class="fu">cat</span> tail.txt<span class="kw">;</span>} <span class="op">&gt;</span> <span class="ex">total.txt</span></a></code></pre></div>
 <p>これで、Gitのハッシュを調べることができる。こんなファイルを考える。</p>
-<div class="sourceCode" id="cb70"><pre class="sourceCode txt"><code class="sourceCode default"><a class="sourceLine" id="cb70-1" title="1">Hello Git!</a></code></pre></div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode txt"><code class="sourceCode default"><a class="sourceLine" id="cb72-1" title="1">Hello Git!</a></code></pre></div>
 <p>Gitのハッシュを調べる。</p>
-<div class="sourceCode" id="cb71"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb71-1" title="1">$ <span class="fu">git</span> hash-object test.txt</a>
-<a class="sourceLine" id="cb71-2" title="2"><span class="ex">106287c47fd25ad9a0874670a0d5c6eacf1bfe4e</span></a></code></pre></div>
+<div class="sourceCode" id="cb73"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb73-1" title="1">$ <span class="fu">git</span> hash-object test.txt</a>
+<a class="sourceLine" id="cb73-2" title="2"><span class="ex">106287c47fd25ad9a0874670a0d5c6eacf1bfe4e</span></a></code></pre></div>
 <p>Gitのハッシュはsha1sumなのだが、このまま食わせると違うものになる。</p>
-<div class="sourceCode" id="cb72"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb72-1" title="1">$ <span class="ex">shasum</span> test.txt</a>
-<a class="sourceLine" id="cb72-2" title="2"><span class="ex">871fc2d049fbfab104eeca13c37ff938a1ffaf3d</span>  test.txt</a></code></pre></div>
+<div class="sourceCode" id="cb74"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb74-1" title="1">$ <span class="ex">shasum</span> test.txt</a>
+<a class="sourceLine" id="cb74-2" title="2"><span class="ex">871fc2d049fbfab104eeca13c37ff938a1ffaf3d</span>  test.txt</a></code></pre></div>
 <p>これは、頭に<code>blob filesize\0</code>というヘッダがついているから。filesizeはファイルサイズ。<code>\0</code>はヌル文字。</p>
 <p>ファイルサイズを調べる。</p>
-<div class="sourceCode" id="cb73"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb73-1" title="1">$ <span class="fu">wc</span> -c <span class="op">&lt;</span> test.txt</a>
-<a class="sourceLine" id="cb73-2" title="2">      <span class="ex">11</span></a></code></pre></div>
+<div class="sourceCode" id="cb75"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb75-1" title="1">$ <span class="fu">wc</span> -c <span class="op">&lt;</span> test.txt</a>
+<a class="sourceLine" id="cb75-2" title="2">      <span class="ex">11</span></a></code></pre></div>
 <p>11バイトなので、<code>blob 11\0</code>をヘッダとして追加し、それを<code>shasum</code>にかける。</p>
-<div class="sourceCode" id="cb74"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb74-1" title="1">$ <span class="kw">{</span> <span class="bu">echo</span> -en <span class="st">&#39;blob 11\0&#39;</span><span class="kw">;</span> <span class="fu">cat</span> test.txt<span class="kw">;</span> <span class="kw">}</span> <span class="kw">|</span> <span class="ex">shasum</span></a>
-<a class="sourceLine" id="cb74-2" title="2"><span class="ex">106287c47fd25ad9a0874670a0d5c6eacf1bfe4e</span>  -</a>
-<a class="sourceLine" id="cb74-3" title="3"></a>
-<a class="sourceLine" id="cb74-4" title="4">$ <span class="fu">git</span> hash-object test.txt</a>
-<a class="sourceLine" id="cb74-5" title="5"><span class="ex">106287c47fd25ad9a0874670a0d5c6eacf1bfe4e</span></a></code></pre></div>
+<div class="sourceCode" id="cb76"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb76-1" title="1">$ <span class="kw">{</span> <span class="bu">echo</span> -en <span class="st">&#39;blob 11\0&#39;</span><span class="kw">;</span> <span class="fu">cat</span> test.txt<span class="kw">;</span> <span class="kw">}</span> <span class="kw">|</span> <span class="ex">shasum</span></a>
+<a class="sourceLine" id="cb76-2" title="2"><span class="ex">106287c47fd25ad9a0874670a0d5c6eacf1bfe4e</span>  -</a>
+<a class="sourceLine" id="cb76-3" title="3"></a>
+<a class="sourceLine" id="cb76-4" title="4">$ <span class="fu">git</span> hash-object test.txt</a>
+<a class="sourceLine" id="cb76-5" title="5"><span class="ex">106287c47fd25ad9a0874670a0d5c6eacf1bfe4e</span></a></code></pre></div>
 <p>よしよし、無事に一致した。</p>
           </article>
   </body>
