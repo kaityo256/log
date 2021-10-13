@@ -26,6 +26,16 @@
 <p>なんか全然集中力がない。会議でうまく話せなかった(準備不足)。</p>
 <p>とりあえずGitHub演習のTodoとissueを一つずつつぶした。</p>
 <p>その、何かパワハラのようなものがあったとき、当事者(加害者とされる側と被害者とされる側)の話し合いの場を設けるって、多くの場合悪手だと思うんだけどなぁ。たとえばいじめがあったときに、いじめた側といじめられた側の両方を呼んで、みんなの前でどういうことだったか説明させる、みたいなもんでしょう？だいたいこういうのは加害者側のほうが口が立つし、グループ内に立場も強いから、被害者が二次被害にあうことになるし、しかも「禊」が済んだ形になって、加害者側の益にしかならない。今回は「被害者側」が強かったからいいけど、一般の場合はこれでつぶれちゃうと思う・・・</p>
+<p>会議。</p>
+<p>エディタでファイル開いて、そのままダラダラ冷や汗だけ流れて手が動かないパターン。 Gitでフィーチャーブランチ切って、そのままダラダラ冷や汗だけ流れて手が動かないパターン。</p>
+<p>サーバにpostfixを入れるテスト。</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1"><span class="fu">sudo</span> yum install postfix</a></code></pre></div>
+<p>送信専用にして、かつ内部からしかメールを送信しない場合は設定変更不要のはず？</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1"><span class="fu">sudo</span> postfix check</a>
+<a class="sourceLine" id="cb2-2" title="2"><span class="fu">sudo</span> systemctl start postfix</a></code></pre></div>
+<p>mailコマンドでメールが送れた。inet_interfacesをlocalhostにしているので、問題ないはず？</p>
+<p>とりあえずpostfixは止めておいた。大丈夫そうならこれを使ってネットワーク監視する。</p>
+<p>なんとか気力を振り絞って査読レポートへの返事を書いたぞ。</p>
 <h2 id="月12日火"><a href="#12">10月12日(火)</a> <a id="12"></a></h2>
 <p>うーん、なんかSNSに「お気持ち」を書くと「お気持ち」が返ってくるんだな。それが嫌ならやめろ、ということか。</p>
 <p>久しぶりの講義。レーザーポインタがなくて往生した。矢上から日吉、結構遠かったな・・・。</p>
@@ -40,8 +50,8 @@
 <p>ダメだ。共著論文読もうとしたけど、目が滑る。疲れてるんだ・・・</p>
 <h2 id="月10日日"><a href="#10">10月10日(日)</a> <a id="10"></a></h2>
 <p>急にWSL2のUbuntuからネットワークにつながらなくなった。</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1">$ <span class="ex">nslookup</span> github.com</a>
-<a class="sourceLine" id="cb1-2" title="2">;; <span class="ex">connection</span> timed out<span class="kw">;</span> <span class="ex">no</span> servers could be reached</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" title="1">$ <span class="ex">nslookup</span> github.com</a>
+<a class="sourceLine" id="cb3-2" title="2">;; <span class="ex">connection</span> timed out<span class="kw">;</span> <span class="ex">no</span> servers could be reached</a></code></pre></div>
 <p>Windows側では問題なくつながる。PowerShellからwslをシャットダウンしてもダメ。あ、生IPでPingも通らない。完全にネットが死んでる。Windowsごと再起動したら直った。なんやねん。</p>
 <p>WordでPが逆向いたような変な記号がでるの、これ、段落記号らしい。言語設定で英語にすると出てしまうようだ。日本語優先にしたらなおった。たまに変なショートカットキーでIMEが英語キーボードになるんだけど、その影響かな？</p>
 <p>ネット、っていうかTwitterで、そこそこフォロワーにいる人に対して、その人の反対意見のツイートをただ埋め込みツイートの形でただリプライする人、なんなんだろう？自分の意見として他人の意見を送りつけてるんだろうか。それとも「こういう意見もあるよ」と教えてるつもりなんだろうか。</p>
@@ -88,34 +98,34 @@
 <p>腰を据えてssh-agent問題に取り組む。</p>
 <p>問題。</p>
 <p>WSL2のUbuntuでssh-agentを立ち上げる。</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1"><span class="bu">eval</span> <span class="kw">`</span><span class="fu">ssh-agent</span><span class="kw">`</span></a></code></pre></div>
-<p>すると、ssh-addが出来るようになる。しかし、一度ターミナルを閉じてもう一度開くと、ssh-agentは生きているのにssh-add出来なくなる。</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" title="1">$ <span class="fu">pidof</span> ssh-agent</a>
-<a class="sourceLine" id="cb3-2" title="2"><span class="ex">95</span></a>
-<a class="sourceLine" id="cb3-3" title="3">$ <span class="fu">ssh-add</span></a>
-<a class="sourceLine" id="cb3-4" title="4"><span class="ex">Could</span> not open a connection to your authentication agent.</a></code></pre></div>
-<p>だもんで面倒だから<code>.zshrc</code>に</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb4-1" title="1"><span class="bu">eval</span> <span class="kw">`</span><span class="fu">ssh-agent</span><span class="kw">`</span></a></code></pre></div>
+<p>すると、ssh-addが出来るようになる。しかし、一度ターミナルを閉じてもう一度開くと、ssh-agentは生きているのにssh-add出来なくなる。</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb5-1" title="1">$ <span class="fu">pidof</span> ssh-agent</a>
+<a class="sourceLine" id="cb5-2" title="2"><span class="ex">95</span></a>
+<a class="sourceLine" id="cb5-3" title="3">$ <span class="fu">ssh-add</span></a>
+<a class="sourceLine" id="cb5-4" title="4"><span class="ex">Could</span> not open a connection to your authentication agent.</a></code></pre></div>
+<p>だもんで面倒だから<code>.zshrc</code>に</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb6-1" title="1"><span class="bu">eval</span> <span class="kw">`</span><span class="fu">ssh-agent</span><span class="kw">`</span></a></code></pre></div>
 <p>って書いてて、毎回起動してたんだけど、そうすると当然こうなる。</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb5-1" title="1">$ <span class="fu">pidof</span> ssh-agent                                                                                                   </a>
-<a class="sourceLine" id="cb5-2" title="2"><span class="ex">32173</span> 31548 31344 31137 29020 28832 27947 27740 27248 27156 22731 22181 21753 21580 20882 19950 19721 18981 18612 18466 17212 16870 16678 16613 16482 15297 14260 13290 12988 12923 12591 12089 12084 11110 10915 10581 10386 10155 10036 9839 9505 9131 8890 7440 6796 6345 5675 5404 5147 4812 4709 3981 3679 3416 3378 3200 2907 2455 2065 1870 1433 952 279 95</a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb7-1" title="1">$ <span class="fu">pidof</span> ssh-agent                                                                                                   </a>
+<a class="sourceLine" id="cb7-2" title="2"><span class="ex">32173</span> 31548 31344 31137 29020 28832 27947 27740 27248 27156 22731 22181 21753 21580 20882 19950 19721 18981 18612 18466 17212 16870 16678 16613 16482 15297 14260 13290 12988 12923 12591 12089 12084 11110 10915 10581 10386 10155 10036 9839 9505 9131 8890 7440 6796 6345 5675 5404 5147 4812 4709 3981 3679 3416 3378 3200 2907 2455 2065 1870 1433 952 279 95</a></code></pre></div>
 <p>これはなんとかしないといけない。</p>
 <p><a href="https://esc.sh/blog/ssh-agent-windows10-wsl2/">この記事</a>に解決策があった。</p>
 <p>まずは不要なプロセスを全部殺す。いちいち殺すの面倒なので、PowerShellから以下を実行。</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb6-1" title="1"><span class="ex">wsl</span> --shutdown</a></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb8-1" title="1"><span class="ex">wsl</span> --shutdown</a></code></pre></div>
 <p>次にWSL2のUbuntuで、まず<code>key-chain</code>を入れる。</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb7-1" title="1"><span class="fu">sudo</span> apt-get install keychain</a></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb9-1" title="1"><span class="fu">sudo</span> apt-get install keychain</a></code></pre></div>
 <p>keychainを使う。</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb8-1" title="1"><span class="ex">/usr/bin/keychain</span> -q --nogui <span class="va">$HOME</span>/.ssh/id_rsa</a></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb10-1" title="1"><span class="ex">/usr/bin/keychain</span> -q --nogui <span class="va">$HOME</span>/.ssh/id_rsa</a></code></pre></div>
 <p>ここでパスフレーズを聞かれるので入力。</p>
 <p>すると、<code>$HOME/.keychain</code>にシェルスクリプトが出来るので、それを実行する。</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb9-1" title="1"><span class="bu">source</span> <span class="va">$HOME</span>/.keychain/<span class="va">$HOST</span>-sh</a></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb11-1" title="1"><span class="bu">source</span> <span class="va">$HOME</span>/.keychain/<span class="va">$HOST</span>-sh</a></code></pre></div>
 <p>あとはこれで接続の度にssh-addしなくて良くなった。よしよし。</p>
 <p><a href="https://zenn.dev/kaityo256/articles/ssh_agent_on_wsl">記事</a>にも書いた。</p>
 <h2 id="月01日金"><a href="#01">10月01日(金)</a> <a id="01"></a></h2>
 <p>WSLのUbuntu、起動の度に<code>eval ssh-agent</code>してるんだけど、当然こうなる。</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb10-1" title="1">$ <span class="fu">pidof</span> ssh-agent                                                                                                   </a>
-<a class="sourceLine" id="cb10-2" title="2"><span class="ex">32173</span> 31548 31344 31137 29020 28832 27947 27740 27248 27156 22731 22181 21753 21580 20882 19950 19721 18981 18612 18466 17212 16870 16678 16613 16482 15297 14260 13290 12988 12923 12591 12089 12084 11110 10915 10581 10386 10155 10036 9839 9505 9131 8890 7440 6796 6345 5675 5404 5147 4812 4709 3981 3679 3416 3378 3200 2907 2455 2065 1870 1433 952 279 95</a></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb12-1" title="1">$ <span class="fu">pidof</span> ssh-agent                                                                                                   </a>
+<a class="sourceLine" id="cb12-2" title="2"><span class="ex">32173</span> 31548 31344 31137 29020 28832 27947 27740 27248 27156 22731 22181 21753 21580 20882 19950 19721 18981 18612 18466 17212 16870 16678 16613 16482 15297 14260 13290 12988 12923 12591 12089 12084 11110 10915 10581 10386 10155 10036 9839 9505 9131 8890 7440 6796 6345 5675 5404 5147 4812 4709 3981 3679 3416 3378 3200 2907 2455 2065 1870 1433 952 279 95</a></code></pre></div>
 <p>うん、これはさすがになんとかした方がよい気がしてきた。</p>
           </article>
   </body>
