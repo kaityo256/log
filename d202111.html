@@ -26,6 +26,17 @@
 <p>研究室ミーティング。三人発表。</p>
 <p>なぜか急にプリンタがネットワークに繋がらなくなった。無線経由だとどうしても駄目。仕方なく有線でつないだ。このせいで必要な書類が印刷できずにしばらく困った。</p>
 <p>いろいろと予定がやばい。論文に手をつけることができない。</p>
+<p>論文を更新しようとlatexdiffを使ってみたが、なぜか通らない。別のやつなら通る。何が問題なんだ？</p>
+<p>まず、latexindentが動かない。VSCodeの「出力」の「LaTeX Workshop」を見ると、<code>Log::Log4perl</code>が無いせいっぽい。<a href="https://qiita.com/khys/items/332c3a3f34a82acf7a7a">この記事</a>に従ってインストール。</p>
+<p>駄目だ。Macだと動かないが、WSLだと普通に動く。そっちで続きをやるか。</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1"><span class="fu">sudo</span> apt update</a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="fu">sudo</span> apt upgrade</a>
+<a class="sourceLine" id="cb1-3" title="3"><span class="fu">sudo</span> apt install latexdiff</a></code></pre></div>
+<p>WindowsもMacもアップデートにすげー時間がかかってる。非本質的なところで時間がかかって非常にイヤな感じ。</p>
+<p>WSL2ではうまくlatexdiffできた。まずはMacを諦める。</p>
+<p>WSL2のUbuntuにlatexindentを入れる。</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1"><span class="fu">sudo</span> apt install texlive-extra-utils</a></code></pre></div>
+<p>これでインデントはできるようになった。なぜかon saveでフォーマッタが走らないけど、まぁいいや。WSL2ではlatexdiffも問題なく動いた。よしよし。</p>
 <h2 id="月10日水"><a href="#10">11月10日(水)</a> <a id="10"></a></h2>
 <p>なんか、「初学者はネットで学び始めるのではなく、まずは良書と呼ばれる本を読んだほうが良い」という意見に対して「このネットのご時世に本とかwww」みたいなコメントがついていて悲しい。そういう人を生み出さないためにしっかり教育をがんばりたい。</p>
 <p>Windows 11、再起動がかかるときのメッセージ「あなたはそこに100%です」がひどい。緊急パッチ<a href="https://support.microsoft.com/ja-jp/topic/2021-%E5%B9%B4-11-%E6%9C%88-5-%E6%97%A5-kb5008295-%E5%B8%AF%E5%9F%9F%E5%A4%96-5540f171-846c-4af0-b363-29b6f02a8935">KB5008295</a>の説明が機械翻訳なのは良いとして、再起動メッセージくらいちゃんとローカライズしても良いのでは・・・。</p>
