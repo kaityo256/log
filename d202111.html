@@ -22,6 +22,25 @@
     <article class="markdown-body">
                         <h1 id="ログ">ログ</h1>
 <p><a href="index.html">ログ一覧</a></p>
+<h2 id="月12日金"><a href="#12">11月12日(金)</a> <a id="12"></a></h2>
+<p>Macでlatexdiffが走らず、WSL2で動く問題、TeXLiveのバージョンの問題だった。</p>
+<p><a href="https://tex.stackexchange.com/questions/574280/latexdiff-with-cite-commands-gives-output-with-apparently-mismatched-braces">latexdiff with \cite commands gives output with apparently mismatched braces</a></p>
+<p>これはLaTeXが2020年からいくつかのパッケージに互換性のない修正を入れたから。その一つが<code>ulem.sty</code>。latexdiffは<code>ulem.sty</code>を使う。</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode tex"><code class="sourceCode latex"><a class="sourceLine" id="cb1-1" title="1"><span class="fu">\RequirePackage</span>[normalem]{ulem} <span class="co">%DIF PREAMBLE</span></a></code></pre></div>
+<p>この状態で、打ち消し線<code>\sout</code>を使うとまずいらしい。回避策はいくつかあるが、簡単なのは<code>latexdiff</code>に<code>-t CFONT</code>オプションをつけること。しかし、これだとstrikeout(打ち消し線)が使えない。うーむ。</p>
+<p>非常にad-hocだが、結局<code>uname</code>でホスト判別して、<code>Darwin</code>ならオプションをつける、という形にした。</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1"><span class="va">HOST=$(</span><span class="ex">shell</span> uname<span class="va">)</span></a>
+<a class="sourceLine" id="cb2-2" title="2"><span class="va">DIFFPARAM=</span></a>
+<a class="sourceLine" id="cb2-3" title="3"><span class="ex">ifeq</span> (<span class="va">$(</span><span class="ex">HOST</span><span class="va">)</span>,Darwin)</a>
+<a class="sourceLine" id="cb2-4" title="4">    <span class="va">DIFFPARAM=</span>-t <span class="ex">CFONT</span></a>
+<a class="sourceLine" id="cb2-5" title="5"><span class="ex">endif</span></a>
+<a class="sourceLine" id="cb2-6" title="6"></a>
+<a class="sourceLine" id="cb2-7" title="7"><span class="ex">diff.tex</span>: <span class="va">$(</span><span class="ex">SRC</span><span class="va">)</span></a>
+<a class="sourceLine" id="cb2-8" title="8">    <span class="ex">latexdiff</span> <span class="va">$(</span><span class="ex">DIFFPARAM</span><span class="va">)</span> <span class="va">$(</span><span class="ex">DIFFDIR</span><span class="va">)</span>/<span class="va">$(</span><span class="ex">SRC</span><span class="va">)</span> <span class="va">$(</span><span class="ex">SRC</span><span class="va">)</span> <span class="op">&gt;</span> diff.tex</a></code></pre></div>
+<p>とりあえず自分用だからこれで良いや。</p>
+<p>Xbyakハンズオンを僕がやることに。とりあえずDockerで動作確認しようとしたらビルドに失敗する。直さないと。</p>
+<p>塩漬け論文修正して共著者に送ったぞ！</p>
+<p>WSL2のUbuntuが恐ろしく遅い問題、Xにつなごうとしてタイムアウトしているっぽい。VcXsrcを起動するか、DISPLAY環境変数を消せば早くなる。なんじゃらほい。</p>
 <h2 id="月11日木"><a href="#11">11月11日(木)</a> <a id="11"></a></h2>
 <p>研究室ミーティング。三人発表。</p>
 <p>なぜか急にプリンタがネットワークに繋がらなくなった。無線経由だとどうしても駄目。仕方なく有線でつないだ。このせいで必要な書類が印刷できずにしばらく困った。</p>
@@ -29,13 +48,13 @@
 <p>論文を更新しようとlatexdiffを使ってみたが、なぜか通らない。別のやつなら通る。何が問題なんだ？</p>
 <p>まず、latexindentが動かない。VSCodeの「出力」の「LaTeX Workshop」を見ると、<code>Log::Log4perl</code>が無いせいっぽい。<a href="https://qiita.com/khys/items/332c3a3f34a82acf7a7a">この記事</a>に従ってインストール。</p>
 <p>駄目だ。Macだと動かないが、WSLだと普通に動く。そっちで続きをやるか。</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1"><span class="fu">sudo</span> apt update</a>
-<a class="sourceLine" id="cb1-2" title="2"><span class="fu">sudo</span> apt upgrade</a>
-<a class="sourceLine" id="cb1-3" title="3"><span class="fu">sudo</span> apt install latexdiff</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" title="1"><span class="fu">sudo</span> apt update</a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="fu">sudo</span> apt upgrade</a>
+<a class="sourceLine" id="cb3-3" title="3"><span class="fu">sudo</span> apt install latexdiff</a></code></pre></div>
 <p>WindowsもMacもアップデートにすげー時間がかかってる。非本質的なところで時間がかかって非常にイヤな感じ。</p>
 <p>WSL2ではうまくlatexdiffできた。まずはMacを諦める。</p>
 <p>WSL2のUbuntuにlatexindentを入れる。</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1"><span class="fu">sudo</span> apt install texlive-extra-utils</a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb4-1" title="1"><span class="fu">sudo</span> apt install texlive-extra-utils</a></code></pre></div>
 <p>これでインデントはできるようになった。なぜかon saveでフォーマッタが走らないけど、まぁいいや。WSL2ではlatexdiffも問題なく動いた。よしよし。</p>
 <h2 id="月10日水"><a href="#10">11月10日(水)</a> <a id="10"></a></h2>
 <p>なんか、「初学者はネットで学び始めるのではなく、まずは良書と呼ばれる本を読んだほうが良い」という意見に対して「このネットのご時世に本とかwww」みたいなコメントがついていて悲しい。そういう人を生み出さないためにしっかり教育をがんばりたい。</p>
