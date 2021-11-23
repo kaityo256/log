@@ -22,6 +22,16 @@
     <article class="markdown-body">
                         <h1 id="ログ">ログ</h1>
 <p><a href="index.html">ログ一覧</a></p>
+<h2 id="月23日火"><a href="#23">11月23日(火)</a> <a id="23"></a></h2>
+<p>休日だったのか。</p>
+<h2 id="月22日月"><a href="#22">11月22日(月)</a> <a id="22"></a></h2>
+<p>実機で動かなかった理由がわかった。二つXbyakを組んでいたのに、一つ<code>ready()</code>を呼び忘れてた。これでOKということにしよう。スライドを作らないと。</p>
+<h2 id="月21日日"><a href="#21">11月21日(日)</a> <a id="21"></a></h2>
+<p>ハンズオンのリポジトリ、できた。</p>
+<h2 id="月20日土"><a href="#20">11月20日(土)</a> <a id="20"></a></h2>
+<p>ハンズオンのリポジトリをひたすら作っていたはず。</p>
+<h2 id="月19日金"><a href="#19">11月19日(金)</a> <a id="19"></a></h2>
+<p>ハンズオンのリポジトリをひたすら作っていたはず。</p>
 <h2 id="月18日木"><a href="#18">11月18日(木)</a> <a id="18"></a></h2>
 <p>Dockerでarchlinuxでpacmanでqemuを落としているときにビルドが失敗する。通信がおそすぎてタイムアウトしているらしい。ミラーを変えるべきだな。</p>
 <p>JAISTに変えたら圧倒的に高速化された。素晴らしい。JAISTは日本の宝。</p>
@@ -65,21 +75,25 @@
 <p>ネットで「いかに日本が駄目か」を力説する人、わりと「海外でこんなに評価されている自分を評価しなかった日本は駄目だ」が透けて見える感じがしてイヤな感じ。。。</p>
 <h2 id="月13日土"><a href="#13">11月13日(土)</a> <a id="13"></a></h2>
 <p>プログラミング基礎同演習のレポート採点した。</p>
+<h2 id="月13日土-1"><a href="#13">11月13日(土)</a> <a id="13"></a></h2>
+<p>Docker、学校ではなんかエラーが出たけど、家では普通にできたなあ。</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb5-1" title="1"><span class="ex">docker</span> build -t kaityo256/sve_intrinsic_samples .</a>
+<a class="sourceLine" id="cb5-2" title="2">[<span class="ex">+</span>] Building 1152.8s (19/19) <span class="ex">FINISHED</span></a></code></pre></div>
 <h2 id="月12日金"><a href="#12">11月12日(金)</a> <a id="12"></a></h2>
 <p>Macでlatexdiffが走らず、WSL2で動く問題、TeXLiveのバージョンの問題だった。</p>
 <p><a href="https://tex.stackexchange.com/questions/574280/latexdiff-with-cite-commands-gives-output-with-apparently-mismatched-braces">latexdiff with \cite commands gives output with apparently mismatched braces</a></p>
 <p>これはLaTeXが2020年からいくつかのパッケージに互換性のない修正を入れたから。その一つが<code>ulem.sty</code>。latexdiffは<code>ulem.sty</code>を使う。</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode tex"><code class="sourceCode latex"><a class="sourceLine" id="cb5-1" title="1"><span class="fu">\RequirePackage</span>[normalem]{ulem} <span class="co">%DIF PREAMBLE</span></a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode tex"><code class="sourceCode latex"><a class="sourceLine" id="cb6-1" title="1"><span class="fu">\RequirePackage</span>[normalem]{ulem} <span class="co">%DIF PREAMBLE</span></a></code></pre></div>
 <p>この状態で、打ち消し線<code>\sout</code>を使うとまずいらしい。回避策はいくつかあるが、簡単なのは<code>latexdiff</code>に<code>-t CFONT</code>オプションをつけること。しかし、これだとstrikeout(打ち消し線)が使えない。うーむ。</p>
 <p>非常にad-hocだが、結局<code>uname</code>でホスト判別して、<code>Darwin</code>ならオプションをつける、という形にした。</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb6-1" title="1"><span class="va">HOST=$(</span><span class="ex">shell</span> uname<span class="va">)</span></a>
-<a class="sourceLine" id="cb6-2" title="2"><span class="va">DIFFPARAM=</span></a>
-<a class="sourceLine" id="cb6-3" title="3"><span class="ex">ifeq</span> (<span class="va">$(</span><span class="ex">HOST</span><span class="va">)</span>,Darwin)</a>
-<a class="sourceLine" id="cb6-4" title="4">    <span class="va">DIFFPARAM=</span>-t <span class="ex">CFONT</span></a>
-<a class="sourceLine" id="cb6-5" title="5"><span class="ex">endif</span></a>
-<a class="sourceLine" id="cb6-6" title="6"></a>
-<a class="sourceLine" id="cb6-7" title="7"><span class="ex">diff.tex</span>: <span class="va">$(</span><span class="ex">SRC</span><span class="va">)</span></a>
-<a class="sourceLine" id="cb6-8" title="8">    <span class="ex">latexdiff</span> <span class="va">$(</span><span class="ex">DIFFPARAM</span><span class="va">)</span> <span class="va">$(</span><span class="ex">DIFFDIR</span><span class="va">)</span>/<span class="va">$(</span><span class="ex">SRC</span><span class="va">)</span> <span class="va">$(</span><span class="ex">SRC</span><span class="va">)</span> <span class="op">&gt;</span> diff.tex</a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb7-1" title="1"><span class="va">HOST=$(</span><span class="ex">shell</span> uname<span class="va">)</span></a>
+<a class="sourceLine" id="cb7-2" title="2"><span class="va">DIFFPARAM=</span></a>
+<a class="sourceLine" id="cb7-3" title="3"><span class="ex">ifeq</span> (<span class="va">$(</span><span class="ex">HOST</span><span class="va">)</span>,Darwin)</a>
+<a class="sourceLine" id="cb7-4" title="4">    <span class="va">DIFFPARAM=</span>-t <span class="ex">CFONT</span></a>
+<a class="sourceLine" id="cb7-5" title="5"><span class="ex">endif</span></a>
+<a class="sourceLine" id="cb7-6" title="6"></a>
+<a class="sourceLine" id="cb7-7" title="7"><span class="ex">diff.tex</span>: <span class="va">$(</span><span class="ex">SRC</span><span class="va">)</span></a>
+<a class="sourceLine" id="cb7-8" title="8">    <span class="ex">latexdiff</span> <span class="va">$(</span><span class="ex">DIFFPARAM</span><span class="va">)</span> <span class="va">$(</span><span class="ex">DIFFDIR</span><span class="va">)</span>/<span class="va">$(</span><span class="ex">SRC</span><span class="va">)</span> <span class="va">$(</span><span class="ex">SRC</span><span class="va">)</span> <span class="op">&gt;</span> diff.tex</a></code></pre></div>
 <p>とりあえず自分用だからこれで良いや。</p>
 <p>Xbyakハンズオンを僕がやることに。とりあえずDockerで動作確認しようとしたらビルドに失敗する。直さないと。</p>
 <p>塩漬け論文修正して共著者に送ったぞ！</p>
@@ -93,13 +107,13 @@
 <p>論文を更新しようとlatexdiffを使ってみたが、なぜか通らない。別のやつなら通る。何が問題なんだ？</p>
 <p>まず、latexindentが動かない。VSCodeの「出力」の「LaTeX Workshop」を見ると、<code>Log::Log4perl</code>が無いせいっぽい。<a href="https://qiita.com/khys/items/332c3a3f34a82acf7a7a">この記事</a>に従ってインストール。</p>
 <p>駄目だ。Macだと動かないが、WSLだと普通に動く。そっちで続きをやるか。</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb7-1" title="1"><span class="fu">sudo</span> apt update</a>
-<a class="sourceLine" id="cb7-2" title="2"><span class="fu">sudo</span> apt upgrade</a>
-<a class="sourceLine" id="cb7-3" title="3"><span class="fu">sudo</span> apt install latexdiff</a></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb8-1" title="1"><span class="fu">sudo</span> apt update</a>
+<a class="sourceLine" id="cb8-2" title="2"><span class="fu">sudo</span> apt upgrade</a>
+<a class="sourceLine" id="cb8-3" title="3"><span class="fu">sudo</span> apt install latexdiff</a></code></pre></div>
 <p>WindowsもMacもアップデートにすげー時間がかかってる。非本質的なところで時間がかかって非常にイヤな感じ。</p>
 <p>WSL2ではうまくlatexdiffできた。まずはMacを諦める。</p>
 <p>WSL2のUbuntuにlatexindentを入れる。</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb8-1" title="1"><span class="fu">sudo</span> apt install texlive-extra-utils</a></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb9-1" title="1"><span class="fu">sudo</span> apt install texlive-extra-utils</a></code></pre></div>
 <p>これでインデントはできるようになった。なぜかon saveでフォーマッタが走らないけど、まぁいいや。WSL2ではlatexdiffも問題なく動いた。よしよし。</p>
 <h2 id="月10日水"><a href="#10">11月10日(水)</a> <a id="10"></a></h2>
 <p>なんか、「初学者はネットで学び始めるのではなく、まずは良書と呼ばれる本を読んだほうが良い」という意見に対して「このネットのご時世に本とかwww」みたいなコメントがついていて悲しい。そういう人を生み出さないためにしっかり教育をがんばりたい。</p>
@@ -129,17 +143,20 @@
 <h2 id="月06日土"><a href="#06">11月06日(土)</a> <a id="06"></a></h2>
 <p>コンパイラいじめ記事更新。</p>
 <p><a href="https://zenn.dev/kaityo256/articles/nesting_functions">GCCに27958段ネストした関数を食わせると死ぬ</a></p>
+<p>論文の続きをやろうと思ってたけど、どうしても体が動かなかった。</p>
 <h2 id="月05日金"><a href="#05">11月05日(金)</a> <a id="05"></a></h2>
 <p><a href="https://jp.quora.com/%E5%9C%B0%E7%90%83%E5%B9%B3%E9%9D%A2%E8%AA%AC%E8%80%85%E3%81%9F%E3%81%A1%E3%82%92%E5%AE%87%E5%AE%99%E3%81%AB%E9%80%81%E3%81%A3%E3%81%A6-%E5%BD%BC%E3%82%89%E3%81%AB%E5%9C%B0%E7%90%83%E3%81%AE%E5%BD%A2%E3%82%92">地球平面説者たちを宇宙に送って、彼らに地球の形を見せることはできないのですか？</a></p>
 <p>これ面白い。陰暴論を信じるのは知識がないせいではなく、知識と自尊心のアンバランスが問題なのだ、という指摘。</p>
 <p>物理情報工学ソフトウェア開発演習。既存リポジトリをforkしてcloneしてローカルで修正、ローカルにWebサーバ立てて動作確認の上で、pushしてGitHub Pagesにデプロイまで。なんかそれっぽくない？</p>
+<p>プログラミング基礎同演習のレポート採点。間に合わず。家に持ち帰り。</p>
 <h2 id="月04日木"><a href="#04">11月04日(木)</a> <a id="04"></a></h2>
 <p>体が重い(最近それしか言っていない)。</p>
 <p>駄目だ。学校のPCもWin+Shift+Sが使えなくなってる。めちゃくちゃ不便。</p>
 <p>研究室ミーティング。学習指導の仕事。メール処理。</p>
 <h2 id="月03日水"><a href="#03">11月03日(水)</a> <a id="03"></a></h2>
-<p><a href="https://jr.mitou.org/final">未踏ジュニア 2021年最終成果報告会</a>。すごい。</p>
+<p><a href="https://jr.mitou.org/final">未踏ジュニア 2021年最終成果報告会</a>。みんなすごい。</p>
 <p><a href="https://pokemon.originalstitch.com/">ポケモンシャツ</a>。YouTubeで久しぶりに良さげなCMが。</p>
+<p>Windows 11にアップデートしたらWin+Shift+Sによるスクリーンショットがとれなくなった。どうやらWin+Shift+SはOSの機能ではなくSnipping Toolというツールが裏で起動しており、そのツールが動かなくなったのが原因らしい。実際に起動して「新規作成」をしたら「このアプリは開きません」と出てくる。「Windows.old」以下にある古い奴なら動く。</p>
 <h2 id="月02日火"><a href="#02">11月02日(火)</a> <a id="02"></a></h2>
 <p>プログラミング基礎同演習。文字の話。対面講義が学生が10人しか来なくて悲しい。あー、「漢数字のソート」の話をしようと思ってて忘れてた。</p>
 <p>Macのg++10、omp parallel のscheduleを無視する？インテルコンパイラはちゃんとやってくれるんだけど。</p>
