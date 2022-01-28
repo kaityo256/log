@@ -22,13 +22,26 @@
     <article class="markdown-body">
                         <h1 id="ログ">ログ</h1>
 <p><a href="index.html">ログ一覧</a></p>
+<h2 id="月28日金"><a href="#28">01月28日(金)</a> <a id="28"></a></h2>
+<p>会議。</p>
+<p><a href="https://zenn.dev/kaityo256/articles/python_play_sound">Pythonで音を鳴らすサンプル</a>書いた。</p>
+<h2 id="月27日木"><a href="#27">01月27日(木)</a> <a id="27"></a></h2>
+<p>研究室ミーティング。</p>
 <h2 id="月26日水"><a href="#26">01月26日(水)</a> <a id="26"></a></h2>
 <p>よく国際研究会のメールが届く。全部が全部そうとは言わないが、結構なものが「商業研究会」であり、うっすい研究会で参加費をとって運営が儲ける、参加者は「国際会議でInvite Speakerになった」という実績を得る、ようするにpredatory journalの研究会版である。と思ったら、「Predatory conference」という名前が既にあるらしい。</p>
 <p>で、今回来た国際研究会は結構すごかった。Invited Speakerのうち、二人だけH Indexが書いてある。誇らしげに。しかも「The Scientistt」って、「The Scientist Magazine」のパクリだな。キャッチコピーも酷似。</p>
 <p>っていうかなんで創薬の会議に情報理論の専門家が参加しているのよ。</p>
 <p>Qiitaのホーム、完全に死んでる。少なくとも僕の食指が動くような記事が全くでてこない。百歩譲ってホームは「育て」ないといけないとしても「トレンド」も死んでしまっている。昔は毎日、一つか二つは興味のある記事があったのだが、今は・・・</p>
 <p>これ、アルゴリズムが僕に合わなくなったのか、それとも執筆者が引っ越しをしてしまったのか・・・</p>
-<p><a href="https://github.com/kaityo256/xbyak_aarch64_handson">Xbyakハンズオンの英訳</a>終了。どこで宣伝すればいいのかな。<a href="https://dev.to/">dev.to</a>くらいしか知らないんだけど。とりあえずdev.toにアカウントだけ作った。GitHubで接続。</p>
+<p>Xbyakハンズオン、英訳した。しかし、Dockerイメージのビルドに失敗するようになった。エラーメッセージはこれ。</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode txt"><code class="sourceCode default"><a class="sourceLine" id="cb1-1" title="1">error: pam: signature from &quot;Levente Polyak (anthraxx) &lt;levente@leventepolyak.net&gt;&quot; is unknown trust</a></code></pre></div>
+<p>検索したら、<a href="https://bbs.archlinux.org/viewtopic.php?id=221435">Keyringを更新しろ</a>とのこと。</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1"><span class="ex">pacman</span> -Sy --noconfirm archlinux-keyring</a></code></pre></div>
+<p>を追加してみた。</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" title="1">$ <span class="fu">make</span> no-cache</a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="ex">docker</span> build -t kaityo256/xbyak_aarch64_handson . --no-cache</a>
+<a class="sourceLine" id="cb3-3" title="3">[<span class="ex">+</span>] Building 149.8s (23/23) <span class="ex">FINISHED</span>       </a></code></pre></div>
+<p>できた。 <a href="https://github.com/kaityo256/xbyak_aarch64_handson">Xbyakハンズオンの英訳</a>終了。どこで宣伝すればいいのかな。<a href="https://dev.to/">dev.to</a>くらいしか知らないんだけど。とりあえずdev.toにアカウントだけ作った。GitHubで接続。</p>
 <h2 id="月25日火"><a href="#25">01月25日(火)</a> <a id="25"></a></h2>
 <p>気力を振り絞って査読レポート精査。なんとか終わった。それだけで一日終わってしまった。</p>
 <h2 id="月24日月"><a href="#24">01月24日(月)</a> <a id="24"></a></h2>
