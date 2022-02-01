@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+                <title>d202202</title>
+    <style type="text/css">
+      code {
+        white-space: pre;
+      }
+    </style>
+        <style type="text/css"></style>
+
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- link rel="stylesheet" href="github-markdown.css" type="text/css" / -->
+        <script src="/usr/share/javascript/mathjax/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+          </head>
+
+  <body>
+    <article class="markdown-body">
+                        <h1 id="ログ">ログ</h1>
+<p><a href="index.html">ログ一覧</a></p>
+<h2 id="月01日火"><a href="#01">02月01日(火)</a> <a id="01"></a></h2>
+<p>2月になってしまった。</p>
+<p>Ashkin-TellerわからんわからんっていったらMさんに良い論文を教えてもらった。</p>
+<p><a href="https://doi.org/10.1063/1.523343">Ashkin–Teller model as a vertex problem</a></p>
+<p>おお、これはわかりやすい。</p>
+<p>サイトにA, B, C, Dの四種類の原子があるとせよ。隣が同種の時には<span class="math inline">\(\epsilon_0\)</span>, AB, CDの時には<span class="math inline">\(\epsilon_1\)</span>, AC, BDの時には<span class="math inline">\(\epsilon_2\)</span>, AD, BCの時には<span class="math inline">\(\epsilon_3\)</span>のエネルギーがあるとせよ。</p>
+<p>この時、</p>
+<p><span class="math display">\[
+H = J_0 + J_1 \sum \sigma_i \sigma_j + J_2 \sum \tau_i \tau_j 
++ J_3 \sum \sigma_i \sigma_j \tau_i \tau_j
+\]</span></p>
+<p>というハミルトニアンを考えると、<span class="math inline">\((\sigma_i, \tau_i)\)</span>が<span class="math inline">\((+,+)\)</span>、<span class="math inline">\((+,-)\)</span>、<span class="math inline">\((-,+)\)</span>、<span class="math inline">\((-,-)\)</span>をそれぞれA, B, C,Dに対応させると、<span class="math inline">\(\epsilon_i\)</span>と<span class="math inline">\(J_i\)</span>の関係がは以下のようになる。</p>
+<p><span class="math display">\[
+\begin{aligned}
+\epsilon_0 &amp;= J_0 + J_1 + J_2 + J_3 \\
+\epsilon_1 &amp;= J_0 + J_1 - J_2 - J_3 \\
+\epsilon_2 &amp;= J_0 - J_1 + J_2 - J_3 \\
+\epsilon_3 &amp;= J_0 - J_1 - J_2 + J_3 
+\end{aligned}
+\]</span></p>
+<p>これを<span class="math inline">\(J_i\)</span>について解くと、</p>
+<p><span class="math display">\[
+\begin{aligned}
+4J_0 &amp;= \epsilon_0 + \epsilon_1 + \epsilon_2 + \epsilon_3 \\
+4J_1 &amp;= \epsilon_0 + \epsilon_1 - \epsilon_2 - \epsilon_3 \\
+4J_2 &amp;= \epsilon_0 - \epsilon_1 + \epsilon_2 - \epsilon_3 \\
+4J_3 &amp;= \epsilon_0 - \epsilon_1 - \epsilon_2 + \epsilon_3
+\end{aligned}
+\]</span></p>
+<p>となる。ここで、逆温度<span class="math inline">\(\beta = 1/kT\)</span>を使って</p>
+<p><span class="math display">\[
+K_i = - \beta J_i
+\]</span></p>
+<p><span class="math display">\[
+\omega_i = \exp\left(-\beta \epsilon_i\right)
+\]</span></p>
+<p>という変数<span class="math inline">\(K_i\)</span>と<span class="math inline">\(\omega_i\)</span>を導入すると、</p>
+<p><span class="math display">\[
+\begin{aligned}
+\exp(4 K_0) &amp;= \omega_0 \omega_1 \omega_2 \omega_3 \\
+\exp(4 K_1) &amp;= \omega_0 \omega_1 / \omega_2 \omega_3 \\
+\exp(4 K_2) &amp;= \omega_0 \omega_2 / \omega_1 \omega_3 \\
+\exp(4 K_3) &amp;= \omega_0 \omega_3 / \omega_1 \omega_2 
+\end{aligned}
+\]</span></p>
+<p>という関係を得る。</p>
+<p>で、ここから<span class="math inline">\(\tau_i\)</span>を双対変換しなければならない。この双対変換はKramers–Wannier変換と呼ばれている。</p>
+<p>ちなみに、良く出てくるF. Y. Wuは<a href="https://ja.wikipedia.org/wiki/%E4%BC%8D%E6%B3%95%E5%B2%B3">この人</a>かな。</p>
+<p>双対変換で出てくる等式</p>
+<p><span class="math display">\[
+\exp(K \sigma \sigma&#39;) = \cosh{K}\sum_{t=0,1} (\sigma \sigma&#39; \tanh{K})^t
+\]</span></p>
+<p>について、</p>
+<p><span class="math inline">\(\sigma \sigma&#39; = 1\)</span>の時に<span class="math inline">\(\mathrm{e}^K\)</span>、<span class="math inline">\(\sigma \sigma&#39; = -1\)</span>の時に<span class="math inline">\(\mathrm{e}^{-K}\)</span>なので、和と差から</p>
+<p><span class="math display">\[
+\begin{aligned}
+\exp(K \sigma \sigma&#39;) &amp;= \frac{\mathrm{e}^K+\mathrm{e}^{-K}}{2} + \sigma\sigma&#39; \frac{(\mathrm{e}^K-\mathrm{e}^{-K})}{2} \\
+&amp;= \cosh{K} + \sigma\sigma&#39; \sinh{K} \\
+&amp;= \cosh{K} \left(1 + \sigma\sigma&#39; \tanh{K}\right) \\
+&amp;= \cosh{K}\sum_{t=0,1} (\sigma \sigma&#39; \tanh{K})^t
+\end{aligned}
+\]</span></p>
+<p>これを整理すると先ほどの式になる。</p>
+          </article>
+  </body>
+
+  </html>
