@@ -31,7 +31,11 @@
 </ul>
 <p>昨年の卒論、製本が上がってきたので受け取った。</p>
 <p>研究室ミーティング。ANNNIモデルの厳密対角化の結果と、機械学習によるタンパク質の構造予測の話。厳密対角化屋さん、古典系での結果を見るのは久しぶりな気がする。タンパク質の構造予測は実際に合成して確認するのはすごい。</p>
-<p>PCの整理をした。</p>
+<p>重い腰を上げて新しいMacのセットアップ。アップデートがかかっているうちに、古いMacのデータの整理。主にsvn管理されていないファイルの削除など。</p>
+<p>PCのデータを調べてたら、たら、昔のサーバがリモートになっているsvnリポジトリを発見。死ぬほど久しぶりにsvnadminを触る。</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1"><span class="ex">svnadmin</span> create rep_name</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1"><span class="fu">svn</span> co svn+ssh://username@servename.jp/home/username/rep_name local_rep</a></code></pre></div>
+<p>学生さんに「左利きなんだね」と言ったら「それ言われるの4回目です」。正直すまんかった。</p>
 <h2 id="月16日水"><a href="#16">02月16日(水)</a> <a id="16"></a></h2>
 <p>共著論文の査読レポートに対するコメント返した。遅くなってしまった。</p>
 <p>FDアンケート返した。プログラミング基礎同演習はだいぶこなれてきたので好評価だけれど、物理情報工学ソフトウェア開発演習(GitHub演習)は初回ということもあり、ちょっと詰め込み過ぎ、消化不良という声があった。来年度はどうするかなぁ。感染状況もあるので対応が難しい。</p>
@@ -88,8 +92,8 @@
 <p>卒論発表会。いやマジでレベル高い。</p>
 <p>予算の締めに走る。</p>
 <p>VSCodeがアップデートされ、WSLからcodeを実行しようとしたらこけるようになった。</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1">$ <span class="ex">code</span> .</a>
-<a class="sourceLine" id="cb1-2" title="2"><span class="ex">/mnt/c/Users/watanabe/.vscode/extensions/ms-vscode-remote.remote-wsl-0.63.13/scripts</span>/wslCode.sh: <span class="ex">69</span>: /home/watanabe/.vscode-server-server/bin/5554b12acf27056905806867f251c859323ff7e9/bin/code: not found</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" title="1">$ <span class="ex">code</span> .</a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="ex">/mnt/c/Users/watanabe/.vscode/extensions/ms-vscode-remote.remote-wsl-0.63.13/scripts</span>/wslCode.sh: <span class="ex">69</span>: /home/watanabe/.vscode-server-server/bin/5554b12acf27056905806867f251c859323ff7e9/bin/code: not found</a></code></pre></div>
 <p>一度VSCodeをWindowsから起動してリモート接続でWSLにつないで、Serverをダウンロードしたら直った。</p>
 <p>FX1000でpbc_testしたが、やはり遅い。それより驚いたのは、Tradモードに対してClangモードが数十倍遅かったこと。原因は乱数。乱数のどこが問題かはまだチェックしていない。</p>
 <p>とりあえず<a href="https://gist.github.com/kaityo256/9392bb3984afcdd45d0cb868036788fd">再現ソース</a>。</p>
