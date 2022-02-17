@@ -4,7 +4,9 @@
 
 著者: [kaityo256](https://github.com/kaityo256)
 
-日記のようなもの。続くかどうかはまったくわかりません。
+![kaityo256](robo.png)
+
+日記のようなもの。
 
 [こちら](https://kaityo256.github.io/log/)
 
