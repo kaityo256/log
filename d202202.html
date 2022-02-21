@@ -23,6 +23,25 @@
     <article class="markdown-body">
                         <h1 id="ログ">ログ</h1>
 <p><a href="index.html">ログ一覧</a></p>
+<h2 id="月21日月"><a href="#21">02月21日(月)</a> <a id="21"></a></h2>
+<p>会議。</p>
+<p>名大の杉山先生の最終講義が今年あるそうな。退官は2年前だが、コロナで延期になってたとのこと。2年前は参加できないスケジュールだったが、今回は参加できそうなのでオンライン参加を申し込んだ。</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode txt"><code class="sourceCode default"><a class="sourceLine" id="cb1-1" title="1">幹事：谷村省吾、時田恵一郎、中村泰之（名古屋大学）</a>
+<a class="sourceLine" id="cb1-2" title="2"></a>
+<a class="sourceLine" id="cb1-3" title="3">日時：2022年3月10日（木）16:00～17:30</a>
+<a class="sourceLine" id="cb1-4" title="4"></a>
+<a class="sourceLine" id="cb1-5" title="5">場所：名古屋大学東山キャンパス　情報学研究科棟　１階　第１講義室</a>
+<a class="sourceLine" id="cb1-6" title="6">　　　および</a>
+<a class="sourceLine" id="cb1-7" title="7">　　　オンライン（Zoom の予定。参加申し込みされた方に後ほど URL をお知らせします）</a>
+<a class="sourceLine" id="cb1-8" title="8"></a>
+<a class="sourceLine" id="cb1-9" title="9">講師：杉山雄規氏（現在、名古屋大学名誉教授）</a>
+<a class="sourceLine" id="cb1-10" title="10"></a>
+<a class="sourceLine" id="cb1-11" title="11">講義題目：　非対称、非平衡、相転移</a></code></pre></div>
+<p>会議。</p>
+<p><a href="https://github.com/kaityo256/lab_startup/issues">lab_startub</a>のissueを2つ潰した。</p>
+<p>sshどうするかな。</p>
+<p>Vimハンズオンした。SSHは別ページにするほどでもなかったので、とりあえずはSlackで公開鍵作成方法の説明して、公開鍵と希望アカウントを送ってもらうことに。ただ、SSHが何をやっているか、公開鍵とはなにかをざっとは説明したほうが良い気もする。うーん。</p>
+<p>来週はDockerハンズオン。</p>
 <h2 id="月20日日"><a href="#20">02月20日(日)</a> <a id="20"></a></h2>
 <p>e-Taxのページへ。</p>
 <ul>
@@ -35,6 +54,9 @@
 <li>「新規登録」が済むと「申告・申請・納税」メニューが利用可に。「新規作成」を選ぶ。</li>
 <li>「納付情報登録依頼」かな。</li>
 </ul>
+<p>ローカル用e-Taxソフトを入れてみたが、追加のインストールをしないとなにもできないっぽい。もう少し調査が必要。とりあえず今日はカードリーダが使えることを確認したところで良しとしよう。</p>
+<h2 id="月19日土"><a href="#19">02月19日(土)</a> <a id="19"></a></h2>
+<p>研究打ち合わせ。査読レポートが長かったので打ち合わせも長かった。自分の論文の査読レポートもなんとかしないといけないし、学生さんの論文も残っており、講義の準備も滞っている。苦しい。</p>
 <h2 id="月18日金"><a href="#18">02月18日(金)</a> <a id="18"></a></h2>
 <p>集中力を欠くなぁ。明らかに先週の疲れが残ってる。</p>
 <p>製本依頼出した。2部ずつ印刷して表紙データをつけてクリアファイルに入れて整理。地味に時間かかった・・・。納期は10日から2週間程度とのこと。</p>
@@ -64,8 +86,8 @@
 <p>研究室ミーティング。ANNNIモデルの厳密対角化の結果と、機械学習によるタンパク質の構造予測の話。厳密対角化屋さん、古典系での結果を見るのは久しぶりな気がする。タンパク質の構造予測は実際に合成して確認するのはすごい。</p>
 <p>重い腰を上げて新しいMacのセットアップ。アップデートがかかっているうちに、古いMacのデータの整理。主にsvn管理されていないファイルの削除など。</p>
 <p>PCのデータを調べてたら、たら、昔のサーバがリモートになっているsvnリポジトリを発見。死ぬほど久しぶりにsvnadminを触る。</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1"><span class="ex">svnadmin</span> create rep_name</a></code></pre></div>
-<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1"><span class="fu">svn</span> co svn+ssh://username@servename.jp/home/username/rep_name local_rep</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1"><span class="ex">svnadmin</span> create rep_name</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" title="1"><span class="fu">svn</span> co svn+ssh://username@servename.jp/home/username/rep_name local_rep</a></code></pre></div>
 <p>学生さんに「左利きなんだね」と言ったら「それ言われるの4回目です」。正直すまんかった。</p>
 <h2 id="月16日水"><a href="#16">02月16日(水)</a> <a id="16"></a></h2>
 <p>共著論文の査読レポートに対するコメント返した。遅くなってしまった。</p>
@@ -123,8 +145,8 @@
 <p>卒論発表会。いやマジでレベル高い。</p>
 <p>予算の締めに走る。</p>
 <p>VSCodeがアップデートされ、WSLからcodeを実行しようとしたらこけるようになった。</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" title="1">$ <span class="ex">code</span> .</a>
-<a class="sourceLine" id="cb3-2" title="2"><span class="ex">/mnt/c/Users/watanabe/.vscode/extensions/ms-vscode-remote.remote-wsl-0.63.13/scripts</span>/wslCode.sh: <span class="ex">69</span>: /home/watanabe/.vscode-server-server/bin/5554b12acf27056905806867f251c859323ff7e9/bin/code: not found</a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb4-1" title="1">$ <span class="ex">code</span> .</a>
+<a class="sourceLine" id="cb4-2" title="2"><span class="ex">/mnt/c/Users/watanabe/.vscode/extensions/ms-vscode-remote.remote-wsl-0.63.13/scripts</span>/wslCode.sh: <span class="ex">69</span>: /home/watanabe/.vscode-server-server/bin/5554b12acf27056905806867f251c859323ff7e9/bin/code: not found</a></code></pre></div>
 <p>一度VSCodeをWindowsから起動してリモート接続でWSLにつないで、Serverをダウンロードしたら直った。</p>
 <p>FX1000でpbc_testしたが、やはり遅い。それより驚いたのは、Tradモードに対してClangモードが数十倍遅かったこと。原因は乱数。乱数のどこが問題かはまだチェックしていない。</p>
 <p>とりあえず<a href="https://gist.github.com/kaityo256/9392bb3984afcdd45d0cb868036788fd">再現ソース</a>。</p>
