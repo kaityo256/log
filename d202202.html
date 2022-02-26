@@ -23,6 +23,16 @@
     <article class="markdown-body">
                         <h1 id="ログ">ログ</h1>
 <p><a href="index.html">ログ一覧</a></p>
+<h2 id="月26日土"><a href="#26">02月26日(土)</a> <a id="26"></a></h2>
+<p>研究室サーバ、ログインサーバでも計算できる仕組みなので、使いたいときに重いときがある。とりあえず別サーバでdockerできるようにする。</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1"><span class="fu">sudo</span> yum install -y yum-utils device-mapper-persistent-data lvm2</a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="fu">sudo</span> yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo</a>
+<a class="sourceLine" id="cb1-3" title="3"><span class="fu">sudo</span> yum makecache fast</a>
+<a class="sourceLine" id="cb1-4" title="4"><span class="fu">sudo</span> yum -y install docker-ce</a>
+<a class="sourceLine" id="cb1-5" title="5"><span class="fu">sudo</span> systemctl start docker</a></code></pre></div>
+<p>次にdockerグループにパスワードを設定。</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1"><span class="fu">sudo</span> gpasswd docker</a></code></pre></div>
+<p>2つほどサーバにdocker入れて動作確認した。</p>
 <h2 id="月25日金"><a href="#25">02月25日(金)</a> <a id="25"></a></h2>
 <p>大きなディスプレイが納品された。</p>
 <p>新しいiMacに移動。Dog Fooding。</p>
@@ -31,29 +41,29 @@
 <p>まず、Mendeleyをインストール。AppStoreに紛らわしい「Mendeley Web Importer」というのがあって、間違えて入れてしまった。</p>
 <p>VSCodeをインストール。</p>
 <p>Pythonのインストール。</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1"><span class="ex">python3</span> -m pip install --upgrade pip</a>
-<a class="sourceLine" id="cb1-2" title="2"><span class="ex">python3</span> -m pip install ipython </a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" title="1"><span class="ex">python3</span> -m pip install --upgrade pip</a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="ex">python3</span> -m pip install ipython </a></code></pre></div>
 <p>あと、頻繁にログインするサーバに公開鍵を登録する作業。研究室計算サーバ、研究室ウェブサーバ、物性研、名大につないだ。</p>
 <p>ChromeにNew tab redirectを入れた。LastPassは最初に入れてある。</p>
 <p>Slack入れた。研究室と大学、その他。</p>
 <p>ハンズオンの準備。</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1"><span class="ex">docker</span> pull ubuntu</a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb4-1" title="1"><span class="ex">docker</span> pull ubuntu</a></code></pre></div>
 <p>をしたら、</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode txt"><code class="sourceCode default"><a class="sourceLine" id="cb3-1" title="1">Error response from daemon: Get &quot;https://registry-1.docker.io/v2/&quot;: net/http: request canceled while waiting for connection (Client.Timeout exceeded while awaiting headers)</a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode txt"><code class="sourceCode default"><a class="sourceLine" id="cb5-1" title="1">Error response from daemon: Get &quot;https://registry-1.docker.io/v2/&quot;: net/http: request canceled while waiting for connection (Client.Timeout exceeded while awaiting headers)</a></code></pre></div>
 <p>みたいなエラー。</p>
 <p>英語検索のために<code>https://www.google.com/?hl=en&amp;gws_rd=cr</code>をブックマーク。</p>
 <p>Dockerをリスタート。</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb4-1" title="1"><span class="fu">sudo</span> service docker restart</a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb6-1" title="1"><span class="fu">sudo</span> service docker restart</a></code></pre></div>
 <p>だめ。</p>
 <p>Macでdockerを入れる。</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb5-1" title="1"><span class="ex">brew</span> install docker</a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb7-1" title="1"><span class="ex">brew</span> install docker</a></code></pre></div>
 <p>Docker Desktopもインストール＆起動。</p>
 <p>最終的に、<code>/etc/resolv.conf</code>に</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode txt"><code class="sourceCode default"><a class="sourceLine" id="cb6-1" title="1">nameserver 8.8.8.8</a></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode txt"><code class="sourceCode default"><a class="sourceLine" id="cb8-1" title="1">nameserver 8.8.8.8</a></code></pre></div>
 <p>を追加したらいけた。nameserverの問題？</p>
 <p>CentOSでネットがいちいち遅い。ipv6の問題かもしれないため無効にしてみる。</p>
 <p><code>/etc/sysctl.conf</code>に<code>net.ipv6.conf.all.disable_ipv6 = 1</code>を追記して、</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb7-1" title="1"><span class="ex">sysctl</span> -p</a></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb9-1" title="1"><span class="ex">sysctl</span> -p</a></code></pre></div>
 <p>を実行。<code>ifconfig |grep inet6</code>を実行して消えたことを確認。</p>
 <p>だめだ。まだ遅い。間違いなくなにかタイムアウトしている。</p>
 <p><code>/etc/resolv.conf</code>のデフォルトのやつを消して<code>8.8.8.8</code>だけにしたら早くなった。DNSのタイムアウトか。</p>
@@ -61,12 +71,12 @@
 <p>そうか、Dockerのエラーがわかった。DNSでプライマリにたずねてタイムアウトするまでに、Dockerが諦めちゃうんだ。curlとかだとタイムアウトしないのでつながらないのがわからなかった。</p>
 <p>一応<a href="https://zenn.dev/kaityo256/scraps/c335ac8c76c5e1">Zennのスクラップ</a>に書いておいた。</p>
 <p>あ、brew入ってなかった。</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb8-1" title="1"><span class="ex">brew</span> install wget</a></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb10-1" title="1"><span class="ex">brew</span> install wget</a></code></pre></div>
 <p>あー、でもcurlでやってみるか。</p>
 <p>MacへのTexLiveのインストール。</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb9-1" title="1"><span class="bu">cd</span> build</a>
-<a class="sourceLine" id="cb9-2" title="2"><span class="ex">curl</span> -O http://ftp.jaist.ac.jp/pub/CTAN/systems/texlive/tlnet/install-tl-unx.tar.gz</a>
-<a class="sourceLine" id="cb9-3" title="3"><span class="fu">tar</span> xvzf install-tl-unx.tar.gz</a></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb11-1" title="1"><span class="bu">cd</span> build</a>
+<a class="sourceLine" id="cb11-2" title="2"><span class="ex">curl</span> -O http://ftp.jaist.ac.jp/pub/CTAN/systems/texlive/tlnet/install-tl-unx.tar.gz</a>
+<a class="sourceLine" id="cb11-3" title="3"><span class="fu">tar</span> xvzf install-tl-unx.tar.gz</a></code></pre></div>
 <p>lab_startupのVimの終了についても書いた。</p>
 <p>論文には全く取りかかれなかったが、それなりに仕事はできたのではないか。</p>
 <h2 id="月24日木"><a href="#24">02月24日(木)</a> <a id="24"></a></h2>
@@ -80,22 +90,22 @@
 <p>データの移行。最初からGitHubで管理するつもりでリポジトリを作る場合もあるが、まずはローカルでGitで管理して、その後必要があればGitHubに移行する場合もある。その「とりあえずローカルで」のディレクトリを一応バックアップしようとしたら、膨大なデータでビビった。調べたら18GBある。これ、取捨選択するのかなり時間かかるな・・・。移行したまま開かないで、そのままPCと寿命を共にしそう・・・</p>
 <p>別のiMacで開いているページが、別のiMacで「開きませんか？」と聞いてくる。非常に気持ち悪い。「システム環境設定」の「一般」の一番下の「このMacとiCloudデバイス間でのHandoffを許可」のチェックボックスをオフにすることででなくなる。iPadから共有するのは便利かもだけど、iMac-iMacはいらないだろこれ・・・</p>
 <p>未だにrsyncのディレクトリの条件を覚えていない。serverのdirをそのままこっちに持って来たい場合、</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb10-1" title="1"><span class="fu">rsync</span> -auvz server:dir dir</a>
-<a class="sourceLine" id="cb10-2" title="2"><span class="fu">rsync</span> -auvz server:dir .</a></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb12-1" title="1"><span class="fu">rsync</span> -auvz server:dir dir</a>
+<a class="sourceLine" id="cb12-2" title="2"><span class="fu">rsync</span> -auvz server:dir .</a></code></pre></div>
 <p>のどちらだったかいつも迷う(後者が正解)。</p>
 <p>もしくは</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb11-1" title="1"><span class="fu">mkdir</span> dir</a>
-<a class="sourceLine" id="cb11-2" title="2"><span class="fu">rsync</span> -auvz server:dir/ dir</a></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb13-1" title="1"><span class="fu">mkdir</span> dir</a>
+<a class="sourceLine" id="cb13-2" title="2"><span class="fu">rsync</span> -auvz server:dir/ dir</a></code></pre></div>
 <p>でもOK。ムズい。</p>
 <p>シミュレーションデータの移行。</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb12-1" title="1">$ <span class="fu">du</span> -hd 1 data</a>
-<a class="sourceLine" id="cb12-2" title="2"><span class="kw">(</span><span class="ex">snip</span><span class="kw">)</span></a>
-<a class="sourceLine" id="cb12-3" title="3"><span class="ex">381G</span>    data</a></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb14-1" title="1">$ <span class="fu">du</span> -hd 1 data</a>
+<a class="sourceLine" id="cb14-2" title="2"><span class="kw">(</span><span class="ex">snip</span><span class="kw">)</span></a>
+<a class="sourceLine" id="cb14-3" title="3"><span class="ex">381G</span>    data</a></code></pre></div>
 <p>381GBか。これもいらないかなぁ。dumpファイル消したら35GBになった。これで良いか。</p>
 <p>PukiWikiのバックアップ。dumpプラグインを入れているので、URLに<code>?plugin=dump</code>を追加すればダウンロード画面に。管理者パスワードを入れてダウンロード。これでローカルのバックアップは消して良い。</p>
 <p>Thunderbirdの移行。移行先でThunderbirdをインストール。起動。終了。</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb13-1" title="1"><span class="bu">cd</span> ~/Library/Thunderbird/Profiles/</a>
-<a class="sourceLine" id="cb13-2" title="2"><span class="fu">scp</span> -r oldserver:Library/Thunderbird/Profiles/*.default .</a></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb15-1" title="1"><span class="bu">cd</span> ~/Library/Thunderbird/Profiles/</a>
+<a class="sourceLine" id="cb15-2" title="2"><span class="fu">scp</span> -r oldserver:Library/Thunderbird/Profiles/*.default .</a></code></pre></div>
 <p>そしてもともとあった「hogehoge.default」というディレクトリを消して、持ってきたディレクトリをそのファイルに改名すればできるはず・・・だが、うっかり消してしまった。</p>
 <p>その後いろいろやったが失敗。とりあえず<code>/Thunderbird/Profiles/</code>を全部コピーしてみた。できたかどうかは明日確認。</p>
 <h2 id="月23日水"><a href="#23">02月23日(水)</a> <a id="23"></a></h2>
@@ -114,17 +124,17 @@
 <h2 id="月21日月"><a href="#21">02月21日(月)</a> <a id="21"></a></h2>
 <p>会議。</p>
 <p>名大の杉山先生の最終講義が今年あるそうな。退官は2年前だが、コロナで延期になってたとのこと。2年前は参加できないスケジュールだったが、今回は参加できそうなのでオンライン参加を申し込んだ。</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode txt"><code class="sourceCode default"><a class="sourceLine" id="cb14-1" title="1">幹事：谷村省吾、時田恵一郎、中村泰之（名古屋大学）</a>
-<a class="sourceLine" id="cb14-2" title="2"></a>
-<a class="sourceLine" id="cb14-3" title="3">日時：2022年3月10日（木）16:00～17:30</a>
-<a class="sourceLine" id="cb14-4" title="4"></a>
-<a class="sourceLine" id="cb14-5" title="5">場所：名古屋大学東山キャンパス　情報学研究科棟　１階　第１講義室</a>
-<a class="sourceLine" id="cb14-6" title="6">　　　および</a>
-<a class="sourceLine" id="cb14-7" title="7">　　　オンライン（Zoom の予定。参加申し込みされた方に後ほど URL をお知らせします）</a>
-<a class="sourceLine" id="cb14-8" title="8"></a>
-<a class="sourceLine" id="cb14-9" title="9">講師：杉山雄規氏（現在、名古屋大学名誉教授）</a>
-<a class="sourceLine" id="cb14-10" title="10"></a>
-<a class="sourceLine" id="cb14-11" title="11">講義題目：　非対称、非平衡、相転移</a></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode txt"><code class="sourceCode default"><a class="sourceLine" id="cb16-1" title="1">幹事：谷村省吾、時田恵一郎、中村泰之（名古屋大学）</a>
+<a class="sourceLine" id="cb16-2" title="2"></a>
+<a class="sourceLine" id="cb16-3" title="3">日時：2022年3月10日（木）16:00～17:30</a>
+<a class="sourceLine" id="cb16-4" title="4"></a>
+<a class="sourceLine" id="cb16-5" title="5">場所：名古屋大学東山キャンパス　情報学研究科棟　１階　第１講義室</a>
+<a class="sourceLine" id="cb16-6" title="6">　　　および</a>
+<a class="sourceLine" id="cb16-7" title="7">　　　オンライン（Zoom の予定。参加申し込みされた方に後ほど URL をお知らせします）</a>
+<a class="sourceLine" id="cb16-8" title="8"></a>
+<a class="sourceLine" id="cb16-9" title="9">講師：杉山雄規氏（現在、名古屋大学名誉教授）</a>
+<a class="sourceLine" id="cb16-10" title="10"></a>
+<a class="sourceLine" id="cb16-11" title="11">講義題目：　非対称、非平衡、相転移</a></code></pre></div>
 <p>会議。</p>
 <p><a href="https://github.com/kaityo256/lab_startup/issues">lab_startub</a>のissueを2つ潰した。</p>
 <p>sshどうするかな。</p>
@@ -174,8 +184,8 @@
 <p>研究室ミーティング。ANNNIモデルの厳密対角化の結果と、機械学習によるタンパク質の構造予測の話。厳密対角化屋さん、古典系での結果を見るのは久しぶりな気がする。タンパク質の構造予測は実際に合成して確認するのはすごい。</p>
 <p>重い腰を上げて新しいMacのセットアップ。アップデートがかかっているうちに、古いMacのデータの整理。主にsvn管理されていないファイルの削除など。</p>
 <p>PCのデータを調べてたら、たら、昔のサーバがリモートになっているsvnリポジトリを発見。死ぬほど久しぶりにsvnadminを触る。</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb15-1" title="1"><span class="ex">svnadmin</span> create rep_name</a></code></pre></div>
-<div class="sourceCode" id="cb16"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb16-1" title="1"><span class="fu">svn</span> co svn+ssh://username@servename.jp/home/username/rep_name local_rep</a></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb17-1" title="1"><span class="ex">svnadmin</span> create rep_name</a></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb18-1" title="1"><span class="fu">svn</span> co svn+ssh://username@servename.jp/home/username/rep_name local_rep</a></code></pre></div>
 <p>学生さんに「左利きなんだね」と言ったら「それ言われるの4回目です」。正直すまんかった。</p>
 <h2 id="月16日水"><a href="#16">02月16日(水)</a> <a id="16"></a></h2>
 <p>共著論文の査読レポートに対するコメント返した。遅くなってしまった。</p>
@@ -233,8 +243,8 @@
 <p>卒論発表会。いやマジでレベル高い。</p>
 <p>予算の締めに走る。</p>
 <p>VSCodeがアップデートされ、WSLからcodeを実行しようとしたらこけるようになった。</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb17-1" title="1">$ <span class="ex">code</span> .</a>
-<a class="sourceLine" id="cb17-2" title="2"><span class="ex">/mnt/c/Users/watanabe/.vscode/extensions/ms-vscode-remote.remote-wsl-0.63.13/scripts</span>/wslCode.sh: <span class="ex">69</span>: /home/watanabe/.vscode-server-server/bin/5554b12acf27056905806867f251c859323ff7e9/bin/code: not found</a></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb19-1" title="1">$ <span class="ex">code</span> .</a>
+<a class="sourceLine" id="cb19-2" title="2"><span class="ex">/mnt/c/Users/watanabe/.vscode/extensions/ms-vscode-remote.remote-wsl-0.63.13/scripts</span>/wslCode.sh: <span class="ex">69</span>: /home/watanabe/.vscode-server-server/bin/5554b12acf27056905806867f251c859323ff7e9/bin/code: not found</a></code></pre></div>
 <p>一度VSCodeをWindowsから起動してリモート接続でWSLにつないで、Serverをダウンロードしたら直った。</p>
 <p>FX1000でpbc_testしたが、やはり遅い。それより驚いたのは、Tradモードに対してClangモードが数十倍遅かったこと。原因は乱数。乱数のどこが問題かはまだチェックしていない。</p>
 <p>とりあえず<a href="https://gist.github.com/kaityo256/9392bb3984afcdd45d0cb868036788fd">再現ソース</a>。</p>
