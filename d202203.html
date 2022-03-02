@@ -22,6 +22,50 @@
     <article class="markdown-body">
                         <h1 id="ログ">ログ</h1>
 <p><a href="index.html">ログ一覧</a></p>
+<h2 id="月02日水"><a href="#02">03月02日(水)</a> <a id="02"></a></h2>
+<p>次回ハンズオン(gnuplot)のためにX Windowの設定の確認。たまたままっさらに近いiMacがあったので試す。</p>
+<p><a href="https://www.xquartz.org/">https://www.xquartz.org/</a>から、最新版のXQuartz(2021年4月25日時点では<code>XQuartz-2.8.1.dmg</code>)をダウンロードし、dmgファイルを開いてXQuartz.pkgを実行してインストールする。</p>
+<p>ローカルですぐにxeyesは動くようになったが、研究室サーバからXが飛ばない。エラーはこれ。</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode txt"><code class="sourceCode default"><a class="sourceLine" id="cb1-1" title="1">X11 forwarding request failed on channel 0</a></code></pre></div>
+<p>あれ、Ubuntuからもだめだ。サーバ側の問題かな。</p>
+<p><code>/etc/ssh/sshd_config</code>に<code>X11Forwarding yes</code>はある。</p>
+<p><code>/etc/ssh/sshd_config</code>に<code>X11UseLocalhost no</code>を設定して</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1"><span class="fu">sudo</span> service sshd restart</a></code></pre></div>
+<p>してから再度接続したら通った。</p>
+<p>とりあえずローカルにbrewでgnuplotを入れたら以下のメッセージが出た。あとで確認。</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode txt"><code class="sourceCode default"><a class="sourceLine" id="cb3-1" title="1">Disable this behaviour by setting HOMEBREW_NO_INSTALL_CLEANUP.</a>
+<a class="sourceLine" id="cb3-2" title="2">Hide these hints with HOMEBREW_NO_ENV_HINTS (see `man brew`).</a></code></pre></div>
+<p>調べた。<a href="https://brew.sh/2019/02/02/homebrew-2.0.0/">brew 2.0.0からcleanupが自動で走るようになったらしい</a>。cleanup、reinstall、install、upgradeをトリガーとして、30日間走っていなければcleanupが勝手に走るとのこと。それが嫌なら<code>HOMEBREW_NO_INSTALL_CLEANUP</code>を設定してね。とのこと。cleanupして欲しいし、このヒントは不要なので、<code>HOMEBREW_NO_ENV_HINTS</code>を設定しておく。</p>
+<p>環境変数について何も知らなかった。<a href="https://stackoverflow.com/a/65141342">setとenvの違い</a>。</p>
+<p>単に値を入れるだけだと、setではひっかかるが、envにはひっかからない。</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb4-1" title="1">$ <span class="va">ABC=</span>xyz</a>
+<a class="sourceLine" id="cb4-2" title="2">$ <span class="kw">set</span> <span class="kw">|</span> <span class="fu">grep</span> ABC</a>
+<a class="sourceLine" id="cb4-3" title="3"><span class="va">ABC=</span>xyz</a>
+<a class="sourceLine" id="cb4-4" title="4">$ <span class="fu">env</span> <span class="kw">|</span> <span class="fu">grep</span> ABC</a></code></pre></div>
+<p>exportすると、「それが定義されたときにexportされる」という情報が付与される。</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb5-1" title="1">$ <span class="bu">export</span> <span class="va">ABC</span>  <span class="co"># この時点ではなにも値が設定されない</span></a>
+<a class="sourceLine" id="cb5-2" title="2">$ <span class="kw">set</span> <span class="kw">|</span> <span class="fu">grep</span> ABC</a>
+<a class="sourceLine" id="cb5-3" title="3"><span class="va">ABC=</span><span class="st">&#39;&#39;</span></a>
+<a class="sourceLine" id="cb5-4" title="4">$ <span class="fu">env</span> <span class="kw">|</span> <span class="fu">grep</span> ABC</a>
+<a class="sourceLine" id="cb5-5" title="5">$ <span class="ex">ABC</span> = xyz <span class="co"># 値を設定</span></a>
+<a class="sourceLine" id="cb5-6" title="6">$ <span class="kw">set</span> <span class="kw">|</span> <span class="fu">grep</span> ABC</a>
+<a class="sourceLine" id="cb5-7" title="7"><span class="va">ABC=</span>xyz</a>
+<a class="sourceLine" id="cb5-8" title="8">$ <span class="fu">env</span> <span class="kw">|</span> <span class="fu">grep</span> ABC</a>
+<a class="sourceLine" id="cb5-9" title="9"><span class="va">ABC=</span>xyz</a></code></pre></div>
+<p>う、Macではexportした時点で空文字列が設定されるな。</p>
+<p>Linux+Bash</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb6-1" title="1">$ <span class="bu">export</span> <span class="va">ABC</span></a>
+<a class="sourceLine" id="cb6-2" title="2">$ <span class="kw">set</span> <span class="kw">|</span> <span class="fu">grep</span> ABC</a>
+<a class="sourceLine" id="cb6-3" title="3"><span class="va">_=</span>ABC</a></code></pre></div>
+<p>やっぱり空文字列か。</p>
+<p>Ubuntu + Zsh</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb7-1" title="1">$ <span class="bu">export</span> <span class="va">ABC</span></a>
+<a class="sourceLine" id="cb7-2" title="2">$ <span class="kw">set</span> <span class="kw">|</span> <span class="fu">grep</span> ABC</a>
+<a class="sourceLine" id="cb7-3" title="3"><span class="va">ABC=</span><span class="st">&#39;&#39;</span></a></code></pre></div>
+<p>これはOSというよりシェルの違いか。<code>export</code>した時点で空文字列が設定されるんだな。</p>
+<p>シェル変数と環境変数の違いをちゃんと認識していなかった。シェル変数は現在のシェルのみで有効、環境変数は子プロセスにも受け継がれる。</p>
+<p><code>env</code>は環境変数の一覧、<code>set</code>はシェル変数と環境変数の一覧を表示。<code>export</code>も環境変数一覧。</p>
+<p>時間割の確認。とりあえず自分の担当講義は「教育支援システム」→「出講カレンダー」で確認できる。また、学事日程は同画面の「資料ダウンロード」からダウンロード可能(これが欲しかった)。大学院のまだかな？</p>
 <h2 id="月01日火"><a href="#01">03月01日(火)</a> <a id="01"></a></h2>
 <p>3月になってしまった。月が変わるたびに進捗のなさに絶望してしまう。</p>
 <p>ディスプレイが大きくなったので、VSCodeのフォントも大きくしてみる。っていうか老眼・・・</p>
