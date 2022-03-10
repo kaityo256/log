@@ -22,6 +22,14 @@
     <article class="markdown-body">
                         <h1 id="ログ">ログ</h1>
 <p><a href="index.html">ログ一覧</a></p>
+<h2 id="月10日木"><a href="#10">03月10日(木)</a> <a id="10"></a></h2>
+<p>Zoom API。慶応のアカウントではJWTは使えないらしい。ログイン後に「ソリューション」→「開発者プラットフォーム」を選ぶと<a href="https://developers.zoom.us">https://developers.zoom.us</a>にログイン状態で飛ぶが、それだとKeio IDで入れない。謎。</p>
+<p>ZoomのDeveloperページに飛んだら、右上の「BUILD APP」をクリック。OAuthを選んでCreate。</p>
+<p>App Nameは適当に。app typeはよくわからないので User-managed appを選ぶ。App Marketplaceではpublishしない。で、Create。</p>
+<p>App credentials: Client IDとClient secretを取得。Redirect URLは「http://localhost:8080」にしてみる。OAuth allow listはとりあえず無しでcontinue。</p>
+<p>Scopesで、最低一つScopeを指定しないといけない。とりあえず「meeting:read」だけ指定してみる。</p>
+<p>杉山雄規先生最終講義。Optimal Velocity Modelで、相互作用が非対称だから、エネルギーが保存しない。したがって、必ず散逸項が必要になる。OV Modelでは、「自分の希望する速度と、現在の速度の差」が加速度となるが、この「現在の速度」が散逸項の役割を果たす。なるほど。</p>
+<p>二次元OV模型も、いろいろ遊べそうだなぁ。</p>
 <h2 id="月09日水"><a href="#09">03月09日(水)</a> <a id="09"></a></h2>
 <p>そういえばMacにgsが無い。前回はMacTexを入れたが、今回はTeXLiveを入れたので入っていないようだ。MacTexでは独自のgsを入れるのでいろいろ面倒だという話があったが、TeXLiveではgsは入らない(?)ので、brewで入れてよかろう。</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1"><span class="ex">brew</span> install ghostscript</a></code></pre></div>
