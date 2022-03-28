@@ -16,12 +16,21 @@
     <link rel="stylesheet" href="style.css" type="text/css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- link rel="stylesheet" href="github-markdown.css" type="text/css" / -->
+        <script src="/usr/share/javascript/mathjax/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
           </head>
 
   <body>
     <article class="markdown-body">
                         <h1 id="ログ">ログ</h1>
 <p><a href="index.html">ログ一覧</a></p>
+<h2 id="月28日月"><a href="#28">03月28日(月)</a> <a id="28"></a></h2>
+<p>朝、単純サンプリングの誤差棒がおかしい理由がわかった。ある確率変数<span class="math inline">\(\hat{X}\)</span>と<span class="math inline">\(\hat{Y}\)</span>の比の期待値 $&lt; / &gt; $を計算する必要があったのだが、こいつらが強く相関していたため、誤差伝播の公式を使うと誤差棒をover estimateしてしまっていた。ちゃんと考慮したらまっとうな誤差棒になった。良かった。</p>
+<p>実験ガイダンス。</p>
+<p>専修の表彰式。ちゃんとできてよかった。</p>
+<h2 id="月27日日"><a href="#27">03月27日(日)</a> <a id="27"></a></h2>
+<p>MCMCと単純サンプリングの性能があまり変わらず。ちゃんとMCMCを書き直した。しかし、単純サンプリングの誤差棒がおかしい。</p>
+<h2 id="月26日土"><a href="#26">03月26日(土)</a> <a id="26"></a></h2>
+<p>講義準備。最初のスライド作った。</p>
 <h2 id="月25日金"><a href="#25">03月25日(金)</a> <a id="25"></a></h2>
 <p>研究室サーバにGit 2.X系を入れる(以前入れた気がするが)。</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1">$ <span class="fu">git</span> --version</a>
