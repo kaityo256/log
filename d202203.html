@@ -23,6 +23,36 @@
     <article class="markdown-body">
                         <h1 id="ログ">ログ</h1>
 <p><a href="index.html">ログ一覧</a></p>
+<h2 id="月31日木"><a href="#31">03月31日(木)</a> <a id="31"></a></h2>
+<p>Ubuntu側でPowerShellを呼び出す。</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1">$ <span class="fu">cat</span> test.ps1</a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="bu">echo</span> Hello</a>
+<a class="sourceLine" id="cb1-3" title="3"></a>
+<a class="sourceLine" id="cb1-4" title="4">$ <span class="ex">powershell.exe</span> ./test.ps1</a>
+<a class="sourceLine" id="cb1-5" title="5"><span class="ex">./test.ps1</span> : ファイル <span class="dt">\\</span>wsl.localhost\Ubuntu\home\watanabe\test.ps1 を読み込めません。ファイル <span class="dt">\\</span>wsl.localhost\Ubuntu\home\watanabe\test.ps1 はデ</a>
+<a class="sourceLine" id="cb1-6" title="6">ジタル署名されていません。このスクリプトは現在のシステムでは実行できません。スクリプトの実行および実行ポリシーの設定の詳細については、「<span class="ex">about_Exe</span></a>
+<a class="sourceLine" id="cb1-7" title="7"><span class="ex">cution_Policies</span>」(https://go.microsoft.com/fwlink/?LinkID=135170) を参照してください。</a>
+<a class="sourceLine" id="cb1-8" title="8">発生場所 行:<span class="ex">1</span> 文字:1</a>
+<a class="sourceLine" id="cb1-9" title="9"><span class="ex">+</span> ./test.ps1</a>
+<a class="sourceLine" id="cb1-10" title="10"><span class="ex">+</span> ~~~~~~~~~~</a>
+<a class="sourceLine" id="cb1-11" title="11">    <span class="ex">+</span> CategoryInfo          : セキュリティ エラー: (: ) []、<span class="ex">PSSecurityException</span></a>
+<a class="sourceLine" id="cb1-12" title="12">    <span class="ex">+</span> FullyQualifiedErrorId : UnauthorizedAccess</a></code></pre></div>
+<p>うまくいかない。</p>
+<p>Powershell側でセキュリティポリシーにBypassを指定。</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1"><span class="ex">Set-ExecutionPolicy</span> -ExecutionPolicy Bypass -Scope CurrentUser</a></code></pre></div>
+<p>WSL側でもう一度実行。</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" title="1">$ <span class="ex">powershell.exe</span> ./test.ps1</a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="ex">Hello</span></a></code></pre></div>
+<p>実行できた。</p>
+<p>テンポラリファイルの作成は<code>mktemp</code></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb4-1" title="1">$ <span class="fu">mktemp</span></a>
+<a class="sourceLine" id="cb4-2" title="2"><span class="ex">/tmp/tmp.zmT3f40DJj</span></a>
+<a class="sourceLine" id="cb4-3" title="3"></a>
+<a class="sourceLine" id="cb4-4" title="4">$ <span class="fu">mktemp</span></a>
+<a class="sourceLine" id="cb4-5" title="5"><span class="ex">/tmp/tmp.H5kr0JbakZ</span></a></code></pre></div>
+<p>これにps1つければよさそうだな。</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb5-1" title="1"><span class="bu">echo</span> <span class="kw">`</span><span class="fu">mktemp</span><span class="kw">`</span>.ps1</a>
+<a class="sourceLine" id="cb5-2" title="2"><span class="ex">/tmp/tmp.qkOuZhtCSi.ps1</span></a></code></pre></div>
 <h2 id="月30日水"><a href="#30">03月30日(水)</a> <a id="30"></a></h2>
 <p>シミュレーション工学、第二回スライド作り終わった。これで少しは息をつけるか。</p>
 <p>Twitterとかに意見を書くのはだめだな。有益な意見より、完全に面倒さがまさる。スライドとか、技術記事を書いたよ、というニュースフィードにしか使えない。</p>
@@ -30,84 +60,84 @@
 <h2 id="月29日火"><a href="#29">03月29日(火)</a> <a id="29"></a></h2>
 <p>WSLからWindowsにショートカットを作る。</p>
 <p><code>$HOME</code>にファイルを作る。</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1"><span class="bu">cd</span></a>
-<a class="sourceLine" id="cb1-2" title="2"><span class="bu">echo</span> <span class="st">&quot;Hello&quot;</span> <span class="op">&gt;</span> test.txt</a></code></pre></div>
-<div class="sourceCode" id="cb2"><pre class="sourceCode ps1"><code class="sourceCode powershell"><a class="sourceLine" id="cb2-1" title="1"><span class="va">$WshShell</span> = <span class="fu">New-Object</span> -comObject WScript.<span class="fu">Shell</span></a>
-<a class="sourceLine" id="cb2-2" title="2"><span class="va">$Shortcut</span> = <span class="va">$WshShell</span>.<span class="fu">CreateShortcut</span>(<span class="st">&quot;$Home\Desktop\test.txtへのショートカット.lnk&quot;</span>)</a>
-<a class="sourceLine" id="cb2-3" title="3"><span class="va">$Shortcut</span>.<span class="fu">TargetPath</span> = <span class="st">&quot;$Home\test.txt&quot;</span></a>
-<a class="sourceLine" id="cb2-4" title="4"><span class="va">$Shortcut</span>.<span class="fu">Save</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb6-1" title="1"><span class="bu">cd</span></a>
+<a class="sourceLine" id="cb6-2" title="2"><span class="bu">echo</span> <span class="st">&quot;Hello&quot;</span> <span class="op">&gt;</span> test.txt</a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode ps1"><code class="sourceCode powershell"><a class="sourceLine" id="cb7-1" title="1"><span class="va">$WshShell</span> = <span class="fu">New-Object</span> -comObject WScript.<span class="fu">Shell</span></a>
+<a class="sourceLine" id="cb7-2" title="2"><span class="va">$Shortcut</span> = <span class="va">$WshShell</span>.<span class="fu">CreateShortcut</span>(<span class="st">&quot;$Home\Desktop\test.txtへのショートカット.lnk&quot;</span>)</a>
+<a class="sourceLine" id="cb7-3" title="3"><span class="va">$Shortcut</span>.<span class="fu">TargetPath</span> = <span class="st">&quot;$Home\test.txt&quot;</span></a>
+<a class="sourceLine" id="cb7-4" title="4"><span class="va">$Shortcut</span>.<span class="fu">Save</span>()</a></code></pre></div>
 <p>これを実行すると、デスクトップに<code>test.txt</code>へのショートカットを作ることができる。</p>
 <p>これは、コマンドラインからは実行できるが、<code>test.ps1</code>として実行すると、</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode txt"><code class="sourceCode default"><a class="sourceLine" id="cb3-1" title="1">./test.ps1 : このシステムではスクリプトの実行が無効になっているため、ファイル C:\Users\watanabe\test.ps1 を読み込むこと</a>
-<a class="sourceLine" id="cb3-2" title="2">ができません。詳細については、「about_Execution_Policies」(https://go.microsoft.com/fwlink/?LinkID=135170) を参照してく</a>
-<a class="sourceLine" id="cb3-3" title="3">ださい。</a>
-<a class="sourceLine" id="cb3-4" title="4">発生場所 行:1 文字:1</a>
-<a class="sourceLine" id="cb3-5" title="5">+ ./test.ps1</a>
-<a class="sourceLine" id="cb3-6" title="6">+ ~~~~~~~~~~</a>
-<a class="sourceLine" id="cb3-7" title="7">    + CategoryInfo          : セキュリティ エラー: (: ) []、PSSecurityException</a>
-<a class="sourceLine" id="cb3-8" title="8">    + FullyQualifiedErrorId : UnauthorizedAccess</a></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode txt"><code class="sourceCode default"><a class="sourceLine" id="cb8-1" title="1">./test.ps1 : このシステムではスクリプトの実行が無効になっているため、ファイル C:\Users\watanabe\test.ps1 を読み込むこと</a>
+<a class="sourceLine" id="cb8-2" title="2">ができません。詳細については、「about_Execution_Policies」(https://go.microsoft.com/fwlink/?LinkID=135170) を参照してく</a>
+<a class="sourceLine" id="cb8-3" title="3">ださい。</a>
+<a class="sourceLine" id="cb8-4" title="4">発生場所 行:1 文字:1</a>
+<a class="sourceLine" id="cb8-5" title="5">+ ./test.ps1</a>
+<a class="sourceLine" id="cb8-6" title="6">+ ~~~~~~~~~~</a>
+<a class="sourceLine" id="cb8-7" title="7">    + CategoryInfo          : セキュリティ エラー: (: ) []、PSSecurityException</a>
+<a class="sourceLine" id="cb8-8" title="8">    + FullyQualifiedErrorId : UnauthorizedAccess</a></code></pre></div>
 <p>と言われてしまう。セキュリティの問題らしい。</p>
 <p>現在のポリシーを知るには<code>Get-ExecutionPolicy</code>を実行する。</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode ps1"><code class="sourceCode powershell"><a class="sourceLine" id="cb4-1" title="1">$ <span class="fu">Get-ExecutionPolicy</span></a>
-<a class="sourceLine" id="cb4-2" title="2">Restricted</a></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode ps1"><code class="sourceCode powershell"><a class="sourceLine" id="cb9-1" title="1">$ <span class="fu">Get-ExecutionPolicy</span></a>
+<a class="sourceLine" id="cb9-2" title="2">Restricted</a></code></pre></div>
 <p>スコープごとのポリシーの状態を調べるには<code>-List</code>を指定する。</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode ps1"><code class="sourceCode powershell"><a class="sourceLine" id="cb5-1" title="1">$ <span class="fu">Get-ExecutionPolicy</span> -List</a>
-<a class="sourceLine" id="cb5-2" title="2"></a>
-<a class="sourceLine" id="cb5-3" title="3">        Scope ExecutionPolicy</a>
-<a class="sourceLine" id="cb5-4" title="4">        ----- ---------------</a>
-<a class="sourceLine" id="cb5-5" title="5">MachinePolicy       Undefined</a>
-<a class="sourceLine" id="cb5-6" title="6">   UserPolicy       Undefined</a>
-<a class="sourceLine" id="cb5-7" title="7">      <span class="kw">Process</span>       Undefined</a>
-<a class="sourceLine" id="cb5-8" title="8">  CurrentUser       Undefined</a>
-<a class="sourceLine" id="cb5-9" title="9"> LocalMachine       Undefined</a></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode ps1"><code class="sourceCode powershell"><a class="sourceLine" id="cb10-1" title="1">$ <span class="fu">Get-ExecutionPolicy</span> -List</a>
+<a class="sourceLine" id="cb10-2" title="2"></a>
+<a class="sourceLine" id="cb10-3" title="3">        Scope ExecutionPolicy</a>
+<a class="sourceLine" id="cb10-4" title="4">        ----- ---------------</a>
+<a class="sourceLine" id="cb10-5" title="5">MachinePolicy       Undefined</a>
+<a class="sourceLine" id="cb10-6" title="6">   UserPolicy       Undefined</a>
+<a class="sourceLine" id="cb10-7" title="7">      <span class="kw">Process</span>       Undefined</a>
+<a class="sourceLine" id="cb10-8" title="8">  CurrentUser       Undefined</a>
+<a class="sourceLine" id="cb10-9" title="9"> LocalMachine       Undefined</a></code></pre></div>
 <p>未指定(Undefined)の場合はRestricted(全てのスクリプトの実行を許可しない)が適用される。ポリシー一覧は<a href="https://docs.microsoft.com/ja-jp/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7.2">こちら</a>。</p>
 <p>ここでは、<code>RemoteSigned</code>を指定する。これはローカルなスクリプトは署名なしで実行できるが、インターネットからダウンロードされたスクリプトは署名を要求する。スコープは現在のユーザ(CurrentUser)を指定する。変更しようとすると警告が表示される。</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode ps1"><code class="sourceCode powershell"><a class="sourceLine" id="cb6-1" title="1">$ <span class="fu">Set-ExecutionPolicy</span> -ExecutionPolicy RemoteSigned -Scope CurrentUser</a>
-<a class="sourceLine" id="cb6-2" title="2"></a>
-<a class="sourceLine" id="cb6-3" title="3">実行ポリシーの変更</a>
-<a class="sourceLine" id="cb6-4" title="4">実行ポリシーは、信頼されていないスクリプトからの保護に役立ちます。実行ポリシーを変更すると、about_Execution_Policies</a>
-<a class="sourceLine" id="cb6-5" title="5">のヘルプ トピック (https://go.<span class="fu">microsoft</span>.<span class="fu">com</span>/fwlink/?LinkID=135170)</a>
-<a class="sourceLine" id="cb6-6" title="6">で説明されているセキュリティ上の危険にさらされる可能性があります。実行ポリシーを変更しますか?</a>
-<a class="sourceLine" id="cb6-7" title="7">[Y] はい(Y)  [A] すべて続行(A)  [N] いいえ(N)  [L] すべて無視(L)  [S] 中断(S)  [?] ヘルプ (既定値は <span class="st">&quot;N&quot;</span>): y</a></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode ps1"><code class="sourceCode powershell"><a class="sourceLine" id="cb11-1" title="1">$ <span class="fu">Set-ExecutionPolicy</span> -ExecutionPolicy RemoteSigned -Scope CurrentUser</a>
+<a class="sourceLine" id="cb11-2" title="2"></a>
+<a class="sourceLine" id="cb11-3" title="3">実行ポリシーの変更</a>
+<a class="sourceLine" id="cb11-4" title="4">実行ポリシーは、信頼されていないスクリプトからの保護に役立ちます。実行ポリシーを変更すると、about_Execution_Policies</a>
+<a class="sourceLine" id="cb11-5" title="5">のヘルプ トピック (https://go.<span class="fu">microsoft</span>.<span class="fu">com</span>/fwlink/?LinkID=135170)</a>
+<a class="sourceLine" id="cb11-6" title="6">で説明されているセキュリティ上の危険にさらされる可能性があります。実行ポリシーを変更しますか?</a>
+<a class="sourceLine" id="cb11-7" title="7">[Y] はい(Y)  [A] すべて続行(A)  [N] いいえ(N)  [L] すべて無視(L)  [S] 中断(S)  [?] ヘルプ (既定値は <span class="st">&quot;N&quot;</span>): y</a></code></pre></div>
 <p>これで実行できるようになる。</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb7-1" title="1"><span class="ex">./test.ps1</span></a></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb12-1" title="1"><span class="ex">./test.ps1</span></a></code></pre></div>
 <p>これをWSLから実行しようとすると「リモート」扱いになるために実行できない。</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb8-1" title="1">$ <span class="ex">powershell.exe</span> -File test.ps1</a>
-<a class="sourceLine" id="cb8-2" title="2">ファイル <span class="dt">\\</span><span class="ex">wsl.localhost</span>\Ubuntu\home\username\temp\test.ps1 を読み込めません。ファイル <span class="dt">\\</span>wsl.localhost\Ubuntu\home\username\temp\test.ps1 はデジタル署名されていません。このスクリプトは現在のシステムでは実行できません。スクリプトの実行およ</a>
-<a class="sourceLine" id="cb8-3" title="3">び実行ポリシーの設定の詳細については、「<span class="ex">about_Execution_Policies</span>」(https://go.microsoft.com/fwlink/?LinkID=135170) を参</a>
-<a class="sourceLine" id="cb8-4" title="4">照してください。</a>
-<a class="sourceLine" id="cb8-5" title="5">    <span class="ex">+</span> CategoryInfo          : セキュリティ エラー: (: ) []、<span class="ex">ParentContainsErrorRecordException</span></a>
-<a class="sourceLine" id="cb8-6" title="6">    <span class="ex">+</span> FullyQualifiedErrorId : UnauthorizedAccess</a></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb13-1" title="1">$ <span class="ex">powershell.exe</span> -File test.ps1</a>
+<a class="sourceLine" id="cb13-2" title="2">ファイル <span class="dt">\\</span><span class="ex">wsl.localhost</span>\Ubuntu\home\username\temp\test.ps1 を読み込めません。ファイル <span class="dt">\\</span>wsl.localhost\Ubuntu\home\username\temp\test.ps1 はデジタル署名されていません。このスクリプトは現在のシステムでは実行できません。スクリプトの実行およ</a>
+<a class="sourceLine" id="cb13-3" title="3">び実行ポリシーの設定の詳細については、「<span class="ex">about_Execution_Policies</span>」(https://go.microsoft.com/fwlink/?LinkID=135170) を参</a>
+<a class="sourceLine" id="cb13-4" title="4">照してください。</a>
+<a class="sourceLine" id="cb13-5" title="5">    <span class="ex">+</span> CategoryInfo          : セキュリティ エラー: (: ) []、<span class="ex">ParentContainsErrorRecordException</span></a>
+<a class="sourceLine" id="cb13-6" title="6">    <span class="ex">+</span> FullyQualifiedErrorId : UnauthorizedAccess</a></code></pre></div>
 <p><code>Unrestricted</code>にすると、毎回実行時に聞かれる。</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb9-1" title="1">$ <span class="ex">powershell.exe</span> -File test.ps1</a>
-<a class="sourceLine" id="cb9-2" title="2"></a>
-<a class="sourceLine" id="cb9-3" title="3">セキュリティ警告</a>
-<a class="sourceLine" id="cb9-4" title="4">信頼するスクリプトのみを実行してください。インターネットから入手したスクリプトは便利ですが、コンピューターに危害を及ぼ</a>
-<a class="sourceLine" id="cb9-5" title="5">す可能性があります。このスクリプトを信頼する場合は、この警告メッセージが表示されないように、<span class="ex">Unblock-File</span></a>
-<a class="sourceLine" id="cb9-6" title="6">コマンドレットを使用して、スクリプトの実行を許可してください。<span class="dt">\\</span><span class="ex">wsl.localhost</span>\Ubuntu\home\watanabe\temp\test.ps1</a>
-<a class="sourceLine" id="cb9-7" title="7">を実行しますか<span class="ex">?</span></a>
-<a class="sourceLine" id="cb9-8" title="8">[<span class="ex">D</span>] 実行しない(D)  [<span class="ex">R</span>] 一度だけ実行する(R)  [<span class="ex">S</span>] 中断(S)  [<span class="ex">?</span>] ヘルプ (既定値は <span class="st">&quot;D&quot;</span>)<span class="bu">:</span> R</a></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb14-1" title="1">$ <span class="ex">powershell.exe</span> -File test.ps1</a>
+<a class="sourceLine" id="cb14-2" title="2"></a>
+<a class="sourceLine" id="cb14-3" title="3">セキュリティ警告</a>
+<a class="sourceLine" id="cb14-4" title="4">信頼するスクリプトのみを実行してください。インターネットから入手したスクリプトは便利ですが、コンピューターに危害を及ぼ</a>
+<a class="sourceLine" id="cb14-5" title="5">す可能性があります。このスクリプトを信頼する場合は、この警告メッセージが表示されないように、<span class="ex">Unblock-File</span></a>
+<a class="sourceLine" id="cb14-6" title="6">コマンドレットを使用して、スクリプトの実行を許可してください。<span class="dt">\\</span><span class="ex">wsl.localhost</span>\Ubuntu\home\watanabe\temp\test.ps1</a>
+<a class="sourceLine" id="cb14-7" title="7">を実行しますか<span class="ex">?</span></a>
+<a class="sourceLine" id="cb14-8" title="8">[<span class="ex">D</span>] 実行しない(D)  [<span class="ex">R</span>] 一度だけ実行する(R)  [<span class="ex">S</span>] 中断(S)  [<span class="ex">?</span>] ヘルプ (既定値は <span class="st">&quot;D&quot;</span>)<span class="bu">:</span> R</a></code></pre></div>
 <p><code>Bypass</code>にすると、聞かれないで実行されるが、危険なので非推奨。</p>
 <p>あと、このままだと文字化けする。SJISで保存する必要がある。<code>nkf -s</code>で変換したらうまくいった。</p>
 <p>署名の練習。まずはAllSignedにして、PowerShell上でも実行できないようにする。</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode ps1"><code class="sourceCode powershell"><a class="sourceLine" id="cb10-1" title="1">$ <span class="fu">Set-ExecutionPolicy</span> -ExecutionPolicy AllSigned -Scope CurrentUser</a>
-<a class="sourceLine" id="cb10-2" title="2">$ ./test.<span class="fu">ps1</span></a>
-<a class="sourceLine" id="cb10-3" title="3">./test.<span class="fu">ps1</span> : ファイル C:\Users\watanabe\test.<span class="fu">ps1</span> を読み込めません。ファイル C:\Users\watanabe\test.<span class="fu">ps1</span> はデジタル署名さ</a>
-<a class="sourceLine" id="cb10-4" title="4">れていません。このスクリプトは現在のシステムでは実行できません。スクリプトの実行および実行ポリシーの設定の詳細について</a>
-<a class="sourceLine" id="cb10-5" title="5">は、「about_Execution_Policies」(https://go.<span class="fu">microsoft</span>.<span class="fu">com</span>/fwlink/?LinkID=135170) を参照してください。</a>
-<a class="sourceLine" id="cb10-6" title="6">発生場所 行:1 文字:1</a>
-<a class="sourceLine" id="cb10-7" title="7">+ ./test.<span class="fu">ps1</span></a>
-<a class="sourceLine" id="cb10-8" title="8">+ ~~~~~~~~~~</a>
-<a class="sourceLine" id="cb10-9" title="9">    + CategoryInfo          : セキュリティ エラー: (: ) []、PSSecurityException</a>
-<a class="sourceLine" id="cb10-10" title="10">    + FullyQualifiedErrorId : UnauthorizedAccess</a></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode ps1"><code class="sourceCode powershell"><a class="sourceLine" id="cb15-1" title="1">$ <span class="fu">Set-ExecutionPolicy</span> -ExecutionPolicy AllSigned -Scope CurrentUser</a>
+<a class="sourceLine" id="cb15-2" title="2">$ ./test.<span class="fu">ps1</span></a>
+<a class="sourceLine" id="cb15-3" title="3">./test.<span class="fu">ps1</span> : ファイル C:\Users\watanabe\test.<span class="fu">ps1</span> を読み込めません。ファイル C:\Users\watanabe\test.<span class="fu">ps1</span> はデジタル署名さ</a>
+<a class="sourceLine" id="cb15-4" title="4">れていません。このスクリプトは現在のシステムでは実行できません。スクリプトの実行および実行ポリシーの設定の詳細について</a>
+<a class="sourceLine" id="cb15-5" title="5">は、「about_Execution_Policies」(https://go.<span class="fu">microsoft</span>.<span class="fu">com</span>/fwlink/?LinkID=135170) を参照してください。</a>
+<a class="sourceLine" id="cb15-6" title="6">発生場所 行:1 文字:1</a>
+<a class="sourceLine" id="cb15-7" title="7">+ ./test.<span class="fu">ps1</span></a>
+<a class="sourceLine" id="cb15-8" title="8">+ ~~~~~~~~~~</a>
+<a class="sourceLine" id="cb15-9" title="9">    + CategoryInfo          : セキュリティ エラー: (: ) []、PSSecurityException</a>
+<a class="sourceLine" id="cb15-10" title="10">    + FullyQualifiedErrorId : UnauthorizedAccess</a></code></pre></div>
 <p><a href="https://docs.microsoft.com/ja-jp/powershell/module/microsoft.powershell.core/about/about_signing?view=powershell-7.2">署名の仕方</a>。</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode ps1"><code class="sourceCode powershell"><a class="sourceLine" id="cb11-1" title="1"><span class="va">$params</span> = @{</a>
-<a class="sourceLine" id="cb11-2" title="2">    Subject = &#39;CN=PowerShell Code Signing Cert&#39;</a>
-<a class="sourceLine" id="cb11-3" title="3">    <span class="fu">Type</span> = &#39;CodeSigning&#39;</a>
-<a class="sourceLine" id="cb11-4" title="4">    CertStoreLocation = &#39;Cert:\CurrentUser\My&#39;</a>
-<a class="sourceLine" id="cb11-5" title="5">    HashAlgorithm = &#39;sha256&#39;</a>
-<a class="sourceLine" id="cb11-6" title="6">}</a>
-<a class="sourceLine" id="cb11-7" title="7"><span class="va">$cert</span> = New-SelfSignedCertificate @params</a></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode ps1"><code class="sourceCode powershell"><a class="sourceLine" id="cb16-1" title="1"><span class="va">$params</span> = @{</a>
+<a class="sourceLine" id="cb16-2" title="2">    Subject = &#39;CN=PowerShell Code Signing Cert&#39;</a>
+<a class="sourceLine" id="cb16-3" title="3">    <span class="fu">Type</span> = &#39;CodeSigning&#39;</a>
+<a class="sourceLine" id="cb16-4" title="4">    CertStoreLocation = &#39;Cert:\CurrentUser\My&#39;</a>
+<a class="sourceLine" id="cb16-5" title="5">    HashAlgorithm = &#39;sha256&#39;</a>
+<a class="sourceLine" id="cb16-6" title="6">}</a>
+<a class="sourceLine" id="cb16-7" title="7"><span class="va">$cert</span> = New-SelfSignedCertificate @params</a></code></pre></div>
 <p>これで良いのか。しかし、署名しようとしたらUnknownErrorで失敗。原因不明。あとで調べる。</p>
 <h2 id="月28日月"><a href="#28">03月28日(月)</a> <a id="28"></a></h2>
 <p>朝、単純サンプリングの誤差棒がおかしい理由がわかった。ある確率変数<span class="math inline">\(\hat{X}\)</span>と<span class="math inline">\(\hat{Y}\)</span>の比の期待値 $&lt; / &gt; $を計算する必要があったのだが、こいつらが強く相関していたため、誤差伝播の公式を使うと誤差棒をover estimateしてしまっていた。ちゃんと考慮したらまっとうな誤差棒になった。良かった。</p>
@@ -121,16 +151,16 @@
 <p>講義準備。最初のスライド作った。</p>
 <h2 id="月25日金"><a href="#25">03月25日(金)</a> <a id="25"></a></h2>
 <p>研究室サーバにGit 2.X系を入れる(以前入れた気がするが)。</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb12-1" title="1">$ <span class="fu">git</span> --version</a>
-<a class="sourceLine" id="cb12-2" title="2"><span class="fu">git</span> version 1.8.3.1</a></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb17-1" title="1">$ <span class="fu">git</span> --version</a>
+<a class="sourceLine" id="cb17-2" title="2"><span class="fu">git</span> version 1.8.3.1</a></code></pre></div>
 <p>古い。削除してから入れる。</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb13-1" title="1"><span class="fu">sudo</span> yum remove git</a>
-<a class="sourceLine" id="cb13-2" title="2"><span class="fu">sudo</span> yum install \</a>
-<a class="sourceLine" id="cb13-3" title="3">https://repo.ius.io/ius-release-el7.rpm \</a>
-<a class="sourceLine" id="cb13-4" title="4">https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm</a>
-<a class="sourceLine" id="cb13-5" title="5"><span class="fu">sudo</span> yum install git --enablerepo=ius --disablerepo=base,epel,extras,updates</a></code></pre></div>
-<div class="sourceCode" id="cb14"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb14-1" title="1">$ <span class="fu">git</span> --version</a>
-<a class="sourceLine" id="cb14-2" title="2"><span class="fu">git</span> version 2.24.4</a></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb18-1" title="1"><span class="fu">sudo</span> yum remove git</a>
+<a class="sourceLine" id="cb18-2" title="2"><span class="fu">sudo</span> yum install \</a>
+<a class="sourceLine" id="cb18-3" title="3">https://repo.ius.io/ius-release-el7.rpm \</a>
+<a class="sourceLine" id="cb18-4" title="4">https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm</a>
+<a class="sourceLine" id="cb18-5" title="5"><span class="fu">sudo</span> yum install git --enablerepo=ius --disablerepo=base,epel,extras,updates</a></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb19-1" title="1">$ <span class="fu">git</span> --version</a>
+<a class="sourceLine" id="cb19-2" title="2"><span class="fu">git</span> version 2.24.4</a></code></pre></div>
 <p>新しくなった。</p>
 <p>講義スライド、第一回分はできたことにする。めちゃくちゃ難産だった。</p>
 <h2 id="月24日木"><a href="#24">03月24日(木)</a> <a id="24"></a></h2>
@@ -197,19 +227,19 @@
 <p>サイエンスカフェの返事だした。</p>
 <h2 id="月09日水"><a href="#09">03月09日(水)</a> <a id="09"></a></h2>
 <p>そういえばMacにgsが無い。前回はMacTexを入れたが、今回はTeXLiveを入れたので入っていないようだ。MacTexでは独自のgsを入れるのでいろいろ面倒だという話があったが、TeXLiveではgsは入らない(?)ので、brewで入れてよかろう。</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb15-1" title="1"><span class="ex">brew</span> install ghostscript</a></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb20-1" title="1"><span class="ex">brew</span> install ghostscript</a></code></pre></div>
 <p>うーん、ウィンドウが出ない。どうするんだっけ？</p>
 <p>研究打ち合わせ。とても参考になった。やっぱりプロに聞くのが早い。多謝。</p>
 <h2 id="月08日火"><a href="#08">03月08日(火)</a> <a id="08"></a></h2>
 <p>Macではターミナルからデスクトップやダウンロードフォルダにアクセスする場合、許可が必要になっている。おそらく意図しない情報ぶっこぬきに対応するためだろう。で、例えばデスクトップにあるPDFをリポジトリに持ってこようとして、</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb16-1" title="1"><span class="fu">cp</span> ~/Desktop/hoge.pdf .</a></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb21-1" title="1"><span class="fu">cp</span> ~/Desktop/hoge.pdf .</a></code></pre></div>
 <p>とした時、最初に「“ターミナル”から“デスクトップ”フォルダ内のファイルにアクセスしようとしています。」というシステムダイアログが出てくる。これで一度許可すれば次から聞かれないのだが、うっかり「許可しない」をクリックすると、二度と許可されずに</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb17-1" title="1">$ <span class="fu">ls</span></a>
-<a class="sourceLine" id="cb17-2" title="2"><span class="ex">ls</span>: .: Operation not permitted</a></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb22-1" title="1">$ <span class="fu">ls</span></a>
+<a class="sourceLine" id="cb22-2" title="2"><span class="ex">ls</span>: .: Operation not permitted</a></code></pre></div>
 <p>みたいになってしまう。これはTCC (Transparency Consent and Control)というユーザ保護の仕組みで、デスクトップフォルダ、ダウンロードフォルダ、写真フォルダなど細かく制御されている。で、当該制御項目をリセットすればよいのだが、例えばデスクトップフォルダへのアクセスを制御するには、</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb18-1" title="1"><span class="ex">tccutil</span> reset サービス名</a></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb23-1" title="1"><span class="ex">tccutil</span> reset サービス名</a></code></pre></div>
 <p>とすれば良いのだが、サービス名を調べるのが面倒。というわけで全部リセットしてしまい、必要に応じてまた許可すれば良い。</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb19-1" title="1"><span class="ex">tccutil</span> reset All</a></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb24-1" title="1"><span class="ex">tccutil</span> reset All</a></code></pre></div>
 <p>必要なのはわかるが、いろいろ面倒だ・・・</p>
 <p>学生さん論文、少し進めた。</p>
 <h2 id="月07日月"><a href="#07">03月07日(月)</a> <a id="07"></a></h2>
@@ -239,42 +269,42 @@
 <p>次回ハンズオン(gnuplot)のためにX Windowの設定の確認。たまたままっさらに近いiMacがあったので試す。</p>
 <p><a href="https://www.xquartz.org/">https://www.xquartz.org/</a>から、最新版のXQuartz(2021年4月25日時点では<code>XQuartz-2.8.1.dmg</code>)をダウンロードし、dmgファイルを開いてXQuartz.pkgを実行してインストールする。</p>
 <p>ローカルですぐにxeyesは動くようになったが、研究室サーバからXが飛ばない。エラーはこれ。</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode txt"><code class="sourceCode default"><a class="sourceLine" id="cb20-1" title="1">X11 forwarding request failed on channel 0</a></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode txt"><code class="sourceCode default"><a class="sourceLine" id="cb25-1" title="1">X11 forwarding request failed on channel 0</a></code></pre></div>
 <p>あれ、Ubuntuからもだめだ。サーバ側の問題かな。</p>
 <p><code>/etc/ssh/sshd_config</code>に<code>X11Forwarding yes</code>はある。</p>
 <p><code>/etc/ssh/sshd_config</code>に<code>X11UseLocalhost no</code>を設定して</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb21-1" title="1"><span class="fu">sudo</span> service sshd restart</a></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb26-1" title="1"><span class="fu">sudo</span> service sshd restart</a></code></pre></div>
 <p>してから再度接続したら通った。</p>
 <p>とりあえずローカルにbrewでgnuplotを入れたら以下のメッセージが出た。あとで確認。</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode txt"><code class="sourceCode default"><a class="sourceLine" id="cb22-1" title="1">Disable this behaviour by setting HOMEBREW_NO_INSTALL_CLEANUP.</a>
-<a class="sourceLine" id="cb22-2" title="2">Hide these hints with HOMEBREW_NO_ENV_HINTS (see `man brew`).</a></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode txt"><code class="sourceCode default"><a class="sourceLine" id="cb27-1" title="1">Disable this behaviour by setting HOMEBREW_NO_INSTALL_CLEANUP.</a>
+<a class="sourceLine" id="cb27-2" title="2">Hide these hints with HOMEBREW_NO_ENV_HINTS (see `man brew`).</a></code></pre></div>
 <p>調べた。<a href="https://brew.sh/2019/02/02/homebrew-2.0.0/">brew 2.0.0からcleanupが自動で走るようになったらしい</a>。cleanup、reinstall、install、upgradeをトリガーとして、30日間走っていなければcleanupが勝手に走るとのこと。それが嫌なら<code>HOMEBREW_NO_INSTALL_CLEANUP</code>を設定してね。とのこと。cleanupして欲しいし、このヒントは不要なので、<code>HOMEBREW_NO_ENV_HINTS</code>を設定しておく。</p>
 <p>環境変数について何も知らなかった。<a href="https://stackoverflow.com/a/65141342">setとenvの違い</a>。</p>
 <p>単に値を入れるだけだと、setではひっかかるが、envにはひっかからない。</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb23-1" title="1">$ <span class="va">ABC=</span>xyz</a>
-<a class="sourceLine" id="cb23-2" title="2">$ <span class="kw">set</span> <span class="kw">|</span> <span class="fu">grep</span> ABC</a>
-<a class="sourceLine" id="cb23-3" title="3"><span class="va">ABC=</span>xyz</a>
-<a class="sourceLine" id="cb23-4" title="4">$ <span class="fu">env</span> <span class="kw">|</span> <span class="fu">grep</span> ABC</a></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb28-1" title="1">$ <span class="va">ABC=</span>xyz</a>
+<a class="sourceLine" id="cb28-2" title="2">$ <span class="kw">set</span> <span class="kw">|</span> <span class="fu">grep</span> ABC</a>
+<a class="sourceLine" id="cb28-3" title="3"><span class="va">ABC=</span>xyz</a>
+<a class="sourceLine" id="cb28-4" title="4">$ <span class="fu">env</span> <span class="kw">|</span> <span class="fu">grep</span> ABC</a></code></pre></div>
 <p>exportすると、「それが定義されたときにexportされる」という情報が付与される。</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb24-1" title="1">$ <span class="bu">export</span> <span class="va">ABC</span>  <span class="co"># この時点ではなにも値が設定されない</span></a>
-<a class="sourceLine" id="cb24-2" title="2">$ <span class="kw">set</span> <span class="kw">|</span> <span class="fu">grep</span> ABC</a>
-<a class="sourceLine" id="cb24-3" title="3"><span class="va">ABC=</span><span class="st">&#39;&#39;</span></a>
-<a class="sourceLine" id="cb24-4" title="4">$ <span class="fu">env</span> <span class="kw">|</span> <span class="fu">grep</span> ABC</a>
-<a class="sourceLine" id="cb24-5" title="5">$ <span class="ex">ABC</span> = xyz <span class="co"># 値を設定</span></a>
-<a class="sourceLine" id="cb24-6" title="6">$ <span class="kw">set</span> <span class="kw">|</span> <span class="fu">grep</span> ABC</a>
-<a class="sourceLine" id="cb24-7" title="7"><span class="va">ABC=</span>xyz</a>
-<a class="sourceLine" id="cb24-8" title="8">$ <span class="fu">env</span> <span class="kw">|</span> <span class="fu">grep</span> ABC</a>
-<a class="sourceLine" id="cb24-9" title="9"><span class="va">ABC=</span>xyz</a></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb29-1" title="1">$ <span class="bu">export</span> <span class="va">ABC</span>  <span class="co"># この時点ではなにも値が設定されない</span></a>
+<a class="sourceLine" id="cb29-2" title="2">$ <span class="kw">set</span> <span class="kw">|</span> <span class="fu">grep</span> ABC</a>
+<a class="sourceLine" id="cb29-3" title="3"><span class="va">ABC=</span><span class="st">&#39;&#39;</span></a>
+<a class="sourceLine" id="cb29-4" title="4">$ <span class="fu">env</span> <span class="kw">|</span> <span class="fu">grep</span> ABC</a>
+<a class="sourceLine" id="cb29-5" title="5">$ <span class="ex">ABC</span> = xyz <span class="co"># 値を設定</span></a>
+<a class="sourceLine" id="cb29-6" title="6">$ <span class="kw">set</span> <span class="kw">|</span> <span class="fu">grep</span> ABC</a>
+<a class="sourceLine" id="cb29-7" title="7"><span class="va">ABC=</span>xyz</a>
+<a class="sourceLine" id="cb29-8" title="8">$ <span class="fu">env</span> <span class="kw">|</span> <span class="fu">grep</span> ABC</a>
+<a class="sourceLine" id="cb29-9" title="9"><span class="va">ABC=</span>xyz</a></code></pre></div>
 <p>う、Macではexportした時点で空文字列が設定されるな。</p>
 <p>Linux+Bash</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb25-1" title="1">$ <span class="bu">export</span> <span class="va">ABC</span></a>
-<a class="sourceLine" id="cb25-2" title="2">$ <span class="kw">set</span> <span class="kw">|</span> <span class="fu">grep</span> ABC</a>
-<a class="sourceLine" id="cb25-3" title="3"><span class="va">_=</span>ABC</a></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb30-1" title="1">$ <span class="bu">export</span> <span class="va">ABC</span></a>
+<a class="sourceLine" id="cb30-2" title="2">$ <span class="kw">set</span> <span class="kw">|</span> <span class="fu">grep</span> ABC</a>
+<a class="sourceLine" id="cb30-3" title="3"><span class="va">_=</span>ABC</a></code></pre></div>
 <p>やっぱり空文字列か。</p>
 <p>Ubuntu + Zsh</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb26-1" title="1">$ <span class="bu">export</span> <span class="va">ABC</span></a>
-<a class="sourceLine" id="cb26-2" title="2">$ <span class="kw">set</span> <span class="kw">|</span> <span class="fu">grep</span> ABC</a>
-<a class="sourceLine" id="cb26-3" title="3"><span class="va">ABC=</span><span class="st">&#39;&#39;</span></a></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb31-1" title="1">$ <span class="bu">export</span> <span class="va">ABC</span></a>
+<a class="sourceLine" id="cb31-2" title="2">$ <span class="kw">set</span> <span class="kw">|</span> <span class="fu">grep</span> ABC</a>
+<a class="sourceLine" id="cb31-3" title="3"><span class="va">ABC=</span><span class="st">&#39;&#39;</span></a></code></pre></div>
 <p>これはOSというよりシェルの違いか。<code>export</code>した時点で空文字列が設定されるんだな。</p>
 <p>シェル変数と環境変数の違いをちゃんと認識していなかった。シェル変数は現在のシェルのみで有効、環境変数は子プロセスにも受け継がれる。</p>
 <p><code>env</code>は環境変数の一覧、<code>set</code>はシェル変数と環境変数の一覧を表示。<code>export</code>も環境変数一覧。</p>
