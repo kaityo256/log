@@ -22,6 +22,20 @@
     <article class="markdown-body">
                         <h1 id="ログ">ログ</h1>
 <p><a href="index.html">ログ一覧</a></p>
+<h2 id="月26日火"><a href="#26">04月26日(火)</a> <a id="26"></a></h2>
+<p>実験。</p>
+<p>ミーティング。</p>
+<p>スライドは53ページまで。ヤバくない？</p>
+<p>直前にコミットしたはずなのに、GitHubのログが「4days ago」とかになっていて、調べたらWSL2の時計が恐ろしく狂っていた。なんとかしないといけない。</p>
+<p>まずはcrontabで<code>hwclock -s</code>を実行したいが、これにはroot権限が必要だ。というわけで<code>/etc/sudoers</code>に</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1"><span class="ex">watanabe</span> AL=NOPASSWD: /usr/sbin/hwclock</a></code></pre></div>
+<p>を追加。これで、<code>sudo hwclock -s</code>がパスワードなしになった。あとはこれをwatanabe権限のcronで実行すればよいだけのはず？</p>
+<p>WSLでcronはデフォルトで走っていない。</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1"><span class="fu">sudo</span> service cron start</a></code></pre></div>
+<p>では走らせることができる。これをWindows起動時に自動でやっても良いが、確認自体は</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" title="1">$ <span class="ex">service</span> cron status</a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="ex">*</span> cron is not running</a></code></pre></div>
+<p>で調べることができるので、ログイン時に確認して、cronが動いてなければ動かす、で良い気がする。</p>
 <h2 id="月25日月"><a href="#25">04月25日(月)</a> <a id="25"></a></h2>
 <p>講義。今週は20分余った。</p>
 <p>冷蔵庫届いた。</p>
