@@ -22,6 +22,23 @@
     <article class="markdown-body">
                         <h1 id="ログ">ログ</h1>
 <p><a href="index.html">ログ一覧</a></p>
+<h2 id="月17日火"><a href="#17">05月17日(火)</a> <a id="17"></a></h2>
+<p>いつの頃からか、VSCodeのMarkdownで<code>sh</code>と書くと<code>Insert strikethrough</code>の補完がでて<code>~~~~</code>がsugestされるようになった。コードブロックの<code>sh</code>を書くのに非常に不便なので直したい。</p>
+<p><code>date</code>で日付補完しているので、Suggest機能は残したい。問題はエンターで入力されてしまうことなので、</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode json"><code class="sourceCode json"><a class="sourceLine" id="cb1-1" title="1"><span class="er">&quot;editor.acceptSuggestionOnEnder&quot;:</span> <span class="er">&quot;off&quot;</span></a></code></pre></div>
+<p>にすることで解決。明示的に補完したい時にはTabを使うので、サジェストは表示されるが無視すれば良い。</p>
+<p>あと、単語のサジェスト機能も不要なので</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode json"><code class="sourceCode json"><a class="sourceLine" id="cb2-1" title="1"><span class="er">&quot;editor.suggest.showWords&quot;:</span> <span class="er">false,</span></a></code></pre></div>
+<p>単語のサジェストは英語のような単語の切れ目がはっきりしている言語では有用なのであろうが、日本語を書くときには邪魔になることが多かったので、これでだいぶ快適になった。</p>
+<p>なんか昨日、Sudokuのminlex出力コードに「同じはずの数独が異なるminlexを出力する」という報告が来た。3年も前のコードなんて覚えてないよ、と思ったが、さっき試したら正しい結果が出てる。どういうこっちゃ？とりあえずコンパイラとバージョンを聞いてみた。</p>
+<p>5000個あるサンプルに対して、別のコードの出力とチェックしたので、そうそうバグは残ってないと思うんだけど、なんかコンパイラ依存の振る舞いでも踏んだかな？</p>
+<h2 id="月16日月"><a href="#16">05月16日(月)</a> <a id="16"></a></h2>
+<p>講義。かなり難しい内容だったので学生さんは大変だったかな。しかし、内容をどう工夫すれば良いか、まだよくわからない。</p>
+<p>ハンズオン。MacのPythonのバージョンが高すぎて、pipでTensorFlowが入らないというアクシデント。pyenvでバージョンを落とす方法を後で調べて<a href="https://github.com/kaityo256/lab_startup/blob/main/tensorflow/README.md">追記</a>した。</p>
+<p>pandocのインストール。</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" title="1"><span class="ex">brew</span> install pandoc</a></code></pre></div>
+<p>なんかスルッと入ったぞ。<code>lab_startup</code>のHTML化が簡単にできた。以前バグってた気がするが。WSLのUbuntuもするっといった。</p>
+<p>しかし、Markdown + PandocでHTML化の運用、また5〜10年後は違う運用になるんだろうなぁ。</p>
 <h2 id="月15日日"><a href="#15">05月15日(日)</a> <a id="15"></a></h2>
 <p>佐々さんがギブスのN!因子の論文を書いたそうだ→<a href="https://arxiv.org/abs/2205.05863">arXiv:2205.05863</a>。</p>
 <p>なんか、「書ける論文」ではなく「書きたい論文」を書き続けるの、本当にすごい。振り返って、自分は「書ける論文」どころか論文そのものが書けてない。毎年のように新講義担当するのキツい。</p>
