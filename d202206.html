@@ -22,6 +22,81 @@
     <article class="markdown-body">
                         <h1 id="ログ">ログ</h1>
 <p><a href="index.html">ログ一覧</a></p>
+<h2 id="月03日金"><a href="#03">06月03日(金)</a> <a id="03"></a></h2>
+<p>ウェブサイトを更新しようとして、自分がslimを使っていることを思い出した。ついでにgemとbundlerの違いも理解。gemだとグローバルインストールだが、bundlerならプロジェクトごと。つまりPythonの仮想環境みたいな奴だな。</p>
+<p>とりあえずinitする。</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1"><span class="ex">bundle</span> init</a></code></pre></div>
+<p>こんな<code>Gemfile</code>ができる。</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode rb"><code class="sourceCode ruby"><a class="sourceLine" id="cb2-1" title="1"><span class="co"># frozen_string_literal: true</span></a>
+<a class="sourceLine" id="cb2-2" title="2"></a>
+<a class="sourceLine" id="cb2-3" title="3">source <span class="st">&quot;https://rubygems.org&quot;</span></a>
+<a class="sourceLine" id="cb2-4" title="4"></a>
+<a class="sourceLine" id="cb2-5" title="5">git_source(<span class="st">:github</span>) {|repo_name| <span class="st">&quot;https://github.com/</span><span class="ot">#{</span>repo_name<span class="ot">}</span><span class="st">&quot;</span> }</a>
+<a class="sourceLine" id="cb2-6" title="6"></a>
+<a class="sourceLine" id="cb2-7" title="7"><span class="co"># gem &quot;rails&quot;</span></a></code></pre></div>
+<p>最後を書き換える。</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode rb"><code class="sourceCode ruby"><a class="sourceLine" id="cb3-1" title="1">gem <span class="st">&quot;slim&quot;</span></a></code></pre></div>
+<p>インストール。</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb4-1" title="1"><span class="ex">bundle</span> install --path vender/bundle</a></code></pre></div>
+<p>インストールされたか確認。</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb5-1" title="1">$ <span class="ex">bundle</span> exec gem list</a>
+<a class="sourceLine" id="cb5-2" title="2"></a>
+<a class="sourceLine" id="cb5-3" title="3"><span class="ex">***</span> LOCAL GEMS ***</a>
+<a class="sourceLine" id="cb5-4" title="4"></a>
+<a class="sourceLine" id="cb5-5" title="5"><span class="ex">bundler</span> (default: 1.17.2)</a>
+<a class="sourceLine" id="cb5-6" title="6"><span class="ex">slim</span> (4.1.0)</a>
+<a class="sourceLine" id="cb5-7" title="7"><span class="ex">temple</span> (0.8.2)</a>
+<a class="sourceLine" id="cb5-8" title="8"><span class="ex">tilt</span> (2.0.10)</a></code></pre></div>
+<p>実行は<code>bundle exec slimrb</code>でできる。</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb6-1" title="1">$ <span class="ex">bundle</span> exec slimrb -v </a>
+<a class="sourceLine" id="cb6-2" title="2"><span class="ex">Slim</span> 4.1.0</a></code></pre></div>
+<p>Pythonのようにactivate/deactivateで仮想環境に出入りするのが良いのか、Bundlerのように毎回bundle execを実行するのが良いのかは微妙だな。</p>
+<p>あとはGemfileとGemfile.lockはリポジトリに追加したほうが良いらしい。<code>.bundle</code>と<code>vender/bundle</code>は<code>.gitignore</code>に追加。</p>
+<p>makefileで</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode makefile"><code class="sourceCode makefile"><a class="sourceLine" id="cb7-1" title="1"><span class="dv">%.html:</span><span class="dt"> %.slim</span></a>
+<a class="sourceLine" id="cb7-2" title="2">    slimrb <span class="ch">$&lt;</span> -p -r slim/include &gt; <span class="ch">$@</span></a></code></pre></div>
+<p>と書いていたのを、</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode makefile"><code class="sourceCode makefile"><a class="sourceLine" id="cb8-1" title="1"><span class="dv">%.html:</span><span class="dt"> %.slim</span></a>
+<a class="sourceLine" id="cb8-2" title="2">    bundle exec slimrb <span class="ch">$&lt;</span> -p -r slim/include &gt; <span class="ch">$@</span></a></code></pre></div>
+<p>に修正。</p>
+<p>というわけで死ぬほど久しぶりにウェブの更新。VPSのgitが古い。IUSからインストールする前に、とりあえず<code>sudo yum update</code>だけ。</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb9-1" title="1"><span class="fu">sudo</span> yum update</a>
+<a class="sourceLine" id="cb9-2" title="2"><span class="fu">sudo</span> yum -y install https://repo.ius.io/ius-release-el7.rpm</a></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb10-1" title="1">$ <span class="fu">sudo</span> yum list  <span class="kw">|</span><span class="fu">grep</span> git2</a>
+<a class="sourceLine" id="cb10-2" title="2"><span class="ex">git236.x86_64</span>                            2.36.1-2.el7.ius              ius  </a></code></pre></div>
+<p>Gitの2.36が入れられそうだな。</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb11-1" title="1"><span class="fu">sudo</span> yum -y remove git</a>
+<a class="sourceLine" id="cb11-2" title="2"><span class="fu">sudo</span> yum install git236</a></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb12-1" title="1">$ <span class="fu">git</span> --version  </a>
+<a class="sourceLine" id="cb12-2" title="2"><span class="fu">git</span> version 2.36.1</a></code></pre></div>
+<p>よろしい。</p>
+<p>CentOSでbundler使おうとしたらRubyが古いと怒られた。入れるにはrbenv+ruby-buildを使う必要があるらしい。面倒なのでcentos-release-sclを使う。</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb13-1" title="1"><span class="fu">sudo</span> yum -y install centos-release-scl </a>
+<a class="sourceLine" id="cb13-2" title="2"><span class="fu">sudo</span> yum -y install rh-ruby27</a></code></pre></div>
+<p>以下のコマンドで一時的に有効に。</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb14-1" title="1"><span class="ex">scl</span> enable rh-ruby27 zsh </a></code></pre></div>
+<p>以下でずっと有効になるはずが、コマンドがないと言われる。</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb15-1" title="1">$ <span class="bu">source</span> scl_source enable rh-ruby27 </a>
+<a class="sourceLine" id="cb15-2" title="2"><span class="ex">/usr/bin</span>/scl_source:<span class="ex">source</span>:63: no such file or directory: //enable</a>
+<a class="sourceLine" id="cb15-3" title="3"><span class="ex">Can</span><span class="st">&#39;t source enable, skipping.</span></a></code></pre></div>
+<p>仕方ないので、直接パスを指定して実行。</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb16-1" title="1"><span class="bu">source</span> /opt/rh/rh-ruby27/enable </a></code></pre></div>
+<p>これを<code>.zshrc_mine.zsh</code>に追加。ようやくGitとRubyの新しい奴が入った。</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb17-1" title="1">$ <span class="ex">bundler</span> install</a>
+<a class="sourceLine" id="cb17-2" title="2"><span class="ex">Traceback</span> (most recent call last)<span class="bu">:</span></a>
+<a class="sourceLine" id="cb17-3" title="3">    <span class="ex">2</span>: from /opt/rh/rh-ruby27/root/usr/bin/bundler:23:in <span class="kw">`</span><span class="op">&lt;</span><span class="ex">main</span><span class="op">&gt;</span><span class="st">&#39;</span></a>
+<a class="sourceLine" id="cb17-4" title="4"><span class="st">    1: from /opt/rh/rh-ruby27/root/usr/share/rubygems/rubygems.rb:296:in `activate_bin_path&#39;</span></a>
+<a class="sourceLine" id="cb17-5" title="5"><span class="ex">/opt/rh/rh-ruby27/root/usr/share/rubygems</span>/rubygems.rb:<span class="ex">277</span>:in <span class="kw">`</span>find_spec_for_exe<span class="st">&#39;: Could not find &#39;</span>bundler<span class="st">&#39; (1.17.2) required by your /home/watanabe/public_html/Gemfile.lock. (Gem::GemNotFoundException)</span></a>
+<a class="sourceLine" id="cb17-6" title="6"><span class="st">To update to the latest version installed on your system, run `bundle update --bundler`.</span></a>
+<a class="sourceLine" id="cb17-7" title="7"><span class="st">To install the missing version, run `gem install bundler:1.17.2`</span></a></code></pre></div>
+<p>古いのか。アップデートしてもう一度。</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb18-1" title="1"><span class="ex">bundle</span> update --bundler     </a>
+<a class="sourceLine" id="cb18-2" title="2"><span class="ex">bundler</span> install</a></code></pre></div>
+<p>できた。</p>
+<p>というわけで、<a href="https://www.calc.appi.keio.ac.jp/watanabe/funding.html">外部資金や計算資源のページ</a>ができた。YAMLのデータをslimで読み込んでHTMLに変換している。書類仕事がいっぱいある時のサーバ設定楽しい(逃避)。</p>
+<h2 id="月02日木"><a href="#02">06月02日(木)</a> <a id="02"></a></h2>
+<p>研究室ミーティング。輪講。</p>
+<p>ミルククラウン研究の現状。博士課程の時にやりたかったが計算能力が足りなかった。いまならギリいけるか？</p>
 <h2 id="月01日水"><a href="#01">06月01日(水)</a> <a id="01"></a></h2>
 <p>5月が終わってしまった。</p>
 <p>今日は久しぶりに予定がほとんど無い日だったので、論文の準備ができたぞ。</p>
