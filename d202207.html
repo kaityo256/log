@@ -22,6 +22,24 @@
     <article class="markdown-body">
                         <h1 id="ログ">ログ</h1>
 <p><a href="index.html">ログ一覧</a></p>
+<h2 id="月14日木"><a href="#14">07月14日(木)</a> <a id="14"></a></h2>
+<p>選挙のあと、なんか「知識人」が毎回「自分が正しいと思う未来に賛同しなかった連中は全員愚民であり、この国の未来は暗い、絶望的だ」と言うまでがテンプレだなぁ・・・</p>
+<p>研究室ミーティング。</p>
+<h2 id="月13日水"><a href="#13">07月13日(水)</a> <a id="13"></a></h2>
+<p>物性研システムC(kugui)でLAMMPS。</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1"><span class="fu">mkdir</span> github</a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="bu">cd</span> github</a>
+<a class="sourceLine" id="cb1-3" title="3"><span class="fu">git</span> clone -b stable --depth=1  https://github.com/lammps/lammps.git</a>
+<a class="sourceLine" id="cb1-4" title="4"><span class="bu">cd</span> lammps</a>
+<a class="sourceLine" id="cb1-5" title="5"><span class="bu">cd</span> src</a>
+<a class="sourceLine" id="cb1-6" title="6"><span class="ex">qsub</span> -I -V -q i2cpu  -l select=1:ncpus=2</a>
+<a class="sourceLine" id="cb1-7" title="7"><span class="ex">module</span> load intel intel-mpi</a>
+<a class="sourceLine" id="cb1-8" title="8"><span class="fu">make</span> mpi CC=mpiicc LINK=mpiicc CCFLAGS=<span class="st">&quot;-g -O3 -std=c++11 -qopenmp&quot;</span> LINKFLAGS=<span class="st">&quot;-g -O3 -std=c++11 -qopenmp&quot;</span> -j 20</a></code></pre></div>
+<p>基本的にコンパイラとリンカに<code>mpiicc</code>を指定するだけだが、module loadするのと、コンパイルオプションだけでなく、リンクオプションにも<code>-qopenmp</code>が必要なのがポイント。</p>
+<p>WindowsでPDFをプレビューする時、Adobe Readerが自動再読み込みに対応していないため、WSLでevniceで開いているのが、なんともアホっぽい。</p>
+<p>塩漬け論文、子供が寝てから気合で返事をかきあげた。10年近く寝かせた論文。とにかくpublishまでこぎつけなければ。</p>
+<h2 id="月14日火"><a href="#12">07月14日(火)</a> <a id="12"></a></h2>
+<p>まだ調子悪い。</p>
 <h2 id="月11日月"><a href="#11">07月11日(月)</a> <a id="11"></a></h2>
 <p>よく寝たので、だいぶ体調が回復した気がする。ただ、まだ頭が回ってない。</p>
 <p>学生さんの論文投稿した。</p>
@@ -41,7 +59,7 @@
 <p>物性研スパコンのポイントをほぼ使い切ったとの連絡。次はさらに大きなクラスにしないとダメだ。3ヶ月でCクラスのポイントを使い切るって、HPCの研究室っぽくなってきましたね。嬉しい悲鳴。</p>
 <h2 id="月06日水"><a href="#06">07月06日(水)</a> <a id="06"></a></h2>
 <p>printfに4285個アスタリスクをつけたらclangが死ぬ奴、今試したら3460個になってる上に、ギリギリで試すと</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode txt"><code class="sourceCode default"><a class="sourceLine" id="cb1-1" title="1">test.cpp:3:3461: warning: stack nearly exhausted; compilation time may suffer, and crashes due to stack overflow are likely [-Wstack-exhausted]</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode txt"><code class="sourceCode default"><a class="sourceLine" id="cb2-1" title="1">test.cpp:3:3461: warning: stack nearly exhausted; compilation time may suffer, and crashes due to stack overflow are likely [-Wstack-exhausted]</a></code></pre></div>
 <p>という警告が出るな。これ、以前からあったっぽい。前回はApple LLVM version 10.0.1 (clang-1001.0.46.4)だったが、10.0.0のRelease noteにある。</p>
 <p>ちなみに　<code>(((printf("Hello World\n"))))</code>みたいなことをすると、<code>clang::Parser::ParseParenExpression</code>というところでスタックを使い切って死ぬらしい。ふむ。</p>
 <p>GCCは10000はいけたが、さすがに100000で死んだ。50000も死んだ。ohtakaでは34086が限界ですね。ローカルのiMacだと、g++-11で55179が限界。</p>
