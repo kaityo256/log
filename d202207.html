@@ -22,6 +22,11 @@
     <article class="markdown-body">
                         <h1 id="ログ">ログ</h1>
 <p><a href="index.html">ログ一覧</a></p>
+<h2 id="月20日水"><a href="#20">07月20日(水)</a> <a id="20"></a></h2>
+<p>デスクトップPC購入した。GPGPUマシンの見積もり依頼。</p>
+<p>Slack有料化への対応でバタバタ。</p>
+<p>学習指導のお仕事。Canvasのモジュールで、必要なページを公開したつもりが、親モジュールが非公開になっていた。学生からの指摘で判明。慌てて公開。いろいろ不手際があって申し訳ない。</p>
+<p>学生さんの論文チェック。</p>
 <h2 id="月19日火"><a href="#19">07月19日(火)</a> <a id="19"></a></h2>
 <p>学生さんのPCが壊れたので急遽新しいのを購入。「PCは突然壊れる」という感覚を肌で覚えるのは非常に重要なことだと思います。</p>
 <p>いろいろやりたいことがある。いまローカルのエクセルで管理している予算をGoogle SpreadSheetにしたい。Pukiwikiで管理している研究室WikiをGitHubに移行したい。しかし、忙しい。</p>
@@ -32,6 +37,12 @@
 <p>なんか、「進捗が無いと世の中に意見を言いたくなる病」にかかっている。いかん。進捗は百薬の長。</p>
 <p>GitHubにブランチ保護機能がついた。例えば「削除を許す」「歴史がまっすぐであることを要求する(マージコミットを含む歴史のpushを許さない)」などがある。とりあえずデフォルトで「Allow force pushes」と「Allow deletions」がオフになっている状態なので、ルールを有効化することで、それができなくなったはず。</p>
 <p>ちょっとこれUIがよくないな。デフォルトでオフになっている「Allow force pushes」が、ルールを有効化することで有効化される、つまりforce pushを許さなくなる、というのは、ちょっとよくないと思う。デフォルトでは現状、すなわちAllow force pushesやAllow deletionsがオンになっておき、Protectionの有効化によりオフになる、という方がよいと思う。</p>
+<p>Macにnpmが入っていなかったのでいれる。</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1"><span class="ex">brew</span> install npm</a></code></pre></div>
+<p>その後、zennを管理するリポジトリにて</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1"><span class="ex">npm</span> install zenn-cli </a></code></pre></div>
+<p>でOK。他の場所(WSL)で作成したzenn-contentを、別の場所(Mac)でいじる、ということを想定しておらず、またnpmによる管理がどうなっているか理解していなかったので戸惑った。</p>
+<p>あー、でもMacのパワポで絵を描くの大変だから、やっぱりWSLで書こう。</p>
 <h2 id="月18日月"><a href="#18">07月18日(月)</a> <a id="18"></a></h2>
 <p>修正した論文を再投稿した。再投稿期限ギリギリ。</p>
 <p>この論文、1月には査読レポートが来ていたのだが、返事がわりと大変な部類だったのと、ちょうど講義準備で忙しい時期にぶつかってしまって対応できなかった。講義が終わったのが5月23日。その後、去年の9月から放置していた(本当に申し訳ない)学生さんの論文に取り掛かる。そして投稿できたのが7月11日。</p>
@@ -53,14 +64,14 @@
 <p>目の前にたくさんタスクがあるが、一つ一つ片付けるしかない・・・</p>
 <h2 id="月13日水"><a href="#13">07月13日(水)</a> <a id="13"></a></h2>
 <p>物性研システムC(kugui)でLAMMPS。</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1"><span class="fu">mkdir</span> github</a>
-<a class="sourceLine" id="cb1-2" title="2"><span class="bu">cd</span> github</a>
-<a class="sourceLine" id="cb1-3" title="3"><span class="fu">git</span> clone -b stable --depth=1  https://github.com/lammps/lammps.git</a>
-<a class="sourceLine" id="cb1-4" title="4"><span class="bu">cd</span> lammps</a>
-<a class="sourceLine" id="cb1-5" title="5"><span class="bu">cd</span> src</a>
-<a class="sourceLine" id="cb1-6" title="6"><span class="ex">qsub</span> -I -V -q i2cpu  -l select=1:ncpus=2</a>
-<a class="sourceLine" id="cb1-7" title="7"><span class="ex">module</span> load intel intel-mpi</a>
-<a class="sourceLine" id="cb1-8" title="8"><span class="fu">make</span> mpi CC=mpiicc LINK=mpiicc CCFLAGS=<span class="st">&quot;-g -O3 -std=c++11 -qopenmp&quot;</span> LINKFLAGS=<span class="st">&quot;-g -O3 -std=c++11 -qopenmp&quot;</span> -j 20</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" title="1"><span class="fu">mkdir</span> github</a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="bu">cd</span> github</a>
+<a class="sourceLine" id="cb3-3" title="3"><span class="fu">git</span> clone -b stable --depth=1  https://github.com/lammps/lammps.git</a>
+<a class="sourceLine" id="cb3-4" title="4"><span class="bu">cd</span> lammps</a>
+<a class="sourceLine" id="cb3-5" title="5"><span class="bu">cd</span> src</a>
+<a class="sourceLine" id="cb3-6" title="6"><span class="ex">qsub</span> -I -V -q i2cpu  -l select=1:ncpus=2</a>
+<a class="sourceLine" id="cb3-7" title="7"><span class="ex">module</span> load intel intel-mpi</a>
+<a class="sourceLine" id="cb3-8" title="8"><span class="fu">make</span> mpi CC=mpiicc LINK=mpiicc CCFLAGS=<span class="st">&quot;-g -O3 -std=c++11 -qopenmp&quot;</span> LINKFLAGS=<span class="st">&quot;-g -O3 -std=c++11 -qopenmp&quot;</span> -j 20</a></code></pre></div>
 <p>基本的にコンパイラとリンカに<code>mpiicc</code>を指定するだけだが、module loadするのと、コンパイルオプションだけでなく、リンクオプションにも<code>-qopenmp</code>が必要なのがポイント。</p>
 <p>WindowsでPDFをプレビューする時、Adobe Readerが自動再読み込みに対応していないため、WSLでevniceで開いているのが、なんともアホっぽい。</p>
 <p>塩漬け論文、子供が寝てから気合で返事をかきあげた。10年近く寝かせた論文。とにかくpublishまでこぎつけなければ。</p>
@@ -85,7 +96,7 @@
 <p>物性研スパコンのポイントをほぼ使い切ったとの連絡。次はさらに大きなクラスにしないとダメだ。3ヶ月でCクラスのポイントを使い切るって、HPCの研究室っぽくなってきましたね。嬉しい悲鳴。</p>
 <h2 id="月06日水"><a href="#06">07月06日(水)</a> <a id="06"></a></h2>
 <p>printfに4285個アスタリスクをつけたらclangが死ぬ奴、今試したら3460個になってる上に、ギリギリで試すと</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode txt"><code class="sourceCode default"><a class="sourceLine" id="cb2-1" title="1">test.cpp:3:3461: warning: stack nearly exhausted; compilation time may suffer, and crashes due to stack overflow are likely [-Wstack-exhausted]</a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode txt"><code class="sourceCode default"><a class="sourceLine" id="cb4-1" title="1">test.cpp:3:3461: warning: stack nearly exhausted; compilation time may suffer, and crashes due to stack overflow are likely [-Wstack-exhausted]</a></code></pre></div>
 <p>という警告が出るな。これ、以前からあったっぽい。前回はApple LLVM version 10.0.1 (clang-1001.0.46.4)だったが、10.0.0のRelease noteにある。</p>
 <p>ちなみに　<code>(((printf("Hello World\n"))))</code>みたいなことをすると、<code>clang::Parser::ParseParenExpression</code>というところでスタックを使い切って死ぬらしい。ふむ。</p>
 <p>GCCは10000はいけたが、さすがに100000で死んだ。50000も死んだ。ohtakaでは34086が限界ですね。ローカルのiMacだと、g++-11で55179が限界。</p>
