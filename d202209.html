@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="style.css" type="text/css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- link rel="stylesheet" href="github-markdown.css" type="text/css" / -->
+        <script src="/usr/share/javascript/mathjax/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
           </head>
 
   <body>
@@ -26,6 +27,10 @@
 <p><a href="https://zenn.dev/saka1/articles/0498f7c8dbdba8">巨大テキストファイルをsortコマンドでソートしてみる</a></p>
 <p>面白かった。いろいろ頑張るより、既存のツール使っちゃった方が早い、というのはありがちな結論。また、<code>GNU sort</code>が、情報が全てメモリに乗らないファイルをソートできるとか、並列ソートに対応しているとか知らなかった。すごいな。</p>
 <p>査読レポートの返事用に簡単な確認コードを書いたが厳密解と一致しない。コーディング力が落ちている。やばい。</p>
+<p>家に返ってから実装。っていうか三目並べの有効な全状態探索コード。落ち着いて書いたらちゃんと書けた。三目並べは全部で<span class="math inline">\(3**9 = 19683\)</span>通りあるが、そのうち有効な状態は5478通りだけで、勝負のつき方は対称性を考慮しないと全部で255168通り、ということを確認したかっただけ。</p>
+<p>どうでも良いが、Pythonで書いて遅かったのでC++で書き直したのだが、Pythonは<code>a==b==c</code>みたいな比較ができるのに対して、C++は<code>a==b==c</code>が<code>(a==b)==c</code>と解釈されてしまうため、例えば<code>2==1==0</code>が真、<code>0==0==0</code>が偽と判定されてしまう。しばらくこのバグに気づかなかった。</p>
+<p>でもまぁ、とにかく組めてよかった。</p>
+<p>なんだか最近、コードを書く目的が「何か面白いことをしたい」という前向きの気持ちというよりは、「俺はまだやれる。プログラムが書ける」という確認の意味合いが強くなってきている気がして悲しい。こんな小さいコードではなく、ごついコードが書きたい。</p>
 <h2 id="月01日木"><a href="#01">09月01日(木)</a> <a id="01"></a></h2>
 <p>もう9月ってマジか。</p>
 <p>研究室ミーティング。輪講。</p>
