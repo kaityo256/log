@@ -23,15 +23,30 @@
     <article class="markdown-body">
                         <h1 id="ログ">ログ</h1>
 <p><a href="index.html">ログ一覧</a></p>
+<h2 id="月07日水"><a href="#07">09月07日(水)</a> <a id="07"></a></h2>
+<p>Adobe Acrobat Readerが開くのと同時に、Adobeのログイン画面が出る時があって鬱陶しい。設定での消し方がよくわからん。</p>
+<p>あるオープンアクセスジャーナルから、初めて査読依頼が届いた。そのジャーナル、名前だけ知っていたが、別の分野の雑誌だと思っていたので気に留めていなかった。しかし、自分の専門に近い論文が届いたのと、Editorがまともそう(Google Scholar調べ)だったので、査読を引き受けることに。</p>
+<p>オープンアクセスジャーナルって、どうなんだろうね・・・</p>
+<p>昔、<a href="https://note.com/kaityo256/n/n5c8134553ec5">明らかにハゲタカだったジャーナルの査読を引き受けた</a>ことがあったが、今回は「査読期間がまとも(短すぎない)」「Editorがまとも(明らかに研究者)」ということで大丈夫であろう。</p>
+<p>しかし、ついでにGoogle Scholarで知り合いの研究者の引用数とか調べて、ちょっと自分の論文の引用数の少なさに凹んでしまった。もっとちゃんと論文書かないとな。</p>
 <h2 id="月06日火"><a href="#06">09月06日(火)</a> <a id="06"></a></h2>
 <p>修理に出してたMacBookPro返ってきた。SSDの不具合。ボード一体型なので、ロジックボード全交換。それじゃ再インストールできないのも無理はないし、素人にはどうしようもない。すぐにプロに任せればよかった。</p>
 <p>Subversionのリポジトリの状態をプロンプトに出す奴、これまで<code>LANG=C</code>を指定していたが、日本語(UTF-8)のファイルを管理するようになってバグるのでやめた。また、昔はdepthとしてimmediateを指定していたが、これももう速度が許容範囲になったので、その指定も外した。</p>
 <p>っていうかもうSubversion管理やめるかなぁ。少なくとも予算管理はsvn+xlsxよりGoogle SpreadSheetの方が便利な気がする。ただ、Google Oneの入会必須。Paper PileもGoogle Drive使うから、こちらもGoogle One要求。もう入るのは確定。あとは支払い方法を検討するだけだな。</p>
 <p>学習指導のお仕事。</p>
+<p>dvipdfmxがPDFのバージョンが古いとワーニングを出す。<code>-V</code>でマイナーバージョンを指定。とりあえず<code>-V 7</code>でいいのかな。<code>.latexmkrc</code>はこうなる.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode perl"><code class="sourceCode perl"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">#!/usr/bin/env perl</span></a>
+<a class="sourceLine" id="cb1-2" title="2"></a>
+<a class="sourceLine" id="cb1-3" title="3"><span class="dt">$latex</span> = <span class="kw">&#39;</span><span class="st">platex -synctex=1 %O %S</span><span class="kw">&#39;</span>;</a>
+<a class="sourceLine" id="cb1-4" title="4"><span class="dt">$bibtex</span> = <span class="kw">&#39;</span><span class="st">pbibtex %O %B</span><span class="kw">&#39;</span>;</a>
+<a class="sourceLine" id="cb1-5" title="5"><span class="dt">$makeindex</span> = <span class="kw">&#39;</span><span class="st">memindex %O -o %D %S</span><span class="kw">&#39;</span>;</a>
+<a class="sourceLine" id="cb1-6" title="6"><span class="dt">$pdf_mode</span> = <span class="dv">3</span>;</a>
+<a class="sourceLine" id="cb1-7" title="7"><span class="dt">$dvipdf</span> = <span class="kw">&#39;</span><span class="st">dvipdfmx -V 7 %O -o %D %S</span><span class="kw">&#39;</span>;</a></code></pre></div>
+<p>Macでどうなるか確認しないと。</p>
 <h2 id="月05日月"><a href="#05">09月05日(月)</a> <a id="05"></a></h2>
 <p>cron化しているはずのhwclockが仕事をしていない。確認する。</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1">$ <span class="fu">sudo</span> hwclock -s</a>
-<a class="sourceLine" id="cb1-2" title="2"><span class="ex">hwclock</span>: クロックティックを待つための /dev/rtc0 への select() が時間切れになりました</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1">$ <span class="fu">sudo</span> hwclock -s</a>
+<a class="sourceLine" id="cb2-2" title="2"><span class="ex">hwclock</span>: クロックティックを待つための /dev/rtc0 への select() が時間切れになりました</a></code></pre></div>
 <p>なんだこりゃ？</p>
 <p>学習指導のお仕事。いかん、また後手に回っている。たまに引継ぎ資料を読み返さないとダメだ。</p>
 <p>査読レポート。査読者のコメントをたぶん理解できた。あとは返事するだけ(その時間をいつ作るんだ？)。</p>
