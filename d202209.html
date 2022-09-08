@@ -23,6 +23,21 @@
     <article class="markdown-body">
                         <h1 id="ログ">ログ</h1>
 <p><a href="index.html">ログ一覧</a></p>
+<h2 id="月08日木"><a href="#08">09月08日(木)</a> <a id="08"></a></h2>
+<p>研究室ミーティング。</p>
+<p>4:15分にiMacの修理が終わったというメールを見て生協にかけつけたが、4時で営業終了だった。</p>
+<p>zshのヒストリが壊れた。</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode txt"><code class="sourceCode default"><a class="sourceLine" id="cb1-1" title="1">zsh: corrupt history file /home/username/.zsh_history</a></code></pre></div>
+<p>みたいなことを言われる。原因は<code>.zsh_history</code>におかしな文字列が含まれているため。<code>string</code>コマンドで修理できるらしいが、<code>vim</code>で直接なおした。</p>
+<p>gitもおかしくなってる。</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1">$ <span class="fu">git</span> log</a>
+<a class="sourceLine" id="cb2-2" title="2"><span class="ex">error</span>: object file .git/objects/55/72ef2d220b5f3a2142c7c09e057c2e95b69873 is empty</a>
+<a class="sourceLine" id="cb2-3" title="3"><span class="ex">error</span>: object file .git/objects/55/72ef2d220b5f3a2142c7c09e057c2e95b69873 is empty</a>
+<a class="sourceLine" id="cb2-4" title="4"><span class="ex">fatal</span>: loose object 5572ef2d220b5f3a2142c7c09e057c2e95b69873 (stored in .git/objects/55/72ef2d220b5f3a2142c7c09e057c2e95b69873) <span class="ex">is</span> corrupt</a>
+<a class="sourceLine" id="cb2-5" title="5"><span class="ex">error</span>: object file .git/objects/55/72ef2d220b5f3a2142c7c09e057c2e95b69873 is empty</a>
+<a class="sourceLine" id="cb2-6" title="6"><span class="ex">error</span>: object file .git/objects/55/72ef2d220b5f3a2142c7c09e057c2e95b69873 is empty</a>
+<a class="sourceLine" id="cb2-7" title="7"><span class="ex">fatal</span>: loose object 5572ef2d220b5f3a2142c7c09e057c2e95b69873 (stored in .git/objects/55/72ef2d220b5f3a2142c7c09e057c2e95b69873) <span class="ex">is</span> corrupt</a></code></pre></div>
+<p>どうもコミット時にファイルが壊れたっぽい。<code>.zsh_history</code>といい<code>git</code>といい、なんかファイルがおかしい。ハードディスクが不調なのか？怖すぎる。</p>
 <h2 id="月07日水"><a href="#07">09月07日(水)</a> <a id="07"></a></h2>
 <p>Adobe Acrobat Readerが開くのと同時に、Adobeのログイン画面が出る時があって鬱陶しい。設定での消し方がよくわからん。</p>
 <p>あるオープンアクセスジャーナルから、初めて査読依頼が届いた。そのジャーナル、名前だけ知っていたが、別の分野の雑誌だと思っていたので気に留めていなかった。しかし、自分の専門に近い論文が届いたのと、Editorがまともそう(Google Scholar調べ)だったので、査読を引き受けることに。</p>
@@ -37,18 +52,18 @@
 <p>っていうかもうSubversion管理やめるかなぁ。少なくとも予算管理はsvn+xlsxよりGoogle SpreadSheetの方が便利な気がする。ただ、Google Oneの入会必須。Paper PileもGoogle Drive使うから、こちらもGoogle One要求。もう入るのは確定。あとは支払い方法を検討するだけだな。</p>
 <p>学習指導のお仕事。</p>
 <p>dvipdfmxがPDFのバージョンが古いとワーニングを出す。<code>-V</code>でマイナーバージョンを指定。とりあえず<code>-V 7</code>でいいのかな。<code>.latexmkrc</code>はこうなる.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode perl"><code class="sourceCode perl"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">#!/usr/bin/env perl</span></a>
-<a class="sourceLine" id="cb1-2" title="2"></a>
-<a class="sourceLine" id="cb1-3" title="3"><span class="dt">$latex</span> = <span class="kw">&#39;</span><span class="st">platex -synctex=1 %O %S</span><span class="kw">&#39;</span>;</a>
-<a class="sourceLine" id="cb1-4" title="4"><span class="dt">$bibtex</span> = <span class="kw">&#39;</span><span class="st">pbibtex %O %B</span><span class="kw">&#39;</span>;</a>
-<a class="sourceLine" id="cb1-5" title="5"><span class="dt">$makeindex</span> = <span class="kw">&#39;</span><span class="st">memindex %O -o %D %S</span><span class="kw">&#39;</span>;</a>
-<a class="sourceLine" id="cb1-6" title="6"><span class="dt">$pdf_mode</span> = <span class="dv">3</span>;</a>
-<a class="sourceLine" id="cb1-7" title="7"><span class="dt">$dvipdf</span> = <span class="kw">&#39;</span><span class="st">dvipdfmx -V 7 %O -o %D %S</span><span class="kw">&#39;</span>;</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode perl"><code class="sourceCode perl"><a class="sourceLine" id="cb3-1" title="1"><span class="kw">#!/usr/bin/env perl</span></a>
+<a class="sourceLine" id="cb3-2" title="2"></a>
+<a class="sourceLine" id="cb3-3" title="3"><span class="dt">$latex</span> = <span class="kw">&#39;</span><span class="st">platex -synctex=1 %O %S</span><span class="kw">&#39;</span>;</a>
+<a class="sourceLine" id="cb3-4" title="4"><span class="dt">$bibtex</span> = <span class="kw">&#39;</span><span class="st">pbibtex %O %B</span><span class="kw">&#39;</span>;</a>
+<a class="sourceLine" id="cb3-5" title="5"><span class="dt">$makeindex</span> = <span class="kw">&#39;</span><span class="st">memindex %O -o %D %S</span><span class="kw">&#39;</span>;</a>
+<a class="sourceLine" id="cb3-6" title="6"><span class="dt">$pdf_mode</span> = <span class="dv">3</span>;</a>
+<a class="sourceLine" id="cb3-7" title="7"><span class="dt">$dvipdf</span> = <span class="kw">&#39;</span><span class="st">dvipdfmx -V 7 %O -o %D %S</span><span class="kw">&#39;</span>;</a></code></pre></div>
 <p>Macでどうなるか確認しないと。</p>
 <h2 id="月05日月"><a href="#05">09月05日(月)</a> <a id="05"></a></h2>
 <p>cron化しているはずのhwclockが仕事をしていない。確認する。</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1">$ <span class="fu">sudo</span> hwclock -s</a>
-<a class="sourceLine" id="cb2-2" title="2"><span class="ex">hwclock</span>: クロックティックを待つための /dev/rtc0 への select() が時間切れになりました</a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb4-1" title="1">$ <span class="fu">sudo</span> hwclock -s</a>
+<a class="sourceLine" id="cb4-2" title="2"><span class="ex">hwclock</span>: クロックティックを待つための /dev/rtc0 への select() が時間切れになりました</a></code></pre></div>
 <p>なんだこりゃ？</p>
 <p>学習指導のお仕事。いかん、また後手に回っている。たまに引継ぎ資料を読み返さないとダメだ。</p>
 <p>査読レポート。査読者のコメントをたぶん理解できた。あとは返事するだけ(その時間をいつ作るんだ？)。</p>
