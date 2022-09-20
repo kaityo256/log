@@ -23,6 +23,13 @@
     <article class="markdown-body">
                         <h1 id="ログ">ログ</h1>
 <p><a href="index.html">ログ一覧</a></p>
+<h2 id="月20日火"><a href="#20">09月20日(火)</a> <a id="20"></a></h2>
+<p>野村研セミナー。自動微分によるハミルトニアンの設計について。</p>
+<p>RBMの勉強続き。このポストがわかりやすい。</p>
+<ul>
+<li><a href="https://medium.com/datatype/restricted-boltzmann-machine-a-complete-analysis-part-3-contrastive-divergence-algorithm-3d06bbebb10c">https://medium.com/datatype/restricted-boltzmann-machine-a-complete-analysis-part-3-contrastive-divergence-algorithm-3d06bbebb10c</a></li>
+</ul>
+<p>早くサンプルコードを書かないと。</p>
 <h2 id="月19日月"><a href="#19">09月19日(月)</a> <a id="19"></a></h2>
 <p><a href="https://asanobuturi.github.io/document/2022/PC98APCOS/index.html">自作OSで文字列をPC98に表示する</a></p>
 <p>すごい。また高校生が自作OSを作ってる。そして参考文献に川合さんの30日OS自作本。この本、多くの人の人生に影響を与えている。僕もこういう本が書きたい。30日並列MD本とか書きたい。</p>
@@ -37,6 +44,43 @@
 <li><a href="https://github.com/dataplayer12/RBM">上記の講義によるPython実装</a></li>
 </ul></li>
 </ul>
+<p>ようやくKL距離と対数尤度関数が結びついた。忘れない内にまとめておく。</p>
+<p>確率変数<span class="math inline">\(\hat{X}\)</span>を考える。この確率変数はN種類の値をとり得るとする。<span class="math inline">\(\hat{X} = i\)</span>となることを「事象<span class="math inline">\(i\)</span>」と呼ぶ。ある事象<span class="math inline">\(i\)</span>が起きる真の確率を<span class="math inline">\(q_i\)</span>とし、それをモデルで再現したいとする。モデルパラメータが<span class="math inline">\(\theta\)</span>の時に、そのモデルにおいて事象<span class="math inline">\(i\)</span>が起きる確率を<span class="math inline">\(p_i(\theta)\)</span>とする。真の分布とモデルによる分布のKL距離は</p>
+<p><span class="math display">\[
+\begin{aligned}
+KL(\vec{q}|\vec{p}(\theta)) &amp; \equiv \sum_i^N q_i \log \frac{q_i}{p_i} \\
+&amp;= \sum_i^N q_i \log q_i - \sum_i^N q_i \log p_i
+\end{aligned}
+\]</span></p>
+<p>この距離をパラメータ<span class="math inline">\(\theta\)</span>で微分するので、第一項は消え、第二項だけ考えれば良い。</p>
+<p>さて、いま真の分布がわからない代わりに、<span class="math inline">\(T\)</span>回事象を観測し、その<span class="math inline">\(k\)</span>回目の事象が<span class="math inline">\(S_k\)</span>であったとしよう。この時、尤度関数<span class="math inline">\(l(\theta)\)</span>は</p>
+<p><span class="math display">\[
+l(\theta) = \prod_k^T P(\hat{X} = S_t | \theta)
+\]</span></p>
+<p>で表される。ただし<span class="math inline">\(P(\hat{X} = S_t | \theta)\)</span>は、パラメータ<span class="math inline">\(\theta\)</span>のもとで、確率変数が値<span class="math inline">\(S_t\)</span>を取る確率である。後のために対数尤度にしておく。</p>
+<p><span class="math display">\[
+\log l(\theta) = \sum_t^T \log P(\hat{X} = S_t | \theta)
+\]</span></p>
+<p>さて、<span class="math inline">\(T\)</span>回の試行のうち、事象<span class="math inline">\(i\)</span>が起きた回数を<span class="math inline">\(n_i\)</span>とする。すると、先程の尤度関数の和を試行に関する和から、事象の種類に関する和に書き直すことができる。</p>
+<p><span class="math display">\[
+\log l(\theta) = \sum_i^N n_i \log P(\hat{X} = i | \theta)
+\]</span></p>
+<p><span class="math inline">\(P(\hat{X} = i | \theta)\)</span>は、パラメータ<span class="math inline">\(\theta\)</span>において事象<span class="math inline">\(i\)</span>が起きる確率であるから<span class="math inline">\(p_i\)</span>のことである。したがって、</p>
+<p><span class="math display">\[
+\log l(\theta) = \sum_i^N n_i \log p_i
+\]</span></p>
+<p>両辺を試行回数<span class="math inline">\(T\)</span>で割ると、</p>
+<p><span class="math display">\[
+\frac{1}{T}\log l(\theta) = \sum_i^N \frac{n_i}{T} \log p_i
+\]</span></p>
+<p><span class="math inline">\(T\)</span>回の試行のうち、事象<span class="math inline">\(i\)</span>が起きた回数が<span class="math inline">\(n_i\)</span>なので、事象<span class="math inline">\(i\)</span>が起きる確率<span class="math inline">\(q_i\)</span>は<span class="math inline">\(n_i/T\)</span>で近似できる。すると、</p>
+<p><span class="math display">\[
+\begin{aligned}
+\frac{1}{T}\log l(\theta) &amp;= \sum_i^N \frac{n_i}{T} \log p_i\\
+&amp;\sim \sum_i^N q_i \log p_i
+\end{aligned}
+\]</span></p>
+<p>これは、KL距離の第二項にほかならない。</p>
 <h2 id="月17日土"><a href="#17">09月17日(土)</a> <a id="17"></a></h2>
 <p>メモ。「Stable Diffusion」のWebUI+Docker版。</p>
 <p><a href="https://github.com/AbdBarho/stable-diffusion-webui-docker">stable-diffusion-webui-docker</a></p>
