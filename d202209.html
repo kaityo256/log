@@ -23,6 +23,18 @@
     <article class="markdown-body">
                         <h1 id="ログ">ログ</h1>
 <p><a href="index.html">ログ一覧</a></p>
+<h2 id="月28日水"><a href="#28">09月28日(水)</a> <a id="28"></a></h2>
+<p>ずっとRBMの講義ばかりみてたから、YouTubeがRBMの講義をsuggestするようになった。</p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=wfFf5Fj-rzE">Deep Learning Lecture 10.3 - Restricted Boltzmann Machines</a></li>
+</ul>
+<p>これよさそうだな。っていうか、日本語の情報、ほとんどないなぁ。</p>
+<p>物理情報工学ソフトウェア開発演習の準備、たぶん終わった。</p>
+<p>懇親会のお仕事。</p>
+<p>Zoomで学生さんとミーティングしてると、学生さんと自分の顔色の違いが気になる。学生さん、若いもんなぁ・・・</p>
+<p>Windowsのアップデート。WSLも更新したっぽい。PowerShellから</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1"><span class="ex">wsl</span> --update</a></code></pre></div>
+<p>で更新完了。</p>
 <h2 id="月27日火"><a href="#27">09月27日(火)</a> <a id="27"></a></h2>
 <p>今日やるべきことリスト</p>
 <ul>
@@ -30,29 +42,29 @@
 <li>物理情報工学ソフトウェア開発演習講義準備</li>
 </ul>
 <p>プログラミング基礎同演習の課題をPDF化するスクリプトがエラー。</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1">$ <span class="ex">pandoc</span> assignment.md -s -o assignment.pdf --highlight-style tango --latex-engine=lualatex -V documentclass=ltjarticle -V geometry:margin=1in -H ../mytemplate.tex</a>
-<a class="sourceLine" id="cb1-2" title="2"><span class="ex">--latex-engine</span> has been removed.  Use --pdf-engine instead.</a>
-<a class="sourceLine" id="cb1-3" title="3"><span class="ex">Try</span> pandoc --help for more information.</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1">$ <span class="ex">pandoc</span> assignment.md -s -o assignment.pdf --highlight-style tango --latex-engine=lualatex -V documentclass=ltjarticle -V geometry:margin=1in -H ../mytemplate.tex</a>
+<a class="sourceLine" id="cb2-2" title="2"><span class="ex">--latex-engine</span> has been removed.  Use --pdf-engine instead.</a>
+<a class="sourceLine" id="cb2-3" title="3"><span class="ex">Try</span> pandoc --help for more information.</a></code></pre></div>
 <p><code>--latex-engine</code>が消えている。<code>--pdf-engine</code>を使えとのことなので、Makefileを修正。そこだけ修正してなんとかなった。GitHubリポジトリのスライドが古かったので講義で使っているスライドに修正。</p>
 <p>pptxからpdfにするのが鬱陶しかったので、スクリプトから変換できないか確認。</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1"><span class="ex">python3</span> -m venv myenv</a>
-<a class="sourceLine" id="cb2-2" title="2"><span class="ex">python3</span> -m pip install --upgrade pip</a>
-<a class="sourceLine" id="cb2-3" title="3"><span class="ex">python3</span> -m pip install aspose.slides</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" title="1"><span class="ex">python3</span> -m venv myenv</a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="ex">python3</span> -m pip install --upgrade pip</a>
+<a class="sourceLine" id="cb3-3" title="3"><span class="ex">python3</span> -m pip install aspose.slides</a></code></pre></div>
 <p>あー、今気づいたけど、仮想環境作ってるのにactivate忘れてる。そして、pipのアップグレード中に手作業でpptxからpdfへの変換作業が終わっている(ありがち)。</p>
 <p>一応試してみる。</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode py"><code class="sourceCode python"><a class="sourceLine" id="cb3-1" title="1"><span class="im">import</span> aspose.slides <span class="im">as</span> slides</a>
-<a class="sourceLine" id="cb3-2" title="2"></a>
-<a class="sourceLine" id="cb3-3" title="3">pptx <span class="op">=</span> slides.Presentation(<span class="st">&quot;slide.pptx&quot;</span>)</a>
-<a class="sourceLine" id="cb3-4" title="4">pptx.save(<span class="st">&quot;slide.pdf&quot;</span>, slides.export.SaveFormat.PDF)</a></code></pre></div>
-<div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb4-1" title="1">$ <span class="ex">python3</span> conv.py</a>
-<a class="sourceLine" id="cb4-2" title="2"><span class="ex">Traceback</span> (most recent call last)<span class="bu">:</span></a>
-<a class="sourceLine" id="cb4-3" title="3">  <span class="ex">File</span> <span class="st">&quot;conv.py&quot;</span>, line 3, in <span class="op">&lt;</span>module<span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb4-4" title="4">    <span class="ex">pptx</span> = slides.Presentation(<span class="st">&quot;slide.pptx&quot;</span>)</a>
-<a class="sourceLine" id="cb4-5" title="5"><span class="ex">RuntimeError</span>: Proxy error(PptxReadException)<span class="bu">:</span> The type initializer for <span class="st">&#39;Gdip&#39;</span> threw an exception. ---<span class="op">&gt;</span> TypeInitializationException: The type initializer for <span class="st">&#39;Gdip&#39;</span> threw an exception. ---<span class="op">&gt;</span> DllNotFoundException: Unable to load shared library <span class="st">&#39;libgdiplus&#39;</span> or one of its dependencies. In order to help diagnose loading problems, consider setting the LD_DEBUG environment variable: liblibgdiplus: cannot open shared object file: No such file or directory</a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode py"><code class="sourceCode python"><a class="sourceLine" id="cb4-1" title="1"><span class="im">import</span> aspose.slides <span class="im">as</span> slides</a>
+<a class="sourceLine" id="cb4-2" title="2"></a>
+<a class="sourceLine" id="cb4-3" title="3">pptx <span class="op">=</span> slides.Presentation(<span class="st">&quot;slide.pptx&quot;</span>)</a>
+<a class="sourceLine" id="cb4-4" title="4">pptx.save(<span class="st">&quot;slide.pdf&quot;</span>, slides.export.SaveFormat.PDF)</a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb5-1" title="1">$ <span class="ex">python3</span> conv.py</a>
+<a class="sourceLine" id="cb5-2" title="2"><span class="ex">Traceback</span> (most recent call last)<span class="bu">:</span></a>
+<a class="sourceLine" id="cb5-3" title="3">  <span class="ex">File</span> <span class="st">&quot;conv.py&quot;</span>, line 3, in <span class="op">&lt;</span>module<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb5-4" title="4">    <span class="ex">pptx</span> = slides.Presentation(<span class="st">&quot;slide.pptx&quot;</span>)</a>
+<a class="sourceLine" id="cb5-5" title="5"><span class="ex">RuntimeError</span>: Proxy error(PptxReadException)<span class="bu">:</span> The type initializer for <span class="st">&#39;Gdip&#39;</span> threw an exception. ---<span class="op">&gt;</span> TypeInitializationException: The type initializer for <span class="st">&#39;Gdip&#39;</span> threw an exception. ---<span class="op">&gt;</span> DllNotFoundException: Unable to load shared library <span class="st">&#39;libgdiplus&#39;</span> or one of its dependencies. In order to help diagnose loading problems, consider setting the LD_DEBUG environment variable: liblibgdiplus: cannot open shared object file: No such file or directory</a></code></pre></div>
 <p><code>libgdiplus</code>ってのが必要っぽい。入れてみる。</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb5-1" title="1"><span class="fu">sudo</span> apt-get update -y</a>
-<a class="sourceLine" id="cb5-2" title="2"><span class="fu">sudo</span> apt-get install -y libgdiplus</a></code></pre></div>
-<div class="sourceCode" id="cb6"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb6-1" title="1"><span class="ex">python3</span> conv.py</a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb6-1" title="1"><span class="fu">sudo</span> apt-get update -y</a>
+<a class="sourceLine" id="cb6-2" title="2"><span class="fu">sudo</span> apt-get install -y libgdiplus</a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb7-1" title="1"><span class="ex">python3</span> conv.py</a></code></pre></div>
 <p>できた。・・・が「Evaluation only. Created with Aspose.Slides for .NETうんちゃら」という文章が追加される。なんやねん。あと、フォントがおかしくてダメ。おとなしくWindows側でRubyでwin32oleとか使った方がよさそう。</p>
 <p>モジュールを全14回分作成。講義スライドを全てPDF化してアップロード。レポート課題をアップロード。レポートの締め切りを確認してレポートの提出先作成。出席確認クイズを作成。オンデマンド講義動画を確認して共有URLを作って貼り付け。TAの追加。ここまでやってから「公開」して、アナウンス。</p>
 <p>なんというか、昔に比べて講義準備が大変になってない？講義ノートとスライドだけ教室に持っていけば良かったのが、今はめちゃくちゃやることがある気がする。</p>
@@ -203,16 +215,16 @@ l(\theta) = \prod_k^T P(\hat{X} = S_t | \theta)
 <p>研究室ミーティング。</p>
 <p>4:15分にiMacの修理が終わったというメールを見て生協にかけつけたが、4時で営業終了だった。</p>
 <p>zshのヒストリが壊れた。</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode txt"><code class="sourceCode default"><a class="sourceLine" id="cb7-1" title="1">zsh: corrupt history file /home/username/.zsh_history</a></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode txt"><code class="sourceCode default"><a class="sourceLine" id="cb8-1" title="1">zsh: corrupt history file /home/username/.zsh_history</a></code></pre></div>
 <p>みたいなことを言われる。原因は<code>.zsh_history</code>におかしな文字列が含まれているため。<code>string</code>コマンドで修理できるらしいが、<code>vim</code>で直接なおした。</p>
 <p>gitもおかしくなってる。</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb8-1" title="1">$ <span class="fu">git</span> log</a>
-<a class="sourceLine" id="cb8-2" title="2"><span class="ex">error</span>: object file .git/objects/55/72ef2d220b5f3a2142c7c09e057c2e95b69873 is empty</a>
-<a class="sourceLine" id="cb8-3" title="3"><span class="ex">error</span>: object file .git/objects/55/72ef2d220b5f3a2142c7c09e057c2e95b69873 is empty</a>
-<a class="sourceLine" id="cb8-4" title="4"><span class="ex">fatal</span>: loose object 5572ef2d220b5f3a2142c7c09e057c2e95b69873 (stored in .git/objects/55/72ef2d220b5f3a2142c7c09e057c2e95b69873) <span class="ex">is</span> corrupt</a>
-<a class="sourceLine" id="cb8-5" title="5"><span class="ex">error</span>: object file .git/objects/55/72ef2d220b5f3a2142c7c09e057c2e95b69873 is empty</a>
-<a class="sourceLine" id="cb8-6" title="6"><span class="ex">error</span>: object file .git/objects/55/72ef2d220b5f3a2142c7c09e057c2e95b69873 is empty</a>
-<a class="sourceLine" id="cb8-7" title="7"><span class="ex">fatal</span>: loose object 5572ef2d220b5f3a2142c7c09e057c2e95b69873 (stored in .git/objects/55/72ef2d220b5f3a2142c7c09e057c2e95b69873) <span class="ex">is</span> corrupt</a></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb9-1" title="1">$ <span class="fu">git</span> log</a>
+<a class="sourceLine" id="cb9-2" title="2"><span class="ex">error</span>: object file .git/objects/55/72ef2d220b5f3a2142c7c09e057c2e95b69873 is empty</a>
+<a class="sourceLine" id="cb9-3" title="3"><span class="ex">error</span>: object file .git/objects/55/72ef2d220b5f3a2142c7c09e057c2e95b69873 is empty</a>
+<a class="sourceLine" id="cb9-4" title="4"><span class="ex">fatal</span>: loose object 5572ef2d220b5f3a2142c7c09e057c2e95b69873 (stored in .git/objects/55/72ef2d220b5f3a2142c7c09e057c2e95b69873) <span class="ex">is</span> corrupt</a>
+<a class="sourceLine" id="cb9-5" title="5"><span class="ex">error</span>: object file .git/objects/55/72ef2d220b5f3a2142c7c09e057c2e95b69873 is empty</a>
+<a class="sourceLine" id="cb9-6" title="6"><span class="ex">error</span>: object file .git/objects/55/72ef2d220b5f3a2142c7c09e057c2e95b69873 is empty</a>
+<a class="sourceLine" id="cb9-7" title="7"><span class="ex">fatal</span>: loose object 5572ef2d220b5f3a2142c7c09e057c2e95b69873 (stored in .git/objects/55/72ef2d220b5f3a2142c7c09e057c2e95b69873) <span class="ex">is</span> corrupt</a></code></pre></div>
 <p>どうもコミット時にファイルが壊れたっぽい。<code>.zsh_history</code>といい<code>git</code>といい、なんかファイルがおかしい。ハードディスクが不調なのか？怖すぎる。</p>
 <h2 id="月07日水"><a href="#07">09月07日(水)</a> <a id="07"></a></h2>
 <p>Adobe Acrobat Readerが開くのと同時に、Adobeのログイン画面が出る時があって鬱陶しい。設定での消し方がよくわからん。</p>
@@ -228,18 +240,18 @@ l(\theta) = \prod_k^T P(\hat{X} = S_t | \theta)
 <p>っていうかもうSubversion管理やめるかなぁ。少なくとも予算管理はsvn+xlsxよりGoogle SpreadSheetの方が便利な気がする。ただ、Google Oneの入会必須。Paper PileもGoogle Drive使うから、こちらもGoogle One要求。もう入るのは確定。あとは支払い方法を検討するだけだな。</p>
 <p>学習指導のお仕事。</p>
 <p>dvipdfmxがPDFのバージョンが古いとワーニングを出す。<code>-V</code>でマイナーバージョンを指定。とりあえず<code>-V 7</code>でいいのかな。<code>.latexmkrc</code>はこうなる.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode perl"><code class="sourceCode perl"><a class="sourceLine" id="cb9-1" title="1"><span class="kw">#!/usr/bin/env perl</span></a>
-<a class="sourceLine" id="cb9-2" title="2"></a>
-<a class="sourceLine" id="cb9-3" title="3"><span class="dt">$latex</span> = <span class="kw">&#39;</span><span class="st">platex -synctex=1 %O %S</span><span class="kw">&#39;</span>;</a>
-<a class="sourceLine" id="cb9-4" title="4"><span class="dt">$bibtex</span> = <span class="kw">&#39;</span><span class="st">pbibtex %O %B</span><span class="kw">&#39;</span>;</a>
-<a class="sourceLine" id="cb9-5" title="5"><span class="dt">$makeindex</span> = <span class="kw">&#39;</span><span class="st">memindex %O -o %D %S</span><span class="kw">&#39;</span>;</a>
-<a class="sourceLine" id="cb9-6" title="6"><span class="dt">$pdf_mode</span> = <span class="dv">3</span>;</a>
-<a class="sourceLine" id="cb9-7" title="7"><span class="dt">$dvipdf</span> = <span class="kw">&#39;</span><span class="st">dvipdfmx -V 7 %O -o %D %S</span><span class="kw">&#39;</span>;</a></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode perl"><code class="sourceCode perl"><a class="sourceLine" id="cb10-1" title="1"><span class="kw">#!/usr/bin/env perl</span></a>
+<a class="sourceLine" id="cb10-2" title="2"></a>
+<a class="sourceLine" id="cb10-3" title="3"><span class="dt">$latex</span> = <span class="kw">&#39;</span><span class="st">platex -synctex=1 %O %S</span><span class="kw">&#39;</span>;</a>
+<a class="sourceLine" id="cb10-4" title="4"><span class="dt">$bibtex</span> = <span class="kw">&#39;</span><span class="st">pbibtex %O %B</span><span class="kw">&#39;</span>;</a>
+<a class="sourceLine" id="cb10-5" title="5"><span class="dt">$makeindex</span> = <span class="kw">&#39;</span><span class="st">memindex %O -o %D %S</span><span class="kw">&#39;</span>;</a>
+<a class="sourceLine" id="cb10-6" title="6"><span class="dt">$pdf_mode</span> = <span class="dv">3</span>;</a>
+<a class="sourceLine" id="cb10-7" title="7"><span class="dt">$dvipdf</span> = <span class="kw">&#39;</span><span class="st">dvipdfmx -V 7 %O -o %D %S</span><span class="kw">&#39;</span>;</a></code></pre></div>
 <p>Macでどうなるか確認しないと。</p>
 <h2 id="月05日月"><a href="#05">09月05日(月)</a> <a id="05"></a></h2>
 <p>cron化しているはずのhwclockが仕事をしていない。確認する。</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb10-1" title="1">$ <span class="fu">sudo</span> hwclock -s</a>
-<a class="sourceLine" id="cb10-2" title="2"><span class="ex">hwclock</span>: クロックティックを待つための /dev/rtc0 への select() が時間切れになりました</a></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb11-1" title="1">$ <span class="fu">sudo</span> hwclock -s</a>
+<a class="sourceLine" id="cb11-2" title="2"><span class="ex">hwclock</span>: クロックティックを待つための /dev/rtc0 への select() が時間切れになりました</a></code></pre></div>
 <p>なんだこりゃ？</p>
 <p>学習指導のお仕事。いかん、また後手に回っている。たまに引継ぎ資料を読み返さないとダメだ。</p>
 <p>査読レポート。査読者のコメントをたぶん理解できた。あとは返事するだけ(その時間をいつ作るんだ？)。</p>
