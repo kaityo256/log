@@ -22,14 +22,42 @@
     <article class="markdown-body">
                         <h1 id="ログ">ログ</h1>
 <p><a href="index.html">ログ一覧</a></p>
+<h2 id="月03日月"><a href="#03">10月03日(月)</a> <a id="03"></a></h2>
+<p>PandocのMathJaxが働かない。テンプレートの</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode txt"><code class="sourceCode default"><a class="sourceLine" id="cb1-1" title="1">$if(math)$</a>
+<a class="sourceLine" id="cb1-2" title="2">  $math$</a>
+<a class="sourceLine" id="cb1-3" title="3">$endif$</a></code></pre></div>
+<p>が正しくないっぽい。手動でMathJax指定したら動いたが、Pandocのバージョン上げるのが正しいよな。</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode txt"><code class="sourceCode default"><a class="sourceLine" id="cb2-1" title="1">pandoc 2.5</a>
+<a class="sourceLine" id="cb2-2" title="2">Compiled with pandoc-types 1.17.5.4, texmath 0.11.2.2, skylighting 0.7.7</a>
+<a class="sourceLine" id="cb2-3" title="3">Default user data directory: /home/watanabe/.pandoc</a>
+<a class="sourceLine" id="cb2-4" title="4">Copyright (C) 2006-2018 John MacFarlane</a>
+<a class="sourceLine" id="cb2-5" title="5">Web:  http://pandoc.org</a>
+<a class="sourceLine" id="cb2-6" title="6">This is free software; see the source for copying conditions.</a>
+<a class="sourceLine" id="cb2-7" title="7">There is no warranty, not even for merchantability or fitness</a>
+<a class="sourceLine" id="cb2-8" title="8">for a particular purpose.</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode txt"><code class="sourceCode default"><a class="sourceLine" id="cb3-1" title="1">pandoc 2.5</a>
+<a class="sourceLine" id="cb3-2" title="2">Compiled with pandoc-types 1.17.5.4, texmath 0.11.2.2, skylighting 0.7.7</a>
+<a class="sourceLine" id="cb3-3" title="3">Default user data directory: /home/watanabe/.pandoc</a>
+<a class="sourceLine" id="cb3-4" title="4">Copyright (C) 2006-2018 John MacFarlane</a>
+<a class="sourceLine" id="cb3-5" title="5">Web:  http://pandoc.org</a>
+<a class="sourceLine" id="cb3-6" title="6">This is free software; see the source for copying conditions.</a>
+<a class="sourceLine" id="cb3-7" title="7">There is no warranty, not even for merchantability or fitness</a>
+<a class="sourceLine" id="cb3-8" title="8">for a particular purpose.</a></code></pre></div>
+<p>apt upgradeしても変わらんな。結局直接</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode html"><code class="sourceCode html"><a class="sourceLine" id="cb4-1" title="1"><span class="kw">&lt;script</span><span class="ot"> type=</span><span class="st">&quot;text/javascript&quot;</span><span class="ot"> id=</span><span class="st">&quot;MathJax-script&quot;</span><span class="ot"> async</span></a>
+<a class="sourceLine" id="cb4-2" title="2"><span class="ot">            src=</span><span class="st">&quot;https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span></a></code></pre></div>
+<p>と書いた。</p>
+<h2 id="月02日日"><a href="#02">10月02日(日)</a> <a id="02"></a></h2>
+<p>疲れた。土日に毎週なんらかのイベントが入るので、疲れが取れないまま平日に突入する。平日より土日の方が疲れる。</p>
 <h2 id="月01日土"><a href="#01">10月01日(土)</a> <a id="01"></a></h2>
 <p>学生さんの修論のコミットメッセージで「Semantic Commit Messages」というのを知った。</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode txt"><code class="sourceCode default"><a class="sourceLine" id="cb1-1" title="1">feat: add hat wobble</a>
-<a class="sourceLine" id="cb1-2" title="2">^--^  ^------------^</a>
-<a class="sourceLine" id="cb1-3" title="3">|     |</a>
-<a class="sourceLine" id="cb1-4" title="4">|     +-&gt; Summary in present tense.</a>
-<a class="sourceLine" id="cb1-5" title="5">|</a>
-<a class="sourceLine" id="cb1-6" title="6">+-------&gt; Type: chore, docs, feat, fix, refactor, style, or test.</a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode txt"><code class="sourceCode default"><a class="sourceLine" id="cb5-1" title="1">feat: add hat wobble</a>
+<a class="sourceLine" id="cb5-2" title="2">^--^  ^------------^</a>
+<a class="sourceLine" id="cb5-3" title="3">|     |</a>
+<a class="sourceLine" id="cb5-4" title="4">|     +-&gt; Summary in present tense.</a>
+<a class="sourceLine" id="cb5-5" title="5">|</a>
+<a class="sourceLine" id="cb5-6" title="6">+-------&gt; Type: chore, docs, feat, fix, refactor, style, or test.</a></code></pre></div>
 <p>GitHubにコミットすると、絵文字が出る？</p>
 <p>あ、なるほど「:tada: initial commit」のように、絵文字を指定しているのか。</p>
 <p>論文を一つコメントを入れて返した。コミットログに絵文字をつけるの、ちょっと楽しいな。</p>
