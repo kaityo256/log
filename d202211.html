@@ -24,7 +24,15 @@
 <p><a href="index.html">ログ一覧</a></p>
 <h2 id="月11日金"><a href="#11">11月11日(金)</a> <a id="11"></a></h2>
 <p>なんか疲れた。忙しかったし、一週間日記を書く余裕もなかった。金曜日に一週間分振り返って書いている。</p>
+<p>学生さんの論文チェック。これで投稿できるかな。その前に英文校閲出す。</p>
 <p>しまった、会議の時間が変わってて、別のミーティングとぶつかってしまった。</p>
+<p>GitHub演習、無事に終わった。全員BANされてなかった。GitHubから「直しておく」という連絡が来ていたが、ちゃんとやっておいてくれたらしい。良かった。GitHub Supportのチケットを閉じておく。</p>
+<p>Macをupdateしたらmakeが使えなくなった。</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1">$ <span class="fu">make</span></a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="ex">xcrun</span>: error: invalid active developer path (/Library/Developer/CommandLineTools), <span class="ex">missing</span> xcrun at: /Library/Developer/CommandLineTools/usr/bin/xcrun</a></code></pre></div>
+<p>例によってXcodeがらみらしい。</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1"><span class="ex">xcode-select</span> --install</a></code></pre></div>
+<p>でインストール。なんか残り30分とか出るんだけど・・・</p>
 <h2 id="月10日木"><a href="#10">11月10日(木)</a> <a id="10"></a></h2>
 <p>研究室ミーティング。僕の発表は<a href="https://speakerdeck.com/kaityo256/kl-divergence">Kullback-Leibler 距離のあれこれ</a>。</p>
 <p>しかし、発表資料をアップロードすると、必ず上から目線でコメントしてくる人がいるんだけど、なぜそんなに自信があるんだろう？</p>
@@ -60,7 +68,7 @@
 <p>久しぶりに生協食堂で食べた。コロナになってからずっとコンビニ弁当だったのだが、どうもそれが体調が悪い原因な気がしてきたので。</p>
 <p>柔道部のお仕事その2。体育館利用申請。早く申請なしで活動できるようになると良いですね。</p>
 <p><code>ps</code>のオプションがよくわからなかったので調べた。以下はユーザごとに使ってるプロセス数を表示するスクリプト。</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1"><span class="fu">ps</span> h -Led -o user <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">uniq</span> -c <span class="kw">|</span> <span class="fu">sort</span> -n</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" title="1"><span class="fu">ps</span> h -Led -o user <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">uniq</span> -c <span class="kw">|</span> <span class="fu">sort</span> -n</a></code></pre></div>
 <ul>
 <li>h No header</li>
 <li>L Show threads, possibly with LWP and NLWP columns.</li>
