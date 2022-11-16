@@ -25,6 +25,25 @@
 <h2 id="月16日水"><a href="#16">11月16日(水)</a> <a id="16"></a></h2>
 <p>会議その1。</p>
 <p>TODOをばしばし潰していった。懇親会の確認とかコースディスクリプションとか。</p>
+<p>なんか「ゼロから学ぶPython」のmakeが走らないなぁ、と思って、もう一度エラーをよく見てみた。</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1">$ <span class="fu">make</span></a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="fu">sed</span> <span class="st">&#39;2a [[Up]](../index.html)&#39;</span> about/README.md <span class="op">&gt;</span> about/index.md</a>
+<a class="sourceLine" id="cb1-3" title="3"><span class="ex">sed</span>: 1: <span class="st">&quot;2a [[Up]](../index.html)&quot;</span>: command a expects <span class="dt">\ </span>followed by text</a>
+<a class="sourceLine" id="cb1-4" title="4"><span class="ex">make</span>: *** [about/index.md] Error 1</a>
+<a class="sourceLine" id="cb1-5" title="5"><span class="fu">rm</span> about/index.md</a></code></pre></div>
+<p>あー、これはMacのsedがBSD系でgsedじゃないからだわ。</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1">$ <span class="ex">brew</span> install gnu-sed</a></code></pre></div>
+<p>さて、makeが参照するsedをgsedにしたい。まともにやるなら、make内で判定するようにするのが妥当。しかし、そんなことで変な判定いれたくないし、そもそもMacでBSDのsedは使わない。</p>
+<p>sedが<code>/usr/bin/</code>に、gsedが<code>/usr/local/bin/</code>に入っている。パスは<code>/usr/local/bin</code>を先に見るので、<code>/usr/local/bin/sed</code>として<code>gsed</code>にシンボリックリンクをはってしまえば良い。</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" title="1">$ <span class="bu">cd</span> /usr/local/bin/</a>
+<a class="sourceLine" id="cb3-2" title="2">$ <span class="fu">sudo</span> ln -s gsed sed</a>
+<a class="sourceLine" id="cb3-3" title="3">$ <span class="fu">which</span> sed</a>
+<a class="sourceLine" id="cb3-4" title="4"><span class="ex">/usr/local/bin/sed</span></a>
+<a class="sourceLine" id="cb3-5" title="5">$ <span class="fu">sed</span> --version</a>
+<a class="sourceLine" id="cb3-6" title="6"><span class="fu">sed</span> (GNU sed) <span class="ex">4.9</span></a>
+<a class="sourceLine" id="cb3-7" title="7"><span class="ex">Copyright</span> (C) <span class="ex">2022</span> Free Software Foundation, Inc.</a>
+<a class="sourceLine" id="cb3-8" title="8"><span class="kw">(</span><span class="ex">snip</span><span class="kw">)</span></a></code></pre></div>
+<p>pandocでmarkdownからHTMLにするときに「タイトルがないよ」という警告が出るやつ、これまでは<code>--metadata pagetitle=</code>で直接指定していたが、<code>--shift-heading-level-by=-1</code>を使うことでMarkdownのトップレベルのタイトル<code># title</code>を自動取得してくれるらしい。便利。さっそく<a href="https://kaityo256.github.io/python_zero">ゼロから学ぶPython</a>と<a href="https://kaityo256.github.io/github/">GitHub演習</a>のHTMLを修正した。ちゃんとタイトルが反映されている。素晴らしい。</p>
 <h2 id="月15日火"><a href="#15">11月15日(火)</a> <a id="15"></a></h2>
 <p>朝、ひどいめまいがした。先週後半は体調が良かったのに、また微妙な感じに。うーむ。</p>
 <p>プログラミング基礎同演習。</p>
@@ -53,10 +72,10 @@
 <p>GitHub演習、無事に終わった。全員BANされてなかった。GitHubから「直しておく」という連絡が来ていたが、ちゃんとやっておいてくれたらしい。良かった。GitHub Supportのチケットを閉じておく。</p>
 <p>とにかく今年もGitHub演習が終わった。二回やってみて、学生が詰まるところがわかってきた気がするので、忘れないうちに修正してしまおう。来年あたりはかなりスムーズに行くはず？</p>
 <p>Macをupdateしたらmakeが使えなくなった。</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1">$ <span class="fu">make</span></a>
-<a class="sourceLine" id="cb1-2" title="2"><span class="ex">xcrun</span>: error: invalid active developer path (/Library/Developer/CommandLineTools), <span class="ex">missing</span> xcrun at: /Library/Developer/CommandLineTools/usr/bin/xcrun</a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb4-1" title="1">$ <span class="fu">make</span></a>
+<a class="sourceLine" id="cb4-2" title="2"><span class="ex">xcrun</span>: error: invalid active developer path (/Library/Developer/CommandLineTools), <span class="ex">missing</span> xcrun at: /Library/Developer/CommandLineTools/usr/bin/xcrun</a></code></pre></div>
 <p>例によってXcodeがらみらしい。</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1"><span class="ex">xcode-select</span> --install</a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb5-1" title="1"><span class="ex">xcode-select</span> --install</a></code></pre></div>
 <p>でインストール。なんか残り30分とか出るんだけど・・・</p>
 <p>なんか5分で終わった。make使えるようになった。</p>
 <h2 id="月10日木"><a href="#10">11月10日(木)</a> <a id="10"></a></h2>
@@ -94,7 +113,7 @@
 <p>久しぶりに生協食堂で食べた。コロナになってからずっとコンビニ弁当だったのだが、どうもそれが体調が悪い原因な気がしてきたので。</p>
 <p>柔道部のお仕事その2。体育館利用申請。早く申請なしで活動できるようになると良いですね。</p>
 <p><code>ps</code>のオプションがよくわからなかったので調べた。以下はユーザごとに使ってるプロセス数を表示するスクリプト。</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" title="1"><span class="fu">ps</span> h -Led -o user <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">uniq</span> -c <span class="kw">|</span> <span class="fu">sort</span> -n</a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb6-1" title="1"><span class="fu">ps</span> h -Led -o user <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">uniq</span> -c <span class="kw">|</span> <span class="fu">sort</span> -n</a></code></pre></div>
 <ul>
 <li>h No header</li>
 <li>L Show threads, possibly with LWP and NLWP columns.</li>
