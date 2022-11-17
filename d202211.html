@@ -29,6 +29,8 @@
 <pre class="make"><code>docs/%.html: log/%.md
     TITLE=$(shell head -1 $&lt; | sed -e &#39;1 s/^# \(.*\)$$/\1/g&#39;); pandoc -s $&lt; -o $@ $(PANDOC_HTMLOPT) --metadata pagetitle=$$TITLE</code></pre>
 <p>もうちょっとスマートな方法がある気がするが・・・</p>
+<p>というわけで、HTMLのタイトルがちゃんと「2022年11月」とかになるようにした。</p>
+<p>しかし、pushするたびに、いちいちPandocをインストールしてmakeが走るんだよなぁ。GitHub Actionsの練習としてやってみたんだけど、なんか若干もったいない気もする。まぁ、ビルド一回あたり1分かかってないから良しとするか・・・</p>
 <h2 id="月16日水"><a href="#16">11月16日(水)</a> <a id="16"></a></h2>
 <p>会議その1。</p>
 <p>TODOをばしばし潰していった。懇親会の確認とかコースディスクリプションとか。</p>
