@@ -21,361 +21,361 @@
   <body>
     <article class="markdown-body">
                         <h1 id="年10月">2022年10月</h1>
-<p><a href="index.html">ログ一覧</a></p>
-<h2 id="月31日月"><a href="#31">10月31日(月)</a> <a id="31"></a></h2>
-<p>まだ反応しているが、だいぶ収まってきた。</p>
-<p>GitHub演習。かなりみんな手こずっていた。資料をもう少しわかりやすくしないといけないかも。</p>
-<h2 id="月30日日"><a href="#30">10月30日(日)</a> <a id="30"></a></h2>
-<p>引き続きひどいアレルギー反応。仕事にならない。</p>
-<p>レポート採点する。</p>
-<h2 id="月29日土"><a href="#29">10月29日(土)</a> <a id="29"></a></h2>
-<p>あれ？またpush忘れかな→マージした。</p>
-<p>外出。夜から鼻がひどい。</p>
-<p>いろいろ忙しい。</p>
-<p>なんか話が長い人って、大勢の前で話すことが快感になってしまってるんじゃないか。つまり、情報の伝達ではなく、話すことそのものが目的になってるんじゃないか。</p>
-<p>ウェブシステムで手続きしようとしたら、「営業時間外」で手続きできなかった。毎月一度くらいメンテがあるのはわかるけど、毎日「営業時間」があるウェブシステムってなんだ？後ろでバッチでも走ってるのか？</p>
-<h2 id="月28日金"><a href="#28">10月28日(金)</a> <a id="28"></a></h2>
-<p>アルゴ式、「標準入力 1-3」がおかしい。RubyだとACできない。</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode rb"><code class="sourceCode ruby"><a class="sourceLine" id="cb1-1" title="1">s = gets</a>
-<a class="sourceLine" id="cb1-2" title="2">puts(s*<span class="dv">3</span>)</a></code></pre></div>
-<p>で問題ないはず。Pythonではうまくいく。</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode rb"><code class="sourceCode ruby"><a class="sourceLine" id="cb2-1" title="1">s = gets.chomp</a>
-<a class="sourceLine" id="cb2-2" title="2">puts(s*<span class="dv">3</span>)</a></code></pre></div>
-<p>だと通った。なんかおかしい。改行コードの問題かな？</p>
-<p>「標準入力 2-7」も同様。</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode rb"><code class="sourceCode ruby"><a class="sourceLine" id="cb3-1" title="1">s = gets.chomp</a>
-<a class="sourceLine" id="cb3-2" title="2">t = gets.chomp</a>
-<a class="sourceLine" id="cb3-3" title="3"><span class="kw">if</span> s==t</a>
-<a class="sourceLine" id="cb3-4" title="4">puts <span class="st">&quot;Yes&quot;</span></a>
-<a class="sourceLine" id="cb3-5" title="5"><span class="kw">else</span></a>
-<a class="sourceLine" id="cb3-6" title="6">puts <span class="st">&quot;No&quot;</span></a>
-<a class="sourceLine" id="cb3-7" title="7"><span class="kw">end</span></a></code></pre></div>
-<p>と、chompを入れないと通らない。</p>
-<p><code>p readlines</code>で見てみたら、<code>["turtle\n", "turtle"]</code>となっている。</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode py"><code class="sourceCode python"><a class="sourceLine" id="cb4-1" title="1">s <span class="op">=</span> <span class="bu">input</span>()</a>
-<a class="sourceLine" id="cb4-2" title="2">t <span class="op">=</span> <span class="bu">input</span>()</a>
-<a class="sourceLine" id="cb4-3" title="3"><span class="bu">print</span>(s.encode(<span class="st">&#39;utf-8&#39;</span>).<span class="bu">hex</span>())</a>
-<a class="sourceLine" id="cb4-4" title="4"><span class="bu">print</span>(t.encode(<span class="st">&#39;utf-8&#39;</span>).<span class="bu">hex</span>())</a></code></pre></div>
-<p>で食わせると、こっちは改行が入らない。</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode rb"><code class="sourceCode ruby"><a class="sourceLine" id="cb5-1" title="1">s = gets</a>
-<a class="sourceLine" id="cb5-2" title="2">t = gets</a>
-<a class="sourceLine" id="cb5-3" title="3"><span class="dt">$stdout</span> = <span class="dt">$stderr</span></a>
-<a class="sourceLine" id="cb5-4" title="4">p s</a>
-<a class="sourceLine" id="cb5-5" title="5">p t</a></code></pre></div>
-<p>を食わせたら、</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode txt"><code class="sourceCode default"><a class="sourceLine" id="cb6-1" title="1">&quot;turtle\n&quot;</a>
-<a class="sourceLine" id="cb6-2" title="2">&quot;turtle&quot;</a></code></pre></div>
-<p>となる。うーん、これは意図する動作なんだろうか？これはバグじゃなくて、RubyのgetsとPythonのinputの違いなのか？</p>
-<p>Pythonのinputは改行コードを削除するが、Rubyのgetsは改行コードを削除しない？</p>
-<p>Vimがファイル保存時に自動で最後に改行を入れるので気づかなかった。これ、前もハマったような。</p>
-<p>懇親会の会場予約した。貸し切りにできてよかった。</p>
-<p>GitHub演習。ミスがいくつかあったので修正しないと。→修正した。</p>
-<p>GitHub演習の来週分、大幅な変更があったので直してスライドと課題をK-LMSにアップロードした。</p>
-<h2 id="月27日木"><a href="#27">10月27日(木)</a> <a id="27"></a></h2>
-<p>GitHub演習。Project回りが大きく変わっていた。資料を修正しなくてはならない。</p>
-<p><a href="https://zenn.dev/yutyan/articles/64f578e132a4d7">Cybozuのインターン</a>、条件良いなぁ。<a href="https://cybozu.co.jp/company/job/recruitment/intern/improvement.html">これ</a>かな。</p>
-<p>1on1いっぱい。研究室ミーティング。輪講。</p>
-<p>研究室分け説明会の準備した。</p>
-<p>懇親会の準備と学習指導の仕事が・・・</p>
-<h2 id="月26日水"><a href="#26">10月26日(水)</a> <a id="26"></a></h2>
-<p>午前は健康診断。腹囲ひっかかった。メタボ。うーん。</p>
-<p>論文の再投稿期限延長が認められた。でも早めに出したい。</p>
-<p>学習指導のお仕事。</p>
-<p>なんだか会議が乱舞していて、頭がすっきりしない。全く異なる仕事が複数走ってるのだが、タスク切換えに時間がかかる。処理する速度より貯まる速度の方がはやいので、タスクリストがえぐいことになっている。まず原稿査読からやらないと。</p>
-<p>学科分けのお仕事。</p>
-<p>あるところで「AIが人気になったせいで情報系の学科が人気になり、勉強の得意な学生がその学科に進学することで、プログラミングが得意な学生が弾かれてしまう」という言説を見つけた。</p>
-<p>進振りを始めとして、希望学科への進学が成績で決まることの是非はさておき、プログラミングがすごく得意な学生は、必ずしも情報系の学科に進まなくても良いんじゃなかな、とは思う。知ってることを教わることになることが多いだろうし。</p>
-<p>それより「二番目に得意/好きなこと」を大学で学ぶと、両方の強みが活かせて良かったりするんじゃないかなぁ。</p>
-<p>会議。</p>
-<p>この本、良さそうだな。</p>
-<p><a href="https://www.amazon.co.jp/dp/B0859PF5HB">Software Engineering at Google: Lessons Learned from Programming Over Time</a></p>
-<h2 id="月25日火"><a href="#25">10月25日(火)</a> <a id="25"></a></h2>
-<p>VSCodeを起動すると一瞬だけ左下に何か出る問題、よく見てたらようやくわかった。Makefile toolsだ。</p>
-<p>「Configuring: Configuring from cache」「ソース：Makefile Tools (拡張機能)」と出ている。開いたフォルダにMakefileがあると起動するらしい。何をやっているかは不明。なにかキャッシュを保存してて、それで何かを設定しているっぽい。</p>
-<p>設定で「Makefile: Configure on Open」のチェックを外せば出てこなくなった。不要なので外した。っていうか、そもそもMakefile Tools必要ないっぽいし、外そうかな。</p>
-<p>講義。</p>
-<p>論文。ダメだ。絶対間に合わないので。期間延長依頼を出した。認められた場合でも今月中には返事をしたい。</p>
-<h2 id="月24日月"><a href="#24">10月24日(月)</a> <a id="24"></a></h2>
-<p>免許更新。優良者講習会。前から思ってたんだけど、二輪と四輪が同じ道路を走るって、わりと無理がある気がする。</p>
-<p>とあるサイトにアクセスしようとしたら503。しかし、「Error 503 first byte timeout」ってメッセージ、初めてみたな。</p>
-<p>物理情報工学ソフトウェア開発演習、座学4回のレポート回答の返事をアップロードした。</p>
-<p>研究室訪問の準備した。</p>
-<p>論文修正。なぜかMacではコンパイルできない。graphicxでdvipdfmxオプションの指定が必要っぽいのだが、WSL(Ubuntu)では問題なくコンパイルできている。PTEPのスタイルでgraphicxをusepackageしているため、追加でオプションをつけてusepackageしてしまうとOption clashで落ちてしまう。うーむ。</p>
-<p>時間がないのでWSLで作業する。あー、なんかpush忘れしている。また、学校のマシンにBLASやLAPACKが入ってない。入れる。</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb7-1" title="1"><span class="fu">sudo</span> apt-get install libblas-dev liblapack-dev</a></code></pre></div>
-<h2 id="月23日日"><a href="#23">10月23日(日)</a> <a id="23"></a></h2>
-<p>プライベートな用事。</p>
-<p>レポートの採点。</p>
-<p>なんか土日に用事がはいることが多くて、疲れが溜まってしまう。</p>
-<h2 id="月22日土"><a href="#22">10月22日(土)</a> <a id="22"></a></h2>
-<p>論文修正の準備。間に合うかギリギリ。</p>
-<p>レポートの採点。</p>
-<h2 id="月21日金"><a href="#21">10月21日(金)</a> <a id="21"></a></h2>
-<p>東大の竹内さんの講義がYouTubeに上がっていた。</p>
-<p><a href="https://www.youtube.com/watch?v=lRA3y6LYl7A">QP2022 Lecture 5. Kardar-Parisi-Zhang universality class</a></p>
-<p>Slidoという、匿名で質問できるようにするサービスを使っていたようだ。これ、よさそうだな。</p>
-<p>しばらく前にTwitterをほぼすべてのデバイスでログアウトし、家のPCでのみ閲覧するようにしたのだが、だいぶ精神衛生上よくなった。変な人はフォローしていないが、どうしても「人の生の声」って刺激が強い。同様にYahooコメントや「はてなブックマーク」のコメントも刺激が強いのでみないようにしている。昔はYahooニュースは127.0.0.1にしてアクセスできないようにしていたのだが、いまは学生さんがRSSを読む研究をしているので、一応開けている。</p>
-<p>物理情報工学ソフトウェア開発演習、第3回のレポートの返信書いてたのにアップロードを忘れてた。慌ててアップロードする。あと、いま気がついたが、第4回のレポートの締切日、一日間違えて長く設定してしまった。本当は木曜日締め切り、金曜日に採点予定だったのだが、金曜締め切りにしてしまった。仕方ない、土曜日見るか。</p>
-<p>プログラミング基礎同演習のレポートの採点ができなかった。</p>
-<p>GitHub演習、PC室がネットワークドライブが割り当てられているがゆえに、「フォルダを開く」が難しい。もともと出版を睨んで慶応独自の記述を避けていたのだが、もはやそうも言ってられないので修正しよう。</p>
-<h2 id="月20日木"><a href="#20">10月20日(木)</a> <a id="20"></a></h2>
-<p>今日も体調がいまいち。</p>
-<p>Pythonの辞書型、普通はdotアクセスができないのだが、<a href="https://zenn.dev/kazuhito/articles/dbe6bbf8ce3ef2">クラスでラップするだけ</a>でできるようになるらしい。</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode py"><code class="sourceCode python"><a class="sourceLine" id="cb8-1" title="1"><span class="kw">class</span> DictDotNotation(<span class="bu">dict</span>): </a>
-<a class="sourceLine" id="cb8-2" title="2">    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, <span class="op">*</span>args, <span class="op">**</span>kwargs): </a>
-<a class="sourceLine" id="cb8-3" title="3">        <span class="bu">super</span>().<span class="fu">__init__</span>(<span class="op">*</span>args, <span class="op">**</span>kwargs) </a>
-<a class="sourceLine" id="cb8-4" title="4">        <span class="va">self</span>.__dict__ <span class="op">=</span> <span class="va">self</span> </a></code></pre></div>
-<p>確かにできる。なぜだ？</p>
-<p>あー、クラスのプロパティが<code>__dict__</code>に入っているので、それをそのまま辞書として使っているのか。</p>
-<p>研究室ミーティング。発表がどちらも素晴らしい。</p>
-<p>輪講。</p>
-<p>卒論のガイダンスは11月中旬から終わりにやることに。忘れないようにしないと。</p>
-<p>ようやく英語が読める頭になってきた。今週本当に調子が悪かった。まだ体調は悪いが、頭は戻りつつある。</p>
-<p>どうも体調の位相と頭の調子の位相がずれている気がする。体調が悪化する時、先に頭の調子が悪くなり、その後体調が悪化する、ということがよく起きる。今日、体調はまだ悪いが、頭が回り始めたのを体感している。つまり、調子が悪くなるのも、復帰するのも、頭が先、ということになる。およそ24時間くらい先行しているのかなぁ。</p>
-<h2 id="月19日水"><a href="#19">10月19日(水)</a> <a id="19"></a></h2>
-<p>最近、マスク反対派によるマスク狩りがあるとのこと。マスク狩りって、ヘル・ミッショネルズか・・・</p>
-<p>会議*2。</p>
-<p>だめだ。調子が非常に悪い。まったく頭が回らなかった。今日くらいしか論文修正のためのまとまった時間が取れなかったのだが・・・</p>
-<p>もうこの論文ダメかなぁ(弱気)。</p>
-<p>分子動力学法100本ノックとか考えたけど、よく考えたら、分子動力学法の結果の解析100本ノックとかの方が良さそう。</p>
-<ul>
-<li>温度関連
-<ul>
-<li>コンフィグレーションから温度を計算せよ</li>
-<li>コンフィグレーション(lammpstrj)から温度の時間発展を計算せよ</li>
-<li>コンフィグレーションから状態温度を計算せよ</li>
-</ul></li>
-<li>密度関連
-<ul>
-<li>界面構造の計算</li>
-<li>液滴カウント</li>
-<li>気泡の可視化(例えば気泡中心推定)</li>
-<li>気泡の数のカウント</li>
-</ul></li>
-</ul>
-<h2 id="月18日火"><a href="#18">10月18日(火)</a> <a id="18"></a></h2>
-<p>QLEAPのセミナー。</p>
-<p>プログラミング基礎同演習。ちょっと雑談が長かった。反省。</p>
-<p>Stable diffusionを試す。楽しい。</p>
-<p>研究室サーバにdocker-composeを入れる。なんｋな</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb9-1" title="1"><span class="fu">wget</span> https://github.com/docker/compose/releases/download/v2.11.2/docker-compose-linux-x86_64</a>
-<a class="sourceLine" id="cb9-2" title="2"><span class="fu">sudo</span> cp docker-compose-linux-x86_64 /usr/local/bin/docker-compose</a></code></pre></div>
-<p>うまくいかない。dockerが古いっぽい。</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb10-1" title="1"><span class="fu">sudo</span> yum update</a></code></pre></div>
-<p>しまった、うっかりupdateしてしまった。Intelコンパイラのパスがまた壊れるかもしれない。</p>
-<p>バックアップ代わりにメモ。</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb11-1" title="1"><span class="bu">source</span> /opt/intel/bin/compilervars.sh -arch intel64 -platform linux</a>
-<a class="sourceLine" id="cb11-2" title="2"><span class="va">PATH=</span>/opt/openmpi/bin:<span class="va">$PATH</span></a>
-<a class="sourceLine" id="cb11-3" title="3"><span class="va">PATH=</span>/opt/intel/compilers_and_libraries/linux/bin/intel64:<span class="va">$PATH</span></a>
-<a class="sourceLine" id="cb11-4" title="4"><span class="va">LD_LIBRARY_PATH=</span>/opt/openmpi/lib:<span class="va">$LD_LIBRARY_PATH</span></a>
-<a class="sourceLine" id="cb11-5" title="5"><span class="va">LD_LIBRARY_PATH=$LD_LIBRARY_PATH</span>:/opt/intel/compilers_and_libraries/linux/lib/intel64</a>
-<a class="sourceLine" id="cb11-6" title="6"><span class="va">MANPATH=</span>/opt/openmpi/share/man:<span class="va">$MANPATH</span></a>
-<a class="sourceLine" id="cb11-7" title="7"><span class="bu">export</span> <span class="va">PATH</span> <span class="va">LD_LIBRARY_PATH</span> <span class="va">MANPATH</span></a>
-<a class="sourceLine" id="cb11-8" title="8"><span class="va">OMPI_MCA_btl_base_warn_component_unused=</span>0</a>
-<a class="sourceLine" id="cb11-9" title="9"><span class="bu">export</span> <span class="va">OMPI_MCA_btl_base_warn_component_unused</span></a></code></pre></div>
-<p>大丈夫っぽい。</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb12-1" title="1">$ <span class="ex">docker</span> --version</a>
-<a class="sourceLine" id="cb12-2" title="2"><span class="ex">Docker</span> version 20.10.19, build d85ef84</a></code></pre></div>
-<div class="sourceCode" id="cb13"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb13-1" title="1"><span class="bu">cd</span> stable-diffusion-webui-docker</a>
-<a class="sourceLine" id="cb13-2" title="2"><span class="ex">docker-compose</span> --profile download up --build</a>
-<a class="sourceLine" id="cb13-3" title="3"><span class="ex">docker-compose</span> --profile auto up --build</a></code></pre></div>
-<p><code>docker-compuse up</code>に失敗して、エラーメッセージで検索したら、<a href="https://zenn.dev/kaityo256/scraps/c335ac8c76c5e1">自分のメモ</a>がひっかかって解決。半年前の自分は現在の自分より賢いっぽい。</p>
-<p>ローカルでやろう。</p>
-<p>Macにdocker composeをインストール。</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb14-1" title="1">$ <span class="fu">sudo</span> curl -L https://github.com/docker/compose/releases/download/v2.11.2/docker-compose-<span class="kw">`</span><span class="fu">uname</span> -s<span class="kw">`</span>-<span class="kw">`</span><span class="fu">uname</span> -m<span class="kw">`</span> -o /usr/local/bin/docker-compose</a>
-<a class="sourceLine" id="cb14-2" title="2"><span class="fu">sudo</span> chmod +x /usr/local/bin/docker-compose    </a></code></pre></div>
-<div class="sourceCode" id="cb15"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb15-1" title="1"><span class="fu">git</span> clone https://github.com/AbdBarho/stable-diffusion-webui-docker.git</a>
-<a class="sourceLine" id="cb15-2" title="2"><span class="bu">cd</span> stable-diffusion-webui-docker</a>
-<a class="sourceLine" id="cb15-3" title="3"><span class="ex">docker-compose</span> --profile download up --build</a>
-<a class="sourceLine" id="cb15-4" title="4"><span class="ex">docker-compose</span> --profile auto-cpu up --build</a></code></pre></div>
-<p>ダウンロードに時間かかるな。</p>
-<p>GPUでやろうとしたらnvidia-mlのシェアードライブラリが見つからないとかいってきたので、<code>auto-cpu</code>で実行してみた。</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode txt"><code class="sourceCode default"><a class="sourceLine" id="cb16-1" title="1">exited with code 137</a></code></pre></div>
-<p>残念、うまく動かなかった。</p>
-<h2 id="月17日月"><a href="#17">10月17日(月)</a> <a id="17"></a></h2>
-<p>講義の準備をして、教室に行って、しばらく講義をして、ふと教室を見るとそこには誰もいない。そんな夢を見た。いい年こいて、まだ講義の前は緊張する。</p>
-<p>今季のGitHub演習の実習初日。昨年のハマりポイントを確認してスライドを修正しておく。</p>
-<h2 id="月16日日"><a href="#16">10月16日(日)</a> <a id="16"></a></h2>
-<p>レベルアップ。</p>
-<h2 id="月15日土"><a href="#15">10月15日(土)</a> <a id="15"></a></h2>
-<p>疲れた。</p>
-<p>たまにネットでバズる指導教員って、学生からみてどうなんだろうね？</p>
-<h2 id="月14日金"><a href="#14">10月14日(金)</a> <a id="14"></a></h2>
-<p>GitHub演習のため、自分で実際にPC室に行って実習をする。概ね問題ないが、昨年、学生さんがハマったところを思い出しながら少し修正。とりあえず二週分は作った。</p>
-<p>我ながらMakefileがよくかけてて、Markdownガリガリかいてmake一発でPandoc経由でPDFができるの便利だ。</p>
-<p>ものすごくどうでも良い、しかもテキストで済む情報を、わざわざパワーポイントファイルにして、しかもパスワードつきZipにして送ってくる意味とは？</p>
-<p>レポートの採点が本格的に始まって、時間が苦しい。論文の直し時間をどうしようか。</p>
-<h2 id="月13日木"><a href="#13">10月13日(木)</a> <a id="13"></a></h2>
-<p>またしばらくSNSと距離を置くことにした。なんか知らないけど、世の中には「世の中の不条理」と戦う人が多くて、そういう人を避けてても、どうしても目に入ってしまって疲れてしまう。</p>
-<p>朝から会議。</p>
-<p>スマホにGitHub Mobileをインストール、登録。学生さんが使ってるのを見て、そういうのもあるのか、と思って見てたら、ちょうどGitHubからアカウントセッティングのリマインドが来たので、この機会に入れた。多要素認証デバイスとしてスマホが使えるようになった。これまでGoogle Authenticatorを使っていたが、これでアプリで認証するだけで良くなったはず？</p>
-<p>Gitmojiといい、GitHub Mobileといい、学生さんから教わることが多いな。こういうのがあるので、情報系科目は若い教員に任せた方がいいんだよな・・・</p>
-<p>あと、この機会にGoogle Oneのアップグレードをした。PCでやる方法がいまいちピンとこなかったのでスマホで。とりあえず100GBの年単位定期購入。これで課金しているサービスが</p>
-<ul>
-<li>GitHub</li>
-<li>Google One</li>
-<li>MoneyForward</li>
-<li>SpeakerDeck</li>
-<li>Grammerly</li>
-<li>Slack</li>
-</ul>
-<p>となった。うーむ。</p>
-<p>5億年ぶりくらいに個人ウェブサイト更新。Slim+Yamlでやってるが、いろいろ面倒。なんか、さくらのサーバでbundleがうまく動いていない感じがする。ログインしてmakeしたらできる。パスの問題かなぁ。面倒だし、更新頻度が低いので放置。</p>
-<p>研究室ミーティング。</p>
-<p>政府調達にひっかかるスパコンの定義。今は<a href="https://www.cas.go.jp/jp/seisaku/chotatsu/pdf/r2_siryou2.pdf">2.88 PF</a>になっているとのこと。</p>
-<p>最新のGPGPUが倍精度で30TF、単精度で60TFとからしいので、倍精度なら96枚、単精度なら48枚でひっかかる。まぁ、ラック一本ではいかなそうかな。</p>
-<p><a href="https://doi.org/10.1063/5.0106036">共著論文が出版された</a>。慶応に来て初めての共著でめでたい(といってもがんばったのはほとんど共著者だけど)。もう一つもすんなり通るといいな。</p>
-<h2 id="月12日水"><a href="#12">10月12日(水)</a> <a id="12"></a></h2>
-<p>物理情報工学ソフトウェア開発演習のレポートを採点した。</p>
-<p>論文再投稿した。</p>
-<p>もう一つの塩漬け論文のロード。うーん、秋学期が始まってしまったので、作業時間が取れない。</p>
-<p>21時から22時まで会議。他の人は22時半から別の会議あるらしい。マジか。</p>
-<h2 id="月11日火"><a href="#11">10月11日(火)</a> <a id="11"></a></h2>
-<p>ネットの広告はターゲット型だから、たとえば「お色気系の広告が多い」という愚痴は、「普段お色気系の動画を見ている」という告白であり恥ずかしい、という指摘。他のテーマについては成り立つと思うが、お色気系については違うのかな、という気がする。YouTubeにはじめてショートが実装された時、いわゆるお色気系ばかりでげんなりしたことがある。自分の履歴が悪いのかとシークレットモードで入り直したが、やはりお色気系ばかりであった。おそらく、単純に再生回数が多いため、情報がない場合はとりあえずお色気系をレコメンドしてしまうのだと思われる。ブラウザの設定でネットのターゲット広告の追跡を遮断したら、お色気系が非常に増えた気がして、逆に追跡を許可した経緯がある。</p>
-<p>なんだかいろいろ考えてしまう。</p>
-<h2 id="月10日月"><a href="#10">10月10日(月)</a> <a id="10"></a></h2>
-<p>とある技術に対して、ある誤解が広まっている時、我々はどうするべきか？</p>
-<p>こういう時に「警察」が発生する。この言葉遣いをしている人は、この技術を正しく理解していない。正しく理解していない人が発信する情報は害悪である。であるからちゃんと指摘するべきである。云々。</p>
-<p>間違いを指摘すること自体は大事だと思うし、間違いを発信することが良いことであるとも思わないが、エンジニアならば、「なぜ誤解が広まっているのか？」「その誤解はどのようにすれば解決できるのか」を考えた方が有益であろう。</p>
-<p>ある装置があり、スイッチAを押してからスイッチBを押さないと機械が壊れるとする。しかし、スイッチBを先に押してしまう事故が頻発した時、「この装置の仕組みを考えた時、スイッチBを先に押すのは無知の現れである。したがってそういう人はこの装置を使うべきでない」という主張には賛同できない。なぜスイッチAよりも先にスイッチBを押してしまうのか、その原因を考え、根本解決をすべきであろう。</p>
-<p>学生さんの論文の再投稿準備完了。水曜に再投稿。</p>
-<p>学生さんの論文のリポジトリ作った。がんばった。</p>
-<h2 id="月09日日"><a href="#09">10月09日(日)</a> <a id="09"></a></h2>
-<p><a href="https://zenn.dev/kaityo256/articles/my_first_machine_learning">機械学習でパイこね変換と乱数列を区別させるサンプル</a>書いた。</p>
-<h2 id="月08日土"><a href="#08">10月08日(土)</a> <a id="08"></a></h2>
-<p>何してたっけ？</p>
-<p>思い出した。レポートの採点だ。なんかすごい時間かかったぞ。</p>
-<p>あと、物理情報工学ソフトウェア開発演習のスライドが間違ってたから修正してたんだ。</p>
-<h2 id="月07日金"><a href="#07">10月07日(金)</a> <a id="07"></a></h2>
-<p>学生さんの論文にコメント入れて返した。</p>
-<p>なんか通信が重い、プリンタにつながらないと思ってたら、部屋のネットワークではなくeduroamにつながってた・・・</p>
-<p>GitHub演習の班分け表作った。</p>
-<p>またgit push忘れて家に帰った orz</p>
-<p>学生さんが指摘してくれたが、GitHub演習のスライドにミス。ついでにスライドマスタを修正したので、座学スライドを全てSpeakerdeckにアップロードしなおす。演習はまだ修正する可能性がある。</p>
-<p>「シミュレーション工学」もスライドをアップロードしなければ。</p>
-<h2 id="月06日木"><a href="#06">10月06日(木)</a> <a id="06"></a></h2>
-<p>車のラジオで聞いた、縄文時代をテーマにしたフリーペーパー<a href="http://jomonzine.com/index.html">縄文ZINE</a>。見てみたら想像してたのよりはるかにしっかりしたものだった。もちろんPDFで全部見られる。面白い。</p>
-<p>登さんの資料<a href="https://www.digital.go.jp/assets/contents/node/basic_page/field_ref_resources/b1ae707%5B…%5D03_meeting_technology_based_regulatory_reform_outline_05.pdf">テクノロジーマップ、技術カタログの在り方について</a>が面白い。技術記事の果たす役割について。</p>
-<ul>
-<li><ol type="1">
-<li>技術的に正確であること。</li>
-</ol></li>
-<li><ol start="2" type="1">
-<li>広さと深さを兼ね備えていること。読み手が知らないことが豊富に書かれていること。</li>
-</ol></li>
-<li><ol start="3" type="1">
-<li>日本語の文体は、一定の品質を満たしており、専門的で、厳密で、矛盾なく、程良く構造化され</li>
-</ol></li>
-<li>ているものの、論文読解のような多大なエネルギーが要らない程度に適度に平易化・冗長化され</li>
-<li>ているという、誠に絶妙なバランスを、うまく突いていること。</li>
-<li><ol start="4" type="1">
-<li>内容は、単なる表面的な使い方や解説だけでなく、背後の概念や内部構造の仕組み、その技術を作った人々の思想が含まれていること。</li>
-</ol></li>
-<li><ol start="5" type="1">
-<li>アプリ等の高レイヤだけでなく、インフラやハードウェア等、物理・具体に近い話も含むこと。</li>
-</ol></li>
-<li><ol start="6" type="1">
-<li>ジャンク・フード記事 (How-to 記事) ではなく、咀嚼するのに少々苦労を要するものの、単位時 間あたり摂取栄養素の量が多く、多様性に富み、読みながら味わう楽しさが読むことの苦労を超えて、つい夜中まで時間を忘れて自然に最後まで没頭して深く読んでしまう記事であること。</li>
-</ol></li>
-<li><ol start="7" type="1">
-<li>書き手が技術集団の中で特に高い能力を有していそうであることが一瞥するだけでわかること。</li>
-</ol></li>
-<li><ol start="8" type="1">
-<li>読み手の頭脳に何らかの新たな思考回路が形成される期待が感じられる記事であること。</li>
-</ol></li>
-<li><ol start="9" type="1">
-<li>読み手が、「これはすごい」、「よくこんなことが実現できたものだ」と驚き、未来の仕事のやり方が変わる期待を得、自主的に周囲に伝道したくなるような内容であること。</li>
-</ol></li>
-<li>(10)技術的な内容に始終せず、人間的・社会的側面への革命的影響 (例: 技術が自組織内の政治的・権力的構造及び社会全体に与える影響) についても述べていること (読み手は、自らその技術を用いることにより、技術に基づく組織内の革新の一翼を担うことができる気分になる) 。</li>
-<li>(11)使い方・動作例が載っており、すぐに試してみたくなり、実際にすぐに試せること。</li>
-<li>(12)遊び心的な内容 (おもしろ文章、秘密の写真やこぼれ話) が、適度に点在配置されていること。</li>
-</ul>
-<p>特に6番の要求が高い。</p>
-<p>MacにMS Officeをインストール。前からやろうと思っていた予算管理シートのGoogle Spreadsheet化。これまではローカルでエクセル、それをSubversionで管理してたのだが、これを外出ししようかと。もちろんGoogleのことだから、いつサービスが死ぬかわからないけれど、そうしたらまたダウンロードすれば良いし。</p>
-<p>あとは研究室WikiをGitHubに逃したい。</p>
-<p>1年生の物理学の教科書「物理学A、B」を購入。Aが一粒子系の力学、Bが中心力・多粒子系・剛体。これを参考に来年の力学の講義を作る。早めに手をつけないと大変なことになるぞ。</p>
-<p><a href="https://github.com/kaityo256/xbyak_aarch64_handson">xbyak_aarch64_handson</a>に海外の方からPRが来た。がんばって英語で書いて見るもんだな。</p>
-<p>gitmoji、慣れたらgitmoji使わずに、最初から<code>git commit -m :memo: diary</code>みたいに書くようになるな。</p>
-<h2 id="月05日水"><a href="#05">10月05日(水)</a> <a id="05"></a></h2>
-<p>MacにLaTeXをインストール。本当に<a href="https://github.com/kaityo256/lab_startup">数値計算用PCセットアップ資料</a>が便利。</p>
-<p>ついでにMacにもgitmojiをインストール。</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb17-1" title="1"><span class="ex">curl</span> -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh <span class="kw">|</span> <span class="fu">bash</span></a>
-<a class="sourceLine" id="cb17-2" title="2"><span class="ex">nvm</span> install 14</a>
-<a class="sourceLine" id="cb17-3" title="3"><span class="ex">npm</span> i -g gitmoji-cli</a></code></pre></div>
-<p>NVM使うと簡単だなぁ。</p>
-<p>MacでLaTeX環境が整った。らくちん。これでMacで論文が書ける。</p>
-<p>「ニュースサイトは、ニュースを提供するというよりも、ニュースに対してまるで自分が著名人/知識人であるかのように気持ちよくコメントをさせることが大事」みたいな意見を見かけて、なるほどな、と思った。</p>
-<p>ニュースのコメントサイトには、「なんでそんなに自信満々なんだろう」という素人コメントが多い。っていうかニュースに限らずはてなブックマークでもTwitterでもそう。ニュースに対してなにかを言う、というのは、現実の「何者にもなれなかった自分」を忘れさせる、まるで「自分が何者かであるかのような錯覚」をさせる、麻薬のようなものなのであろう。</p>
-<p>技術記事を書いて「いいね」を稼ぐことにも、なにか麻薬的な快楽があるわけで、そのあたりは同根なのかもしれない。</p>
-<p>査読への返事と論文修正、一つ終わらせたぞ。こういうのは半日空いてないと厳しい。査読への返事がもう一つ、待ち行列にある論文が一つ、リポジトリを作らなければならないのが一つ。なかなか厳しい。</p>
-<p>1年生の物理の教科書を注文した。</p>
-<p>gitmoji、単に見た目が楽しいという以外に、「その絵文字に対応する以外の修正をコミットに含めないように気をつける」効果があるのか。いわゆる「ごった煮コミット」を心理的に防ぐ、と。なるほど。</p>
-<p>まぁ、この日記は全部documentにしちゃうけど。</p>
-<h2 id="月04日火"><a href="#04">10月04日(火)</a> <a id="04"></a></h2>
-<p>gitmojiを使おうとしたら、npmがエラーを出す。アップグレードしようとしてもエラー。</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb18-1" title="1">$ <span class="fu">sudo</span> npm install -g　npm</a>
-<a class="sourceLine" id="cb18-2" title="2"><span class="ex">ERROR</span>: npm is known not to run on Node.js v10.19.0</a>
-<a class="sourceLine" id="cb18-3" title="3"><span class="ex">You</span><span class="st">&#39;ll need to upgrade to a newer Node.js version in order to use this</span></a>
-<a class="sourceLine" id="cb18-4" title="4"><span class="st">version of npm. You can find the latest version at https://nodejs.org/</span></a></code></pre></div>
-<div class="sourceCode" id="cb19"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb19-1" title="1"><span class="fu">sudo</span> apt remove --purge nodejs npm</a>
-<a class="sourceLine" id="cb19-2" title="2"><span class="ex">apt</span> install npm nodejs</a></code></pre></div>
-<p>まだダメっぽい。</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb20-1" title="1"><span class="ex">curl</span> -sL https://deb.nodesource.com/setup_10.x <span class="kw">|</span> <span class="fu">sudo</span> -E bash -</a></code></pre></div>
-<p>v.10も古いと警告が出る。NVMを入れる。</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb21-1" title="1"><span class="ex">curl</span> -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh <span class="kw">|</span> <span class="fu">bash</span></a>
-<a class="sourceLine" id="cb21-2" title="2"><span class="bu">source</span> .zshrc</a></code></pre></div>
-<p>v14系最新を入れる。</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb22-1" title="1"><span class="ex">nvm</span> install 14</a></code></pre></div>
-<p>gitmojiを入れる。</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb23-1" title="1"><span class="ex">npm</span> i -g gitmoji-cli</a></code></pre></div>
-<p>入った。文句を言われなくなった。</p>
-<p>gitmojiを使ってみる。</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb24-1" title="1"><span class="fu">git</span> add .</a>
-<a class="sourceLine" id="cb24-2" title="2"><span class="ex">gitmoji</span> -c</a></code></pre></div>
-<p>「Choose a gitmoji」と出てくるので、カーソルで選ぶ。ここで文字を入れるとフィルタリングできる。次に「 Enter the commit title」とでるが、これが<code>git commit -m</code>に食わせる奴。その後のcommit messageは空白でOK。</p>
-<p>なんかNode.jsとnpmを混同してたぞ。Node.jsはJavaScriptの処理系であり、npmはNode Package Managerの略。「Node.jsのバージョンが古い」というエラーに対して、npmのバージョンを上げようと苦労してた。npmを実行した時に出たエラーだったので勘違いした。</p>
-<p>プログラミング基礎同演習の講義。全員揃うと、結構教室が狭く感じる。課題はかなり少ないと思ったが、結構最後まで粘った人が多かった。WordやPDFのトラブルが多かったかな。来週からは改善されるであろう。</p>
-<p>矢上から日吉まで歩くと疲れる。アップダウンがあるのがきつい。ドアツードアで15分くらいかな。</p>
-<p>論文のProofが来たので確認する。</p>
-<h2 id="月03日月"><a href="#03">10月03日(月)</a> <a id="03"></a></h2>
-<p>PandocのMathJaxが働かない。テンプレートの</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode txt"><code class="sourceCode default"><a class="sourceLine" id="cb25-1" title="1">$if(math)$</a>
-<a class="sourceLine" id="cb25-2" title="2">  $math$</a>
-<a class="sourceLine" id="cb25-3" title="3">$endif$</a></code></pre></div>
-<p>が正しくないっぽい。手動でMathJax指定したら動いたが、Pandocのバージョン上げるのが正しいよな。</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode txt"><code class="sourceCode default"><a class="sourceLine" id="cb26-1" title="1">pandoc 2.5</a>
-<a class="sourceLine" id="cb26-2" title="2">Compiled with pandoc-types 1.17.5.4, texmath 0.11.2.2, skylighting 0.7.7</a>
-<a class="sourceLine" id="cb26-3" title="3">Default user data directory: /home/watanabe/.pandoc</a>
-<a class="sourceLine" id="cb26-4" title="4">Copyright (C) 2006-2018 John MacFarlane</a>
-<a class="sourceLine" id="cb26-5" title="5">Web:  http://pandoc.org</a>
-<a class="sourceLine" id="cb26-6" title="6">This is free software; see the source for copying conditions.</a>
-<a class="sourceLine" id="cb26-7" title="7">There is no warranty, not even for merchantability or fitness</a>
-<a class="sourceLine" id="cb26-8" title="8">for a particular purpose.</a></code></pre></div>
-<div class="sourceCode" id="cb27"><pre class="sourceCode txt"><code class="sourceCode default"><a class="sourceLine" id="cb27-1" title="1">pandoc 2.5</a>
-<a class="sourceLine" id="cb27-2" title="2">Compiled with pandoc-types 1.17.5.4, texmath 0.11.2.2, skylighting 0.7.7</a>
-<a class="sourceLine" id="cb27-3" title="3">Default user data directory: /home/watanabe/.pandoc</a>
-<a class="sourceLine" id="cb27-4" title="4">Copyright (C) 2006-2018 John MacFarlane</a>
-<a class="sourceLine" id="cb27-5" title="5">Web:  http://pandoc.org</a>
-<a class="sourceLine" id="cb27-6" title="6">This is free software; see the source for copying conditions.</a>
-<a class="sourceLine" id="cb27-7" title="7">There is no warranty, not even for merchantability or fitness</a>
-<a class="sourceLine" id="cb27-8" title="8">for a particular purpose.</a></code></pre></div>
-<p>apt upgradeしても変わらんな。結局直接</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode html"><code class="sourceCode html"><a class="sourceLine" id="cb28-1" title="1"><span class="kw">&lt;script</span><span class="ot"> type=</span><span class="st">&quot;text/javascript&quot;</span><span class="ot"> id=</span><span class="st">&quot;MathJax-script&quot;</span><span class="ot"> async</span></a>
-<a class="sourceLine" id="cb28-2" title="2"><span class="ot">            src=</span><span class="st">&quot;https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span></a></code></pre></div>
-<p>と書いた。</p>
-<h2 id="月02日日"><a href="#02">10月02日(日)</a> <a id="02"></a></h2>
-<p>疲れた。土日に毎週なんらかのイベントが入るので、疲れが取れないまま平日に突入する。平日より土日の方が疲れる。</p>
-<h2 id="月01日土"><a href="#01">10月01日(土)</a> <a id="01"></a></h2>
-<p>学生さんの修論のコミットメッセージで「Semantic Commit Messages」というのを知った。</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode txt"><code class="sourceCode default"><a class="sourceLine" id="cb29-1" title="1">feat: add hat wobble</a>
-<a class="sourceLine" id="cb29-2" title="2">^--^  ^------------^</a>
-<a class="sourceLine" id="cb29-3" title="3">|     |</a>
-<a class="sourceLine" id="cb29-4" title="4">|     +-&gt; Summary in present tense.</a>
-<a class="sourceLine" id="cb29-5" title="5">|</a>
-<a class="sourceLine" id="cb29-6" title="6">+-------&gt; Type: chore, docs, feat, fix, refactor, style, or test.</a></code></pre></div>
-<p>GitHubにコミットすると、絵文字が出る？</p>
-<p>あ、なるほど「:tada: initial commit」のように、絵文字を指定しているのか。</p>
-<p>論文を一つコメントを入れて返した。コミットログに絵文字をつけるの、ちょっと楽しいな。</p>
+                        <p><a href="index.html">ログ一覧</a></p>
+                        <h2 id="月31日月"><a href="#31">10月31日(月)</a> <a id="31"></a></h2>
+                        <p>まだ反応しているが、だいぶ収まってきた。</p>
+                        <p>GitHub演習。かなりみんな手こずっていた。資料をもう少しわかりやすくしないといけないかも。</p>
+                        <h2 id="月30日日"><a href="#30">10月30日(日)</a> <a id="30"></a></h2>
+                        <p>引き続きひどいアレルギー反応。仕事にならない。</p>
+                        <p>レポート採点する。</p>
+                        <h2 id="月29日土"><a href="#29">10月29日(土)</a> <a id="29"></a></h2>
+                        <p>あれ？またpush忘れかな→マージした。</p>
+                        <p>外出。夜から鼻がひどい。</p>
+                        <p>いろいろ忙しい。</p>
+                        <p>なんか話が長い人って、大勢の前で話すことが快感になってしまってるんじゃないか。つまり、情報の伝達ではなく、話すことそのものが目的になってるんじゃないか。</p>
+                        <p>ウェブシステムで手続きしようとしたら、「営業時間外」で手続きできなかった。毎月一度くらいメンテがあるのはわかるけど、毎日「営業時間」があるウェブシステムってなんだ？後ろでバッチでも走ってるのか？</p>
+                        <h2 id="月28日金"><a href="#28">10月28日(金)</a> <a id="28"></a></h2>
+                        <p>アルゴ式、「標準入力 1-3」がおかしい。RubyだとACできない。</p>
+                        <div class="sourceCode" id="cb1"><pre class="sourceCode rb"><code class="sourceCode ruby"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a>s = gets</span>
+                        <span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a>puts(s*<span class="dv">3</span>)</span></code></pre></div>
+                        <p>で問題ないはず。Pythonではうまくいく。</p>
+                        <div class="sourceCode" id="cb2"><pre class="sourceCode rb"><code class="sourceCode ruby"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a>s = gets.chomp</span>
+                        <span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a>puts(s*<span class="dv">3</span>)</span></code></pre></div>
+                        <p>だと通った。なんかおかしい。改行コードの問題かな？</p>
+                        <p>「標準入力 2-7」も同様。</p>
+                        <div class="sourceCode" id="cb3"><pre class="sourceCode rb"><code class="sourceCode ruby"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a>s = gets.chomp</span>
+                        <span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a>t = gets.chomp</span>
+                        <span id="cb3-3"><a href="#cb3-3" aria-hidden="true"></a><span class="kw">if</span> s==t</span>
+                        <span id="cb3-4"><a href="#cb3-4" aria-hidden="true"></a>puts <span class="st">&quot;Yes&quot;</span></span>
+                        <span id="cb3-5"><a href="#cb3-5" aria-hidden="true"></a><span class="kw">else</span></span>
+                        <span id="cb3-6"><a href="#cb3-6" aria-hidden="true"></a>puts <span class="st">&quot;No&quot;</span></span>
+                        <span id="cb3-7"><a href="#cb3-7" aria-hidden="true"></a><span class="kw">end</span></span></code></pre></div>
+                        <p>と、chompを入れないと通らない。</p>
+                        <p><code>p readlines</code>で見てみたら、<code>["turtle\n", "turtle"]</code>となっている。</p>
+                        <div class="sourceCode" id="cb4"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a>s <span class="op">=</span> <span class="bu">input</span>()</span>
+                        <span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a>t <span class="op">=</span> <span class="bu">input</span>()</span>
+                        <span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a><span class="bu">print</span>(s.encode(<span class="st">&#39;utf-8&#39;</span>).<span class="bu">hex</span>())</span>
+                        <span id="cb4-4"><a href="#cb4-4" aria-hidden="true"></a><span class="bu">print</span>(t.encode(<span class="st">&#39;utf-8&#39;</span>).<span class="bu">hex</span>())</span></code></pre></div>
+                        <p>で食わせると、こっちは改行が入らない。</p>
+                        <div class="sourceCode" id="cb5"><pre class="sourceCode rb"><code class="sourceCode ruby"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a>s = gets</span>
+                        <span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a>t = gets</span>
+                        <span id="cb5-3"><a href="#cb5-3" aria-hidden="true"></a><span class="dt">$stdout</span> = <span class="dt">$stderr</span></span>
+                        <span id="cb5-4"><a href="#cb5-4" aria-hidden="true"></a>p s</span>
+                        <span id="cb5-5"><a href="#cb5-5" aria-hidden="true"></a>p t</span></code></pre></div>
+                        <p>を食わせたら、</p>
+                        <div class="sourceCode" id="cb6"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a>&quot;turtle\n&quot;</span>
+                        <span id="cb6-2"><a href="#cb6-2" aria-hidden="true"></a>&quot;turtle&quot;</span></code></pre></div>
+                        <p>となる。うーん、これは意図する動作なんだろうか？これはバグじゃなくて、RubyのgetsとPythonのinputの違いなのか？</p>
+                        <p>Pythonのinputは改行コードを削除するが、Rubyのgetsは改行コードを削除しない？</p>
+                        <p>Vimがファイル保存時に自動で最後に改行を入れるので気づかなかった。これ、前もハマったような。</p>
+                        <p>懇親会の会場予約した。貸し切りにできてよかった。</p>
+                        <p>GitHub演習。ミスがいくつかあったので修正しないと。→修正した。</p>
+                        <p>GitHub演習の来週分、大幅な変更があったので直してスライドと課題をK-LMSにアップロードした。</p>
+                        <h2 id="月27日木"><a href="#27">10月27日(木)</a> <a id="27"></a></h2>
+                        <p>GitHub演習。Project回りが大きく変わっていた。資料を修正しなくてはならない。</p>
+                        <p><a href="https://zenn.dev/yutyan/articles/64f578e132a4d7">Cybozuのインターン</a>、条件良いなぁ。<a href="https://cybozu.co.jp/company/job/recruitment/intern/improvement.html">これ</a>かな。</p>
+                        <p>1on1いっぱい。研究室ミーティング。輪講。</p>
+                        <p>研究室分け説明会の準備した。</p>
+                        <p>懇親会の準備と学習指導の仕事が・・・</p>
+                        <h2 id="月26日水"><a href="#26">10月26日(水)</a> <a id="26"></a></h2>
+                        <p>午前は健康診断。腹囲ひっかかった。メタボ。うーん。</p>
+                        <p>論文の再投稿期限延長が認められた。でも早めに出したい。</p>
+                        <p>学習指導のお仕事。</p>
+                        <p>なんだか会議が乱舞していて、頭がすっきりしない。全く異なる仕事が複数走ってるのだが、タスク切換えに時間がかかる。処理する速度より貯まる速度の方がはやいので、タスクリストがえぐいことになっている。まず原稿査読からやらないと。</p>
+                        <p>学科分けのお仕事。</p>
+                        <p>あるところで「AIが人気になったせいで情報系の学科が人気になり、勉強の得意な学生がその学科に進学することで、プログラミングが得意な学生が弾かれてしまう」という言説を見つけた。</p>
+                        <p>進振りを始めとして、希望学科への進学が成績で決まることの是非はさておき、プログラミングがすごく得意な学生は、必ずしも情報系の学科に進まなくても良いんじゃなかな、とは思う。知ってることを教わることになることが多いだろうし。</p>
+                        <p>それより「二番目に得意/好きなこと」を大学で学ぶと、両方の強みが活かせて良かったりするんじゃないかなぁ。</p>
+                        <p>会議。</p>
+                        <p>この本、良さそうだな。</p>
+                        <p><a href="https://www.amazon.co.jp/dp/B0859PF5HB">Software Engineering at Google: Lessons Learned from Programming Over Time</a></p>
+                        <h2 id="月25日火"><a href="#25">10月25日(火)</a> <a id="25"></a></h2>
+                        <p>VSCodeを起動すると一瞬だけ左下に何か出る問題、よく見てたらようやくわかった。Makefile toolsだ。</p>
+                        <p>「Configuring: Configuring from cache」「ソース：Makefile Tools (拡張機能)」と出ている。開いたフォルダにMakefileがあると起動するらしい。何をやっているかは不明。なにかキャッシュを保存してて、それで何かを設定しているっぽい。</p>
+                        <p>設定で「Makefile: Configure on Open」のチェックを外せば出てこなくなった。不要なので外した。っていうか、そもそもMakefile Tools必要ないっぽいし、外そうかな。</p>
+                        <p>講義。</p>
+                        <p>論文。ダメだ。絶対間に合わないので。期間延長依頼を出した。認められた場合でも今月中には返事をしたい。</p>
+                        <h2 id="月24日月"><a href="#24">10月24日(月)</a> <a id="24"></a></h2>
+                        <p>免許更新。優良者講習会。前から思ってたんだけど、二輪と四輪が同じ道路を走るって、わりと無理がある気がする。</p>
+                        <p>とあるサイトにアクセスしようとしたら503。しかし、「Error 503 first byte timeout」ってメッセージ、初めてみたな。</p>
+                        <p>物理情報工学ソフトウェア開発演習、座学4回のレポート回答の返事をアップロードした。</p>
+                        <p>研究室訪問の準備した。</p>
+                        <p>論文修正。なぜかMacではコンパイルできない。graphicxでdvipdfmxオプションの指定が必要っぽいのだが、WSL(Ubuntu)では問題なくコンパイルできている。PTEPのスタイルでgraphicxをusepackageしているため、追加でオプションをつけてusepackageしてしまうとOption clashで落ちてしまう。うーむ。</p>
+                        <p>時間がないのでWSLで作業する。あー、なんかpush忘れしている。また、学校のマシンにBLASやLAPACKが入ってない。入れる。</p>
+                        <div class="sourceCode" id="cb7"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a><span class="fu">sudo</span> apt-get install libblas-dev liblapack-dev</span></code></pre></div>
+                        <h2 id="月23日日"><a href="#23">10月23日(日)</a> <a id="23"></a></h2>
+                        <p>プライベートな用事。</p>
+                        <p>レポートの採点。</p>
+                        <p>なんか土日に用事がはいることが多くて、疲れが溜まってしまう。</p>
+                        <h2 id="月22日土"><a href="#22">10月22日(土)</a> <a id="22"></a></h2>
+                        <p>論文修正の準備。間に合うかギリギリ。</p>
+                        <p>レポートの採点。</p>
+                        <h2 id="月21日金"><a href="#21">10月21日(金)</a> <a id="21"></a></h2>
+                        <p>東大の竹内さんの講義がYouTubeに上がっていた。</p>
+                        <p><a href="https://www.youtube.com/watch?v=lRA3y6LYl7A">QP2022 Lecture 5. Kardar-Parisi-Zhang universality class</a></p>
+                        <p>Slidoという、匿名で質問できるようにするサービスを使っていたようだ。これ、よさそうだな。</p>
+                        <p>しばらく前にTwitterをほぼすべてのデバイスでログアウトし、家のPCでのみ閲覧するようにしたのだが、だいぶ精神衛生上よくなった。変な人はフォローしていないが、どうしても「人の生の声」って刺激が強い。同様にYahooコメントや「はてなブックマーク」のコメントも刺激が強いのでみないようにしている。昔はYahooニュースは127.0.0.1にしてアクセスできないようにしていたのだが、いまは学生さんがRSSを読む研究をしているので、一応開けている。</p>
+                        <p>物理情報工学ソフトウェア開発演習、第3回のレポートの返信書いてたのにアップロードを忘れてた。慌ててアップロードする。あと、いま気がついたが、第4回のレポートの締切日、一日間違えて長く設定してしまった。本当は木曜日締め切り、金曜日に採点予定だったのだが、金曜締め切りにしてしまった。仕方ない、土曜日見るか。</p>
+                        <p>プログラミング基礎同演習のレポートの採点ができなかった。</p>
+                        <p>GitHub演習、PC室がネットワークドライブが割り当てられているがゆえに、「フォルダを開く」が難しい。もともと出版を睨んで慶応独自の記述を避けていたのだが、もはやそうも言ってられないので修正しよう。</p>
+                        <h2 id="月20日木"><a href="#20">10月20日(木)</a> <a id="20"></a></h2>
+                        <p>今日も体調がいまいち。</p>
+                        <p>Pythonの辞書型、普通はdotアクセスができないのだが、<a href="https://zenn.dev/kazuhito/articles/dbe6bbf8ce3ef2">クラスでラップするだけ</a>でできるようになるらしい。</p>
+                        <div class="sourceCode" id="cb8"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a><span class="kw">class</span> DictDotNotation(<span class="bu">dict</span>): </span>
+                        <span id="cb8-2"><a href="#cb8-2" aria-hidden="true"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, <span class="op">*</span>args, <span class="op">**</span>kwargs): </span>
+                        <span id="cb8-3"><a href="#cb8-3" aria-hidden="true"></a>        <span class="bu">super</span>().<span class="fu">__init__</span>(<span class="op">*</span>args, <span class="op">**</span>kwargs) </span>
+                        <span id="cb8-4"><a href="#cb8-4" aria-hidden="true"></a>        <span class="va">self</span>.__dict__ <span class="op">=</span> <span class="va">self</span> </span></code></pre></div>
+                        <p>確かにできる。なぜだ？</p>
+                        <p>あー、クラスのプロパティが<code>__dict__</code>に入っているので、それをそのまま辞書として使っているのか。</p>
+                        <p>研究室ミーティング。発表がどちらも素晴らしい。</p>
+                        <p>輪講。</p>
+                        <p>卒論のガイダンスは11月中旬から終わりにやることに。忘れないようにしないと。</p>
+                        <p>ようやく英語が読める頭になってきた。今週本当に調子が悪かった。まだ体調は悪いが、頭は戻りつつある。</p>
+                        <p>どうも体調の位相と頭の調子の位相がずれている気がする。体調が悪化する時、先に頭の調子が悪くなり、その後体調が悪化する、ということがよく起きる。今日、体調はまだ悪いが、頭が回り始めたのを体感している。つまり、調子が悪くなるのも、復帰するのも、頭が先、ということになる。およそ24時間くらい先行しているのかなぁ。</p>
+                        <h2 id="月19日水"><a href="#19">10月19日(水)</a> <a id="19"></a></h2>
+                        <p>最近、マスク反対派によるマスク狩りがあるとのこと。マスク狩りって、ヘル・ミッショネルズか・・・</p>
+                        <p>会議*2。</p>
+                        <p>だめだ。調子が非常に悪い。まったく頭が回らなかった。今日くらいしか論文修正のためのまとまった時間が取れなかったのだが・・・</p>
+                        <p>もうこの論文ダメかなぁ(弱気)。</p>
+                        <p>分子動力学法100本ノックとか考えたけど、よく考えたら、分子動力学法の結果の解析100本ノックとかの方が良さそう。</p>
+                        <ul>
+                        <li>温度関連
+                        <ul>
+                        <li>コンフィグレーションから温度を計算せよ</li>
+                        <li>コンフィグレーション(lammpstrj)から温度の時間発展を計算せよ</li>
+                        <li>コンフィグレーションから状態温度を計算せよ</li>
+                        </ul></li>
+                        <li>密度関連
+                        <ul>
+                        <li>界面構造の計算</li>
+                        <li>液滴カウント</li>
+                        <li>気泡の可視化(例えば気泡中心推定)</li>
+                        <li>気泡の数のカウント</li>
+                        </ul></li>
+                        </ul>
+                        <h2 id="月18日火"><a href="#18">10月18日(火)</a> <a id="18"></a></h2>
+                        <p>QLEAPのセミナー。</p>
+                        <p>プログラミング基礎同演習。ちょっと雑談が長かった。反省。</p>
+                        <p>Stable diffusionを試す。楽しい。</p>
+                        <p>研究室サーバにdocker-composeを入れる。なんｋな</p>
+                        <div class="sourceCode" id="cb9"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a><span class="fu">wget</span> https://github.com/docker/compose/releases/download/v2.11.2/docker-compose-linux-x86_64</span>
+                        <span id="cb9-2"><a href="#cb9-2" aria-hidden="true"></a><span class="fu">sudo</span> cp docker-compose-linux-x86_64 /usr/local/bin/docker-compose</span></code></pre></div>
+                        <p>うまくいかない。dockerが古いっぽい。</p>
+                        <div class="sourceCode" id="cb10"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true"></a><span class="fu">sudo</span> yum update</span></code></pre></div>
+                        <p>しまった、うっかりupdateしてしまった。Intelコンパイラのパスがまた壊れるかもしれない。</p>
+                        <p>バックアップ代わりにメモ。</p>
+                        <div class="sourceCode" id="cb11"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true"></a><span class="bu">source</span> /opt/intel/bin/compilervars.sh -arch intel64 -platform linux</span>
+                        <span id="cb11-2"><a href="#cb11-2" aria-hidden="true"></a><span class="va">PATH=</span>/opt/openmpi/bin:<span class="va">$PATH</span></span>
+                        <span id="cb11-3"><a href="#cb11-3" aria-hidden="true"></a><span class="va">PATH=</span>/opt/intel/compilers_and_libraries/linux/bin/intel64:<span class="va">$PATH</span></span>
+                        <span id="cb11-4"><a href="#cb11-4" aria-hidden="true"></a><span class="va">LD_LIBRARY_PATH=</span>/opt/openmpi/lib:<span class="va">$LD_LIBRARY_PATH</span></span>
+                        <span id="cb11-5"><a href="#cb11-5" aria-hidden="true"></a><span class="va">LD_LIBRARY_PATH=$LD_LIBRARY_PATH</span>:/opt/intel/compilers_and_libraries/linux/lib/intel64</span>
+                        <span id="cb11-6"><a href="#cb11-6" aria-hidden="true"></a><span class="va">MANPATH=</span>/opt/openmpi/share/man:<span class="va">$MANPATH</span></span>
+                        <span id="cb11-7"><a href="#cb11-7" aria-hidden="true"></a><span class="bu">export</span> <span class="va">PATH</span> <span class="va">LD_LIBRARY_PATH</span> <span class="va">MANPATH</span></span>
+                        <span id="cb11-8"><a href="#cb11-8" aria-hidden="true"></a><span class="va">OMPI_MCA_btl_base_warn_component_unused=</span>0</span>
+                        <span id="cb11-9"><a href="#cb11-9" aria-hidden="true"></a><span class="bu">export</span> <span class="va">OMPI_MCA_btl_base_warn_component_unused</span></span></code></pre></div>
+                        <p>大丈夫っぽい。</p>
+                        <div class="sourceCode" id="cb12"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true"></a>$ <span class="ex">docker</span> --version</span>
+                        <span id="cb12-2"><a href="#cb12-2" aria-hidden="true"></a><span class="ex">Docker</span> version 20.10.19, build d85ef84</span></code></pre></div>
+                        <div class="sourceCode" id="cb13"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true"></a><span class="bu">cd</span> stable-diffusion-webui-docker</span>
+                        <span id="cb13-2"><a href="#cb13-2" aria-hidden="true"></a><span class="ex">docker-compose</span> --profile download up --build</span>
+                        <span id="cb13-3"><a href="#cb13-3" aria-hidden="true"></a><span class="ex">docker-compose</span> --profile auto up --build</span></code></pre></div>
+                        <p><code>docker-compuse up</code>に失敗して、エラーメッセージで検索したら、<a href="https://zenn.dev/kaityo256/scraps/c335ac8c76c5e1">自分のメモ</a>がひっかかって解決。半年前の自分は現在の自分より賢いっぽい。</p>
+                        <p>ローカルでやろう。</p>
+                        <p>Macにdocker composeをインストール。</p>
+                        <div class="sourceCode" id="cb14"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true"></a>$ <span class="fu">sudo</span> curl -L https://github.com/docker/compose/releases/download/v2.11.2/docker-compose-<span class="kw">`</span><span class="fu">uname</span> -s<span class="kw">`</span>-<span class="kw">`</span><span class="fu">uname</span> -m<span class="kw">`</span> -o /usr/local/bin/docker-compose</span>
+                        <span id="cb14-2"><a href="#cb14-2" aria-hidden="true"></a><span class="fu">sudo</span> chmod +x /usr/local/bin/docker-compose    </span></code></pre></div>
+                        <div class="sourceCode" id="cb15"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true"></a><span class="fu">git</span> clone https://github.com/AbdBarho/stable-diffusion-webui-docker.git</span>
+                        <span id="cb15-2"><a href="#cb15-2" aria-hidden="true"></a><span class="bu">cd</span> stable-diffusion-webui-docker</span>
+                        <span id="cb15-3"><a href="#cb15-3" aria-hidden="true"></a><span class="ex">docker-compose</span> --profile download up --build</span>
+                        <span id="cb15-4"><a href="#cb15-4" aria-hidden="true"></a><span class="ex">docker-compose</span> --profile auto-cpu up --build</span></code></pre></div>
+                        <p>ダウンロードに時間かかるな。</p>
+                        <p>GPUでやろうとしたらnvidia-mlのシェアードライブラリが見つからないとかいってきたので、<code>auto-cpu</code>で実行してみた。</p>
+                        <div class="sourceCode" id="cb16"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true"></a>exited with code 137</span></code></pre></div>
+                        <p>残念、うまく動かなかった。</p>
+                        <h2 id="月17日月"><a href="#17">10月17日(月)</a> <a id="17"></a></h2>
+                        <p>講義の準備をして、教室に行って、しばらく講義をして、ふと教室を見るとそこには誰もいない。そんな夢を見た。いい年こいて、まだ講義の前は緊張する。</p>
+                        <p>今季のGitHub演習の実習初日。昨年のハマりポイントを確認してスライドを修正しておく。</p>
+                        <h2 id="月16日日"><a href="#16">10月16日(日)</a> <a id="16"></a></h2>
+                        <p>レベルアップ。</p>
+                        <h2 id="月15日土"><a href="#15">10月15日(土)</a> <a id="15"></a></h2>
+                        <p>疲れた。</p>
+                        <p>たまにネットでバズる指導教員って、学生からみてどうなんだろうね？</p>
+                        <h2 id="月14日金"><a href="#14">10月14日(金)</a> <a id="14"></a></h2>
+                        <p>GitHub演習のため、自分で実際にPC室に行って実習をする。概ね問題ないが、昨年、学生さんがハマったところを思い出しながら少し修正。とりあえず二週分は作った。</p>
+                        <p>我ながらMakefileがよくかけてて、Markdownガリガリかいてmake一発でPandoc経由でPDFができるの便利だ。</p>
+                        <p>ものすごくどうでも良い、しかもテキストで済む情報を、わざわざパワーポイントファイルにして、しかもパスワードつきZipにして送ってくる意味とは？</p>
+                        <p>レポートの採点が本格的に始まって、時間が苦しい。論文の直し時間をどうしようか。</p>
+                        <h2 id="月13日木"><a href="#13">10月13日(木)</a> <a id="13"></a></h2>
+                        <p>またしばらくSNSと距離を置くことにした。なんか知らないけど、世の中には「世の中の不条理」と戦う人が多くて、そういう人を避けてても、どうしても目に入ってしまって疲れてしまう。</p>
+                        <p>朝から会議。</p>
+                        <p>スマホにGitHub Mobileをインストール、登録。学生さんが使ってるのを見て、そういうのもあるのか、と思って見てたら、ちょうどGitHubからアカウントセッティングのリマインドが来たので、この機会に入れた。多要素認証デバイスとしてスマホが使えるようになった。これまでGoogle Authenticatorを使っていたが、これでアプリで認証するだけで良くなったはず？</p>
+                        <p>Gitmojiといい、GitHub Mobileといい、学生さんから教わることが多いな。こういうのがあるので、情報系科目は若い教員に任せた方がいいんだよな・・・</p>
+                        <p>あと、この機会にGoogle Oneのアップグレードをした。PCでやる方法がいまいちピンとこなかったのでスマホで。とりあえず100GBの年単位定期購入。これで課金しているサービスが</p>
+                        <ul>
+                        <li>GitHub</li>
+                        <li>Google One</li>
+                        <li>MoneyForward</li>
+                        <li>SpeakerDeck</li>
+                        <li>Grammerly</li>
+                        <li>Slack</li>
+                        </ul>
+                        <p>となった。うーむ。</p>
+                        <p>5億年ぶりくらいに個人ウェブサイト更新。Slim+Yamlでやってるが、いろいろ面倒。なんか、さくらのサーバでbundleがうまく動いていない感じがする。ログインしてmakeしたらできる。パスの問題かなぁ。面倒だし、更新頻度が低いので放置。</p>
+                        <p>研究室ミーティング。</p>
+                        <p>政府調達にひっかかるスパコンの定義。今は<a href="https://www.cas.go.jp/jp/seisaku/chotatsu/pdf/r2_siryou2.pdf">2.88 PF</a>になっているとのこと。</p>
+                        <p>最新のGPGPUが倍精度で30TF、単精度で60TFとからしいので、倍精度なら96枚、単精度なら48枚でひっかかる。まぁ、ラック一本ではいかなそうかな。</p>
+                        <p><a href="https://doi.org/10.1063/5.0106036">共著論文が出版された</a>。慶応に来て初めての共著でめでたい(といってもがんばったのはほとんど共著者だけど)。もう一つもすんなり通るといいな。</p>
+                        <h2 id="月12日水"><a href="#12">10月12日(水)</a> <a id="12"></a></h2>
+                        <p>物理情報工学ソフトウェア開発演習のレポートを採点した。</p>
+                        <p>論文再投稿した。</p>
+                        <p>もう一つの塩漬け論文のロード。うーん、秋学期が始まってしまったので、作業時間が取れない。</p>
+                        <p>21時から22時まで会議。他の人は22時半から別の会議あるらしい。マジか。</p>
+                        <h2 id="月11日火"><a href="#11">10月11日(火)</a> <a id="11"></a></h2>
+                        <p>ネットの広告はターゲット型だから、たとえば「お色気系の広告が多い」という愚痴は、「普段お色気系の動画を見ている」という告白であり恥ずかしい、という指摘。他のテーマについては成り立つと思うが、お色気系については違うのかな、という気がする。YouTubeにはじめてショートが実装された時、いわゆるお色気系ばかりでげんなりしたことがある。自分の履歴が悪いのかとシークレットモードで入り直したが、やはりお色気系ばかりであった。おそらく、単純に再生回数が多いため、情報がない場合はとりあえずお色気系をレコメンドしてしまうのだと思われる。ブラウザの設定でネットのターゲット広告の追跡を遮断したら、お色気系が非常に増えた気がして、逆に追跡を許可した経緯がある。</p>
+                        <p>なんだかいろいろ考えてしまう。</p>
+                        <h2 id="月10日月"><a href="#10">10月10日(月)</a> <a id="10"></a></h2>
+                        <p>とある技術に対して、ある誤解が広まっている時、我々はどうするべきか？</p>
+                        <p>こういう時に「警察」が発生する。この言葉遣いをしている人は、この技術を正しく理解していない。正しく理解していない人が発信する情報は害悪である。であるからちゃんと指摘するべきである。云々。</p>
+                        <p>間違いを指摘すること自体は大事だと思うし、間違いを発信することが良いことであるとも思わないが、エンジニアならば、「なぜ誤解が広まっているのか？」「その誤解はどのようにすれば解決できるのか」を考えた方が有益であろう。</p>
+                        <p>ある装置があり、スイッチAを押してからスイッチBを押さないと機械が壊れるとする。しかし、スイッチBを先に押してしまう事故が頻発した時、「この装置の仕組みを考えた時、スイッチBを先に押すのは無知の現れである。したがってそういう人はこの装置を使うべきでない」という主張には賛同できない。なぜスイッチAよりも先にスイッチBを押してしまうのか、その原因を考え、根本解決をすべきであろう。</p>
+                        <p>学生さんの論文の再投稿準備完了。水曜に再投稿。</p>
+                        <p>学生さんの論文のリポジトリ作った。がんばった。</p>
+                        <h2 id="月09日日"><a href="#09">10月09日(日)</a> <a id="09"></a></h2>
+                        <p><a href="https://zenn.dev/kaityo256/articles/my_first_machine_learning">機械学習でパイこね変換と乱数列を区別させるサンプル</a>書いた。</p>
+                        <h2 id="月08日土"><a href="#08">10月08日(土)</a> <a id="08"></a></h2>
+                        <p>何してたっけ？</p>
+                        <p>思い出した。レポートの採点だ。なんかすごい時間かかったぞ。</p>
+                        <p>あと、物理情報工学ソフトウェア開発演習のスライドが間違ってたから修正してたんだ。</p>
+                        <h2 id="月07日金"><a href="#07">10月07日(金)</a> <a id="07"></a></h2>
+                        <p>学生さんの論文にコメント入れて返した。</p>
+                        <p>なんか通信が重い、プリンタにつながらないと思ってたら、部屋のネットワークではなくeduroamにつながってた・・・</p>
+                        <p>GitHub演習の班分け表作った。</p>
+                        <p>またgit push忘れて家に帰った orz</p>
+                        <p>学生さんが指摘してくれたが、GitHub演習のスライドにミス。ついでにスライドマスタを修正したので、座学スライドを全てSpeakerdeckにアップロードしなおす。演習はまだ修正する可能性がある。</p>
+                        <p>「シミュレーション工学」もスライドをアップロードしなければ。</p>
+                        <h2 id="月06日木"><a href="#06">10月06日(木)</a> <a id="06"></a></h2>
+                        <p>車のラジオで聞いた、縄文時代をテーマにしたフリーペーパー<a href="http://jomonzine.com/index.html">縄文ZINE</a>。見てみたら想像してたのよりはるかにしっかりしたものだった。もちろんPDFで全部見られる。面白い。</p>
+                        <p>登さんの資料<a href="https://www.digital.go.jp/assets/contents/node/basic_page/field_ref_resources/b1ae707%5B…%5D03_meeting_technology_based_regulatory_reform_outline_05.pdf">テクノロジーマップ、技術カタログの在り方について</a>が面白い。技術記事の果たす役割について。</p>
+                        <ul>
+                        <li><ol type="1">
+                        <li>技術的に正確であること。</li>
+                        </ol></li>
+                        <li><ol start="2" type="1">
+                        <li>広さと深さを兼ね備えていること。読み手が知らないことが豊富に書かれていること。</li>
+                        </ol></li>
+                        <li><ol start="3" type="1">
+                        <li>日本語の文体は、一定の品質を満たしており、専門的で、厳密で、矛盾なく、程良く構造化され</li>
+                        </ol></li>
+                        <li>ているものの、論文読解のような多大なエネルギーが要らない程度に適度に平易化・冗長化され</li>
+                        <li>ているという、誠に絶妙なバランスを、うまく突いていること。</li>
+                        <li><ol start="4" type="1">
+                        <li>内容は、単なる表面的な使い方や解説だけでなく、背後の概念や内部構造の仕組み、その技術を作った人々の思想が含まれていること。</li>
+                        </ol></li>
+                        <li><ol start="5" type="1">
+                        <li>アプリ等の高レイヤだけでなく、インフラやハードウェア等、物理・具体に近い話も含むこと。</li>
+                        </ol></li>
+                        <li><ol start="6" type="1">
+                        <li>ジャンク・フード記事 (How-to 記事) ではなく、咀嚼するのに少々苦労を要するものの、単位時 間あたり摂取栄養素の量が多く、多様性に富み、読みながら味わう楽しさが読むことの苦労を超えて、つい夜中まで時間を忘れて自然に最後まで没頭して深く読んでしまう記事であること。</li>
+                        </ol></li>
+                        <li><ol start="7" type="1">
+                        <li>書き手が技術集団の中で特に高い能力を有していそうであることが一瞥するだけでわかること。</li>
+                        </ol></li>
+                        <li><ol start="8" type="1">
+                        <li>読み手の頭脳に何らかの新たな思考回路が形成される期待が感じられる記事であること。</li>
+                        </ol></li>
+                        <li><ol start="9" type="1">
+                        <li>読み手が、「これはすごい」、「よくこんなことが実現できたものだ」と驚き、未来の仕事のやり方が変わる期待を得、自主的に周囲に伝道したくなるような内容であること。</li>
+                        </ol></li>
+                        <li>(10)技術的な内容に始終せず、人間的・社会的側面への革命的影響 (例: 技術が自組織内の政治的・権力的構造及び社会全体に与える影響) についても述べていること (読み手は、自らその技術を用いることにより、技術に基づく組織内の革新の一翼を担うことができる気分になる) 。</li>
+                        <li>(11)使い方・動作例が載っており、すぐに試してみたくなり、実際にすぐに試せること。</li>
+                        <li>(12)遊び心的な内容 (おもしろ文章、秘密の写真やこぼれ話) が、適度に点在配置されていること。</li>
+                        </ul>
+                        <p>特に6番の要求が高い。</p>
+                        <p>MacにMS Officeをインストール。前からやろうと思っていた予算管理シートのGoogle Spreadsheet化。これまではローカルでエクセル、それをSubversionで管理してたのだが、これを外出ししようかと。もちろんGoogleのことだから、いつサービスが死ぬかわからないけれど、そうしたらまたダウンロードすれば良いし。</p>
+                        <p>あとは研究室WikiをGitHubに逃したい。</p>
+                        <p>1年生の物理学の教科書「物理学A、B」を購入。Aが一粒子系の力学、Bが中心力・多粒子系・剛体。これを参考に来年の力学の講義を作る。早めに手をつけないと大変なことになるぞ。</p>
+                        <p><a href="https://github.com/kaityo256/xbyak_aarch64_handson">xbyak_aarch64_handson</a>に海外の方からPRが来た。がんばって英語で書いて見るもんだな。</p>
+                        <p>gitmoji、慣れたらgitmoji使わずに、最初から<code>git commit -m :memo: diary</code>みたいに書くようになるな。</p>
+                        <h2 id="月05日水"><a href="#05">10月05日(水)</a> <a id="05"></a></h2>
+                        <p>MacにLaTeXをインストール。本当に<a href="https://github.com/kaityo256/lab_startup">数値計算用PCセットアップ資料</a>が便利。</p>
+                        <p>ついでにMacにもgitmojiをインストール。</p>
+                        <div class="sourceCode" id="cb17"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true"></a><span class="ex">curl</span> -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh <span class="kw">|</span> <span class="fu">bash</span></span>
+                        <span id="cb17-2"><a href="#cb17-2" aria-hidden="true"></a><span class="ex">nvm</span> install 14</span>
+                        <span id="cb17-3"><a href="#cb17-3" aria-hidden="true"></a><span class="ex">npm</span> i -g gitmoji-cli</span></code></pre></div>
+                        <p>NVM使うと簡単だなぁ。</p>
+                        <p>MacでLaTeX環境が整った。らくちん。これでMacで論文が書ける。</p>
+                        <p>「ニュースサイトは、ニュースを提供するというよりも、ニュースに対してまるで自分が著名人/知識人であるかのように気持ちよくコメントをさせることが大事」みたいな意見を見かけて、なるほどな、と思った。</p>
+                        <p>ニュースのコメントサイトには、「なんでそんなに自信満々なんだろう」という素人コメントが多い。っていうかニュースに限らずはてなブックマークでもTwitterでもそう。ニュースに対してなにかを言う、というのは、現実の「何者にもなれなかった自分」を忘れさせる、まるで「自分が何者かであるかのような錯覚」をさせる、麻薬のようなものなのであろう。</p>
+                        <p>技術記事を書いて「いいね」を稼ぐことにも、なにか麻薬的な快楽があるわけで、そのあたりは同根なのかもしれない。</p>
+                        <p>査読への返事と論文修正、一つ終わらせたぞ。こういうのは半日空いてないと厳しい。査読への返事がもう一つ、待ち行列にある論文が一つ、リポジトリを作らなければならないのが一つ。なかなか厳しい。</p>
+                        <p>1年生の物理の教科書を注文した。</p>
+                        <p>gitmoji、単に見た目が楽しいという以外に、「その絵文字に対応する以外の修正をコミットに含めないように気をつける」効果があるのか。いわゆる「ごった煮コミット」を心理的に防ぐ、と。なるほど。</p>
+                        <p>まぁ、この日記は全部documentにしちゃうけど。</p>
+                        <h2 id="月04日火"><a href="#04">10月04日(火)</a> <a id="04"></a></h2>
+                        <p>gitmojiを使おうとしたら、npmがエラーを出す。アップグレードしようとしてもエラー。</p>
+                        <div class="sourceCode" id="cb18"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true"></a>$ <span class="fu">sudo</span> npm install -g　npm</span>
+                        <span id="cb18-2"><a href="#cb18-2" aria-hidden="true"></a><span class="ex">ERROR</span>: npm is known not to run on Node.js v10.19.0</span>
+                        <span id="cb18-3"><a href="#cb18-3" aria-hidden="true"></a><span class="ex">You</span><span class="st">&#39;ll need to upgrade to a newer Node.js version in order to use this</span></span>
+                        <span id="cb18-4"><a href="#cb18-4" aria-hidden="true"></a><span class="st">version of npm. You can find the latest version at https://nodejs.org/</span></span></code></pre></div>
+                        <div class="sourceCode" id="cb19"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true"></a><span class="fu">sudo</span> apt remove --purge nodejs npm</span>
+                        <span id="cb19-2"><a href="#cb19-2" aria-hidden="true"></a><span class="ex">apt</span> install npm nodejs</span></code></pre></div>
+                        <p>まだダメっぽい。</p>
+                        <div class="sourceCode" id="cb20"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true"></a><span class="ex">curl</span> -sL https://deb.nodesource.com/setup_10.x <span class="kw">|</span> <span class="fu">sudo</span> -E bash -</span></code></pre></div>
+                        <p>v.10も古いと警告が出る。NVMを入れる。</p>
+                        <div class="sourceCode" id="cb21"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true"></a><span class="ex">curl</span> -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh <span class="kw">|</span> <span class="fu">bash</span></span>
+                        <span id="cb21-2"><a href="#cb21-2" aria-hidden="true"></a><span class="bu">source</span> .zshrc</span></code></pre></div>
+                        <p>v14系最新を入れる。</p>
+                        <div class="sourceCode" id="cb22"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true"></a><span class="ex">nvm</span> install 14</span></code></pre></div>
+                        <p>gitmojiを入れる。</p>
+                        <div class="sourceCode" id="cb23"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true"></a><span class="ex">npm</span> i -g gitmoji-cli</span></code></pre></div>
+                        <p>入った。文句を言われなくなった。</p>
+                        <p>gitmojiを使ってみる。</p>
+                        <div class="sourceCode" id="cb24"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true"></a><span class="fu">git</span> add .</span>
+                        <span id="cb24-2"><a href="#cb24-2" aria-hidden="true"></a><span class="ex">gitmoji</span> -c</span></code></pre></div>
+                        <p>「Choose a gitmoji」と出てくるので、カーソルで選ぶ。ここで文字を入れるとフィルタリングできる。次に「 Enter the commit title」とでるが、これが<code>git commit -m</code>に食わせる奴。その後のcommit messageは空白でOK。</p>
+                        <p>なんかNode.jsとnpmを混同してたぞ。Node.jsはJavaScriptの処理系であり、npmはNode Package Managerの略。「Node.jsのバージョンが古い」というエラーに対して、npmのバージョンを上げようと苦労してた。npmを実行した時に出たエラーだったので勘違いした。</p>
+                        <p>プログラミング基礎同演習の講義。全員揃うと、結構教室が狭く感じる。課題はかなり少ないと思ったが、結構最後まで粘った人が多かった。WordやPDFのトラブルが多かったかな。来週からは改善されるであろう。</p>
+                        <p>矢上から日吉まで歩くと疲れる。アップダウンがあるのがきつい。ドアツードアで15分くらいかな。</p>
+                        <p>論文のProofが来たので確認する。</p>
+                        <h2 id="月03日月"><a href="#03">10月03日(月)</a> <a id="03"></a></h2>
+                        <p>PandocのMathJaxが働かない。テンプレートの</p>
+                        <div class="sourceCode" id="cb25"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true"></a>$if(math)$</span>
+                        <span id="cb25-2"><a href="#cb25-2" aria-hidden="true"></a>  $math$</span>
+                        <span id="cb25-3"><a href="#cb25-3" aria-hidden="true"></a>$endif$</span></code></pre></div>
+                        <p>が正しくないっぽい。手動でMathJax指定したら動いたが、Pandocのバージョン上げるのが正しいよな。</p>
+                        <div class="sourceCode" id="cb26"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true"></a>pandoc 2.5</span>
+                        <span id="cb26-2"><a href="#cb26-2" aria-hidden="true"></a>Compiled with pandoc-types 1.17.5.4, texmath 0.11.2.2, skylighting 0.7.7</span>
+                        <span id="cb26-3"><a href="#cb26-3" aria-hidden="true"></a>Default user data directory: /home/watanabe/.pandoc</span>
+                        <span id="cb26-4"><a href="#cb26-4" aria-hidden="true"></a>Copyright (C) 2006-2018 John MacFarlane</span>
+                        <span id="cb26-5"><a href="#cb26-5" aria-hidden="true"></a>Web:  http://pandoc.org</span>
+                        <span id="cb26-6"><a href="#cb26-6" aria-hidden="true"></a>This is free software; see the source for copying conditions.</span>
+                        <span id="cb26-7"><a href="#cb26-7" aria-hidden="true"></a>There is no warranty, not even for merchantability or fitness</span>
+                        <span id="cb26-8"><a href="#cb26-8" aria-hidden="true"></a>for a particular purpose.</span></code></pre></div>
+                        <div class="sourceCode" id="cb27"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true"></a>pandoc 2.5</span>
+                        <span id="cb27-2"><a href="#cb27-2" aria-hidden="true"></a>Compiled with pandoc-types 1.17.5.4, texmath 0.11.2.2, skylighting 0.7.7</span>
+                        <span id="cb27-3"><a href="#cb27-3" aria-hidden="true"></a>Default user data directory: /home/watanabe/.pandoc</span>
+                        <span id="cb27-4"><a href="#cb27-4" aria-hidden="true"></a>Copyright (C) 2006-2018 John MacFarlane</span>
+                        <span id="cb27-5"><a href="#cb27-5" aria-hidden="true"></a>Web:  http://pandoc.org</span>
+                        <span id="cb27-6"><a href="#cb27-6" aria-hidden="true"></a>This is free software; see the source for copying conditions.</span>
+                        <span id="cb27-7"><a href="#cb27-7" aria-hidden="true"></a>There is no warranty, not even for merchantability or fitness</span>
+                        <span id="cb27-8"><a href="#cb27-8" aria-hidden="true"></a>for a particular purpose.</span></code></pre></div>
+                        <p>apt upgradeしても変わらんな。結局直接</p>
+                        <div class="sourceCode" id="cb28"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true"></a><span class="kw">&lt;script</span><span class="ot"> type=</span><span class="st">&quot;text/javascript&quot;</span><span class="ot"> id=</span><span class="st">&quot;MathJax-script&quot;</span><span class="ot"> async</span></span>
+                        <span id="cb28-2"><a href="#cb28-2" aria-hidden="true"></a><span class="ot">            src=</span><span class="st">&quot;https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span></span></code></pre></div>
+                        <p>と書いた。</p>
+                        <h2 id="月02日日"><a href="#02">10月02日(日)</a> <a id="02"></a></h2>
+                        <p>疲れた。土日に毎週なんらかのイベントが入るので、疲れが取れないまま平日に突入する。平日より土日の方が疲れる。</p>
+                        <h2 id="月01日土"><a href="#01">10月01日(土)</a> <a id="01"></a></h2>
+                        <p>学生さんの修論のコミットメッセージで「Semantic Commit Messages」というのを知った。</p>
+                        <div class="sourceCode" id="cb29"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true"></a>feat: add hat wobble</span>
+                        <span id="cb29-2"><a href="#cb29-2" aria-hidden="true"></a>^--^  ^------------^</span>
+                        <span id="cb29-3"><a href="#cb29-3" aria-hidden="true"></a>|     |</span>
+                        <span id="cb29-4"><a href="#cb29-4" aria-hidden="true"></a>|     +-&gt; Summary in present tense.</span>
+                        <span id="cb29-5"><a href="#cb29-5" aria-hidden="true"></a>|</span>
+                        <span id="cb29-6"><a href="#cb29-6" aria-hidden="true"></a>+-------&gt; Type: chore, docs, feat, fix, refactor, style, or test.</span></code></pre></div>
+                        <p>GitHubにコミットすると、絵文字が出る？</p>
+                        <p>あ、なるほど「:tada: initial commit」のように、絵文字を指定しているのか。</p>
+                        <p>論文を一つコメントを入れて返した。コミットログに絵文字をつけるの、ちょっと楽しいな。</p>
           </article>
   </body>
 

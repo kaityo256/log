@@ -21,293 +21,293 @@
   <body>
     <article class="markdown-body">
                         <h1 id="年4月">2021年4月</h1>
-<p><a href="index.html">ログ一覧</a></p>
-<h2 id="月30日金"><a href="#30">04月30日(金)</a> <a id="30"></a></h2>
-<p>1on1ミーティング。物理情報工学特別講義。メールとか。</p>
-<p>いろいろバタバタしている。</p>
-<h2 id="月29日木"><a href="#29">04月29日(木)</a> <a id="29"></a></h2>
-<p>NOP</p>
-<p>uchan_nosさんの「OS自作のすすめ2021」を見る。YouTube配信。自分が好きなこと(OS自作)を、こうして発信し、本も執筆し、フォロワーも生まれていて素晴らしい。僕もどんどん発信していかないと。</p>
-<h2 id="月28日水"><a href="#28">04月28日(水)</a> <a id="28"></a></h2>
-<p>なんか、GitHubのissue、しばらくするとトップページ(ダッシュボード？)から消えちゃうんだよね。それがとても悲しい。</p>
-<p>issueを潰すべく、途中まで解説を書いてみたが、わかりにくい感じになったので途中で放棄。いろいろ書きたくなっちゃうんだけど、大事なのは「何を書かないか」なんだよな。</p>
-<p>富岳の申請した。郵送が廃止されており、逆に焦った。</p>
-<p>レポートの採点した。</p>
-<p>メールもいっぱい書いた。</p>
-<h2 id="月27日火"><a href="#27">04月27日(火)</a> <a id="27"></a></h2>
-<p>ffmpeg、なんか思ったよりスレッド使ってるな。</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1"><span class="ex">ffmpeg</span> -i aiyoshi02.mp4 -threads 32 -crf 24 aiyoshi02_low.mp4  5570.32s user 132.12s system 1230% cpu 7:43.29 total</a></code></pre></div>
-<p>CPUは12コアちょっとしか使っていないのに、</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1">$ <span class="fu">cat</span> /proc/<span class="va">$(</span><span class="ex">pgrep</span> ffmpeg<span class="va">)</span>/status <span class="kw">|</span> <span class="fu">grep</span> Threads</a>
-<a class="sourceLine" id="cb2-2" title="2"><span class="ex">Threads</span>: 116</a></code></pre></div>
-<p>使っているのは116スレッド、マジか。</p>
-<p>mediainfoをCentOSに入れる。</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" title="1"><span class="fu">sudo</span> yum --enablerepo extras install epel-release </a>
-<a class="sourceLine" id="cb3-2" title="2"><span class="fu">sudo</span> yum install -y mediainfo-gui mediainfo libmediainfo   </a></code></pre></div>
-<p>mediainfoでHTML形式で出力すると、スレッド数が見える。</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode txt"><code class="sourceCode default"><a class="sourceLine" id="cb4-1" title="1">threads=32 / lookahead_threads=4 / sliced_threads=0</a></code></pre></div>
-<p>ふむ、わからん。</p>
-<p>実験。</p>
-<p>package-lock.json、消してはいけないらしい。npm installで作り直せるらしい。</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb5-1" title="1"><span class="fu">git</span> merge origin/main       <span class="co"># ここでpackage-lock.jsonがconflict</span></a>
-<a class="sourceLine" id="cb5-2" title="2"><span class="ex">npm</span> install zenn-cli@latest <span class="co"># package-lock.jsonを作り直す</span></a>
-<a class="sourceLine" id="cb5-3" title="3"><span class="fu">git</span> add package-lock.json</a>
-<a class="sourceLine" id="cb5-4" title="4"><span class="fu">git</span> commit -m <span class="st">&quot;updates package-lock.json&quot;</span></a></code></pre></div>
-<p>今の所これで問題はおきてない。</p>
-<ul>
-<li><a href="https://qiita.com/fj_yohei/items/7ca887a45e0855917279">package-lock.jsonについて知りたくても聞けなかったこと</a></li>
-</ul>
-<p>何が起きたかわかったぞ。</p>
-<ul>
-<li>二箇所でzenn-contentを作った</li>
-<li>あるところでzenn-cliのupdateをした (package-lock.jsonが更新)</li>
-<li>別のところでgit fetch;mergeしようとしたら package-lock.jsonがconflict</li>
-<li>mergeしようとした場所で <code>npm install zenn-cli@latest</code>でpackage-lock.jsonを作り直せば良い</li>
-</ul>
-<h2 id="月26日月"><a href="#26">04月26日(月)</a> <a id="26"></a></h2>
-<p>いろいろ気合いれてメールする。</p>
-<p>今週から学生さんとの1on1ミーティングが始まった。オンラインは便利ではあるが、こういうのは対面でやりたいよなぁ。</p>
-<p>柔道部の会長面談。公認の承認。</p>
-<p>物理情報工学特別講義のレポート採点した。採点手順もまとめた。</p>
-<p>企業との共同研究、参考にしようと思って積極的に共同研究している研究室のページ(他大)を見たんだけど、こんなに強気なの？って価格設定でびっくりした。</p>
-<p>学内ESETライセンス申請した。</p>
-<p>Linuxマシン、DHCPクライアントがIPアドレスをもらえない。</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb6-1" title="1"><span class="fu">sudo</span> dhclient -r</a>
-<a class="sourceLine" id="cb6-2" title="2"><span class="fu">sudo</span> dhclient</a></code></pre></div>
-<p>ダメだ、ダメだとやっていたが、問題は単にケーブルを間違ったところに指していたからだった。アホすぎだろ。</p>
-<p>物理情報工学講義のムービー低画質版作成。AMD EPYCマシンはアップデートに時間がかかって間に合わず。アップデート前に試すべきだった。</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb7-1" title="1"><span class="bu">time</span> ffmpeg -i aiyoshi02.mp4 -crf 24 aiyoshi02_low.mp4</a></code></pre></div>
-<p>講義編集してアップロードした。後でチェックして公開。</p>
-<p>僕は自己肯定感が強い方だと思うけれど、それでもたまに「この人なんでこんなに自信があるんだろう」と思う人を結構見かけるなぁ。自信があるのは良いことだと思うけど、なんというか、「自分は(いろんな意味で)重要人物である」という認識が強い。例えば「他の人にとって、自分が重要な人物だと思われている」ということを前提にした言動であるとか。</p>
-<p>SNSとかで反応されているうちにそういう認識にいたるのかな。SNSでなにかいうと、基本的には「そのとおり！」「よく言ってくれた」「さすが先生」みたいな反応があるので、それで勘違いするとか。もちろん批判的な意見も来るけど、それは「反論」で潰してるように見える。</p>
-<p>ミネソタの件、研究室のPIから<a href="https://lore.kernel.org/lkml/CAK8KejpUVLxmqp026JY7x5GzHU2YJLPU8SzTZUNXU2OXC70ZQQ@mail.gmail.com/">お詫びメール</a>が飛んでる。Gregはほぼ完全にスルー。</p>
-<p>「Fella」という単語を知った。「Fellow」の砕けた言い方で、「みんな」「奴」みたいな言葉。「Hey Guys」「You guys」のguyみたいな使い方をする。例のミネソタの論文の<a href="https://github.com/QiushiWu/qiushiwu.github.io/pull/6">Joke PR</a>で見つけた。興味深いので<a href="https://github.com/QiushiWu/qiushiwu.github.io/pull/6#issuecomment-824785220">引用</a>。</p>
-<blockquote>
-<p>Fellas, you are reading too much into a joke PR. The paper would have been a great venture into OSS vulnerabilities. <strong>had it not been in the stable branch of the largest OS in the world that billions of people rely on.</strong> Obviously the insights gained are very interesting and I would have liked if it had taken place legitimately w/o wasting days of volunteer time to look at patches and afterwards reverse the damage.</p>
-</blockquote>
-<p>げ、zenn-contentをgit fetch;mergeしたら、package-lock.jsonがconflictした。これ、適当にやるとまずそうなので、ちゃんと理解してから触ることにする。とりあえずは明日に延期。</p>
-<h2 id="月26日日"><a href="#25">04月26日(日)</a> <a id="25"></a></h2>
-<p>NOP</p>
-<p>朝早く娘に起こされたので、その時間でZennに記事書いた。<a href="https://zenn.dev/kaityo256/articles/legendre_dual">ルジャンドル変換と双対の話</a>。一ヶ月くらい前の輪講の余談だったかな。</p>
-<p>クレジットカード会社から連絡。カードの不正利用の疑いがあり、確認したかったとのこと。以前、家族カードの情報が漏れたという連絡があったが、それが悪用されたらしい。最初にカードが有効か確認の登録があり、その後モバイルＳｕｉｃａで換金したらしい。心当たりがないとのことで、カードは即時停止、モバイルＳｕｉｃａの分は保証してくれるとのこと。対応が早くて助かった。そんなことがあるんですね。</p>
-<h2 id="月24日土"><a href="#24">04月24日(土)</a> <a id="24"></a></h2>
-<p>NOP</p>
-<h2 id="月23日金"><a href="#23">04月23日(金)</a> <a id="23"></a></h2>
-<p>物理情報工学特別講義。</p>
-<h2 id="月22日木"><a href="#22">04月22日(木)</a> <a id="22"></a></h2>
-<p>物理情報工学特別講義の動画が大きい。</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb8-1" title="1"><span class="ex">ffmpeg</span> -i aiyoshi01.mp4 -crf 32 aiyoshi01_low.mp4</a></code></pre></div>
-<p>これで2.48GB→167.4MB。しかし、crf 32はさすがに大きすぎた(粗すぎた)。28で再挑戦。</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb9-1" title="1"><span class="ex">ffmpeg</span> -i aiyoshi01.mp4 -crf 28 aiyoshi01_low.mp4</a></code></pre></div>
-<p>2.48GB→237MB。良さげかな。もう少し下げても良さそう。</p>
-<p>Linuxのカーネルに意図的にバグを入れたパッチを出して、コミュニティーがどのように対応するかを調べるという<a href="https://github.com/QiushiWu/qiushiwu.github.io/blob/main/papers/OpenSourceInsecurity.pdf">研究</a>をしたミネソタ大学がLinux出禁に。</p>
-<p>LinuxカーネルのメンテナであるGregは<a href="https://lore.kernel.org/linux-nfs/YH%2FfM%2FTsbmcZzwnX@kroah.com/">カンカン</a>。</p>
-<p><a href="https://twitter.com/UMNComputerSci/status/1384948683821694976/photo/1">ミネソタ大学の声明</a></p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode txt"><code class="sourceCode default"><a class="sourceLine" id="cb10-1" title="1">Leadership in the University of Minnesota Department of Computer Science &amp; Engineering learned today about the details of research being conducted by one of its faculty members and graduate students into the security of the Linux Kernel.</a>
-<a class="sourceLine" id="cb10-2" title="2"></a>
-<a class="sourceLine" id="cb10-3" title="3">The research method used raised serious concerns in the Linux Kernel community and, as of today, this has resulted in the University being banned from contributing to the Linux Kernel.</a>
-<a class="sourceLine" id="cb10-4" title="4"></a>
-<a class="sourceLine" id="cb10-5" title="5">We take this situation extremely seriously. We have immediately suspended this line of research. We will investigate the research method &amp; the process by which this research method was approved, determine appropriate remedial action, &amp; safeguard against future issues, if needed.</a>
-<a class="sourceLine" id="cb10-6" title="6"></a>
-<a class="sourceLine" id="cb10-7" title="7">We will report our findings back to the community as soon as practical. </a>
-<a class="sourceLine" id="cb10-8" title="8"></a>
-<a class="sourceLine" id="cb10-9" title="9">Sincerely,</a>
-<a class="sourceLine" id="cb10-10" title="10"></a>
-<a class="sourceLine" id="cb10-11" title="11">Mats Heimdahl, Department Head</a>
-<a class="sourceLine" id="cb10-12" title="12">Loren Terveen, Associate Department Head</a></code></pre></div>
-<p>ハンズオン。MarkdownとLaTeX記法。</p>
-<p>ミネソタの件、PIによる<a href="https://github.com/QiushiWu/qiushiwu.github.io/blob/main/papers/OpenSourceInsecurity.pdf">声明</a>。</p>
-<p>研究室ミーティング。担当は僕で「科研費の通し方」。自分でも偉そうなタイトルだと思う。まぁ、知っていることは全部伝えたい。</p>
-<h2 id="月21日水"><a href="#21">04月21日(水)</a> <a id="21"></a></h2>
-<p>思ったんだけど、僕がHPC版未踏を作るしかない気がしてきた。竹内先生の役割を誰かが果たさなければならず、たぶんやるとしたら僕だろう。富岳を使ってなにかおもしろいことをやる人を募集。お金は出す。口は出さない。メンターは僕。やるとしたら計算時間とお金をどっかからとってこないといけない。もしやったら忙しくて死ぬの目に見えてるが、でもこれはやらないといけない気がする。</p>
-<p>物理情報工学特別講義の編集をしてて思ったんだけど、普通にiMovieの有償版を買うべきでは？と思ったが、どうもないらしい。Final Cut ProをXを使うのが妥当？</p>
-<p>git-promptとgit-completionを試そうかと思ったんだけど、とりあえず今のzshはgitコマンドのタブ補完にデフォルトで対応している？</p>
-<p>うーん、あるウェブアプリで、メッセージ一覧をクリックして表示しないと既読扱いにならないんだけど、「一覧→個別ページ→一覧」のSPA的遷移が遅くてすごくストレスだったので、一覧のリンクをホイールクリックでだーっとタブで開くことで全部見て既読にしたのだが、なんか間違ってる気がする。それぞれのメッセージが大きくなければ予めロードしてしまうのが正解？</p>
-<p>思ったんだけど、チューニング目的なら富岳じゃなくて名大の不老を使うほうが楽かもしれない。</p>
-<h2 id="月20日火"><a href="#20">04月20日(火)</a> <a id="20"></a></h2>
-<p>なんかいろいろうまくいかずに凹んでしまう。</p>
-<p>まぁ、少しずつでも前に進もう。</p>
-<p>午後から実験。3限のみの予定だったが、急遽4限のヘルプにも入った。</p>
-<h2 id="月19日月"><a href="#19">04月19日(月)</a> <a id="19"></a></h2>
-<p>いろいろ手続きとか。</p>
-<p>富岳のデータ、退避完了。とりあえずNASに。</p>
-<p>物理情報工学特別講義について確認メール。</p>
-<p>っていうか打ち合わせとメール処理だけで一日が終わったんだけど。</p>
-<h2 id="月18日日"><a href="#18">04月18日(日)</a> <a id="18"></a></h2>
-<p>NOP</p>
-<p>木曜日の日記をマージした。</p>
-<p>この土日で木曜日の発表の準備をしようと思ったけど無理だった。</p>
-<h2 id="月19日土"><a href="#19">04月19日(土)</a> <a id="19"></a></h2>
-<p>NOP</p>
-<p>少しでも仕事しようかと思ったが体力が……</p>
-<h2 id="月16日金"><a href="#16">04月16日(金)</a> <a id="16"></a></h2>
-<p>木曜日の日記をpushし忘れた。まぁ大したこと書いてないし、簡単にマージ可能だからいいけど。</p>
-<p>重い腰を上げてWikiのバックアップ。dumpプラグインだと wiki, attach, backupを選んでtar.gzでダウンロード可能。ただしウェブから管理者パスワード入力が必要。ログインしてディレクトリごと固めると現在61MBですか。cronで毎日やるならローテートは必須ですな。面倒だなぁ。</p>
-<p>物理情報工学特別講義。なんとかなったが、途中で無線マイクの電池が切れるハプニングが。</p>
-<p>後で配線図を作っておくか。</p>
-<h2 id="月15日木"><a href="#15">04月15日(木)</a> <a id="15"></a></h2>
-<p>ハンズオン。研究打合せ。研究室ミーティング。以上、よろしくお願いいたします。</p>
-<p>なぜかM1 Macでffmpegが動作しない問題発生。要調査。</p>
-<h2 id="月14日水"><a href="#14">04月14日(水)</a> <a id="14"></a></h2>
-<p>SNSで科研費に落ちたと思しき人の呪詛を見てしまった。「自分の科研費が落ちたのは審査員がわかっていないせいだ」と思っていると、たぶん次も落ちる可能性が高いと思う。そもそも分野が近い人が審査しているのだから、そういうことを言うのはやめたほうが良い。</p>
-<p>その、そもそも論として「論文の査読」「科研費の審査」「人事公募」といった「評価」にまつわるもの、「向こう側に自分と同じ人間がいる」という認識を持たないといろいろ危ういと思う。文句を言う人は、なんか国とかそういう「権力」に近い、非人間的な何かを想像しているのではないか？</p>
-<p>MacでOpenGLが走らない。ssh越しでもダメ。そもそもOpenGLがdeprecatedになっているらしくて、X越しでもVMDが動かなくて困る。</p>
-<p>で、うっかりサーバで<code>yum update</code>したら更新パッケージ1460個とか。うげー。</p>
-<p>面倒だから別の端末で<code>sudo yum install glx-utils.x86_64</code>したら、</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode txt"><code class="sourceCode default"><a class="sourceLine" id="cb11-1" title="1">ロックファイル /var/run/yum.pid が存在します: PID 213375 として別に実行されています。</a></code></pre></div>
-<p>と怒られた。ですよね。</p>
-<p>CentOSにffmpegを入れる。</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb12-1" title="1"><span class="fu">sudo</span> yum -y install epel-release</a>
-<a class="sourceLine" id="cb12-2" title="2"><span class="fu">sudo</span> yum -y localinstall --nogpgcheck https://download1.rpmfusion.org/free/el/rpmfusion-free-release-7.noarch.rpm</a>
-<a class="sourceLine" id="cb12-3" title="3"><span class="fu">sudo</span> yum -y install ffmpeg ffmpeg-devel</a></code></pre></div>
-<p>Mac経由でCentOSにつないだらglxfinfoが動かない。</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb13-1" title="1">$ <span class="ex">glxinfo</span></a>
-<a class="sourceLine" id="cb13-2" title="2"><span class="ex">libGL</span> error: No matching fbConfigs or visuals found</a>
-<a class="sourceLine" id="cb13-3" title="3"><span class="ex">libGL</span> error: failed to load driver: swrast</a>
-<a class="sourceLine" id="cb13-4" title="4"><span class="ex">X</span> Error of failed request:  GLXBadContext</a>
-<a class="sourceLine" id="cb13-5" title="5">  <span class="ex">Major</span> opcode of failed request:  149 (GLX)</a>
-<a class="sourceLine" id="cb13-6" title="6">  <span class="ex">Minor</span> opcode of failed request:  6 (X_GLXIsDirect)</a>
-<a class="sourceLine" id="cb13-7" title="7">  <span class="ex">Serial</span> number of failed request:  31</a>
-<a class="sourceLine" id="cb13-8" title="8">  <span class="ex">Current</span> serial number in output stream:  30</a></code></pre></div>
-<p>libGL errorはWindowsでも出る。問題はその後の<code>GLXBadContext</code>だな。</p>
-<p>Macのパラメタを見てみる。</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb14-1" title="1">$ <span class="ex">defaults</span> read org.xquartz.X11</a>
-<a class="sourceLine" id="cb14-2" title="2"><span class="kw">{</span></a>
-<a class="sourceLine" id="cb14-3" title="3">    <span class="st">&quot;NSWindow Frame SUUpdateAlert&quot;</span> = <span class="st">&quot;970 788 620 398 0 0 2560 1415 &quot;</span>;</a>
-<a class="sourceLine" id="cb14-4" title="4">    <span class="st">&quot;NSWindow Frame x11_prefs&quot;</span> = <span class="st">&quot;487 464 584 369 0 0 2560 1415 &quot;</span>;</a>
-<a class="sourceLine" id="cb14-5" title="5">    <span class="ex">SUHasLaunchedBefore</span> = 1<span class="kw">;</span></a>
-<a class="sourceLine" id="cb14-6" title="6">    <span class="ex">SULastCheckTime</span> = <span class="st">&quot;2021-04-14 04:55:37 +0000&quot;</span><span class="kw">;</span></a>
-<a class="sourceLine" id="cb14-7" title="7">    <span class="ex">SUUpdateRelaunchingMarker</span> = 0<span class="kw">;</span></a>
-<a class="sourceLine" id="cb14-8" title="8">    <span class="st">&quot;app_to_run&quot;</span> = <span class="st">&quot;/opt/X11/bin/xterm&quot;</span>;</a>
-<a class="sourceLine" id="cb14-9" title="9">    <span class="st">&quot;cache_fonts&quot;</span> = <span class="ex">1</span><span class="kw">;</span></a>
-<a class="sourceLine" id="cb14-10" title="10">    <span class="st">&quot;done_xinit_check&quot;</span> = <span class="ex">1</span><span class="kw">;</span></a>
-<a class="sourceLine" id="cb14-11" title="11">    <span class="st">&quot;enable_iglx&quot;</span> = <span class="ex">1</span><span class="kw">;</span></a>
-<a class="sourceLine" id="cb14-12" title="12">    <span class="st">&quot;login_shell&quot;</span> = <span class="st">&quot;/bin/sh&quot;</span>;</a>
-<a class="sourceLine" id="cb14-13" title="13">    <span class="st">&quot;no_auth&quot;</span> = <span class="ex">0</span><span class="kw">;</span></a>
-<a class="sourceLine" id="cb14-14" title="14">    <span class="st">&quot;nolisten_tcp&quot;</span> = <span class="ex">0</span><span class="kw">;</span></a>
-<a class="sourceLine" id="cb14-15" title="15">    <span class="st">&quot;startx_script&quot;</span> = <span class="st">&quot;/opt/X11/bin/startx -- /opt/X11/bin/Xquartz&quot;</span>;</a>
-<a class="sourceLine" id="cb14-16" title="16"><span class="kw">}</span></a></code></pre></div>
-<p>ふむ、<code>enable_iglx</code>はtrueになっているように見える。</p>
-<p>VMD 1.9.4a51 for MacOS X, 64-bit Intel x86 (x86_64) (Dec 21, 2020): MacOS X Big Sur fixes w/ Tcl/Tk 8.6.11</p>
-<p>ダメだった。</p>
-<p>結局、VMDの最新版は普通にMacに対応していたのでそれをインストールしておしまい。なんじゃらほい。</p>
-<p>Windows版のVMD、64ビットだと起動しない。32ビットなら大丈夫。うーむ。</p>
-<p>また、Movie Makerの仕様が変わっており、「Trajectory」を指定しないと変なことになるっぽい。</p>
-<p>ハンズオンの準備にどえらく時間がかかってしまって、今日はそれしかできなかった。</p>
-<p>金曜日の講義の準備。動画の設定など。</p>
-<h2 id="月13日火"><a href="#13">04月13日(火)</a> <a id="13"></a></h2>
-<p>なんだかえらく集中力が低いなぁ。風邪の前兆っぽいから気をつけないと。</p>
-<p>懇親会費締め案作った。恐ろしく時間がかかってしまった。</p>
-<h2 id="月12日月"><a href="#12">04月12日(月)</a> <a id="12"></a></h2>
-<p>動画編集。なんどか雑音が入った箇所があり、それを削除するのだが、どこで雑音が入ったか覚えていないので全部チェックすることに。時間をメモっておけばよかった。</p>
-<p>うーむ、Macでtmuxは使いづらいなぁ。MacではCtrlのつもりでCommand押す癖がついているから、Ctrl + b + nでのウィンドウ切り替えとか、コマンド押して「アレ？」ってなる。</p>
-<h2 id="月11日日"><a href="#11">04月11日(日)</a> <a id="12"></a></h2>
-<p>NOP</p>
-<h2 id="月10日土"><a href="#10">04月10日(土)</a> <a id="12"></a></h2>
-<p>NOP</p>
-<ul>
-<li><a href="https://zenn.dev/kaityo256/articles/qr_decomposition">QRコードをQR分解する</a></li>
-<li><a href="https://zenn.dev/kaityo256/articles/error_propagation">誤差伝播の乗法の公式の話</a></li>
-</ul>
-<p>本格的にZenn.devへ移行。正直もうQはダメっぽい。</p>
-<h2 id="月09日金"><a href="#09">04月09日(金)</a> <a id="09"></a></h2>
-<p>なんかsvnでコミットに失敗する。</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb15-1" title="1">$ <span class="fu">svn</span> ci -m <span class="st">&quot;&quot;</span></a>
-<a class="sourceLine" id="cb15-2" title="2"><span class="ex">svn</span>: E155010: コミットに失敗しました (詳しい理由は以下のとおりです)<span class="bu">:</span>                   </a>
-<a class="sourceLine" id="cb15-3" title="3"><span class="ex">svn</span>: E155010: <span class="st">&#39;/Users/watanabe/svn/study/2021/tokubetsu/ガイダンス資料.pdf&#39;</span> は追加準備 </a>
-<a class="sourceLine" id="cb15-4" title="4">状態となっていますが、存在しません</a></code></pre></div>
-<p>日本語で検索してもよくわからんので、エラーメッセージを英語にしよう。</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb16-1" title="1">$ <span class="va">LANG=</span>C <span class="fu">svn</span> ci -m <span class="st">&quot;&quot;</span></a>
-<a class="sourceLine" id="cb16-2" title="2"><span class="ex">svn</span>: E155010: Commit failed (details follow)<span class="bu">:</span></a>
-<a class="sourceLine" id="cb16-3" title="3"><span class="ex">svn</span>: E155010: <span class="st">&#39;/Users/watanabe/svn/study/2021/tokubetsu/{U+30AB}{U+30A4}{U+30BF}{U+30F3}{U+30B9}{U+8CC7}{U+6599}.pdf&#39;</span> is scheduled for addition, but is missing</a></code></pre></div>
-<div class="sourceCode" id="cb17"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb17-1" title="1">$ <span class="fu">svn</span> st</a>
-<a class="sourceLine" id="cb17-2" title="2"><span class="ex">?</span>       ガイダンス資料.pdf</a>
-<a class="sourceLine" id="cb17-3" title="3">!       ガイダンス資料<span class="ex">.pdf</span></a></code></pre></div>
-<p>あるのに無い。ふむ。とりあえずrevertしてみる。</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb18-1" title="1">$ <span class="fu">svn</span> revert ガイダンス資料.pdf</a>
-<a class="sourceLine" id="cb18-2" title="2"><span class="st">&#39;ガイダンス資料.pdf&#39;</span> を元に戻しました</a></code></pre></div>
-<p>他の場所では大丈夫なのに、このディレクトリだけ、「svn add ガイダンス資料.pdf」とすると、?と!状態になってしまう。ファイルを一度別ディレクトリにコピーし、そのファイルを消して、またコピーして戻したら普通にできた。全く謎。</p>
-<p>GitHub演習、問題からの復帰を一回やりたいな。するとこんな感じかなぁ。</p>
-<ul>
-<li>Gitの基本操作</li>
-<li>GitHubのアカウント作成と基本操作</li>
-<li>Gitの問題復帰 (rebaseとmergeを中心に)</li>
-<li>GitHubを用いたソフトウェア開発</li>
-</ul>
-<p>4回だとあんまり深いところまで行けないかもしれない。</p>
-<p>第一回物理情報工学特別講義。なんとかちゃんとできたかな。後で動画編集しないと。</p>
-<p>秋の安全管理講習やった。名簿も出した。</p>
-<p>物性研スパコンのアカウント申請だした。ハンズオンの準備をしなければ。</p>
-<h2 id="月08日木"><a href="#08">04月08日(木)</a> <a id="08"></a></h2>
-<p>え？git mergeって、ブランチ指定しないとデフォルトでoriginの同じやつをマージするの？</p>
-<p><a href="https://qiita.com/matsumon-development/items/b37b1ce988fb810eb8ac">git fetchとブランチ取り込み系コマンドの引数を省略すると？</a></p>
-<p>ブランチ名やリモートを省略した場合、カレントブランチに上流ブランチが指定されていると、暗黙にそれが指定されたことになる。上流ブランチとは</p>
-<ul>
-<li><code>git fetch</code></li>
-<li><code>git merge</code></li>
-<li><code>git rebase</code></li>
-<li><code>git pull</code></li>
-<li><code>git pull --rebase</code></li>
-</ul>
-<p>の引数を省略したときの処理の対象となるブランチ。マジか。知らなかった。確かに<code>git fetch</code>とかはリモートとか省略してた。</p>
-<p>え、<code>git rebase</code>をリモートに対して実行するケースってあるの？</p>
-<h2 id="月07日水"><a href="#07">04月07日(水)</a> <a id="07"></a></h2>
-<p>いろいろ忙しい。会議とかしてた。あと金曜日の準備とか。</p>
-<p>GitHubハンズオンの準備。</p>
-<h2 id="月06日火"><a href="#06">04月06日(火)</a> <a id="06"></a></h2>
-<p><code>ffmpeg</code>が動かない。</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb19-1" title="1"><span class="ex">dyld</span>: Library not loaded: /usr/local/opt/aom/lib/libaom.2.dylib</a></code></pre></div>
-<p>またこれか。npmで同じことが起きたときに再インストールでなおったので、再インストールするか。</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb20-1" title="1">$ <span class="ex">brew</span> reinstall ffmeg</a>
-<a class="sourceLine" id="cb20-2" title="2"><span class="kw">(</span><span class="ex">snip</span><span class="kw">)</span></a>
-<a class="sourceLine" id="cb20-3" title="3">==<span class="op">&gt;</span> <span class="ex">python@3.9</span></a>
-<a class="sourceLine" id="cb20-4" title="4"><span class="ex">Python</span> has been installed as</a>
-<a class="sourceLine" id="cb20-5" title="5">  <span class="ex">/usr/local/bin/python3</span></a>
-<a class="sourceLine" id="cb20-6" title="6"></a>
-<a class="sourceLine" id="cb20-7" title="7"><span class="ex">Unversioned</span> symlinks <span class="kw">`</span><span class="ex">python</span><span class="kw">`</span>, <span class="kw">`</span><span class="ex">python-config</span><span class="kw">`</span>, <span class="kw">`</span><span class="ex">pip</span><span class="kw">`</span> etc. pointing to</a>
-<a class="sourceLine" id="cb20-8" title="8"><span class="kw">`</span><span class="ex">python3</span><span class="kw">`</span>, <span class="kw">`</span><span class="ex">python3-config</span><span class="kw">`</span>, <span class="kw">`</span><span class="ex">pip3</span><span class="kw">`</span> <span class="ex">etc.</span>, respectively, have been installed into</a>
-<a class="sourceLine" id="cb20-9" title="9">  <span class="ex">/usr/local/opt/python@3.9/libexec/bin</span></a>
-<a class="sourceLine" id="cb20-10" title="10"></a>
-<a class="sourceLine" id="cb20-11" title="11"><span class="ex">You</span> can install Python packages with</a>
-<a class="sourceLine" id="cb20-12" title="12">  <span class="ex">pip3</span> install <span class="op">&lt;</span>package<span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb20-13" title="13"><span class="ex">They</span> will install into the site-package directory</a>
-<a class="sourceLine" id="cb20-14" title="14">  <span class="ex">/usr/local/lib/python3.9/site-packages</span></a>
-<a class="sourceLine" id="cb20-15" title="15"></a>
-<a class="sourceLine" id="cb20-16" title="16"><span class="ex">tkinter</span> is no longer included with this formula, but it is available separately:</a>
-<a class="sourceLine" id="cb20-17" title="17">  <span class="ex">brew</span> install python-tk@3.9</a>
-<a class="sourceLine" id="cb20-18" title="18"></a>
-<a class="sourceLine" id="cb20-19" title="19"><span class="ex">See</span>: https://docs.brew.sh/Homebrew-and-Python</a></code></pre></div>
-<p>なんかPythonが上書きインストールされ、ターミナルからVS Codeが起動しなくなった。</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb21-1" title="1">$ <span class="ex">code</span> .</a>
-<a class="sourceLine" id="cb21-2" title="2"><span class="ex">/Users/watanabe/.pyenv/shims</span>/python: <span class="ex">line</span> 21: /usr/local/Cellar/pyenv/1.2.23/libexec/pyenv: No such file or directory</a>
-<a class="sourceLine" id="cb21-3" title="3"><span class="ex">/usr/local/bin</span>/code: <span class="ex">line</span> 10: ./MacOS/Electron: No such file or directory</a></code></pre></div>
-<p>上記は<code>pyenv rehash</code>で治ったが、なんか<code>Unversioned symlinks</code>というメッセージがイヤだな。でもいまは忙しいので後回し。</p>
-<p>tmuxは便利なんだけど、デフォルトでマウススクロールが使えないのが不便だった。しかし、<code>~/.tmux.conf</code>に以下を書くことで解決。</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb22-1" title="1"><span class="kw">set</span> <span class="ex">-g</span> mouse on</a></code></pre></div>
-<p>しかし、こうすると今度はマウスによる選択ができない。なんとかしようとしてたらtmuxが起動しなくなった。再インストールしてもダメ。結局<code>/tmp/tmux-501</code>を削除したら起動できた。</p>
-<p>CiscoのWebex Meeting、ログイン時に起動する上に設定がdisabledになっていて修正できなかったので削除した。通常削除もできなかったので、Cisco WebEx Meeting Application Uninstallerなるものをダウンロードしてアンインストール。なんやねん。</p>
-<p>tmuxのマウスによる選択、fnキーを押しながらだとできる。これをfn無しにしたい。とりあえずCommand+rでできるようになることはわかったが、.tmux.confで設定する方法がわからない。</p>
-<p>なるほど、tmuxが管理するバッファと、ターミナルが管理するバッファが異なるので、マウススクロールでどちらを使うべきかを指示する必要があるのか。マウス処理をどちらに渡すのかを切り替えるのがCommand+rであると。当面はこれで良いか。</p>
-<p>いつのまにかGoogleが簡単に英語検索できるようになってた。いや、便利だけど、それでいいのか・・・。</p>
-<h2 id="月05日月"><a href="#05">04月05日(月)</a> <a id="05"></a></h2>
-<p>今日から本格的に新学期である。忙しくなりそう。</p>
-<p>Googleの面接対策をして採用に至らせた記事が話題になっている。いろんな論点があるが、一つだけ。「Googleへの採用は簡単だ」というものについて。記事への反応でもあったんだけど、「東大合格は簡単だ」「Google採用は簡単だ」といった言説は「ダイエットは簡単だ」というのと似ていると思う。やるべきことが明確に決まっており、それをやれば達成できることがわかっており、かつそれを行うのに特別な才能も必要ないが、実施は難しいというもの。</p>
-<p>僕も昔は「東大合格は簡単だ」と言ってしまうことがあったんだけれど、ここでいう「簡単」が、「simple」とか「clear」の意味であって、決して「easy」ではない、ということを認識してからは言わないようにしている。</p>
-<h2 id="月04日日"><a href="#04">04月04日(日)</a> <a id="04"></a></h2>
-<p>NOP</p>
-<p>疲れたよ。</p>
-<h2 id="月03日土"><a href="#03">04月03日(土)</a> <a id="03"></a></h2>
-<p>NOP</p>
-<p>疲れた。</p>
-<h2 id="月02日金"><a href="#02">04月02日(金)</a> <a id="02"></a></h2>
-<p>共著論文を返した。遅くなってすみません。</p>
-<p>科研費の内定手続きをした。具体的にはウェブから交付申請書(D-2-1)と支払請求書(D-4-1)を作成、確定後に2部ずつ印刷し、事務に提出。</p>
-<h2 id="月01日木"><a href="#01">04月01日(木)</a> <a id="01"></a></h2>
-<p>新年度になってしまった。</p>
-<p>Gitハンズオン。</p>
-<p>研究室ミーティング。</p>
-<p>輪講。今日は熱力学第一法則。</p>
-<p>科研費が採択されたようだ。ありがたい。</p>
+                        <p><a href="index.html">ログ一覧</a></p>
+                        <h2 id="月30日金"><a href="#30">04月30日(金)</a> <a id="30"></a></h2>
+                        <p>1on1ミーティング。物理情報工学特別講義。メールとか。</p>
+                        <p>いろいろバタバタしている。</p>
+                        <h2 id="月29日木"><a href="#29">04月29日(木)</a> <a id="29"></a></h2>
+                        <p>NOP</p>
+                        <p>uchan_nosさんの「OS自作のすすめ2021」を見る。YouTube配信。自分が好きなこと(OS自作)を、こうして発信し、本も執筆し、フォロワーも生まれていて素晴らしい。僕もどんどん発信していかないと。</p>
+                        <h2 id="月28日水"><a href="#28">04月28日(水)</a> <a id="28"></a></h2>
+                        <p>なんか、GitHubのissue、しばらくするとトップページ(ダッシュボード？)から消えちゃうんだよね。それがとても悲しい。</p>
+                        <p>issueを潰すべく、途中まで解説を書いてみたが、わかりにくい感じになったので途中で放棄。いろいろ書きたくなっちゃうんだけど、大事なのは「何を書かないか」なんだよな。</p>
+                        <p>富岳の申請した。郵送が廃止されており、逆に焦った。</p>
+                        <p>レポートの採点した。</p>
+                        <p>メールもいっぱい書いた。</p>
+                        <h2 id="月27日火"><a href="#27">04月27日(火)</a> <a id="27"></a></h2>
+                        <p>ffmpeg、なんか思ったよりスレッド使ってるな。</p>
+                        <div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="ex">ffmpeg</span> -i aiyoshi02.mp4 -threads 32 -crf 24 aiyoshi02_low.mp4  5570.32s user 132.12s system 1230% cpu 7:43.29 total</span></code></pre></div>
+                        <p>CPUは12コアちょっとしか使っていないのに、</p>
+                        <div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a>$ <span class="fu">cat</span> /proc/<span class="va">$(</span><span class="ex">pgrep</span> ffmpeg<span class="va">)</span>/status <span class="kw">|</span> <span class="fu">grep</span> Threads</span>
+                        <span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a><span class="ex">Threads</span>: 116</span></code></pre></div>
+                        <p>使っているのは116スレッド、マジか。</p>
+                        <p>mediainfoをCentOSに入れる。</p>
+                        <div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="fu">sudo</span> yum --enablerepo extras install epel-release </span>
+                        <span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a><span class="fu">sudo</span> yum install -y mediainfo-gui mediainfo libmediainfo   </span></code></pre></div>
+                        <p>mediainfoでHTML形式で出力すると、スレッド数が見える。</p>
+                        <div class="sourceCode" id="cb4"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a>threads=32 / lookahead_threads=4 / sliced_threads=0</span></code></pre></div>
+                        <p>ふむ、わからん。</p>
+                        <p>実験。</p>
+                        <p>package-lock.json、消してはいけないらしい。npm installで作り直せるらしい。</p>
+                        <div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="fu">git</span> merge origin/main       # ここでpackage-lock.jsonがconflict</span>
+                        <span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a><span class="ex">npm</span> install zenn-cli@latest # package-lock.jsonを作り直す</span>
+                        <span id="cb5-3"><a href="#cb5-3" aria-hidden="true"></a><span class="fu">git</span> add package-lock.json</span>
+                        <span id="cb5-4"><a href="#cb5-4" aria-hidden="true"></a><span class="fu">git</span> commit -m <span class="st">&quot;updates package-lock.json&quot;</span></span></code></pre></div>
+                        <p>今の所これで問題はおきてない。</p>
+                        <ul>
+                        <li><a href="https://qiita.com/fj_yohei/items/7ca887a45e0855917279">package-lock.jsonについて知りたくても聞けなかったこと</a></li>
+                        </ul>
+                        <p>何が起きたかわかったぞ。</p>
+                        <ul>
+                        <li>二箇所でzenn-contentを作った</li>
+                        <li>あるところでzenn-cliのupdateをした (package-lock.jsonが更新)</li>
+                        <li>別のところでgit fetch;mergeしようとしたら package-lock.jsonがconflict</li>
+                        <li>mergeしようとした場所で <code>npm install zenn-cli@latest</code>でpackage-lock.jsonを作り直せば良い</li>
+                        </ul>
+                        <h2 id="月26日月"><a href="#26">04月26日(月)</a> <a id="26"></a></h2>
+                        <p>いろいろ気合いれてメールする。</p>
+                        <p>今週から学生さんとの1on1ミーティングが始まった。オンラインは便利ではあるが、こういうのは対面でやりたいよなぁ。</p>
+                        <p>柔道部の会長面談。公認の承認。</p>
+                        <p>物理情報工学特別講義のレポート採点した。採点手順もまとめた。</p>
+                        <p>企業との共同研究、参考にしようと思って積極的に共同研究している研究室のページ(他大)を見たんだけど、こんなに強気なの？って価格設定でびっくりした。</p>
+                        <p>学内ESETライセンス申請した。</p>
+                        <p>Linuxマシン、DHCPクライアントがIPアドレスをもらえない。</p>
+                        <div class="sourceCode" id="cb6"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="fu">sudo</span> dhclient -r</span>
+                        <span id="cb6-2"><a href="#cb6-2" aria-hidden="true"></a><span class="fu">sudo</span> dhclient</span></code></pre></div>
+                        <p>ダメだ、ダメだとやっていたが、問題は単にケーブルを間違ったところに指していたからだった。アホすぎだろ。</p>
+                        <p>物理情報工学講義のムービー低画質版作成。AMD EPYCマシンはアップデートに時間がかかって間に合わず。アップデート前に試すべきだった。</p>
+                        <div class="sourceCode" id="cb7"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a><span class="bu">time</span> ffmpeg -i aiyoshi02.mp4 -crf 24 aiyoshi02_low.mp4</span></code></pre></div>
+                        <p>講義編集してアップロードした。後でチェックして公開。</p>
+                        <p>僕は自己肯定感が強い方だと思うけれど、それでもたまに「この人なんでこんなに自信があるんだろう」と思う人を結構見かけるなぁ。自信があるのは良いことだと思うけど、なんというか、「自分は(いろんな意味で)重要人物である」という認識が強い。例えば「他の人にとって、自分が重要な人物だと思われている」ということを前提にした言動であるとか。</p>
+                        <p>SNSとかで反応されているうちにそういう認識にいたるのかな。SNSでなにかいうと、基本的には「そのとおり！」「よく言ってくれた」「さすが先生」みたいな反応があるので、それで勘違いするとか。もちろん批判的な意見も来るけど、それは「反論」で潰してるように見える。</p>
+                        <p>ミネソタの件、研究室のPIから<a href="https://lore.kernel.org/lkml/CAK8KejpUVLxmqp026JY7x5GzHU2YJLPU8SzTZUNXU2OXC70ZQQ@mail.gmail.com/">お詫びメール</a>が飛んでる。Gregはほぼ完全にスルー。</p>
+                        <p>「Fella」という単語を知った。「Fellow」の砕けた言い方で、「みんな」「奴」みたいな言葉。「Hey Guys」「You guys」のguyみたいな使い方をする。例のミネソタの論文の<a href="https://github.com/QiushiWu/qiushiwu.github.io/pull/6">Joke PR</a>で見つけた。興味深いので<a href="https://github.com/QiushiWu/qiushiwu.github.io/pull/6#issuecomment-824785220">引用</a>。</p>
+                        <blockquote>
+                        <p>Fellas, you are reading too much into a joke PR. The paper would have been a great venture into OSS vulnerabilities. <strong>had it not been in the stable branch of the largest OS in the world that billions of people rely on.</strong> Obviously the insights gained are very interesting and I would have liked if it had taken place legitimately w/o wasting days of volunteer time to look at patches and afterwards reverse the damage.</p>
+                        </blockquote>
+                        <p>げ、zenn-contentをgit fetch;mergeしたら、package-lock.jsonがconflictした。これ、適当にやるとまずそうなので、ちゃんと理解してから触ることにする。とりあえずは明日に延期。</p>
+                        <h2 id="月26日日"><a href="#25">04月26日(日)</a> <a id="25"></a></h2>
+                        <p>NOP</p>
+                        <p>朝早く娘に起こされたので、その時間でZennに記事書いた。<a href="https://zenn.dev/kaityo256/articles/legendre_dual">ルジャンドル変換と双対の話</a>。一ヶ月くらい前の輪講の余談だったかな。</p>
+                        <p>クレジットカード会社から連絡。カードの不正利用の疑いがあり、確認したかったとのこと。以前、家族カードの情報が漏れたという連絡があったが、それが悪用されたらしい。最初にカードが有効か確認の登録があり、その後モバイルＳｕｉｃａで換金したらしい。心当たりがないとのことで、カードは即時停止、モバイルＳｕｉｃａの分は保証してくれるとのこと。対応が早くて助かった。そんなことがあるんですね。</p>
+                        <h2 id="月24日土"><a href="#24">04月24日(土)</a> <a id="24"></a></h2>
+                        <p>NOP</p>
+                        <h2 id="月23日金"><a href="#23">04月23日(金)</a> <a id="23"></a></h2>
+                        <p>物理情報工学特別講義。</p>
+                        <h2 id="月22日木"><a href="#22">04月22日(木)</a> <a id="22"></a></h2>
+                        <p>物理情報工学特別講義の動画が大きい。</p>
+                        <div class="sourceCode" id="cb8"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a><span class="ex">ffmpeg</span> -i aiyoshi01.mp4 -crf 32 aiyoshi01_low.mp4</span></code></pre></div>
+                        <p>これで2.48GB→167.4MB。しかし、crf 32はさすがに大きすぎた(粗すぎた)。28で再挑戦。</p>
+                        <div class="sourceCode" id="cb9"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a><span class="ex">ffmpeg</span> -i aiyoshi01.mp4 -crf 28 aiyoshi01_low.mp4</span></code></pre></div>
+                        <p>2.48GB→237MB。良さげかな。もう少し下げても良さそう。</p>
+                        <p>Linuxのカーネルに意図的にバグを入れたパッチを出して、コミュニティーがどのように対応するかを調べるという<a href="https://github.com/QiushiWu/qiushiwu.github.io/blob/main/papers/OpenSourceInsecurity.pdf">研究</a>をしたミネソタ大学がLinux出禁に。</p>
+                        <p>LinuxカーネルのメンテナであるGregは<a href="https://lore.kernel.org/linux-nfs/YH%2FfM%2FTsbmcZzwnX@kroah.com/">カンカン</a>。</p>
+                        <p><a href="https://twitter.com/UMNComputerSci/status/1384948683821694976/photo/1">ミネソタ大学の声明</a></p>
+                        <div class="sourceCode" id="cb10"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true"></a>Leadership in the University of Minnesota Department of Computer Science &amp; Engineering learned today about the details of research being conducted by one of its faculty members and graduate students into the security of the Linux Kernel.</span>
+                        <span id="cb10-2"><a href="#cb10-2" aria-hidden="true"></a></span>
+                        <span id="cb10-3"><a href="#cb10-3" aria-hidden="true"></a>The research method used raised serious concerns in the Linux Kernel community and, as of today, this has resulted in the University being banned from contributing to the Linux Kernel.</span>
+                        <span id="cb10-4"><a href="#cb10-4" aria-hidden="true"></a></span>
+                        <span id="cb10-5"><a href="#cb10-5" aria-hidden="true"></a>We take this situation extremely seriously. We have immediately suspended this line of research. We will investigate the research method &amp; the process by which this research method was approved, determine appropriate remedial action, &amp; safeguard against future issues, if needed.</span>
+                        <span id="cb10-6"><a href="#cb10-6" aria-hidden="true"></a></span>
+                        <span id="cb10-7"><a href="#cb10-7" aria-hidden="true"></a>We will report our findings back to the community as soon as practical. </span>
+                        <span id="cb10-8"><a href="#cb10-8" aria-hidden="true"></a></span>
+                        <span id="cb10-9"><a href="#cb10-9" aria-hidden="true"></a>Sincerely,</span>
+                        <span id="cb10-10"><a href="#cb10-10" aria-hidden="true"></a></span>
+                        <span id="cb10-11"><a href="#cb10-11" aria-hidden="true"></a>Mats Heimdahl, Department Head</span>
+                        <span id="cb10-12"><a href="#cb10-12" aria-hidden="true"></a>Loren Terveen, Associate Department Head</span></code></pre></div>
+                        <p>ハンズオン。MarkdownとLaTeX記法。</p>
+                        <p>ミネソタの件、PIによる<a href="https://github.com/QiushiWu/qiushiwu.github.io/blob/main/papers/OpenSourceInsecurity.pdf">声明</a>。</p>
+                        <p>研究室ミーティング。担当は僕で「科研費の通し方」。自分でも偉そうなタイトルだと思う。まぁ、知っていることは全部伝えたい。</p>
+                        <h2 id="月21日水"><a href="#21">04月21日(水)</a> <a id="21"></a></h2>
+                        <p>思ったんだけど、僕がHPC版未踏を作るしかない気がしてきた。竹内先生の役割を誰かが果たさなければならず、たぶんやるとしたら僕だろう。富岳を使ってなにかおもしろいことをやる人を募集。お金は出す。口は出さない。メンターは僕。やるとしたら計算時間とお金をどっかからとってこないといけない。もしやったら忙しくて死ぬの目に見えてるが、でもこれはやらないといけない気がする。</p>
+                        <p>物理情報工学特別講義の編集をしてて思ったんだけど、普通にiMovieの有償版を買うべきでは？と思ったが、どうもないらしい。Final Cut ProをXを使うのが妥当？</p>
+                        <p>git-promptとgit-completionを試そうかと思ったんだけど、とりあえず今のzshはgitコマンドのタブ補完にデフォルトで対応している？</p>
+                        <p>うーん、あるウェブアプリで、メッセージ一覧をクリックして表示しないと既読扱いにならないんだけど、「一覧→個別ページ→一覧」のSPA的遷移が遅くてすごくストレスだったので、一覧のリンクをホイールクリックでだーっとタブで開くことで全部見て既読にしたのだが、なんか間違ってる気がする。それぞれのメッセージが大きくなければ予めロードしてしまうのが正解？</p>
+                        <p>思ったんだけど、チューニング目的なら富岳じゃなくて名大の不老を使うほうが楽かもしれない。</p>
+                        <h2 id="月20日火"><a href="#20">04月20日(火)</a> <a id="20"></a></h2>
+                        <p>なんかいろいろうまくいかずに凹んでしまう。</p>
+                        <p>まぁ、少しずつでも前に進もう。</p>
+                        <p>午後から実験。3限のみの予定だったが、急遽4限のヘルプにも入った。</p>
+                        <h2 id="月19日月"><a href="#19">04月19日(月)</a> <a id="19"></a></h2>
+                        <p>いろいろ手続きとか。</p>
+                        <p>富岳のデータ、退避完了。とりあえずNASに。</p>
+                        <p>物理情報工学特別講義について確認メール。</p>
+                        <p>っていうか打ち合わせとメール処理だけで一日が終わったんだけど。</p>
+                        <h2 id="月18日日"><a href="#18">04月18日(日)</a> <a id="18"></a></h2>
+                        <p>NOP</p>
+                        <p>木曜日の日記をマージした。</p>
+                        <p>この土日で木曜日の発表の準備をしようと思ったけど無理だった。</p>
+                        <h2 id="月19日土"><a href="#19">04月19日(土)</a> <a id="19"></a></h2>
+                        <p>NOP</p>
+                        <p>少しでも仕事しようかと思ったが体力が……</p>
+                        <h2 id="月16日金"><a href="#16">04月16日(金)</a> <a id="16"></a></h2>
+                        <p>木曜日の日記をpushし忘れた。まぁ大したこと書いてないし、簡単にマージ可能だからいいけど。</p>
+                        <p>重い腰を上げてWikiのバックアップ。dumpプラグインだと wiki, attach, backupを選んでtar.gzでダウンロード可能。ただしウェブから管理者パスワード入力が必要。ログインしてディレクトリごと固めると現在61MBですか。cronで毎日やるならローテートは必須ですな。面倒だなぁ。</p>
+                        <p>物理情報工学特別講義。なんとかなったが、途中で無線マイクの電池が切れるハプニングが。</p>
+                        <p>後で配線図を作っておくか。</p>
+                        <h2 id="月15日木"><a href="#15">04月15日(木)</a> <a id="15"></a></h2>
+                        <p>ハンズオン。研究打合せ。研究室ミーティング。以上、よろしくお願いいたします。</p>
+                        <p>なぜかM1 Macでffmpegが動作しない問題発生。要調査。</p>
+                        <h2 id="月14日水"><a href="#14">04月14日(水)</a> <a id="14"></a></h2>
+                        <p>SNSで科研費に落ちたと思しき人の呪詛を見てしまった。「自分の科研費が落ちたのは審査員がわかっていないせいだ」と思っていると、たぶん次も落ちる可能性が高いと思う。そもそも分野が近い人が審査しているのだから、そういうことを言うのはやめたほうが良い。</p>
+                        <p>その、そもそも論として「論文の査読」「科研費の審査」「人事公募」といった「評価」にまつわるもの、「向こう側に自分と同じ人間がいる」という認識を持たないといろいろ危ういと思う。文句を言う人は、なんか国とかそういう「権力」に近い、非人間的な何かを想像しているのではないか？</p>
+                        <p>MacでOpenGLが走らない。ssh越しでもダメ。そもそもOpenGLがdeprecatedになっているらしくて、X越しでもVMDが動かなくて困る。</p>
+                        <p>で、うっかりサーバで<code>yum update</code>したら更新パッケージ1460個とか。うげー。</p>
+                        <p>面倒だから別の端末で<code>sudo yum install glx-utils.x86_64</code>したら、</p>
+                        <div class="sourceCode" id="cb11"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true"></a>ロックファイル /var/run/yum.pid が存在します: PID 213375 として別に実行されています。</span></code></pre></div>
+                        <p>と怒られた。ですよね。</p>
+                        <p>CentOSにffmpegを入れる。</p>
+                        <div class="sourceCode" id="cb12"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true"></a><span class="fu">sudo</span> yum -y install epel-release</span>
+                        <span id="cb12-2"><a href="#cb12-2" aria-hidden="true"></a><span class="fu">sudo</span> yum -y localinstall --nogpgcheck https://download1.rpmfusion.org/free/el/rpmfusion-free-release-7.noarch.rpm</span>
+                        <span id="cb12-3"><a href="#cb12-3" aria-hidden="true"></a><span class="fu">sudo</span> yum -y install ffmpeg ffmpeg-devel</span></code></pre></div>
+                        <p>Mac経由でCentOSにつないだらglxfinfoが動かない。</p>
+                        <div class="sourceCode" id="cb13"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true"></a>$ <span class="ex">glxinfo</span></span>
+                        <span id="cb13-2"><a href="#cb13-2" aria-hidden="true"></a><span class="ex">libGL</span> error: No matching fbConfigs or visuals found</span>
+                        <span id="cb13-3"><a href="#cb13-3" aria-hidden="true"></a><span class="ex">libGL</span> error: failed to load driver: swrast</span>
+                        <span id="cb13-4"><a href="#cb13-4" aria-hidden="true"></a><span class="ex">X</span> Error of failed request:  GLXBadContext</span>
+                        <span id="cb13-5"><a href="#cb13-5" aria-hidden="true"></a>  <span class="ex">Major</span> opcode of failed request:  149 (GLX)</span>
+                        <span id="cb13-6"><a href="#cb13-6" aria-hidden="true"></a>  <span class="ex">Minor</span> opcode of failed request:  6 (X_GLXIsDirect)</span>
+                        <span id="cb13-7"><a href="#cb13-7" aria-hidden="true"></a>  <span class="ex">Serial</span> number of failed request:  31</span>
+                        <span id="cb13-8"><a href="#cb13-8" aria-hidden="true"></a>  <span class="ex">Current</span> serial number in output stream:  30</span></code></pre></div>
+                        <p>libGL errorはWindowsでも出る。問題はその後の<code>GLXBadContext</code>だな。</p>
+                        <p>Macのパラメタを見てみる。</p>
+                        <div class="sourceCode" id="cb14"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true"></a>$ <span class="ex">defaults</span> read org.xquartz.X11</span>
+                        <span id="cb14-2"><a href="#cb14-2" aria-hidden="true"></a><span class="kw">{</span></span>
+                        <span id="cb14-3"><a href="#cb14-3" aria-hidden="true"></a>    <span class="st">&quot;NSWindow Frame SUUpdateAlert&quot;</span> = <span class="st">&quot;970 788 620 398 0 0 2560 1415 &quot;</span>;</span>
+                        <span id="cb14-4"><a href="#cb14-4" aria-hidden="true"></a>    <span class="st">&quot;NSWindow Frame x11_prefs&quot;</span> = <span class="st">&quot;487 464 584 369 0 0 2560 1415 &quot;</span>;</span>
+                        <span id="cb14-5"><a href="#cb14-5" aria-hidden="true"></a>    <span class="ex">SUHasLaunchedBefore</span> = 1<span class="kw">;</span></span>
+                        <span id="cb14-6"><a href="#cb14-6" aria-hidden="true"></a>    <span class="ex">SULastCheckTime</span> = <span class="st">&quot;2021-04-14 04:55:37 +0000&quot;</span><span class="kw">;</span></span>
+                        <span id="cb14-7"><a href="#cb14-7" aria-hidden="true"></a>    <span class="ex">SUUpdateRelaunchingMarker</span> = 0<span class="kw">;</span></span>
+                        <span id="cb14-8"><a href="#cb14-8" aria-hidden="true"></a>    <span class="st">&quot;app_to_run&quot;</span> = <span class="st">&quot;/opt/X11/bin/xterm&quot;</span>;</span>
+                        <span id="cb14-9"><a href="#cb14-9" aria-hidden="true"></a>    <span class="st">&quot;cache_fonts&quot;</span> = <span class="ex">1</span><span class="kw">;</span></span>
+                        <span id="cb14-10"><a href="#cb14-10" aria-hidden="true"></a>    <span class="st">&quot;done_xinit_check&quot;</span> = <span class="ex">1</span><span class="kw">;</span></span>
+                        <span id="cb14-11"><a href="#cb14-11" aria-hidden="true"></a>    <span class="st">&quot;enable_iglx&quot;</span> = <span class="ex">1</span><span class="kw">;</span></span>
+                        <span id="cb14-12"><a href="#cb14-12" aria-hidden="true"></a>    <span class="st">&quot;login_shell&quot;</span> = <span class="st">&quot;/bin/sh&quot;</span>;</span>
+                        <span id="cb14-13"><a href="#cb14-13" aria-hidden="true"></a>    <span class="st">&quot;no_auth&quot;</span> = <span class="ex">0</span><span class="kw">;</span></span>
+                        <span id="cb14-14"><a href="#cb14-14" aria-hidden="true"></a>    <span class="st">&quot;nolisten_tcp&quot;</span> = <span class="ex">0</span><span class="kw">;</span></span>
+                        <span id="cb14-15"><a href="#cb14-15" aria-hidden="true"></a>    <span class="st">&quot;startx_script&quot;</span> = <span class="st">&quot;/opt/X11/bin/startx -- /opt/X11/bin/Xquartz&quot;</span>;</span>
+                        <span id="cb14-16"><a href="#cb14-16" aria-hidden="true"></a><span class="kw">}</span></span></code></pre></div>
+                        <p>ふむ、<code>enable_iglx</code>はtrueになっているように見える。</p>
+                        <p>VMD 1.9.4a51 for MacOS X, 64-bit Intel x86 (x86_64) (Dec 21, 2020): MacOS X Big Sur fixes w/ Tcl/Tk 8.6.11</p>
+                        <p>ダメだった。</p>
+                        <p>結局、VMDの最新版は普通にMacに対応していたのでそれをインストールしておしまい。なんじゃらほい。</p>
+                        <p>Windows版のVMD、64ビットだと起動しない。32ビットなら大丈夫。うーむ。</p>
+                        <p>また、Movie Makerの仕様が変わっており、「Trajectory」を指定しないと変なことになるっぽい。</p>
+                        <p>ハンズオンの準備にどえらく時間がかかってしまって、今日はそれしかできなかった。</p>
+                        <p>金曜日の講義の準備。動画の設定など。</p>
+                        <h2 id="月13日火"><a href="#13">04月13日(火)</a> <a id="13"></a></h2>
+                        <p>なんだかえらく集中力が低いなぁ。風邪の前兆っぽいから気をつけないと。</p>
+                        <p>懇親会費締め案作った。恐ろしく時間がかかってしまった。</p>
+                        <h2 id="月12日月"><a href="#12">04月12日(月)</a> <a id="12"></a></h2>
+                        <p>動画編集。なんどか雑音が入った箇所があり、それを削除するのだが、どこで雑音が入ったか覚えていないので全部チェックすることに。時間をメモっておけばよかった。</p>
+                        <p>うーむ、Macでtmuxは使いづらいなぁ。MacではCtrlのつもりでCommand押す癖がついているから、Ctrl + b + nでのウィンドウ切り替えとか、コマンド押して「アレ？」ってなる。</p>
+                        <h2 id="月11日日"><a href="#11">04月11日(日)</a> <a id="12"></a></h2>
+                        <p>NOP</p>
+                        <h2 id="月10日土"><a href="#10">04月10日(土)</a> <a id="12"></a></h2>
+                        <p>NOP</p>
+                        <ul>
+                        <li><a href="https://zenn.dev/kaityo256/articles/qr_decomposition">QRコードをQR分解する</a></li>
+                        <li><a href="https://zenn.dev/kaityo256/articles/error_propagation">誤差伝播の乗法の公式の話</a></li>
+                        </ul>
+                        <p>本格的にZenn.devへ移行。正直もうQはダメっぽい。</p>
+                        <h2 id="月09日金"><a href="#09">04月09日(金)</a> <a id="09"></a></h2>
+                        <p>なんかsvnでコミットに失敗する。</p>
+                        <div class="sourceCode" id="cb15"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true"></a>$ <span class="fu">svn</span> ci -m <span class="st">&quot;&quot;</span></span>
+                        <span id="cb15-2"><a href="#cb15-2" aria-hidden="true"></a><span class="ex">svn</span>: E155010: コミットに失敗しました (詳しい理由は以下のとおりです)<span class="bu">:</span>                   </span>
+                        <span id="cb15-3"><a href="#cb15-3" aria-hidden="true"></a><span class="ex">svn</span>: E155010: <span class="st">&#39;/Users/watanabe/svn/study/2021/tokubetsu/ガイダンス資料.pdf&#39;</span> は追加準備 </span>
+                        <span id="cb15-4"><a href="#cb15-4" aria-hidden="true"></a>状態となっていますが、存在しません</span></code></pre></div>
+                        <p>日本語で検索してもよくわからんので、エラーメッセージを英語にしよう。</p>
+                        <div class="sourceCode" id="cb16"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true"></a>$ <span class="va">LANG=</span>C <span class="fu">svn</span> ci -m <span class="st">&quot;&quot;</span></span>
+                        <span id="cb16-2"><a href="#cb16-2" aria-hidden="true"></a><span class="ex">svn</span>: E155010: Commit failed (details follow)<span class="bu">:</span></span>
+                        <span id="cb16-3"><a href="#cb16-3" aria-hidden="true"></a><span class="ex">svn</span>: E155010: <span class="st">&#39;/Users/watanabe/svn/study/2021/tokubetsu/{U+30AB}{U+30A4}{U+30BF}{U+30F3}{U+30B9}{U+8CC7}{U+6599}.pdf&#39;</span> is scheduled for addition, but is missing</span></code></pre></div>
+                        <div class="sourceCode" id="cb17"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true"></a>$ <span class="fu">svn</span> st</span>
+                        <span id="cb17-2"><a href="#cb17-2" aria-hidden="true"></a><span class="ex">?</span>       ガイダンス資料.pdf</span>
+                        <span id="cb17-3"><a href="#cb17-3" aria-hidden="true"></a>!       ガイダンス資料<span class="ex">.pdf</span></span></code></pre></div>
+                        <p>あるのに無い。ふむ。とりあえずrevertしてみる。</p>
+                        <div class="sourceCode" id="cb18"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true"></a>$ <span class="fu">svn</span> revert ガイダンス資料.pdf</span>
+                        <span id="cb18-2"><a href="#cb18-2" aria-hidden="true"></a><span class="st">&#39;ガイダンス資料.pdf&#39;</span> を元に戻しました</span></code></pre></div>
+                        <p>他の場所では大丈夫なのに、このディレクトリだけ、「svn add ガイダンス資料.pdf」とすると、?と!状態になってしまう。ファイルを一度別ディレクトリにコピーし、そのファイルを消して、またコピーして戻したら普通にできた。全く謎。</p>
+                        <p>GitHub演習、問題からの復帰を一回やりたいな。するとこんな感じかなぁ。</p>
+                        <ul>
+                        <li>Gitの基本操作</li>
+                        <li>GitHubのアカウント作成と基本操作</li>
+                        <li>Gitの問題復帰 (rebaseとmergeを中心に)</li>
+                        <li>GitHubを用いたソフトウェア開発</li>
+                        </ul>
+                        <p>4回だとあんまり深いところまで行けないかもしれない。</p>
+                        <p>第一回物理情報工学特別講義。なんとかちゃんとできたかな。後で動画編集しないと。</p>
+                        <p>秋の安全管理講習やった。名簿も出した。</p>
+                        <p>物性研スパコンのアカウント申請だした。ハンズオンの準備をしなければ。</p>
+                        <h2 id="月08日木"><a href="#08">04月08日(木)</a> <a id="08"></a></h2>
+                        <p>え？git mergeって、ブランチ指定しないとデフォルトでoriginの同じやつをマージするの？</p>
+                        <p><a href="https://qiita.com/matsumon-development/items/b37b1ce988fb810eb8ac">git fetchとブランチ取り込み系コマンドの引数を省略すると？</a></p>
+                        <p>ブランチ名やリモートを省略した場合、カレントブランチに上流ブランチが指定されていると、暗黙にそれが指定されたことになる。上流ブランチとは</p>
+                        <ul>
+                        <li><code>git fetch</code></li>
+                        <li><code>git merge</code></li>
+                        <li><code>git rebase</code></li>
+                        <li><code>git pull</code></li>
+                        <li><code>git pull --rebase</code></li>
+                        </ul>
+                        <p>の引数を省略したときの処理の対象となるブランチ。マジか。知らなかった。確かに<code>git fetch</code>とかはリモートとか省略してた。</p>
+                        <p>え、<code>git rebase</code>をリモートに対して実行するケースってあるの？</p>
+                        <h2 id="月07日水"><a href="#07">04月07日(水)</a> <a id="07"></a></h2>
+                        <p>いろいろ忙しい。会議とかしてた。あと金曜日の準備とか。</p>
+                        <p>GitHubハンズオンの準備。</p>
+                        <h2 id="月06日火"><a href="#06">04月06日(火)</a> <a id="06"></a></h2>
+                        <p><code>ffmpeg</code>が動かない。</p>
+                        <div class="sourceCode" id="cb19"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true"></a><span class="ex">dyld</span>: Library not loaded: /usr/local/opt/aom/lib/libaom.2.dylib</span></code></pre></div>
+                        <p>またこれか。npmで同じことが起きたときに再インストールでなおったので、再インストールするか。</p>
+                        <div class="sourceCode" id="cb20"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true"></a>$ <span class="ex">brew</span> reinstall ffmeg</span>
+                        <span id="cb20-2"><a href="#cb20-2" aria-hidden="true"></a><span class="kw">(</span><span class="ex">snip</span><span class="kw">)</span></span>
+                        <span id="cb20-3"><a href="#cb20-3" aria-hidden="true"></a>==<span class="op">&gt;</span> <span class="ex">python@3.9</span></span>
+                        <span id="cb20-4"><a href="#cb20-4" aria-hidden="true"></a><span class="ex">Python</span> has been installed as</span>
+                        <span id="cb20-5"><a href="#cb20-5" aria-hidden="true"></a>  <span class="ex">/usr/local/bin/python3</span></span>
+                        <span id="cb20-6"><a href="#cb20-6" aria-hidden="true"></a></span>
+                        <span id="cb20-7"><a href="#cb20-7" aria-hidden="true"></a><span class="ex">Unversioned</span> symlinks <span class="kw">`</span><span class="ex">python</span><span class="kw">`</span>, <span class="kw">`</span><span class="ex">python-config</span><span class="kw">`</span>, <span class="kw">`</span><span class="ex">pip</span><span class="kw">`</span> etc. pointing to</span>
+                        <span id="cb20-8"><a href="#cb20-8" aria-hidden="true"></a><span class="kw">`</span><span class="ex">python3</span><span class="kw">`</span>, <span class="kw">`</span><span class="ex">python3-config</span><span class="kw">`</span>, <span class="kw">`</span><span class="ex">pip3</span><span class="kw">`</span> <span class="ex">etc.</span>, respectively, have been installed into</span>
+                        <span id="cb20-9"><a href="#cb20-9" aria-hidden="true"></a>  <span class="ex">/usr/local/opt/python@3.9/libexec/bin</span></span>
+                        <span id="cb20-10"><a href="#cb20-10" aria-hidden="true"></a></span>
+                        <span id="cb20-11"><a href="#cb20-11" aria-hidden="true"></a><span class="ex">You</span> can install Python packages with</span>
+                        <span id="cb20-12"><a href="#cb20-12" aria-hidden="true"></a>  <span class="ex">pip3</span> install <span class="op">&lt;</span>package<span class="op">&gt;</span></span>
+                        <span id="cb20-13"><a href="#cb20-13" aria-hidden="true"></a><span class="ex">They</span> will install into the site-package directory</span>
+                        <span id="cb20-14"><a href="#cb20-14" aria-hidden="true"></a>  <span class="ex">/usr/local/lib/python3.9/site-packages</span></span>
+                        <span id="cb20-15"><a href="#cb20-15" aria-hidden="true"></a></span>
+                        <span id="cb20-16"><a href="#cb20-16" aria-hidden="true"></a><span class="ex">tkinter</span> is no longer included with this formula, but it is available separately:</span>
+                        <span id="cb20-17"><a href="#cb20-17" aria-hidden="true"></a>  <span class="ex">brew</span> install python-tk@3.9</span>
+                        <span id="cb20-18"><a href="#cb20-18" aria-hidden="true"></a></span>
+                        <span id="cb20-19"><a href="#cb20-19" aria-hidden="true"></a><span class="ex">See</span>: https://docs.brew.sh/Homebrew-and-Python</span></code></pre></div>
+                        <p>なんかPythonが上書きインストールされ、ターミナルからVS Codeが起動しなくなった。</p>
+                        <div class="sourceCode" id="cb21"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true"></a>$ <span class="ex">code</span> .</span>
+                        <span id="cb21-2"><a href="#cb21-2" aria-hidden="true"></a><span class="ex">/Users/watanabe/.pyenv/shims</span>/python: <span class="ex">line</span> 21: /usr/local/Cellar/pyenv/1.2.23/libexec/pyenv: No such file or directory</span>
+                        <span id="cb21-3"><a href="#cb21-3" aria-hidden="true"></a><span class="ex">/usr/local/bin</span>/code: <span class="ex">line</span> 10: ./MacOS/Electron: No such file or directory</span></code></pre></div>
+                        <p>上記は<code>pyenv rehash</code>で治ったが、なんか<code>Unversioned symlinks</code>というメッセージがイヤだな。でもいまは忙しいので後回し。</p>
+                        <p>tmuxは便利なんだけど、デフォルトでマウススクロールが使えないのが不便だった。しかし、<code>~/.tmux.conf</code>に以下を書くことで解決。</p>
+                        <div class="sourceCode" id="cb22"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true"></a><span class="kw">set</span> <span class="ex">-g</span> mouse on</span></code></pre></div>
+                        <p>しかし、こうすると今度はマウスによる選択ができない。なんとかしようとしてたらtmuxが起動しなくなった。再インストールしてもダメ。結局<code>/tmp/tmux-501</code>を削除したら起動できた。</p>
+                        <p>CiscoのWebex Meeting、ログイン時に起動する上に設定がdisabledになっていて修正できなかったので削除した。通常削除もできなかったので、Cisco WebEx Meeting Application Uninstallerなるものをダウンロードしてアンインストール。なんやねん。</p>
+                        <p>tmuxのマウスによる選択、fnキーを押しながらだとできる。これをfn無しにしたい。とりあえずCommand+rでできるようになることはわかったが、.tmux.confで設定する方法がわからない。</p>
+                        <p>なるほど、tmuxが管理するバッファと、ターミナルが管理するバッファが異なるので、マウススクロールでどちらを使うべきかを指示する必要があるのか。マウス処理をどちらに渡すのかを切り替えるのがCommand+rであると。当面はこれで良いか。</p>
+                        <p>いつのまにかGoogleが簡単に英語検索できるようになってた。いや、便利だけど、それでいいのか・・・。</p>
+                        <h2 id="月05日月"><a href="#05">04月05日(月)</a> <a id="05"></a></h2>
+                        <p>今日から本格的に新学期である。忙しくなりそう。</p>
+                        <p>Googleの面接対策をして採用に至らせた記事が話題になっている。いろんな論点があるが、一つだけ。「Googleへの採用は簡単だ」というものについて。記事への反応でもあったんだけど、「東大合格は簡単だ」「Google採用は簡単だ」といった言説は「ダイエットは簡単だ」というのと似ていると思う。やるべきことが明確に決まっており、それをやれば達成できることがわかっており、かつそれを行うのに特別な才能も必要ないが、実施は難しいというもの。</p>
+                        <p>僕も昔は「東大合格は簡単だ」と言ってしまうことがあったんだけれど、ここでいう「簡単」が、「simple」とか「clear」の意味であって、決して「easy」ではない、ということを認識してからは言わないようにしている。</p>
+                        <h2 id="月04日日"><a href="#04">04月04日(日)</a> <a id="04"></a></h2>
+                        <p>NOP</p>
+                        <p>疲れたよ。</p>
+                        <h2 id="月03日土"><a href="#03">04月03日(土)</a> <a id="03"></a></h2>
+                        <p>NOP</p>
+                        <p>疲れた。</p>
+                        <h2 id="月02日金"><a href="#02">04月02日(金)</a> <a id="02"></a></h2>
+                        <p>共著論文を返した。遅くなってすみません。</p>
+                        <p>科研費の内定手続きをした。具体的にはウェブから交付申請書(D-2-1)と支払請求書(D-4-1)を作成、確定後に2部ずつ印刷し、事務に提出。</p>
+                        <h2 id="月01日木"><a href="#01">04月01日(木)</a> <a id="01"></a></h2>
+                        <p>新年度になってしまった。</p>
+                        <p>Gitハンズオン。</p>
+                        <p>研究室ミーティング。</p>
+                        <p>輪講。今日は熱力学第一法則。</p>
+                        <p>科研費が採択されたようだ。ありがたい。</p>
           </article>
   </body>
 

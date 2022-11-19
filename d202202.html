@@ -16,318 +16,318 @@
     <link rel="stylesheet" href="style.css" type="text/css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- link rel="stylesheet" href="github-markdown.css" type="text/css" / -->
-        <script src="/usr/share/javascript/mathjax/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+        <script src="/usr/share/javascript/mathjax/tex-mml-chtml.js" type="text/javascript"></script>
           </head>
 
   <body>
     <article class="markdown-body">
                         <h1 id="年2月">2022年2月</h1>
-<p><a href="index.html">ログ一覧</a></p>
-<h2 id="月28日月"><a href="#28">02月28日(月)</a> <a id="28"></a></h2>
-<p>iMacの移行、終わったことにして学生部屋へ。</p>
-<p>Dockerハンズオン。ローカルではなく、研究室サーバでやると、誰がどこまでいっているか、わかりやすくて良かった。</p>
-<p>予算、ほぼ締めた。</p>
-<h2 id="月27日日"><a href="#27">02月27日(日)</a> <a id="27"></a></h2>
-<p>SNSから離れて久しい。ネット(というか「意見を言う人々」)から離れた。なんか、なにか災害やらなんやらに対して「心配する」というよりは、「自分とは異なる意見を持ち、かつアホなことを言っている人を晒し上げる」人ばかりに見える。</p>
-<p>論文の査読レポートの精査。ある論文の理解ができずに詰まっている。この論文で詰まっているので、他の学生さんの論文に手をつけられずにいて申し訳ない。先に学生さん論文に手をつけるべきか。</p>
-<p>作業中に急にWSLが死んで、起動しなくなって焦った。再起動してもPowerShellでwsl –shutdownしてもダメ。PowerShellで wsl -l -vしたらDockerが死んでるというので、Docker Desktopを起動したらWSLも起動した。何か関係あるのかな。</p>
-<h2 id="月26日土"><a href="#26">02月26日(土)</a> <a id="26"></a></h2>
-<p>研究室サーバ、ログインサーバでも計算できる仕組みなので、使いたいときに重いときがある。とりあえず別サーバでdockerできるようにする。</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1"><span class="fu">sudo</span> yum install -y yum-utils device-mapper-persistent-data lvm2</a>
-<a class="sourceLine" id="cb1-2" title="2"><span class="fu">sudo</span> yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo</a>
-<a class="sourceLine" id="cb1-3" title="3"><span class="fu">sudo</span> yum makecache fast</a>
-<a class="sourceLine" id="cb1-4" title="4"><span class="fu">sudo</span> yum -y install docker-ce</a>
-<a class="sourceLine" id="cb1-5" title="5"><span class="fu">sudo</span> systemctl start docker</a></code></pre></div>
-<p>次にdockerグループにパスワードを設定。</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1"><span class="fu">sudo</span> gpasswd docker</a></code></pre></div>
-<p>2つほどサーバにdocker入れて動作確認した。</p>
-<h2 id="月25日金"><a href="#25">02月25日(金)</a> <a id="25"></a></h2>
-<p>大きなディスプレイが納品された。</p>
-<p>新しいiMacに移動。Dog Fooding。</p>
-<p>日本語。変換「前」に候補がでるMacデフォルトのやつ(ことえり?)がどうしても苦手なので、Google日本語入力をインストール。</p>
-<p>Thunderbirdはプロファイルのフォーマットが変わっていたためにできず。諦めてアカウントを設定したら普通にimapでそのまま読めた。ローカルファイルだけscp。</p>
-<p>まず、Mendeleyをインストール。AppStoreに紛らわしい「Mendeley Web Importer」というのがあって、間違えて入れてしまった。</p>
-<p>VSCodeをインストール。</p>
-<p>Pythonのインストール。</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" title="1"><span class="ex">python3</span> -m pip install --upgrade pip</a>
-<a class="sourceLine" id="cb3-2" title="2"><span class="ex">python3</span> -m pip install ipython </a></code></pre></div>
-<p>あと、頻繁にログインするサーバに公開鍵を登録する作業。研究室計算サーバ、研究室ウェブサーバ、物性研、名大につないだ。</p>
-<p>ChromeにNew tab redirectを入れた。LastPassは最初に入れてある。</p>
-<p>Slack入れた。研究室と大学、その他。</p>
-<p>ハンズオンの準備。</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb4-1" title="1"><span class="ex">docker</span> pull ubuntu</a></code></pre></div>
-<p>をしたら、</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode txt"><code class="sourceCode default"><a class="sourceLine" id="cb5-1" title="1">Error response from daemon: Get &quot;https://registry-1.docker.io/v2/&quot;: net/http: request canceled while waiting for connection (Client.Timeout exceeded while awaiting headers)</a></code></pre></div>
-<p>みたいなエラー。</p>
-<p>英語検索のために<code>https://www.google.com/?hl=en&amp;gws_rd=cr</code>をブックマーク。</p>
-<p>Dockerをリスタート。</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb6-1" title="1"><span class="fu">sudo</span> service docker restart</a></code></pre></div>
-<p>だめ。</p>
-<p>Macでdockerを入れる。</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb7-1" title="1"><span class="ex">brew</span> install docker</a></code></pre></div>
-<p>Docker Desktopもインストール＆起動。</p>
-<p>最終的に、<code>/etc/resolv.conf</code>に</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode txt"><code class="sourceCode default"><a class="sourceLine" id="cb8-1" title="1">nameserver 8.8.8.8</a></code></pre></div>
-<p>を追加したらいけた。nameserverの問題？</p>
-<p>CentOSでネットがいちいち遅い。ipv6の問題かもしれないため無効にしてみる。</p>
-<p><code>/etc/sysctl.conf</code>に<code>net.ipv6.conf.all.disable_ipv6 = 1</code>を追記して、</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb9-1" title="1"><span class="ex">sysctl</span> -p</a></code></pre></div>
-<p>を実行。<code>ifconfig |grep inet6</code>を実行して消えたことを確認。</p>
-<p>だめだ。まだ遅い。間違いなくなにかタイムアウトしている。</p>
-<p><code>/etc/resolv.conf</code>のデフォルトのやつを消して<code>8.8.8.8</code>だけにしたら早くなった。DNSのタイムアウトか。</p>
-<p>Dockerハンズオン完走。これで月曜日はよし。</p>
-<p>そうか、Dockerのエラーがわかった。DNSでプライマリにたずねてタイムアウトするまでに、Dockerが諦めちゃうんだ。curlとかだとタイムアウトしないのでつながらないのがわからなかった。</p>
-<p>一応<a href="https://zenn.dev/kaityo256/scraps/c335ac8c76c5e1">Zennのスクラップ</a>に書いておいた。</p>
-<p>あ、brew入ってなかった。</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb10-1" title="1"><span class="ex">brew</span> install wget</a></code></pre></div>
-<p>あー、でもcurlでやってみるか。</p>
-<p>MacへのTexLiveのインストール。</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb11-1" title="1"><span class="bu">cd</span> build</a>
-<a class="sourceLine" id="cb11-2" title="2"><span class="ex">curl</span> -O http://ftp.jaist.ac.jp/pub/CTAN/systems/texlive/tlnet/install-tl-unx.tar.gz</a>
-<a class="sourceLine" id="cb11-3" title="3"><span class="fu">tar</span> xvzf install-tl-unx.tar.gz</a></code></pre></div>
-<p>lab_startupのVimの終了についても書いた。</p>
-<p>論文には全く取りかかれなかったが、それなりに仕事はできたのではないか。</p>
-<h2 id="月24日木"><a href="#24">02月24日(木)</a> <a id="24"></a></h2>
-<p>会議。</p>
-<p>なんか、SNSとかで「こんな老害は嫌だ」という趣旨のコメントについて「俺は○○だから老害じゃない」とアピールする老害がいて、なんだかなぁ、という感じ。おそらく心のどこかで自分が「こんな老害」になっていることを自覚しているのであろう。</p>
-<p>僕も有る種の老害になるのだろうか。技術と価値観のアップデートが明らかに遅くなっている気がする。価値観は自覚が難しいが、技術に関しては完全にキャッチアップできておらず、「自分の古い知識で最新の技術を理解しようとする」という、明らかな老害ムーブをかましている。これは正直、仕方のない部分もある。</p>
-<p>自分が「最新技術をキャッチアップできていない」ということをちゃんと自覚しておくことしか自衛手段はなさそう。</p>
-<p>研究室の輪講用に、湯川さんの「統計力学」が届いた。</p>
-<p>新iMacにOffice365入れた。SSOでポータルに入ってインストーラをダウンロード。インストール後の初回起動時にSSOで認証しておしまい。便利。</p>
-<p>キーボードのキーリピートとリピート入力認識までの時間を最速に。</p>
-<p>データの移行。最初からGitHubで管理するつもりでリポジトリを作る場合もあるが、まずはローカルでGitで管理して、その後必要があればGitHubに移行する場合もある。その「とりあえずローカルで」のディレクトリを一応バックアップしようとしたら、膨大なデータでビビった。調べたら18GBある。これ、取捨選択するのかなり時間かかるな・・・。移行したまま開かないで、そのままPCと寿命を共にしそう・・・</p>
-<p>別のiMacで開いているページが、別のiMacで「開きませんか？」と聞いてくる。非常に気持ち悪い。「システム環境設定」の「一般」の一番下の「このMacとiCloudデバイス間でのHandoffを許可」のチェックボックスをオフにすることででなくなる。iPadから共有するのは便利かもだけど、iMac-iMacはいらないだろこれ・・・</p>
-<p>未だにrsyncのディレクトリの条件を覚えていない。serverのdirをそのままこっちに持って来たい場合、</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb12-1" title="1"><span class="fu">rsync</span> -auvz server:dir dir</a>
-<a class="sourceLine" id="cb12-2" title="2"><span class="fu">rsync</span> -auvz server:dir .</a></code></pre></div>
-<p>のどちらだったかいつも迷う(後者が正解)。</p>
-<p>もしくは</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb13-1" title="1"><span class="fu">mkdir</span> dir</a>
-<a class="sourceLine" id="cb13-2" title="2"><span class="fu">rsync</span> -auvz server:dir/ dir</a></code></pre></div>
-<p>でもOK。ムズい。</p>
-<p>シミュレーションデータの移行。</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb14-1" title="1">$ <span class="fu">du</span> -hd 1 data</a>
-<a class="sourceLine" id="cb14-2" title="2"><span class="kw">(</span><span class="ex">snip</span><span class="kw">)</span></a>
-<a class="sourceLine" id="cb14-3" title="3"><span class="ex">381G</span>    data</a></code></pre></div>
-<p>381GBか。これもいらないかなぁ。dumpファイル消したら35GBになった。これで良いか。</p>
-<p>PukiWikiのバックアップ。dumpプラグインを入れているので、URLに<code>?plugin=dump</code>を追加すればダウンロード画面に。管理者パスワードを入れてダウンロード。これでローカルのバックアップは消して良い。</p>
-<p>Thunderbirdの移行。移行先でThunderbirdをインストール。起動。終了。</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb15-1" title="1"><span class="bu">cd</span> ~/Library/Thunderbird/Profiles/</a>
-<a class="sourceLine" id="cb15-2" title="2"><span class="fu">scp</span> -r oldserver:Library/Thunderbird/Profiles/*.default .</a></code></pre></div>
-<p>そしてもともとあった「hogehoge.default」というディレクトリを消して、持ってきたディレクトリをそのファイルに改名すればできるはず・・・だが、うっかり消してしまった。</p>
-<p>その後いろいろやったが失敗。とりあえず<code>/Thunderbird/Profiles/</code>を全部コピーしてみた。できたかどうかは明日確認。</p>
-<h2 id="月23日水"><a href="#23">02月23日(水)</a> <a id="23"></a></h2>
-<p>NOP</p>
-<h2 id="月22日火"><a href="#22">02月22日(火)</a> <a id="22"></a></h2>
-<p>メモ。以下は多分追加してない。とりあえずウェブには追加した。</p>
-<ul>
-<li>中野裕義、「（若手奨励賞）一様剪断流の非平衡定常系における連続対称性の破れと長距離秩序」日本物理学会第77回年次大会、2022年3月16日、</li>
-<li>松井一真, 渡辺宙志, 清水智子, “機能性有機分子の自己組織化薄膜構造の安定性評価”, 第34回分子シミュレーション討論会, オンライン, 2020年12月15日 (ポスター)</li>
-<li>浅野 優太, 渡辺 宙志, 野口 博司」分子動力学計算による複雑流体中のカルマン渦の解析」 分子シミュレーション研究会会誌 “アンサンブル” 22(2), 157-162 (2020).</li>
-<li>「円柱周りのキャビテーション流れに対する高分子添加の影響」流体力学会、浅野優太, 渡辺宙志, 野口博司、2021年。9月22日、</li>
-<li>カルマン渦キャビテーションの分子動力学シミュレーション（東大物性研）○浅野優太, 渡辺宙志, 野口博司、分子シミュレーション討論会。2018年。11月29日</li>
-</ul>
-<p>今日は打ち合わせ3件。</p>
-<p>修士論文のLaTeXテンプレート作成。表紙、和文概要、英文概要まで作った。分離はもうpdftkで良いかなぁ。</p>
-<h2 id="月21日月"><a href="#21">02月21日(月)</a> <a id="21"></a></h2>
-<p>会議。</p>
-<p>名大の杉山先生の最終講義が今年あるそうな。退官は2年前だが、コロナで延期になってたとのこと。2年前は参加できないスケジュールだったが、今回は参加できそうなのでオンライン参加を申し込んだ。</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode txt"><code class="sourceCode default"><a class="sourceLine" id="cb16-1" title="1">幹事：谷村省吾、時田恵一郎、中村泰之（名古屋大学）</a>
-<a class="sourceLine" id="cb16-2" title="2"></a>
-<a class="sourceLine" id="cb16-3" title="3">日時：2022年3月10日（木）16:00～17:30</a>
-<a class="sourceLine" id="cb16-4" title="4"></a>
-<a class="sourceLine" id="cb16-5" title="5">場所：名古屋大学東山キャンパス　情報学研究科棟　１階　第１講義室</a>
-<a class="sourceLine" id="cb16-6" title="6">　　　および</a>
-<a class="sourceLine" id="cb16-7" title="7">　　　オンライン（Zoom の予定。参加申し込みされた方に後ほど URL をお知らせします）</a>
-<a class="sourceLine" id="cb16-8" title="8"></a>
-<a class="sourceLine" id="cb16-9" title="9">講師：杉山雄規氏（現在、名古屋大学名誉教授）</a>
-<a class="sourceLine" id="cb16-10" title="10"></a>
-<a class="sourceLine" id="cb16-11" title="11">講義題目：　非対称、非平衡、相転移</a></code></pre></div>
-<p>会議。</p>
-<p><a href="https://github.com/kaityo256/lab_startup/issues">lab_startub</a>のissueを2つ潰した。</p>
-<p>sshどうするかな。</p>
-<p>Vimハンズオンした。SSHは別ページにするほどでもなかったので、とりあえずはSlackで公開鍵作成方法の説明して、公開鍵と希望アカウントを送ってもらうことに。ただ、SSHが何をやっているか、公開鍵とはなにかをざっとは説明したほうが良い気もする。うーん。</p>
-<p>来週はDockerハンズオン。</p>
-<h2 id="月20日日"><a href="#20">02月20日(日)</a> <a id="20"></a></h2>
-<p>e-Taxのページへ。</p>
-<ul>
-<li>Chromeでe-Taxソフト(Web版)へ</li>
-<li>事前準備セットアップツールをインストール</li>
-<li>Chrome拡張を入れろというので「e-Tax AP」を入れる</li>
-<li>ルート証明書のインストール</li>
-<li>開始届出書をウェブから作成。メールアドレスなどを入力。</li>
-<li>ログインした後、利用者情報の登録。ICカードリーダから読み取りに成功。タッチではなく、差し込む形式だったのにしばらくきづかなかった。４桁のパスワードを何度か要求される。</li>
-<li>「新規登録」が済むと「申告・申請・納税」メニューが利用可に。「新規作成」を選ぶ。</li>
-<li>「納付情報登録依頼」かな。</li>
-</ul>
-<p>ローカル用e-Taxソフトを入れてみたが、追加のインストールをしないとなにもできないっぽい。もう少し調査が必要。とりあえず今日はカードリーダが使えることを確認したところで良しとしよう。</p>
-<h2 id="月19日土"><a href="#19">02月19日(土)</a> <a id="19"></a></h2>
-<p>研究打ち合わせ。査読レポートが長かったので打ち合わせも長かった。自分の論文の査読レポートもなんとかしないといけないし、学生さんの論文も残っており、講義の準備も滞っている。苦しい。</p>
-<h2 id="月18日金"><a href="#18">02月18日(金)</a> <a id="18"></a></h2>
-<p>集中力を欠くなぁ。明らかに先週の疲れが残ってる。</p>
-<p>製本依頼出した。2部ずつ印刷して表紙データをつけてクリアファイルに入れて整理。地味に時間かかった・・・。納期は10日から2週間程度とのこと。</p>
-<p>忘れないうちに、卒論リポジトリの整理。それぞれのリポジトリにabstを追加。また、研究室内Wikiにも追加。</p>
-<p>研究室のウェブサイトに、これまでの学位論文や、慶応着任後の学会発表、論文発表を追加。</p>
-<ul>
-<li>新iMacのセットアップ。まずはターミナルの色とか。
-<ul>
-<li>gitと入力したら、ソフトウェアをインストールしろと言われた。結構(10分くらい)かかるので、最初にインストールさせておかないといけないな。</li>
-<li>Macのホスト名「watanabenoimac」とかダサいので修正。「環境設定」の「共有」のところにある。分かりづらい。</li>
-<li>Chromeのダウンロード</li>
-<li>ChromeにLastPassを追加</li>
-<li>ssh-keygenして鍵ペア作成。</li>
-<li>brewのインストール(スクリプトを実行するだけ)</li>
-<li>githubからdotfilesをclone。とりあえずzshrcだけ。</li>
-<li>brewdでsubversionインストール</li>
-<li>svn管理されているファイルをいくつかcheckout</li>
-</ul></li>
-</ul>
-<h2 id="月17日木"><a href="#17">02月17日(木)</a> <a id="17"></a></h2>
-<p>金子先生も清水先生も最終講義か・・・</p>
-<ul>
-<li>【最終講義】金子 邦彦 教授 <a href="https://www.c.u-tokyo.ac.jp/info/news/events/20220203100000.html">やり残したことなど：カオス、複雑系、普遍生物学、それから</a></li>
-<li>【最終講義】清水 明 教授 <a href="https://www.c.u-tokyo.ac.jp/info/news/events/20220203110000.html">謎に惹かれて基礎の森</a></li>
-</ul>
-<p>昨年の卒論、製本が上がってきたので受け取った。</p>
-<p>研究室ミーティング。ANNNIモデルの厳密対角化の結果と、機械学習によるタンパク質の構造予測の話。厳密対角化屋さん、古典系での結果を見るのは久しぶりな気がする。タンパク質の構造予測は実際に合成して確認するのはすごい。</p>
-<p>重い腰を上げて新しいMacのセットアップ。アップデートがかかっているうちに、古いMacのデータの整理。主にsvn管理されていないファイルの削除など。</p>
-<p>PCのデータを調べてたら、たら、昔のサーバがリモートになっているsvnリポジトリを発見。死ぬほど久しぶりにsvnadminを触る。</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb17-1" title="1"><span class="ex">svnadmin</span> create rep_name</a></code></pre></div>
-<div class="sourceCode" id="cb18"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb18-1" title="1"><span class="fu">svn</span> co svn+ssh://username@servename.jp/home/username/rep_name local_rep</a></code></pre></div>
-<p>学生さんに「左利きなんだね」と言ったら「それ言われるの4回目です」。正直すまんかった。</p>
-<h2 id="月16日水"><a href="#16">02月16日(水)</a> <a id="16"></a></h2>
-<p>共著論文の査読レポートに対するコメント返した。遅くなってしまった。</p>
-<p>FDアンケート返した。プログラミング基礎同演習はだいぶこなれてきたので好評価だけれど、物理情報工学ソフトウェア開発演習(GitHub演習)は初回ということもあり、ちょっと詰め込み過ぎ、消化不良という声があった。来年度はどうするかなぁ。感染状況もあるので対応が難しい。</p>
-<p>富岳レポート、また不備があった。うーん。</p>
-<p>コーヒー届いた。</p>
-<h2 id="月15日火"><a href="#15">02月15日(火)</a> <a id="15"></a></h2>
-<p>頭が全く回っていない。少しずつエンジンをかける。</p>
-<p>VSCodeで変換中のフォントがおかしくなる場合がある。なんか太くなって幅が短くなる。変換が修了するともとに戻るので、入力中に伸び縮みして不便。再起動でなおった。何が置きたんだろう？</p>
-<p>なんか最近、ネットに変な依存が見られる。ネットで自分とは異なる意見を見たら、なんかもの申したくなる、みたいな。おそらく自分に進捗がないから、ネットでなにか「発言」して、自分に価値があると錯覚したいのであろう。少し距離を置くべきだな。</p>
-<p>生協にコーヒー注文した。</p>
-<p>輪講用の本(湯川統計)9冊注文した。</p>
-<p>研究打ち合わせ。有益な助言を多数いただけた。Zoomの利用が広がり、オンラインミーティングを気軽にできるようになったのはとてもありがたい。</p>
-<p>卒論の表紙作った。</p>
-<p>卒論リポジトリに表紙pptx追加した。ついでに数式の件を少し追加。</p>
-<p>主任賞の賞状と副賞の依頼。正式名称は「物理情報分野優秀修士論文賞」とのこと。</p>
-<p>HPCIの報告書に不備があった。慌てて修正して再提出。</p>
-<p>科研費の支払請求書(F-2-1)を提出した。</p>
-<p>なんか他にも忘れてそうだなぁ……</p>
-<h2 id="月14日月"><a href="#14">02月14日(月)</a> <a id="14"></a></h2>
-<p>NOP</p>
-<h2 id="月13日日"><a href="#13">02月13日(日)</a> <a id="13"></a></h2>
-<p>NOP</p>
-<p>あー、学習指導の仕事を一つ失念してた。慌てて作業。</p>
-<h2 id="月12日土"><a href="#12">02月12日(土)</a> <a id="12"></a></h2>
-<p>NOP</p>
-<h2 id="月11日金"><a href="#11">02月11日(金)</a> <a id="11"></a></h2>
-<p>1on1ミーティング。</p>
-<h2 id="月10日木"><a href="#10">02月10日(木)</a> <a id="10"></a></h2>
-<p>研究室ミーティング。論文紹介の仕方から先輩による模範演技。</p>
-<p>富岳の成果報告書書いて提出したぞ。</p>
-<p><a href="https://www.calc.appi.keio.ac.jp/members/">研究室集合写真載せた</a>。</p>
-<h2 id="月09日wed"><a href="#09">02月09日(Wed)</a> <a id="09"></a></h2>
-<p>ネットに講義ノートを無償公開することを批判する意見を見つけた。曰く「知にたいして労働力の対価を求めるべき。社会がその対価を正しく意識すべき」。</p>
-<p>その、「知」にたいして正しく対価を払う、という趣旨には全く同意なんだけれど、それと「講義ノートを無償公開するのはよくない」というのはちょっと違う気がする。</p>
-<p>原理原則を言えば、勤務時間中に仕事として作成したものは、雇い主に権利がある。講義ノートが大学の仕事として勤務時間中に作られたものである以上、これは職務著作物となる可能性がある。しかし慣例として、研究者が作成した論文や講義ノートなどの著作物は職務著作物にあたらないことになっている。</p>
-<p>「講義ノートは大学で授業料を支払った学生のためのものである」という主張は、「講義ノートは職務著作物である」という意見に近いように思う。であるなら、著作権の原始的帰属は大学にあるから、無償公開どころか出版して印税収入を得るのはまずい。</p>
-<p>「講義ノートの著作権は自分にあるが、授業料を払った学生のために作ったのだから無償公開はすべきでない」という意見なら、それをたかだか数千円の本として一般向けに出版するのは主張に一貫性がないように思う。</p>
-<p>「知の探求には労力がかかるのであり、その取得には正当な対価を支払うべき」という意見には完全に賛同する。「その対価として書籍を購入せよ」という意見には(賛同はしないが)納得する。しかし、「講義ノートは大学で授業料を支払った学生のためのものであるから無償公開はよくないが、出版はする」という意見には一貫性は見いだせない。</p>
-<p>講義ノートの問題は、実は教科書としての出版だけにとどまらない。昨今のオンライン講義の発展により、e-ラーニング教材としての利用をする際、著作権をどうするか、という問題が出てくるからだ。MITなどは講義を無償公開しているが、これを大学が「社会人向けのe-ラーニングコース」として有償提供する際、その対価を研究者がどう受け取るべきか、ややこしいことになる。</p>
-<p>「授業料を払った学生のために講義をする」という理屈であるなら、すでに録画された講義を、お金を払った人に公開しても良さそうに見える。では、もともと給料をもらって大学の講義をしているのであるが、その講義を外に「売る」時に、教員はさらにお金をもらえるのか？もらうべきか？もらうとしたらどれくらいの割合なのか？また、講義に問題があった場合、法的責任はどちらが取るのか？解決すべき問題は多い。</p>
-<p>LJ_SIMDのコードを整理するところまで。富岳のレポートを書くところまでいかなかった。</p>
-<h2 id="月08日火"><a href="#08">02月08日(火)</a> <a id="08"></a></h2>
-<p>修士論文発表会。</p>
-<p>学習指導。またミス判明。落ち込む。</p>
-<p>確定申告わからない。とりあえず自分のスマホがマイナンバーポータルアプリに対応していないことがわかった。カードリーダを買ってみる。</p>
-<h2 id="月07日月"><a href="#07">02月07日(月)</a> <a id="07"></a></h2>
-<p>「なぜ鉄は磁石になるのに銅は磁石にならないか」について、僕が一番わかりやすかった説明は<a href="http://home.sato-gallery.com/research/chonyumon_3_opt.pdf">これ</a>かな。</p>
-<p>論文取得ハンズオン。</p>
-<h2 id="月06日日"><a href="#06">02月06日(日)</a> <a id="06"></a></h2>
-<p>格子ガスのMC書いた。</p>
-<h2 id="月05日土"><a href="#05">02月05日(土)</a> <a id="05"></a></h2>
-<p>textlintを導入してみたが、想像以上にうるさい。とりあえずsentence-lengthはfalseにした。</p>
-<h2 id="月04日金"><a href="#04">02月04日(金)</a> <a id="04"></a></h2>
-<p>卒論発表会。いやマジでレベル高い。</p>
-<p>予算の締めに走る。</p>
-<p>VSCodeがアップデートされ、WSLからcodeを実行しようとしたらこけるようになった。</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb19-1" title="1">$ <span class="ex">code</span> .</a>
-<a class="sourceLine" id="cb19-2" title="2"><span class="ex">/mnt/c/Users/watanabe/.vscode/extensions/ms-vscode-remote.remote-wsl-0.63.13/scripts</span>/wslCode.sh: <span class="ex">69</span>: /home/watanabe/.vscode-server-server/bin/5554b12acf27056905806867f251c859323ff7e9/bin/code: not found</a></code></pre></div>
-<p>一度VSCodeをWindowsから起動してリモート接続でWSLにつないで、Serverをダウンロードしたら直った。</p>
-<p>FX1000でpbc_testしたが、やはり遅い。それより驚いたのは、Tradモードに対してClangモードが数十倍遅かったこと。原因は乱数。乱数のどこが問題かはまだチェックしていない。</p>
-<p>とりあえず<a href="https://gist.github.com/kaityo256/9392bb3984afcdd45d0cb868036788fd">再現ソース</a>。</p>
-<h2 id="月03日木"><a href="#03">02月03日(木)</a> <a id="03"></a></h2>
-<p>卒論発表会。レベル高い。</p>
-<p>Zoom、ミーティングの名前をクリックした場合と、「編集」をクリックした場合で振る舞いが違う。名前のリンクをクリックすると「投票」が編集できるが、「編集」をクリックすると「投票」が出てこない。うーむ。</p>
-<p>Duality、まだちゃんとわかってないなぁ。</p>
-<h2 id="月02日水"><a href="#02">02月02日(水)</a> <a id="02"></a></h2>
-<p>会議。メールたくさん。</p>
-<p>名大不老の利用開始。報告書までに間に合うかな？</p>
-<h2 id="月01日火"><a href="#01">02月01日(火)</a> <a id="01"></a></h2>
-<p>2月になってしまった。</p>
-<p>Ashkin-TellerわからんわからんっていったらMさんに良い論文を教えてもらった。</p>
-<p><a href="https://doi.org/10.1063/1.523343">Ashkin–Teller model as a vertex problem</a></p>
-<p>おお、これはわかりやすい。</p>
-<p>サイトにA, B, C, Dの四種類の原子があるとせよ。隣が同種の時には<span class="math inline">\(\epsilon_0\)</span>, AB, CDの時には<span class="math inline">\(\epsilon_1\)</span>, AC, BDの時には<span class="math inline">\(\epsilon_2\)</span>, AD, BCの時には<span class="math inline">\(\epsilon_3\)</span>のエネルギーがあるとせよ。</p>
-<p>この時、</p>
-<p><span class="math display">\[
-H = J_0 + J_1 \sum \sigma_i \sigma_j + J_2 \sum \tau_i \tau_j 
-+ J_3 \sum \sigma_i \sigma_j \tau_i \tau_j
-\]</span></p>
-<p>というハミルトニアンを考えると、<span class="math inline">\((\sigma_i, \tau_i)\)</span>が<span class="math inline">\((+,+)\)</span>、<span class="math inline">\((+,-)\)</span>、<span class="math inline">\((-,+)\)</span>、<span class="math inline">\((-,-)\)</span>をそれぞれA, B, C,Dに対応させると、<span class="math inline">\(\epsilon_i\)</span>と<span class="math inline">\(J_i\)</span>の関係がは以下のようになる。</p>
-<p><span class="math display">\[
-\begin{aligned}
-\epsilon_0 &amp;= J_0 + J_1 + J_2 + J_3 \\
-\epsilon_1 &amp;= J_0 + J_1 - J_2 - J_3 \\
-\epsilon_2 &amp;= J_0 - J_1 + J_2 - J_3 \\
-\epsilon_3 &amp;= J_0 - J_1 - J_2 + J_3 
-\end{aligned}
-\]</span></p>
-<p>これを<span class="math inline">\(J_i\)</span>について解くと、</p>
-<p><span class="math display">\[
-\begin{aligned}
-4J_0 &amp;= \epsilon_0 + \epsilon_1 + \epsilon_2 + \epsilon_3 \\
-4J_1 &amp;= \epsilon_0 + \epsilon_1 - \epsilon_2 - \epsilon_3 \\
-4J_2 &amp;= \epsilon_0 - \epsilon_1 + \epsilon_2 - \epsilon_3 \\
-4J_3 &amp;= \epsilon_0 - \epsilon_1 - \epsilon_2 + \epsilon_3
-\end{aligned}
-\]</span></p>
-<p>となる。ここで、逆温度<span class="math inline">\(\beta = 1/kT\)</span>を使って</p>
-<p><span class="math display">\[
-K_i = - \beta J_i
-\]</span></p>
-<p><span class="math display">\[
-\omega_i = \exp\left(-\beta \epsilon_i\right)
-\]</span></p>
-<p>という変数<span class="math inline">\(K_i\)</span>と<span class="math inline">\(\omega_i\)</span>を導入すると、</p>
-<p><span class="math display">\[
-\begin{aligned}
-\exp(4 K_0) &amp;= \omega_0 \omega_1 \omega_2 \omega_3 \\
-\exp(4 K_1) &amp;= \omega_0 \omega_1 / \omega_2 \omega_3 \\
-\exp(4 K_2) &amp;= \omega_0 \omega_2 / \omega_1 \omega_3 \\
-\exp(4 K_3) &amp;= \omega_0 \omega_3 / \omega_1 \omega_2 
-\end{aligned}
-\]</span></p>
-<p>という関係を得る。</p>
-<p>で、ここから<span class="math inline">\(\tau_i\)</span>を双対変換しなければならない。この双対変換はKramers–Wannier変換と呼ばれている。</p>
-<p>ちなみに、良く出てくるF. Y. Wuは<a href="https://ja.wikipedia.org/wiki/%E4%BC%8D%E6%B3%95%E5%B2%B3">この人</a>かな。</p>
-<p>双対変換で出てくる等式</p>
-<p><span class="math display">\[
-\exp(K \sigma \sigma&#39;) = \cosh{K}\sum_{t=0,1} (\sigma \sigma&#39; \tanh{K})^t
-\]</span></p>
-<p>について、</p>
-<p><span class="math inline">\(\sigma \sigma&#39; = 1\)</span>の時に<span class="math inline">\(\mathrm{e}^K\)</span>、<span class="math inline">\(\sigma \sigma&#39; = -1\)</span>の時に<span class="math inline">\(\mathrm{e}^{-K}\)</span>なので、和と差から</p>
-<p><span class="math display">\[
-\begin{aligned}
-\exp(K \sigma \sigma&#39;) &amp;= \frac{\mathrm{e}^K+\mathrm{e}^{-K}}{2} + \sigma\sigma&#39; \frac{(\mathrm{e}^K-\mathrm{e}^{-K})}{2} \\
-&amp;= \cosh{K} + \sigma\sigma&#39; \sinh{K} \\
-&amp;= \cosh{K} \left(1 + \sigma\sigma&#39; \tanh{K}\right) \\
-&amp;= \cosh{K}\sum_{t=0,1} (\sigma \sigma&#39; \tanh{K})^t
-\end{aligned}
-\]</span></p>
-<p>これを整理すると先ほどの式になる。</p>
-<p>高橋さんの<a href="http://www.stat.phys.titech.ac.jp/~ktaka/rg/duality.pdf">双対変換の解説</a>も見つけた。わかりやすい。なるほどフーリエ変換だ。</p>
-<p>dev.toに<a href="https://dev.to/kaityo256/docker-environment-for-arm-sve-1bm5">Xbyakハンズオンの紹介記事</a>書いた。ほとんど読まれていないが、とにかく英語版を書いて、さらにdev.toに紹介まで書いた俺偉い。絶対エタると思った。</p>
+                        <p><a href="index.html">ログ一覧</a></p>
+                        <h2 id="月28日月"><a href="#28">02月28日(月)</a> <a id="28"></a></h2>
+                        <p>iMacの移行、終わったことにして学生部屋へ。</p>
+                        <p>Dockerハンズオン。ローカルではなく、研究室サーバでやると、誰がどこまでいっているか、わかりやすくて良かった。</p>
+                        <p>予算、ほぼ締めた。</p>
+                        <h2 id="月27日日"><a href="#27">02月27日(日)</a> <a id="27"></a></h2>
+                        <p>SNSから離れて久しい。ネット(というか「意見を言う人々」)から離れた。なんか、なにか災害やらなんやらに対して「心配する」というよりは、「自分とは異なる意見を持ち、かつアホなことを言っている人を晒し上げる」人ばかりに見える。</p>
+                        <p>論文の査読レポートの精査。ある論文の理解ができずに詰まっている。この論文で詰まっているので、他の学生さんの論文に手をつけられずにいて申し訳ない。先に学生さん論文に手をつけるべきか。</p>
+                        <p>作業中に急にWSLが死んで、起動しなくなって焦った。再起動してもPowerShellでwsl –shutdownしてもダメ。PowerShellで wsl -l -vしたらDockerが死んでるというので、Docker Desktopを起動したらWSLも起動した。何か関係あるのかな。</p>
+                        <h2 id="月26日土"><a href="#26">02月26日(土)</a> <a id="26"></a></h2>
+                        <p>研究室サーバ、ログインサーバでも計算できる仕組みなので、使いたいときに重いときがある。とりあえず別サーバでdockerできるようにする。</p>
+                        <div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="fu">sudo</span> yum install -y yum-utils device-mapper-persistent-data lvm2</span>
+                        <span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a><span class="fu">sudo</span> yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo</span>
+                        <span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a><span class="fu">sudo</span> yum makecache fast</span>
+                        <span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a><span class="fu">sudo</span> yum -y install docker-ce</span>
+                        <span id="cb1-5"><a href="#cb1-5" aria-hidden="true"></a><span class="fu">sudo</span> systemctl start docker</span></code></pre></div>
+                        <p>次にdockerグループにパスワードを設定。</p>
+                        <div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="fu">sudo</span> gpasswd docker</span></code></pre></div>
+                        <p>2つほどサーバにdocker入れて動作確認した。</p>
+                        <h2 id="月25日金"><a href="#25">02月25日(金)</a> <a id="25"></a></h2>
+                        <p>大きなディスプレイが納品された。</p>
+                        <p>新しいiMacに移動。Dog Fooding。</p>
+                        <p>日本語。変換「前」に候補がでるMacデフォルトのやつ(ことえり?)がどうしても苦手なので、Google日本語入力をインストール。</p>
+                        <p>Thunderbirdはプロファイルのフォーマットが変わっていたためにできず。諦めてアカウントを設定したら普通にimapでそのまま読めた。ローカルファイルだけscp。</p>
+                        <p>まず、Mendeleyをインストール。AppStoreに紛らわしい「Mendeley Web Importer」というのがあって、間違えて入れてしまった。</p>
+                        <p>VSCodeをインストール。</p>
+                        <p>Pythonのインストール。</p>
+                        <div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="ex">python3</span> -m pip install --upgrade pip</span>
+                        <span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a><span class="ex">python3</span> -m pip install ipython </span></code></pre></div>
+                        <p>あと、頻繁にログインするサーバに公開鍵を登録する作業。研究室計算サーバ、研究室ウェブサーバ、物性研、名大につないだ。</p>
+                        <p>ChromeにNew tab redirectを入れた。LastPassは最初に入れてある。</p>
+                        <p>Slack入れた。研究室と大学、その他。</p>
+                        <p>ハンズオンの準備。</p>
+                        <div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="ex">docker</span> pull ubuntu</span></code></pre></div>
+                        <p>をしたら、</p>
+                        <div class="sourceCode" id="cb5"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a>Error response from daemon: Get &quot;https://registry-1.docker.io/v2/&quot;: net/http: request canceled while waiting for connection (Client.Timeout exceeded while awaiting headers)</span></code></pre></div>
+                        <p>みたいなエラー。</p>
+                        <p>英語検索のために<code>https://www.google.com/?hl=en&amp;gws_rd=cr</code>をブックマーク。</p>
+                        <p>Dockerをリスタート。</p>
+                        <div class="sourceCode" id="cb6"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="fu">sudo</span> service docker restart</span></code></pre></div>
+                        <p>だめ。</p>
+                        <p>Macでdockerを入れる。</p>
+                        <div class="sourceCode" id="cb7"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a><span class="ex">brew</span> install docker</span></code></pre></div>
+                        <p>Docker Desktopもインストール＆起動。</p>
+                        <p>最終的に、<code>/etc/resolv.conf</code>に</p>
+                        <div class="sourceCode" id="cb8"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a>nameserver 8.8.8.8</span></code></pre></div>
+                        <p>を追加したらいけた。nameserverの問題？</p>
+                        <p>CentOSでネットがいちいち遅い。ipv6の問題かもしれないため無効にしてみる。</p>
+                        <p><code>/etc/sysctl.conf</code>に<code>net.ipv6.conf.all.disable_ipv6 = 1</code>を追記して、</p>
+                        <div class="sourceCode" id="cb9"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a><span class="ex">sysctl</span> -p</span></code></pre></div>
+                        <p>を実行。<code>ifconfig |grep inet6</code>を実行して消えたことを確認。</p>
+                        <p>だめだ。まだ遅い。間違いなくなにかタイムアウトしている。</p>
+                        <p><code>/etc/resolv.conf</code>のデフォルトのやつを消して<code>8.8.8.8</code>だけにしたら早くなった。DNSのタイムアウトか。</p>
+                        <p>Dockerハンズオン完走。これで月曜日はよし。</p>
+                        <p>そうか、Dockerのエラーがわかった。DNSでプライマリにたずねてタイムアウトするまでに、Dockerが諦めちゃうんだ。curlとかだとタイムアウトしないのでつながらないのがわからなかった。</p>
+                        <p>一応<a href="https://zenn.dev/kaityo256/scraps/c335ac8c76c5e1">Zennのスクラップ</a>に書いておいた。</p>
+                        <p>あ、brew入ってなかった。</p>
+                        <div class="sourceCode" id="cb10"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true"></a><span class="ex">brew</span> install wget</span></code></pre></div>
+                        <p>あー、でもcurlでやってみるか。</p>
+                        <p>MacへのTexLiveのインストール。</p>
+                        <div class="sourceCode" id="cb11"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true"></a><span class="bu">cd</span> build</span>
+                        <span id="cb11-2"><a href="#cb11-2" aria-hidden="true"></a><span class="ex">curl</span> -O http://ftp.jaist.ac.jp/pub/CTAN/systems/texlive/tlnet/install-tl-unx.tar.gz</span>
+                        <span id="cb11-3"><a href="#cb11-3" aria-hidden="true"></a><span class="fu">tar</span> xvzf install-tl-unx.tar.gz</span></code></pre></div>
+                        <p>lab_startupのVimの終了についても書いた。</p>
+                        <p>論文には全く取りかかれなかったが、それなりに仕事はできたのではないか。</p>
+                        <h2 id="月24日木"><a href="#24">02月24日(木)</a> <a id="24"></a></h2>
+                        <p>会議。</p>
+                        <p>なんか、SNSとかで「こんな老害は嫌だ」という趣旨のコメントについて「俺は○○だから老害じゃない」とアピールする老害がいて、なんだかなぁ、という感じ。おそらく心のどこかで自分が「こんな老害」になっていることを自覚しているのであろう。</p>
+                        <p>僕も有る種の老害になるのだろうか。技術と価値観のアップデートが明らかに遅くなっている気がする。価値観は自覚が難しいが、技術に関しては完全にキャッチアップできておらず、「自分の古い知識で最新の技術を理解しようとする」という、明らかな老害ムーブをかましている。これは正直、仕方のない部分もある。</p>
+                        <p>自分が「最新技術をキャッチアップできていない」ということをちゃんと自覚しておくことしか自衛手段はなさそう。</p>
+                        <p>研究室の輪講用に、湯川さんの「統計力学」が届いた。</p>
+                        <p>新iMacにOffice365入れた。SSOでポータルに入ってインストーラをダウンロード。インストール後の初回起動時にSSOで認証しておしまい。便利。</p>
+                        <p>キーボードのキーリピートとリピート入力認識までの時間を最速に。</p>
+                        <p>データの移行。最初からGitHubで管理するつもりでリポジトリを作る場合もあるが、まずはローカルでGitで管理して、その後必要があればGitHubに移行する場合もある。その「とりあえずローカルで」のディレクトリを一応バックアップしようとしたら、膨大なデータでビビった。調べたら18GBある。これ、取捨選択するのかなり時間かかるな・・・。移行したまま開かないで、そのままPCと寿命を共にしそう・・・</p>
+                        <p>別のiMacで開いているページが、別のiMacで「開きませんか？」と聞いてくる。非常に気持ち悪い。「システム環境設定」の「一般」の一番下の「このMacとiCloudデバイス間でのHandoffを許可」のチェックボックスをオフにすることででなくなる。iPadから共有するのは便利かもだけど、iMac-iMacはいらないだろこれ・・・</p>
+                        <p>未だにrsyncのディレクトリの条件を覚えていない。serverのdirをそのままこっちに持って来たい場合、</p>
+                        <div class="sourceCode" id="cb12"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true"></a><span class="fu">rsync</span> -auvz server:dir dir</span>
+                        <span id="cb12-2"><a href="#cb12-2" aria-hidden="true"></a><span class="fu">rsync</span> -auvz server:dir .</span></code></pre></div>
+                        <p>のどちらだったかいつも迷う(後者が正解)。</p>
+                        <p>もしくは</p>
+                        <div class="sourceCode" id="cb13"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true"></a><span class="fu">mkdir</span> dir</span>
+                        <span id="cb13-2"><a href="#cb13-2" aria-hidden="true"></a><span class="fu">rsync</span> -auvz server:dir/ dir</span></code></pre></div>
+                        <p>でもOK。ムズい。</p>
+                        <p>シミュレーションデータの移行。</p>
+                        <div class="sourceCode" id="cb14"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true"></a>$ <span class="fu">du</span> -hd 1 data</span>
+                        <span id="cb14-2"><a href="#cb14-2" aria-hidden="true"></a><span class="kw">(</span><span class="ex">snip</span><span class="kw">)</span></span>
+                        <span id="cb14-3"><a href="#cb14-3" aria-hidden="true"></a><span class="ex">381G</span>    data</span></code></pre></div>
+                        <p>381GBか。これもいらないかなぁ。dumpファイル消したら35GBになった。これで良いか。</p>
+                        <p>PukiWikiのバックアップ。dumpプラグインを入れているので、URLに<code>?plugin=dump</code>を追加すればダウンロード画面に。管理者パスワードを入れてダウンロード。これでローカルのバックアップは消して良い。</p>
+                        <p>Thunderbirdの移行。移行先でThunderbirdをインストール。起動。終了。</p>
+                        <div class="sourceCode" id="cb15"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true"></a><span class="bu">cd</span> ~/Library/Thunderbird/Profiles/</span>
+                        <span id="cb15-2"><a href="#cb15-2" aria-hidden="true"></a><span class="fu">scp</span> -r oldserver:Library/Thunderbird/Profiles/*.default .</span></code></pre></div>
+                        <p>そしてもともとあった「hogehoge.default」というディレクトリを消して、持ってきたディレクトリをそのファイルに改名すればできるはず・・・だが、うっかり消してしまった。</p>
+                        <p>その後いろいろやったが失敗。とりあえず<code>/Thunderbird/Profiles/</code>を全部コピーしてみた。できたかどうかは明日確認。</p>
+                        <h2 id="月23日水"><a href="#23">02月23日(水)</a> <a id="23"></a></h2>
+                        <p>NOP</p>
+                        <h2 id="月22日火"><a href="#22">02月22日(火)</a> <a id="22"></a></h2>
+                        <p>メモ。以下は多分追加してない。とりあえずウェブには追加した。</p>
+                        <ul>
+                        <li>中野裕義、「（若手奨励賞）一様剪断流の非平衡定常系における連続対称性の破れと長距離秩序」日本物理学会第77回年次大会、2022年3月16日、</li>
+                        <li>松井一真, 渡辺宙志, 清水智子, “機能性有機分子の自己組織化薄膜構造の安定性評価”, 第34回分子シミュレーション討論会, オンライン, 2020年12月15日 (ポスター)</li>
+                        <li>浅野 優太, 渡辺 宙志, 野口 博司」分子動力学計算による複雑流体中のカルマン渦の解析」 分子シミュレーション研究会会誌 “アンサンブル” 22(2), 157-162 (2020).</li>
+                        <li>「円柱周りのキャビテーション流れに対する高分子添加の影響」流体力学会、浅野優太, 渡辺宙志, 野口博司、2021年。9月22日、</li>
+                        <li>カルマン渦キャビテーションの分子動力学シミュレーション（東大物性研）○浅野優太, 渡辺宙志, 野口博司、分子シミュレーション討論会。2018年。11月29日</li>
+                        </ul>
+                        <p>今日は打ち合わせ3件。</p>
+                        <p>修士論文のLaTeXテンプレート作成。表紙、和文概要、英文概要まで作った。分離はもうpdftkで良いかなぁ。</p>
+                        <h2 id="月21日月"><a href="#21">02月21日(月)</a> <a id="21"></a></h2>
+                        <p>会議。</p>
+                        <p>名大の杉山先生の最終講義が今年あるそうな。退官は2年前だが、コロナで延期になってたとのこと。2年前は参加できないスケジュールだったが、今回は参加できそうなのでオンライン参加を申し込んだ。</p>
+                        <div class="sourceCode" id="cb16"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true"></a>幹事：谷村省吾、時田恵一郎、中村泰之（名古屋大学）</span>
+                        <span id="cb16-2"><a href="#cb16-2" aria-hidden="true"></a></span>
+                        <span id="cb16-3"><a href="#cb16-3" aria-hidden="true"></a>日時：2022年3月10日（木）16:00～17:30</span>
+                        <span id="cb16-4"><a href="#cb16-4" aria-hidden="true"></a></span>
+                        <span id="cb16-5"><a href="#cb16-5" aria-hidden="true"></a>場所：名古屋大学東山キャンパス　情報学研究科棟　１階　第１講義室</span>
+                        <span id="cb16-6"><a href="#cb16-6" aria-hidden="true"></a>　　　および</span>
+                        <span id="cb16-7"><a href="#cb16-7" aria-hidden="true"></a>　　　オンライン（Zoom の予定。参加申し込みされた方に後ほど URL をお知らせします）</span>
+                        <span id="cb16-8"><a href="#cb16-8" aria-hidden="true"></a></span>
+                        <span id="cb16-9"><a href="#cb16-9" aria-hidden="true"></a>講師：杉山雄規氏（現在、名古屋大学名誉教授）</span>
+                        <span id="cb16-10"><a href="#cb16-10" aria-hidden="true"></a></span>
+                        <span id="cb16-11"><a href="#cb16-11" aria-hidden="true"></a>講義題目：　非対称、非平衡、相転移</span></code></pre></div>
+                        <p>会議。</p>
+                        <p><a href="https://github.com/kaityo256/lab_startup/issues">lab_startub</a>のissueを2つ潰した。</p>
+                        <p>sshどうするかな。</p>
+                        <p>Vimハンズオンした。SSHは別ページにするほどでもなかったので、とりあえずはSlackで公開鍵作成方法の説明して、公開鍵と希望アカウントを送ってもらうことに。ただ、SSHが何をやっているか、公開鍵とはなにかをざっとは説明したほうが良い気もする。うーん。</p>
+                        <p>来週はDockerハンズオン。</p>
+                        <h2 id="月20日日"><a href="#20">02月20日(日)</a> <a id="20"></a></h2>
+                        <p>e-Taxのページへ。</p>
+                        <ul>
+                        <li>Chromeでe-Taxソフト(Web版)へ</li>
+                        <li>事前準備セットアップツールをインストール</li>
+                        <li>Chrome拡張を入れろというので「e-Tax AP」を入れる</li>
+                        <li>ルート証明書のインストール</li>
+                        <li>開始届出書をウェブから作成。メールアドレスなどを入力。</li>
+                        <li>ログインした後、利用者情報の登録。ICカードリーダから読み取りに成功。タッチではなく、差し込む形式だったのにしばらくきづかなかった。４桁のパスワードを何度か要求される。</li>
+                        <li>「新規登録」が済むと「申告・申請・納税」メニューが利用可に。「新規作成」を選ぶ。</li>
+                        <li>「納付情報登録依頼」かな。</li>
+                        </ul>
+                        <p>ローカル用e-Taxソフトを入れてみたが、追加のインストールをしないとなにもできないっぽい。もう少し調査が必要。とりあえず今日はカードリーダが使えることを確認したところで良しとしよう。</p>
+                        <h2 id="月19日土"><a href="#19">02月19日(土)</a> <a id="19"></a></h2>
+                        <p>研究打ち合わせ。査読レポートが長かったので打ち合わせも長かった。自分の論文の査読レポートもなんとかしないといけないし、学生さんの論文も残っており、講義の準備も滞っている。苦しい。</p>
+                        <h2 id="月18日金"><a href="#18">02月18日(金)</a> <a id="18"></a></h2>
+                        <p>集中力を欠くなぁ。明らかに先週の疲れが残ってる。</p>
+                        <p>製本依頼出した。2部ずつ印刷して表紙データをつけてクリアファイルに入れて整理。地味に時間かかった・・・。納期は10日から2週間程度とのこと。</p>
+                        <p>忘れないうちに、卒論リポジトリの整理。それぞれのリポジトリにabstを追加。また、研究室内Wikiにも追加。</p>
+                        <p>研究室のウェブサイトに、これまでの学位論文や、慶応着任後の学会発表、論文発表を追加。</p>
+                        <ul>
+                        <li>新iMacのセットアップ。まずはターミナルの色とか。
+                        <ul>
+                        <li>gitと入力したら、ソフトウェアをインストールしろと言われた。結構(10分くらい)かかるので、最初にインストールさせておかないといけないな。</li>
+                        <li>Macのホスト名「watanabenoimac」とかダサいので修正。「環境設定」の「共有」のところにある。分かりづらい。</li>
+                        <li>Chromeのダウンロード</li>
+                        <li>ChromeにLastPassを追加</li>
+                        <li>ssh-keygenして鍵ペア作成。</li>
+                        <li>brewのインストール(スクリプトを実行するだけ)</li>
+                        <li>githubからdotfilesをclone。とりあえずzshrcだけ。</li>
+                        <li>brewdでsubversionインストール</li>
+                        <li>svn管理されているファイルをいくつかcheckout</li>
+                        </ul></li>
+                        </ul>
+                        <h2 id="月17日木"><a href="#17">02月17日(木)</a> <a id="17"></a></h2>
+                        <p>金子先生も清水先生も最終講義か・・・</p>
+                        <ul>
+                        <li>【最終講義】金子 邦彦 教授 <a href="https://www.c.u-tokyo.ac.jp/info/news/events/20220203100000.html">やり残したことなど：カオス、複雑系、普遍生物学、それから</a></li>
+                        <li>【最終講義】清水 明 教授 <a href="https://www.c.u-tokyo.ac.jp/info/news/events/20220203110000.html">謎に惹かれて基礎の森</a></li>
+                        </ul>
+                        <p>昨年の卒論、製本が上がってきたので受け取った。</p>
+                        <p>研究室ミーティング。ANNNIモデルの厳密対角化の結果と、機械学習によるタンパク質の構造予測の話。厳密対角化屋さん、古典系での結果を見るのは久しぶりな気がする。タンパク質の構造予測は実際に合成して確認するのはすごい。</p>
+                        <p>重い腰を上げて新しいMacのセットアップ。アップデートがかかっているうちに、古いMacのデータの整理。主にsvn管理されていないファイルの削除など。</p>
+                        <p>PCのデータを調べてたら、たら、昔のサーバがリモートになっているsvnリポジトリを発見。死ぬほど久しぶりにsvnadminを触る。</p>
+                        <div class="sourceCode" id="cb17"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true"></a><span class="ex">svnadmin</span> create rep_name</span></code></pre></div>
+                        <div class="sourceCode" id="cb18"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true"></a><span class="fu">svn</span> co svn+ssh://username@servename.jp/home/username/rep_name local_rep</span></code></pre></div>
+                        <p>学生さんに「左利きなんだね」と言ったら「それ言われるの4回目です」。正直すまんかった。</p>
+                        <h2 id="月16日水"><a href="#16">02月16日(水)</a> <a id="16"></a></h2>
+                        <p>共著論文の査読レポートに対するコメント返した。遅くなってしまった。</p>
+                        <p>FDアンケート返した。プログラミング基礎同演習はだいぶこなれてきたので好評価だけれど、物理情報工学ソフトウェア開発演習(GitHub演習)は初回ということもあり、ちょっと詰め込み過ぎ、消化不良という声があった。来年度はどうするかなぁ。感染状況もあるので対応が難しい。</p>
+                        <p>富岳レポート、また不備があった。うーん。</p>
+                        <p>コーヒー届いた。</p>
+                        <h2 id="月15日火"><a href="#15">02月15日(火)</a> <a id="15"></a></h2>
+                        <p>頭が全く回っていない。少しずつエンジンをかける。</p>
+                        <p>VSCodeで変換中のフォントがおかしくなる場合がある。なんか太くなって幅が短くなる。変換が修了するともとに戻るので、入力中に伸び縮みして不便。再起動でなおった。何が置きたんだろう？</p>
+                        <p>なんか最近、ネットに変な依存が見られる。ネットで自分とは異なる意見を見たら、なんかもの申したくなる、みたいな。おそらく自分に進捗がないから、ネットでなにか「発言」して、自分に価値があると錯覚したいのであろう。少し距離を置くべきだな。</p>
+                        <p>生協にコーヒー注文した。</p>
+                        <p>輪講用の本(湯川統計)9冊注文した。</p>
+                        <p>研究打ち合わせ。有益な助言を多数いただけた。Zoomの利用が広がり、オンラインミーティングを気軽にできるようになったのはとてもありがたい。</p>
+                        <p>卒論の表紙作った。</p>
+                        <p>卒論リポジトリに表紙pptx追加した。ついでに数式の件を少し追加。</p>
+                        <p>主任賞の賞状と副賞の依頼。正式名称は「物理情報分野優秀修士論文賞」とのこと。</p>
+                        <p>HPCIの報告書に不備があった。慌てて修正して再提出。</p>
+                        <p>科研費の支払請求書(F-2-1)を提出した。</p>
+                        <p>なんか他にも忘れてそうだなぁ……</p>
+                        <h2 id="月14日月"><a href="#14">02月14日(月)</a> <a id="14"></a></h2>
+                        <p>NOP</p>
+                        <h2 id="月13日日"><a href="#13">02月13日(日)</a> <a id="13"></a></h2>
+                        <p>NOP</p>
+                        <p>あー、学習指導の仕事を一つ失念してた。慌てて作業。</p>
+                        <h2 id="月12日土"><a href="#12">02月12日(土)</a> <a id="12"></a></h2>
+                        <p>NOP</p>
+                        <h2 id="月11日金"><a href="#11">02月11日(金)</a> <a id="11"></a></h2>
+                        <p>1on1ミーティング。</p>
+                        <h2 id="月10日木"><a href="#10">02月10日(木)</a> <a id="10"></a></h2>
+                        <p>研究室ミーティング。論文紹介の仕方から先輩による模範演技。</p>
+                        <p>富岳の成果報告書書いて提出したぞ。</p>
+                        <p><a href="https://www.calc.appi.keio.ac.jp/members/">研究室集合写真載せた</a>。</p>
+                        <h2 id="月09日wed"><a href="#09">02月09日(Wed)</a> <a id="09"></a></h2>
+                        <p>ネットに講義ノートを無償公開することを批判する意見を見つけた。曰く「知にたいして労働力の対価を求めるべき。社会がその対価を正しく意識すべき」。</p>
+                        <p>その、「知」にたいして正しく対価を払う、という趣旨には全く同意なんだけれど、それと「講義ノートを無償公開するのはよくない」というのはちょっと違う気がする。</p>
+                        <p>原理原則を言えば、勤務時間中に仕事として作成したものは、雇い主に権利がある。講義ノートが大学の仕事として勤務時間中に作られたものである以上、これは職務著作物となる可能性がある。しかし慣例として、研究者が作成した論文や講義ノートなどの著作物は職務著作物にあたらないことになっている。</p>
+                        <p>「講義ノートは大学で授業料を支払った学生のためのものである」という主張は、「講義ノートは職務著作物である」という意見に近いように思う。であるなら、著作権の原始的帰属は大学にあるから、無償公開どころか出版して印税収入を得るのはまずい。</p>
+                        <p>「講義ノートの著作権は自分にあるが、授業料を払った学生のために作ったのだから無償公開はすべきでない」という意見なら、それをたかだか数千円の本として一般向けに出版するのは主張に一貫性がないように思う。</p>
+                        <p>「知の探求には労力がかかるのであり、その取得には正当な対価を支払うべき」という意見には完全に賛同する。「その対価として書籍を購入せよ」という意見には(賛同はしないが)納得する。しかし、「講義ノートは大学で授業料を支払った学生のためのものであるから無償公開はよくないが、出版はする」という意見には一貫性は見いだせない。</p>
+                        <p>講義ノートの問題は、実は教科書としての出版だけにとどまらない。昨今のオンライン講義の発展により、e-ラーニング教材としての利用をする際、著作権をどうするか、という問題が出てくるからだ。MITなどは講義を無償公開しているが、これを大学が「社会人向けのe-ラーニングコース」として有償提供する際、その対価を研究者がどう受け取るべきか、ややこしいことになる。</p>
+                        <p>「授業料を払った学生のために講義をする」という理屈であるなら、すでに録画された講義を、お金を払った人に公開しても良さそうに見える。では、もともと給料をもらって大学の講義をしているのであるが、その講義を外に「売る」時に、教員はさらにお金をもらえるのか？もらうべきか？もらうとしたらどれくらいの割合なのか？また、講義に問題があった場合、法的責任はどちらが取るのか？解決すべき問題は多い。</p>
+                        <p>LJ_SIMDのコードを整理するところまで。富岳のレポートを書くところまでいかなかった。</p>
+                        <h2 id="月08日火"><a href="#08">02月08日(火)</a> <a id="08"></a></h2>
+                        <p>修士論文発表会。</p>
+                        <p>学習指導。またミス判明。落ち込む。</p>
+                        <p>確定申告わからない。とりあえず自分のスマホがマイナンバーポータルアプリに対応していないことがわかった。カードリーダを買ってみる。</p>
+                        <h2 id="月07日月"><a href="#07">02月07日(月)</a> <a id="07"></a></h2>
+                        <p>「なぜ鉄は磁石になるのに銅は磁石にならないか」について、僕が一番わかりやすかった説明は<a href="http://home.sato-gallery.com/research/chonyumon_3_opt.pdf">これ</a>かな。</p>
+                        <p>論文取得ハンズオン。</p>
+                        <h2 id="月06日日"><a href="#06">02月06日(日)</a> <a id="06"></a></h2>
+                        <p>格子ガスのMC書いた。</p>
+                        <h2 id="月05日土"><a href="#05">02月05日(土)</a> <a id="05"></a></h2>
+                        <p>textlintを導入してみたが、想像以上にうるさい。とりあえずsentence-lengthはfalseにした。</p>
+                        <h2 id="月04日金"><a href="#04">02月04日(金)</a> <a id="04"></a></h2>
+                        <p>卒論発表会。いやマジでレベル高い。</p>
+                        <p>予算の締めに走る。</p>
+                        <p>VSCodeがアップデートされ、WSLからcodeを実行しようとしたらこけるようになった。</p>
+                        <div class="sourceCode" id="cb19"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true"></a>$ <span class="ex">code</span> .</span>
+                        <span id="cb19-2"><a href="#cb19-2" aria-hidden="true"></a><span class="ex">/mnt/c/Users/watanabe/.vscode/extensions/ms-vscode-remote.remote-wsl-0.63.13/scripts</span>/wslCode.sh: <span class="ex">69</span>: /home/watanabe/.vscode-server-server/bin/5554b12acf27056905806867f251c859323ff7e9/bin/code: not found</span></code></pre></div>
+                        <p>一度VSCodeをWindowsから起動してリモート接続でWSLにつないで、Serverをダウンロードしたら直った。</p>
+                        <p>FX1000でpbc_testしたが、やはり遅い。それより驚いたのは、Tradモードに対してClangモードが数十倍遅かったこと。原因は乱数。乱数のどこが問題かはまだチェックしていない。</p>
+                        <p>とりあえず<a href="https://gist.github.com/kaityo256/9392bb3984afcdd45d0cb868036788fd">再現ソース</a>。</p>
+                        <h2 id="月03日木"><a href="#03">02月03日(木)</a> <a id="03"></a></h2>
+                        <p>卒論発表会。レベル高い。</p>
+                        <p>Zoom、ミーティングの名前をクリックした場合と、「編集」をクリックした場合で振る舞いが違う。名前のリンクをクリックすると「投票」が編集できるが、「編集」をクリックすると「投票」が出てこない。うーむ。</p>
+                        <p>Duality、まだちゃんとわかってないなぁ。</p>
+                        <h2 id="月02日水"><a href="#02">02月02日(水)</a> <a id="02"></a></h2>
+                        <p>会議。メールたくさん。</p>
+                        <p>名大不老の利用開始。報告書までに間に合うかな？</p>
+                        <h2 id="月01日火"><a href="#01">02月01日(火)</a> <a id="01"></a></h2>
+                        <p>2月になってしまった。</p>
+                        <p>Ashkin-TellerわからんわからんっていったらMさんに良い論文を教えてもらった。</p>
+                        <p><a href="https://doi.org/10.1063/1.523343">Ashkin–Teller model as a vertex problem</a></p>
+                        <p>おお、これはわかりやすい。</p>
+                        <p>サイトにA, B, C, Dの四種類の原子があるとせよ。隣が同種の時には<span class="math inline">\(\epsilon_0\)</span>, AB, CDの時には<span class="math inline">\(\epsilon_1\)</span>, AC, BDの時には<span class="math inline">\(\epsilon_2\)</span>, AD, BCの時には<span class="math inline">\(\epsilon_3\)</span>のエネルギーがあるとせよ。</p>
+                        <p>この時、</p>
+                        <p><span class="math display">\[
+                        H = J_0 + J_1 \sum \sigma_i \sigma_j + J_2 \sum \tau_i \tau_j 
+                        + J_3 \sum \sigma_i \sigma_j \tau_i \tau_j
+                        \]</span></p>
+                        <p>というハミルトニアンを考えると、<span class="math inline">\((\sigma_i, \tau_i)\)</span>が<span class="math inline">\((+,+)\)</span>、<span class="math inline">\((+,-)\)</span>、<span class="math inline">\((-,+)\)</span>、<span class="math inline">\((-,-)\)</span>をそれぞれA, B, C,Dに対応させると、<span class="math inline">\(\epsilon_i\)</span>と<span class="math inline">\(J_i\)</span>の関係がは以下のようになる。</p>
+                        <p><span class="math display">\[
+                        \begin{aligned}
+                        \epsilon_0 &amp;= J_0 + J_1 + J_2 + J_3 \\
+                        \epsilon_1 &amp;= J_0 + J_1 - J_2 - J_3 \\
+                        \epsilon_2 &amp;= J_0 - J_1 + J_2 - J_3 \\
+                        \epsilon_3 &amp;= J_0 - J_1 - J_2 + J_3 
+                        \end{aligned}
+                        \]</span></p>
+                        <p>これを<span class="math inline">\(J_i\)</span>について解くと、</p>
+                        <p><span class="math display">\[
+                        \begin{aligned}
+                        4J_0 &amp;= \epsilon_0 + \epsilon_1 + \epsilon_2 + \epsilon_3 \\
+                        4J_1 &amp;= \epsilon_0 + \epsilon_1 - \epsilon_2 - \epsilon_3 \\
+                        4J_2 &amp;= \epsilon_0 - \epsilon_1 + \epsilon_2 - \epsilon_3 \\
+                        4J_3 &amp;= \epsilon_0 - \epsilon_1 - \epsilon_2 + \epsilon_3
+                        \end{aligned}
+                        \]</span></p>
+                        <p>となる。ここで、逆温度<span class="math inline">\(\beta = 1/kT\)</span>を使って</p>
+                        <p><span class="math display">\[
+                        K_i = - \beta J_i
+                        \]</span></p>
+                        <p><span class="math display">\[
+                        \omega_i = \exp\left(-\beta \epsilon_i\right)
+                        \]</span></p>
+                        <p>という変数<span class="math inline">\(K_i\)</span>と<span class="math inline">\(\omega_i\)</span>を導入すると、</p>
+                        <p><span class="math display">\[
+                        \begin{aligned}
+                        \exp(4 K_0) &amp;= \omega_0 \omega_1 \omega_2 \omega_3 \\
+                        \exp(4 K_1) &amp;= \omega_0 \omega_1 / \omega_2 \omega_3 \\
+                        \exp(4 K_2) &amp;= \omega_0 \omega_2 / \omega_1 \omega_3 \\
+                        \exp(4 K_3) &amp;= \omega_0 \omega_3 / \omega_1 \omega_2 
+                        \end{aligned}
+                        \]</span></p>
+                        <p>という関係を得る。</p>
+                        <p>で、ここから<span class="math inline">\(\tau_i\)</span>を双対変換しなければならない。この双対変換はKramers–Wannier変換と呼ばれている。</p>
+                        <p>ちなみに、良く出てくるF. Y. Wuは<a href="https://ja.wikipedia.org/wiki/%E4%BC%8D%E6%B3%95%E5%B2%B3">この人</a>かな。</p>
+                        <p>双対変換で出てくる等式</p>
+                        <p><span class="math display">\[
+                        \exp(K \sigma \sigma&#39;) = \cosh{K}\sum_{t=0,1} (\sigma \sigma&#39; \tanh{K})^t
+                        \]</span></p>
+                        <p>について、</p>
+                        <p><span class="math inline">\(\sigma \sigma&#39; = 1\)</span>の時に<span class="math inline">\(\mathrm{e}^K\)</span>、<span class="math inline">\(\sigma \sigma&#39; = -1\)</span>の時に<span class="math inline">\(\mathrm{e}^{-K}\)</span>なので、和と差から</p>
+                        <p><span class="math display">\[
+                        \begin{aligned}
+                        \exp(K \sigma \sigma&#39;) &amp;= \frac{\mathrm{e}^K+\mathrm{e}^{-K}}{2} + \sigma\sigma&#39; \frac{(\mathrm{e}^K-\mathrm{e}^{-K})}{2} \\
+                        &amp;= \cosh{K} + \sigma\sigma&#39; \sinh{K} \\
+                        &amp;= \cosh{K} \left(1 + \sigma\sigma&#39; \tanh{K}\right) \\
+                        &amp;= \cosh{K}\sum_{t=0,1} (\sigma \sigma&#39; \tanh{K})^t
+                        \end{aligned}
+                        \]</span></p>
+                        <p>これを整理すると先ほどの式になる。</p>
+                        <p>高橋さんの<a href="http://www.stat.phys.titech.ac.jp/~ktaka/rg/duality.pdf">双対変換の解説</a>も見つけた。わかりやすい。なるほどフーリエ変換だ。</p>
+                        <p>dev.toに<a href="https://dev.to/kaityo256/docker-environment-for-arm-sve-1bm5">Xbyakハンズオンの紹介記事</a>書いた。ほとんど読まれていないが、とにかく英語版を書いて、さらにdev.toに紹介まで書いた俺偉い。絶対エタると思った。</p>
           </article>
   </body>
 

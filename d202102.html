@@ -21,252 +21,252 @@
   <body>
     <article class="markdown-body">
                         <h1 id="年2月">2021年2月</h1>
-<p><a href="index.html">ログ一覧</a></p>
-<h2 id="月28日日"><a href="#28">02月28日(日)</a> <a id="28"></a></h2>
-<p>JackknifeのC++版の実装完了。共分散の影響を考え落としてて結果がおかしかった(らしい)。これで論文が書けるはず。</p>
-<p>Qiita、完全に過疎ってる気がする。zenn.devに民族大移動？僕も移るかな。</p>
-<h2 id="月27日土"><a href="#27">02月27日(土)</a> <a id="27"></a></h2>
-<p>JackknifeのC++版の実装。Pythonから入るとSTLのコンテナ操作系の使いづらさが際立つ。</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb1-1" title="1"><span class="bu">std::</span>transform(r.begin(), r.end(), r2.begin(), [](<span class="dt">double</span> x) { <span class="cf">return</span> x * x; });</a></code></pre></div>
-<p>みたいな奴、</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb2-1" title="1"><span class="bu">std::</span>transform(r, r2, [](<span class="dt">double</span> x) { <span class="cf">return</span> x * x; });</a></code></pre></div>
-<p>でいいじゃん。もっというなら</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb3-1" title="1"><span class="kw">auto</span> r2 = <span class="bu">std::</span>transform(r, [](<span class="dt">double</span> x) { <span class="cf">return</span> x * x; });</a></code></pre></div>
-<p>でいいじゃんね。</p>
-<p><code>std::accumulate</code>で、<code>double</code>を積算するのに初期値に「0」を入れて、積算が<code>int</code>で行われている、というバグを入れてたのにしばらく気づかなかった。こんなの。</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb4-1" title="1"><span class="pp">#include </span><span class="im">&lt;algorithm&gt;</span></a>
-<a class="sourceLine" id="cb4-2" title="2"><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></a>
-<a class="sourceLine" id="cb4-3" title="3"><span class="pp">#include </span><span class="im">&lt;numeric&gt;</span></a>
-<a class="sourceLine" id="cb4-4" title="4"><span class="pp">#include </span><span class="im">&lt;vector&gt;</span></a>
-<a class="sourceLine" id="cb4-5" title="5"></a>
-<a class="sourceLine" id="cb4-6" title="6"><span class="dt">int</span> main() {</a>
-<a class="sourceLine" id="cb4-7" title="7">  <span class="bu">std::</span>vector&lt;<span class="dt">double</span>&gt; v = {<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">10</span>};</a>
-<a class="sourceLine" id="cb4-8" title="8">  <span class="bu">std::</span>cout &lt;&lt; <span class="bu">std::</span>accumulate(v.begin(), v.end(), <span class="dv">0</span>) &lt;&lt; <span class="bu">std::</span>endl;</a>
-<a class="sourceLine" id="cb4-9" title="9">  <span class="bu">std::</span>transform(v.begin(), v.end(), v.begin(), [](<span class="dt">double</span> x) { <span class="cf">return</span> <span class="fl">0.5</span> * x; });</a>
-<a class="sourceLine" id="cb4-10" title="10"></a>
-<a class="sourceLine" id="cb4-11" title="11">  <span class="bu">std::</span>cout &lt;&lt; <span class="bu">std::</span>accumulate(v.begin(), v.end(), <span class="dv">0</span>) &lt;&lt; <span class="bu">std::</span>endl;  <span class="co">// =&gt; 25</span></a>
-<a class="sourceLine" id="cb4-12" title="12">  <span class="bu">std::</span>cout &lt;&lt; <span class="bu">std::</span>accumulate(v.begin(), v.end(), <span class="fl">0.0</span>) &lt;&lt; <span class="bu">std::</span>endl; <span class="co">// =&gt; 27.5</span></a>
-<a class="sourceLine" id="cb4-13" title="13">}</a></code></pre></div>
-<p>初期値に0と0.0を入れた時で答えが変わる。最初のテストでは整数しか入れてなかったので答えがあってて見落とした。コンパイラは何も言わないし、計算も普通にできるんだけど、微妙に答えがおかしくなるのですごくイヤなバグ。</p>
-<h2 id="月26日金"><a href="#26">02月26日(金)</a> <a id="26"></a></h2>
-<p>昨日、会議があったのを忘れててすっぽかしたorz</p>
-<p>Google Calendarに入力してたのに。凹む。</p>
-<p>Jackknife Estimator、ようやく理解した。いろいろ混乱してて、理解に一ヶ月かかった。ブートストラップ法との関連の理解はまだだが、なぜ1/Nバイアスが取り除けるかはわかったので、<a href="https://qiita.com/kaityo256/items/174347b12717ba49263d">Qiita</a>に解説書いた。あとはこれをC++で実装して、動作確認したらプロダクトコードに組み込んで再計算。それでN依存性が消えたら論文にしておしまいだ。</p>
-<h2 id="月25日木"><a href="#25">02月25日(木)</a> <a id="25"></a></h2>
-<p>昨日はpushを忘れたな。</p>
-<p>研究打ち合わせ。</p>
-<p>研究員受け入れ手続きを失念していた。BCCで来たメールが自分宛てだとは思わなかった。慌てて対応する。</p>
-<p>新しい部屋の計画作った。予算計画の見通しもたった。</p>
-<p>Jackknife、ほぼ理解できたと思う。あとひと押し。</p>
-<h2 id="月24日水"><a href="#24">02月24日(水)</a> <a id="24"></a></h2>
-<p>GitHub Typoという、GitHubにあるリポジトリのありがちなタイポを見つけてリンクするという、とてもおせっかいなサイトに捕捉されたので修正する。ispellとaspell試したけど、aspellの方が使いやすいな。ただ、オプションが面倒。こんな感じかな。</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb5-1" title="1"><span class="ex">aspell</span> --lang=en -x -c -t fiename</a></code></pre></div>
-<ul>
-<li><code>--lang=en</code> 英語にする</li>
-<li><code>-t</code> モードをTexモードにする</li>
-<li><code>-x</code> = <code>--dont-backup</code> バックアップしない</li>
-<li><code>-c</code> Spell check a single file.</li>
-</ul>
-<p>一気に調べるには</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb6-1" title="1"><span class="ex">aspell</span> --lang=en -t list <span class="op">&lt;</span> ワイルドカード <span class="kw">|</span> <span class="fu">sort</span> -u <span class="kw">|</span><span class="fu">less</span></a></code></pre></div>
-<p>が便利。例えば<code>**/*.md</code>で調べるなら、</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb7-1" title="1"><span class="ex">aspell</span> --lang=en -t list <span class="op">&lt;</span> **/*.md <span class="kw">|</span> <span class="fu">sort</span> -u <span class="kw">|</span><span class="fu">less</span></a></code></pre></div>
-<p>これで出てきた一覧のうち、明らかにTypoなのをgrepで場所を特定して修正するのが便利。</p>
-<p>データベースを作って、論文として出版するという方法。</p>
-<p>Scientific data (Nature) IF 5.541</p>
-<p>「TACMIコンソーシアム」<a href="http://www.utripl.u-tokyo.ac.jp/tacmi/">http://www.utripl.u-tokyo.ac.jp/tacmi/</a> 一言でいうとNDAで守られた学会。通常の学会で発表すると「公知の事実」になってしまうので、企業の人が発表しやすいように作られたとのこと。</p>
-<h2 id="月23日火"><a href="#23">02月23日(火)</a> <a id="23"></a></h2>
-<p>NOP(天皇誕生日) ## <a href="#23">02月23日(火)</a> <a id="23"></a></p>
-<p>荷ほどき。</p>
-<h2 id="月22日月"><a href="#22">02月22日(月)</a> <a id="22"></a></h2>
-<p><a href="https://ccms.issp.u-tokyo.ac.jp/event/4228">研究会</a>のメモ。</p>
-<p>原子間ポテンシャルの高精度モデリング J. Behler and M. Parrinello PRL 98 146401 (2007)</p>
-<p>原子間力の非調和力定数の決定 熱伝導率 PRL 113, 185501 (2014) PRB 92, 054301 (2015) JPSJ 87, 圧縮センシング (LASSO)を使うと、計算量が激減する。</p>
-<p>実験データを再現するように結晶構造を決める。シミュレーティッドアニーリングでは遅いが、機械学習(ベイズ)では速い。</p>
-<p>土師 将裕（東京大学 物性研究所） 圧縮センシングによる走査トンネル顕微鏡の高精度測定</p>
-<p>y = A x yが実空間 (観測量) xが波数空間 (目的) Aはフーリエ変換 yが欠けているときに、xを求めたい。</p>
-<p>Y. Nakanishi-Ohno, MH, JPSJ 85, 093702 (2016)</p>
-<p>田村 亮（東京大学大学院新領域創成科学研究科, 物質・材料研究機構） ベイズ最適化と材料・物性研究への応用</p>
-<p>ベイズ最適化をするアプリケーション COMBO</p>
-<p>ガスアトマイズ最適化 超合金粉末の最適化 R. Tamura, et al. Material &amp; Design 198, 109290 (2020)</p>
-<p>Liイオン伝導度最適化 K. Homma, et al. The Journal of Physical Chemistry C 124, 12865 (2020)</p>
-<p>二元系 最高充填率 二次元二元系　9種類 三次元三元系　164種類</p>
-<p>寺山 慧(横浜市立大学) クライオEM密度マップからの生体分子ダイナミクス情報推定-データベース・シミュレーション・機械学習の融合</p>
-<p>能動的な相図探索 Phys. Rev. Mater. 2019 JJAP 2019</p>
-<p>Nature Machine Intelligence</p>
-<p>Jackknifeの理解がおかしい。n個のデータを持つrに対して、まずbin_sizeで平均し、n/bin_sizeのデータを作ってから、それをJackknifeで一個外しては平均を取り、それに対してビンダー比を計算してもうまくいかない。詳しい人に聞いたらやっぱり間違っていた。まだ定義をきちんと理解できていない。</p>
-<h2 id="月21日日"><a href="#21">02月21日(日)</a> <a id="21"></a></h2>
-<p>NOP</p>
-<h2 id="月20日土"><a href="#20">02月20日(土)</a> <a id="20"></a></h2>
-<p>NOP</p>
-<h2 id="月19日金"><a href="#19">02月19日(金)</a> <a id="19"></a></h2>
-<p>あれ？昨日いろいろ仕事したのに日記書き忘れてたのか。</p>
-<p>ミーティングとか。なんかオンラインになって逆に気軽にミーティングできるようになった感。</p>
-<p>富岳で標準出力ファイルが大量に出る問題に対処。</p>
-<h2 id="月18日木"><a href="#18">02月18日(木)</a> <a id="18"></a></h2>
-<p>富岳にジョブを大量に投げた。プロセスとスレッド、「京」で起きた問題がまた起きてるな。</p>
-<p>時間がなかなか取れない中、研究をすすめるためにいろいろ手を打つ。</p>
-<h2 id="月17日水"><a href="#17">02月17日(水)</a> <a id="17"></a></h2>
-<p>これで2日連続日付挿入スニペットを使ったぞ。</p>
-<p>卒論の製本依頼した。表紙を別紙に用意したが、申込用紙の「表紙」にバツマークをつけて「マーク有」と書けば、ペンマークを入れてくれる。</p>
-<p>研究室ミーティング。なるほど、面白い。</p>
-<p>その後、B3のPCセットアップ。</p>
-<p>Anacondaのインストール画面が違う。</p>
-<p>pyenvでanacondaはM1にうまく入らなかったっぽい。</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb8-1" title="1"><span class="ex">brew</span> install pyenv</a>
-<a class="sourceLine" id="cb8-2" title="2"><span class="ex">pyenv</span> install 3.9.1</a></code></pre></div>
-<p>これでいけるはず。</p>
-<p>また、lammpsをbrewで入れた時のパスが違う。</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb9-1" title="1"><span class="bu">cd</span></a>
-<a class="sourceLine" id="cb9-2" title="2"><span class="fu">mkdir</span> lammps</a>
-<a class="sourceLine" id="cb9-3" title="3"><span class="bu">cd</span> lammps</a>
-<a class="sourceLine" id="cb9-4" title="4"><span class="fu">cp</span> -r /opt/homebrew/Cellar/lammps/2020-10-29/share/lammps/examples/melt .</a>
-<a class="sourceLine" id="cb9-5" title="5"><span class="bu">cd</span> melt</a></code></pre></div>
-<p>WSL2のインストールも書かないと。</p>
-<h2 id="月16日火"><a href="#16">02月16日(火)</a> <a id="16"></a></h2>
-<p>二週間くらいぶりに日付挿入スニペット使った。せめてこれからは毎日、このスニペットを使うことにしよう。っていうか、このスニペット使った回数を記録しておけば、日付通りに日記を書いた回数がわかるのか。</p>
-<p>共著者の議論のために粘性を調べてて見つけた。</p>
-<p><a href="https://www.shi-pe.shi.co.jp/technology/index.html#ancLec">撹拌講座『貴方の知らない撹拌の世界 ～よりよく混ぜて、よりよいプロセスに～』</a></p>
-<p>住友重機械プロセス機器株式会社による、相当「ガチ」な講座。すっごい詳しい。</p>
-<p>共著者と議論した。僕もがんばらないと。</p>
-<p>明日の準備。延長コード、ラベル屋さんシール、ヘッドセットなどを購入。</p>
-<p>製本のやり方も聞いた。ペンマークも入れられるらしい。明日には入構したい。</p>
-<p>学生さんのスライドも見た。製本の表紙は明日作ろう。</p>
-<h2 id="月15日月"><a href="#15">02月15日(月)</a> <a id="15"></a></h2>
-<p>引っ越しだなんだでバタバタしてたので、日記を書くのが一週間ぶり。結局日付挿入スニペット全く使ってないな。うーむ。</p>
-<p>メール処理とか。</p>
-<p>ずっと気になってた眼鏡のゆるみを直した。少しずつ日常を取り戻す。</p>
-<p>重い仕事を一つ片づけたぞ。</p>
-<p>Ubuntu 18.04ではpdftkがaptで入らないの、pdftkがGCJ(GNU Compile for Java)に依存しており、GCJがGCC 7.1から削除された影響らしい。Ubuntu 18.10ではpdftk-javaが用意され、20.04ではpdftkが復活してるとのこと。WSLのUbuntuをアップグレードするか悩む。</p>
-<h2 id="月14日日"><a href="#14">02月14日(日)</a> <a id="14"></a></h2>
-<p>NOP</p>
-<p>J. P. ホーガンの「断絶への航海」について思うところをつらつら書いてみた。ユートピアとは何か。僕は学生さんには自分で考えて行動してほしいと思う。でも、自分で考えて行動する、という要求が厳しいことも知っている。</p>
-<h2 id="月13日土"><a href="#13">02月13日(土)</a> <a id="13"></a></h2>
-<p>NOP</p>
-<p>わりと大きな地震。我々の家を含む、ごく狭い範囲だけ停電。2時間ほどで復旧。夜は冷えるのですぐに復旧してくれて助かった。</p>
-<h2 id="月12日金"><a href="#12">02月12日(金)</a> <a id="12"></a></h2>
-<p>仕事。</p>
-<h2 id="月11日木"><a href="#11">02月11日(木)</a> <a id="11"></a></h2>
-<p>荷ほどき。</p>
-<h2 id="月10日水"><a href="#10">02月10日(水)</a> <a id="10"></a></h2>
-<p>荷ほどき。</p>
-<h2 id="月09日火"><a href="#9">02月09日(火)</a> <a id="09"></a></h2>
-<p>引っ越し。</p>
-<h2 id="月08日月"><a href="#8">02月08日(月)</a> <a id="08"></a></h2>
-<p>修論発表会。みなさんがんばってました。お疲れ様でした。</p>
-<h2 id="月07日日"><a href="#07">02月07日(日)</a> <a id="07"></a></h2>
-<p>引っ越しの準備。段ボール詰めたりとか。</p>
-<h2 id="月06日土"><a href="#06">02月06日(土)</a> <a id="06"></a></h2>
-<p>引っ越しの準備。ケーブルテレビの工事。</p>
-<h2 id="月05日金"><a href="#05">02月05日(金)</a> <a id="05"></a></h2>
-<p>スニペットで上の日付が出てくる仕組み、「入力した日」が出てきちゃうので、後でまとめて書く時には結局修正しないといけないのだった(いまこれ土曜日に書いてる)。</p>
-<p>なんかバタバタする。メール処理が追いつかない。</p>
-<p>講義の成績登録した。みなさんよくがんばりました。</p>
-<h2 id="月04日thu"><a href="#04">02月04日(Thu)</a> <a id="04"></a></h2>
-<p>いい加減ここの日付を書くのに手書きはアホ過ぎるのでスニペットを作ろう。まず、ローカル設定にしたいので、ローカルの.vscodeに作る。以下の内容で<code>.vscode/md.code-snippets</code>を作った。</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode json"><code class="sourceCode json"><a class="sourceLine" id="cb10-1" title="1"><span class="fu">{</span></a>
-<a class="sourceLine" id="cb10-2" title="2">  <span class="dt">&quot;Print to console&quot;</span><span class="fu">:</span> <span class="fu">{</span></a>
-<a class="sourceLine" id="cb10-3" title="3">    <span class="dt">&quot;scope&quot;</span><span class="fu">:</span> <span class="st">&quot;markdown, md&quot;</span><span class="fu">,</span></a>
-<a class="sourceLine" id="cb10-4" title="4">    <span class="dt">&quot;prefix&quot;</span><span class="fu">:</span> <span class="st">&quot;date&quot;</span><span class="fu">,</span></a>
-<a class="sourceLine" id="cb10-5" title="5">    <span class="dt">&quot;body&quot;</span><span class="fu">:</span> <span class="ot">[</span></a>
-<a class="sourceLine" id="cb10-6" title="6">      <span class="st">&quot;## [$CURRENT_MONTH月$CURRENT_DATE日($CURRENT_DAY_NAME_SHORT)](#$CURRENT_DATE) &lt;a id=</span><span class="ch">\&quot;</span><span class="st">$CURRENT_DATE</span><span class="ch">\&quot;</span><span class="st">&gt;&lt;/a&gt;&quot;</span><span class="ot">,</span></a>
-<a class="sourceLine" id="cb10-7" title="7">      <span class="st">&quot;$2&quot;</span></a>
-<a class="sourceLine" id="cb10-8" title="8">    <span class="ot">]</span><span class="fu">,</span></a>
-<a class="sourceLine" id="cb10-9" title="9">    <span class="dt">&quot;description&quot;</span><span class="fu">:</span> <span class="st">&quot;diary header&quot;</span></a>
-<a class="sourceLine" id="cb10-10" title="10">  <span class="fu">}</span></a>
-<a class="sourceLine" id="cb10-11" title="11"><span class="fu">}</span></a></code></pre></div>
-<p>また、デフォルトではMarkdownでスニペット呼び出しができないので、<code>.vscode/settings.json</code>に以下を追加。</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode json"><code class="sourceCode json"><a class="sourceLine" id="cb11-1" title="1"><span class="fu">{</span></a>
-<a class="sourceLine" id="cb11-2" title="2">  <span class="dt">&quot;[markdown]&quot;</span><span class="fu">:</span> <span class="fu">{</span></a>
-<a class="sourceLine" id="cb11-3" title="3">    <span class="dt">&quot;editor.quickSuggestions&quot;</span><span class="fu">:</span> <span class="kw">true</span></a>
-<a class="sourceLine" id="cb11-4" title="4">  <span class="fu">},</span></a>
-<a class="sourceLine" id="cb11-5" title="5"><span class="fu">}</span></a></code></pre></div>
-<p>これで「date(タブ)」と入力すると<code>## [02月04日(Thu)](#04) &lt;a id="04"&gt;&lt;/a&gt;</code>みたいな文字列が出てくるようになった。「木」ではなく「Thu」が出てしまったりするが、まぁ良いことにしよう。dateで出るのが鬱陶しくなったらprefix変えよう。</p>
-<p>Macでなぜかnpmが動かない。</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb12-1" title="1">$ <span class="ex">npm</span> init --yes</a>
-<a class="sourceLine" id="cb12-2" title="2"><span class="ex">dyld</span>: Library not loaded: /usr/local/opt/icu4c/lib/libicui18n.64.dylib</a>
-<a class="sourceLine" id="cb12-3" title="3">  <span class="ex">Referenced</span> from: /usr/local/bin/node</a>
-<a class="sourceLine" id="cb12-4" title="4">  <span class="ex">Reason</span>: image not found</a>
-<a class="sourceLine" id="cb12-5" title="5"><span class="ex">zsh</span>: abort      npm init --yes</a></code></pre></div>
-<p>最近これ系(ダイナミックリンクライブラリがらみ)のエラー多いな。</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb13-1" title="1">$ <span class="ex">brew</span> install npm</a>
-<a class="sourceLine" id="cb13-2" title="2"><span class="kw">(</span><span class="ex">snip</span><span class="kw">)</span></a>
-<a class="sourceLine" id="cb13-3" title="3"><span class="ex">Error</span>: node 12.9.1 is already installed</a>
-<a class="sourceLine" id="cb13-4" title="4"><span class="ex">To</span> upgrade to 15.8.0, run:</a>
-<a class="sourceLine" id="cb13-5" title="5">  <span class="ex">brew</span> upgrade node</a></code></pre></div>
-<p>ほほう。</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb14-1" title="1">$  <span class="ex">brew</span> upgrade node</a>
-<a class="sourceLine" id="cb14-2" title="2">==<span class="op">&gt;</span> <span class="ex">Upgrading</span> 1 outdated package:</a>
-<a class="sourceLine" id="cb14-3" title="3"><span class="ex">node</span> 12.9.1 -<span class="op">&gt;</span> 15.8.0</a>
-<a class="sourceLine" id="cb14-4" title="4">==<span class="op">&gt;</span> <span class="ex">Upgrading</span> node 12.9.1 -<span class="op">&gt;</span> 15.8.0 </a>
-<a class="sourceLine" id="cb14-5" title="5">==<span class="op">&gt;</span> <span class="ex">Downloading</span> https://homebrew.bintray.com/bottles/node-15.8.0.big_sur.bottle.</a>
-<a class="sourceLine" id="cb14-6" title="6"><span class="ex">Already</span> downloaded: /Users/watanabe/Library/Caches/Homebrew/downloads/9bf57615654f850ea19d76c53dee4b63bc00f11a242813b95b8450e45942a12b--node-15.8.0.big_sur.bottle.tar.gz</a>
-<a class="sourceLine" id="cb14-7" title="7">==<span class="op">&gt;</span> <span class="ex">Pouring</span> node-15.8.0.big_sur.bottle.tar.gz</a>
-<a class="sourceLine" id="cb14-8" title="8">🍺  <span class="ex">/usr/local/Cellar/node</span>/15.8.0: <span class="ex">3</span>,336 files, 55.9MB</a>
-<a class="sourceLine" id="cb14-9" title="9"><span class="ex">Removing</span>: /usr/local/Cellar/node/12.9.1... (4,629 files, 53.4MB)</a></code></pre></div>
-<p>できたかな？</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb15-1" title="1">$ <span class="ex">npm</span></a>
-<a class="sourceLine" id="cb15-2" title="2"><span class="kw">(</span><span class="ex">snip</span><span class="kw">)</span></a>
-<a class="sourceLine" id="cb15-3" title="3"><span class="ex">npm</span> notice </a>
-<a class="sourceLine" id="cb15-4" title="4"><span class="ex">npm</span> notice New patch version of npm available! 7.5.0 -<span class="op">&gt;</span> 7.5.2</a>
-<a class="sourceLine" id="cb15-5" title="5"><span class="ex">npm</span> notice Changelog: https://github.com/npm/cli/releases/tag/v7.5.2</a>
-<a class="sourceLine" id="cb15-6" title="6"><span class="ex">npm</span> notice Run npm install -g npm@7.5.2 to update!</a>
-<a class="sourceLine" id="cb15-7" title="7"><span class="ex">npm</span> notice </a></code></pre></div>
-<p>ふむ。</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb16-1" title="1"><span class="ex">npm</span> install -g npm@7.5.2</a></code></pre></div>
-<p>もう一度。</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb17-1" title="1"><span class="ex">npm</span> install zenn-cli </a></code></pre></div>
-<p>無事に通った。</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb18-1" title="1">$ <span class="ex">npx</span> zenn preview</a>
-<a class="sourceLine" id="cb18-2" title="2">👀<span class="ex">Preview</span> on http://localhost:8000</a></code></pre></div>
-<p>これで<code>http://localhost:8000</code>を見たらちゃんと見えた。よしよし。</p>
-<p>ついでにhttpサーバの確認。</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb19-1" title="1">$ <span class="ex">telnet</span> localhost 8000</a>
-<a class="sourceLine" id="cb19-2" title="2"><span class="ex">Trying</span> ::1...</a>
-<a class="sourceLine" id="cb19-3" title="3"><span class="ex">Connected</span> to localhost.</a>
-<a class="sourceLine" id="cb19-4" title="4"><span class="ex">Escape</span> character is <span class="st">&#39;^]&#39;</span>.</a>
-<a class="sourceLine" id="cb19-5" title="5"><span class="ex">HEAD</span> / HTTP/1.0</a>
-<a class="sourceLine" id="cb19-6" title="6"></a>
-<a class="sourceLine" id="cb19-7" title="7"><span class="ex">HTTP/1.1</span> 200 OK</a>
-<a class="sourceLine" id="cb19-8" title="8"><span class="ex">X-Powered-By</span>: Next.js</a>
-<a class="sourceLine" id="cb19-9" title="9"><span class="ex">ETag</span>: <span class="st">&quot;159e-WBZEF7rtwOl9mxryAKtsz2EiX+8&quot;</span></a>
-<a class="sourceLine" id="cb19-10" title="10"><span class="ex">Content-Type</span>: text/html<span class="kw">;</span> <span class="va">charset=</span>utf-8</a>
-<a class="sourceLine" id="cb19-11" title="11"><span class="ex">Content-Length</span>: 5534</a>
-<a class="sourceLine" id="cb19-12" title="12"><span class="ex">Cache-Control</span>: private, no-cache, no-store, max-age=0, must-revalidate</a>
-<a class="sourceLine" id="cb19-13" title="13"><span class="ex">Vary</span>: Accept-Encoding</a>
-<a class="sourceLine" id="cb19-14" title="14"><span class="ex">Date</span>: Thu, 04 Feb 2021 04:12:16 GMT</a>
-<a class="sourceLine" id="cb19-15" title="15"><span class="ex">Connection</span>: close</a>
-<a class="sourceLine" id="cb19-16" title="16"></a>
-<a class="sourceLine" id="cb19-17" title="17"><span class="ex">Connection</span> closed by foreign host.</a></code></pre></div>
-<p><code>Next.js</code>で動いているみたいですね。しかし、最近の若人はこういうの、何で調べてるんだろ？</p>
-<p>WSL2でapt-get updateができない問題、日付がずれているのが原因だった。</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb20-1" title="1"><span class="fu">date</span></a>
-<a class="sourceLine" id="cb20-2" title="2"><span class="ex">2021</span>年　1月 30日 土曜日 04:03:43 JST</a></code></pre></div>
-<p>なんでやねん。</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb21-1" title="1"><span class="fu">sudo</span> hwclock -s</a></code></pre></div>
-<p>で治った。これでnpmやzenn-cliを入れたところ、WLS2でnpx zenn previewが通った。全部WSL2の日付の問題であったらしい。</p>
-<h2 id="月3日水"><a href="#3">2月3日(水)</a> <a id="03"></a></h2>
-<p>卒論発表。昨日に引き続き、レベルの高い発表があって驚きました。とにかく無事に終わってよかったです。みなさんお疲れ様でした。</p>
-<p>学生さん向けのWindows ノートPC届いたぞ、と。</p>
-<p>もはやQiitaはダメっぽい。Zennを導入する。</p>
-<ul>
-<li><a href="https://zenn.dev/zenn/articles/connect-to-github">GitHubとの連携</a></li>
-</ul>
-<figure>
-<img src="images/zenn-github.png" alt="zenn-github" /><figcaption>zenn-github</figcaption>
-</figure>
-<p>連携できたぞ。次にローカルでzenn-githubディレクトリを作って、<a href="https://zenn.dev/zenn/articles/install-zenn-cli">ここ</a>を参考のテンプレートを作成した。また、ローカルにZenn連携リポジトリを作ったが、WSL2からプレビューがうまくいかない。DockerでNginxを立ち上げてブラウザから見るのはうまくいったので、なにか別の理由があるっぽいな。</p>
-<p>研究室ミーティング。今日は中野さん。ようやくどんなことをしているかわかった気がするぞ。論文読んでもいまいち理解できていなかった。</p>
-<p>特別講義のメールをたくさん出した。</p>
-<h2 id="月2日火"><a href="#2">2月2日(火)</a> <a id="02"></a></h2>
-<p>卒論発表。みなさん頑張ってて素晴らしいですね。</p>
-<h2 id="月1日月"><a href="#1">2月1日(月)</a> <a id="01"></a></h2>
-<p>2月になってしまった。いろいろ厳しい。</p>
-<p>MacProが不安定。入力を受け付けなくなって強制再起動。どうもSlackが原因のような気がする。今回、Slackに入力しようとして固まったし、Windowsでもたまに動作がおかしいし。</p>
-<p>輪講用の本が届いた。10冊。佐々さんの「熱力学入門」を読む。清水本と迷ったのだが、せっかくOBが来るし、薄いし。</p>
-<p>重い腰を上げてtmuxを入れてみた。まだ使い方がよくわかっていない。</p>
-<p>学生さんのWindows PC決めた。NECのLavieと迷ったが、ちょっと高かったのでEPSONのNA520Eに。値段的にちょうど良かったので。</p>
-<p>GitHub演習のリポジトリを少し整理した。</p>
+                        <p><a href="index.html">ログ一覧</a></p>
+                        <h2 id="月28日日"><a href="#28">02月28日(日)</a> <a id="28"></a></h2>
+                        <p>JackknifeのC++版の実装完了。共分散の影響を考え落としてて結果がおかしかった(らしい)。これで論文が書けるはず。</p>
+                        <p>Qiita、完全に過疎ってる気がする。zenn.devに民族大移動？僕も移るかな。</p>
+                        <h2 id="月27日土"><a href="#27">02月27日(土)</a> <a id="27"></a></h2>
+                        <p>JackknifeのC++版の実装。Pythonから入るとSTLのコンテナ操作系の使いづらさが際立つ。</p>
+                        <div class="sourceCode" id="cb1"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="bu">std::</span>transform(r.begin(), r.end(), r2.begin(), [](<span class="dt">double</span> x) { <span class="cf">return</span> x * x; });</span></code></pre></div>
+                        <p>みたいな奴、</p>
+                        <div class="sourceCode" id="cb2"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="bu">std::</span>transform(r, r2, [](<span class="dt">double</span> x) { <span class="cf">return</span> x * x; });</span></code></pre></div>
+                        <p>でいいじゃん。もっというなら</p>
+                        <div class="sourceCode" id="cb3"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="kw">auto</span> r2 = <span class="bu">std::</span>transform(r, [](<span class="dt">double</span> x) { <span class="cf">return</span> x * x; });</span></code></pre></div>
+                        <p>でいいじゃんね。</p>
+                        <p><code>std::accumulate</code>で、<code>double</code>を積算するのに初期値に「0」を入れて、積算が<code>int</code>で行われている、というバグを入れてたのにしばらく気づかなかった。こんなの。</p>
+                        <div class="sourceCode" id="cb4"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="pp">#include </span><span class="im">&lt;algorithm&gt;</span></span>
+                        <span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+                        <span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a><span class="pp">#include </span><span class="im">&lt;numeric&gt;</span></span>
+                        <span id="cb4-4"><a href="#cb4-4" aria-hidden="true"></a><span class="pp">#include </span><span class="im">&lt;vector&gt;</span></span>
+                        <span id="cb4-5"><a href="#cb4-5" aria-hidden="true"></a></span>
+                        <span id="cb4-6"><a href="#cb4-6" aria-hidden="true"></a><span class="dt">int</span> main() {</span>
+                        <span id="cb4-7"><a href="#cb4-7" aria-hidden="true"></a>  <span class="bu">std::</span>vector&lt;<span class="dt">double</span>&gt; v = {<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">10</span>};</span>
+                        <span id="cb4-8"><a href="#cb4-8" aria-hidden="true"></a>  <span class="bu">std::</span>cout &lt;&lt; <span class="bu">std::</span>accumulate(v.begin(), v.end(), <span class="dv">0</span>) &lt;&lt; <span class="bu">std::</span>endl;</span>
+                        <span id="cb4-9"><a href="#cb4-9" aria-hidden="true"></a>  <span class="bu">std::</span>transform(v.begin(), v.end(), v.begin(), [](<span class="dt">double</span> x) { <span class="cf">return</span> <span class="fl">0.5</span> * x; });</span>
+                        <span id="cb4-10"><a href="#cb4-10" aria-hidden="true"></a></span>
+                        <span id="cb4-11"><a href="#cb4-11" aria-hidden="true"></a>  <span class="bu">std::</span>cout &lt;&lt; <span class="bu">std::</span>accumulate(v.begin(), v.end(), <span class="dv">0</span>) &lt;&lt; <span class="bu">std::</span>endl;  <span class="co">// =&gt; 25</span></span>
+                        <span id="cb4-12"><a href="#cb4-12" aria-hidden="true"></a>  <span class="bu">std::</span>cout &lt;&lt; <span class="bu">std::</span>accumulate(v.begin(), v.end(), <span class="fl">0.0</span>) &lt;&lt; <span class="bu">std::</span>endl; <span class="co">// =&gt; 27.5</span></span>
+                        <span id="cb4-13"><a href="#cb4-13" aria-hidden="true"></a>}</span></code></pre></div>
+                        <p>初期値に0と0.0を入れた時で答えが変わる。最初のテストでは整数しか入れてなかったので答えがあってて見落とした。コンパイラは何も言わないし、計算も普通にできるんだけど、微妙に答えがおかしくなるのですごくイヤなバグ。</p>
+                        <h2 id="月26日金"><a href="#26">02月26日(金)</a> <a id="26"></a></h2>
+                        <p>昨日、会議があったのを忘れててすっぽかしたorz</p>
+                        <p>Google Calendarに入力してたのに。凹む。</p>
+                        <p>Jackknife Estimator、ようやく理解した。いろいろ混乱してて、理解に一ヶ月かかった。ブートストラップ法との関連の理解はまだだが、なぜ1/Nバイアスが取り除けるかはわかったので、<a href="https://qiita.com/kaityo256/items/174347b12717ba49263d">Qiita</a>に解説書いた。あとはこれをC++で実装して、動作確認したらプロダクトコードに組み込んで再計算。それでN依存性が消えたら論文にしておしまいだ。</p>
+                        <h2 id="月25日木"><a href="#25">02月25日(木)</a> <a id="25"></a></h2>
+                        <p>昨日はpushを忘れたな。</p>
+                        <p>研究打ち合わせ。</p>
+                        <p>研究員受け入れ手続きを失念していた。BCCで来たメールが自分宛てだとは思わなかった。慌てて対応する。</p>
+                        <p>新しい部屋の計画作った。予算計画の見通しもたった。</p>
+                        <p>Jackknife、ほぼ理解できたと思う。あとひと押し。</p>
+                        <h2 id="月24日水"><a href="#24">02月24日(水)</a> <a id="24"></a></h2>
+                        <p>GitHub Typoという、GitHubにあるリポジトリのありがちなタイポを見つけてリンクするという、とてもおせっかいなサイトに捕捉されたので修正する。ispellとaspell試したけど、aspellの方が使いやすいな。ただ、オプションが面倒。こんな感じかな。</p>
+                        <div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="ex">aspell</span> --lang=en -x -c -t fiename</span></code></pre></div>
+                        <ul>
+                        <li><code>--lang=en</code> 英語にする</li>
+                        <li><code>-t</code> モードをTexモードにする</li>
+                        <li><code>-x</code> = <code>--dont-backup</code> バックアップしない</li>
+                        <li><code>-c</code> Spell check a single file.</li>
+                        </ul>
+                        <p>一気に調べるには</p>
+                        <div class="sourceCode" id="cb6"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="ex">aspell</span> --lang=en -t list <span class="op">&lt;</span> ワイルドカード <span class="kw">|</span> <span class="fu">sort</span> -u <span class="kw">|</span><span class="fu">less</span></span></code></pre></div>
+                        <p>が便利。例えば<code>**/*.md</code>で調べるなら、</p>
+                        <div class="sourceCode" id="cb7"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a><span class="ex">aspell</span> --lang=en -t list <span class="op">&lt;</span> **/*.md <span class="kw">|</span> <span class="fu">sort</span> -u <span class="kw">|</span><span class="fu">less</span></span></code></pre></div>
+                        <p>これで出てきた一覧のうち、明らかにTypoなのをgrepで場所を特定して修正するのが便利。</p>
+                        <p>データベースを作って、論文として出版するという方法。</p>
+                        <p>Scientific data (Nature) IF 5.541</p>
+                        <p>「TACMIコンソーシアム」<a href="http://www.utripl.u-tokyo.ac.jp/tacmi/">http://www.utripl.u-tokyo.ac.jp/tacmi/</a> 一言でいうとNDAで守られた学会。通常の学会で発表すると「公知の事実」になってしまうので、企業の人が発表しやすいように作られたとのこと。</p>
+                        <h2 id="月23日火"><a href="#23">02月23日(火)</a> <a id="23"></a></h2>
+                        <p>NOP(天皇誕生日) ## <a href="#23">02月23日(火)</a> <a id="23"></a></p>
+                        <p>荷ほどき。</p>
+                        <h2 id="月22日月"><a href="#22">02月22日(月)</a> <a id="22"></a></h2>
+                        <p><a href="https://ccms.issp.u-tokyo.ac.jp/event/4228">研究会</a>のメモ。</p>
+                        <p>原子間ポテンシャルの高精度モデリング J. Behler and M. Parrinello PRL 98 146401 (2007)</p>
+                        <p>原子間力の非調和力定数の決定 熱伝導率 PRL 113, 185501 (2014) PRB 92, 054301 (2015) JPSJ 87, 圧縮センシング (LASSO)を使うと、計算量が激減する。</p>
+                        <p>実験データを再現するように結晶構造を決める。シミュレーティッドアニーリングでは遅いが、機械学習(ベイズ)では速い。</p>
+                        <p>土師 将裕（東京大学 物性研究所） 圧縮センシングによる走査トンネル顕微鏡の高精度測定</p>
+                        <p>y = A x yが実空間 (観測量) xが波数空間 (目的) Aはフーリエ変換 yが欠けているときに、xを求めたい。</p>
+                        <p>Y. Nakanishi-Ohno, MH, JPSJ 85, 093702 (2016)</p>
+                        <p>田村 亮（東京大学大学院新領域創成科学研究科, 物質・材料研究機構） ベイズ最適化と材料・物性研究への応用</p>
+                        <p>ベイズ最適化をするアプリケーション COMBO</p>
+                        <p>ガスアトマイズ最適化 超合金粉末の最適化 R. Tamura, et al. Material &amp; Design 198, 109290 (2020)</p>
+                        <p>Liイオン伝導度最適化 K. Homma, et al. The Journal of Physical Chemistry C 124, 12865 (2020)</p>
+                        <p>二元系 最高充填率 二次元二元系　9種類 三次元三元系　164種類</p>
+                        <p>寺山 慧(横浜市立大学) クライオEM密度マップからの生体分子ダイナミクス情報推定-データベース・シミュレーション・機械学習の融合</p>
+                        <p>能動的な相図探索 Phys. Rev. Mater. 2019 JJAP 2019</p>
+                        <p>Nature Machine Intelligence</p>
+                        <p>Jackknifeの理解がおかしい。n個のデータを持つrに対して、まずbin_sizeで平均し、n/bin_sizeのデータを作ってから、それをJackknifeで一個外しては平均を取り、それに対してビンダー比を計算してもうまくいかない。詳しい人に聞いたらやっぱり間違っていた。まだ定義をきちんと理解できていない。</p>
+                        <h2 id="月21日日"><a href="#21">02月21日(日)</a> <a id="21"></a></h2>
+                        <p>NOP</p>
+                        <h2 id="月20日土"><a href="#20">02月20日(土)</a> <a id="20"></a></h2>
+                        <p>NOP</p>
+                        <h2 id="月19日金"><a href="#19">02月19日(金)</a> <a id="19"></a></h2>
+                        <p>あれ？昨日いろいろ仕事したのに日記書き忘れてたのか。</p>
+                        <p>ミーティングとか。なんかオンラインになって逆に気軽にミーティングできるようになった感。</p>
+                        <p>富岳で標準出力ファイルが大量に出る問題に対処。</p>
+                        <h2 id="月18日木"><a href="#18">02月18日(木)</a> <a id="18"></a></h2>
+                        <p>富岳にジョブを大量に投げた。プロセスとスレッド、「京」で起きた問題がまた起きてるな。</p>
+                        <p>時間がなかなか取れない中、研究をすすめるためにいろいろ手を打つ。</p>
+                        <h2 id="月17日水"><a href="#17">02月17日(水)</a> <a id="17"></a></h2>
+                        <p>これで2日連続日付挿入スニペットを使ったぞ。</p>
+                        <p>卒論の製本依頼した。表紙を別紙に用意したが、申込用紙の「表紙」にバツマークをつけて「マーク有」と書けば、ペンマークを入れてくれる。</p>
+                        <p>研究室ミーティング。なるほど、面白い。</p>
+                        <p>その後、B3のPCセットアップ。</p>
+                        <p>Anacondaのインストール画面が違う。</p>
+                        <p>pyenvでanacondaはM1にうまく入らなかったっぽい。</p>
+                        <div class="sourceCode" id="cb8"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a><span class="ex">brew</span> install pyenv</span>
+                        <span id="cb8-2"><a href="#cb8-2" aria-hidden="true"></a><span class="ex">pyenv</span> install 3.9.1</span></code></pre></div>
+                        <p>これでいけるはず。</p>
+                        <p>また、lammpsをbrewで入れた時のパスが違う。</p>
+                        <div class="sourceCode" id="cb9"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a><span class="bu">cd</span></span>
+                        <span id="cb9-2"><a href="#cb9-2" aria-hidden="true"></a><span class="fu">mkdir</span> lammps</span>
+                        <span id="cb9-3"><a href="#cb9-3" aria-hidden="true"></a><span class="bu">cd</span> lammps</span>
+                        <span id="cb9-4"><a href="#cb9-4" aria-hidden="true"></a><span class="fu">cp</span> -r /opt/homebrew/Cellar/lammps/2020-10-29/share/lammps/examples/melt .</span>
+                        <span id="cb9-5"><a href="#cb9-5" aria-hidden="true"></a><span class="bu">cd</span> melt</span></code></pre></div>
+                        <p>WSL2のインストールも書かないと。</p>
+                        <h2 id="月16日火"><a href="#16">02月16日(火)</a> <a id="16"></a></h2>
+                        <p>二週間くらいぶりに日付挿入スニペット使った。せめてこれからは毎日、このスニペットを使うことにしよう。っていうか、このスニペット使った回数を記録しておけば、日付通りに日記を書いた回数がわかるのか。</p>
+                        <p>共著者の議論のために粘性を調べてて見つけた。</p>
+                        <p><a href="https://www.shi-pe.shi.co.jp/technology/index.html#ancLec">撹拌講座『貴方の知らない撹拌の世界 ～よりよく混ぜて、よりよいプロセスに～』</a></p>
+                        <p>住友重機械プロセス機器株式会社による、相当「ガチ」な講座。すっごい詳しい。</p>
+                        <p>共著者と議論した。僕もがんばらないと。</p>
+                        <p>明日の準備。延長コード、ラベル屋さんシール、ヘッドセットなどを購入。</p>
+                        <p>製本のやり方も聞いた。ペンマークも入れられるらしい。明日には入構したい。</p>
+                        <p>学生さんのスライドも見た。製本の表紙は明日作ろう。</p>
+                        <h2 id="月15日月"><a href="#15">02月15日(月)</a> <a id="15"></a></h2>
+                        <p>引っ越しだなんだでバタバタしてたので、日記を書くのが一週間ぶり。結局日付挿入スニペット全く使ってないな。うーむ。</p>
+                        <p>メール処理とか。</p>
+                        <p>ずっと気になってた眼鏡のゆるみを直した。少しずつ日常を取り戻す。</p>
+                        <p>重い仕事を一つ片づけたぞ。</p>
+                        <p>Ubuntu 18.04ではpdftkがaptで入らないの、pdftkがGCJ(GNU Compile for Java)に依存しており、GCJがGCC 7.1から削除された影響らしい。Ubuntu 18.10ではpdftk-javaが用意され、20.04ではpdftkが復活してるとのこと。WSLのUbuntuをアップグレードするか悩む。</p>
+                        <h2 id="月14日日"><a href="#14">02月14日(日)</a> <a id="14"></a></h2>
+                        <p>NOP</p>
+                        <p>J. P. ホーガンの「断絶への航海」について思うところをつらつら書いてみた。ユートピアとは何か。僕は学生さんには自分で考えて行動してほしいと思う。でも、自分で考えて行動する、という要求が厳しいことも知っている。</p>
+                        <h2 id="月13日土"><a href="#13">02月13日(土)</a> <a id="13"></a></h2>
+                        <p>NOP</p>
+                        <p>わりと大きな地震。我々の家を含む、ごく狭い範囲だけ停電。2時間ほどで復旧。夜は冷えるのですぐに復旧してくれて助かった。</p>
+                        <h2 id="月12日金"><a href="#12">02月12日(金)</a> <a id="12"></a></h2>
+                        <p>仕事。</p>
+                        <h2 id="月11日木"><a href="#11">02月11日(木)</a> <a id="11"></a></h2>
+                        <p>荷ほどき。</p>
+                        <h2 id="月10日水"><a href="#10">02月10日(水)</a> <a id="10"></a></h2>
+                        <p>荷ほどき。</p>
+                        <h2 id="月09日火"><a href="#9">02月09日(火)</a> <a id="09"></a></h2>
+                        <p>引っ越し。</p>
+                        <h2 id="月08日月"><a href="#8">02月08日(月)</a> <a id="08"></a></h2>
+                        <p>修論発表会。みなさんがんばってました。お疲れ様でした。</p>
+                        <h2 id="月07日日"><a href="#07">02月07日(日)</a> <a id="07"></a></h2>
+                        <p>引っ越しの準備。段ボール詰めたりとか。</p>
+                        <h2 id="月06日土"><a href="#06">02月06日(土)</a> <a id="06"></a></h2>
+                        <p>引っ越しの準備。ケーブルテレビの工事。</p>
+                        <h2 id="月05日金"><a href="#05">02月05日(金)</a> <a id="05"></a></h2>
+                        <p>スニペットで上の日付が出てくる仕組み、「入力した日」が出てきちゃうので、後でまとめて書く時には結局修正しないといけないのだった(いまこれ土曜日に書いてる)。</p>
+                        <p>なんかバタバタする。メール処理が追いつかない。</p>
+                        <p>講義の成績登録した。みなさんよくがんばりました。</p>
+                        <h2 id="月04日thu"><a href="#04">02月04日(Thu)</a> <a id="04"></a></h2>
+                        <p>いい加減ここの日付を書くのに手書きはアホ過ぎるのでスニペットを作ろう。まず、ローカル設定にしたいので、ローカルの.vscodeに作る。以下の内容で<code>.vscode/md.code-snippets</code>を作った。</p>
+                        <div class="sourceCode" id="cb10"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true"></a><span class="fu">{</span></span>
+                        <span id="cb10-2"><a href="#cb10-2" aria-hidden="true"></a>  <span class="dt">&quot;Print to console&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
+                        <span id="cb10-3"><a href="#cb10-3" aria-hidden="true"></a>    <span class="dt">&quot;scope&quot;</span><span class="fu">:</span> <span class="st">&quot;markdown, md&quot;</span><span class="fu">,</span></span>
+                        <span id="cb10-4"><a href="#cb10-4" aria-hidden="true"></a>    <span class="dt">&quot;prefix&quot;</span><span class="fu">:</span> <span class="st">&quot;date&quot;</span><span class="fu">,</span></span>
+                        <span id="cb10-5"><a href="#cb10-5" aria-hidden="true"></a>    <span class="dt">&quot;body&quot;</span><span class="fu">:</span> <span class="ot">[</span></span>
+                        <span id="cb10-6"><a href="#cb10-6" aria-hidden="true"></a>      <span class="st">&quot;## [$CURRENT_MONTH月$CURRENT_DATE日($CURRENT_DAY_NAME_SHORT)](#$CURRENT_DATE) &lt;a id=</span><span class="ch">\&quot;</span><span class="st">$CURRENT_DATE</span><span class="ch">\&quot;</span><span class="st">&gt;&lt;/a&gt;&quot;</span><span class="ot">,</span></span>
+                        <span id="cb10-7"><a href="#cb10-7" aria-hidden="true"></a>      <span class="st">&quot;$2&quot;</span></span>
+                        <span id="cb10-8"><a href="#cb10-8" aria-hidden="true"></a>    <span class="ot">]</span><span class="fu">,</span></span>
+                        <span id="cb10-9"><a href="#cb10-9" aria-hidden="true"></a>    <span class="dt">&quot;description&quot;</span><span class="fu">:</span> <span class="st">&quot;diary header&quot;</span></span>
+                        <span id="cb10-10"><a href="#cb10-10" aria-hidden="true"></a>  <span class="fu">}</span></span>
+                        <span id="cb10-11"><a href="#cb10-11" aria-hidden="true"></a><span class="fu">}</span></span></code></pre></div>
+                        <p>また、デフォルトではMarkdownでスニペット呼び出しができないので、<code>.vscode/settings.json</code>に以下を追加。</p>
+                        <div class="sourceCode" id="cb11"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true"></a><span class="fu">{</span></span>
+                        <span id="cb11-2"><a href="#cb11-2" aria-hidden="true"></a>  <span class="dt">&quot;[markdown]&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
+                        <span id="cb11-3"><a href="#cb11-3" aria-hidden="true"></a>    <span class="dt">&quot;editor.quickSuggestions&quot;</span><span class="fu">:</span> <span class="kw">true</span></span>
+                        <span id="cb11-4"><a href="#cb11-4" aria-hidden="true"></a>  <span class="fu">},</span></span>
+                        <span id="cb11-5"><a href="#cb11-5" aria-hidden="true"></a><span class="fu">}</span></span></code></pre></div>
+                        <p>これで「date(タブ)」と入力すると<code>## [02月04日(Thu)](#04) &lt;a id="04"&gt;&lt;/a&gt;</code>みたいな文字列が出てくるようになった。「木」ではなく「Thu」が出てしまったりするが、まぁ良いことにしよう。dateで出るのが鬱陶しくなったらprefix変えよう。</p>
+                        <p>Macでなぜかnpmが動かない。</p>
+                        <div class="sourceCode" id="cb12"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true"></a>$ <span class="ex">npm</span> init --yes</span>
+                        <span id="cb12-2"><a href="#cb12-2" aria-hidden="true"></a><span class="ex">dyld</span>: Library not loaded: /usr/local/opt/icu4c/lib/libicui18n.64.dylib</span>
+                        <span id="cb12-3"><a href="#cb12-3" aria-hidden="true"></a>  <span class="ex">Referenced</span> from: /usr/local/bin/node</span>
+                        <span id="cb12-4"><a href="#cb12-4" aria-hidden="true"></a>  <span class="ex">Reason</span>: image not found</span>
+                        <span id="cb12-5"><a href="#cb12-5" aria-hidden="true"></a><span class="ex">zsh</span>: abort      npm init --yes</span></code></pre></div>
+                        <p>最近これ系(ダイナミックリンクライブラリがらみ)のエラー多いな。</p>
+                        <div class="sourceCode" id="cb13"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true"></a>$ <span class="ex">brew</span> install npm</span>
+                        <span id="cb13-2"><a href="#cb13-2" aria-hidden="true"></a><span class="kw">(</span><span class="ex">snip</span><span class="kw">)</span></span>
+                        <span id="cb13-3"><a href="#cb13-3" aria-hidden="true"></a><span class="ex">Error</span>: node 12.9.1 is already installed</span>
+                        <span id="cb13-4"><a href="#cb13-4" aria-hidden="true"></a><span class="ex">To</span> upgrade to 15.8.0, run:</span>
+                        <span id="cb13-5"><a href="#cb13-5" aria-hidden="true"></a>  <span class="ex">brew</span> upgrade node</span></code></pre></div>
+                        <p>ほほう。</p>
+                        <div class="sourceCode" id="cb14"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true"></a>$  <span class="ex">brew</span> upgrade node</span>
+                        <span id="cb14-2"><a href="#cb14-2" aria-hidden="true"></a>==<span class="op">&gt;</span> <span class="ex">Upgrading</span> 1 outdated package:</span>
+                        <span id="cb14-3"><a href="#cb14-3" aria-hidden="true"></a><span class="ex">node</span> 12.9.1 -<span class="op">&gt;</span> 15.8.0</span>
+                        <span id="cb14-4"><a href="#cb14-4" aria-hidden="true"></a>==<span class="op">&gt;</span> <span class="ex">Upgrading</span> node 12.9.1 -<span class="op">&gt;</span> 15.8.0 </span>
+                        <span id="cb14-5"><a href="#cb14-5" aria-hidden="true"></a>==<span class="op">&gt;</span> <span class="ex">Downloading</span> https://homebrew.bintray.com/bottles/node-15.8.0.big_sur.bottle.</span>
+                        <span id="cb14-6"><a href="#cb14-6" aria-hidden="true"></a><span class="ex">Already</span> downloaded: /Users/watanabe/Library/Caches/Homebrew/downloads/9bf57615654f850ea19d76c53dee4b63bc00f11a242813b95b8450e45942a12b--node-15.8.0.big_sur.bottle.tar.gz</span>
+                        <span id="cb14-7"><a href="#cb14-7" aria-hidden="true"></a>==<span class="op">&gt;</span> <span class="ex">Pouring</span> node-15.8.0.big_sur.bottle.tar.gz</span>
+                        <span id="cb14-8"><a href="#cb14-8" aria-hidden="true"></a>🍺  <span class="ex">/usr/local/Cellar/node</span>/15.8.0: <span class="ex">3</span>,336 files, 55.9MB</span>
+                        <span id="cb14-9"><a href="#cb14-9" aria-hidden="true"></a><span class="ex">Removing</span>: /usr/local/Cellar/node/12.9.1... (4,629 files, 53.4MB)</span></code></pre></div>
+                        <p>できたかな？</p>
+                        <div class="sourceCode" id="cb15"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true"></a>$ <span class="ex">npm</span></span>
+                        <span id="cb15-2"><a href="#cb15-2" aria-hidden="true"></a><span class="kw">(</span><span class="ex">snip</span><span class="kw">)</span></span>
+                        <span id="cb15-3"><a href="#cb15-3" aria-hidden="true"></a><span class="ex">npm</span> notice </span>
+                        <span id="cb15-4"><a href="#cb15-4" aria-hidden="true"></a><span class="ex">npm</span> notice New patch version of npm available! 7.5.0 -<span class="op">&gt;</span> 7.5.2</span>
+                        <span id="cb15-5"><a href="#cb15-5" aria-hidden="true"></a><span class="ex">npm</span> notice Changelog: https://github.com/npm/cli/releases/tag/v7.5.2</span>
+                        <span id="cb15-6"><a href="#cb15-6" aria-hidden="true"></a><span class="ex">npm</span> notice Run npm install -g npm@7.5.2 to update!</span>
+                        <span id="cb15-7"><a href="#cb15-7" aria-hidden="true"></a><span class="ex">npm</span> notice </span></code></pre></div>
+                        <p>ふむ。</p>
+                        <div class="sourceCode" id="cb16"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true"></a><span class="ex">npm</span> install -g npm@7.5.2</span></code></pre></div>
+                        <p>もう一度。</p>
+                        <div class="sourceCode" id="cb17"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true"></a><span class="ex">npm</span> install zenn-cli </span></code></pre></div>
+                        <p>無事に通った。</p>
+                        <div class="sourceCode" id="cb18"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true"></a>$ <span class="ex">npx</span> zenn preview</span>
+                        <span id="cb18-2"><a href="#cb18-2" aria-hidden="true"></a>👀<span class="ex">Preview</span> on http://localhost:8000</span></code></pre></div>
+                        <p>これで<code>http://localhost:8000</code>を見たらちゃんと見えた。よしよし。</p>
+                        <p>ついでにhttpサーバの確認。</p>
+                        <div class="sourceCode" id="cb19"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true"></a>$ <span class="ex">telnet</span> localhost 8000</span>
+                        <span id="cb19-2"><a href="#cb19-2" aria-hidden="true"></a><span class="ex">Trying</span> ::1...</span>
+                        <span id="cb19-3"><a href="#cb19-3" aria-hidden="true"></a><span class="ex">Connected</span> to localhost.</span>
+                        <span id="cb19-4"><a href="#cb19-4" aria-hidden="true"></a><span class="ex">Escape</span> character is <span class="st">&#39;^]&#39;</span>.</span>
+                        <span id="cb19-5"><a href="#cb19-5" aria-hidden="true"></a><span class="ex">HEAD</span> / HTTP/1.0</span>
+                        <span id="cb19-6"><a href="#cb19-6" aria-hidden="true"></a></span>
+                        <span id="cb19-7"><a href="#cb19-7" aria-hidden="true"></a><span class="ex">HTTP/1.1</span> 200 OK</span>
+                        <span id="cb19-8"><a href="#cb19-8" aria-hidden="true"></a><span class="ex">X-Powered-By</span>: Next.js</span>
+                        <span id="cb19-9"><a href="#cb19-9" aria-hidden="true"></a><span class="ex">ETag</span>: <span class="st">&quot;159e-WBZEF7rtwOl9mxryAKtsz2EiX+8&quot;</span></span>
+                        <span id="cb19-10"><a href="#cb19-10" aria-hidden="true"></a><span class="ex">Content-Type</span>: text/html<span class="kw">;</span> <span class="va">charset=</span>utf-8</span>
+                        <span id="cb19-11"><a href="#cb19-11" aria-hidden="true"></a><span class="ex">Content-Length</span>: 5534</span>
+                        <span id="cb19-12"><a href="#cb19-12" aria-hidden="true"></a><span class="ex">Cache-Control</span>: private, no-cache, no-store, max-age=0, must-revalidate</span>
+                        <span id="cb19-13"><a href="#cb19-13" aria-hidden="true"></a><span class="ex">Vary</span>: Accept-Encoding</span>
+                        <span id="cb19-14"><a href="#cb19-14" aria-hidden="true"></a><span class="ex">Date</span>: Thu, 04 Feb 2021 04:12:16 GMT</span>
+                        <span id="cb19-15"><a href="#cb19-15" aria-hidden="true"></a><span class="ex">Connection</span>: close</span>
+                        <span id="cb19-16"><a href="#cb19-16" aria-hidden="true"></a></span>
+                        <span id="cb19-17"><a href="#cb19-17" aria-hidden="true"></a><span class="ex">Connection</span> closed by foreign host.</span></code></pre></div>
+                        <p><code>Next.js</code>で動いているみたいですね。しかし、最近の若人はこういうの、何で調べてるんだろ？</p>
+                        <p>WSL2でapt-get updateができない問題、日付がずれているのが原因だった。</p>
+                        <div class="sourceCode" id="cb20"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true"></a><span class="fu">date</span></span>
+                        <span id="cb20-2"><a href="#cb20-2" aria-hidden="true"></a><span class="ex">2021</span>年　1月 30日 土曜日 04:03:43 JST</span></code></pre></div>
+                        <p>なんでやねん。</p>
+                        <div class="sourceCode" id="cb21"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true"></a><span class="fu">sudo</span> hwclock -s</span></code></pre></div>
+                        <p>で治った。これでnpmやzenn-cliを入れたところ、WLS2でnpx zenn previewが通った。全部WSL2の日付の問題であったらしい。</p>
+                        <h2 id="月3日水"><a href="#3">2月3日(水)</a> <a id="03"></a></h2>
+                        <p>卒論発表。昨日に引き続き、レベルの高い発表があって驚きました。とにかく無事に終わってよかったです。みなさんお疲れ様でした。</p>
+                        <p>学生さん向けのWindows ノートPC届いたぞ、と。</p>
+                        <p>もはやQiitaはダメっぽい。Zennを導入する。</p>
+                        <ul>
+                        <li><a href="https://zenn.dev/zenn/articles/connect-to-github">GitHubとの連携</a></li>
+                        </ul>
+                        <figure>
+                        <img src="images/zenn-github.png" alt="" /><figcaption>zenn-github</figcaption>
+                        </figure>
+                        <p>連携できたぞ。次にローカルでzenn-githubディレクトリを作って、<a href="https://zenn.dev/zenn/articles/install-zenn-cli">ここ</a>を参考のテンプレートを作成した。また、ローカルにZenn連携リポジトリを作ったが、WSL2からプレビューがうまくいかない。DockerでNginxを立ち上げてブラウザから見るのはうまくいったので、なにか別の理由があるっぽいな。</p>
+                        <p>研究室ミーティング。今日は中野さん。ようやくどんなことをしているかわかった気がするぞ。論文読んでもいまいち理解できていなかった。</p>
+                        <p>特別講義のメールをたくさん出した。</p>
+                        <h2 id="月2日火"><a href="#2">2月2日(火)</a> <a id="02"></a></h2>
+                        <p>卒論発表。みなさん頑張ってて素晴らしいですね。</p>
+                        <h2 id="月1日月"><a href="#1">2月1日(月)</a> <a id="01"></a></h2>
+                        <p>2月になってしまった。いろいろ厳しい。</p>
+                        <p>MacProが不安定。入力を受け付けなくなって強制再起動。どうもSlackが原因のような気がする。今回、Slackに入力しようとして固まったし、Windowsでもたまに動作がおかしいし。</p>
+                        <p>輪講用の本が届いた。10冊。佐々さんの「熱力学入門」を読む。清水本と迷ったのだが、せっかくOBが来るし、薄いし。</p>
+                        <p>重い腰を上げてtmuxを入れてみた。まだ使い方がよくわかっていない。</p>
+                        <p>学生さんのWindows PC決めた。NECのLavieと迷ったが、ちょっと高かったのでEPSONのNA520Eに。値段的にちょうど良かったので。</p>
+                        <p>GitHub演習のリポジトリを少し整理した。</p>
           </article>
   </body>
 

@@ -21,381 +21,381 @@
   <body>
     <article class="markdown-body">
                         <h1 id="年12月">2021年12月</h1>
-<p><a href="index.html">ログ一覧</a></p>
-<h2 id="月31日金"><a href="#31">12月31日(金)</a> <a id="31"></a></h2>
-<p>何をしていたか記憶がない(1月3日にこれを書いている)。</p>
-<h2 id="月30日木"><a href="#30">12月30日(木)</a> <a id="30"></a></h2>
-<p>記憶喪失。何してたっけ？年賀状書いたかな。</p>
-<h2 id="月29日水"><a href="#29">12月29日(水)</a> <a id="29"></a></h2>
-<p>レポートの採点。昨日とは打って変わって集中力を全く欠く。半分しか進まなかった。</p>
-<p><a href="chrome-extension://oemmndcbldboiebfnladdacbdfmadadm/https://www.iimc.kyoto-u.ac.jp/services/comp/pdf/file_loss_insident_20211228.pdf">京大スパコンの事故</a></p>
-<p>うわぁ・・・。しかも文責の人、知ってる人だ。前職でお世話になった。</p>
-<p>後でリンク切れを起こした時のために簡単なまとめ。京大のLustreシステムの「ファイルのバックアップスクリプト」の最後に、ログファイルのお片付け処理もあった。ある時、スクリプトの見通しをよくするために変数などの整理をおこなった。しかし、スクリプトが実行中だったため、「実行中のスクリプトが上書き」されてしまった。バックアップ処理が終了後、ログの削除処理が走ったが、その際に変数が未定義状態となり、削除すべきでないファイルが一気に削除されてしまった。そのままバックアップも走り、復旧が不可能になったというもの。</p>
-<p>この「bashスクリプトが実行中に上書きされると、上書きされたスクリプトで実行を継続する」という仕組みをしなかった人(僕)は多く、震え上がった。また、リリースの「弊社100%の責任により」という文章も話題に。</p>
-<p>想像するだに胃が痛くなる。</p>
-<h2 id="月28日火"><a href="#28">12月28日(火)</a> <a id="28"></a></h2>
-<p>寒い。</p>
-<p>土日よく寝て、月曜はぼーっとしていたが、ようやく頭が回りだしたぞ。</p>
-<p>矢上設置科目の出講希望確定。</p>
-<p>プログラミング基礎同演習、物理情報工学ソフトウェア演習のシラバス確定。シミュレーション工学のシラバスはパートナーに投げた。</p>
-<p>プログラミング基礎同演習、最後のビデオ録画した。</p>
-<p>珍しくすごく集中力があったのに、全く研究やプログラミングに時間を使えなかった。悲しい。</p>
-<h2 id="月27日月"><a href="#27">12月27日(月)</a> <a id="27"></a></h2>
-<p>よく寝たはずだが、全く集中できず。一つ仕事を終わらせたが、やはりミスった。</p>
-<p>最近ミスが多すぎて本当にダメだ。もう少し落ち着いて仕事をしたい。</p>
-<p>年賀状の印刷をした。</p>
-<p>JPSJのレフェリー、登録情報が物性研になってたので修正した。ORC IDか何かで一括でやってほしいんだけどなぁ。</p>
-<p>予算執行計画を立てた。まだ若干不透明。</p>
-<h2 id="月26日日"><a href="#26">12月26日(日)</a> <a id="26"></a></h2>
-<p>よく寝た。</p>
-<h2 id="月25日土"><a href="#25">12月25日(土)</a> <a id="25"></a></h2>
-<p>「7つのこと」、半年に一度くらいバズるんだけど、バズリ方がだんだん大きくなっている気がして怖い。ついに地上波にまで紹介されたらしいし。今回はポジティブな話題のなり方だけど、これ、悪い方に話題になったらもう致命的なんじゃなかろうか。すぐに燃え上がり、数日で話題として消費し尽くされ、後には骨も残らない。「彼ら」はすぐに次の犠牲者を探すのであろう。</p>
-<p>少し前にQiitaの企業のアドベントカレンダーで、不適切な記事が掲載された。これは既存の記事に酷似した内容を掲載しつつ、その元記事への言及がなかった、というもの。詳細はわからないが、著者に悪意があったわけではないと思われる。しかし、まずい点を指摘された後、すぐに記事を削除するという対応はまずかった。結局、企業の広報に連絡が行き、お詫びのプレスリリースを出すことになってしまった。</p>
-<p>引用がなかったのはまずいけれど、著者の気持ちもわからないではない。アドベントカレンダーというものを頼まれたか、やってみたいと思ったか、とにかくQiitaでの初投稿の記事なので、おそらく技術記事に慣れていなかったのだろう。そして、既存の記事を見て、面白そうと思い、それを自分なりに再実装したのだと思われる。で、最初に「これはこの記事を見て面白そうだったので再実装したものです」と一言かけば全く問題なかったのだが、それがなかった。で、指摘されたときに「すみません、おっしゃる通り参考にしました。冒頭に追記しました」で済んだはずなんだけど、おそらくテンパってすぐに消してしまったのだろう。それで話が大きくなってしまった。</p>
-<p>ネットでは、よくも悪くも情報の伝達速度が年々早くなっているのを感じる。なんというか、パーコレーション確率に近くなっている感じ。そんな時代だから、「ネットとの付き合い方」をちゃんと知っておく必要があるのだろう。何度も炎上している僕がいうのもなんだけど。</p>
-<p>いやしかし、所属企業や大学の名前をつけて情報を公開するの、本当に怖くなってくるね。</p>
-<h2 id="月24日金"><a href="#24">12月24日(金)</a> <a id="24"></a></h2>
-<p>指導教員がネットで話題になるのって、学生さんからしたらどうなんだろうね？</p>
-<p>いろいろテンパってる。不便で仕方なかったのでスキャナ買った。</p>
-<p>机がいくつか欲しい。あとでかいディスプレイ。メンテ用に小さいディスプレイ(VGAがささる奴)とキーボード、マウスも必要だ。</p>
-<h2 id="月23日木"><a href="#23">12月23日(木)</a> <a id="23"></a></h2>
-<ul>
-<li>富岳確認</li>
-<li>卒論日程確認</li>
-<li>修論日程確認</li>
-<li>委嘱状確認</li>
-<li>要旨確認</li>
-</ul>
-<p>なんか学生さんがサーバ落としたり、それまで知られてなかったスパコンのリソース上限にひっかかったりしていて頼もしい。このまま成長してスパコンブレイカーになってください。</p>
-<p>駄目だ。多方面でいろいろミスる。完全にキャパオーバー。どうしたもんか。</p>
-<h2 id="月22日水"><a href="#22">12月22日(水)</a> <a id="22"></a></h2>
-<p>ホワイトボード届いた。</p>
-<p>学部のシラバス、英文も作成したほうが良いらしい。</p>
-<p>集中講義のシラバス作らないと。こんな感じかな。</p>
-<p>タイトル案：大規模数値計算が拓く物理学</p>
-<p>シラバス案</p>
-<ol type="1">
-<li>数値計算の基礎
-<ul>
-<li>なぜ数値計算が必要なのか？</li>
-<li>数値実験とはどのような実験か？</li>
-<li>数値計算の種類</li>
-</ul></li>
-<li>モンテカルロ法(1)基礎的な話題
-<ul>
-<li>乱数とはなにか</li>
-<li>モンテカルロ法</li>
-<li>マルコフ連鎖モンテカルロ法とメトロポリス法</li>
-<li>エラーバーについて</li>
-</ul></li>
-<li>モンテカルロ法(2) 発展的な話題
-<ul>
-<li>クラスターアルゴリズムとImproved Estimator</li>
-<li>不偏推定量とJackknife法</li>
-</ul></li>
-<li>分子動力学法(1) 基礎編 (主に数値積分法について)
-<ul>
-<li>微分方程式の数値積分法</li>
-<li>シンプレクティック積分</li>
-<li>温度制御(Langevin, Nose-Hoover)</li>
-</ul></li>
-<li>分子動力学法(2) 応用編(研究事例紹介)
-<ul>
-<li>気液共存線の決定
-<ul>
-<li>相転移とは</li>
-<li>有限サイズスケーリング</li>
-</ul></li>
-<li>気泡生成現象
-<ul>
-<li>界面張力とは</li>
-<li>気泡成長の理論</li>
-</ul></li>
-</ul></li>
-<li>並列計算の基礎と高速化について
-<ul>
-<li>計算機の仕組み</li>
-<li>高速化 (メモリ効率)</li>
-<li>並列化</li>
-<li>SIMD化</li>
-</ul></li>
-<li>スパコンでできること、できないこと(どこかでセミナー形式?)
-<ul>
-<li>大規模並列計算による多重気泡生成現象の解析(泡バブルの話)</li>
-<li>スーパーコンピュータを使って難しいナンプレを作る(数独で炎上した話)</li>
-</ul></li>
-</ol>
-<p>ダメだ、今日もタスクを積み残したぞ。ヤバい。</p>
-<h2 id="月21日火"><a href="#21">12月21日(火)</a> <a id="21"></a></h2>
-<p>論文再投稿準備。なんかLaTeXファイルにAtomが関連付けられてるな。</p>
-<p>また仕事でミス。最近多すぎる。完全に後手に回っている。</p>
-<p><a href="https://zenn.dev/kaityo256/articles/weird_errorbars">Zennのおかしなエラーバーの記事</a>、そこそこ評判良かったみたいで安心した。やっぱりQiitaの記事の書き方よくなかったんだな。</p>
-<p>講義。年内最後。</p>
-<p>打ち合わせ。</p>
-<p>PTEP投稿覚書。アカウントがなかったので作った。</p>
-<ul>
-<li>Section: Paper</li>
-<li>Subject Index Section: A General and Methematical Physics (次のMore Specificによりこれ確定)</li>
-<li>More Specific Subject Index: 「A40 Critical phenomena, phase diagrams, phase transitions」と「A42 Classical spins」</li>
-<li>Category: Theoretical</li>
-<li>Title: 入力</li>
-</ul>
-<p>あれ？Suggested Refereeを入れるところがなかったぞ。</p>
-<h2 id="月20日月"><a href="#20">12月20日(月)</a> <a id="20"></a></h2>
-<p>名古屋大学スパコン、郵送出した。本買った。要旨見た。</p>
-<h2 id="月19日日"><a href="#19">12月19日(日)</a> <a id="19"></a></h2>
-<p>しこたま寝た。最近ギアを上げ気味に走っているので疲れている。仕事時間は短いんだけど・・・。</p>
-<h2 id="月18日土"><a href="#18">12月18日(土)</a> <a id="18"></a></h2>
-<p>要旨見た、</p>
-<p>そんな時間はないのだが、どうしても気になったので<a href="https://zenn.dev/kaityo256/articles/weird_errorbars">おかしなエラーバーのグラフ</a>の記事を書いた。以前<a href="https://qiita.com/kaityo256/items/197a4811e5694dacfa04">Qiitaに書いた奴</a>が、いまいち本質が伝わっていない気がして。</p>
-<p>VimでPythonを書いてて、<code>numpy.random</code>が無いと言われる。どうやらPylintの静的解析に問題があるようだ。<code>~/.pylintrc</code>に、</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode txt"><code class="sourceCode default"><a class="sourceLine" id="cb1-1" title="1">extension-pkg-whitelist = numpy</a></code></pre></div>
-<p>と書いて解決。</p>
-<h2 id="月17日金"><a href="#17">12月17日(金)</a> <a id="17"></a></h2>
-<p>よく寝た。だいぶ体力を回復した。だがやるべきことが大量にある。</p>
-<p>名大の奴、事務に出した。返ってきたら申請。</p>
-<p>キーボード届いた。赤軸*2。こちらは静かかな？</p>
-<p>浅野さんの論文、arXivへのリンクをウェブに公開。遅くなってしまった。</p>
-<p><a href="https://arxiv.org/abs/2112.07139">arXiv:2112.07139</a></p>
-<p>良い仕事だと思うんだけど、査読者はどう見るかな。</p>
-<p>エラーバーについての記事、絶対必用だな。Qiitaに書いた奴をリファインしてZennに書き直そう(←いつやるの？)。</p>
-<p>要旨 * 2。</p>
-<p>分子シミュレーション学会年会費払った。</p>
-<p>学科計算機のお仕事。</p>
-<p>プログラミング基礎同演習講義録画。あと一回。年内に録画しよう。</p>
-<p>物性研スパコン共同利用報告会所外委員の仕事もしたぞ。</p>
-<p>なんかメールいっぱい書いた・・・</p>
-<p>要旨 * 3。</p>
-<h2 id="月16日木"><a href="#16">12月16日(木)</a> <a id="16"></a></h2>
-<p>研究室ミーティング。</p>
-<p>1on1 * 4。</p>
-<p>書類*2。</p>
-<p>学習指導お仕事。</p>
-<p>要旨*2。</p>
-<h2 id="月15日水"><a href="#15">12月15日(水)</a> <a id="15"></a></h2>
-<p>会議 * 2。その準備と後始末でもう18:40ですって。</p>
-<p>Canvasで普段使わない機能を使ったら、機能について誤解していてミスってしまった。冒険すべきでなかった。</p>
-<p>ホワイトボードの注文した。</p>
-<p>名大スパコンの申請書書いた。経理責任者の問い合わせメール書いた。返事が来たらすぐ提出！</p>
-<h2 id="月14日火"><a href="#14">12月14日(火)</a> <a id="14"></a></h2>
-<p>プログラミング基礎同演習。</p>
-<p>しまった、富岳の期限が切れてしまった。</p>
-<h2 id="月13日月"><a href="#13">12月13日(月)</a> <a id="13"></a></h2>
-<p>会議。</p>
-<p>1on1 * 2。</p>
-<p>学習指導のお仕事。組み合わせ最適化問題。</p>
-<h2 id="月12日日"><a href="#12">12月12日(日)</a> <a id="12"></a></h2>
-<p>論文見た。</p>
-<p>CPCからソースファイルもアップロードしろ、という連絡が。あれ？CPCのガイドラインでは、最初はPDFだけで良くて、ソースはFinal Publication Processだけで良い、みたいなこと書いてあったんだけどな。とりあえず「I apologize for my incomplete submission. I have also attached the LaTeX source file.」とか書いて再投稿。</p>
-<h2 id="月11日土"><a href="#11">12月11日(土)</a> <a id="11"></a></h2>
-<p>プログラム基礎同演習のレポート採点。</p>
-<p>学習指導の確認。まだいろいろわかってない。</p>
-<p>とあるサイトで技術記事に見せかけた妄想を垂れ流し、最終的に運営にBANされた人がいて。この人、エゴサして絡んでくるから「名前を言ってはいけないあの人」みたいな扱いになってて。今日、久しぶりにその人の動向を見かけたんだけど、やっぱりすごいな。ネットで斜め読みした細切れの知識を自身の妄想で補完して作成した巨大な「新知識体系」を長文にして技術記事サイトに投稿し、ちゃんとした文献にもとづいた反論が来ると「権威主義」と切って落とす。エゴサで絡んでくるからSNSで噂話もできない。うーん。</p>
-<p>うちの学生がこうならないようにがんばろう。</p>
-<h2 id="月10日金"><a href="#10">12月10日(金)</a> <a id="10"></a></h2>
-<p>ミーティングと人に会う用事合わせて6件。</p>
-<p>以上、よろしくお願いいたします。</p>
-<h2 id="月09日木"><a href="#09">12月09日(木)</a> <a id="09"></a></h2>
-<p>研究室ミーティング。</p>
-<p>LaTeXハンズオン＋卒論ガイダンス。２つ続けたので長くなってしまった。春学期のハンズオンでLaTeXをやらなかったのが敗因。</p>
-<p>Comput. Phys. Commun.に投稿。</p>
-<ol type="1">
-<li><a href="https://www.editorialmanager.com/COMPHY">https://www.editorialmanager.com/COMPHY</a>に行ってAuthor Login。</li>
-<li>利用規約をacceptするをチェックして次へ</li>
-<li>New Submissionsから「Submit New Manuscript」</li>
-<li>プルダウンメニューから「Computational physics paper」を選ぶ。ORCIDを確認(すでに設定済みだった)してProceed</li>
-<li>Cover Letterと論文のPDFをアップロード。</li>
-<li>Editor: DP Landauがいない。近いっぽいJ. Adlerにする。</li>
-<li>Declaration of Interest Statementが必要。事前に<a href="https://declarations.elsevier.com/home?journalAcronym=COMPHY">ここ</a>で入力＋docをダウンロードしてPDFにしておく。</li>
-<li>Editor: DP Landauがいない。近いっぽいJ. Adlerにする。ここでSuggest Reviewersを入力する。3名いれた。</li>
-<li>キーワード「Finite-size scaling, Monte Carlo simulation, Binder parameter, improved estimator, Potts model, J1-J2 frustrated Ising model」にしてみた。 Institute for Solid State Physics, The University of Tokyo</li>
-<li>Funding Information</li>
-<li>publishing option: Subscriptionにしてproceed</li>
-<li>最後、SubmissionをApproveしなければならないが、よくわからなかった。</li>
-</ol>
-<h2 id="月08日水"><a href="#08">12月08日(水)</a> <a id="08"></a></h2>
-<p>論文一つ返したぞーーーー！</p>
-<p>この論文、超絶塩漬け。手をつけたのが何年前だろ、と思って調べたら、2012年の4月頃に手をつけて、2012年9月に学会発表している。もうすぐ10年か・・・</p>
-<p>プログラミング基礎同演習、11回の講義動画アップロードした。</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1"><span class="ex">pacman</span> -Sy lib32-gcc-libs lib32-glibc</a></code></pre></div>
-<p>うーん、だめだ。gccで<code>func(f(1),f(2),f(3))</code>の結果をひっくり返せない。</p>
-<h2 id="月07日火"><a href="#07">12月07日(火)</a> <a id="07"></a></h2>
-<p>プログラミング基礎同演習。</p>
-<p><a href="https://note.com/simplearchitect/n/n388201603a28">プログラミングというより物事が出来るようになる思考法</a></p>
-<p>重要だと思ったので。結局腰を据えて真面目にやるしかない、という身も蓋もない話。</p>
-<p>論文を触る時間が全く取れない。</p>
-<h2 id="月06日月"><a href="#06">12月06日(月)</a> <a id="06"></a></h2>
-<p>第182回HPC研究発表会の座長。</p>
-<p>ディスプレイ二台届いた。</p>
-<h2 id="月05日日"><a href="#05">12月05日(日)</a> <a id="05"></a></h2>
-<p>およ、学科分けとかの日記がない。またpush忘れか・・・。プロンプトに表示してても忘れるんだからなぁ。</p>
-<p>遅レポの採点全部済ませた。</p>
-<p>論文一つチェックして返した。</p>
-<p>昨日の疲れを引きずっている。</p>
-<p>昼寝したら、久しぶりに金縛り一歩手前に。あと、夢見が非常に悪かった。疲れてる。</p>
-<p>論文もういっぺん、とりあえずブランチだけ切った。学生さんの論文に手がつけられない。富岳のチューニングもどうするんだ？</p>
-<p>なんか、Twitter面倒になってきたなぁ。単に「へー」と思ったことを書いただけなのに変な絡み方されるし、本を読んで「わからん」って書いたら「そんなのわからないの？」みたいなこと言われるし。またしばらく休んだ方がいいかなあ。</p>
-<h2 id="月04日土"><a href="#04">12月04日(土)</a> <a id="04"></a></h2>
-<p>学科わけ説明会。物情はかなり頑張っていたのではないか。委員長のリーダーシップ(とセンス)が素晴らしい。</p>
-<p>ただ、ずっと立ちっぱなし喋りっぱなしで疲れた。</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb3-1" title="1"><span class="dt">int</span> a;</a>
-<a class="sourceLine" id="cb3-2" title="2"><span class="dt">int</span> b = ++a + ++a + ++a;</a></code></pre></div>
-<p>とあったときに、bがいくつになるか。gccでは10、clangでは9になる。</p>
-<p>なぜgccで10になるかは、コンパイラに聞いてみるとわかる。</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb4-1" title="1"><span class="dt">int</span> func(<span class="dt">int</span> a){</a>
-<a class="sourceLine" id="cb4-2" title="2">  <span class="cf">return</span> ++a + ++a + ++a;</a>
-<a class="sourceLine" id="cb4-3" title="3">}</a></code></pre></div>
-<p>というコードを書いて、抽象構文木をダンプしてやる。</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb5-1" title="1"><span class="ex">gcc-10</span> -c -fdump-tree-all-graph test.c </a></code></pre></div>
-<p>Macなのでgcc-10と指定している。すると、コンパイラがこのコードをどのように解釈したかが表示される。</p>
-<p>まず、test.c.004t.originalがこうなる。</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb6-1" title="1"><span class="dt">int</span> func(<span class="dt">int</span> a){</a>
-<a class="sourceLine" id="cb6-2" title="2">  <span class="cf">return</span> ( ++a +  ++a) +  ++a;</a>
-<a class="sourceLine" id="cb6-3" title="3">}</a></code></pre></div>
-<p>先に、左の<code>+</code>をまとめて実行する。これを<code>tmp1</code>でうけよう。</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb7-1" title="1"><span class="dt">int</span> a = <span class="dv">1</span></a>
-<a class="sourceLine" id="cb7-2" title="2"><span class="dt">int</span> tmp1 = ++a +  ++a;</a>
-<a class="sourceLine" id="cb7-3" title="3"><span class="cf">return</span> tmp1 + ++a;</a></code></pre></div>
-<p><code>tmp1 + ++a</code>は<code>tmp2</code>で受けよう。</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb8-1" title="1"><span class="dt">int</span> a = <span class="dv">1</span></a>
-<a class="sourceLine" id="cb8-2" title="2"><span class="dt">int</span> tmp1 = ++a +  ++a;</a>
-<a class="sourceLine" id="cb8-3" title="3"><span class="dt">int</span> tmp2 = tmp1 + ++<span class="dv">1</span>;</a>
-<a class="sourceLine" id="cb8-4" title="4"><span class="cf">return</span> tmp2;</a></code></pre></div>
-<p>さて、前置インクリメントなので、<code>++a +  ++a</code>の+の実行前にインクリメントを実施する。</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb9-1" title="1"><span class="co">// int tmp1 = ++a +  ++a;</span></a>
-<a class="sourceLine" id="cb9-2" title="2">a = a + <span class="dv">1</span>;</a>
-<a class="sourceLine" id="cb9-3" title="3">a = a + <span class="dv">1</span>;</a>
-<a class="sourceLine" id="cb9-4" title="4"><span class="dt">int</span> tmp1 = a + a;</a>
-<a class="sourceLine" id="cb9-5" title="5"><span class="dt">int</span> tmp2 = tmp1 + ++a;</a>
-<a class="sourceLine" id="cb9-6" title="6"><span class="cf">return</span> tmp2;</a></code></pre></div>
-<p>次に、<code>tmp1 + ++a</code>も同様に、先にインクリメントを実施する必要がある。</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb10-1" title="1"><span class="co">// int tmp1 = ++a +  ++a;</span></a>
-<a class="sourceLine" id="cb10-2" title="2">a = a + <span class="dv">1</span>;</a>
-<a class="sourceLine" id="cb10-3" title="3">a = a + <span class="dv">1</span>;</a>
-<a class="sourceLine" id="cb10-4" title="4"><span class="co">//int tmp2 = tmp1 + ++a;</span></a>
-<a class="sourceLine" id="cb10-5" title="5">a = a + <span class="dv">1</span>;</a>
-<a class="sourceLine" id="cb10-6" title="6"><span class="dt">int</span> tmp2 = tmp1 + a;</a>
-<a class="sourceLine" id="cb10-7" title="7"><span class="cf">return</span> tmp2;</a></code></pre></div>
-<p>最終的に、関数はこうなった。</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb11-1" title="1"><span class="dt">int</span> func(<span class="dt">int</span> a){</a>
-<a class="sourceLine" id="cb11-2" title="2">  a = a + <span class="dv">1</span>;</a>
-<a class="sourceLine" id="cb11-3" title="3">  a = a + <span class="dv">1</span>;</a>
-<a class="sourceLine" id="cb11-4" title="4">  <span class="dt">int</span> tmp1 = a + a;</a>
-<a class="sourceLine" id="cb11-5" title="5">  a = a + <span class="dv">1</span>;</a>
-<a class="sourceLine" id="cb11-6" title="6">  <span class="dt">int</span> tmp2 = tmp1 + a;</a>
-<a class="sourceLine" id="cb11-7" title="7">  <span class="cf">return</span> tmp2;  </a>
-<a class="sourceLine" id="cb11-8" title="8">}</a></code></pre></div>
-<p>というわけで、<code>a=1</code>の時には <code>++a + ++a + ++a = 3 + 3 + 4 = 10</code>になる。</p>
-<p>clangの場合は9になる。どう解釈したかは、中間コードを見るとわかる。</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb12-1" title="1">define i32 <span class="er">@</span>func(i32 %<span class="dv">0</span>) <span class="er">#0 {</span></a>
-<a class="sourceLine" id="cb12-2" title="2">  %<span class="dv">2</span> = %<span class="dv">0</span>  <span class="co">// %2 = 1</span></a>
-<a class="sourceLine" id="cb12-3" title="3">  %<span class="dv">3</span> = %<span class="dv">2</span>  <span class="co">// %3 = 1</span></a>
-<a class="sourceLine" id="cb12-4" title="4">  %<span class="dv">4</span> = %<span class="dv">3</span> + <span class="dv">1</span> <span class="co">// %4 = 2</span></a>
-<a class="sourceLine" id="cb12-5" title="5">  %<span class="dv">2</span> = %<span class="dv">4</span>     <span class="co">// %2 = 2</span></a>
-<a class="sourceLine" id="cb12-6" title="6">  %<span class="dv">5</span> = %<span class="dv">2</span>     <span class="co">// %5 = 2</span></a>
-<a class="sourceLine" id="cb12-7" title="7">  %<span class="dv">6</span> = %<span class="dv">5</span> + <span class="dv">1</span> <span class="co">// %6 = 3</span></a>
-<a class="sourceLine" id="cb12-8" title="8">  %<span class="dv">2</span> = %<span class="dv">6</span>     <span class="co">// %2 = 3</span></a>
-<a class="sourceLine" id="cb12-9" title="9">  %<span class="dv">7</span> = %<span class="dv">4</span> + %<span class="dv">6</span> <span class="co">// %7 = 2 + 3 = 5</span></a>
-<a class="sourceLine" id="cb12-10" title="10">  %<span class="dv">8</span> = %<span class="dv">2</span>      <span class="co">// %8 = 3</span></a>
-<a class="sourceLine" id="cb12-11" title="11">  %<span class="dv">9</span> = %<span class="dv">8</span> + <span class="dv">1</span>  <span class="co">// %9 = 4</span></a>
-<a class="sourceLine" id="cb12-12" title="12">  %<span class="dv">2</span> = %<span class="dv">9</span></a>
-<a class="sourceLine" id="cb12-13" title="13">  %<span class="dv">10</span> = %<span class="dv">7</span> + %<span class="dv">9</span> <span class="co">// %10 = 5 + 4</span></a>
-<a class="sourceLine" id="cb12-14" title="14">  <span class="cf">return</span> %<span class="dv">10</span></a>
-<a class="sourceLine" id="cb12-15" title="15">}</a></code></pre></div>
-<p>つまり、clangの場合は<code>++a + ++a + ++a = 2 + 3 + 4 = 9</code>となる。</p>
-<p>そもそも<code>++a + ++a</code>が、gccは6、clangは5になる。</p>
-<p>gccは、</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb13-1" title="1">a = a + <span class="dv">1</span></a>
-<a class="sourceLine" id="cb13-2" title="2">a = a + <span class="dv">1</span></a>
-<a class="sourceLine" id="cb13-3" title="3"><span class="cf">return</span> a + a;</a></code></pre></div>
-<p>と解釈する。clangは、</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb14-1" title="1">%<span class="dv">2</span> = %<span class="dv">0</span> <span class="co">// %2 = 1</span></a>
-<a class="sourceLine" id="cb14-2" title="2">%<span class="dv">3</span> = %<span class="dv">2</span> <span class="co">// %3 = 1</span></a>
-<a class="sourceLine" id="cb14-3" title="3">%<span class="dv">4</span> = %<span class="dv">3</span> + <span class="dv">1</span> <span class="co">// %4 = 2</span></a>
-<a class="sourceLine" id="cb14-4" title="4">%<span class="dv">2</span> = %<span class="dv">4</span> <span class="co">// %2 = 2</span></a>
-<a class="sourceLine" id="cb14-5" title="5">%<span class="dv">5</span> = %<span class="dv">2</span> <span class="co">// %5 = 2</span></a>
-<a class="sourceLine" id="cb14-6" title="6">%<span class="dv">6</span> = %<span class="dv">5</span> + <span class="dv">1</span> <span class="co">// %6 = 3</span></a>
-<a class="sourceLine" id="cb14-7" title="7">%<span class="dv">2</span> = %<span class="dv">6</span></a>
-<a class="sourceLine" id="cb14-8" title="8">%<span class="dv">7</span> = %<span class="dv">4</span> + %<span class="dv">6</span> <span class="co">// 2 + 3 = 5</span></a></code></pre></div>
-<p>つまり、</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb15-1" title="1">tmp1 = a + <span class="dv">1</span></a>
-<a class="sourceLine" id="cb15-2" title="2">a = tmp<span class="dv">1</span></a>
-<a class="sourceLine" id="cb15-3" title="3">tmp2 = a + <span class="dv">1</span></a>
-<a class="sourceLine" id="cb15-4" title="4">a = tmp<span class="dv">2</span></a>
-<a class="sourceLine" id="cb15-5" title="5"><span class="cf">return</span> tmp1 + tmp2;</a></code></pre></div>
-<p>つまり、clangは、<code>++a</code>を、<code>tmp = a + 1;a = tmp</code>という形に受ける。</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb16-1" title="1"><span class="dt">int</span> b = ++a + ++a;</a></code></pre></div>
-<p>は、</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb17-1" title="1">tmp1 = a + <span class="dv">1</span>;</a>
-<a class="sourceLine" id="cb17-2" title="2">a = tmp1;</a>
-<a class="sourceLine" id="cb17-3" title="3">tmp2 = a + <span class="dv">1</span>;</a>
-<a class="sourceLine" id="cb17-4" title="4">a = tmp2;</a>
-<a class="sourceLine" id="cb17-5" title="5"><span class="dt">int</span> b = tmp1 + tmp2;</a></code></pre></div>
-<p>とバラす。gccは、</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb18-1" title="1">a = a + <span class="dv">1</span></a>
-<a class="sourceLine" id="cb18-2" title="2">a = a + <span class="dv">1</span></a>
-<a class="sourceLine" id="cb18-3" title="3"><span class="dt">int</span> b = a + a;</a></code></pre></div>
-<p>とするので6になる。なるほど。</p>
-<p>まとめると、<code>++a + ++a</code>とあった場合、GCCは、+の両側のインクリメント演算子を解決してからしてから加算を実行するが、clangは<code>++a</code>を<code>tmp = a + 1;a = tmp</code>にバラす。</p>
-<p>理解できたかどうか、もう一度<code>++a + ++a + ++a</code>でやってみよう。</p>
-<p>GCCの場合、まず、カッコをつける。</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb19-1" title="1"><span class="cf">return</span> (++a + ++a) + ++a;</a></code></pre></div>
-<p>カッコをtmp1で受ける。</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb20-1" title="1"><span class="dt">int</span> tmp1 = ++a + ++a;</a>
-<a class="sourceLine" id="cb20-2" title="2"><span class="cf">return</span> tmp1 + ++a;</a></code></pre></div>
-<p><code>tmp1</code>を評価する際、まずインクリメント演算子を解決する。</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb21-1" title="1">a = a + <span class="dv">1</span>;</a>
-<a class="sourceLine" id="cb21-2" title="2">a = a + <span class="dv">1</span>;</a>
-<a class="sourceLine" id="cb21-3" title="3"><span class="dt">int</span> tmp1 = a + a;</a>
-<a class="sourceLine" id="cb21-4" title="4"><span class="cf">return</span> tmp1 + ++a;</a></code></pre></div>
-<p><code>tmp1 + ++a</code>のインクリメント演算子を解決する。</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb22-1" title="1">a = a + <span class="dv">1</span>;</a>
-<a class="sourceLine" id="cb22-2" title="2">a = a + <span class="dv">1</span>;</a>
-<a class="sourceLine" id="cb22-3" title="3"><span class="dt">int</span> tmp1 = a + a;</a>
-<a class="sourceLine" id="cb22-4" title="4">a = a + <span class="dv">1</span>:</a>
-<a class="sourceLine" id="cb22-5" title="5"><span class="cf">return</span> tmp1 + a;</a></code></pre></div>
-<p>以上から3+3+4=10になる。</p>
-<p>clangの場合。</p>
-<p><code>++a</code>を<code>tmp = a + 1;a = tmp;</code>に変換。</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb23-1" title="1"><span class="dt">int</span> tmp1 = a + <span class="dv">1</span>;</a>
-<a class="sourceLine" id="cb23-2" title="2">a = tmp1;</a>
-<a class="sourceLine" id="cb23-3" title="3"><span class="cf">return</span> tmp1 + ++a + ++a;</a></code></pre></div>
-<p>次の<code>++a</code>も同様に変換。</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb24-1" title="1"><span class="dt">int</span> tmp1 = a + <span class="dv">1</span>;</a>
-<a class="sourceLine" id="cb24-2" title="2">a = tmp1;</a>
-<a class="sourceLine" id="cb24-3" title="3"><span class="dt">int</span> tmp2 = a + <span class="dv">1</span>;</a>
-<a class="sourceLine" id="cb24-4" title="4">a = tmp2;</a>
-<a class="sourceLine" id="cb24-5" title="5"><span class="cf">return</span> tmp1 + tmp2 + ++a;</a></code></pre></div>
-<p>また変換。</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb25-1" title="1"><span class="dt">int</span> tmp1 = a + <span class="dv">1</span>;</a>
-<a class="sourceLine" id="cb25-2" title="2">a = tmp1;</a>
-<a class="sourceLine" id="cb25-3" title="3"><span class="dt">int</span> tmp2 = a + <span class="dv">1</span>;</a>
-<a class="sourceLine" id="cb25-4" title="4">a = tmp2;</a>
-<a class="sourceLine" id="cb25-5" title="5"><span class="dt">int</span> tmp3 = a + <span class="dv">1</span>;</a>
-<a class="sourceLine" id="cb25-6" title="6">a = tmp3;</a>
-<a class="sourceLine" id="cb25-7" title="7"><span class="cf">return</span> tmp1 + tmp2 + tmp3;</a></code></pre></div>
-<p>以上から2+3+4 = 9になる。うん、完全に理解した。</p>
-<h2 id="月03日金"><a href="#03">12月03日(金)</a> <a id="03"></a></h2>
-<p>プログラミング基礎同演習のレポート採点</p>
-<p>学科わけの準備。</p>
-<h2 id="月02日木"><a href="#02">12月02日(木)</a> <a id="02"></a></h2>
-<p>あれ？12月になったってことは、この日記を丸一年つけたということか。気づかずに12月の日記を11月につけてた。</p>
-<p>研究室ミーティング。phi4理論(スカラー場理論)の簡単な解説を探したんだけど、いまいち適当なのが無いなぁ。２つの基底状態を持つ系でキンク解を持つところまで簡単に説明した記事を書きたい(が、まったく時間がない)。</p>
-<p>CDドライブ。AppleのSuperDriveをWindowsで使うには、AppleのサポートからBootCampをダウンロードして展開。中にあるBootCamp &gt; Drivers &gt; Apple &gt; AppleODDInstaller64.exeを実行してインストール。これで使えるようになる。CDは、「ハードウェアの安全な取り出し」をするとeject可能。</p>
-<p>動作確認のために古いCD-ROMを読み込んで見た。昔CDを買ってmp3に落とした奴。宇多田ヒカル、Noirのサントラ、Sash!、Evanescence・・・すべて懐かしい。Windows標準のプレイヤーで古すぎて読めなかったのでAIMPで開いた。</p>
-<p>卒論の時期なので、LaTeXのセットアップについて書かないといけない。情報が古いからなんとかしないと。</p>
-<p><code>.latexmkrc</code>をホームディレクトリに置かせるか、各プロジェクトに置かせるか迷うな。とりあえずはホームか。</p>
-<p>冬季安全点検送った。</p>
-<p>LaTeXのインストール確認と、古い記述の修正を行った。卒論執筆ハンズオンの準備もOK。</p>
-<p>第182回ハイパフォーマンスコンピューティング研究発表会、申し込んでなかったので申し込んだ。情報処理学会の年会費も払った。</p>
-<h2 id="月01日水"><a href="#01">12月01日(水)</a> <a id="01"></a></h2>
-<p>D論の説明。</p>
-<p>年末調整の原本提出。枚数が多い場合は、簡単年調の台紙を使うより、A4を縦に使って、複数枚を一度に貼り付けた方が良いそうだ。来年はそうしよう。A4を縦にしたときに右上に赤字で名前と職員番号を印刷しておくこと。</p>
-<p>面接。</p>
-<p>柔道部ワークフローの提出。いろいろ慣れてなくて手間取った。練習が再開できる感じなので良かった。</p>
-<p>キーボード注文したぞ。青軸派ですか。</p>
-<p>物性研スパコンの来年度前期の申請した。</p>
-<p>論文が共著者から返ってきた。直さないと。</p>
+                        <p><a href="index.html">ログ一覧</a></p>
+                        <h2 id="月31日金"><a href="#31">12月31日(金)</a> <a id="31"></a></h2>
+                        <p>何をしていたか記憶がない(1月3日にこれを書いている)。</p>
+                        <h2 id="月30日木"><a href="#30">12月30日(木)</a> <a id="30"></a></h2>
+                        <p>記憶喪失。何してたっけ？年賀状書いたかな。</p>
+                        <h2 id="月29日水"><a href="#29">12月29日(水)</a> <a id="29"></a></h2>
+                        <p>レポートの採点。昨日とは打って変わって集中力を全く欠く。半分しか進まなかった。</p>
+                        <p><a href="chrome-extension://oemmndcbldboiebfnladdacbdfmadadm/https://www.iimc.kyoto-u.ac.jp/services/comp/pdf/file_loss_insident_20211228.pdf">京大スパコンの事故</a></p>
+                        <p>うわぁ・・・。しかも文責の人、知ってる人だ。前職でお世話になった。</p>
+                        <p>後でリンク切れを起こした時のために簡単なまとめ。京大のLustreシステムの「ファイルのバックアップスクリプト」の最後に、ログファイルのお片付け処理もあった。ある時、スクリプトの見通しをよくするために変数などの整理をおこなった。しかし、スクリプトが実行中だったため、「実行中のスクリプトが上書き」されてしまった。バックアップ処理が終了後、ログの削除処理が走ったが、その際に変数が未定義状態となり、削除すべきでないファイルが一気に削除されてしまった。そのままバックアップも走り、復旧が不可能になったというもの。</p>
+                        <p>この「bashスクリプトが実行中に上書きされると、上書きされたスクリプトで実行を継続する」という仕組みをしなかった人(僕)は多く、震え上がった。また、リリースの「弊社100%の責任により」という文章も話題に。</p>
+                        <p>想像するだに胃が痛くなる。</p>
+                        <h2 id="月28日火"><a href="#28">12月28日(火)</a> <a id="28"></a></h2>
+                        <p>寒い。</p>
+                        <p>土日よく寝て、月曜はぼーっとしていたが、ようやく頭が回りだしたぞ。</p>
+                        <p>矢上設置科目の出講希望確定。</p>
+                        <p>プログラミング基礎同演習、物理情報工学ソフトウェア演習のシラバス確定。シミュレーション工学のシラバスはパートナーに投げた。</p>
+                        <p>プログラミング基礎同演習、最後のビデオ録画した。</p>
+                        <p>珍しくすごく集中力があったのに、全く研究やプログラミングに時間を使えなかった。悲しい。</p>
+                        <h2 id="月27日月"><a href="#27">12月27日(月)</a> <a id="27"></a></h2>
+                        <p>よく寝たはずだが、全く集中できず。一つ仕事を終わらせたが、やはりミスった。</p>
+                        <p>最近ミスが多すぎて本当にダメだ。もう少し落ち着いて仕事をしたい。</p>
+                        <p>年賀状の印刷をした。</p>
+                        <p>JPSJのレフェリー、登録情報が物性研になってたので修正した。ORC IDか何かで一括でやってほしいんだけどなぁ。</p>
+                        <p>予算執行計画を立てた。まだ若干不透明。</p>
+                        <h2 id="月26日日"><a href="#26">12月26日(日)</a> <a id="26"></a></h2>
+                        <p>よく寝た。</p>
+                        <h2 id="月25日土"><a href="#25">12月25日(土)</a> <a id="25"></a></h2>
+                        <p>「7つのこと」、半年に一度くらいバズるんだけど、バズリ方がだんだん大きくなっている気がして怖い。ついに地上波にまで紹介されたらしいし。今回はポジティブな話題のなり方だけど、これ、悪い方に話題になったらもう致命的なんじゃなかろうか。すぐに燃え上がり、数日で話題として消費し尽くされ、後には骨も残らない。「彼ら」はすぐに次の犠牲者を探すのであろう。</p>
+                        <p>少し前にQiitaの企業のアドベントカレンダーで、不適切な記事が掲載された。これは既存の記事に酷似した内容を掲載しつつ、その元記事への言及がなかった、というもの。詳細はわからないが、著者に悪意があったわけではないと思われる。しかし、まずい点を指摘された後、すぐに記事を削除するという対応はまずかった。結局、企業の広報に連絡が行き、お詫びのプレスリリースを出すことになってしまった。</p>
+                        <p>引用がなかったのはまずいけれど、著者の気持ちもわからないではない。アドベントカレンダーというものを頼まれたか、やってみたいと思ったか、とにかくQiitaでの初投稿の記事なので、おそらく技術記事に慣れていなかったのだろう。そして、既存の記事を見て、面白そうと思い、それを自分なりに再実装したのだと思われる。で、最初に「これはこの記事を見て面白そうだったので再実装したものです」と一言かけば全く問題なかったのだが、それがなかった。で、指摘されたときに「すみません、おっしゃる通り参考にしました。冒頭に追記しました」で済んだはずなんだけど、おそらくテンパってすぐに消してしまったのだろう。それで話が大きくなってしまった。</p>
+                        <p>ネットでは、よくも悪くも情報の伝達速度が年々早くなっているのを感じる。なんというか、パーコレーション確率に近くなっている感じ。そんな時代だから、「ネットとの付き合い方」をちゃんと知っておく必要があるのだろう。何度も炎上している僕がいうのもなんだけど。</p>
+                        <p>いやしかし、所属企業や大学の名前をつけて情報を公開するの、本当に怖くなってくるね。</p>
+                        <h2 id="月24日金"><a href="#24">12月24日(金)</a> <a id="24"></a></h2>
+                        <p>指導教員がネットで話題になるのって、学生さんからしたらどうなんだろうね？</p>
+                        <p>いろいろテンパってる。不便で仕方なかったのでスキャナ買った。</p>
+                        <p>机がいくつか欲しい。あとでかいディスプレイ。メンテ用に小さいディスプレイ(VGAがささる奴)とキーボード、マウスも必要だ。</p>
+                        <h2 id="月23日木"><a href="#23">12月23日(木)</a> <a id="23"></a></h2>
+                        <ul>
+                        <li>富岳確認</li>
+                        <li>卒論日程確認</li>
+                        <li>修論日程確認</li>
+                        <li>委嘱状確認</li>
+                        <li>要旨確認</li>
+                        </ul>
+                        <p>なんか学生さんがサーバ落としたり、それまで知られてなかったスパコンのリソース上限にひっかかったりしていて頼もしい。このまま成長してスパコンブレイカーになってください。</p>
+                        <p>駄目だ。多方面でいろいろミスる。完全にキャパオーバー。どうしたもんか。</p>
+                        <h2 id="月22日水"><a href="#22">12月22日(水)</a> <a id="22"></a></h2>
+                        <p>ホワイトボード届いた。</p>
+                        <p>学部のシラバス、英文も作成したほうが良いらしい。</p>
+                        <p>集中講義のシラバス作らないと。こんな感じかな。</p>
+                        <p>タイトル案：大規模数値計算が拓く物理学</p>
+                        <p>シラバス案</p>
+                        <ol type="1">
+                        <li>数値計算の基礎
+                        <ul>
+                        <li>なぜ数値計算が必要なのか？</li>
+                        <li>数値実験とはどのような実験か？</li>
+                        <li>数値計算の種類</li>
+                        </ul></li>
+                        <li>モンテカルロ法(1)基礎的な話題
+                        <ul>
+                        <li>乱数とはなにか</li>
+                        <li>モンテカルロ法</li>
+                        <li>マルコフ連鎖モンテカルロ法とメトロポリス法</li>
+                        <li>エラーバーについて</li>
+                        </ul></li>
+                        <li>モンテカルロ法(2) 発展的な話題
+                        <ul>
+                        <li>クラスターアルゴリズムとImproved Estimator</li>
+                        <li>不偏推定量とJackknife法</li>
+                        </ul></li>
+                        <li>分子動力学法(1) 基礎編 (主に数値積分法について)
+                        <ul>
+                        <li>微分方程式の数値積分法</li>
+                        <li>シンプレクティック積分</li>
+                        <li>温度制御(Langevin, Nose-Hoover)</li>
+                        </ul></li>
+                        <li>分子動力学法(2) 応用編(研究事例紹介)
+                        <ul>
+                        <li>気液共存線の決定
+                        <ul>
+                        <li>相転移とは</li>
+                        <li>有限サイズスケーリング</li>
+                        </ul></li>
+                        <li>気泡生成現象
+                        <ul>
+                        <li>界面張力とは</li>
+                        <li>気泡成長の理論</li>
+                        </ul></li>
+                        </ul></li>
+                        <li>並列計算の基礎と高速化について
+                        <ul>
+                        <li>計算機の仕組み</li>
+                        <li>高速化 (メモリ効率)</li>
+                        <li>並列化</li>
+                        <li>SIMD化</li>
+                        </ul></li>
+                        <li>スパコンでできること、できないこと(どこかでセミナー形式?)
+                        <ul>
+                        <li>大規模並列計算による多重気泡生成現象の解析(泡バブルの話)</li>
+                        <li>スーパーコンピュータを使って難しいナンプレを作る(数独で炎上した話)</li>
+                        </ul></li>
+                        </ol>
+                        <p>ダメだ、今日もタスクを積み残したぞ。ヤバい。</p>
+                        <h2 id="月21日火"><a href="#21">12月21日(火)</a> <a id="21"></a></h2>
+                        <p>論文再投稿準備。なんかLaTeXファイルにAtomが関連付けられてるな。</p>
+                        <p>また仕事でミス。最近多すぎる。完全に後手に回っている。</p>
+                        <p><a href="https://zenn.dev/kaityo256/articles/weird_errorbars">Zennのおかしなエラーバーの記事</a>、そこそこ評判良かったみたいで安心した。やっぱりQiitaの記事の書き方よくなかったんだな。</p>
+                        <p>講義。年内最後。</p>
+                        <p>打ち合わせ。</p>
+                        <p>PTEP投稿覚書。アカウントがなかったので作った。</p>
+                        <ul>
+                        <li>Section: Paper</li>
+                        <li>Subject Index Section: A General and Methematical Physics (次のMore Specificによりこれ確定)</li>
+                        <li>More Specific Subject Index: 「A40 Critical phenomena, phase diagrams, phase transitions」と「A42 Classical spins」</li>
+                        <li>Category: Theoretical</li>
+                        <li>Title: 入力</li>
+                        </ul>
+                        <p>あれ？Suggested Refereeを入れるところがなかったぞ。</p>
+                        <h2 id="月20日月"><a href="#20">12月20日(月)</a> <a id="20"></a></h2>
+                        <p>名古屋大学スパコン、郵送出した。本買った。要旨見た。</p>
+                        <h2 id="月19日日"><a href="#19">12月19日(日)</a> <a id="19"></a></h2>
+                        <p>しこたま寝た。最近ギアを上げ気味に走っているので疲れている。仕事時間は短いんだけど・・・。</p>
+                        <h2 id="月18日土"><a href="#18">12月18日(土)</a> <a id="18"></a></h2>
+                        <p>要旨見た、</p>
+                        <p>そんな時間はないのだが、どうしても気になったので<a href="https://zenn.dev/kaityo256/articles/weird_errorbars">おかしなエラーバーのグラフ</a>の記事を書いた。以前<a href="https://qiita.com/kaityo256/items/197a4811e5694dacfa04">Qiitaに書いた奴</a>が、いまいち本質が伝わっていない気がして。</p>
+                        <p>VimでPythonを書いてて、<code>numpy.random</code>が無いと言われる。どうやらPylintの静的解析に問題があるようだ。<code>~/.pylintrc</code>に、</p>
+                        <div class="sourceCode" id="cb1"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a>extension-pkg-whitelist = numpy</span></code></pre></div>
+                        <p>と書いて解決。</p>
+                        <h2 id="月17日金"><a href="#17">12月17日(金)</a> <a id="17"></a></h2>
+                        <p>よく寝た。だいぶ体力を回復した。だがやるべきことが大量にある。</p>
+                        <p>名大の奴、事務に出した。返ってきたら申請。</p>
+                        <p>キーボード届いた。赤軸*2。こちらは静かかな？</p>
+                        <p>浅野さんの論文、arXivへのリンクをウェブに公開。遅くなってしまった。</p>
+                        <p><a href="https://arxiv.org/abs/2112.07139">arXiv:2112.07139</a></p>
+                        <p>良い仕事だと思うんだけど、査読者はどう見るかな。</p>
+                        <p>エラーバーについての記事、絶対必用だな。Qiitaに書いた奴をリファインしてZennに書き直そう(←いつやるの？)。</p>
+                        <p>要旨 * 2。</p>
+                        <p>分子シミュレーション学会年会費払った。</p>
+                        <p>学科計算機のお仕事。</p>
+                        <p>プログラミング基礎同演習講義録画。あと一回。年内に録画しよう。</p>
+                        <p>物性研スパコン共同利用報告会所外委員の仕事もしたぞ。</p>
+                        <p>なんかメールいっぱい書いた・・・</p>
+                        <p>要旨 * 3。</p>
+                        <h2 id="月16日木"><a href="#16">12月16日(木)</a> <a id="16"></a></h2>
+                        <p>研究室ミーティング。</p>
+                        <p>1on1 * 4。</p>
+                        <p>書類*2。</p>
+                        <p>学習指導お仕事。</p>
+                        <p>要旨*2。</p>
+                        <h2 id="月15日水"><a href="#15">12月15日(水)</a> <a id="15"></a></h2>
+                        <p>会議 * 2。その準備と後始末でもう18:40ですって。</p>
+                        <p>Canvasで普段使わない機能を使ったら、機能について誤解していてミスってしまった。冒険すべきでなかった。</p>
+                        <p>ホワイトボードの注文した。</p>
+                        <p>名大スパコンの申請書書いた。経理責任者の問い合わせメール書いた。返事が来たらすぐ提出！</p>
+                        <h2 id="月14日火"><a href="#14">12月14日(火)</a> <a id="14"></a></h2>
+                        <p>プログラミング基礎同演習。</p>
+                        <p>しまった、富岳の期限が切れてしまった。</p>
+                        <h2 id="月13日月"><a href="#13">12月13日(月)</a> <a id="13"></a></h2>
+                        <p>会議。</p>
+                        <p>1on1 * 2。</p>
+                        <p>学習指導のお仕事。組み合わせ最適化問題。</p>
+                        <h2 id="月12日日"><a href="#12">12月12日(日)</a> <a id="12"></a></h2>
+                        <p>論文見た。</p>
+                        <p>CPCからソースファイルもアップロードしろ、という連絡が。あれ？CPCのガイドラインでは、最初はPDFだけで良くて、ソースはFinal Publication Processだけで良い、みたいなこと書いてあったんだけどな。とりあえず「I apologize for my incomplete submission. I have also attached the LaTeX source file.」とか書いて再投稿。</p>
+                        <h2 id="月11日土"><a href="#11">12月11日(土)</a> <a id="11"></a></h2>
+                        <p>プログラム基礎同演習のレポート採点。</p>
+                        <p>学習指導の確認。まだいろいろわかってない。</p>
+                        <p>とあるサイトで技術記事に見せかけた妄想を垂れ流し、最終的に運営にBANされた人がいて。この人、エゴサして絡んでくるから「名前を言ってはいけないあの人」みたいな扱いになってて。今日、久しぶりにその人の動向を見かけたんだけど、やっぱりすごいな。ネットで斜め読みした細切れの知識を自身の妄想で補完して作成した巨大な「新知識体系」を長文にして技術記事サイトに投稿し、ちゃんとした文献にもとづいた反論が来ると「権威主義」と切って落とす。エゴサで絡んでくるからSNSで噂話もできない。うーん。</p>
+                        <p>うちの学生がこうならないようにがんばろう。</p>
+                        <h2 id="月10日金"><a href="#10">12月10日(金)</a> <a id="10"></a></h2>
+                        <p>ミーティングと人に会う用事合わせて6件。</p>
+                        <p>以上、よろしくお願いいたします。</p>
+                        <h2 id="月09日木"><a href="#09">12月09日(木)</a> <a id="09"></a></h2>
+                        <p>研究室ミーティング。</p>
+                        <p>LaTeXハンズオン＋卒論ガイダンス。２つ続けたので長くなってしまった。春学期のハンズオンでLaTeXをやらなかったのが敗因。</p>
+                        <p>Comput. Phys. Commun.に投稿。</p>
+                        <ol type="1">
+                        <li><a href="https://www.editorialmanager.com/COMPHY">https://www.editorialmanager.com/COMPHY</a>に行ってAuthor Login。</li>
+                        <li>利用規約をacceptするをチェックして次へ</li>
+                        <li>New Submissionsから「Submit New Manuscript」</li>
+                        <li>プルダウンメニューから「Computational physics paper」を選ぶ。ORCIDを確認(すでに設定済みだった)してProceed</li>
+                        <li>Cover Letterと論文のPDFをアップロード。</li>
+                        <li>Editor: DP Landauがいない。近いっぽいJ. Adlerにする。</li>
+                        <li>Declaration of Interest Statementが必要。事前に<a href="https://declarations.elsevier.com/home?journalAcronym=COMPHY">ここ</a>で入力＋docをダウンロードしてPDFにしておく。</li>
+                        <li>Editor: DP Landauがいない。近いっぽいJ. Adlerにする。ここでSuggest Reviewersを入力する。3名いれた。</li>
+                        <li>キーワード「Finite-size scaling, Monte Carlo simulation, Binder parameter, improved estimator, Potts model, J1-J2 frustrated Ising model」にしてみた。 Institute for Solid State Physics, The University of Tokyo</li>
+                        <li>Funding Information</li>
+                        <li>publishing option: Subscriptionにしてproceed</li>
+                        <li>最後、SubmissionをApproveしなければならないが、よくわからなかった。</li>
+                        </ol>
+                        <h2 id="月08日水"><a href="#08">12月08日(水)</a> <a id="08"></a></h2>
+                        <p>論文一つ返したぞーーーー！</p>
+                        <p>この論文、超絶塩漬け。手をつけたのが何年前だろ、と思って調べたら、2012年の4月頃に手をつけて、2012年9月に学会発表している。もうすぐ10年か・・・</p>
+                        <p>プログラミング基礎同演習、11回の講義動画アップロードした。</p>
+                        <div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="ex">pacman</span> -Sy lib32-gcc-libs lib32-glibc</span></code></pre></div>
+                        <p>うーん、だめだ。gccで<code>func(f(1),f(2),f(3))</code>の結果をひっくり返せない。</p>
+                        <h2 id="月07日火"><a href="#07">12月07日(火)</a> <a id="07"></a></h2>
+                        <p>プログラミング基礎同演習。</p>
+                        <p><a href="https://note.com/simplearchitect/n/n388201603a28">プログラミングというより物事が出来るようになる思考法</a></p>
+                        <p>重要だと思ったので。結局腰を据えて真面目にやるしかない、という身も蓋もない話。</p>
+                        <p>論文を触る時間が全く取れない。</p>
+                        <h2 id="月06日月"><a href="#06">12月06日(月)</a> <a id="06"></a></h2>
+                        <p>第182回HPC研究発表会の座長。</p>
+                        <p>ディスプレイ二台届いた。</p>
+                        <h2 id="月05日日"><a href="#05">12月05日(日)</a> <a id="05"></a></h2>
+                        <p>およ、学科分けとかの日記がない。またpush忘れか・・・。プロンプトに表示してても忘れるんだからなぁ。</p>
+                        <p>遅レポの採点全部済ませた。</p>
+                        <p>論文一つチェックして返した。</p>
+                        <p>昨日の疲れを引きずっている。</p>
+                        <p>昼寝したら、久しぶりに金縛り一歩手前に。あと、夢見が非常に悪かった。疲れてる。</p>
+                        <p>論文もういっぺん、とりあえずブランチだけ切った。学生さんの論文に手がつけられない。富岳のチューニングもどうするんだ？</p>
+                        <p>なんか、Twitter面倒になってきたなぁ。単に「へー」と思ったことを書いただけなのに変な絡み方されるし、本を読んで「わからん」って書いたら「そんなのわからないの？」みたいなこと言われるし。またしばらく休んだ方がいいかなあ。</p>
+                        <h2 id="月04日土"><a href="#04">12月04日(土)</a> <a id="04"></a></h2>
+                        <p>学科わけ説明会。物情はかなり頑張っていたのではないか。委員長のリーダーシップ(とセンス)が素晴らしい。</p>
+                        <p>ただ、ずっと立ちっぱなし喋りっぱなしで疲れた。</p>
+                        <div class="sourceCode" id="cb3"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="dt">int</span> a;</span>
+                        <span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a><span class="dt">int</span> b = ++a + ++a + ++a;</span></code></pre></div>
+                        <p>とあったときに、bがいくつになるか。gccでは10、clangでは9になる。</p>
+                        <p>なぜgccで10になるかは、コンパイラに聞いてみるとわかる。</p>
+                        <div class="sourceCode" id="cb4"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="dt">int</span> func(<span class="dt">int</span> a){</span>
+                        <span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a>  <span class="cf">return</span> ++a + ++a + ++a;</span>
+                        <span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a>}</span></code></pre></div>
+                        <p>というコードを書いて、抽象構文木をダンプしてやる。</p>
+                        <div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="ex">gcc-10</span> -c -fdump-tree-all-graph test.c </span></code></pre></div>
+                        <p>Macなのでgcc-10と指定している。すると、コンパイラがこのコードをどのように解釈したかが表示される。</p>
+                        <p>まず、test.c.004t.originalがこうなる。</p>
+                        <div class="sourceCode" id="cb6"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="dt">int</span> func(<span class="dt">int</span> a){</span>
+                        <span id="cb6-2"><a href="#cb6-2" aria-hidden="true"></a>  <span class="cf">return</span> ( ++a +  ++a) +  ++a;</span>
+                        <span id="cb6-3"><a href="#cb6-3" aria-hidden="true"></a>}</span></code></pre></div>
+                        <p>先に、左の<code>+</code>をまとめて実行する。これを<code>tmp1</code>でうけよう。</p>
+                        <div class="sourceCode" id="cb7"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a><span class="dt">int</span> a = <span class="dv">1</span></span>
+                        <span id="cb7-2"><a href="#cb7-2" aria-hidden="true"></a><span class="dt">int</span> tmp1 = ++a +  ++a;</span>
+                        <span id="cb7-3"><a href="#cb7-3" aria-hidden="true"></a><span class="cf">return</span> tmp1 + ++a;</span></code></pre></div>
+                        <p><code>tmp1 + ++a</code>は<code>tmp2</code>で受けよう。</p>
+                        <div class="sourceCode" id="cb8"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a><span class="dt">int</span> a = <span class="dv">1</span></span>
+                        <span id="cb8-2"><a href="#cb8-2" aria-hidden="true"></a><span class="dt">int</span> tmp1 = ++a +  ++a;</span>
+                        <span id="cb8-3"><a href="#cb8-3" aria-hidden="true"></a><span class="dt">int</span> tmp2 = tmp1 + ++<span class="dv">1</span>;</span>
+                        <span id="cb8-4"><a href="#cb8-4" aria-hidden="true"></a><span class="cf">return</span> tmp2;</span></code></pre></div>
+                        <p>さて、前置インクリメントなので、<code>++a +  ++a</code>の+の実行前にインクリメントを実施する。</p>
+                        <div class="sourceCode" id="cb9"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a><span class="co">// int tmp1 = ++a +  ++a;</span></span>
+                        <span id="cb9-2"><a href="#cb9-2" aria-hidden="true"></a>a = a + <span class="dv">1</span>;</span>
+                        <span id="cb9-3"><a href="#cb9-3" aria-hidden="true"></a>a = a + <span class="dv">1</span>;</span>
+                        <span id="cb9-4"><a href="#cb9-4" aria-hidden="true"></a><span class="dt">int</span> tmp1 = a + a;</span>
+                        <span id="cb9-5"><a href="#cb9-5" aria-hidden="true"></a><span class="dt">int</span> tmp2 = tmp1 + ++a;</span>
+                        <span id="cb9-6"><a href="#cb9-6" aria-hidden="true"></a><span class="cf">return</span> tmp2;</span></code></pre></div>
+                        <p>次に、<code>tmp1 + ++a</code>も同様に、先にインクリメントを実施する必要がある。</p>
+                        <div class="sourceCode" id="cb10"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true"></a><span class="co">// int tmp1 = ++a +  ++a;</span></span>
+                        <span id="cb10-2"><a href="#cb10-2" aria-hidden="true"></a>a = a + <span class="dv">1</span>;</span>
+                        <span id="cb10-3"><a href="#cb10-3" aria-hidden="true"></a>a = a + <span class="dv">1</span>;</span>
+                        <span id="cb10-4"><a href="#cb10-4" aria-hidden="true"></a><span class="co">//int tmp2 = tmp1 + ++a;</span></span>
+                        <span id="cb10-5"><a href="#cb10-5" aria-hidden="true"></a>a = a + <span class="dv">1</span>;</span>
+                        <span id="cb10-6"><a href="#cb10-6" aria-hidden="true"></a><span class="dt">int</span> tmp2 = tmp1 + a;</span>
+                        <span id="cb10-7"><a href="#cb10-7" aria-hidden="true"></a><span class="cf">return</span> tmp2;</span></code></pre></div>
+                        <p>最終的に、関数はこうなった。</p>
+                        <div class="sourceCode" id="cb11"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true"></a><span class="dt">int</span> func(<span class="dt">int</span> a){</span>
+                        <span id="cb11-2"><a href="#cb11-2" aria-hidden="true"></a>  a = a + <span class="dv">1</span>;</span>
+                        <span id="cb11-3"><a href="#cb11-3" aria-hidden="true"></a>  a = a + <span class="dv">1</span>;</span>
+                        <span id="cb11-4"><a href="#cb11-4" aria-hidden="true"></a>  <span class="dt">int</span> tmp1 = a + a;</span>
+                        <span id="cb11-5"><a href="#cb11-5" aria-hidden="true"></a>  a = a + <span class="dv">1</span>;</span>
+                        <span id="cb11-6"><a href="#cb11-6" aria-hidden="true"></a>  <span class="dt">int</span> tmp2 = tmp1 + a;</span>
+                        <span id="cb11-7"><a href="#cb11-7" aria-hidden="true"></a>  <span class="cf">return</span> tmp2;  </span>
+                        <span id="cb11-8"><a href="#cb11-8" aria-hidden="true"></a>}</span></code></pre></div>
+                        <p>というわけで、<code>a=1</code>の時には <code>++a + ++a + ++a = 3 + 3 + 4 = 10</code>になる。</p>
+                        <p>clangの場合は9になる。どう解釈したかは、中間コードを見るとわかる。</p>
+                        <div class="sourceCode" id="cb12"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true"></a>define i32 <span class="er">@</span>func(i32 %<span class="dv">0</span>) <span class="er">#0 {</span></span>
+                        <span id="cb12-2"><a href="#cb12-2" aria-hidden="true"></a>  %<span class="dv">2</span> = %<span class="dv">0</span>  <span class="co">// %2 = 1</span></span>
+                        <span id="cb12-3"><a href="#cb12-3" aria-hidden="true"></a>  %<span class="dv">3</span> = %<span class="dv">2</span>  <span class="co">// %3 = 1</span></span>
+                        <span id="cb12-4"><a href="#cb12-4" aria-hidden="true"></a>  %<span class="dv">4</span> = %<span class="dv">3</span> + <span class="dv">1</span> <span class="co">// %4 = 2</span></span>
+                        <span id="cb12-5"><a href="#cb12-5" aria-hidden="true"></a>  %<span class="dv">2</span> = %<span class="dv">4</span>     <span class="co">// %2 = 2</span></span>
+                        <span id="cb12-6"><a href="#cb12-6" aria-hidden="true"></a>  %<span class="dv">5</span> = %<span class="dv">2</span>     <span class="co">// %5 = 2</span></span>
+                        <span id="cb12-7"><a href="#cb12-7" aria-hidden="true"></a>  %<span class="dv">6</span> = %<span class="dv">5</span> + <span class="dv">1</span> <span class="co">// %6 = 3</span></span>
+                        <span id="cb12-8"><a href="#cb12-8" aria-hidden="true"></a>  %<span class="dv">2</span> = %<span class="dv">6</span>     <span class="co">// %2 = 3</span></span>
+                        <span id="cb12-9"><a href="#cb12-9" aria-hidden="true"></a>  %<span class="dv">7</span> = %<span class="dv">4</span> + %<span class="dv">6</span> <span class="co">// %7 = 2 + 3 = 5</span></span>
+                        <span id="cb12-10"><a href="#cb12-10" aria-hidden="true"></a>  %<span class="dv">8</span> = %<span class="dv">2</span>      <span class="co">// %8 = 3</span></span>
+                        <span id="cb12-11"><a href="#cb12-11" aria-hidden="true"></a>  %<span class="dv">9</span> = %<span class="dv">8</span> + <span class="dv">1</span>  <span class="co">// %9 = 4</span></span>
+                        <span id="cb12-12"><a href="#cb12-12" aria-hidden="true"></a>  %<span class="dv">2</span> = %<span class="dv">9</span></span>
+                        <span id="cb12-13"><a href="#cb12-13" aria-hidden="true"></a>  %<span class="dv">10</span> = %<span class="dv">7</span> + %<span class="dv">9</span> <span class="co">// %10 = 5 + 4</span></span>
+                        <span id="cb12-14"><a href="#cb12-14" aria-hidden="true"></a>  <span class="cf">return</span> %<span class="dv">10</span></span>
+                        <span id="cb12-15"><a href="#cb12-15" aria-hidden="true"></a>}</span></code></pre></div>
+                        <p>つまり、clangの場合は<code>++a + ++a + ++a = 2 + 3 + 4 = 9</code>となる。</p>
+                        <p>そもそも<code>++a + ++a</code>が、gccは6、clangは5になる。</p>
+                        <p>gccは、</p>
+                        <div class="sourceCode" id="cb13"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true"></a>a = a + <span class="dv">1</span></span>
+                        <span id="cb13-2"><a href="#cb13-2" aria-hidden="true"></a>a = a + <span class="dv">1</span></span>
+                        <span id="cb13-3"><a href="#cb13-3" aria-hidden="true"></a><span class="cf">return</span> a + a;</span></code></pre></div>
+                        <p>と解釈する。clangは、</p>
+                        <div class="sourceCode" id="cb14"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true"></a>%<span class="dv">2</span> = %<span class="dv">0</span> <span class="co">// %2 = 1</span></span>
+                        <span id="cb14-2"><a href="#cb14-2" aria-hidden="true"></a>%<span class="dv">3</span> = %<span class="dv">2</span> <span class="co">// %3 = 1</span></span>
+                        <span id="cb14-3"><a href="#cb14-3" aria-hidden="true"></a>%<span class="dv">4</span> = %<span class="dv">3</span> + <span class="dv">1</span> <span class="co">// %4 = 2</span></span>
+                        <span id="cb14-4"><a href="#cb14-4" aria-hidden="true"></a>%<span class="dv">2</span> = %<span class="dv">4</span> <span class="co">// %2 = 2</span></span>
+                        <span id="cb14-5"><a href="#cb14-5" aria-hidden="true"></a>%<span class="dv">5</span> = %<span class="dv">2</span> <span class="co">// %5 = 2</span></span>
+                        <span id="cb14-6"><a href="#cb14-6" aria-hidden="true"></a>%<span class="dv">6</span> = %<span class="dv">5</span> + <span class="dv">1</span> <span class="co">// %6 = 3</span></span>
+                        <span id="cb14-7"><a href="#cb14-7" aria-hidden="true"></a>%<span class="dv">2</span> = %<span class="dv">6</span></span>
+                        <span id="cb14-8"><a href="#cb14-8" aria-hidden="true"></a>%<span class="dv">7</span> = %<span class="dv">4</span> + %<span class="dv">6</span> <span class="co">// 2 + 3 = 5</span></span></code></pre></div>
+                        <p>つまり、</p>
+                        <div class="sourceCode" id="cb15"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true"></a>tmp1 = a + <span class="dv">1</span></span>
+                        <span id="cb15-2"><a href="#cb15-2" aria-hidden="true"></a>a = tmp1</span>
+                        <span id="cb15-3"><a href="#cb15-3" aria-hidden="true"></a>tmp2 = a + <span class="dv">1</span></span>
+                        <span id="cb15-4"><a href="#cb15-4" aria-hidden="true"></a>a = tmp2</span>
+                        <span id="cb15-5"><a href="#cb15-5" aria-hidden="true"></a><span class="cf">return</span> tmp1 + tmp2;</span></code></pre></div>
+                        <p>つまり、clangは、<code>++a</code>を、<code>tmp = a + 1;a = tmp</code>という形に受ける。</p>
+                        <div class="sourceCode" id="cb16"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true"></a><span class="dt">int</span> b = ++a + ++a;</span></code></pre></div>
+                        <p>は、</p>
+                        <div class="sourceCode" id="cb17"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true"></a>tmp1 = a + <span class="dv">1</span>;</span>
+                        <span id="cb17-2"><a href="#cb17-2" aria-hidden="true"></a>a = tmp1;</span>
+                        <span id="cb17-3"><a href="#cb17-3" aria-hidden="true"></a>tmp2 = a + <span class="dv">1</span>;</span>
+                        <span id="cb17-4"><a href="#cb17-4" aria-hidden="true"></a>a = tmp2;</span>
+                        <span id="cb17-5"><a href="#cb17-5" aria-hidden="true"></a><span class="dt">int</span> b = tmp1 + tmp2;</span></code></pre></div>
+                        <p>とバラす。gccは、</p>
+                        <div class="sourceCode" id="cb18"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true"></a>a = a + <span class="dv">1</span></span>
+                        <span id="cb18-2"><a href="#cb18-2" aria-hidden="true"></a>a = a + <span class="dv">1</span></span>
+                        <span id="cb18-3"><a href="#cb18-3" aria-hidden="true"></a><span class="dt">int</span> b = a + a;</span></code></pre></div>
+                        <p>とするので6になる。なるほど。</p>
+                        <p>まとめると、<code>++a + ++a</code>とあった場合、GCCは、+の両側のインクリメント演算子を解決してからしてから加算を実行するが、clangは<code>++a</code>を<code>tmp = a + 1;a = tmp</code>にバラす。</p>
+                        <p>理解できたかどうか、もう一度<code>++a + ++a + ++a</code>でやってみよう。</p>
+                        <p>GCCの場合、まず、カッコをつける。</p>
+                        <div class="sourceCode" id="cb19"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true"></a><span class="cf">return</span> (++a + ++a) + ++a;</span></code></pre></div>
+                        <p>カッコをtmp1で受ける。</p>
+                        <div class="sourceCode" id="cb20"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true"></a><span class="dt">int</span> tmp1 = ++a + ++a;</span>
+                        <span id="cb20-2"><a href="#cb20-2" aria-hidden="true"></a><span class="cf">return</span> tmp1 + ++a;</span></code></pre></div>
+                        <p><code>tmp1</code>を評価する際、まずインクリメント演算子を解決する。</p>
+                        <div class="sourceCode" id="cb21"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true"></a>a = a + <span class="dv">1</span>;</span>
+                        <span id="cb21-2"><a href="#cb21-2" aria-hidden="true"></a>a = a + <span class="dv">1</span>;</span>
+                        <span id="cb21-3"><a href="#cb21-3" aria-hidden="true"></a><span class="dt">int</span> tmp1 = a + a;</span>
+                        <span id="cb21-4"><a href="#cb21-4" aria-hidden="true"></a><span class="cf">return</span> tmp1 + ++a;</span></code></pre></div>
+                        <p><code>tmp1 + ++a</code>のインクリメント演算子を解決する。</p>
+                        <div class="sourceCode" id="cb22"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true"></a>a = a + <span class="dv">1</span>;</span>
+                        <span id="cb22-2"><a href="#cb22-2" aria-hidden="true"></a>a = a + <span class="dv">1</span>;</span>
+                        <span id="cb22-3"><a href="#cb22-3" aria-hidden="true"></a><span class="dt">int</span> tmp1 = a + a;</span>
+                        <span id="cb22-4"><a href="#cb22-4" aria-hidden="true"></a>a = a + <span class="dv">1</span>:</span>
+                        <span id="cb22-5"><a href="#cb22-5" aria-hidden="true"></a><span class="cf">return</span> tmp1 + a;</span></code></pre></div>
+                        <p>以上から3+3+4=10になる。</p>
+                        <p>clangの場合。</p>
+                        <p><code>++a</code>を<code>tmp = a + 1;a = tmp;</code>に変換。</p>
+                        <div class="sourceCode" id="cb23"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true"></a><span class="dt">int</span> tmp1 = a + <span class="dv">1</span>;</span>
+                        <span id="cb23-2"><a href="#cb23-2" aria-hidden="true"></a>a = tmp1;</span>
+                        <span id="cb23-3"><a href="#cb23-3" aria-hidden="true"></a><span class="cf">return</span> tmp1 + ++a + ++a;</span></code></pre></div>
+                        <p>次の<code>++a</code>も同様に変換。</p>
+                        <div class="sourceCode" id="cb24"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true"></a><span class="dt">int</span> tmp1 = a + <span class="dv">1</span>;</span>
+                        <span id="cb24-2"><a href="#cb24-2" aria-hidden="true"></a>a = tmp1;</span>
+                        <span id="cb24-3"><a href="#cb24-3" aria-hidden="true"></a><span class="dt">int</span> tmp2 = a + <span class="dv">1</span>;</span>
+                        <span id="cb24-4"><a href="#cb24-4" aria-hidden="true"></a>a = tmp2;</span>
+                        <span id="cb24-5"><a href="#cb24-5" aria-hidden="true"></a><span class="cf">return</span> tmp1 + tmp2 + ++a;</span></code></pre></div>
+                        <p>また変換。</p>
+                        <div class="sourceCode" id="cb25"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true"></a><span class="dt">int</span> tmp1 = a + <span class="dv">1</span>;</span>
+                        <span id="cb25-2"><a href="#cb25-2" aria-hidden="true"></a>a = tmp1;</span>
+                        <span id="cb25-3"><a href="#cb25-3" aria-hidden="true"></a><span class="dt">int</span> tmp2 = a + <span class="dv">1</span>;</span>
+                        <span id="cb25-4"><a href="#cb25-4" aria-hidden="true"></a>a = tmp2;</span>
+                        <span id="cb25-5"><a href="#cb25-5" aria-hidden="true"></a><span class="dt">int</span> tmp3 = a + <span class="dv">1</span>;</span>
+                        <span id="cb25-6"><a href="#cb25-6" aria-hidden="true"></a>a = tmp3;</span>
+                        <span id="cb25-7"><a href="#cb25-7" aria-hidden="true"></a><span class="cf">return</span> tmp1 + tmp2 + tmp3;</span></code></pre></div>
+                        <p>以上から2+3+4 = 9になる。うん、完全に理解した。</p>
+                        <h2 id="月03日金"><a href="#03">12月03日(金)</a> <a id="03"></a></h2>
+                        <p>プログラミング基礎同演習のレポート採点</p>
+                        <p>学科わけの準備。</p>
+                        <h2 id="月02日木"><a href="#02">12月02日(木)</a> <a id="02"></a></h2>
+                        <p>あれ？12月になったってことは、この日記を丸一年つけたということか。気づかずに12月の日記を11月につけてた。</p>
+                        <p>研究室ミーティング。phi4理論(スカラー場理論)の簡単な解説を探したんだけど、いまいち適当なのが無いなぁ。２つの基底状態を持つ系でキンク解を持つところまで簡単に説明した記事を書きたい(が、まったく時間がない)。</p>
+                        <p>CDドライブ。AppleのSuperDriveをWindowsで使うには、AppleのサポートからBootCampをダウンロードして展開。中にあるBootCamp &gt; Drivers &gt; Apple &gt; AppleODDInstaller64.exeを実行してインストール。これで使えるようになる。CDは、「ハードウェアの安全な取り出し」をするとeject可能。</p>
+                        <p>動作確認のために古いCD-ROMを読み込んで見た。昔CDを買ってmp3に落とした奴。宇多田ヒカル、Noirのサントラ、Sash!、Evanescence・・・すべて懐かしい。Windows標準のプレイヤーで古すぎて読めなかったのでAIMPで開いた。</p>
+                        <p>卒論の時期なので、LaTeXのセットアップについて書かないといけない。情報が古いからなんとかしないと。</p>
+                        <p><code>.latexmkrc</code>をホームディレクトリに置かせるか、各プロジェクトに置かせるか迷うな。とりあえずはホームか。</p>
+                        <p>冬季安全点検送った。</p>
+                        <p>LaTeXのインストール確認と、古い記述の修正を行った。卒論執筆ハンズオンの準備もOK。</p>
+                        <p>第182回ハイパフォーマンスコンピューティング研究発表会、申し込んでなかったので申し込んだ。情報処理学会の年会費も払った。</p>
+                        <h2 id="月01日水"><a href="#01">12月01日(水)</a> <a id="01"></a></h2>
+                        <p>D論の説明。</p>
+                        <p>年末調整の原本提出。枚数が多い場合は、簡単年調の台紙を使うより、A4を縦に使って、複数枚を一度に貼り付けた方が良いそうだ。来年はそうしよう。A4を縦にしたときに右上に赤字で名前と職員番号を印刷しておくこと。</p>
+                        <p>面接。</p>
+                        <p>柔道部ワークフローの提出。いろいろ慣れてなくて手間取った。練習が再開できる感じなので良かった。</p>
+                        <p>キーボード注文したぞ。青軸派ですか。</p>
+                        <p>物性研スパコンの来年度前期の申請した。</p>
+                        <p>論文が共著者から返ってきた。直さないと。</p>
           </article>
   </body>
 
