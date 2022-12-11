@@ -22,40 +22,48 @@
     <article class="markdown-body">
                         <h1 id="年12月">2022年12月</h1>
                         <p><a href="index.html">ログ一覧</a></p>
+                        <h2 id="月11日日"><a href="#11">12月11日(日)</a> <a id="11"></a></h2>
+                        <p>レポートの残りを採点して、返事をアップロードした。今回なんか質問が多かったな。</p>
+                        <p>そういえばなんで僕はCMakeが嫌いになったんだろう？なにかですごい苦労した気がするんだよな。</p>
+                        <p>昨日のLLVMの続き。<code>sudo make install</code>だけした。</p>
+                        <div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a>$ <span class="ex">clang-format</span> --version</span>
+                        <span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a><span class="ex">clang-format</span> version 16.0.0 (https://github.com/llvm/llvm-project.git ba5edfd386fcbb6bd06fe7fe499ca4d5949f1d6b)</span></code></pre></div>
+                        <p>よし、入ったぞ、と。</p>
                         <h2 id="月10日土"><a href="#10">12月10日(土)</a> <a id="10"></a></h2>
                         <p>研究室サーバにclang-formatが欲しかったのでllvmを入れ、ようとしたがcmakeが古すぎた。</p>
-                        <div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a>$ <span class="fu">cmake</span> --version</span>
-                        <span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a><span class="fu">cmake</span> version 2.8.12.2</span></code></pre></div>
-                        <div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="fu">sudo</span> yum remove cmake </span>
-                        <span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a><span class="bu">cd</span> build</span>
-                        <span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a><span class="fu">wget</span> https://cmake.org/files/v3.25/cmake-3.25.1.tar.gz</span>
-                        <span id="cb2-4"><a href="#cb2-4" aria-hidden="true"></a><span class="fu">tar</span> xvzf cmake-3.25.1.tar.gz</span>
-                        <span id="cb2-5"><a href="#cb2-5" aria-hidden="true"></a><span class="bu">cd</span> cmake-3.25.1</span>
-                        <span id="cb2-6"><a href="#cb2-6" aria-hidden="true"></a><span class="ex">./bootstrap</span></span>
-                        <span id="cb2-7"><a href="#cb2-7" aria-hidden="true"></a><span class="fu">make</span></span>
-                        <span id="cb2-8"><a href="#cb2-8" aria-hidden="true"></a><span class="fu">sudo</span> make install</span></code></pre></div>
-                        <div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a>$ <span class="fu">cmake</span> --version</span>
-                        <span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a><span class="fu">cmake</span> version 3.25.1</span>
-                        <span id="cb3-3"><a href="#cb3-3" aria-hidden="true"></a></span>
-                        <span id="cb3-4"><a href="#cb3-4" aria-hidden="true"></a><span class="ex">CMake</span> suite maintained and supported by Kitware (kitware.com/cmake)<span class="ex">.</span></span></code></pre></div>
+                        <div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a>$ <span class="fu">cmake</span> --version</span>
+                        <span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a><span class="fu">cmake</span> version 2.8.12.2</span></code></pre></div>
+                        <div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="fu">sudo</span> yum remove cmake </span>
+                        <span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a><span class="bu">cd</span> build</span>
+                        <span id="cb3-3"><a href="#cb3-3" aria-hidden="true"></a><span class="fu">wget</span> https://cmake.org/files/v3.25/cmake-3.25.1.tar.gz</span>
+                        <span id="cb3-4"><a href="#cb3-4" aria-hidden="true"></a><span class="fu">tar</span> xvzf cmake-3.25.1.tar.gz</span>
+                        <span id="cb3-5"><a href="#cb3-5" aria-hidden="true"></a><span class="bu">cd</span> cmake-3.25.1</span>
+                        <span id="cb3-6"><a href="#cb3-6" aria-hidden="true"></a><span class="ex">./bootstrap</span></span>
+                        <span id="cb3-7"><a href="#cb3-7" aria-hidden="true"></a><span class="fu">make</span></span>
+                        <span id="cb3-8"><a href="#cb3-8" aria-hidden="true"></a><span class="fu">sudo</span> make install</span></code></pre></div>
+                        <div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a>$ <span class="fu">cmake</span> --version</span>
+                        <span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a><span class="fu">cmake</span> version 3.25.1</span>
+                        <span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a></span>
+                        <span id="cb4-4"><a href="#cb4-4" aria-hidden="true"></a><span class="ex">CMake</span> suite maintained and supported by Kitware (kitware.com/cmake)<span class="ex">.</span></span></code></pre></div>
                         <p>入ったぞ、と。</p>
-                        <div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="bu">cd</span> build</span>
-                        <span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a><span class="fu">git</span> clone --depth=1 https://github.com/llvm/llvm-project.git</span>
-                        <span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a><span class="bu">cd</span> llvm-project</span>
-                        <span id="cb4-4"><a href="#cb4-4" aria-hidden="true"></a><span class="fu">mkdir</span> build</span>
-                        <span id="cb4-5"><a href="#cb4-5" aria-hidden="true"></a><span class="bu">cd</span> build</span>
-                        <span id="cb4-6"><a href="#cb4-6" aria-hidden="true"></a><span class="fu">cmake</span> -DLLVM_ENABLE_PROJECTS=clang -DCMAKE_BUILD_TYPE=Release -G <span class="st">&quot;Unix Makefiles&quot;</span> ../llvm</span>
-                        <span id="cb4-7"><a href="#cb4-7" aria-hidden="true"></a><span class="fu">make</span></span></code></pre></div>
+                        <div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="bu">cd</span> build</span>
+                        <span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a><span class="fu">git</span> clone --depth=1 https://github.com/llvm/llvm-project.git</span>
+                        <span id="cb5-3"><a href="#cb5-3" aria-hidden="true"></a><span class="bu">cd</span> llvm-project</span>
+                        <span id="cb5-4"><a href="#cb5-4" aria-hidden="true"></a><span class="fu">mkdir</span> build</span>
+                        <span id="cb5-5"><a href="#cb5-5" aria-hidden="true"></a><span class="bu">cd</span> build</span>
+                        <span id="cb5-6"><a href="#cb5-6" aria-hidden="true"></a><span class="fu">cmake</span> -DLLVM_ENABLE_PROJECTS=clang -DCMAKE_BUILD_TYPE=Release -G <span class="st">&quot;Unix Makefiles&quot;</span> ../llvm</span>
+                        <span id="cb5-7"><a href="#cb5-7" aria-hidden="true"></a><span class="fu">make</span></span>
+                        <span id="cb5-8"><a href="#cb5-8" aria-hidden="true"></a><span class="fu">sudo</span> make install</span></code></pre></div>
                         <p>ってやってたら「sshfsでいいのでは？」と言われた。確かにそっちの方が楽だわ。手元のWSLにsshfsを入れる。</p>
-                        <div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="fu">sudo</span> apt install sshfs</span></code></pre></div>
+                        <div class="sourceCode" id="cb6"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="fu">sudo</span> apt install sshfs</span></code></pre></div>
                         <p>デフォルトではVSCodeから開けないので、<code>/etc/fuse.conf</code>の<code>user_allow_other</code>を有効にしてから、</p>
-                        <div class="sourceCode" id="cb6"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="ex">sshfs</span> username@remote.server:/path/to/dir ~/path/to/mountpoint -o allow_other</span></code></pre></div>
+                        <div class="sourceCode" id="cb7"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a><span class="ex">sshfs</span> username@remote.server:/path/to/dir ~/path/to/mountpoint -o allow_other</span></code></pre></div>
                         <p>としてマウント。あとはローカルのVSCodeで開ける。これは楽だ。</p>
                         <p>プログラミング基礎同演習のレポート、8割採点して時間切れ。明日に持ち越し。</p>
                         <p>講義ノートがちっとも進んでない。</p>
                         <h2 id="月09日金"><a href="#09">12月09日(金)</a> <a id="09"></a></h2>
                         <p>Macにpdf2psを入れる。</p>
-                        <div class="sourceCode" id="cb7"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a><span class="ex">brew</span> install poppler </span></code></pre></div>
+                        <div class="sourceCode" id="cb8"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a><span class="ex">brew</span> install poppler </span></code></pre></div>
                         <p>pdftopsしか入らない。うーん。WSLで対応した。</p>
                         <p>学生さんの論文、最終チェックしてarxivに出した。そのうち載るはず。自分の論文もなんとかしなければ。</p>
                         <h2 id="月08日木"><a href="#08">12月08日(木)</a> <a id="08"></a></h2>
@@ -65,14 +73,14 @@
                         <p>ChatGPTでも、DeepLでも、AIが出力してきた文章の真偽や良し悪しを区別できるだけの知識を持つ人間だけが、それらのツールを有効活用できる。正直、自分の専門外の分野についてChatGPTが出力してきた文章の真偽判定をできる自信がない。AIは、「AI未満の人間」と「AI以上の人間」を選別する。そしてそのハードルは年々上がっていく。</p>
                         <h2 id="月07日水"><a href="#07">12月07日(水)</a> <a id="07"></a></h2>
                         <p>在宅勤務。会議とか。</p>
-                        <div class="sourceCode" id="cb8"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a>$ <span class="ex">python3</span> -m pip install tensorflow</span>
-                        <span id="cb8-2"><a href="#cb8-2" aria-hidden="true"></a><span class="ex">ERROR</span>: Cannot uninstall <span class="st">&#39;PyYAML&#39;</span>. It is a distutils installed project and thus we cannot accurately determine which files belong to it which would lead to only a partial uninstall.</span></code></pre></div>
+                        <div class="sourceCode" id="cb9"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a>$ <span class="ex">python3</span> -m pip install tensorflow</span>
+                        <span id="cb9-2"><a href="#cb9-2" aria-hidden="true"></a><span class="ex">ERROR</span>: Cannot uninstall <span class="st">&#39;PyYAML&#39;</span>. It is a distutils installed project and thus we cannot accurately determine which files belong to it which would lead to only a partial uninstall.</span></code></pre></div>
                         <p>ん？</p>
-                        <div class="sourceCode" id="cb9"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a>$ <span class="ex">python3</span> -m pip uninstall pyyaml</span>
-                        <span id="cb9-2"><a href="#cb9-2" aria-hidden="true"></a><span class="ex">Found</span> existing installation: PyYAML 3.13</span>
-                        <span id="cb9-3"><a href="#cb9-3" aria-hidden="true"></a><span class="ex">ERROR</span>: Cannot uninstall <span class="st">&#39;PyYAML&#39;</span>. It is a distutils installed project and thus we cannot accurately determine which files belong to it which would lead to only a partial uninstall.</span></code></pre></div>
+                        <div class="sourceCode" id="cb10"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true"></a>$ <span class="ex">python3</span> -m pip uninstall pyyaml</span>
+                        <span id="cb10-2"><a href="#cb10-2" aria-hidden="true"></a><span class="ex">Found</span> existing installation: PyYAML 3.13</span>
+                        <span id="cb10-3"><a href="#cb10-3" aria-hidden="true"></a><span class="ex">ERROR</span>: Cannot uninstall <span class="st">&#39;PyYAML&#39;</span>. It is a distutils installed project and thus we cannot accurately determine which files belong to it which would lead to only a partial uninstall.</span></code></pre></div>
                         <p>調べたら、これはcondaのせいだった。</p>
-                        <div class="sourceCode" id="cb10"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true"></a><span class="ex">conda</span> uninstall pyyaml</span></code></pre></div>
+                        <div class="sourceCode" id="cb11"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true"></a><span class="ex">conda</span> uninstall pyyaml</span></code></pre></div>
                         <h2 id="月06日火"><a href="#06">12月06日(火)</a> <a id="06"></a></h2>
                         <p>K-LMSのダッシュボード、担当する講義一覧が並ぶのだが、正式名称が長い講義、例えば「[他]松本 佳宣　基礎理工学特別研究第１（物理情報）」が、「[他]松本 佳宣　基礎理工学…」になってしまう。すると、「[他]松本 佳宣　基礎理工学課題研究（物理情報）」も「[他]松本 佳宣　基礎理工学…」になってしまい、区別がつかずに困っていた。しかし今日、「ニックネーム」という機能があることを知り、それぞれ「特別研究第1」「課題研究」と名付けて見やすくなった。他の講義もGitHub演習、プロ同基礎と名付けた。</p>
                         <p>プログラミング基礎同演習。今日はNumPyとSciPyについて説明するフリをして、線形代数の話。</p>
