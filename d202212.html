@@ -22,11 +22,42 @@
     <article class="markdown-body">
                         <h1 id="年12月">2022年12月</h1>
                         <p><a href="index.html">ログ一覧</a></p>
+                        <h2 id="月21日水"><a href="#21">12月21日(水)</a> <a id="21"></a></h2>
+                        <p>Minimal hitting setsのリストアップアルゴリズムについて質問が来た。<a href="https://github.com/kaityo256/mhs_cpp">これ</a>を見て質問してきたらしい。</p>
+                        <p>質問内容は</p>
+                        <p>e ={{1,2}{2,3,7},{3,4,5},{4,6},{6,7,8},{7}}</p>
+                        <p>についてのhitting setsを求めよ、という問題について、詳しくアルゴリズムの説明をしてほしいというもの。せっかくなので回答をこっちにも残しておこう。</p>
+                        <p>Let me summarize the notation first.</p>
+                        <p>HS: hitting set MHS: minimal hitting set</p>
+                        <p>Consider the bit representation of the inputs as follows.</p>
+                        <p>00000011 e1 = {1,2} 01000110 e2 = {2,3,7} 00011100 e3 = {3,4,5} 00101000 e4 = {4,6} 11100000 e5 = {6,7,8} 01000000 e7 = {7}</p>
+                        <p>Consider a subset k-set containing up to ek. For example, 1-set = {e1}, 2-set = {e1, e2}, and so on.</p>
+                        <p>We define k-HS and k-MHS as follows.</p>
+                        <p>k-HS: HS for k-set k-MHS: MHS for kset.</p>
+                        <p>Our goal is to enumerate 7-MHS. The key idea is to construct k-MHS from (k-1)-MHS.</p>
+                        <p>The 1-MHS is easy. The following two bit strings are 1-MHS.</p>
+                        <p>h1 = 00000001 h2 = 00000010</p>
+                        <p>We recursively construct the 2-MHS from here. Suppose we take h1. h1 is not 2-MHS. So we add a bit to it.</p>
+                        <p>h1’ = 00000011</p>
+                        <p>h1’ is HS of 2-set, but it is not 2-MHS because it is still a hitting set, even if we remove a bit from it. We, therefore, reject h1’.</p>
+                        <p>Next, we consider h2. This is 2-MHS because we cannot remove any bits from it. So we adopt h2, and continue to find 3-MHS from it.</p>
+                        <p>The algorithm to enumerate MHS is as follows.</p>
+                        <ol type="1">
+                        <li>Enumerate 1-MHS (it is easy).</li>
+                        <li>For each element of k-MHS, check whether it is (k+1)-MHS.</li>
+                        <li>If t is (k+1)-MHS, then we continue to search recursively.</li>
+                        <li>If t is not (k+1)-MHS, then we add a bit (t-&gt;t’) so that t’ becomes k-HS. Then check whether t’ is (k+1)-MHS. If t’ is not (k+1)-MHS, then we reject it. If t’ is (k+1)-MHS, we continue searching recursively.</li>
+                        <li>k -&gt; k +1 and goto 2.</li>
+                        </ol>
+                        <p>It takes some ingenuity to determine whether a given bit string is k-MHS.</p>
+                        <p>The function check_minimal in mhs.cpp is a naive implementation. But check_minimal2 is a more efficient one adopting the idea of critical hyperedge. But it is not essential.</p>
+                        <p>I hope the above explanation helps you.</p>
                         <h2 id="月20日火"><a href="#20">12月20日(火)</a> <a id="20"></a></h2>
                         <p>講義。今日は動的計画法。メモ化のイメージが湧かないという質問があったので、来週の補足向けにフィボナッチかなにかでメモ化の概念図書いておくかな。</p>
                         <p>柔道部の振込。これ、ウェブからできるようにしようと思いつつ、まだやってないので毎回日吉まで行っている。</p>
                         <p>急に木曜日になんか話すことになって、そのスライドを作った。</p>
                         <p>修士論文発表会のプログラム作成。いろいろ手間取ってものすごく時間がかかった。うーむ。</p>
+                        <p>海外から修士に来たいという連絡。もう院試(留学生向けも含む)が終わっているので来年度は無理だという連絡。前もそういう連絡が来たんだけど、その国の来年度の大学院を探す時期と、日本の院試の時期が合ってないのかしら。</p>
                         <h2 id="月19日月"><a href="#19">12月19日(月)</a> <a id="19"></a></h2>
                         <p>なんかすごく忙しかった気がするが、何をしてたか思い出せない。目が覚めてスマホを見たら、Todoistが「おはようございます、Hiroshiさん！今日は9件のタスクが予定されています。頑張っていきましょう💪」みたいな表示をしてきて、煽られてるのか？と思ったのは覚えている。</p>
                         <p>Todoistのカルマ、今はマスターで、次はグランドマスターらしい。</p>
