@@ -28,6 +28,7 @@
                         <p>学生さんのMacでscpする時にワイルドカードが使えない問題、原因がわかった。<a href="https://zsh.sourceforge.io/Doc/Release/Options.html#Expansion-and-Globbing">ZshのGlobbing</a>が問題。もしコマンドラインに何にもマッチしないglobbing expressionが含まれていた場合、Zshはデフォルトでエラーを出す。しかし、scpなどでリモートにファイルがある場合は、実際にはファイルがあるのにマッチしないと判断されてしまう。いろいろ細かい制御ができるっぽいが、とりあえずマッチしなかった時にエラーをださないように</p>
                         <div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="ex">setopt</span> nonomatch</span></code></pre></div>
                         <p>を設定すればOK。scpでのワイルドカードの他、Gitの<code>HEAD^</code>などにも影響が出るようだ。</p>
+                        <p>しかしこのglob、英単語だと思ってたら、もともとUNIXの<code>/etc/glob</code>というコマンド由来で、このコマンド名はglobalの略だとのこと。初期のUNIXのシェルはワイルドカード展開を<code>/etc/glob</code>に依存しており、そのために<code>*</code>や<code>?</code>といったワイルドカードを<code>globs</code>や<code>globbing</code>と呼ぶようになったらしい。昔「glob」ってなんだろうと思ってLDOCEで調べたら<a href="https://www.ldoceonline.com/jp/dictionary/glob">存在していた</a>ので、その単語由来だと思ってた。そちらの方のglobは、なんか液体か泥の塊のことらしい。「a glob of ketchup(ケチャップ一山)」みたいに使う。</p>
                         <h2 id="月26日月"><a href="#26">12月26日(月)</a> <a id="26"></a></h2>
                         <p>1on1とか。</p>
                         <p>明日の講義の補足説明のためにProject Eulerの31番「イギリスのコイン問題」をメモ化再帰と表を使う方法両方で解いた。一応すぐ解けて安心した。解説スライドも作っておく。</p>
