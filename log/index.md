@@ -4,6 +4,10 @@
 * Repository: [log](https://github.com/kaityo256/log)
 * LICENSE: [CC-BY](https://github.com/kaityo256/log/blob/main/LICENSE)
 
+## 2023年
+
+* [1月](d202301.md)
+
 ## 2022年
 
 * [12月](d202212.md)
