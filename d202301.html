@@ -56,6 +56,28 @@
                         <span id="cb7-5"><a href="#cb7-5" aria-hidden="true"></a><span class="ex">python3</span> -m pip install matplotlib</span></code></pre></div>
                         <p>できた。tensoflowをインストールする時に、必要なバージョンを指定してnumpyだのscipyだのインストールしてくれるから、これでOK。</p>
                         <p>いやしかし面倒だなぁ。</p>
+                        <p>TensorFlow.kerasで、モデルを保存してから読み込むと、</p>
+                        <div class="sourceCode" id="cb8"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).layer_with_weights-0.kernel</span>
+                        <span id="cb8-2"><a href="#cb8-2" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).layer_with_weights-0.bias</span>
+                        <span id="cb8-3"><a href="#cb8-3" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).layer_with_weights-1.kernel</span>
+                        <span id="cb8-4"><a href="#cb8-4" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).layer_with_weights-1.bias</span>
+                        <span id="cb8-5"><a href="#cb8-5" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).layer_with_weights-2.kernel</span>
+                        <span id="cb8-6"><a href="#cb8-6" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).layer_with_weights-2.bias</span>
+                        <span id="cb8-7"><a href="#cb8-7" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.1</span>
+                        <span id="cb8-8"><a href="#cb8-8" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.2</span>
+                        <span id="cb8-9"><a href="#cb8-9" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.3</span>
+                        <span id="cb8-10"><a href="#cb8-10" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.4</span>
+                        <span id="cb8-11"><a href="#cb8-11" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.5</span>
+                        <span id="cb8-12"><a href="#cb8-12" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.6</span>
+                        <span id="cb8-13"><a href="#cb8-13" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.7</span>
+                        <span id="cb8-14"><a href="#cb8-14" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.8</span>
+                        <span id="cb8-15"><a href="#cb8-15" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.9</span>
+                        <span id="cb8-16"><a href="#cb8-16" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.10</span>
+                        <span id="cb8-17"><a href="#cb8-17" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.11</span>
+                        <span id="cb8-18"><a href="#cb8-18" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.12</span></code></pre></div>
+                        <p>みたいなエラーが大量に出る問題、モデルの重みだけでなく、optimizerの状態を復元んしようとして失敗しているのが原因らしい。最適化を続けるのでなければモデルの重みだけで良いので、</p>
+                        <div class="sourceCode" id="cb9"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a>model.load_weights(<span class="st">&#39;filename&#39;</span>).expect_partial()</span></code></pre></div>
+                        <p>と<code>expect_partial()</code>をつければOK。</p>
                         <h2 id="月04日水"><a href="#04">01月04日(水)</a> <a id="04"></a></h2>
                         <p>情報処理学会プログラム編成準備。学生さんの卒論チェック。</p>
                         <p>とある方から、Kurt Binderさんの訃報を聞く。<a href="https://www.fz-juelich.de/en/ias/jsc/news/news-items/news-flashes/2022/prof-binder-obituary">昨年9月に亡くなっていたとのこと</a>。</p>
