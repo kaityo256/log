@@ -22,8 +22,46 @@
     <article class="markdown-body">
                         <h1 id="年1月">2023年1月</h1>
                         <p><a href="index.html">ログ一覧</a></p>
+                        <h2 id="月05日木"><a href="#05">01月05日(木)</a> <a id="05"></a></h2>
+                        <p>Tensorflowをインストールしようとしたら、こんな警告が。</p>
+                        <div class="sourceCode" id="cb1"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a>/home/username/.pyenv/versions/anaconda3-5.3.1/lib/python3.7/site-packages/tensorboard/compat/tensorflow_stub/dtypes.py:541: FutureWarning: Passing (type, 1) or &#39;1type&#39; as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / &#39;(1,)type&#39;.</span>
+                        <span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a>  _np_qint8 = np.dtype([(&quot;qint8&quot;, np.int8, 1)])</span></code></pre></div>
+                        <p>これはNumPyのバージョンが合っていないのだそう。</p>
+                        <div class="sourceCode" id="cb2"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a>ERROR: pip&#39;s dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.</span>
+                        <span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a>tensorflow-cpu 2.2.0 requires scipy==1.4.1; python_version &gt;= &quot;3&quot;, but you have scipy 1.6.1 which is incompatible.</span>
+                        <span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a>tensorflow-cpu 2.2.0 requires tensorboard&lt;2.3.0,&gt;=2.2.0, but you have tensorboard 1.13.1 which is incompatible.</span>
+                        <span id="cb2-4"><a href="#cb2-4" aria-hidden="true"></a>tensorflow-cpu 2.2.0 requires tensorflow-estimator&lt;2.3.0,&gt;=2.2.0, but you have tensorflow-estimator 1.13.0 which is incompatible.</span></code></pre></div>
+                        <p>全体でなんとかすると事故りそうなので、仮想環境でなんとかする。</p>
+                        <div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="ex">python3</span> -m venv tf</span>
+                        <span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a><span class="bu">source</span> tf/bin/activate</span>
+                        <span id="cb3-3"><a href="#cb3-3" aria-hidden="true"></a><span class="ex">python3</span> -m pip install --upgrade pip</span>
+                        <span id="cb3-4"><a href="#cb3-4" aria-hidden="true"></a><span class="ex">python3</span> -m pip install tensorflow</span></code></pre></div>
+                        <p>だめだ。Pythonのバージョンがダメっぽい。</p>
+                        <div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a>$ <span class="ex">pyenv</span> versions</span>
+                        <span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a>  <span class="ex">system</span></span>
+                        <span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a><span class="ex">*</span> anaconda3-5.3.1 (set by /home/watanabe/.pyenv/version)</span></code></pre></div>
+                        <p>anacondaが悪さしてるっぽいのでsystemに変える。</p>
+                        <div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="ex">pyenv</span> global system</span>
+                        <span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a>$ <span class="ex">python3</span> --version</span>
+                        <span id="cb5-3"><a href="#cb5-3" aria-hidden="true"></a><span class="ex">Python</span> 3.8.10</span></code></pre></div>
+                        <p>venvしようとしたら、python3-venvがないと言われ、入れようとしたらパッケージがたりないからapt-get update しろと言われる。 あらためて-m venvしようとしたらpipがないと言われる。</p>
+                        <div class="sourceCode" id="cb6"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="fu">sudo</span> apt-get update</span>
+                        <span id="cb6-2"><a href="#cb6-2" aria-hidden="true"></a><span class="fu">sudo</span> apt-get install python3.8-venv</span>
+                        <span id="cb6-3"><a href="#cb6-3" aria-hidden="true"></a><span class="fu">sudo</span> apt install pip</span></code></pre></div>
+                        <p>あらためてもう一回。</p>
+                        <div class="sourceCode" id="cb7"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a><span class="ex">python3</span> -m venv tf</span>
+                        <span id="cb7-2"><a href="#cb7-2" aria-hidden="true"></a><span class="bu">source</span> tf/bin/activate</span>
+                        <span id="cb7-3"><a href="#cb7-3" aria-hidden="true"></a><span class="ex">python3</span> -m pip install --upgrade pip</span>
+                        <span id="cb7-4"><a href="#cb7-4" aria-hidden="true"></a><span class="ex">python3</span> -m pip install tensorflow</span>
+                        <span id="cb7-5"><a href="#cb7-5" aria-hidden="true"></a><span class="ex">python3</span> -m pip install matplotlib</span></code></pre></div>
+                        <p>できた。tensoflowをインストールする時に、必要なバージョンを指定してnumpyだのscipyだのインストールしてくれるから、これでOK。</p>
+                        <p>いやしかし面倒だなぁ。</p>
                         <h2 id="月04日水"><a href="#04">01月04日(水)</a> <a id="04"></a></h2>
                         <p>情報処理学会プログラム編成準備。学生さんの卒論チェック。</p>
+                        <p>とある方から、Kurt Binderさんの訃報を聞く。<a href="https://www.fz-juelich.de/en/ias/jsc/news/news-items/news-flashes/2022/prof-binder-obituary">昨年9月に亡くなっていたとのこと</a>。</p>
+                        <p>伊藤研の同期が非平衡緩和をやっていて、Binder比と非平衡緩和を比べたりしてたのでBinder比については知ってたが、初めて会ったのは2002年のブルガリアでの夏の学校。そこでBinderさんの講義でSubbox Analysisを聞いて、ずっと記憶に残っており、10年後に粒子系に応用した。</p>
+                        <p>Binderさんの論文はどれも有用できっちり書いてあったし、僕がある人に「○○さんのところにPDに行こうか迷っています」と相談したら「Binderのところに行く方が良い。○○さんは有名だけど中身がない(意訳)。Binderさんのところできっちりやる方が生産的だろう」みたいなことを言われたのを覚えている。</p>
+                        <p>最後にお会いしたのはジョージアのワークショップだと思うが、記録がない。ご冥福をお祈りします。</p>
                         <h2 id="月03日火"><a href="#04">01月03日(火)</a> <a id="04"></a></h2>
                         <p>家に子供がいる状態で仕事するの無理。無理無理無理無理カタツムリ。</p>
                         <p>情報処理学会のプログラム編成が近づいてきたので、マニュアル読んで内容を確認して、わからないところを質問。</p>
