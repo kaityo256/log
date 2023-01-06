@@ -35,6 +35,13 @@
                         <p>1on1ミーティング。</p>
                         <p>メール処理たくさん。</p>
                         <p>講義準備やばい。</p>
+                        <p>WSLやPowerShellが全て「ターミナル」に統一されてから、初回起動時にIMEが「_A」tという表示(半角英数モード)になるのに困っていた。これは「入力は英数字だが、変換を受け入れるモード」であり、Google日本語入力の独自モード。日本語入力時にCaps Lockを押すとこのモードになる。</p>
+                        <p>さて、ターミナルを開くとこれがデフォルトになってしまう。僕はターミナル初回起動時にssh公開鍵のパスフレーズを入力しているのだが、これが表示されてしまうのでとても困る。</p>
+                        <p>調べてみたら、<a href="https://support.google.com/gboard/thread/180438722/windows-terminal-%E8%B5%B7%E5%8B%95%E6%99%82%E3%81%AE-%E5%85%A5%E5%8A%9B%E6%96%B9%E6%B3%95-%E3%81%AB%E9%96%A2%E3%81%99%E3%82%8B%E4%B8%8D%E5%85%B7%E5%90%88?hl=ja">Googleに質問している人がいた</a>。Googleでも対応できず、Microsoftに問い合わせろ、とのこと。</p>
+                        <p>しかしこれ、Google日本語が「直接入力」と「半角英数」というモードを分けているのが問題な気がしてきた。直接入力は文字通り英数字を直接入力するわけだが、「半角英数」は、途中まで入力した半角英数から単語をsuggestするモード。実装した人には申し訳ないが、普通に要らない……</p>
+                        <p>これ、日本語入力に入ってるわけだから、「日本人が英語を入力する助けをするモード」なんだろうか。</p>
+                        <p>解析力学の講義ノート、さすがに数式が多くてGitHubデフォルトのMarkdownプレビューでは苦しくなってきたから<a href="https://kaityo256.github.io/classical_mechanics/">HTML版</a>作った。</p>
+                        <p>がんばって残りを書いていく。</p>
                         <h2 id="月05日木"><a href="#05">01月05日(木)</a> <a id="05"></a></h2>
                         <p>Tensorflowをインストールしようとしたら、こんな警告が。</p>
                         <div class="sourceCode" id="cb3"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a>/home/username/.pyenv/versions/anaconda3-5.3.1/lib/python3.7/site-packages/tensorboard/compat/tensorflow_stub/dtypes.py:541: FutureWarning: Passing (type, 1) or &#39;1type&#39; as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / &#39;(1,)type&#39;.</span>
