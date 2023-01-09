@@ -26,17 +26,43 @@
                         <p>今日は外に出る用事があり、それで疲れてしまった。</p>
                         <p>極座標のラグランジアンの導出に手間取った。</p>
                         <p>いろいろ滞ってる。つらい。</p>
+                        <p>昨日の奴、「一週間でなれる！スパコンプログラマ」のリポジトリのPDFを削除し、リリースのPDFへのリンクに変更。ビルドするものがリポジトリにあるの、あんまりよくないしね。ついでにPandocnのオプション<code>--shift-heading-level-by=-1</code>を設定して、HTMLのタイトルが表示されるようにしておいた。</p>
+                        <p>いや、まったくこんなことをしている暇ないんだけどさ。いろいろ詰まっててしんどいので、まずは目に見える進捗が欲しくて。</p>
+                        <p>自分が苦労して書いて公開したものに反応があって嬉しかった、というのもある。結局、こういうのはmotivation drivenにならざるを得ない。だから、作った人のモチベーションを下げるような行為は慎まないといけない。特に「誰かが書いたものに一言エアリプコメントしては『自分の方がわかってるんだぞ』感」を出しているそこのあなた！なら自分で書いてください。</p>
+                        <p>・・・みたいなことをTwitterに書いたら面倒なんだろうな、と思うようになった時点で、もう僕にとってTwitterはダメかもなぁ。</p>
+                        <p>「あの分野」とか「この分野」とかに(おそらくキーワード検索で)網を張って、自分が気に食わない論を張った瞬間に攻撃する人が結構いるじゃない？そうすると「その分野」がアンタッチャブルになるわけよね。そうして、なにか書こうとするたびに「あ、これ書くと面倒だな」と思うようになって書かなくなるわけ。これがメディアリテラシーと呼ぶものであるなら、なんだかなぁ、という気はする。</p>
                         <h2 id="月08日日"><a href="#08">01月08日(日)</a> <a id="08"></a></h2>
                         <p>がんばれなかった。</p>
+                        <p><a href="https://github.com/kaityo256/sevendayshpc">一週間でなれる！スパコンプログラマ</a>にissue。図にリンクミスがあり、このリンクミスはMarkdown、HTMLともに修正済みだが、PDFが修正されていないので修正して欲しいとのこと。</p>
+                        <p>で、Releaseを見てみたら、ちゃんと修正されている。アレ？と思って見てみたら、「PDF版はこちら」と、リポジトリのファイルに直リンしており、それが古い。つまり、</p>
+                        <ul>
+                        <li>僕がMarkdownを修正した後</li>
+                        <li>HTMLを作成し、</li>
+                        <li>PDFをビルドし、</li>
+                        <li>Releaseを作成して、そのAssetsにPDFを追加するところ</li>
+                        </ul>
+                        <p>までは忘れなかったが、</p>
+                        <ul>
+                        <li>作成したPDFをリポジトリのトップ階層にコピーしてcommit &amp; push</li>
+                        </ul>
+                        <p>することは忘れていたということか。</p>
+                        <p>「PDF版はこちら」で、リリースの方をリンクするのが良いのだろうか。一応<code>releases/latest</code>で最新リリースにリンクできるが、それだと、PDFのダウンロードに二回クリックが必要になってしまう。</p>
+                        <p>・・・と思っていたが、今は</p>
+                        <div class="sourceCode" id="cb1"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a>https://github.com/USER/PROJECT/releases/latest/download/package.zip</span></code></pre></div>
+                        <p>が、最新リリースの<code>package</code>にリダイレクトされるようになったらしい。</p>
+                        <p>→<a href="https://stackoverflow.com/a/54836319">Is there a link to GitHub for downloading a file in the latest release of a repository?</a></p>
+                        <p>つまり、リリースにPDFを含めることを忘れなければ、常に、</p>
+                        <div class="sourceCode" id="cb2"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a>https://github.com/kaityo256/sevendayshpc/releases/latest/download/sevendayshpc.pdf</span></code></pre></div>
+                        <p>というリンクが最新のPDFを指すようになった。うん、リポジトリ直よりこっちの方が良いな。</p>
                         <h2 id="月07日土"><a href="#07">01月07日(土)</a> <a id="07"></a></h2>
                         <p>ワクチンを打ったのが14時。寒気がしはじめたのが5時。熱が上がりきったのが7時くらいかな。最高で37度9分。だいたい15時間くらいして発熱する感じかな。</p>
                         <p>というわけで何もできなかった。明日がんばろう。</p>
                         <h2 id="月06日金"><a href="#06">01月06日(金)</a> <a id="06"></a></h2>
                         <p>座長が決まらない。</p>
                         <p>Pythonのプロファイルを取るのはcProfileが良さそう。</p>
-                        <div class="sourceCode" id="cb1"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="im">import</span> cProfile</span></code></pre></div>
+                        <div class="sourceCode" id="cb3"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="im">import</span> cProfile</span></code></pre></div>
                         <p>しておいて、プロファイルを取りたい関数を</p>
-                        <div class="sourceCode" id="cb2"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a>cProfile.run(<span class="st">&#39;hoge(foo)&#39;</span>)</span></code></pre></div>
+                        <div class="sourceCode" id="cb4"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a>cProfile.run(<span class="st">&#39;hoge(foo)&#39;</span>)</span></code></pre></div>
                         <p>のように引数付きで文字列で渡す。</p>
                         <p>kerasのmodelによる予想、<code>model.predict</code>だとかなり遅い。<code>model.predict_on_batch</code>にするだけで相当早くなった。これ以上の高速化はコードの全書き換えになるので厳しい。GPGPUで実行しちゃうのが早い気がする。</p>
                         <p>会議。</p>
@@ -54,59 +80,59 @@
                         <p>夜中、流石にダルくなってきた。ワクチンの副作用かな。</p>
                         <h2 id="月05日木"><a href="#05">01月05日(木)</a> <a id="05"></a></h2>
                         <p>Tensorflowをインストールしようとしたら、こんな警告が。</p>
-                        <div class="sourceCode" id="cb3"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a>/home/username/.pyenv/versions/anaconda3-5.3.1/lib/python3.7/site-packages/tensorboard/compat/tensorflow_stub/dtypes.py:541: FutureWarning: Passing (type, 1) or &#39;1type&#39; as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / &#39;(1,)type&#39;.</span>
-                        <span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a>  _np_qint8 = np.dtype([(&quot;qint8&quot;, np.int8, 1)])</span></code></pre></div>
+                        <div class="sourceCode" id="cb5"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a>/home/username/.pyenv/versions/anaconda3-5.3.1/lib/python3.7/site-packages/tensorboard/compat/tensorflow_stub/dtypes.py:541: FutureWarning: Passing (type, 1) or &#39;1type&#39; as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / &#39;(1,)type&#39;.</span>
+                        <span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a>  _np_qint8 = np.dtype([(&quot;qint8&quot;, np.int8, 1)])</span></code></pre></div>
                         <p>これはNumPyのバージョンが合っていないのだそう。</p>
-                        <div class="sourceCode" id="cb4"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a>ERROR: pip&#39;s dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.</span>
-                        <span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a>tensorflow-cpu 2.2.0 requires scipy==1.4.1; python_version &gt;= &quot;3&quot;, but you have scipy 1.6.1 which is incompatible.</span>
-                        <span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a>tensorflow-cpu 2.2.0 requires tensorboard&lt;2.3.0,&gt;=2.2.0, but you have tensorboard 1.13.1 which is incompatible.</span>
-                        <span id="cb4-4"><a href="#cb4-4" aria-hidden="true"></a>tensorflow-cpu 2.2.0 requires tensorflow-estimator&lt;2.3.0,&gt;=2.2.0, but you have tensorflow-estimator 1.13.0 which is incompatible.</span></code></pre></div>
+                        <div class="sourceCode" id="cb6"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a>ERROR: pip&#39;s dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.</span>
+                        <span id="cb6-2"><a href="#cb6-2" aria-hidden="true"></a>tensorflow-cpu 2.2.0 requires scipy==1.4.1; python_version &gt;= &quot;3&quot;, but you have scipy 1.6.1 which is incompatible.</span>
+                        <span id="cb6-3"><a href="#cb6-3" aria-hidden="true"></a>tensorflow-cpu 2.2.0 requires tensorboard&lt;2.3.0,&gt;=2.2.0, but you have tensorboard 1.13.1 which is incompatible.</span>
+                        <span id="cb6-4"><a href="#cb6-4" aria-hidden="true"></a>tensorflow-cpu 2.2.0 requires tensorflow-estimator&lt;2.3.0,&gt;=2.2.0, but you have tensorflow-estimator 1.13.0 which is incompatible.</span></code></pre></div>
                         <p>全体でなんとかすると事故りそうなので、仮想環境でなんとかする。</p>
-                        <div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="ex">python3</span> -m venv tf</span>
-                        <span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a><span class="bu">source</span> tf/bin/activate</span>
-                        <span id="cb5-3"><a href="#cb5-3" aria-hidden="true"></a><span class="ex">python3</span> -m pip install --upgrade pip</span>
-                        <span id="cb5-4"><a href="#cb5-4" aria-hidden="true"></a><span class="ex">python3</span> -m pip install tensorflow</span></code></pre></div>
+                        <div class="sourceCode" id="cb7"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a><span class="ex">python3</span> -m venv tf</span>
+                        <span id="cb7-2"><a href="#cb7-2" aria-hidden="true"></a><span class="bu">source</span> tf/bin/activate</span>
+                        <span id="cb7-3"><a href="#cb7-3" aria-hidden="true"></a><span class="ex">python3</span> -m pip install --upgrade pip</span>
+                        <span id="cb7-4"><a href="#cb7-4" aria-hidden="true"></a><span class="ex">python3</span> -m pip install tensorflow</span></code></pre></div>
                         <p>だめだ。Pythonのバージョンがダメっぽい。</p>
-                        <div class="sourceCode" id="cb6"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a>$ <span class="ex">pyenv</span> versions</span>
-                        <span id="cb6-2"><a href="#cb6-2" aria-hidden="true"></a>  <span class="ex">system</span></span>
-                        <span id="cb6-3"><a href="#cb6-3" aria-hidden="true"></a><span class="ex">*</span> anaconda3-5.3.1 (set by /home/watanabe/.pyenv/version)</span></code></pre></div>
+                        <div class="sourceCode" id="cb8"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a>$ <span class="ex">pyenv</span> versions</span>
+                        <span id="cb8-2"><a href="#cb8-2" aria-hidden="true"></a>  <span class="ex">system</span></span>
+                        <span id="cb8-3"><a href="#cb8-3" aria-hidden="true"></a><span class="ex">*</span> anaconda3-5.3.1 (set by /home/watanabe/.pyenv/version)</span></code></pre></div>
                         <p>anacondaが悪さしてるっぽいのでsystemに変える。</p>
-                        <div class="sourceCode" id="cb7"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a><span class="ex">pyenv</span> global system</span>
-                        <span id="cb7-2"><a href="#cb7-2" aria-hidden="true"></a>$ <span class="ex">python3</span> --version</span>
-                        <span id="cb7-3"><a href="#cb7-3" aria-hidden="true"></a><span class="ex">Python</span> 3.8.10</span></code></pre></div>
+                        <div class="sourceCode" id="cb9"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a><span class="ex">pyenv</span> global system</span>
+                        <span id="cb9-2"><a href="#cb9-2" aria-hidden="true"></a>$ <span class="ex">python3</span> --version</span>
+                        <span id="cb9-3"><a href="#cb9-3" aria-hidden="true"></a><span class="ex">Python</span> 3.8.10</span></code></pre></div>
                         <p>venvしようとしたら、python3-venvがないと言われ、入れようとしたらパッケージがたりないからapt-get update しろと言われる。 あらためて-m venvしようとしたらpipがないと言われる。</p>
-                        <div class="sourceCode" id="cb8"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a><span class="fu">sudo</span> apt-get update</span>
-                        <span id="cb8-2"><a href="#cb8-2" aria-hidden="true"></a><span class="fu">sudo</span> apt-get install python3.8-venv</span>
-                        <span id="cb8-3"><a href="#cb8-3" aria-hidden="true"></a><span class="fu">sudo</span> apt install pip</span></code></pre></div>
+                        <div class="sourceCode" id="cb10"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true"></a><span class="fu">sudo</span> apt-get update</span>
+                        <span id="cb10-2"><a href="#cb10-2" aria-hidden="true"></a><span class="fu">sudo</span> apt-get install python3.8-venv</span>
+                        <span id="cb10-3"><a href="#cb10-3" aria-hidden="true"></a><span class="fu">sudo</span> apt install pip</span></code></pre></div>
                         <p>あらためてもう一回。</p>
-                        <div class="sourceCode" id="cb9"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a><span class="ex">python3</span> -m venv tf</span>
-                        <span id="cb9-2"><a href="#cb9-2" aria-hidden="true"></a><span class="bu">source</span> tf/bin/activate</span>
-                        <span id="cb9-3"><a href="#cb9-3" aria-hidden="true"></a><span class="ex">python3</span> -m pip install --upgrade pip</span>
-                        <span id="cb9-4"><a href="#cb9-4" aria-hidden="true"></a><span class="ex">python3</span> -m pip install tensorflow</span>
-                        <span id="cb9-5"><a href="#cb9-5" aria-hidden="true"></a><span class="ex">python3</span> -m pip install matplotlib</span></code></pre></div>
+                        <div class="sourceCode" id="cb11"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true"></a><span class="ex">python3</span> -m venv tf</span>
+                        <span id="cb11-2"><a href="#cb11-2" aria-hidden="true"></a><span class="bu">source</span> tf/bin/activate</span>
+                        <span id="cb11-3"><a href="#cb11-3" aria-hidden="true"></a><span class="ex">python3</span> -m pip install --upgrade pip</span>
+                        <span id="cb11-4"><a href="#cb11-4" aria-hidden="true"></a><span class="ex">python3</span> -m pip install tensorflow</span>
+                        <span id="cb11-5"><a href="#cb11-5" aria-hidden="true"></a><span class="ex">python3</span> -m pip install matplotlib</span></code></pre></div>
                         <p>できた。tensoflowをインストールする時に、必要なバージョンを指定してnumpyだのscipyだのインストールしてくれるから、これでOK。</p>
                         <p>いやしかし面倒だなぁ。</p>
                         <p>TensorFlow.kerasで、モデルを保存してから読み込むと、</p>
-                        <div class="sourceCode" id="cb10"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).layer_with_weights-0.kernel</span>
-                        <span id="cb10-2"><a href="#cb10-2" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).layer_with_weights-0.bias</span>
-                        <span id="cb10-3"><a href="#cb10-3" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).layer_with_weights-1.kernel</span>
-                        <span id="cb10-4"><a href="#cb10-4" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).layer_with_weights-1.bias</span>
-                        <span id="cb10-5"><a href="#cb10-5" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).layer_with_weights-2.kernel</span>
-                        <span id="cb10-6"><a href="#cb10-6" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).layer_with_weights-2.bias</span>
-                        <span id="cb10-7"><a href="#cb10-7" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.1</span>
-                        <span id="cb10-8"><a href="#cb10-8" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.2</span>
-                        <span id="cb10-9"><a href="#cb10-9" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.3</span>
-                        <span id="cb10-10"><a href="#cb10-10" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.4</span>
-                        <span id="cb10-11"><a href="#cb10-11" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.5</span>
-                        <span id="cb10-12"><a href="#cb10-12" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.6</span>
-                        <span id="cb10-13"><a href="#cb10-13" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.7</span>
-                        <span id="cb10-14"><a href="#cb10-14" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.8</span>
-                        <span id="cb10-15"><a href="#cb10-15" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.9</span>
-                        <span id="cb10-16"><a href="#cb10-16" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.10</span>
-                        <span id="cb10-17"><a href="#cb10-17" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.11</span>
-                        <span id="cb10-18"><a href="#cb10-18" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.12</span></code></pre></div>
+                        <div class="sourceCode" id="cb12"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).layer_with_weights-0.kernel</span>
+                        <span id="cb12-2"><a href="#cb12-2" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).layer_with_weights-0.bias</span>
+                        <span id="cb12-3"><a href="#cb12-3" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).layer_with_weights-1.kernel</span>
+                        <span id="cb12-4"><a href="#cb12-4" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).layer_with_weights-1.bias</span>
+                        <span id="cb12-5"><a href="#cb12-5" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).layer_with_weights-2.kernel</span>
+                        <span id="cb12-6"><a href="#cb12-6" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).layer_with_weights-2.bias</span>
+                        <span id="cb12-7"><a href="#cb12-7" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.1</span>
+                        <span id="cb12-8"><a href="#cb12-8" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.2</span>
+                        <span id="cb12-9"><a href="#cb12-9" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.3</span>
+                        <span id="cb12-10"><a href="#cb12-10" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.4</span>
+                        <span id="cb12-11"><a href="#cb12-11" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.5</span>
+                        <span id="cb12-12"><a href="#cb12-12" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.6</span>
+                        <span id="cb12-13"><a href="#cb12-13" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.7</span>
+                        <span id="cb12-14"><a href="#cb12-14" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.8</span>
+                        <span id="cb12-15"><a href="#cb12-15" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.9</span>
+                        <span id="cb12-16"><a href="#cb12-16" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.10</span>
+                        <span id="cb12-17"><a href="#cb12-17" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.11</span>
+                        <span id="cb12-18"><a href="#cb12-18" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.12</span></code></pre></div>
                         <p>みたいなエラーが大量に出る問題、モデルの重みだけでなく、optimizerの状態を復元んしようとして失敗しているのが原因らしい。最適化を続けるのでなければモデルの重みだけで良いので、</p>
-                        <div class="sourceCode" id="cb11"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true"></a>model.load_weights(<span class="st">&#39;filename&#39;</span>).expect_partial()</span></code></pre></div>
+                        <div class="sourceCode" id="cb13"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true"></a>model.load_weights(<span class="st">&#39;filename&#39;</span>).expect_partial()</span></code></pre></div>
                         <p>と<code>expect_partial()</code>をつければOK。</p>
                         <h2 id="月04日水"><a href="#04">01月04日(水)</a> <a id="04"></a></h2>
                         <p>情報処理学会プログラム編成準備。学生さんの卒論チェック。</p>
