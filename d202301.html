@@ -22,30 +22,66 @@
     <article class="markdown-body">
                         <h1 id="年1月">2023年1月</h1>
                         <p><a href="index.html">ログ一覧</a></p>
+                        <h2 id="月01日水"><a href="#01">02月01日(水)</a> <a id="01"></a></h2>
+                        <p>Macでepsを見る手段がない。いろいろ調べたが、一番楽なのはX立ち上げてevinceで見ることか？</p>
+                        <div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="ex">brew</span> install evince</span></code></pre></div>
+                        <p>だめだ。Macのevinceはepsが表示できない。「ファイルタイプ text(text/*)はサポートしていません」になってしまう。</p>
+                        <p>Inkscapeとかで見る方法も無いことはないが、多分Docker上のUbuntuでX飛ばしてevinceで見た方が楽だわ。もしくは研究室サーバでX飛ばすか。</p>
+                        <p>事前にXQuartzの設定で「セキュリティ」の「接続を認証」及び「ネットワーク・クライアントからの接続を許可」しておく必要がある。</p>
+                        <p>その上でX11の情報を共有してUbuntuを起動。</p>
+                        <div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="ex">docker</span> run -it -e DISPLAY=<span class="va">$(</span><span class="fu">hostname</span><span class="va">)</span>:0 -v ~/.Xauthority:/root/.Xauthority ubuntu </span></code></pre></div>
+                        <p>その後Xをインストール。</p>
+                        <div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="ex">apt-get</span> update</span>
+                        <span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a><span class="ex">apt-get</span> -y install xserver-xorg x11-apps</span></code></pre></div>
+                        <div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="ex">xeyes</span></span></code></pre></div>
+                        <p>起動できた。</p>
+                        <div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="ex">apt-get</span> -y install evince poppler-data</span></code></pre></div>
+                        <p>なんかepsを作ってみるか。</p>
+                        <div class="sourceCode" id="cb6"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a>$ <span class="ex">apt-get</span> install -y gnuplot</span>
+                        <span id="cb6-2"><a href="#cb6-2" aria-hidden="true"></a>$ <span class="ex">gnuplot</span></span>
+                        <span id="cb6-3"><a href="#cb6-3" aria-hidden="true"></a><span class="ex">gnuplot</span><span class="op">&gt;</span> set term eps</span>
+                        <span id="cb6-4"><a href="#cb6-4" aria-hidden="true"></a><span class="ex">gnuplot</span><span class="op">&gt;</span> set out <span class="st">&quot;test.eps&quot;</span></span>
+                        <span id="cb6-5"><a href="#cb6-5" aria-hidden="true"></a><span class="ex">gnuplot</span><span class="op">&gt;</span> p sin(x)</span>
+                        <span id="cb6-6"><a href="#cb6-6" aria-hidden="true"></a><span class="ex">gnuplot</span><span class="op">&gt;</span> exit</span>
+                        <span id="cb6-7"><a href="#cb6-7" aria-hidden="true"></a>$ <span class="ex">evince</span> test.eps</span></code></pre></div>
+                        <p>なんの問題もなく表示できる。これでローカルをディレクトリをマウントして表示するのが一番楽なんじゃ・・・。</p>
+                        <p>ついでにghostscriptも動かしてみる。</p>
+                        <div class="sourceCode" id="cb7"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a>$ <span class="ex">apt-get</span> install -y gv</span>
+                        <span id="cb7-2"><a href="#cb7-2" aria-hidden="true"></a>$ <span class="ex">ghostscript</span></span>
+                        <span id="cb7-3"><a href="#cb7-3" aria-hidden="true"></a><span class="ex">GPL</span> Ghostscript 9.55.0 (2021-09-27)</span>
+                        <span id="cb7-4"><a href="#cb7-4" aria-hidden="true"></a><span class="ex">Copyright</span> (C) <span class="ex">2021</span> Artifex Software, Inc.  All rights reserved.</span>
+                        <span id="cb7-5"><a href="#cb7-5" aria-hidden="true"></a><span class="ex">This</span> software is supplied under the GNU AGPLv3 and comes with NO WARRANTY:</span>
+                        <span id="cb7-6"><a href="#cb7-6" aria-hidden="true"></a><span class="ex">see</span> the file COPYING for details.</span>
+                        <span id="cb7-7"><a href="#cb7-7" aria-hidden="true"></a><span class="ex">GS</span><span class="op">&gt;</span>0 0 moveto</span>
+                        <span id="cb7-8"><a href="#cb7-8" aria-hidden="true"></a><span class="ex">GS</span><span class="op">&gt;</span>100 100 lineto</span>
+                        <span id="cb7-9"><a href="#cb7-9" aria-hidden="true"></a><span class="ex">GS</span><span class="op">&gt;</span>stroke</span>
+                        <span id="cb7-10"><a href="#cb7-10" aria-hidden="true"></a><span class="ex">GS</span><span class="op">&gt;</span></span></code></pre></div>
+                        <p>問題なく表示できる。</p>
+                        <p>いつか、Ghostscript上で「PostScriptを触ってみる」の記事を書きたい。もう失われた技術だから……</p>
                         <h2 id="月31日火"><a href="#31">01月31日(火)</a> <a id="31"></a></h2>
                         <p>matplotlibでfontが見つからないと言われる。</p>
-                        <div class="sourceCode" id="cb1"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a>findfont: Font family &#39;Times New Roman&#39; not found.</span>
-                        <span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a>findfont: Font family &#39;Times New Roman&#39; not found.</span>
-                        <span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a>findfont: Font family &#39;Times New Roman&#39; not found.</span>
-                        <span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a>findfont: Font family &#39;Times New Roman&#39; not found.</span>
-                        <span id="cb1-5"><a href="#cb1-5" aria-hidden="true"></a>findfont: Font family &#39;Times New Roman&#39; not found.</span>
-                        <span id="cb1-6"><a href="#cb1-6" aria-hidden="true"></a>findfont: Font family &#39;Times New Roman&#39; not found.</span>
-                        <span id="cb1-7"><a href="#cb1-7" aria-hidden="true"></a>findfont: Font family &#39;Times New Roman&#39; not found.</span>
-                        <span id="cb1-8"><a href="#cb1-8" aria-hidden="true"></a>findfont: Font family &#39;Times New Roman&#39; not found.</span></code></pre></div>
+                        <div class="sourceCode" id="cb8"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a>findfont: Font family &#39;Times New Roman&#39; not found.</span>
+                        <span id="cb8-2"><a href="#cb8-2" aria-hidden="true"></a>findfont: Font family &#39;Times New Roman&#39; not found.</span>
+                        <span id="cb8-3"><a href="#cb8-3" aria-hidden="true"></a>findfont: Font family &#39;Times New Roman&#39; not found.</span>
+                        <span id="cb8-4"><a href="#cb8-4" aria-hidden="true"></a>findfont: Font family &#39;Times New Roman&#39; not found.</span>
+                        <span id="cb8-5"><a href="#cb8-5" aria-hidden="true"></a>findfont: Font family &#39;Times New Roman&#39; not found.</span>
+                        <span id="cb8-6"><a href="#cb8-6" aria-hidden="true"></a>findfont: Font family &#39;Times New Roman&#39; not found.</span>
+                        <span id="cb8-7"><a href="#cb8-7" aria-hidden="true"></a>findfont: Font family &#39;Times New Roman&#39; not found.</span>
+                        <span id="cb8-8"><a href="#cb8-8" aria-hidden="true"></a>findfont: Font family &#39;Times New Roman&#39; not found.</span></code></pre></div>
                         <p>Ubuntu系なら以下でインストールできる。matplotlibのキャッシュを消しておかないといけない。</p>
-                        <div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="fu">sudo</span> apt install msttcorefonts -qq</span>
-                        <span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a><span class="fu">rm</span> ~/.cache/matplotlib -rf</span></code></pre></div>
+                        <div class="sourceCode" id="cb9"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a><span class="fu">sudo</span> apt install msttcorefonts -qq</span>
+                        <span id="cb9-2"><a href="#cb9-2" aria-hidden="true"></a><span class="fu">rm</span> ~/.cache/matplotlib -rf</span></code></pre></div>
                         <p>LaTeXで作ったPDFをChrome系(だからEdgeも)のブラウザで見るとおかしくなる現象、Ryumin-Light-Identity-Hの埋め込みが禁止されているから。</p>
-                        <div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a>$ <span class="ex">pdffonts.exe</span> thesis.pdf</span>
-                        <span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a><span class="ex">name</span>                                 type              encoding         emb sub uni object ID</span>
-                        <span id="cb3-3"><a href="#cb3-3" aria-hidden="true"></a><span class="ex">------------------------------------</span> ----------------- ---------------- --- --- --- ---------</span>
-                        <span id="cb3-4"><a href="#cb3-4" aria-hidden="true"></a><span class="ex">Ryumin-Light-Identity-H</span>              CID Type 0        Identity-H       no  no  no       5  0</span>
-                        <span id="cb3-5"><a href="#cb3-5" aria-hidden="true"></a><span class="ex">WMQMSW+CMR12</span>                         Type 1C           Builtin          yes yes yes      6  0</span>
-                        <span id="cb3-6"><a href="#cb3-6" aria-hidden="true"></a><span class="ex">YZOQWI+CMR10</span>                         Type 1C           Builtin          yes yes yes      7  0</span>
-                        <span id="cb3-7"><a href="#cb3-7" aria-hidden="true"></a><span class="ex">KOIXZI+CMR17</span>                         Type 1C           Builtin          yes yes yes     14  0</span>
-                        <span id="cb3-8"><a href="#cb3-8" aria-hidden="true"></a><span class="ex">GothicBBB-Medium-Identity-H</span>          CID Type 0        Identity-H       no  no  no      19  0</span>
-                        <span id="cb3-9"><a href="#cb3-9" aria-hidden="true"></a><span class="ex">YBBHUL+CMSS10</span>                        Type 1C           Builtin          yes yes yes     20  0</span>
-                        <span id="cb3-10"><a href="#cb3-10" aria-hidden="true"></a><span class="ex">EUWIXX+CMSS17</span>                        Type 1C           Builtin          yes yes yes     27  0</span></code></pre></div>
+                        <div class="sourceCode" id="cb10"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true"></a>$ <span class="ex">pdffonts.exe</span> thesis.pdf</span>
+                        <span id="cb10-2"><a href="#cb10-2" aria-hidden="true"></a><span class="ex">name</span>                                 type              encoding         emb sub uni object ID</span>
+                        <span id="cb10-3"><a href="#cb10-3" aria-hidden="true"></a><span class="ex">------------------------------------</span> ----------------- ---------------- --- --- --- ---------</span>
+                        <span id="cb10-4"><a href="#cb10-4" aria-hidden="true"></a><span class="ex">Ryumin-Light-Identity-H</span>              CID Type 0        Identity-H       no  no  no       5  0</span>
+                        <span id="cb10-5"><a href="#cb10-5" aria-hidden="true"></a><span class="ex">WMQMSW+CMR12</span>                         Type 1C           Builtin          yes yes yes      6  0</span>
+                        <span id="cb10-6"><a href="#cb10-6" aria-hidden="true"></a><span class="ex">YZOQWI+CMR10</span>                         Type 1C           Builtin          yes yes yes      7  0</span>
+                        <span id="cb10-7"><a href="#cb10-7" aria-hidden="true"></a><span class="ex">KOIXZI+CMR17</span>                         Type 1C           Builtin          yes yes yes     14  0</span>
+                        <span id="cb10-8"><a href="#cb10-8" aria-hidden="true"></a><span class="ex">GothicBBB-Medium-Identity-H</span>          CID Type 0        Identity-H       no  no  no      19  0</span>
+                        <span id="cb10-9"><a href="#cb10-9" aria-hidden="true"></a><span class="ex">YBBHUL+CMSS10</span>                        Type 1C           Builtin          yes yes yes     20  0</span>
+                        <span id="cb10-10"><a href="#cb10-10" aria-hidden="true"></a><span class="ex">EUWIXX+CMSS17</span>                        Type 1C           Builtin          yes yes yes     27  0</span></code></pre></div>
                         <p>Ryumin-Light-Identity-Hの埋め込みがnoになってる。この代替フォントとして、普通はMS Minchoを使うが、Chromeが変なフォントを探してしまうのでおかしくなるらしい。MS Minchoを指定して埋め込めなくもないが、かなり面倒なようだ。</p>
                         <p>うーん、「スパコンを使う以上、hardware-awareなコードを書きなさい」という気持ちはすごくわかるんだけど、例えば「hardware-awareなコードを書ける計算物性科学者」にそこまでのニーズがあるのか、と言われると、ユーザに時間をかけてそのスキルを身に着けてくださいとは強く言えないような……</p>
                         <p>論文がacceptされた！長かった。</p>
@@ -89,8 +125,8 @@
                         <h2 id="月20日金"><a href="#20">01月20日(金)</a> <a id="20"></a></h2>
                         <p>学生さんの論文がJPSJに掲載決定になった。よかった。</p>
                         <p>gprof、ちゃんとWSLでも使えるみたいだな。Macだと</p>
-                        <div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a>$ <span class="ex">g++</span> -pg test.cpp</span>
-                        <span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a><span class="ex">clang</span>: error: the clang compiler does not support -pg option on versions of OS X 10.9 and later</span></code></pre></div>
+                        <div class="sourceCode" id="cb11"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true"></a>$ <span class="ex">g++</span> -pg test.cpp</span>
+                        <span id="cb11-2"><a href="#cb11-2" aria-hidden="true"></a><span class="ex">clang</span>: error: the clang compiler does not support -pg option on versions of OS X 10.9 and later</span></code></pre></div>
                         <p>って言われて使えない。perfもダメっぽいですね。</p>
                         <p>WSLではperfはビルドできるが、(少なくとも2020年時点では)ハードウェアカウンタをサポートしていないっぽい。</p>
                         <p>学生用のPC、5台中4台注文した。カスタマイズは納期的に厳しく、ありものじゃないとダメっぽい。</p>
@@ -103,13 +139,13 @@
                         <p>メールいっぱいかいた。つかれた。</p>
                         <h2 id="月18日水"><a href="#18">01月18日(水)</a> <a id="18"></a></h2>
                         <p>Granger causality、statsmodelsをインストールして、</p>
-                        <div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="ex">python3</span> -m pip install statsmodels   </span></code></pre></div>
+                        <div class="sourceCode" id="cb12"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true"></a><span class="ex">python3</span> -m pip install statsmodels   </span></code></pre></div>
                         <p>必要なものをインポートして、</p>
-                        <div class="sourceCode" id="cb6"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="im">from</span> statsmodels.tsa.stattools <span class="im">import</span> grangercausalitytests</span></code></pre></div>
+                        <div class="sourceCode" id="cb13"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true"></a><span class="im">from</span> statsmodels.tsa.stattools <span class="im">import</span> grangercausalitytests</span></code></pre></div>
                         <p>適当にデータを作ってgrangercausalitytestsに食わせると</p>
-                        <div class="sourceCode" id="cb7"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a>grangercausalitytests(data, maxlag<span class="op">=</span>[<span class="dv">1</span>])</span></code></pre></div>
+                        <div class="sourceCode" id="cb14"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true"></a>grangercausalitytests(data, maxlag<span class="op">=</span>[<span class="dv">1</span>])</span></code></pre></div>
                         <p>結果が出てくる。楽ちんすぎる。dataは、<code>[N, 2]</code>の形の二次元配列で、二番目の変数が一番目の配列のデータにcausalityがあるかどうかを出力する。逆向きを調べたければ、</p>
-                        <div class="sourceCode" id="cb8"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a>grangercausalitytests(data[:, [<span class="dv">1</span>,<span class="dv">0</span>]], maxlag<span class="op">=</span>[<span class="dv">1</span>])</span></code></pre></div>
+                        <div class="sourceCode" id="cb15"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true"></a>grangercausalitytests(data[:, [<span class="dv">1</span>,<span class="dv">0</span>]], maxlag<span class="op">=</span>[<span class="dv">1</span>])</span></code></pre></div>
                         <p>でOK。VARモデルのtest_causalityだと、単なる乱数同士でもcausalityが出てしまう(棄却できない)。</p>
                         <h2 id="月17日火"><a href="#17">01月17日(火)</a> <a id="17"></a></h2>
                         <p>講義。</p>
@@ -136,33 +172,33 @@
                         <p>すごく忙しくしているのに、何一つできていない。なんか、自分だけが世の中から取り残されている気がする。</p>
                         <h2 id="月14日土"><a href="#14">01月14日(土)</a> <a id="14"></a></h2>
                         <p>PTEPの論文がMacでコンパイルできない問題、原因がわかった。ロゴのnewlog.epsの変換に失敗しているからだ。</p>
-                        <div class="sourceCode" id="cb9"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a><span class="ex">pstopdf</span> newlogo.eps</span></code></pre></div>
+                        <div class="sourceCode" id="cb16"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true"></a><span class="ex">pstopdf</span> newlogo.eps</span></code></pre></div>
                         <p>を実行するとコンパイルできる。うーん。</p>
                         <h2 id="月13日金"><a href="#13">01月13日(金)</a> <a id="13"></a></h2>
                         <p>学習指導の仕事にミス。</p>
                         <p>ポスドクさんの職位申請について失念してた。異動が決まったときにすぐに必要な手続きについて連絡すべきだった。</p>
                         <p>グループ写真作った。だいぶ大所帯になったなぁ。</p>
                         <p>いい加減Subversionが面倒になってきた。いま、ファイルを追加してコミットしようとしたら、</p>
-                        <div class="sourceCode" id="cb10"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true"></a>〜.pdfは追加準備状態となっていますが、存在しません</span></code></pre></div>
+                        <div class="sourceCode" id="cb17"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true"></a>〜.pdfは追加準備状態となっていますが、存在しません</span></code></pre></div>
                         <p>というエラーが出る。とりあえず</p>
-                        <div class="sourceCode" id="cb11"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true"></a><span class="fu">svn</span> rm *.pdf</span></code></pre></div>
+                        <div class="sourceCode" id="cb18"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true"></a><span class="fu">svn</span> rm *.pdf</span></code></pre></div>
                         <p>してから、ファイル名を英語にして改めて追加したらうまくいった。日本語だったのがまずかった？面倒なので深堀りしないけど。</p>
                         <p>論文修正しようとしたら、Formatting failed。Macのlatexindentが死んでいるらしい。</p>
-                        <div class="sourceCode" id="cb12"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true"></a>$ <span class="ex">latexindent</span> </span>
-                        <span id="cb12-2"><a href="#cb12-2" aria-hidden="true"></a><span class="ex">Can</span><span class="st">&#39;t locate File/HomeDir.pm in @INC (you may need to install the File::HomeDir module) (@INC contains: /usr/local/texlive/2022/texmf-dist/scripts/latexindent /Library/Perl/5.30/darwin-thread-multi-2level /Library/Perl/5.30 /Network/Library/Perl/5.30/darwin-thread-multi-2level /Network/Library/Perl/5.30 /Library/Perl/Updates/5.30.3 /System/Library/Perl/5.30/darwin-thread-multi-2level /System/Library/Perl/5.30 /System/Library/Perl/Extras/5.30/darwin-thread-multi-2level /System/Library/Perl/Extras/5.30) at /usr/local/texlive/2022/texmf-dist/scripts/latexindent/LatexIndent/GetYamlSettings.pm line 24.</span></span>
-                        <span id="cb12-3"><a href="#cb12-3" aria-hidden="true"></a><span class="st">BEGIN failed--compilation aborted at /usr/local/texlive/2022/texmf-dist/scripts/latexindent/LatexIndent/GetYamlSettings.pm line 24.</span></span>
-                        <span id="cb12-4"><a href="#cb12-4" aria-hidden="true"></a><span class="st">Compilation failed in require at /usr/local/texlive/2022/texmf-dist/scripts/latexindent/LatexIndent/Verbatim.pm line 23.</span></span>
-                        <span id="cb12-5"><a href="#cb12-5" aria-hidden="true"></a><span class="st">BEGIN failed--compilation aborted at /usr/local/texlive/2022/texmf-dist/scripts/latexindent/LatexIndent/Verbatim.pm line 23.</span></span>
-                        <span id="cb12-6"><a href="#cb12-6" aria-hidden="true"></a><span class="st">Compilation failed in require at /usr/local/texlive/2022/texmf-dist/scripts/latexindent/LatexIndent/Lines.pm line 23.</span></span>
-                        <span id="cb12-7"><a href="#cb12-7" aria-hidden="true"></a><span class="st">BEGIN failed--compilation aborted at /usr/local/texlive/2022/texmf-dist/scripts/latexindent/LatexIndent/Lines.pm line 23.</span></span>
-                        <span id="cb12-8"><a href="#cb12-8" aria-hidden="true"></a><span class="st">Compilation failed in require at /usr/local/texlive/2022/texmf-dist/scripts/latexindent/LatexIndent/Document.pm line 30.</span></span>
-                        <span id="cb12-9"><a href="#cb12-9" aria-hidden="true"></a><span class="st">BEGIN failed--compilation aborted at /usr/local/texlive/2022/texmf-dist/scripts/latexindent/LatexIndent/Document.pm line 30.</span></span>
-                        <span id="cb12-10"><a href="#cb12-10" aria-hidden="true"></a><span class="st">Compilation failed in require at /usr/local/bin/latexindent line 27.</span></span>
-                        <span id="cb12-11"><a href="#cb12-11" aria-hidden="true"></a><span class="st">BEGIN failed--compilation aborted at /usr/local/bin/latexindent line 27.</span></span></code></pre></div>
+                        <div class="sourceCode" id="cb19"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true"></a>$ <span class="ex">latexindent</span> </span>
+                        <span id="cb19-2"><a href="#cb19-2" aria-hidden="true"></a><span class="ex">Can</span><span class="st">&#39;t locate File/HomeDir.pm in @INC (you may need to install the File::HomeDir module) (@INC contains: /usr/local/texlive/2022/texmf-dist/scripts/latexindent /Library/Perl/5.30/darwin-thread-multi-2level /Library/Perl/5.30 /Network/Library/Perl/5.30/darwin-thread-multi-2level /Network/Library/Perl/5.30 /Library/Perl/Updates/5.30.3 /System/Library/Perl/5.30/darwin-thread-multi-2level /System/Library/Perl/5.30 /System/Library/Perl/Extras/5.30/darwin-thread-multi-2level /System/Library/Perl/Extras/5.30) at /usr/local/texlive/2022/texmf-dist/scripts/latexindent/LatexIndent/GetYamlSettings.pm line 24.</span></span>
+                        <span id="cb19-3"><a href="#cb19-3" aria-hidden="true"></a><span class="st">BEGIN failed--compilation aborted at /usr/local/texlive/2022/texmf-dist/scripts/latexindent/LatexIndent/GetYamlSettings.pm line 24.</span></span>
+                        <span id="cb19-4"><a href="#cb19-4" aria-hidden="true"></a><span class="st">Compilation failed in require at /usr/local/texlive/2022/texmf-dist/scripts/latexindent/LatexIndent/Verbatim.pm line 23.</span></span>
+                        <span id="cb19-5"><a href="#cb19-5" aria-hidden="true"></a><span class="st">BEGIN failed--compilation aborted at /usr/local/texlive/2022/texmf-dist/scripts/latexindent/LatexIndent/Verbatim.pm line 23.</span></span>
+                        <span id="cb19-6"><a href="#cb19-6" aria-hidden="true"></a><span class="st">Compilation failed in require at /usr/local/texlive/2022/texmf-dist/scripts/latexindent/LatexIndent/Lines.pm line 23.</span></span>
+                        <span id="cb19-7"><a href="#cb19-7" aria-hidden="true"></a><span class="st">BEGIN failed--compilation aborted at /usr/local/texlive/2022/texmf-dist/scripts/latexindent/LatexIndent/Lines.pm line 23.</span></span>
+                        <span id="cb19-8"><a href="#cb19-8" aria-hidden="true"></a><span class="st">Compilation failed in require at /usr/local/texlive/2022/texmf-dist/scripts/latexindent/LatexIndent/Document.pm line 30.</span></span>
+                        <span id="cb19-9"><a href="#cb19-9" aria-hidden="true"></a><span class="st">BEGIN failed--compilation aborted at /usr/local/texlive/2022/texmf-dist/scripts/latexindent/LatexIndent/Document.pm line 30.</span></span>
+                        <span id="cb19-10"><a href="#cb19-10" aria-hidden="true"></a><span class="st">Compilation failed in require at /usr/local/bin/latexindent line 27.</span></span>
+                        <span id="cb19-11"><a href="#cb19-11" aria-hidden="true"></a><span class="st">BEGIN failed--compilation aborted at /usr/local/bin/latexindent line 27.</span></span></code></pre></div>
                         <p>いやな感じだなぁ。とりあえず<code>File::HomeDir</code>入れてみましょうか。</p>
-                        <div class="sourceCode" id="cb13"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true"></a><span class="fu">sudo</span> perl -MCPAN -e <span class="st">&#39;install &quot;File::HomeDir&quot;&#39;</span></span></code></pre></div>
-                        <div class="sourceCode" id="cb14"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true"></a>$ <span class="ex">latexindent</span> </span>
-                        <span id="cb14-2"><a href="#cb14-2" aria-hidden="true"></a><span class="ex">Please</span> enter text to be indented: (press CTRL+D when finished)</span></code></pre></div>
+                        <div class="sourceCode" id="cb20"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true"></a><span class="fu">sudo</span> perl -MCPAN -e <span class="st">&#39;install &quot;File::HomeDir&quot;&#39;</span></span></code></pre></div>
+                        <div class="sourceCode" id="cb21"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true"></a>$ <span class="ex">latexindent</span> </span>
+                        <span id="cb21-2"><a href="#cb21-2" aria-hidden="true"></a><span class="ex">Please</span> enter text to be indented: (press CTRL+D when finished)</span></code></pre></div>
                         <p>あ、うまくいった。なんか時間かかりそうだったけど、あっさりできてよかった。</p>
                         <p>いやしかし、何を書いても文句を言う人がいる、という感じだなぁ……</p>
                         <p>うーん、例えばさ、初めてPIとなる人が、自分の研究室をどのように運営するかって悩むじゃない？もちろん自分の出身研究室は大いに参考になるけど、時代も変わってくわけだし。その時に、他の研究室がどう運営しているかを公開してくれてたら助かるじゃない。例えば研究室の連絡にLineやSlackを使ってるという話を聞くとして、具体的にどういう使い方をしているかって気になるじゃない。特にSlackみたいな自由度が高いツール、どう使えばよいかはわからないよね。</p>
@@ -175,7 +211,7 @@
                         <p>本格的始動。積み上がったタスクを見て萎える。</p>
                         <p>BGMは相変わらず avex 24/7 Music Live。相川七瀬の「Nostalgia」とか流れて来て、おっさん直撃。</p>
                         <p>git submodule管理している奴、<code>clone --recursive</code>すべきところをまたcloneしてしまった。その後</p>
-                        <div class="sourceCode" id="cb15"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true"></a><span class="fu">git</span> submodule update --init --recursive</span></code></pre></div>
+                        <div class="sourceCode" id="cb22"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true"></a><span class="fu">git</span> submodule update --init --recursive</span></code></pre></div>
                         <p>とすればOK。っていうか、submoduleがあるリポジトリをcloneしたら<code>--recursive</code>がデフォルトでついて欲しい(そういうオプションが欲しい)が。</p>
                         <p>会議２つ。学習指導のお仕事。</p>
                         <p>なんかここに書けない仕事を大量にこなしているのだが、ここに書けないので外からは何もしてないように見えて悲しい。</p>
@@ -213,11 +249,11 @@
                         <p>することは忘れていたということか。</p>
                         <p>「PDF版はこちら」で、リリースの方をリンクするのが良いのだろうか。一応<code>releases/latest</code>で最新リリースにリンクできるが、それだと、PDFのダウンロードに二回クリックが必要になってしまう。</p>
                         <p>・・・と思っていたが、今は</p>
-                        <div class="sourceCode" id="cb16"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true"></a>https://github.com/USER/PROJECT/releases/latest/download/package.zip</span></code></pre></div>
+                        <div class="sourceCode" id="cb23"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true"></a>https://github.com/USER/PROJECT/releases/latest/download/package.zip</span></code></pre></div>
                         <p>が、最新リリースの<code>package</code>にリダイレクトされるようになったらしい。</p>
                         <p>→<a href="https://stackoverflow.com/a/54836319">Is there a link to GitHub for downloading a file in the latest release of a repository?</a></p>
                         <p>つまり、リリースにPDFを含めることを忘れなければ、常に、</p>
-                        <div class="sourceCode" id="cb17"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true"></a>https://github.com/kaityo256/sevendayshpc/releases/latest/download/sevendayshpc.pdf</span></code></pre></div>
+                        <div class="sourceCode" id="cb24"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true"></a>https://github.com/kaityo256/sevendayshpc/releases/latest/download/sevendayshpc.pdf</span></code></pre></div>
                         <p>というリンクが最新のPDFを指すようになった。うん、リポジトリ直よりこっちの方が良いな。</p>
                         <h2 id="月07日土"><a href="#07">01月07日(土)</a> <a id="07"></a></h2>
                         <p>ワクチンを打ったのが14時。寒気がしはじめたのが5時。熱が上がりきったのが7時くらいかな。最高で37度9分。だいたい15時間くらいして発熱する感じかな。</p>
@@ -225,9 +261,9 @@
                         <h2 id="月06日金"><a href="#06">01月06日(金)</a> <a id="06"></a></h2>
                         <p>座長が決まらない。</p>
                         <p>Pythonのプロファイルを取るのはcProfileが良さそう。</p>
-                        <div class="sourceCode" id="cb18"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true"></a><span class="im">import</span> cProfile</span></code></pre></div>
+                        <div class="sourceCode" id="cb25"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true"></a><span class="im">import</span> cProfile</span></code></pre></div>
                         <p>しておいて、プロファイルを取りたい関数を</p>
-                        <div class="sourceCode" id="cb19"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true"></a>cProfile.run(<span class="st">&#39;hoge(foo)&#39;</span>)</span></code></pre></div>
+                        <div class="sourceCode" id="cb26"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true"></a>cProfile.run(<span class="st">&#39;hoge(foo)&#39;</span>)</span></code></pre></div>
                         <p>のように引数付きで文字列で渡す。</p>
                         <p>kerasのmodelによる予想、<code>model.predict</code>だとかなり遅い。<code>model.predict_on_batch</code>にするだけで相当早くなった。これ以上の高速化はコードの全書き換えになるので厳しい。GPGPUで実行しちゃうのが早い気がする。</p>
                         <p>会議。</p>
@@ -245,59 +281,59 @@
                         <p>夜中、流石にダルくなってきた。ワクチンの副作用かな。</p>
                         <h2 id="月05日木"><a href="#05">01月05日(木)</a> <a id="05"></a></h2>
                         <p>Tensorflowをインストールしようとしたら、こんな警告が。</p>
-                        <div class="sourceCode" id="cb20"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true"></a>/home/username/.pyenv/versions/anaconda3-5.3.1/lib/python3.7/site-packages/tensorboard/compat/tensorflow_stub/dtypes.py:541: FutureWarning: Passing (type, 1) or &#39;1type&#39; as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / &#39;(1,)type&#39;.</span>
-                        <span id="cb20-2"><a href="#cb20-2" aria-hidden="true"></a>  _np_qint8 = np.dtype([(&quot;qint8&quot;, np.int8, 1)])</span></code></pre></div>
+                        <div class="sourceCode" id="cb27"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true"></a>/home/username/.pyenv/versions/anaconda3-5.3.1/lib/python3.7/site-packages/tensorboard/compat/tensorflow_stub/dtypes.py:541: FutureWarning: Passing (type, 1) or &#39;1type&#39; as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / &#39;(1,)type&#39;.</span>
+                        <span id="cb27-2"><a href="#cb27-2" aria-hidden="true"></a>  _np_qint8 = np.dtype([(&quot;qint8&quot;, np.int8, 1)])</span></code></pre></div>
                         <p>これはNumPyのバージョンが合っていないのだそう。</p>
-                        <div class="sourceCode" id="cb21"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true"></a>ERROR: pip&#39;s dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.</span>
-                        <span id="cb21-2"><a href="#cb21-2" aria-hidden="true"></a>tensorflow-cpu 2.2.0 requires scipy==1.4.1; python_version &gt;= &quot;3&quot;, but you have scipy 1.6.1 which is incompatible.</span>
-                        <span id="cb21-3"><a href="#cb21-3" aria-hidden="true"></a>tensorflow-cpu 2.2.0 requires tensorboard&lt;2.3.0,&gt;=2.2.0, but you have tensorboard 1.13.1 which is incompatible.</span>
-                        <span id="cb21-4"><a href="#cb21-4" aria-hidden="true"></a>tensorflow-cpu 2.2.0 requires tensorflow-estimator&lt;2.3.0,&gt;=2.2.0, but you have tensorflow-estimator 1.13.0 which is incompatible.</span></code></pre></div>
+                        <div class="sourceCode" id="cb28"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true"></a>ERROR: pip&#39;s dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.</span>
+                        <span id="cb28-2"><a href="#cb28-2" aria-hidden="true"></a>tensorflow-cpu 2.2.0 requires scipy==1.4.1; python_version &gt;= &quot;3&quot;, but you have scipy 1.6.1 which is incompatible.</span>
+                        <span id="cb28-3"><a href="#cb28-3" aria-hidden="true"></a>tensorflow-cpu 2.2.0 requires tensorboard&lt;2.3.0,&gt;=2.2.0, but you have tensorboard 1.13.1 which is incompatible.</span>
+                        <span id="cb28-4"><a href="#cb28-4" aria-hidden="true"></a>tensorflow-cpu 2.2.0 requires tensorflow-estimator&lt;2.3.0,&gt;=2.2.0, but you have tensorflow-estimator 1.13.0 which is incompatible.</span></code></pre></div>
                         <p>全体でなんとかすると事故りそうなので、仮想環境でなんとかする。</p>
-                        <div class="sourceCode" id="cb22"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true"></a><span class="ex">python3</span> -m venv tf</span>
-                        <span id="cb22-2"><a href="#cb22-2" aria-hidden="true"></a><span class="bu">source</span> tf/bin/activate</span>
-                        <span id="cb22-3"><a href="#cb22-3" aria-hidden="true"></a><span class="ex">python3</span> -m pip install --upgrade pip</span>
-                        <span id="cb22-4"><a href="#cb22-4" aria-hidden="true"></a><span class="ex">python3</span> -m pip install tensorflow</span></code></pre></div>
+                        <div class="sourceCode" id="cb29"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true"></a><span class="ex">python3</span> -m venv tf</span>
+                        <span id="cb29-2"><a href="#cb29-2" aria-hidden="true"></a><span class="bu">source</span> tf/bin/activate</span>
+                        <span id="cb29-3"><a href="#cb29-3" aria-hidden="true"></a><span class="ex">python3</span> -m pip install --upgrade pip</span>
+                        <span id="cb29-4"><a href="#cb29-4" aria-hidden="true"></a><span class="ex">python3</span> -m pip install tensorflow</span></code></pre></div>
                         <p>だめだ。Pythonのバージョンがダメっぽい。</p>
-                        <div class="sourceCode" id="cb23"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true"></a>$ <span class="ex">pyenv</span> versions</span>
-                        <span id="cb23-2"><a href="#cb23-2" aria-hidden="true"></a>  <span class="ex">system</span></span>
-                        <span id="cb23-3"><a href="#cb23-3" aria-hidden="true"></a><span class="ex">*</span> anaconda3-5.3.1 (set by /home/watanabe/.pyenv/version)</span></code></pre></div>
+                        <div class="sourceCode" id="cb30"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true"></a>$ <span class="ex">pyenv</span> versions</span>
+                        <span id="cb30-2"><a href="#cb30-2" aria-hidden="true"></a>  <span class="ex">system</span></span>
+                        <span id="cb30-3"><a href="#cb30-3" aria-hidden="true"></a><span class="ex">*</span> anaconda3-5.3.1 (set by /home/watanabe/.pyenv/version)</span></code></pre></div>
                         <p>anacondaが悪さしてるっぽいのでsystemに変える。</p>
-                        <div class="sourceCode" id="cb24"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true"></a><span class="ex">pyenv</span> global system</span>
-                        <span id="cb24-2"><a href="#cb24-2" aria-hidden="true"></a>$ <span class="ex">python3</span> --version</span>
-                        <span id="cb24-3"><a href="#cb24-3" aria-hidden="true"></a><span class="ex">Python</span> 3.8.10</span></code></pre></div>
+                        <div class="sourceCode" id="cb31"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true"></a><span class="ex">pyenv</span> global system</span>
+                        <span id="cb31-2"><a href="#cb31-2" aria-hidden="true"></a>$ <span class="ex">python3</span> --version</span>
+                        <span id="cb31-3"><a href="#cb31-3" aria-hidden="true"></a><span class="ex">Python</span> 3.8.10</span></code></pre></div>
                         <p>venvしようとしたら、python3-venvがないと言われ、入れようとしたらパッケージがたりないからapt-get update しろと言われる。 あらためて-m venvしようとしたらpipがないと言われる。</p>
-                        <div class="sourceCode" id="cb25"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true"></a><span class="fu">sudo</span> apt-get update</span>
-                        <span id="cb25-2"><a href="#cb25-2" aria-hidden="true"></a><span class="fu">sudo</span> apt-get install python3.8-venv</span>
-                        <span id="cb25-3"><a href="#cb25-3" aria-hidden="true"></a><span class="fu">sudo</span> apt install pip</span></code></pre></div>
+                        <div class="sourceCode" id="cb32"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true"></a><span class="fu">sudo</span> apt-get update</span>
+                        <span id="cb32-2"><a href="#cb32-2" aria-hidden="true"></a><span class="fu">sudo</span> apt-get install python3.8-venv</span>
+                        <span id="cb32-3"><a href="#cb32-3" aria-hidden="true"></a><span class="fu">sudo</span> apt install pip</span></code></pre></div>
                         <p>あらためてもう一回。</p>
-                        <div class="sourceCode" id="cb26"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true"></a><span class="ex">python3</span> -m venv tf</span>
-                        <span id="cb26-2"><a href="#cb26-2" aria-hidden="true"></a><span class="bu">source</span> tf/bin/activate</span>
-                        <span id="cb26-3"><a href="#cb26-3" aria-hidden="true"></a><span class="ex">python3</span> -m pip install --upgrade pip</span>
-                        <span id="cb26-4"><a href="#cb26-4" aria-hidden="true"></a><span class="ex">python3</span> -m pip install tensorflow</span>
-                        <span id="cb26-5"><a href="#cb26-5" aria-hidden="true"></a><span class="ex">python3</span> -m pip install matplotlib</span></code></pre></div>
+                        <div class="sourceCode" id="cb33"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true"></a><span class="ex">python3</span> -m venv tf</span>
+                        <span id="cb33-2"><a href="#cb33-2" aria-hidden="true"></a><span class="bu">source</span> tf/bin/activate</span>
+                        <span id="cb33-3"><a href="#cb33-3" aria-hidden="true"></a><span class="ex">python3</span> -m pip install --upgrade pip</span>
+                        <span id="cb33-4"><a href="#cb33-4" aria-hidden="true"></a><span class="ex">python3</span> -m pip install tensorflow</span>
+                        <span id="cb33-5"><a href="#cb33-5" aria-hidden="true"></a><span class="ex">python3</span> -m pip install matplotlib</span></code></pre></div>
                         <p>できた。tensoflowをインストールする時に、必要なバージョンを指定してnumpyだのscipyだのインストールしてくれるから、これでOK。</p>
                         <p>いやしかし面倒だなぁ。</p>
                         <p>TensorFlow.kerasで、モデルを保存してから読み込むと、</p>
-                        <div class="sourceCode" id="cb27"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).layer_with_weights-0.kernel</span>
-                        <span id="cb27-2"><a href="#cb27-2" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).layer_with_weights-0.bias</span>
-                        <span id="cb27-3"><a href="#cb27-3" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).layer_with_weights-1.kernel</span>
-                        <span id="cb27-4"><a href="#cb27-4" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).layer_with_weights-1.bias</span>
-                        <span id="cb27-5"><a href="#cb27-5" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).layer_with_weights-2.kernel</span>
-                        <span id="cb27-6"><a href="#cb27-6" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).layer_with_weights-2.bias</span>
-                        <span id="cb27-7"><a href="#cb27-7" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.1</span>
-                        <span id="cb27-8"><a href="#cb27-8" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.2</span>
-                        <span id="cb27-9"><a href="#cb27-9" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.3</span>
-                        <span id="cb27-10"><a href="#cb27-10" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.4</span>
-                        <span id="cb27-11"><a href="#cb27-11" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.5</span>
-                        <span id="cb27-12"><a href="#cb27-12" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.6</span>
-                        <span id="cb27-13"><a href="#cb27-13" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.7</span>
-                        <span id="cb27-14"><a href="#cb27-14" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.8</span>
-                        <span id="cb27-15"><a href="#cb27-15" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.9</span>
-                        <span id="cb27-16"><a href="#cb27-16" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.10</span>
-                        <span id="cb27-17"><a href="#cb27-17" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.11</span>
-                        <span id="cb27-18"><a href="#cb27-18" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.12</span></code></pre></div>
+                        <div class="sourceCode" id="cb34"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).layer_with_weights-0.kernel</span>
+                        <span id="cb34-2"><a href="#cb34-2" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).layer_with_weights-0.bias</span>
+                        <span id="cb34-3"><a href="#cb34-3" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).layer_with_weights-1.kernel</span>
+                        <span id="cb34-4"><a href="#cb34-4" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).layer_with_weights-1.bias</span>
+                        <span id="cb34-5"><a href="#cb34-5" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).layer_with_weights-2.kernel</span>
+                        <span id="cb34-6"><a href="#cb34-6" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).layer_with_weights-2.bias</span>
+                        <span id="cb34-7"><a href="#cb34-7" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.1</span>
+                        <span id="cb34-8"><a href="#cb34-8" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.2</span>
+                        <span id="cb34-9"><a href="#cb34-9" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.3</span>
+                        <span id="cb34-10"><a href="#cb34-10" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.4</span>
+                        <span id="cb34-11"><a href="#cb34-11" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.5</span>
+                        <span id="cb34-12"><a href="#cb34-12" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.6</span>
+                        <span id="cb34-13"><a href="#cb34-13" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.7</span>
+                        <span id="cb34-14"><a href="#cb34-14" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.8</span>
+                        <span id="cb34-15"><a href="#cb34-15" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.9</span>
+                        <span id="cb34-16"><a href="#cb34-16" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.10</span>
+                        <span id="cb34-17"><a href="#cb34-17" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.11</span>
+                        <span id="cb34-18"><a href="#cb34-18" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.12</span></code></pre></div>
                         <p>みたいなエラーが大量に出る問題、モデルの重みだけでなく、optimizerの状態を復元んしようとして失敗しているのが原因らしい。最適化を続けるのでなければモデルの重みだけで良いので、</p>
-                        <div class="sourceCode" id="cb28"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true"></a>model.load_weights(<span class="st">&#39;filename&#39;</span>).expect_partial()</span></code></pre></div>
+                        <div class="sourceCode" id="cb35"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true"></a>model.load_weights(<span class="st">&#39;filename&#39;</span>).expect_partial()</span></code></pre></div>
                         <p>と<code>expect_partial()</code>をつければOK。</p>
                         <h2 id="月04日水"><a href="#04">01月04日(水)</a> <a id="04"></a></h2>
                         <p>情報処理学会プログラム編成準備。学生さんの卒論チェック。</p>
