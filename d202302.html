@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+                <title>2023年1月</title>
+    <style type="text/css">
+      code {
+        white-space: pre;
+      }
+    </style>
+        <style type="text/css"></style>
+
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- link rel="stylesheet" href="github-markdown.css" type="text/css" / -->
+          </head>
+
+  <body>
+    <article class="markdown-body">
+                        <h1 id="年1月">2023年1月</h1>
+                        <p><a href="index.html">ログ一覧</a></p>
+                        <h2 id="月01日水"><a href="#01">02月01日(水)</a> <a id="01"></a></h2>
+                        <p>Macでepsを見る手段がない。いろいろ調べたが、一番楽なのはX立ち上げてevinceで見ることか？</p>
+                        <div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="ex">brew</span> install evince</span></code></pre></div>
+                        <p>だめだ。Macのevinceはepsが表示できない。「ファイルタイプ text(text/*)はサポートしていません」になってしまう。</p>
+                        <p>Inkscapeとかで見る方法も無いことはないが、多分Docker上のUbuntuでX飛ばしてevinceで見た方が楽だわ。もしくは研究室サーバでX飛ばすか。</p>
+                        <p>事前にXQuartzの設定で「セキュリティ」の「接続を認証」及び「ネットワーク・クライアントからの接続を許可」しておく必要がある。</p>
+                        <p>その上でX11の情報を共有してUbuntuを起動。</p>
+                        <div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="ex">docker</span> run -it -e DISPLAY=<span class="va">$(</span><span class="fu">hostname</span><span class="va">)</span>:0 -v ~/.Xauthority:/root/.Xauthority ubuntu </span></code></pre></div>
+                        <p>その後Xをインストール。</p>
+                        <div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="ex">apt-get</span> update</span>
+                        <span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a><span class="ex">apt-get</span> -y install xserver-xorg x11-apps</span></code></pre></div>
+                        <div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="ex">xeyes</span></span></code></pre></div>
+                        <p>起動できた。</p>
+                        <div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="ex">apt-get</span> -y install evince poppler-data</span></code></pre></div>
+                        <p>なんかepsを作ってみるか。</p>
+                        <div class="sourceCode" id="cb6"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a>$ <span class="ex">apt-get</span> install -y gnuplot</span>
+                        <span id="cb6-2"><a href="#cb6-2" aria-hidden="true"></a>$ <span class="ex">gnuplot</span></span>
+                        <span id="cb6-3"><a href="#cb6-3" aria-hidden="true"></a><span class="ex">gnuplot</span><span class="op">&gt;</span> set term eps</span>
+                        <span id="cb6-4"><a href="#cb6-4" aria-hidden="true"></a><span class="ex">gnuplot</span><span class="op">&gt;</span> set out <span class="st">&quot;test.eps&quot;</span></span>
+                        <span id="cb6-5"><a href="#cb6-5" aria-hidden="true"></a><span class="ex">gnuplot</span><span class="op">&gt;</span> p sin(x)</span>
+                        <span id="cb6-6"><a href="#cb6-6" aria-hidden="true"></a><span class="ex">gnuplot</span><span class="op">&gt;</span> exit</span>
+                        <span id="cb6-7"><a href="#cb6-7" aria-hidden="true"></a>$ <span class="ex">evince</span> test.eps</span></code></pre></div>
+                        <p>なんの問題もなく表示できる。これでローカルをディレクトリをマウントして表示するのが一番楽なんじゃ・・・。</p>
+                        <p>ついでにghostscriptも動かしてみる。</p>
+                        <div class="sourceCode" id="cb7"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a>$ <span class="ex">apt-get</span> install -y gv</span>
+                        <span id="cb7-2"><a href="#cb7-2" aria-hidden="true"></a>$ <span class="ex">ghostscript</span></span>
+                        <span id="cb7-3"><a href="#cb7-3" aria-hidden="true"></a><span class="ex">GPL</span> Ghostscript 9.55.0 (2021-09-27)</span>
+                        <span id="cb7-4"><a href="#cb7-4" aria-hidden="true"></a><span class="ex">Copyright</span> (C) <span class="ex">2021</span> Artifex Software, Inc.  All rights reserved.</span>
+                        <span id="cb7-5"><a href="#cb7-5" aria-hidden="true"></a><span class="ex">This</span> software is supplied under the GNU AGPLv3 and comes with NO WARRANTY:</span>
+                        <span id="cb7-6"><a href="#cb7-6" aria-hidden="true"></a><span class="ex">see</span> the file COPYING for details.</span>
+                        <span id="cb7-7"><a href="#cb7-7" aria-hidden="true"></a><span class="ex">GS</span><span class="op">&gt;</span>0 0 moveto</span>
+                        <span id="cb7-8"><a href="#cb7-8" aria-hidden="true"></a><span class="ex">GS</span><span class="op">&gt;</span>100 100 lineto</span>
+                        <span id="cb7-9"><a href="#cb7-9" aria-hidden="true"></a><span class="ex">GS</span><span class="op">&gt;</span>stroke</span>
+                        <span id="cb7-10"><a href="#cb7-10" aria-hidden="true"></a><span class="ex">GS</span><span class="op">&gt;</span></span></code></pre></div>
+                        <p>問題なく表示できる。</p>
+                        <p>いつか、Ghostscript上で「PostScriptを触ってみる」の記事を書きたい。もう失われた技術だから……</p>
+                        <p>普通に間違えて2月の日記を1月に書いてた。まだ1月であって欲しいという願望の現れか。</p>
+          </article>
+  </body>
+
+  </html>
