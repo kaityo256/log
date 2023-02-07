@@ -34,6 +34,8 @@
                         <p>これで後はコミットすればOK。</p>
                         <p>VSCode上でdiffを見ようと思ってGit Lensを導入……したが、使い方がよくわからなかった。以前もインストールしたような気がしたが、と思ったが、これ、Git管理されているファイルの変更されたすべての行にいちいちアノテーションがつくのが鬱陶しくてやめたんだ。とりあえずアンインストール。</p>
                         <p>研究室Wiki(Pukiwikiで運用)が使いづらくて仕方ないので、GitHubのプライベートリポジトリへ移行する。とりあえずリポジトリを作って、2020年度の卒論だけ追加しておいた。</p>
+                        <p>Gitの日本語diff、なかなかうまくいかなかったんだけど、多分これでできた。</p>
+                        <div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="fu">git</span> diff --word-diff-regex=. main thesis.tex</span></code></pre></div>
                         <h2 id="月06日月"><a href="#06">02月06日(月)</a> <a id="06"></a></h2>
                         <p>学生さんの論文再投稿。</p>
                         <p>卒論の修正。</p>
@@ -55,38 +57,38 @@
                         <p>卒論発表会。査読レポートへの返事作成。</p>
                         <h2 id="月01日水"><a href="#01">02月01日(水)</a> <a id="01"></a></h2>
                         <p>Macでepsを見る手段がない。いろいろ調べたが、一番楽なのはX立ち上げてevinceで見ることか？</p>
-                        <div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="ex">brew</span> install evince</span></code></pre></div>
+                        <div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="ex">brew</span> install evince</span></code></pre></div>
                         <p>だめだ。Macのevinceはepsが表示できない。「ファイルタイプ text(text/*)はサポートしていません」になってしまう。</p>
                         <p>Inkscapeとかで見る方法も無いことはないが、多分Docker上のUbuntuでX飛ばしてevinceで見た方が楽だわ。もしくは研究室サーバでX飛ばすか。</p>
                         <p>事前にXQuartzの設定で「セキュリティ」の「接続を認証」及び「ネットワーク・クライアントからの接続を許可」しておく必要がある。</p>
                         <p>その上でX11の情報を共有してUbuntuを起動。</p>
-                        <div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="ex">docker</span> run -it -e DISPLAY=<span class="va">$(</span><span class="fu">hostname</span><span class="va">)</span>:0 -v ~/.Xauthority:/root/.Xauthority ubuntu </span></code></pre></div>
+                        <div class="sourceCode" id="cb6"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="ex">docker</span> run -it -e DISPLAY=<span class="va">$(</span><span class="fu">hostname</span><span class="va">)</span>:0 -v ~/.Xauthority:/root/.Xauthority ubuntu </span></code></pre></div>
                         <p>その後Xをインストール。</p>
-                        <div class="sourceCode" id="cb6"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="ex">apt-get</span> update</span>
-                        <span id="cb6-2"><a href="#cb6-2" aria-hidden="true"></a><span class="ex">apt-get</span> -y install xserver-xorg x11-apps</span></code></pre></div>
-                        <div class="sourceCode" id="cb7"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a><span class="ex">xeyes</span></span></code></pre></div>
+                        <div class="sourceCode" id="cb7"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a><span class="ex">apt-get</span> update</span>
+                        <span id="cb7-2"><a href="#cb7-2" aria-hidden="true"></a><span class="ex">apt-get</span> -y install xserver-xorg x11-apps</span></code></pre></div>
+                        <div class="sourceCode" id="cb8"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a><span class="ex">xeyes</span></span></code></pre></div>
                         <p>起動できた。</p>
-                        <div class="sourceCode" id="cb8"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a><span class="ex">apt-get</span> -y install evince poppler-data</span></code></pre></div>
+                        <div class="sourceCode" id="cb9"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a><span class="ex">apt-get</span> -y install evince poppler-data</span></code></pre></div>
                         <p>なんかepsを作ってみるか。</p>
-                        <div class="sourceCode" id="cb9"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a>$ <span class="ex">apt-get</span> install -y gnuplot</span>
-                        <span id="cb9-2"><a href="#cb9-2" aria-hidden="true"></a>$ <span class="ex">gnuplot</span></span>
-                        <span id="cb9-3"><a href="#cb9-3" aria-hidden="true"></a><span class="ex">gnuplot</span><span class="op">&gt;</span> set term eps</span>
-                        <span id="cb9-4"><a href="#cb9-4" aria-hidden="true"></a><span class="ex">gnuplot</span><span class="op">&gt;</span> set out <span class="st">&quot;test.eps&quot;</span></span>
-                        <span id="cb9-5"><a href="#cb9-5" aria-hidden="true"></a><span class="ex">gnuplot</span><span class="op">&gt;</span> p sin(x)</span>
-                        <span id="cb9-6"><a href="#cb9-6" aria-hidden="true"></a><span class="ex">gnuplot</span><span class="op">&gt;</span> exit</span>
-                        <span id="cb9-7"><a href="#cb9-7" aria-hidden="true"></a>$ <span class="ex">evince</span> test.eps</span></code></pre></div>
+                        <div class="sourceCode" id="cb10"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true"></a>$ <span class="ex">apt-get</span> install -y gnuplot</span>
+                        <span id="cb10-2"><a href="#cb10-2" aria-hidden="true"></a>$ <span class="ex">gnuplot</span></span>
+                        <span id="cb10-3"><a href="#cb10-3" aria-hidden="true"></a><span class="ex">gnuplot</span><span class="op">&gt;</span> set term eps</span>
+                        <span id="cb10-4"><a href="#cb10-4" aria-hidden="true"></a><span class="ex">gnuplot</span><span class="op">&gt;</span> set out <span class="st">&quot;test.eps&quot;</span></span>
+                        <span id="cb10-5"><a href="#cb10-5" aria-hidden="true"></a><span class="ex">gnuplot</span><span class="op">&gt;</span> p sin(x)</span>
+                        <span id="cb10-6"><a href="#cb10-6" aria-hidden="true"></a><span class="ex">gnuplot</span><span class="op">&gt;</span> exit</span>
+                        <span id="cb10-7"><a href="#cb10-7" aria-hidden="true"></a>$ <span class="ex">evince</span> test.eps</span></code></pre></div>
                         <p>なんの問題もなく表示できる。これでローカルをディレクトリをマウントして表示するのが一番楽なんじゃ・・・。</p>
                         <p>ついでにghostscriptも動かしてみる。</p>
-                        <div class="sourceCode" id="cb10"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true"></a>$ <span class="ex">apt-get</span> install -y gv</span>
-                        <span id="cb10-2"><a href="#cb10-2" aria-hidden="true"></a>$ <span class="ex">ghostscript</span></span>
-                        <span id="cb10-3"><a href="#cb10-3" aria-hidden="true"></a><span class="ex">GPL</span> Ghostscript 9.55.0 (2021-09-27)</span>
-                        <span id="cb10-4"><a href="#cb10-4" aria-hidden="true"></a><span class="ex">Copyright</span> (C) <span class="ex">2021</span> Artifex Software, Inc.  All rights reserved.</span>
-                        <span id="cb10-5"><a href="#cb10-5" aria-hidden="true"></a><span class="ex">This</span> software is supplied under the GNU AGPLv3 and comes with NO WARRANTY:</span>
-                        <span id="cb10-6"><a href="#cb10-6" aria-hidden="true"></a><span class="ex">see</span> the file COPYING for details.</span>
-                        <span id="cb10-7"><a href="#cb10-7" aria-hidden="true"></a><span class="ex">GS</span><span class="op">&gt;</span>0 0 moveto</span>
-                        <span id="cb10-8"><a href="#cb10-8" aria-hidden="true"></a><span class="ex">GS</span><span class="op">&gt;</span>100 100 lineto</span>
-                        <span id="cb10-9"><a href="#cb10-9" aria-hidden="true"></a><span class="ex">GS</span><span class="op">&gt;</span>stroke</span>
-                        <span id="cb10-10"><a href="#cb10-10" aria-hidden="true"></a><span class="ex">GS</span><span class="op">&gt;</span></span></code></pre></div>
+                        <div class="sourceCode" id="cb11"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true"></a>$ <span class="ex">apt-get</span> install -y gv</span>
+                        <span id="cb11-2"><a href="#cb11-2" aria-hidden="true"></a>$ <span class="ex">ghostscript</span></span>
+                        <span id="cb11-3"><a href="#cb11-3" aria-hidden="true"></a><span class="ex">GPL</span> Ghostscript 9.55.0 (2021-09-27)</span>
+                        <span id="cb11-4"><a href="#cb11-4" aria-hidden="true"></a><span class="ex">Copyright</span> (C) <span class="ex">2021</span> Artifex Software, Inc.  All rights reserved.</span>
+                        <span id="cb11-5"><a href="#cb11-5" aria-hidden="true"></a><span class="ex">This</span> software is supplied under the GNU AGPLv3 and comes with NO WARRANTY:</span>
+                        <span id="cb11-6"><a href="#cb11-6" aria-hidden="true"></a><span class="ex">see</span> the file COPYING for details.</span>
+                        <span id="cb11-7"><a href="#cb11-7" aria-hidden="true"></a><span class="ex">GS</span><span class="op">&gt;</span>0 0 moveto</span>
+                        <span id="cb11-8"><a href="#cb11-8" aria-hidden="true"></a><span class="ex">GS</span><span class="op">&gt;</span>100 100 lineto</span>
+                        <span id="cb11-9"><a href="#cb11-9" aria-hidden="true"></a><span class="ex">GS</span><span class="op">&gt;</span>stroke</span>
+                        <span id="cb11-10"><a href="#cb11-10" aria-hidden="true"></a><span class="ex">GS</span><span class="op">&gt;</span></span></code></pre></div>
                         <p>問題なく表示できる。</p>
                         <p>いつか、Ghostscript上で「PostScriptを触ってみる」の記事を書きたい。もう失われた技術だから……</p>
                         <p>普通に間違えて2月の日記を1月に書いてた。まだ1月であって欲しいという願望の現れか。</p>
