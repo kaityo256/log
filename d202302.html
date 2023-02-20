@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="generator" content="pandoc">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-                <title>2023年1月</title>
+                <title>d202302</title>
     <style type="text/css">
       code {
         white-space: pre;
@@ -22,6 +22,36 @@
     <article class="markdown-body">
                         <h1 id="年1月">2023年1月</h1>
                         <p><a href="index.html">ログ一覧</a></p>
+                        <h2 id="月20日月"><a href="#20">02月20日(月)</a> <a id="20"></a></h2>
+                        <p>MusikaをGoogle Colabで動かそうとすると、WAVファイルはできるのだが、<code>IPython.display.Audio</code>で読み込もうとするとランタイムが切断されてしまう。 SciPiでWAVを一度NumPy配列にすればOKだが、SciPyのreadだと左右2チャンネルが(length, 2)の形になるが、Audioで読み込ませるためには(2, length)でなければならないのでtransposeが必要。また、ファイル名が毎回変わるのにも対応しないといけない。</p>
+                        <p>最終的にこうなった。</p>
+                        <div class="sourceCode" id="cb1"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="im">import</span> IPython</span>
+                        <span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+                        <span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a><span class="im">from</span> scipy.io.wavfile <span class="im">import</span> read</span>
+                        <span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a><span class="im">import</span> glob</span>
+                        <span id="cb1-5"><a href="#cb1-5" aria-hidden="true"></a><span class="op">!</span>git clone https:<span class="op">//</span>github.com<span class="op">/</span>marcoppasini<span class="op">/</span>musika</span>
+                        <span id="cb1-6"><a href="#cb1-6" aria-hidden="true"></a><span class="op">%</span>cd musika</span>
+                        <span id="cb1-7"><a href="#cb1-7" aria-hidden="true"></a><span class="op">!</span>pip install <span class="op">-</span>r requirements.txt</span>
+                        <span id="cb1-8"><a href="#cb1-8" aria-hidden="true"></a><span class="op">!</span>python musika_generate.py <span class="op">--</span>load_path checkpoints<span class="op">/</span>techno <span class="op">--</span>num_samples <span class="dv">1</span> <span class="op">--</span>seconds <span class="dv">10</span> <span class="op">--</span>save_path .<span class="op">/</span>generate</span>
+                        <span id="cb1-9"><a href="#cb1-9" aria-hidden="true"></a><span class="bu">file</span> <span class="op">=</span> glob.glob(<span class="st">&quot;/content/musika/generate/*.wav&quot;</span>)[<span class="dv">0</span>]</span>
+                        <span id="cb1-10"><a href="#cb1-10" aria-hidden="true"></a>rate, data <span class="op">=</span> read(<span class="bu">file</span>)</span>
+                        <span id="cb1-11"><a href="#cb1-11" aria-hidden="true"></a>IPython.display.Audio(data.transpose(), rate<span class="op">=</span>rate)</span></code></pre></div>
+                        <p>Comp. Phys. Commun.に論文投稿準備する。RevTeXでいけそうな気もするが、公式はelsarticle.clsを推奨している。</p>
+                        <p><a href="https://ctan.org/tex-archive/macros/latex/contrib/elsarticle">https://ctan.org/tex-archive/macros/latex/contrib/elsarticle</a>からzipをダウンロード。</p>
+                        <div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="bu">cd</span> build</span>
+                        <span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a><span class="fu">wget</span> http://mirrors.ctan.org/macros/latex/contrib/elsarticle.zip</span>
+                        <span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a><span class="fu">unzip</span> elsarticle.zip </span>
+                        <span id="cb2-4"><a href="#cb2-4" aria-hidden="true"></a><span class="bu">cd</span> elsarticle  </span>
+                        <span id="cb2-5"><a href="#cb2-5" aria-hidden="true"></a><span class="ex">latex</span> elsarticle.ins</span>
+                        <span id="cb2-6"><a href="#cb2-6" aria-hidden="true"></a><span class="ex">latexmk</span> elsarticle-template-harv</span></code></pre></div>
+                        <p>insファイルのコンパイルによりclsファイルができる。とりあえずclsファイルとテンプレートtexだけでコンパイルできることを確認。GitHubに学生さん論文用のリポジトリを作成。もう少し中身を書いたら学生さんを招待する。</p>
+                        <h2 id="月29日日"><a href="#19">02月29日(日)</a> <a id="19"></a></h2>
+                        <p>講義ノートの進捗が悪くて気が滅入るので、GhostscriptでPostScriptをいじる記事を書いた。</p>
+                        <p><a href="https://zenn.dev/kaityo256/articles/ghostscript_sample">PostScript言語を触ってみる</a></p>
+                        <h2 id="月18日土"><a href="#18">02月18日(土)</a> <a id="18"></a></h2>
+                        <p>NOP</p>
+                        <h2 id="月17日金"><a href="#17">02月17日(金)</a> <a id="17"></a></h2>
+                        <p>1on1 x2。</p>
                         <h2 id="月16日木"><a href="#16">02月16日(木)</a> <a id="16"></a></h2>
                         <p>新メンバーの1on1が始まった。これからテーマ決め。</p>
                         <p>研究室ミーティング。今日は論文紹介のやり方＋模範演技。</p>
@@ -68,18 +98,18 @@
                         <p>その後、学習指導の事後処理にものすごく時間がかかった。</p>
                         <h2 id="月07日火"><a href="#07">02月07日(火)</a> <a id="07"></a></h2>
                         <p>gitでsubmoduleがおかしくなり、git pullとかしようとしても</p>
-                        <div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="ex">fatal</span>: no submodule mapping found in .gitmodules for path <span class="st">&#39;submodule&#39;</span></span></code></pre></div>
+                        <div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="ex">fatal</span>: no submodule mapping found in .gitmodules for path <span class="st">&#39;submodule&#39;</span></span></code></pre></div>
                         <p>とか言われてしまうようになった。Gitとしてはsubmobuleがあると認識しているのに、<code>.gitsubmodule</code>もないし、<code>.git/config</code>にも情報がない。</p>
                         <p>これを直すには、まずファイルパーミッションがSubmoduleになっているものを探す。</p>
-                        <div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a>$ <span class="fu">git</span> ls-files --stage <span class="kw">|</span> <span class="fu">grep</span> 160000</span>
-                        <span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a><span class="ex">160000</span> 71de7d435da4887140e445a5caf1cdf0e1a3119b 0 submodule</span></code></pre></div>
+                        <div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a>$ <span class="fu">git</span> ls-files --stage <span class="kw">|</span> <span class="fu">grep</span> 160000</span>
+                        <span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a><span class="ex">160000</span> 71de7d435da4887140e445a5caf1cdf0e1a3119b 0 submodule</span></code></pre></div>
                         <p>これを削除する。</p>
-                        <div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="fu">git</span> rm --cached submodule</span></code></pre></div>
+                        <div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="fu">git</span> rm --cached submodule</span></code></pre></div>
                         <p>これで後はコミットすればOK。</p>
                         <p>VSCode上でdiffを見ようと思ってGit Lensを導入……したが、使い方がよくわからなかった。以前もインストールしたような気がしたが、と思ったが、これ、Git管理されているファイルの変更されたすべての行にいちいちアノテーションがつくのが鬱陶しくてやめたんだ。とりあえずアンインストール。</p>
                         <p>研究室Wiki(Pukiwikiで運用)が使いづらくて仕方ないので、GitHubのプライベートリポジトリへ移行する。とりあえずリポジトリを作って、2020年度の卒論だけ追加しておいた。</p>
                         <p>Gitの日本語diff、なかなかうまくいかなかったんだけど、多分これでできた。</p>
-                        <div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="fu">git</span> diff --word-diff-regex=. main thesis.tex</span></code></pre></div>
+                        <div class="sourceCode" id="cb6"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="fu">git</span> diff --word-diff-regex=. main thesis.tex</span></code></pre></div>
                         <p>プログラミング基礎同演習、採点確定した。</p>
                         <p>修士論文発表会の準備した。発表セットに会場案内図、プログラムを印刷して配る。今回からレーザーポインタとType-Cコネクタが追加。</p>
                         <p>特異値分解論文のProof返した。</p>
@@ -104,38 +134,38 @@
                         <p>卒論発表会。査読レポートへの返事作成。</p>
                         <h2 id="月01日水"><a href="#01">02月01日(水)</a> <a id="01"></a></h2>
                         <p>Macでepsを見る手段がない。いろいろ調べたが、一番楽なのはX立ち上げてevinceで見ることか？</p>
-                        <div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="ex">brew</span> install evince</span></code></pre></div>
+                        <div class="sourceCode" id="cb7"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a><span class="ex">brew</span> install evince</span></code></pre></div>
                         <p>だめだ。Macのevinceはepsが表示できない。「ファイルタイプ text(text/*)はサポートしていません」になってしまう。</p>
                         <p>Inkscapeとかで見る方法も無いことはないが、多分Docker上のUbuntuでX飛ばしてevinceで見た方が楽だわ。もしくは研究室サーバでX飛ばすか。</p>
                         <p>事前にXQuartzの設定で「セキュリティ」の「接続を認証」及び「ネットワーク・クライアントからの接続を許可」しておく必要がある。</p>
                         <p>その上でX11の情報を共有してUbuntuを起動。</p>
-                        <div class="sourceCode" id="cb6"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="ex">docker</span> run -it -e DISPLAY=<span class="va">$(</span><span class="fu">hostname</span><span class="va">)</span>:0 -v ~/.Xauthority:/root/.Xauthority ubuntu </span></code></pre></div>
+                        <div class="sourceCode" id="cb8"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a><span class="ex">docker</span> run -it -e DISPLAY=<span class="va">$(</span><span class="fu">hostname</span><span class="va">)</span>:0 -v ~/.Xauthority:/root/.Xauthority ubuntu </span></code></pre></div>
                         <p>その後Xをインストール。</p>
-                        <div class="sourceCode" id="cb7"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a><span class="ex">apt-get</span> update</span>
-                        <span id="cb7-2"><a href="#cb7-2" aria-hidden="true"></a><span class="ex">apt-get</span> -y install xserver-xorg x11-apps</span></code></pre></div>
-                        <div class="sourceCode" id="cb8"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a><span class="ex">xeyes</span></span></code></pre></div>
+                        <div class="sourceCode" id="cb9"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a><span class="ex">apt-get</span> update</span>
+                        <span id="cb9-2"><a href="#cb9-2" aria-hidden="true"></a><span class="ex">apt-get</span> -y install xserver-xorg x11-apps</span></code></pre></div>
+                        <div class="sourceCode" id="cb10"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true"></a><span class="ex">xeyes</span></span></code></pre></div>
                         <p>起動できた。</p>
-                        <div class="sourceCode" id="cb9"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a><span class="ex">apt-get</span> -y install evince poppler-data</span></code></pre></div>
+                        <div class="sourceCode" id="cb11"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true"></a><span class="ex">apt-get</span> -y install evince poppler-data</span></code></pre></div>
                         <p>なんかepsを作ってみるか。</p>
-                        <div class="sourceCode" id="cb10"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true"></a>$ <span class="ex">apt-get</span> install -y gnuplot</span>
-                        <span id="cb10-2"><a href="#cb10-2" aria-hidden="true"></a>$ <span class="ex">gnuplot</span></span>
-                        <span id="cb10-3"><a href="#cb10-3" aria-hidden="true"></a><span class="ex">gnuplot</span><span class="op">&gt;</span> set term eps</span>
-                        <span id="cb10-4"><a href="#cb10-4" aria-hidden="true"></a><span class="ex">gnuplot</span><span class="op">&gt;</span> set out <span class="st">&quot;test.eps&quot;</span></span>
-                        <span id="cb10-5"><a href="#cb10-5" aria-hidden="true"></a><span class="ex">gnuplot</span><span class="op">&gt;</span> p sin(x)</span>
-                        <span id="cb10-6"><a href="#cb10-6" aria-hidden="true"></a><span class="ex">gnuplot</span><span class="op">&gt;</span> exit</span>
-                        <span id="cb10-7"><a href="#cb10-7" aria-hidden="true"></a>$ <span class="ex">evince</span> test.eps</span></code></pre></div>
+                        <div class="sourceCode" id="cb12"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true"></a>$ <span class="ex">apt-get</span> install -y gnuplot</span>
+                        <span id="cb12-2"><a href="#cb12-2" aria-hidden="true"></a>$ <span class="ex">gnuplot</span></span>
+                        <span id="cb12-3"><a href="#cb12-3" aria-hidden="true"></a><span class="ex">gnuplot</span><span class="op">&gt;</span> set term eps</span>
+                        <span id="cb12-4"><a href="#cb12-4" aria-hidden="true"></a><span class="ex">gnuplot</span><span class="op">&gt;</span> set out <span class="st">&quot;test.eps&quot;</span></span>
+                        <span id="cb12-5"><a href="#cb12-5" aria-hidden="true"></a><span class="ex">gnuplot</span><span class="op">&gt;</span> p sin(x)</span>
+                        <span id="cb12-6"><a href="#cb12-6" aria-hidden="true"></a><span class="ex">gnuplot</span><span class="op">&gt;</span> exit</span>
+                        <span id="cb12-7"><a href="#cb12-7" aria-hidden="true"></a>$ <span class="ex">evince</span> test.eps</span></code></pre></div>
                         <p>なんの問題もなく表示できる。これでローカルをディレクトリをマウントして表示するのが一番楽なんじゃ・・・。</p>
                         <p>ついでにghostscriptも動かしてみる。</p>
-                        <div class="sourceCode" id="cb11"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true"></a>$ <span class="ex">apt-get</span> install -y gv</span>
-                        <span id="cb11-2"><a href="#cb11-2" aria-hidden="true"></a>$ <span class="ex">ghostscript</span></span>
-                        <span id="cb11-3"><a href="#cb11-3" aria-hidden="true"></a><span class="ex">GPL</span> Ghostscript 9.55.0 (2021-09-27)</span>
-                        <span id="cb11-4"><a href="#cb11-4" aria-hidden="true"></a><span class="ex">Copyright</span> (C) <span class="ex">2021</span> Artifex Software, Inc.  All rights reserved.</span>
-                        <span id="cb11-5"><a href="#cb11-5" aria-hidden="true"></a><span class="ex">This</span> software is supplied under the GNU AGPLv3 and comes with NO WARRANTY:</span>
-                        <span id="cb11-6"><a href="#cb11-6" aria-hidden="true"></a><span class="ex">see</span> the file COPYING for details.</span>
-                        <span id="cb11-7"><a href="#cb11-7" aria-hidden="true"></a><span class="ex">GS</span><span class="op">&gt;</span>0 0 moveto</span>
-                        <span id="cb11-8"><a href="#cb11-8" aria-hidden="true"></a><span class="ex">GS</span><span class="op">&gt;</span>100 100 lineto</span>
-                        <span id="cb11-9"><a href="#cb11-9" aria-hidden="true"></a><span class="ex">GS</span><span class="op">&gt;</span>stroke</span>
-                        <span id="cb11-10"><a href="#cb11-10" aria-hidden="true"></a><span class="ex">GS</span><span class="op">&gt;</span></span></code></pre></div>
+                        <div class="sourceCode" id="cb13"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true"></a>$ <span class="ex">apt-get</span> install -y gv</span>
+                        <span id="cb13-2"><a href="#cb13-2" aria-hidden="true"></a>$ <span class="ex">ghostscript</span></span>
+                        <span id="cb13-3"><a href="#cb13-3" aria-hidden="true"></a><span class="ex">GPL</span> Ghostscript 9.55.0 (2021-09-27)</span>
+                        <span id="cb13-4"><a href="#cb13-4" aria-hidden="true"></a><span class="ex">Copyright</span> (C) <span class="ex">2021</span> Artifex Software, Inc.  All rights reserved.</span>
+                        <span id="cb13-5"><a href="#cb13-5" aria-hidden="true"></a><span class="ex">This</span> software is supplied under the GNU AGPLv3 and comes with NO WARRANTY:</span>
+                        <span id="cb13-6"><a href="#cb13-6" aria-hidden="true"></a><span class="ex">see</span> the file COPYING for details.</span>
+                        <span id="cb13-7"><a href="#cb13-7" aria-hidden="true"></a><span class="ex">GS</span><span class="op">&gt;</span>0 0 moveto</span>
+                        <span id="cb13-8"><a href="#cb13-8" aria-hidden="true"></a><span class="ex">GS</span><span class="op">&gt;</span>100 100 lineto</span>
+                        <span id="cb13-9"><a href="#cb13-9" aria-hidden="true"></a><span class="ex">GS</span><span class="op">&gt;</span>stroke</span>
+                        <span id="cb13-10"><a href="#cb13-10" aria-hidden="true"></a><span class="ex">GS</span><span class="op">&gt;</span></span></code></pre></div>
                         <p>問題なく表示できる。</p>
                         <p>いつか、Ghostscript上で「PostScriptを触ってみる」の記事を書きたい。もう失われた技術だから……</p>
                         <p>普通に間違えて2月の日記を1月に書いてた。まだ1月であって欲しいという願望の現れか。</p>
