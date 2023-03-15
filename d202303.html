@@ -22,6 +22,33 @@
     <article class="markdown-body">
                         <h1 id="年3月">2023年3月</h1>
                         <p><a href="index.html">ログ一覧</a></p>
+                        <h2 id="月15日水"><a href="#15">03月15日(水)</a> <a id="15"></a></h2>
+                        <p><a href="https://doi.org/10.1093/ptep/ptad022">Binder比論文が公開されていた</a>。ついでに自分の業績リストも更新。</p>
+                        <p>K-RISの方はORCID経由で取得できた。Binder比論文はまだ登録されてない。</p>
+                        <p>bundleが「Following files may not be writable, so sudo is needed:」というエラーを出した。</p>
+                        <div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a>$ <span class="ex">bundle</span></span>
+                        <span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a><span class="ex">Using</span> bundler 2.2.24</span>
+                        <span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a><span class="ex">Using</span> temple 0.8.2</span>
+                        <span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a><span class="ex">Following</span> files may not be writable, so sudo is needed:</span>
+                        <span id="cb1-5"><a href="#cb1-5" aria-hidden="true"></a>  <span class="ex">/opt/rh/rh-ruby27/root/usr/bin</span></span>
+                        <span id="cb1-6"><a href="#cb1-6" aria-hidden="true"></a>  <span class="ex">/opt/rh/rh-ruby27/root/usr/share/gems</span></span>
+                        <span id="cb1-7"><a href="#cb1-7" aria-hidden="true"></a>  <span class="ex">/opt/rh/rh-ruby27/root/usr/share/gems/build_info</span></span>
+                        <span id="cb1-8"><a href="#cb1-8" aria-hidden="true"></a>  <span class="ex">/opt/rh/rh-ruby27/root/usr/share/gems/cache</span></span>
+                        <span id="cb1-9"><a href="#cb1-9" aria-hidden="true"></a>  <span class="ex">/opt/rh/rh-ruby27/root/usr/share/gems/doc</span></span>
+                        <span id="cb1-10"><a href="#cb1-10" aria-hidden="true"></a>  <span class="ex">/opt/rh/rh-ruby27/root/usr/share/gems/extensions</span></span>
+                        <span id="cb1-11"><a href="#cb1-11" aria-hidden="true"></a>  <span class="ex">/opt/rh/rh-ruby27/root/usr/share/gems/gems</span></span>
+                        <span id="cb1-12"><a href="#cb1-12" aria-hidden="true"></a>  <span class="ex">/opt/rh/rh-ruby27/root/usr/share/gems/specifications</span></span></code></pre></div>
+                        <p>デフォルトでインストールするgemのパスが変わったらしい。</p>
+                        <div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a>$ <span class="ex">bundle</span> install --path ~/.gem</span>
+                        <span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a>[<span class="ex">DEPRECATED</span>] The <span class="kw">`</span><span class="ex">--path</span><span class="kw">`</span> flag is deprecated because it relies on being remembered across bundler invocations, which bundler will no longer do in future versions. Instead please use <span class="kw">`</span><span class="ex">bundle</span> config set --local path <span class="st">&#39;/home/watanabe/.gem&#39;</span><span class="kw">`</span>, and stop using this flag</span>
+                        <span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a><span class="ex">Could</span> not locate Gemfile</span></code></pre></div>
+                        <p>ありゃ、書式が古かったらしい。</p>
+                        <div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="bu">export</span> <span class="va">GEM_HOME=$HOME</span>/.gem </span>
+                        <span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a><span class="ex">bundle</span> config set --local path ~/.gem</span></code></pre></div>
+                        <p>これで、Gemfileがあるところでbundle installすればOK。.zshrcに以下を追加しておく。</p>
+                        <div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="bu">export</span> <span class="va">GEM_HOME=$HOME</span>/.gem</span>
+                        <span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a><span class="bu">export</span> <span class="va">PATH=$PATH</span>:~/.gem/ruby/2.7.0/bin</span></code></pre></div>
+                        <p><code>bundle exec</code>で実行する場合はPATHの設定は不要。パスにバージョン情報入っちゃってるし、いちいち<code>bundle exec</code>経由で実行したほうが良いな。</p>
                         <h2 id="月14日火"><a href="#14">03月14日(火)</a> <a id="14"></a></h2>
                         <p>来年度の学事日程の確認。</p>
                         <p>げ、数理物理は1Qだと思ってたけど、実際は2Qだった。急遽実験の予定を代わっていただく。すみません。</p>
