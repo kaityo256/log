@@ -22,6 +22,25 @@
     <article class="markdown-body">
                         <h1 id="年3月">2023年3月</h1>
                         <p><a href="index.html">ログ一覧</a></p>
+                        <h2 id="月08日土"><a href="#08">04月08日(土)</a> <a id="08"></a></h2>
+                        <p>Twitter、API有料化によりtwilogやTwitter検索が死んだ。サードパーティアプリを大事にしないと普通にサービス死ぬと思うけどなぁ。</p>
+                        <p>WSLにおいたPDFにコメントを入れていくとたまに表示がおかしくなる。おそらく中間ファイルの問題。PDFをWindowsファイルシステム側においたら問題が起きなくなった。たまにWSL側からコピーしてgit commit。</p>
+                        <p>学生さんの論文に朱入れ。</p>
+                        <p>WSLのpandocが<code>--shift-heading-level-by</code>なんてオプション知らないよ、といってきた。バージョンが古い？</p>
+                        <div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a>$ <span class="ex">pandoc</span> --version</span>
+                        <span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a><span class="ex">pandoc</span> 2.5</span></code></pre></div>
+                        <p>うーん、Macのpandocは3.1だから古そうだなぁ。とりあえず</p>
+                        <div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="fu">sudo</span> apt update</span>
+                        <span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a><span class="fu">sudo</span> apt upgrade</span></code></pre></div>
+                        <p>してみる。あらためてインストールしようとしたが入らない。仕方ないので公式から最新版をダウンロードして入れる。</p>
+                        <div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="fu">sudo</span> apt-get purge --autoremove pandoc</span>
+                        <span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a><span class="ex">https</span>://github.com/jgm/pandoc/releases/download/3.1.2/pandoc-3.1.2-1-amd64.deb</span>
+                        <span id="cb3-3"><a href="#cb3-3" aria-hidden="true"></a><span class="fu">sudo</span> dpkg -i pandoc-3.1.2-1-amd64.deb</span></code></pre></div>
+                        <div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a>$ <span class="ex">pandoc</span> --version</span>
+                        <span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a><span class="ex">pandoc</span> 3.1.2</span></code></pre></div>
+                        <p>あっさり最新版になった。</p>
+                        <p>講義ノートの図を作り始める。進捗がかなりヤバい。</p>
+                        <p>あまりのヤバさにfaviconを作ってしまう。いや、スマホでの閲覧チェックしたら、Chromeが「favicon.icoが見つからない」とかエラー出すから・・・</p>
                         <h2 id="月07日金"><a href="#07">04月07日(金)</a> <a id="07"></a></h2>
                         <p>mainにgit commit, pushしてから、あ、これブランチを切ってそっちをpushすべきだったな、と気づく。駄目だ。Git力が恐ろしく衰えている。</p>
                         <p>輪講用にPRMLを注文した。</p>
