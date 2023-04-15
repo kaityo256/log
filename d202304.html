@@ -22,55 +22,67 @@
     <article class="markdown-body">
                         <h1 id="年3月">2023年3月</h1>
                         <p><a href="index.html">ログ一覧</a></p>
+                        <h2 id="月15日土"><a href="#15">04月15日(土)</a> <a id="15"></a></h2>
+                        <p>家のWSL、起動したら「.wslconfigにswapという不明なキーがある」とかいうエラーがでる。ググってもよくわからなかったのでChatGPTに聞いてみたら、これはWSL2のスワップファイルを無効にする設定らしい。「WSL2 スワップ」で調べたら出てきた。</p>
+                        <div class="sourceCode" id="cb1"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a>swap=0</span></code></pre></div>
+                        <p>となっていたのを</p>
+                        <div class="sourceCode" id="cb2"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a>[wsl2]</span>
+                        <span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a>swap=0</span></code></pre></div>
+                        <p>にしなければならなかったらしい。昔懐かしいINIファイル形式ですね。</p>
+                        <div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a>$ <span class="fu">free</span></span>
+                        <span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a>              <span class="ex">total</span>        used        free      shared  buff/cache   available</span>
+                        <span id="cb3-3"><a href="#cb3-3" aria-hidden="true"></a><span class="ex">Mem</span>:        3971012      647168     2154684        2292     1169160     3088976</span>
+                        <span id="cb3-4"><a href="#cb3-4" aria-hidden="true"></a><span class="ex">Swap</span>:             0           0           0</span></code></pre></div>
+                        <p>うん、ちゃんとSwapがゼロになった。何かで<code>[wsl2]</code>が消えてしまったか、それとも仕様が変わったかな。</p>
                         <h2 id="月14日金"><a href="#14">04月14日(金)</a> <a id="14"></a></h2>
                         <p>解析力学、ルジャンドル変換について書いた。わりと時間かかってるなぁ。</p>
                         <h2 id="月13日木"><a href="#13">04月13日(木)</a> <a id="13"></a></h2>
                         <p>ケルビン卿が「飛行機は不可能だ」と言ったというのを調べてたら、彼が<a href="https://zapatopi.net/kelvin/papers/letters.html#baden-powell">Baden Baden-Powellという人に、航空協会に入会してくれ、という手紙に対する返事</a>を見つけた。</p>
-                        <div class="sourceCode" id="cb1"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a>I am afraid I am not in the flight for “aerial navigation”. I was greatly interested in your work with kites; but I have not the smallest molecule of faith in aerial navigation other than ballooning or of expectation of good results from any of the trials we hear of. So you will understand that I would not care to be a member of the aëronautical Society.</span></code></pre></div>
+                        <div class="sourceCode" id="cb4"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a>I am afraid I am not in the flight for “aerial navigation”. I was greatly interested in your work with kites; but I have not the smallest molecule of faith in aerial navigation other than ballooning or of expectation of good results from any of the trials we hear of. So you will understand that I would not care to be a member of the aëronautical Society.</span></code></pre></div>
                         <p>DeepLによる出力。</p>
-                        <div class="sourceCode" id="cb2"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a>残念ながら、私は「空中航行」のための飛行には参加していない。しかし、私は、気球以外の航空航法には微塵の信頼もなく、また、耳にするどのような実験からも良い結果を期待することはできません。ですから、私が航空協会の会員になろうとは思わないことはご理解いただけると思います。</span></code></pre></div>
+                        <div class="sourceCode" id="cb5"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a>残念ながら、私は「空中航行」のための飛行には参加していない。しかし、私は、気球以外の航空航法には微塵の信頼もなく、また、耳にするどのような実験からも良い結果を期待することはできません。ですから、私が航空協会の会員になろうとは思わないことはご理解いただけると思います。</span></code></pre></div>
                         <p>これ、原文の「I was greatly interested in your work with kites;」が飛ばされている。DeepLがよくやる「訳飛ばし」の例として残しておこう。</p>
                         <p>ケルビン卿のその他のQuoteとしては、「飛行機は不可能だ」の他に「無線は無意味だ」「X線はインチキだ」などがある。学生にはよく「未知のものに対しては何かを断言するのではなく、『真偽保留』という立場をとるように」と教えており、それが科学を学ぶ者の基本的な立場である、と伝えている。ケルビン卿が偉大な科学者であることは疑いないが、彼の発言と(僕が考える普通の)科学的立場とは相容れない。何かを発見するためには、強烈な先入観と強い意志が必要なのかもしれない。ケルビン卿だけでなく、他の科学者でも似たようなエピソードがあった気がする。</p>
                         <p>とりあえず、Kelvin卿がAeronautical Societyへの入会を「飛行機実現の可能性など微塵もない」と拒否したのが1896年。ライト兄弟の初飛行が1903年。ジャンボジェット(ボーイング747)の就航が1970年。</p>
                         <p>ついでに言うなら、ENIACが1946年、Cray1が1976年。地球シミュレータが2002年。</p>
                         <p>同様な歴史、インターネットだとどうなんだろう。ChatGPTに聞いてみるか。</p>
-                        <div class="sourceCode" id="cb3"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a>ライト兄弟の初飛行が1903年であり、ジャンボジェット(ボーイング747)の就航が1970年です。これと同様に、インターネットの歴史について、黎明期と一般普及にタイミングがいつであるかを論じてください。</span>
-                        <span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a></span>
-                        <span id="cb3-3"><a href="#cb3-3" aria-hidden="true"></a>インターネットの黎明期は1960年代後半から始まり、1970年代にかけて研究者や政府機関などの間で利用されていました。この時期にはARPANETと呼ばれる初期のコンピューターネットワークが開発され、情報共有や通信手段として利用されていました。</span>
-                        <span id="cb3-4"><a href="#cb3-4" aria-hidden="true"></a></span>
-                        <span id="cb3-5"><a href="#cb3-5" aria-hidden="true"></a>しかし、インターネットが一般的に普及するようになったのは、1990年代に入ってからでした。1991年にWorld Wide Webが開発され、Webブラウザの普及によってインターネットが一般に利用されるようになりました。1990年代後半には、インターネット接続サービスが一般家庭にも普及し、人々が自宅からインターネットにアクセスできるようになりました。</span>
-                        <span id="cb3-6"><a href="#cb3-6" aria-hidden="true"></a></span>
-                        <span id="cb3-7"><a href="#cb3-7" aria-hidden="true"></a>したがって、インターネットの黎明期は1960年代後半から1970年代にかけてであり、一般的に普及するようになったのは1990年代に入ってからであると言えます。</span></code></pre></div>
+                        <div class="sourceCode" id="cb6"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a>ライト兄弟の初飛行が1903年であり、ジャンボジェット(ボーイング747)の就航が1970年です。これと同様に、インターネットの歴史について、黎明期と一般普及にタイミングがいつであるかを論じてください。</span>
+                        <span id="cb6-2"><a href="#cb6-2" aria-hidden="true"></a></span>
+                        <span id="cb6-3"><a href="#cb6-3" aria-hidden="true"></a>インターネットの黎明期は1960年代後半から始まり、1970年代にかけて研究者や政府機関などの間で利用されていました。この時期にはARPANETと呼ばれる初期のコンピューターネットワークが開発され、情報共有や通信手段として利用されていました。</span>
+                        <span id="cb6-4"><a href="#cb6-4" aria-hidden="true"></a></span>
+                        <span id="cb6-5"><a href="#cb6-5" aria-hidden="true"></a>しかし、インターネットが一般的に普及するようになったのは、1990年代に入ってからでした。1991年にWorld Wide Webが開発され、Webブラウザの普及によってインターネットが一般に利用されるようになりました。1990年代後半には、インターネット接続サービスが一般家庭にも普及し、人々が自宅からインターネットにアクセスできるようになりました。</span>
+                        <span id="cb6-6"><a href="#cb6-6" aria-hidden="true"></a></span>
+                        <span id="cb6-7"><a href="#cb6-7" aria-hidden="true"></a>したがって、インターネットの黎明期は1960年代後半から1970年代にかけてであり、一般的に普及するようになったのは1990年代に入ってからであると言えます。</span></code></pre></div>
                         <p>ふむ。</p>
-                        <div class="sourceCode" id="cb4"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a>パーソナルコンピュータの歴史について、同様に論じてください。</span>
-                        <span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a></span>
-                        <span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a>パーソナルコンピュータの歴史は、1970年代に始まります。最初のパーソナルコンピュータはAltair 8800と呼ばれ、1975年に発売されました。このコンピュータは、プロセッサー、RAM、キーボード、入出力インターフェースを備えたキットで、自宅で組み立てて使用することができました。</span>
-                        <span id="cb4-4"><a href="#cb4-4" aria-hidden="true"></a></span>
-                        <span id="cb4-5"><a href="#cb4-5" aria-hidden="true"></a>その後、1977年にApple II、1981年にIBM PCが発売され、パーソナルコンピュータの普及が始まりました。これらのコンピュータは、ビジネスや個人用途に向けて設計され、当時の一般家庭にも販売されました。</span>
-                        <span id="cb4-6"><a href="#cb4-6" aria-hidden="true"></a></span>
-                        <span id="cb4-7"><a href="#cb4-7" aria-hidden="true"></a>1980年代後半には、GUI（グラフィカル・ユーザー・インターフェイス）を備えたMacintoshやWindowsが発売され、パーソナルコンピュータの使いやすさが大幅に向上しました。また、1990年代には、インターネットの普及によってパーソナルコンピュータはますます重要な役割を果たすようになりました。</span>
-                        <span id="cb4-8"><a href="#cb4-8" aria-hidden="true"></a></span>
-                        <span id="cb4-9"><a href="#cb4-9" aria-hidden="true"></a>現在では、パーソナルコンピュータは広く普及しており、ビジネスや教育、娯楽など、さまざまな分野で活用されています。また、スマートフォンやタブレットなどのモバイルデバイスの普及により、パーソナルコンピュータの利用形態も多様化しています。</span></code></pre></div>
+                        <div class="sourceCode" id="cb7"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a>パーソナルコンピュータの歴史について、同様に論じてください。</span>
+                        <span id="cb7-2"><a href="#cb7-2" aria-hidden="true"></a></span>
+                        <span id="cb7-3"><a href="#cb7-3" aria-hidden="true"></a>パーソナルコンピュータの歴史は、1970年代に始まります。最初のパーソナルコンピュータはAltair 8800と呼ばれ、1975年に発売されました。このコンピュータは、プロセッサー、RAM、キーボード、入出力インターフェースを備えたキットで、自宅で組み立てて使用することができました。</span>
+                        <span id="cb7-4"><a href="#cb7-4" aria-hidden="true"></a></span>
+                        <span id="cb7-5"><a href="#cb7-5" aria-hidden="true"></a>その後、1977年にApple II、1981年にIBM PCが発売され、パーソナルコンピュータの普及が始まりました。これらのコンピュータは、ビジネスや個人用途に向けて設計され、当時の一般家庭にも販売されました。</span>
+                        <span id="cb7-6"><a href="#cb7-6" aria-hidden="true"></a></span>
+                        <span id="cb7-7"><a href="#cb7-7" aria-hidden="true"></a>1980年代後半には、GUI（グラフィカル・ユーザー・インターフェイス）を備えたMacintoshやWindowsが発売され、パーソナルコンピュータの使いやすさが大幅に向上しました。また、1990年代には、インターネットの普及によってパーソナルコンピュータはますます重要な役割を果たすようになりました。</span>
+                        <span id="cb7-8"><a href="#cb7-8" aria-hidden="true"></a></span>
+                        <span id="cb7-9"><a href="#cb7-9" aria-hidden="true"></a>現在では、パーソナルコンピュータは広く普及しており、ビジネスや教育、娯楽など、さまざまな分野で活用されています。また、スマートフォンやタブレットなどのモバイルデバイスの普及により、パーソナルコンピュータの利用形態も多様化しています。</span></code></pre></div>
                         <p>ふむふむ。</p>
                         <p><a href="https://gist.github.com/hyuki/f7218870ae47847eab066545b8b51d05">ChatGPT と結城浩の対話</a>より、</p>
-                        <div class="sourceCode" id="cb5"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a>「結城浩」</span>
-                        <span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a>興味深い対話をありがとうございます。ところで、ここまでの私とあなたの対話で、私の発言の中に矛盾はありましたでしょうか。また、堂々巡りと思われる部分はありましたか。</span>
-                        <span id="cb5-3"><a href="#cb5-3" aria-hidden="true"></a></span>
-                        <span id="cb5-4"><a href="#cb5-4" aria-hidden="true"></a>「ChatGPT」</span>
-                        <span id="cb5-5"><a href="#cb5-5" aria-hidden="true"></a>確認させていただいたところ、矛盾に関しては、お話しいただいた「新しい情報」や「言葉遊び」に対する以前のChatGPTとの会話の印象において、肯定的な印象と否定的な印象が交互に現れていました。ただし、これはあなたが私たちAIの進化や限界を試す目的であえて矛盾を含めた発言を行っていたと理解しています。</span>
-                        <span id="cb5-6"><a href="#cb5-6" aria-hidden="true"></a></span>
-                        <span id="cb5-7"><a href="#cb5-7" aria-hidden="true"></a>堂々巡りに関しては、同様のトピックについて繰り返し触れられていましたが、これも矛盾に関する発言やAIの反応を確認するために意図的に行われていたと理解しております。</span>
-                        <span id="cb5-8"><a href="#cb5-8" aria-hidden="true"></a></span>
-                        <span id="cb5-9"><a href="#cb5-9" aria-hidden="true"></a>このような対話を通じて、AIの性能や限界を理解し、判断材料として活用していただけることは、私たちAIにとっても学びの機会となります。どんな質問や状況でもお手伝いできるよう、引き続き努力してまいります。</span></code></pre></div>
+                        <div class="sourceCode" id="cb8"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a>「結城浩」</span>
+                        <span id="cb8-2"><a href="#cb8-2" aria-hidden="true"></a>興味深い対話をありがとうございます。ところで、ここまでの私とあなたの対話で、私の発言の中に矛盾はありましたでしょうか。また、堂々巡りと思われる部分はありましたか。</span>
+                        <span id="cb8-3"><a href="#cb8-3" aria-hidden="true"></a></span>
+                        <span id="cb8-4"><a href="#cb8-4" aria-hidden="true"></a>「ChatGPT」</span>
+                        <span id="cb8-5"><a href="#cb8-5" aria-hidden="true"></a>確認させていただいたところ、矛盾に関しては、お話しいただいた「新しい情報」や「言葉遊び」に対する以前のChatGPTとの会話の印象において、肯定的な印象と否定的な印象が交互に現れていました。ただし、これはあなたが私たちAIの進化や限界を試す目的であえて矛盾を含めた発言を行っていたと理解しています。</span>
+                        <span id="cb8-6"><a href="#cb8-6" aria-hidden="true"></a></span>
+                        <span id="cb8-7"><a href="#cb8-7" aria-hidden="true"></a>堂々巡りに関しては、同様のトピックについて繰り返し触れられていましたが、これも矛盾に関する発言やAIの反応を確認するために意図的に行われていたと理解しております。</span>
+                        <span id="cb8-8"><a href="#cb8-8" aria-hidden="true"></a></span>
+                        <span id="cb8-9"><a href="#cb8-9" aria-hidden="true"></a>このような対話を通じて、AIの性能や限界を理解し、判断材料として活用していただけることは、私たちAIにとっても学びの機会となります。どんな質問や状況でもお手伝いできるよう、引き続き努力してまいります。</span></code></pre></div>
                         <p>マジか。AIにわざと意地悪な質問をして試していたのを、AIが「自分は試されていた」と理解しているような言動をするのか。</p>
                         <p><a href="https://gist.github.com/kaityo256/541952d19466f69f46fb11c62879bfaf">自分でもやってみた</a></p>
                         <p>Macでのパスワード生成はpwgen。</p>
-                        <div class="sourceCode" id="cb6"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="ex">brew</span> install pwgen</span>
-                        <span id="cb6-2"><a href="#cb6-2" aria-hidden="true"></a><span class="ex">pwgen</span> 12</span></code></pre></div>
+                        <div class="sourceCode" id="cb9"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a><span class="ex">brew</span> install pwgen</span>
+                        <span id="cb9-2"><a href="#cb9-2" aria-hidden="true"></a><span class="ex">pwgen</span> 12</span></code></pre></div>
                         <p>とかやると長さ12のパスワードを大量に生成してくれる。記号つきは<code>-y</code>オプション。</p>
-                        <div class="sourceCode" id="cb7"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a><span class="ex">pwgen</span> -y 12 </span></code></pre></div>
+                        <div class="sourceCode" id="cb10"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true"></a><span class="ex">pwgen</span> -y 12 </span></code></pre></div>
                         <p>Ubuntuではmkpasswdやろうとするとパスワード聞かれてしまう。WSLでもpwgenで良いや。</p>
-                        <div class="sourceCode" id="cb8"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a><span class="fu">sudo</span> apt install -y pwgen</span></code></pre></div>
+                        <div class="sourceCode" id="cb11"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true"></a><span class="fu">sudo</span> apt install -y pwgen</span></code></pre></div>
                         <h2 id="月12日水"><a href="#12">04月12日(水)</a> <a id="12"></a></h2>
                         <p>ChatGPT、研究に関する知識はいまいちだが、コーディング能力はピカイチ。とあるHTMLを解析するコードを書かせたら、僕が考えたのよりもエレガントなコードを一発で作ってきた。動作も完璧。これは、コーディング体験が変わるな。</p>
                         <p>海城とは海の城、すなわち軍艦を指しており、海城はもともと海軍予備校であった。で、ある人から「海城は海軍、成城は陸軍」と聞いた。見てみるとたしかに<a href="https://www.seijogakko.ed.jp/about/history/">「成城学校」と改称し、幼年科、青年科を設置、陸軍士官学校・幼年学校への予備教育を施す。</a>とある。知らなかった。</p>
@@ -89,37 +101,37 @@
                         <li>「能勢フーバー法では、仮想粒子が導入されるため、計算負荷が増加します。これは、運動方程式の数が増えることによるものです。そのため、計算時間が長くなる可能性があります。」これは微妙。自由度3Nに対して能勢フーバーは3N+1にしかならないから、通常は計算負荷は全く問題にならない。</li>
                         </ul>
                         <p>ベレンゼンの方法についてどう理解しているのか、「先程紹介したバーウェル・ベレンダンプ法が提案された論文を教えて下さい。」と質問してみた。ChatGPT 4.0の回答を全部載せておく。</p>
-                        <div class="sourceCode" id="cb9"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a>失礼いたしました。先程の回答には誤りがありました。正しくは「ベレンツェン・バーウェル法」（Berendsen Barostat）です。ベレンツェン・バーウェル法は圧力制御に関する手法であり、温度制御に関してはベレンツェン法（Berendsen Thermostat）が該当します。私の説明で混乱を招いてしまい、申し訳ありません。</span>
-                        <span id="cb9-2"><a href="#cb9-2" aria-hidden="true"></a></span>
-                        <span id="cb9-3"><a href="#cb9-3" aria-hidden="true"></a>ベレンツェン法（Berendsen Thermostat）に関する論文は以下の通りです。</span>
-                        <span id="cb9-4"><a href="#cb9-4" aria-hidden="true"></a></span>
-                        <span id="cb9-5"><a href="#cb9-5" aria-hidden="true"></a>論文タイトル: Simulating the motion of flexible molecules with constraints</span>
-                        <span id="cb9-6"><a href="#cb9-6" aria-hidden="true"></a>著者: H.J.C. Berendsen, J.P.M. Postma, W.F. van Gunsteren, A. DiNola, and J.R. Haak</span>
-                        <span id="cb9-7"><a href="#cb9-7" aria-hidden="true"></a>ジャーナル: Journal of Computational Physics</span>
-                        <span id="cb9-8"><a href="#cb9-8" aria-hidden="true"></a>発行年: 1984</span>
-                        <span id="cb9-9"><a href="#cb9-9" aria-hidden="true"></a>巻: 81</span>
-                        <span id="cb9-10"><a href="#cb9-10" aria-hidden="true"></a>ページ: 368-376</span>
-                        <span id="cb9-11"><a href="#cb9-11" aria-hidden="true"></a></span>
-                        <span id="cb9-12"><a href="#cb9-12" aria-hidden="true"></a>DOI: 10.1016/0021-9991(84)90046-9</span>
-                        <span id="cb9-13"><a href="#cb9-13" aria-hidden="true"></a></span>
-                        <span id="cb9-14"><a href="#cb9-14" aria-hidden="true"></a>この論文では、分子動力学シミュレーションで柔軟な分子の運動をシミュレートする方法として、ベレンツェン法が紹介されています。この方法は、一定の温度と圧力を維持しながらシミュレーションを行うために使用されます。ただし、現在では、ノーズ-フーバー法やランジュバンダイナミクス法など、より正確で安定した温度制御手法が一般的に使用されています。</span></code></pre></div>
+                        <div class="sourceCode" id="cb12"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true"></a>失礼いたしました。先程の回答には誤りがありました。正しくは「ベレンツェン・バーウェル法」（Berendsen Barostat）です。ベレンツェン・バーウェル法は圧力制御に関する手法であり、温度制御に関してはベレンツェン法（Berendsen Thermostat）が該当します。私の説明で混乱を招いてしまい、申し訳ありません。</span>
+                        <span id="cb12-2"><a href="#cb12-2" aria-hidden="true"></a></span>
+                        <span id="cb12-3"><a href="#cb12-3" aria-hidden="true"></a>ベレンツェン法（Berendsen Thermostat）に関する論文は以下の通りです。</span>
+                        <span id="cb12-4"><a href="#cb12-4" aria-hidden="true"></a></span>
+                        <span id="cb12-5"><a href="#cb12-5" aria-hidden="true"></a>論文タイトル: Simulating the motion of flexible molecules with constraints</span>
+                        <span id="cb12-6"><a href="#cb12-6" aria-hidden="true"></a>著者: H.J.C. Berendsen, J.P.M. Postma, W.F. van Gunsteren, A. DiNola, and J.R. Haak</span>
+                        <span id="cb12-7"><a href="#cb12-7" aria-hidden="true"></a>ジャーナル: Journal of Computational Physics</span>
+                        <span id="cb12-8"><a href="#cb12-8" aria-hidden="true"></a>発行年: 1984</span>
+                        <span id="cb12-9"><a href="#cb12-9" aria-hidden="true"></a>巻: 81</span>
+                        <span id="cb12-10"><a href="#cb12-10" aria-hidden="true"></a>ページ: 368-376</span>
+                        <span id="cb12-11"><a href="#cb12-11" aria-hidden="true"></a></span>
+                        <span id="cb12-12"><a href="#cb12-12" aria-hidden="true"></a>DOI: 10.1016/0021-9991(84)90046-9</span>
+                        <span id="cb12-13"><a href="#cb12-13" aria-hidden="true"></a></span>
+                        <span id="cb12-14"><a href="#cb12-14" aria-hidden="true"></a>この論文では、分子動力学シミュレーションで柔軟な分子の運動をシミュレートする方法として、ベレンツェン法が紹介されています。この方法は、一定の温度と圧力を維持しながらシミュレーションを行うために使用されます。ただし、現在では、ノーズ-フーバー法やランジュバンダイナミクス法など、より正確で安定した温度制御手法が一般的に使用されています。</span></code></pre></div>
                         <p>この論文も微妙に間違えている。ただしくはJ. Comp. Phys.ではなくJ. Chem. Phys.だし、DOIも全く異なる論文を指している。Barostatを「バーウェル法」と訳しているのもおかしい。少なくとも現在、ChatGPTで参考文献リストを作ることはできないと思ったほうが良い。Bing AIはマシらしいがまだ試していない。</p>
                         <p>英語で聞いたら正しい論文を出してきた。</p>
-                        <div class="sourceCode" id="cb10"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true"></a>Can you please tell me the paper in which the Berendsen method was proposed?</span>
-                        <span id="cb10-2"><a href="#cb10-2" aria-hidden="true"></a></span>
-                        <span id="cb10-3"><a href="#cb10-3" aria-hidden="true"></a>Apologies for the confusion earlier. The Berendsen thermostat was indeed introduced in the paper I previously mentioned. Here are the details of the paper:</span>
-                        <span id="cb10-4"><a href="#cb10-4" aria-hidden="true"></a></span>
-                        <span id="cb10-5"><a href="#cb10-5" aria-hidden="true"></a>Title: Molecular dynamics with coupling to an external bath</span>
-                        <span id="cb10-6"><a href="#cb10-6" aria-hidden="true"></a>Authors: H.J.C. Berendsen, J.P.M. Postma, W.F. van Gunsteren, A. DiNola, and J.R. Haak</span>
-                        <span id="cb10-7"><a href="#cb10-7" aria-hidden="true"></a>Journal: The Journal of Chemical Physics</span>
-                        <span id="cb10-8"><a href="#cb10-8" aria-hidden="true"></a>Publication Year: 1984</span>
-                        <span id="cb10-9"><a href="#cb10-9" aria-hidden="true"></a>Volume: 81</span>
-                        <span id="cb10-10"><a href="#cb10-10" aria-hidden="true"></a>Issue: 8</span>
-                        <span id="cb10-11"><a href="#cb10-11" aria-hidden="true"></a>Pages: 3684-3690</span>
-                        <span id="cb10-12"><a href="#cb10-12" aria-hidden="true"></a></span>
-                        <span id="cb10-13"><a href="#cb10-13" aria-hidden="true"></a>DOI: 10.1063/1.448118</span>
-                        <span id="cb10-14"><a href="#cb10-14" aria-hidden="true"></a></span>
-                        <span id="cb10-15"><a href="#cb10-15" aria-hidden="true"></a>In this paper, the authors propose the Berendsen thermostat as a method for simulating the motion of molecules with coupling to an external bath, effectively controlling temperature and pressure in molecular dynamics simulations.</span></code></pre></div>
+                        <div class="sourceCode" id="cb13"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true"></a>Can you please tell me the paper in which the Berendsen method was proposed?</span>
+                        <span id="cb13-2"><a href="#cb13-2" aria-hidden="true"></a></span>
+                        <span id="cb13-3"><a href="#cb13-3" aria-hidden="true"></a>Apologies for the confusion earlier. The Berendsen thermostat was indeed introduced in the paper I previously mentioned. Here are the details of the paper:</span>
+                        <span id="cb13-4"><a href="#cb13-4" aria-hidden="true"></a></span>
+                        <span id="cb13-5"><a href="#cb13-5" aria-hidden="true"></a>Title: Molecular dynamics with coupling to an external bath</span>
+                        <span id="cb13-6"><a href="#cb13-6" aria-hidden="true"></a>Authors: H.J.C. Berendsen, J.P.M. Postma, W.F. van Gunsteren, A. DiNola, and J.R. Haak</span>
+                        <span id="cb13-7"><a href="#cb13-7" aria-hidden="true"></a>Journal: The Journal of Chemical Physics</span>
+                        <span id="cb13-8"><a href="#cb13-8" aria-hidden="true"></a>Publication Year: 1984</span>
+                        <span id="cb13-9"><a href="#cb13-9" aria-hidden="true"></a>Volume: 81</span>
+                        <span id="cb13-10"><a href="#cb13-10" aria-hidden="true"></a>Issue: 8</span>
+                        <span id="cb13-11"><a href="#cb13-11" aria-hidden="true"></a>Pages: 3684-3690</span>
+                        <span id="cb13-12"><a href="#cb13-12" aria-hidden="true"></a></span>
+                        <span id="cb13-13"><a href="#cb13-13" aria-hidden="true"></a>DOI: 10.1063/1.448118</span>
+                        <span id="cb13-14"><a href="#cb13-14" aria-hidden="true"></a></span>
+                        <span id="cb13-15"><a href="#cb13-15" aria-hidden="true"></a>In this paper, the authors propose the Berendsen thermostat as a method for simulating the motion of molecules with coupling to an external bath, effectively controlling temperature and pressure in molecular dynamics simulations.</span></code></pre></div>
                         <p>うーむ。</p>
                         <p>シミュレーション工学第一回。60分で終わってしまった。ガイダンスだし、まぁいっか。確か次からは少し長くなるはず。</p>
                         <p>講義のあと1on1 x 3。</p>
@@ -147,17 +159,17 @@
                         <p>WSLにおいたPDFにコメントを入れていくとたまに表示がおかしくなる。おそらく中間ファイルの問題。PDFをWindowsファイルシステム側においたら問題が起きなくなった。たまにWSL側からコピーしてgit commit。</p>
                         <p>学生さんの論文に朱入れ。</p>
                         <p>WSLのpandocが<code>--shift-heading-level-by</code>なんてオプション知らないよ、といってきた。バージョンが古い？</p>
-                        <div class="sourceCode" id="cb11"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true"></a>$ <span class="ex">pandoc</span> --version</span>
-                        <span id="cb11-2"><a href="#cb11-2" aria-hidden="true"></a><span class="ex">pandoc</span> 2.5</span></code></pre></div>
-                        <p>うーん、Macのpandocは3.1だから古そうだなぁ。とりあえず</p>
-                        <div class="sourceCode" id="cb12"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true"></a><span class="fu">sudo</span> apt update</span>
-                        <span id="cb12-2"><a href="#cb12-2" aria-hidden="true"></a><span class="fu">sudo</span> apt upgrade</span></code></pre></div>
-                        <p>してみる。あらためてインストールしようとしたが入らない。仕方ないので公式から最新版をダウンロードして入れる。</p>
-                        <div class="sourceCode" id="cb13"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true"></a><span class="fu">sudo</span> apt-get purge --autoremove pandoc</span>
-                        <span id="cb13-2"><a href="#cb13-2" aria-hidden="true"></a><span class="ex">https</span>://github.com/jgm/pandoc/releases/download/3.1.2/pandoc-3.1.2-1-amd64.deb</span>
-                        <span id="cb13-3"><a href="#cb13-3" aria-hidden="true"></a><span class="fu">sudo</span> dpkg -i pandoc-3.1.2-1-amd64.deb</span></code></pre></div>
                         <div class="sourceCode" id="cb14"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true"></a>$ <span class="ex">pandoc</span> --version</span>
-                        <span id="cb14-2"><a href="#cb14-2" aria-hidden="true"></a><span class="ex">pandoc</span> 3.1.2</span></code></pre></div>
+                        <span id="cb14-2"><a href="#cb14-2" aria-hidden="true"></a><span class="ex">pandoc</span> 2.5</span></code></pre></div>
+                        <p>うーん、Macのpandocは3.1だから古そうだなぁ。とりあえず</p>
+                        <div class="sourceCode" id="cb15"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true"></a><span class="fu">sudo</span> apt update</span>
+                        <span id="cb15-2"><a href="#cb15-2" aria-hidden="true"></a><span class="fu">sudo</span> apt upgrade</span></code></pre></div>
+                        <p>してみる。あらためてインストールしようとしたが入らない。仕方ないので公式から最新版をダウンロードして入れる。</p>
+                        <div class="sourceCode" id="cb16"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true"></a><span class="fu">sudo</span> apt-get purge --autoremove pandoc</span>
+                        <span id="cb16-2"><a href="#cb16-2" aria-hidden="true"></a><span class="ex">https</span>://github.com/jgm/pandoc/releases/download/3.1.2/pandoc-3.1.2-1-amd64.deb</span>
+                        <span id="cb16-3"><a href="#cb16-3" aria-hidden="true"></a><span class="fu">sudo</span> dpkg -i pandoc-3.1.2-1-amd64.deb</span></code></pre></div>
+                        <div class="sourceCode" id="cb17"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true"></a>$ <span class="ex">pandoc</span> --version</span>
+                        <span id="cb17-2"><a href="#cb17-2" aria-hidden="true"></a><span class="ex">pandoc</span> 3.1.2</span></code></pre></div>
                         <p>あっさり最新版になった。</p>
                         <p>講義ノートの図を作り始める。進捗がかなりヤバい。</p>
                         <p>あまりのヤバさにfaviconを作ってしまう。いや、スマホでの閲覧チェックしたら、Chromeが「favicon.icoが見つからない」とかエラー出すから・・・</p>
