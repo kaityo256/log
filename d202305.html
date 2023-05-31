@@ -25,6 +25,25 @@
                         <h2 id="月31日水"><a href="#31">05月31日(水)</a> <a id="31"></a></h2>
                         <p>5月が終わってしまうなぁ。</p>
                         <p><a href="https://ai.facebook.com/blog/ai-rsc/">Introducing the AI Research SuperCluster — Meta’s cutting-edge AI supercomputer for AI research</a> MetaのAI用スパコン。NVIDIAのDGX A100っぽい。インターコネクトはNVIDIA Quantumで、これはInfiniBand。なんでNVIDIA InfiniBandって言うのかと思ったら、いつのまにかMellanoxがNVIDIAに買収されてた。2020年か。SXMというのは接続方式。ずいぶん前からPCIeではなく、ソケット型でGPGPUが接続していたようだ。GPGPUの発展は全く追いかけてなかったから、最近の進展はさっぱりわからんな。</p>
+                        <p>Markdownのスニペットとして、<code>align</code>って書いたら</p>
+                        <div class="sourceCode" id="cb1"><pre class="sourceCode latex"><code class="sourceCode latex"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="ss">$$</span></span>
+                        <span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a><span class="kw">\begin</span>{<span class="ex">aligned</span>}</span>
+                        <span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a></span>
+                        <span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a><span class="kw">\end</span>{<span class="ex">aligned</span>}</span>
+                        <span id="cb1-5"><a href="#cb1-5" aria-hidden="true"></a><span class="ss">$$</span></span></code></pre></div>
+                        <p>って出てきてカーソルが真ん中に移るやつ作ったんだけど、かなり便利だ。</p>
+                        <p>メモ。</p>
+                        <p><a href="https://www.the-scientist.com/critic-at-large/opinion-using-pokmon-to-detect-scientific-misinformation-68098">COVID-19はポケモンが原因論文</a>。</p>
+                        <p>American Journal of Biomedical Science &amp; Researchというジャーナルから「論文投稿して」というメールが届いたのだが、なんか見覚えあるなと思ったら「COVID-19はポケモンが原因論文」を掲載してしまったジャーナルですね。論文にわざわざ「この論文を出版する雑誌は査読を行っていないため、ハゲタカジャーナルであるに違いない」とか「この招待論文は査読を行っていない可能性が高い略奪的な雑誌に掲載されている」と書いてある論文が「査読」を通って掲載されたというもの。</p>
+                        <p>配列と条件を渡して、「配列の要素すべてが条件を満たす時に<code>true</code>を返す関数<code>all</code>」と、「配列の要素のいずれか一つでも条件を満たす時に<code>true</code>を返す関数<code>any</code>」があったとする。この関数に空配列を入れた時、<code>all</code>と<code>any</code>を何を返すべきか。</p>
+                        <p>僕は空集合に関しては全部真にして良いかな、と思ったが、多数派の意見は<code>all</code>は<code>true</code>、<code>any</code>は<code>false</code>を返すべき、というもの。</p>
+                        <p><code>all</code>は「集合の中に一つでも条件を満たさないものがあるか？」と読み替えるべき。すると空集合は条件を満たさないものを持たないから、<code>true</code>を返す。</p>
+                        <p><code>any</code>は、文字通り「集合の中に一つでも条件を満たすものがあるか？」を調べるべき。すると空集合は条件を満たすものを持たないから<code>false</code>を返す。PythonもRubyもそうなっている。</p>
+                        <div class="sourceCode" id="cb2"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="bu">all</span>([])  <span class="co">#=&gt; True</span></span>
+                        <span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a><span class="bu">any</span>([])  <span class="co">#=&gt; False</span></span></code></pre></div>
+                        <div class="sourceCode" id="cb3"><pre class="sourceCode rb"><code class="sourceCode ruby"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a>[].all? <span class="co">#=&gt; true</span></span>
+                        <span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a>[].any? <span class="co">#=&gt; false</span></span></code></pre></div>
+                        <p>へぇ、なるほどね。</p>
                         <h2 id="月30日火"><a href="#30">05月30日(火)</a> <a id="30"></a></h2>
                         <p>午前中に会議。来週にも会議。</p>
                         <p>僕には多くの弱点があるが、そのうち最大のものはコンテキストスイッチが遅いこと。複数の異なるプロジェクトが走っている時、Aプロジェクトの会議が終わってから、すぐに頭をBに切り替えられず、グズグズしてしまう。これで人生のかなりの時間を無駄にしている。</p>
@@ -53,28 +72,28 @@
                         <p>抵抗の記号、僕はギザギザで習ったが、いつのまにか四角で書くのが正式となった。これ、<a href="https://en.m.wikipedia.org/wiki/Electronic_symbol">Wikipediaによると</a>、ギザギザがANSI(米国規格協会)、四角がIEC(国際電気標準会議)によるものだったらしい。なるほど。結局、英米の違い、ということで良いのかしら。</p>
                         <p>ちなみにIECの初代議長はウィリアム・トムソン(ケルビン卿)だそうな。</p>
                         <p>ChatGPTのWolframプラグイン使ってみた。</p>
-                        <div class="sourceCode" id="cb1"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a>渡辺宙志という人物について教えてください。</span>
-                        <span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a></span>
-                        <span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a>渡辺宙志（わたなべ すすむ）は、日本の作曲家で、特にアニメ音楽で知られています。彼の作品には、「宇宙戦艦ヤマト」、「銀河鉄道999」、「宇宙海賊キャプテンハーロック」などの音楽が含まれています。彼の音楽は、その壮大なスコアと感動的なメロディで、多くのアニメファンに愛されています。</span></code></pre></div>
+                        <div class="sourceCode" id="cb4"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a>渡辺宙志という人物について教えてください。</span>
+                        <span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a></span>
+                        <span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a>渡辺宙志（わたなべ すすむ）は、日本の作曲家で、特にアニメ音楽で知られています。彼の作品には、「宇宙戦艦ヤマト」、「銀河鉄道999」、「宇宙海賊キャプテンハーロック」などの音楽が含まれています。彼の音楽は、その壮大なスコアと感動的なメロディで、多くのアニメファンに愛されています。</span></code></pre></div>
                         <p>うん、それは渡辺宙明さんですね。</p>
                         <p>Bardに聞いてみた。</p>
-                        <div class="sourceCode" id="cb2"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a>私は大規模言語モデルで、幅広い質問やメッセージに対してテキストを生成することができますが、その人物については十分な情報がないため、お手伝いできません。このリクエストについて、他に何かお手伝いできることはありますか？</span></code></pre></div>
+                        <div class="sourceCode" id="cb5"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a>私は大規模言語モデルで、幅広い質問やメッセージに対してテキストを生成することができますが、その人物については十分な情報がないため、お手伝いできません。このリクエストについて、他に何かお手伝いできることはありますか？</span></code></pre></div>
                         <p>あ、駄目なんだ。</p>
                         <p>なんか、SNSで(悪い意味で)話題になっている発言があったらしいが、既にミュート済みであったこともあり、漫画とかでありがちな「能力者だけに敵が見えててなんかやってるらしいのだが、一般人にはそれが見えず、何かがおきていることはわかるが、何が起きているかわからない状況」になっている。</p>
                         <p>SNSでは、その人自身や、その人が網をはっている話題について言及するとエゴサで絡まれるため、「名前を言ってはいけないあの人」扱いになっている人が結構いる。その人は、自分が痛い発言をしているから反感を買っているのだが、「自分は他の人が思っていても言わない正論を言っているから叩かれるのだ」と信じているようだ。こういう人は年齢関係なくいるのだが、ある程度の地位・立場をもって痛いことをするから老害と呼ばれるのであろう。</p>
                         <p>正論の気持ちよさ、というのは僕にもわかるというか、どちらかというと僕も言う側なので気をつけなくてはならない。正論を言うのは良いとして、行動が伴わないといけない。言いっぱなしは駄目。</p>
                         <h2 id="月23日火"><a href="#23">05月23日(火)</a> <a id="23"></a></h2>
                         <p>検索よりも先にChatBotに質問する癖が付きつつある。さらに、3.5と4に同時に質問することが多いが、最近はそれにBardが加わった。</p>
-                        <div class="sourceCode" id="cb3"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a>Q: HTML5の人気のゲームエンジンを教えてください。</span>
-                        <span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a></span>
-                        <span id="cb3-3"><a href="#cb3-3" aria-hidden="true"></a>ChatGPT 3.5: Phaser, Construct, Cocos2d-html5, CreateJS</span>
-                        <span id="cb3-4"><a href="#cb3-4" aria-hidden="true"></a>ChatGPT 4: Phaser, Pixi.js, Babylon.js, CreateJS:, Construct 3</span>
-                        <span id="cb3-5"><a href="#cb3-5" aria-hidden="true"></a>Bard: Phaser, Construct 2, ImpactJS, PlayCanvas、Egret, Cocos2d-HTML</span></code></pre></div>
+                        <div class="sourceCode" id="cb6"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a>Q: HTML5の人気のゲームエンジンを教えてください。</span>
+                        <span id="cb6-2"><a href="#cb6-2" aria-hidden="true"></a></span>
+                        <span id="cb6-3"><a href="#cb6-3" aria-hidden="true"></a>ChatGPT 3.5: Phaser, Construct, Cocos2d-html5, CreateJS</span>
+                        <span id="cb6-4"><a href="#cb6-4" aria-hidden="true"></a>ChatGPT 4: Phaser, Pixi.js, Babylon.js, CreateJS:, Construct 3</span>
+                        <span id="cb6-5"><a href="#cb6-5" aria-hidden="true"></a>Bard: Phaser, Construct 2, ImpactJS, PlayCanvas、Egret, Cocos2d-HTML</span></code></pre></div>
                         <p>まっさきにPhaserがあがるな。時点でConstructか。</p>
                         <p>怪しい論文誌から査読依頼が来て、それについて検索したらQuoraでズバリの質問があったが、なんとそれにChatGPTが回答をつけていた。</p>
-                        <div class="sourceCode" id="cb4"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a>Q: Is XXX a predatory publisher?</span>
-                        <span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a></span>
-                        <span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a>ChatGPT bot: XXX is a publisher that has been accused of predatory practices by some scholars and experts in the academic publishing industry. However, it is important to note that not all accusations of predatory publishing are universally accepted or agreed upon. It is always a good idea to do your own research and consult multiple sources before making a decision about where to publish your work.</span></code></pre></div>
+                        <div class="sourceCode" id="cb7"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a>Q: Is XXX a predatory publisher?</span>
+                        <span id="cb7-2"><a href="#cb7-2" aria-hidden="true"></a></span>
+                        <span id="cb7-3"><a href="#cb7-3" aria-hidden="true"></a>ChatGPT bot: XXX is a publisher that has been accused of predatory practices by some scholars and experts in the academic publishing industry. However, it is important to note that not all accusations of predatory publishing are universally accepted or agreed upon. It is always a good idea to do your own research and consult multiple sources before making a decision about where to publish your work.</span></code></pre></div>
                         <p>すごい、それっぽいこと言ってるのに、何一つ情報がない。</p>
                         <h2 id="月22日月"><a href="#22">05月22日(月)</a> <a id="22"></a></h2>
                         <p>SPAMの整理。たまに大事なメールが混ざるので。</p>
@@ -90,56 +109,56 @@
                         <p>違うよ！全然違うよ！</p>
                         <p>VSCode、ワークスペースごとのキーバインディングは設定できないのか。グローバルか、ユーザのみ。</p>
                         <p>Google Bardで聞いてみた。</p>
-                        <div class="sourceCode" id="cb5"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a>kaityo256という人物について教えてください。</span>
-                        <span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a></span>
-                        <span id="cb5-3"><a href="#cb5-3" aria-hidden="true"></a>kaityo256 は、Twitter や GitHub で活動している人物です。本名は渡辺 博之で、東京大学大学院情報理工学系研究科の准教授です。専門は計算機科学、特に数値計算です。数値計算に関する論文を数多く発表し、そのコードをオープンソースで公開しています。また、Twitter では、数値計算に関する情報を発信したり、他の研究者と交流したりしています。</span></code></pre></div>
-                        <p>おしい。</p>
-                        <div class="sourceCode" id="cb6"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a>渡辺宙志という人物について教えてください。</span>
-                        <span id="cb6-2"><a href="#cb6-2" aria-hidden="true"></a></span>
-                        <span id="cb6-3"><a href="#cb6-3" aria-hidden="true"></a>私は大規模言語モデルで、幅広い質問やメッセージに対してテキストを生成することができますが、その人物については十分な情報がないため、お手伝いできません。このリクエストについて、他に何かお手伝いできることはありますか？</span></code></pre></div>
-                        <p>渡辺宙志よりもkaityo256の方が有名(十分な情報がある)のか……</p>
-                        <div class="sourceCode" id="cb7"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a>カタツムリが井戸に落ちてしまいました。井戸の高さは30cmであり、カタツムリは一日に3cm登りますが、夜の間に2cm落ちてしまいます。カタツムリが井戸を登り切るまでに何日かかりますか？</span>
-                        <span id="cb7-2"><a href="#cb7-2" aria-hidden="true"></a></span>
-                        <span id="cb7-3"><a href="#cb7-3" aria-hidden="true"></a>カタツムリが井戸を登り切るまでにかかる日数は28日です。</span>
-                        <span id="cb7-4"><a href="#cb7-4" aria-hidden="true"></a></span>
-                        <span id="cb7-5"><a href="#cb7-5" aria-hidden="true"></a>カタツムリは1日あたり3cm登りますが、夜間に2cm落ちてしまうので、1日あたりの有効な登高は1cmです。つまり、27日間で27cm登り、残りは3cmとなります。カタツムリは次の日に3cm登り、井戸を登り切ります。</span>
-                        <span id="cb7-6"><a href="#cb7-6" aria-hidden="true"></a></span>
-                        <span id="cb7-7"><a href="#cb7-7" aria-hidden="true"></a>この問題は、うっかり30日と答えてしまいがちですが、有効な登高を考慮する必要があります。</span></code></pre></div>
-                        <p>おお、解けた。</p>
-                        <div class="sourceCode" id="cb8"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a>ある男は、5本のタバコの吸い殻から1本の新品のタバコを作ることができる。最初に50本の新品のタバコを持っている時、この男は最大で何本のタバコを吸うことができるか？</span>
+                        <div class="sourceCode" id="cb8"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a>kaityo256という人物について教えてください。</span>
                         <span id="cb8-2"><a href="#cb8-2" aria-hidden="true"></a></span>
-                        <span id="cb8-3"><a href="#cb8-3" aria-hidden="true"></a></span>
-                        <span id="cb8-4"><a href="#cb8-4" aria-hidden="true"></a>男は、50本の新品のタバコから25本の吸い殻を作ることができます。</span>
-                        <span id="cb8-5"><a href="#cb8-5" aria-hidden="true"></a></span>
-                        <span id="cb8-6"><a href="#cb8-6" aria-hidden="true"></a>50本のタバコから25本の吸い殻を作ると、25本の新品のタバコを作ることができます。</span>
-                        <span id="cb8-7"><a href="#cb8-7" aria-hidden="true"></a></span>
-                        <span id="cb8-8"><a href="#cb8-8" aria-hidden="true"></a>この繰り返しを続けることができれば、男は合計25+50=75本のタバコを吸うことができます。</span>
-                        <span id="cb8-9"><a href="#cb8-9" aria-hidden="true"></a></span>
-                        <span id="cb8-10"><a href="#cb8-10" aria-hidden="true"></a>しかし、吸い殻からタバコを作るためのフィルターやその他の材料がなくなる可能性があるため、男は実際には75本のタバコを吸うことができません。</span></code></pre></div>
-                        <p>タバコ問題は駄目だった。</p>
-                        <div class="sourceCode" id="cb9"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a>ライオンがネズミを捕まえたが、『私が次にすることを当てたら食べないでやろう』と言った。ネズミは『あなたは私を食べるだろう』と言った。ライオンはネズミを食べることができるか？</span>
+                        <span id="cb8-3"><a href="#cb8-3" aria-hidden="true"></a>kaityo256 は、Twitter や GitHub で活動している人物です。本名は渡辺 博之で、東京大学大学院情報理工学系研究科の准教授です。専門は計算機科学、特に数値計算です。数値計算に関する論文を数多く発表し、そのコードをオープンソースで公開しています。また、Twitter では、数値計算に関する情報を発信したり、他の研究者と交流したりしています。</span></code></pre></div>
+                        <p>おしい。</p>
+                        <div class="sourceCode" id="cb9"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a>渡辺宙志という人物について教えてください。</span>
                         <span id="cb9-2"><a href="#cb9-2" aria-hidden="true"></a></span>
-                        <span id="cb9-3"><a href="#cb9-3" aria-hidden="true"></a></span>
-                        <span id="cb9-4"><a href="#cb9-4" aria-hidden="true"></a>ネズミはライオンが次に何をするかを正しく当てたので、ライオンはネズミを食べることができません。</span>
-                        <span id="cb9-5"><a href="#cb9-5" aria-hidden="true"></a></span>
-                        <span id="cb9-6"><a href="#cb9-6" aria-hidden="true"></a>ライオンはネズミに「私が次に何をするかを当てたら食べないでやろう」と言いました。ネズミは「あなたは私を食べるだろう」と言いました。ライオンはネズミを食べることを考えていたが、ネズミが正しく当てたので、ネズミを食べることができません。</span>
-                        <span id="cb9-7"><a href="#cb9-7" aria-hidden="true"></a></span>
-                        <span id="cb9-8"><a href="#cb9-8" aria-hidden="true"></a>これは、イソップ童話「ライオンとネズミ」の古典的な物語の現代版です。物語では、ライオンは寝ているときにネズミに捕まります。ネズミはライオンに助けを求め、ライオンはネズミを許します。数日後、ライオンが罠に捕まったとき、ネズミは彼を助け、ライオンの命を救いました。</span>
-                        <span id="cb9-9"><a href="#cb9-9" aria-hidden="true"></a></span>
-                        <span id="cb9-10"><a href="#cb9-10" aria-hidden="true"></a>この物語は、小さな人が大きな人を助けることができること、そして誰もが役立つ可能性があることを教えています。</span></code></pre></div>
+                        <span id="cb9-3"><a href="#cb9-3" aria-hidden="true"></a>私は大規模言語モデルで、幅広い質問やメッセージに対してテキストを生成することができますが、その人物については十分な情報がないため、お手伝いできません。このリクエストについて、他に何かお手伝いできることはありますか？</span></code></pre></div>
+                        <p>渡辺宙志よりもkaityo256の方が有名(十分な情報がある)のか……</p>
+                        <div class="sourceCode" id="cb10"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true"></a>カタツムリが井戸に落ちてしまいました。井戸の高さは30cmであり、カタツムリは一日に3cm登りますが、夜の間に2cm落ちてしまいます。カタツムリが井戸を登り切るまでに何日かかりますか？</span>
+                        <span id="cb10-2"><a href="#cb10-2" aria-hidden="true"></a></span>
+                        <span id="cb10-3"><a href="#cb10-3" aria-hidden="true"></a>カタツムリが井戸を登り切るまでにかかる日数は28日です。</span>
+                        <span id="cb10-4"><a href="#cb10-4" aria-hidden="true"></a></span>
+                        <span id="cb10-5"><a href="#cb10-5" aria-hidden="true"></a>カタツムリは1日あたり3cm登りますが、夜間に2cm落ちてしまうので、1日あたりの有効な登高は1cmです。つまり、27日間で27cm登り、残りは3cmとなります。カタツムリは次の日に3cm登り、井戸を登り切ります。</span>
+                        <span id="cb10-6"><a href="#cb10-6" aria-hidden="true"></a></span>
+                        <span id="cb10-7"><a href="#cb10-7" aria-hidden="true"></a>この問題は、うっかり30日と答えてしまいがちですが、有効な登高を考慮する必要があります。</span></code></pre></div>
+                        <p>おお、解けた。</p>
+                        <div class="sourceCode" id="cb11"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true"></a>ある男は、5本のタバコの吸い殻から1本の新品のタバコを作ることができる。最初に50本の新品のタバコを持っている時、この男は最大で何本のタバコを吸うことができるか？</span>
+                        <span id="cb11-2"><a href="#cb11-2" aria-hidden="true"></a></span>
+                        <span id="cb11-3"><a href="#cb11-3" aria-hidden="true"></a></span>
+                        <span id="cb11-4"><a href="#cb11-4" aria-hidden="true"></a>男は、50本の新品のタバコから25本の吸い殻を作ることができます。</span>
+                        <span id="cb11-5"><a href="#cb11-5" aria-hidden="true"></a></span>
+                        <span id="cb11-6"><a href="#cb11-6" aria-hidden="true"></a>50本のタバコから25本の吸い殻を作ると、25本の新品のタバコを作ることができます。</span>
+                        <span id="cb11-7"><a href="#cb11-7" aria-hidden="true"></a></span>
+                        <span id="cb11-8"><a href="#cb11-8" aria-hidden="true"></a>この繰り返しを続けることができれば、男は合計25+50=75本のタバコを吸うことができます。</span>
+                        <span id="cb11-9"><a href="#cb11-9" aria-hidden="true"></a></span>
+                        <span id="cb11-10"><a href="#cb11-10" aria-hidden="true"></a>しかし、吸い殻からタバコを作るためのフィルターやその他の材料がなくなる可能性があるため、男は実際には75本のタバコを吸うことができません。</span></code></pre></div>
+                        <p>タバコ問題は駄目だった。</p>
+                        <div class="sourceCode" id="cb12"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true"></a>ライオンがネズミを捕まえたが、『私が次にすることを当てたら食べないでやろう』と言った。ネズミは『あなたは私を食べるだろう』と言った。ライオンはネズミを食べることができるか？</span>
+                        <span id="cb12-2"><a href="#cb12-2" aria-hidden="true"></a></span>
+                        <span id="cb12-3"><a href="#cb12-3" aria-hidden="true"></a></span>
+                        <span id="cb12-4"><a href="#cb12-4" aria-hidden="true"></a>ネズミはライオンが次に何をするかを正しく当てたので、ライオンはネズミを食べることができません。</span>
+                        <span id="cb12-5"><a href="#cb12-5" aria-hidden="true"></a></span>
+                        <span id="cb12-6"><a href="#cb12-6" aria-hidden="true"></a>ライオンはネズミに「私が次に何をするかを当てたら食べないでやろう」と言いました。ネズミは「あなたは私を食べるだろう」と言いました。ライオンはネズミを食べることを考えていたが、ネズミが正しく当てたので、ネズミを食べることができません。</span>
+                        <span id="cb12-7"><a href="#cb12-7" aria-hidden="true"></a></span>
+                        <span id="cb12-8"><a href="#cb12-8" aria-hidden="true"></a>これは、イソップ童話「ライオンとネズミ」の古典的な物語の現代版です。物語では、ライオンは寝ているときにネズミに捕まります。ネズミはライオンに助けを求め、ライオンはネズミを許します。数日後、ライオンが罠に捕まったとき、ネズミは彼を助け、ライオンの命を救いました。</span>
+                        <span id="cb12-9"><a href="#cb12-9" aria-hidden="true"></a></span>
+                        <span id="cb12-10"><a href="#cb12-10" aria-hidden="true"></a>この物語は、小さな人が大きな人を助けることができること、そして誰もが役立つ可能性があることを教えています。</span></code></pre></div>
                         <p>混ざってる混ざってる！</p>
                         <p>GPT-4は正しく答えられる。</p>
-                        <div class="sourceCode" id="cb10"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true"></a>この物語は、一種のパラドックス、特に「予知パラドックス」または「自己参照パラドックス」の一例です。ネズミの予言が正しければ、ライオンはネズミを食べず、その結果、ネズミの予言は間違っていたことになります。しかし、その場合、ライオンはネズミを食べてしまうかもしれません。なぜなら、ネズミの予言は間違っていたからです。しかし、それはまたネズミの予言を正しいものにすることになります。</span>
-                        <span id="cb10-2"><a href="#cb10-2" aria-hidden="true"></a></span>
-                        <span id="cb10-3"><a href="#cb10-3" aria-hidden="true"></a>したがって、この物語は、ライオンがネズミを食べるかどうかは決定できないという結論になります。これは「予知パラドックス」の一般的な性質であり、時間旅行のストーリーや哲学的な問いにしばしば現れます。</span></code></pre></div>
+                        <div class="sourceCode" id="cb13"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true"></a>この物語は、一種のパラドックス、特に「予知パラドックス」または「自己参照パラドックス」の一例です。ネズミの予言が正しければ、ライオンはネズミを食べず、その結果、ネズミの予言は間違っていたことになります。しかし、その場合、ライオンはネズミを食べてしまうかもしれません。なぜなら、ネズミの予言は間違っていたからです。しかし、それはまたネズミの予言を正しいものにすることになります。</span>
+                        <span id="cb13-2"><a href="#cb13-2" aria-hidden="true"></a></span>
+                        <span id="cb13-3"><a href="#cb13-3" aria-hidden="true"></a>したがって、この物語は、ライオンがネズミを食べるかどうかは決定できないという結論になります。これは「予知パラドックス」の一般的な性質であり、時間旅行のストーリーや哲学的な問いにしばしば現れます。</span></code></pre></div>
                         <p>3.5は無理。</p>
-                        <div class="sourceCode" id="cb11"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true"></a>このストーリーでは、ライオンとネズミの間に言葉のやり取りがありますが、最終的な結論は物語の解釈に依存します。ライオンがネズミを食べるかどうかは、その時点でのライオンの意図や行動によって異なる可能性があります。</span>
-                        <span id="cb11-2"><a href="#cb11-2" aria-hidden="true"></a></span>
-                        <span id="cb11-3"><a href="#cb11-3" aria-hidden="true"></a>もしライオンが約束を守ることを決め、ネズミを食べないと決めた場合、ライオンはネズミを食べません。この場合、ライオンはネズミの言葉を信じています。</span>
-                        <span id="cb11-4"><a href="#cb11-4" aria-hidden="true"></a></span>
-                        <span id="cb11-5"><a href="#cb11-5" aria-hidden="true"></a>しかし、もしライオンがネズミを食べるつもりであったり、約束を守ることに興味がなかったりする場合、ライオンはネズミを食べるかもしれません。この場合、ネズミの言葉は信じられないかもしれません。</span>
-                        <span id="cb11-6"><a href="#cb11-6" aria-hidden="true"></a></span>
-                        <span id="cb11-7"><a href="#cb11-7" aria-hidden="true"></a>この物語は、信頼や約束をテーマにしているので、個々のキャラクターの性格や価値観によって結末が変わります。そのため、どちらの結論もあり得ると言えます。</span></code></pre></div>
+                        <div class="sourceCode" id="cb14"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true"></a>このストーリーでは、ライオンとネズミの間に言葉のやり取りがありますが、最終的な結論は物語の解釈に依存します。ライオンがネズミを食べるかどうかは、その時点でのライオンの意図や行動によって異なる可能性があります。</span>
+                        <span id="cb14-2"><a href="#cb14-2" aria-hidden="true"></a></span>
+                        <span id="cb14-3"><a href="#cb14-3" aria-hidden="true"></a>もしライオンが約束を守ることを決め、ネズミを食べないと決めた場合、ライオンはネズミを食べません。この場合、ライオンはネズミの言葉を信じています。</span>
+                        <span id="cb14-4"><a href="#cb14-4" aria-hidden="true"></a></span>
+                        <span id="cb14-5"><a href="#cb14-5" aria-hidden="true"></a>しかし、もしライオンがネズミを食べるつもりであったり、約束を守ることに興味がなかったりする場合、ライオンはネズミを食べるかもしれません。この場合、ネズミの言葉は信じられないかもしれません。</span>
+                        <span id="cb14-6"><a href="#cb14-6" aria-hidden="true"></a></span>
+                        <span id="cb14-7"><a href="#cb14-7" aria-hidden="true"></a>この物語は、信頼や約束をテーマにしているので、個々のキャラクターの性格や価値観によって結末が変わります。そのため、どちらの結論もあり得ると言えます。</span></code></pre></div>
                         <p>シミュレーション工学、僕の担当分終わった。</p>
                         <p>スライドをすべてSpeakerdeckにアップロードし、<a href="https://github.com/kaityo256/simulation_engineering">GitHubのリポジトリ</a>にリンクを貼った。講義ノートはまだ書き途中。これ、書き上がる時が来るのだろうか……</p>
                         <p>TIOBE Softwareが月次で発表するプログラミング言語人気ランキング。<a href="https://www.tiobe.com/tiobe-index/">TIOBE Index</a></p>
@@ -153,11 +172,11 @@
                         <h2 id="月19日金"><a href="#19">05月19日(金)</a> <a id="19"></a></h2>
                         <p>今日は滅茶苦茶集中力を欠く・・・</p>
                         <h2 id="月18日木"><a href="#18">05月18日(木)</a> <a id="18"></a></h2>
-                        <div class="sourceCode" id="cb12"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true"></a>kaityo256というアカウントを持つ人物について教えて下さい。</span>
-                        <span id="cb12-2"><a href="#cb12-2" aria-hidden="true"></a></span>
-                        <span id="cb12-3"><a href="#cb12-3" aria-hidden="true"></a>(中略</span>
-                        <span id="cb12-4"><a href="#cb12-4" aria-hidden="true"></a>)</span>
-                        <span id="cb12-5"><a href="#cb12-5" aria-hidden="true"></a>以上の情報から、彼がプログラミングと研究に深い関心を持っていること、そしてその知識を共有することに努めていることがわかります。しかし、具体的な職歴や教育歴、具体的な研究分野などの詳細については、利用可能な情報からは明らかになっていません。</span></code></pre></div>
+                        <div class="sourceCode" id="cb15"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true"></a>kaityo256というアカウントを持つ人物について教えて下さい。</span>
+                        <span id="cb15-2"><a href="#cb15-2" aria-hidden="true"></a></span>
+                        <span id="cb15-3"><a href="#cb15-3" aria-hidden="true"></a>(中略</span>
+                        <span id="cb15-4"><a href="#cb15-4" aria-hidden="true"></a>)</span>
+                        <span id="cb15-5"><a href="#cb15-5" aria-hidden="true"></a>以上の情報から、彼がプログラミングと研究に深い関心を持っていること、そしてその知識を共有することに努めていることがわかります。しかし、具体的な職歴や教育歴、具体的な研究分野などの詳細については、利用可能な情報からは明らかになっていません。</span></code></pre></div>
                         <p>謎の人物だった。</p>
                         <p>バリバリと音をたてるほど仕事した。特にずっと懸案だった、大学院の講義整理について調べた。</p>
                         <p>昨日、「あれ？絶対この文書更新したはずなのに、更新されてないぞ？」と思ってたが、svn ci忘れ。Macで作業してWindowsで会議に出てるのでこういうことが稀によくある。</p>
@@ -167,13 +186,13 @@
                         <p>昨日の「気軽にアウトプットするな」のやつ、10ヶ月以上の前の記事なのに、最近になって有名人に言及されて広がり、そこから若干炎上気味になってなんだかなぁ。</p>
                         <p>なんか最近、Macがおかしい。PDFだけでなく、他のファイルも開けなくなっている。</p>
                         <p>ChatGPT、Beta feature来たぞ。まずウェブブラウジング。</p>
-                        <div class="sourceCode" id="cb13"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true"></a>渡辺宙志という人物について教えて下さい。</span>
-                        <span id="cb13-2"><a href="#cb13-2" aria-hidden="true"></a></span>
-                        <span id="cb13-3"><a href="#cb13-3" aria-hidden="true"></a>渡辺宙志（Hiroshi Watanabe）は、慶応義塾大学の理工学部物理情報工学科に所属する准教授です​1​。</span>
-                        <span id="cb13-4"><a href="#cb13-4" aria-hidden="true"></a></span>
-                        <span id="cb13-5"><a href="#cb13-5" aria-hidden="true"></a>彼は東京大学の工学系研究科で物理工学を専攻し、修士と博士の学位を取得しました​2​。その後、名古屋大学大学院情報科学研究科複雑系科学専攻の助手と助教、東京大学情報センターの特任講師、東京大学物性研究所の助教を経て、現在の慶応義塾大学の准教授に至ります​3​。</span>
-                        <span id="cb13-6"><a href="#cb13-6" aria-hidden="true"></a></span>
-                        <span id="cb13-7"><a href="#cb13-7" aria-hidden="true"></a>彼は複数の学術書を執筆しており、その中には「ゼロから学ぶPythonプログラミング Google Colaboratoryでらくらく導入」や「The Art of High Performance Computing for Computational Science, Vol. 1」などがあります​4​。また、彼は物理や化学の領域で多数の学術論文を発表しています。その中には、「Effects of polymers on the cavitating flow around a cylinder: A large-scale molecular dynamics analysis」などが含まれます​5​。</span></code></pre></div>
+                        <div class="sourceCode" id="cb16"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true"></a>渡辺宙志という人物について教えて下さい。</span>
+                        <span id="cb16-2"><a href="#cb16-2" aria-hidden="true"></a></span>
+                        <span id="cb16-3"><a href="#cb16-3" aria-hidden="true"></a>渡辺宙志（Hiroshi Watanabe）は、慶応義塾大学の理工学部物理情報工学科に所属する准教授です​1​。</span>
+                        <span id="cb16-4"><a href="#cb16-4" aria-hidden="true"></a></span>
+                        <span id="cb16-5"><a href="#cb16-5" aria-hidden="true"></a>彼は東京大学の工学系研究科で物理工学を専攻し、修士と博士の学位を取得しました​2​。その後、名古屋大学大学院情報科学研究科複雑系科学専攻の助手と助教、東京大学情報センターの特任講師、東京大学物性研究所の助教を経て、現在の慶応義塾大学の准教授に至ります​3​。</span>
+                        <span id="cb16-6"><a href="#cb16-6" aria-hidden="true"></a></span>
+                        <span id="cb16-7"><a href="#cb16-7" aria-hidden="true"></a>彼は複数の学術書を執筆しており、その中には「ゼロから学ぶPythonプログラミング Google Colaboratoryでらくらく導入」や「The Art of High Performance Computing for Computational Science, Vol. 1」などがあります​4​。また、彼は物理や化学の領域で多数の学術論文を発表しています。その中には、「Effects of polymers on the cavitating flow around a cylinder: A large-scale molecular dynamics analysis」などが含まれます​5​。</span></code></pre></div>
                         <p>おお、できてるぞ。</p>
                         <p>来客。修士の頃に研究会で一緒になった方。その後、博士の時に会った記憶があるので、20年以上ぶり？お元気そうで何よりです。あの頃が懐かしいですね。</p>
                         <h2 id="月16日火"><a href="#16">05月16日(火)</a> <a id="16"></a></h2>
@@ -211,11 +230,11 @@
                         </ul>
                         <p>という状況。コンソールからログインしようとしたら、ユーザが無いことが判明。NISが通っていないことが疑われる。</p>
                         <p>そこで、各ノードで作業するために、まず(起動オプションにrd.breakつけて)シングルユーザモードでログインし、</p>
-                        <div class="sourceCode" id="cb14"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true"></a><span class="fu">mount</span> -o remount,rw /sysroot</span>
-                        <span id="cb14-2"><a href="#cb14-2" aria-hidden="true"></a><span class="fu">chroot</span> /sysroot</span></code></pre></div>
+                        <div class="sourceCode" id="cb17"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true"></a><span class="fu">mount</span> -o remount,rw /sysroot</span>
+                        <span id="cb17-2"><a href="#cb17-2" aria-hidden="true"></a><span class="fu">chroot</span> /sysroot</span></code></pre></div>
                         <p>で/sysrootを読み書き可能で再マウントした上で、自分をユーザ追加。sudoersにはすでに追加済み。</p>
                         <p>で、再起動したら、</p>
-                        <div class="sourceCode" id="cb15"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true"></a>Started D-Bus System Message Bus.</span></code></pre></div>
+                        <div class="sourceCode" id="cb18"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true"></a>Started D-Bus System Message Bus.</span></code></pre></div>
                         <p>で固まる。これはLDAP認証の前にMessageが起動することでおかしくなるとある。しかし、今はLDAP使ってなくてNISなんだが。対応策は<code>/etc/ldap.conf</code>に<code>bind_policy soft</code>を追加せよ、とのことだが、<code>/etc/ldap.conf</code>がない。だって使ってないしな。</p>
                         <p>このあたりで寒くなったのでサーバ室脱出。この令和の時代にシングルユーザモードで起動して、とかもうやりたくない。これ、何が問題って、Dockerみたいに設定がごっちゃになった時にDockerみたいに「よくわからんから最初から作り直し」ができないのが面倒。要するにIaCになってない。</p>
                         <p>計算機サーバはもうクラウドに逃がしてもよいかなぁ。値段どのくらいなんだろう？</p>
@@ -252,51 +271,51 @@
                         <p>昔の自分の日記を読み始めたら止まらなくなった。この「掃除中にアルバムを見つけてしまった」感。このlogはあまり感情をあらわにしていないので、読み返してもさほど面白くはないですね。</p>
                         <p>研究室サーバのIntel Compilerがライセンスサーバにつながらずに動かなくなっている。</p>
                         <p>まずライセンスファイルを確認。</p>
-                        <div class="sourceCode" id="cb16"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true"></a>SERVER servername hogehoge ポート番号</span>
-                        <span id="cb16-2"><a href="#cb16-2" aria-hidden="true"></a>USE_SERVER</span></code></pre></div>
+                        <div class="sourceCode" id="cb19"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true"></a>SERVER servername hogehoge ポート番号</span>
+                        <span id="cb19-2"><a href="#cb19-2" aria-hidden="true"></a>USE_SERVER</span></code></pre></div>
                         <p>このポート番号が開いてるか調べる。</p>
-                        <div class="sourceCode" id="cb17"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true"></a>$ <span class="fu">sudo</span> netstat -anp  <span class="kw">|</span><span class="fu">grep</span> ポート番号</span>
-                        <span id="cb17-2"><a href="#cb17-2" aria-hidden="true"></a><span class="ex">tcp6</span>     129      0 :::ポート番号                :::*                    LISTEN      4385/lmgrd </span></code></pre></div>
+                        <div class="sourceCode" id="cb20"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true"></a>$ <span class="fu">sudo</span> netstat -anp  <span class="kw">|</span><span class="fu">grep</span> ポート番号</span>
+                        <span id="cb20-2"><a href="#cb20-2" aria-hidden="true"></a><span class="ex">tcp6</span>     129      0 :::ポート番号                :::*                    LISTEN      4385/lmgrd </span></code></pre></div>
                         <p>lmgrdが起動し、指定のポート番号をLISTENしてる。</p>
-                        <div class="sourceCode" id="cb18"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true"></a><span class="fu">ps</span> aux <span class="kw">|</span><span class="fu">grep</span> lmgrd </span></code></pre></div>
+                        <div class="sourceCode" id="cb21"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true"></a><span class="fu">ps</span> aux <span class="kw">|</span><span class="fu">grep</span> lmgrd </span></code></pre></div>
                         <p>これで、どのlicファイルを読み、どのログファイルに吐いているかを確認。</p>
-                        <div class="sourceCode" id="cb19"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true"></a>$ <span class="fu">sudo</span> ./lmdown -c /path/to/file.lic</span>
-                        <span id="cb19-2"><a href="#cb19-2" aria-hidden="true"></a><span class="ex">lmdown</span> - Copyright (c) <span class="ex">1989-2018</span> Flexera. All Rights Reserved.</span>
-                        <span id="cb19-3"><a href="#cb19-3" aria-hidden="true"></a><span class="ex">Shutdown</span> failed: Cannot read data from license server system. (-16,287)</span></code></pre></div>
+                        <div class="sourceCode" id="cb22"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true"></a>$ <span class="fu">sudo</span> ./lmdown -c /path/to/file.lic</span>
+                        <span id="cb22-2"><a href="#cb22-2" aria-hidden="true"></a><span class="ex">lmdown</span> - Copyright (c) <span class="ex">1989-2018</span> Flexera. All Rights Reserved.</span>
+                        <span id="cb22-3"><a href="#cb22-3" aria-hidden="true"></a><span class="ex">Shutdown</span> failed: Cannot read data from license server system. (-16,287)</span></code></pre></div>
                         <p>ログを見る。</p>
-                        <div class="sourceCode" id="cb20"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true"></a>10:22:01 (INTEL) SERVER-OUT: Failed to send the message(71) &lt;END&gt;</span>
-                        <span id="cb20-2"><a href="#cb20-2" aria-hidden="true"></a>10:22:01 (INTEL) Lost connection to lmgrd, heartbeat timeout expired, exiting.</span>
-                        <span id="cb20-3"><a href="#cb20-3" aria-hidden="true"></a>10:22:01 (INTEL) Heartbeat timeout is 300 seconds. Elapsed time is 715 seconds.</span>
-                        <span id="cb20-4"><a href="#cb20-4" aria-hidden="true"></a>10:22:01 (INTEL) EXITING DUE TO SIGNAL 37 Exit reason 5</span>
-                        <span id="cb20-5"><a href="#cb20-5" aria-hidden="true"></a>10:22:01 (INTEL) IN: &quot;IC45FB71A&quot; user@server.name  (SHUTDOWN)</span>
-                        <span id="cb20-6"><a href="#cb20-6" aria-hidden="true"></a>10:22:01 (INTEL) IN: &quot;Comp-CL&quot; user@server.name  (SHUTDOWN)</span></code></pre></div>
+                        <div class="sourceCode" id="cb23"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true"></a>10:22:01 (INTEL) SERVER-OUT: Failed to send the message(71) &lt;END&gt;</span>
+                        <span id="cb23-2"><a href="#cb23-2" aria-hidden="true"></a>10:22:01 (INTEL) Lost connection to lmgrd, heartbeat timeout expired, exiting.</span>
+                        <span id="cb23-3"><a href="#cb23-3" aria-hidden="true"></a>10:22:01 (INTEL) Heartbeat timeout is 300 seconds. Elapsed time is 715 seconds.</span>
+                        <span id="cb23-4"><a href="#cb23-4" aria-hidden="true"></a>10:22:01 (INTEL) EXITING DUE TO SIGNAL 37 Exit reason 5</span>
+                        <span id="cb23-5"><a href="#cb23-5" aria-hidden="true"></a>10:22:01 (INTEL) IN: &quot;IC45FB71A&quot; user@server.name  (SHUTDOWN)</span>
+                        <span id="cb23-6"><a href="#cb23-6" aria-hidden="true"></a>10:22:01 (INTEL) IN: &quot;Comp-CL&quot; user@server.name  (SHUTDOWN)</span></code></pre></div>
                         <p>なんかheartbeatタイムアウトで死んでる。仕方ない。まず、</p>
-                        <div class="sourceCode" id="cb21"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true"></a><span class="fu">sudo</span> ps aux <span class="kw">|</span> <span class="fu">grep</span> lmgrd</span></code></pre></div>
+                        <div class="sourceCode" id="cb24"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true"></a><span class="fu">sudo</span> ps aux <span class="kw">|</span> <span class="fu">grep</span> lmgrd</span></code></pre></div>
                         <p>でlmgrdの起動オプション、特にライセンスファイルとログ・ファイルの位置を確認しておく。</p>
                         <p>killする。普通にkillできなかったので-KILL。</p>
-                        <div class="sourceCode" id="cb22"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true"></a><span class="fu">sudo</span> kill -KILL 4385 </span></code></pre></div>
+                        <div class="sourceCode" id="cb25"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true"></a><span class="fu">sudo</span> kill -KILL 4385 </span></code></pre></div>
                         <p>lmgrdの再起動。</p>
-                        <div class="sourceCode" id="cb23"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true"></a><span class="fu">sudo</span> /opt/intel/licenseserver/lmgrd -c /path/to/file.lic -l /path/to/log.txt</span></code></pre></div>
-                        <div class="sourceCode" id="cb24"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true"></a>$ <span class="ex">icpc</span></span>
-                        <span id="cb24-2"><a href="#cb24-2" aria-hidden="true"></a><span class="ex">icpc</span>: command line error: no files specified<span class="kw">;</span> <span class="kw">for</span> <span class="bu">help</span> type <span class="st">&quot;icpc -help&quot;</span></span></code></pre></div>
+                        <div class="sourceCode" id="cb26"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true"></a><span class="fu">sudo</span> /opt/intel/licenseserver/lmgrd -c /path/to/file.lic -l /path/to/log.txt</span></code></pre></div>
+                        <div class="sourceCode" id="cb27"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true"></a>$ <span class="ex">icpc</span></span>
+                        <span id="cb27-2"><a href="#cb27-2" aria-hidden="true"></a><span class="ex">icpc</span>: command line error: no files specified<span class="kw">;</span> <span class="kw">for</span> <span class="bu">help</span> type <span class="st">&quot;icpc -help&quot;</span></span></code></pre></div>
                         <p>インテルコンパイラが起動するようになった。やれやれ。</p>
                         <p>ログインノードの情報を表示。</p>
-                        <div class="sourceCode" id="cb25"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true"></a>$ <span class="ex">qmgr</span> -c <span class="st">&quot;p n name_of_server&quot;</span></span>
-                        <span id="cb25-2"><a href="#cb25-2" aria-hidden="true"></a><span class="co">#</span></span>
-                        <span id="cb25-3"><a href="#cb25-3" aria-hidden="true"></a><span class="co"># Create nodes and set their properties.</span></span>
-                        <span id="cb25-4"><a href="#cb25-4" aria-hidden="true"></a><span class="co">#</span></span>
-                        <span id="cb25-5"><a href="#cb25-5" aria-hidden="true"></a><span class="co">#</span></span>
-                        <span id="cb25-6"><a href="#cb25-6" aria-hidden="true"></a><span class="co"># Create and define node watanabe-login</span></span>
-                        <span id="cb25-7"><a href="#cb25-7" aria-hidden="true"></a><span class="co">#</span></span>
-                        <span id="cb25-8"><a href="#cb25-8" aria-hidden="true"></a><span class="ex">create</span> node name_of_server Mom=name_of_server.host.name</span>
-                        <span id="cb25-9"><a href="#cb25-9" aria-hidden="true"></a><span class="kw">set</span> <span class="ex">node</span> name_of_server state = free</span>
-                        <span id="cb25-10"><a href="#cb25-10" aria-hidden="true"></a><span class="kw">set</span> <span class="ex">node</span> name_of_server resources_available.arch = linux</span>
-                        <span id="cb25-11"><a href="#cb25-11" aria-hidden="true"></a><span class="kw">set</span> <span class="ex">node</span> name_of_server resources_available.host = name_of_server</span>
-                        <span id="cb25-12"><a href="#cb25-12" aria-hidden="true"></a><span class="kw">set</span> <span class="ex">node</span> name_of_server resources_available.mem = 97375328kb</span>
-                        <span id="cb25-13"><a href="#cb25-13" aria-hidden="true"></a><span class="kw">set</span> <span class="ex">node</span> name_of_server resources_available.ncpus = 40</span>
-                        <span id="cb25-14"><a href="#cb25-14" aria-hidden="true"></a><span class="kw">set</span> <span class="ex">node</span> name_of_server resources_available.vnode = name_of_server</span>
-                        <span id="cb25-15"><a href="#cb25-15" aria-hidden="true"></a><span class="kw">set</span> <span class="ex">node</span> name_of_server queue = workq</span>
-                        <span id="cb25-16"><a href="#cb25-16" aria-hidden="true"></a><span class="kw">set</span> <span class="ex">node</span> name_of_server resv_enable = True</span></code></pre></div>
+                        <div class="sourceCode" id="cb28"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true"></a>$ <span class="ex">qmgr</span> -c <span class="st">&quot;p n name_of_server&quot;</span></span>
+                        <span id="cb28-2"><a href="#cb28-2" aria-hidden="true"></a><span class="co">#</span></span>
+                        <span id="cb28-3"><a href="#cb28-3" aria-hidden="true"></a><span class="co"># Create nodes and set their properties.</span></span>
+                        <span id="cb28-4"><a href="#cb28-4" aria-hidden="true"></a><span class="co">#</span></span>
+                        <span id="cb28-5"><a href="#cb28-5" aria-hidden="true"></a><span class="co">#</span></span>
+                        <span id="cb28-6"><a href="#cb28-6" aria-hidden="true"></a><span class="co"># Create and define node watanabe-login</span></span>
+                        <span id="cb28-7"><a href="#cb28-7" aria-hidden="true"></a><span class="co">#</span></span>
+                        <span id="cb28-8"><a href="#cb28-8" aria-hidden="true"></a><span class="ex">create</span> node name_of_server Mom=name_of_server.host.name</span>
+                        <span id="cb28-9"><a href="#cb28-9" aria-hidden="true"></a><span class="kw">set</span> <span class="ex">node</span> name_of_server state = free</span>
+                        <span id="cb28-10"><a href="#cb28-10" aria-hidden="true"></a><span class="kw">set</span> <span class="ex">node</span> name_of_server resources_available.arch = linux</span>
+                        <span id="cb28-11"><a href="#cb28-11" aria-hidden="true"></a><span class="kw">set</span> <span class="ex">node</span> name_of_server resources_available.host = name_of_server</span>
+                        <span id="cb28-12"><a href="#cb28-12" aria-hidden="true"></a><span class="kw">set</span> <span class="ex">node</span> name_of_server resources_available.mem = 97375328kb</span>
+                        <span id="cb28-13"><a href="#cb28-13" aria-hidden="true"></a><span class="kw">set</span> <span class="ex">node</span> name_of_server resources_available.ncpus = 40</span>
+                        <span id="cb28-14"><a href="#cb28-14" aria-hidden="true"></a><span class="kw">set</span> <span class="ex">node</span> name_of_server resources_available.vnode = name_of_server</span>
+                        <span id="cb28-15"><a href="#cb28-15" aria-hidden="true"></a><span class="kw">set</span> <span class="ex">node</span> name_of_server queue = workq</span>
+                        <span id="cb28-16"><a href="#cb28-16" aria-hidden="true"></a><span class="kw">set</span> <span class="ex">node</span> name_of_server resv_enable = True</span></code></pre></div>
                         <p>ログインノードにジョブを投入できないようにしたらジョブがエラーで死ぬ。何が原因かしばらくわからなかったが、そもそも他のノードにジョブがディスパッチできない。/homeがマウントされていないのが原因。まじか。</p>
                         <p>これ、/homeもそうだけど、そもそもNISが通ってないのが原因。いつのまにか死んでいたらしい。ログインノードへのディスパッチの優先順位を下げたら、ジョブを投入したら死ぬようになったと思っていたが、最初からログインノード以外にジョブがディスパッチされたら死ぬ状態だったようだ。PBSがらみのエラーだと思って原因究明が遅れてしまった。</p>
                         <p>しかし、面倒だなぁ……</p>
@@ -319,59 +338,59 @@
                         <h2 id="月03日水"><a href="#03">05月03日(水)</a> <a id="03"></a></h2>
                         <p>前から入れようと思っていたGitHub CLIを導入。</p>
                         <p><a href="https://github.com/cli/cli/blob/trunk/docs/install_linux.md">ここ</a>の指示通り。</p>
-                        <div class="sourceCode" id="cb26"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true"></a><span class="bu">type</span> -p curl <span class="op">&gt;</span>/dev/null <span class="kw">||</span> <span class="kw">(</span><span class="fu">sudo</span> apt update <span class="kw">&amp;&amp;</span> <span class="fu">sudo</span> apt install curl -y<span class="kw">)</span></span>
-                        <span id="cb26-2"><a href="#cb26-2" aria-hidden="true"></a><span class="ex">curl</span> -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg <span class="kw">|</span> <span class="fu">sudo</span> dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg <span class="kw">\</span></span>
-                        <span id="cb26-3"><a href="#cb26-3" aria-hidden="true"></a><span class="kw">&amp;&amp;</span> <span class="fu">sudo</span> chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg <span class="kw">\</span></span>
-                        <span id="cb26-4"><a href="#cb26-4" aria-hidden="true"></a><span class="kw">&amp;&amp;</span> <span class="bu">echo</span> <span class="st">&quot;deb [arch=</span><span class="va">$(</span><span class="ex">dpkg</span> --print-architecture<span class="va">)</span><span class="st"> signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main&quot;</span> <span class="kw">|</span> <span class="fu">sudo</span> tee /etc/apt/sources.list.d/github-cli.list <span class="op">&gt;</span> /dev/null <span class="kw">\</span></span>
-                        <span id="cb26-5"><a href="#cb26-5" aria-hidden="true"></a><span class="kw">&amp;&amp;</span> <span class="fu">sudo</span> apt update <span class="kw">\</span></span>
-                        <span id="cb26-6"><a href="#cb26-6" aria-hidden="true"></a><span class="kw">&amp;&amp;</span> <span class="fu">sudo</span> apt install gh -y</span></code></pre></div>
-                        <div class="sourceCode" id="cb27"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true"></a>$ <span class="ex">gh</span> --version</span>
-                        <span id="cb27-2"><a href="#cb27-2" aria-hidden="true"></a><span class="ex">gh</span> version 2.28.0 (2023-04-25)</span>
-                        <span id="cb27-3"><a href="#cb27-3" aria-hidden="true"></a><span class="ex">https</span>://github.com/cli/cli/releases/tag/v2.28.0</span></code></pre></div>
+                        <div class="sourceCode" id="cb29"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true"></a><span class="bu">type</span> -p curl <span class="op">&gt;</span>/dev/null <span class="kw">||</span> <span class="kw">(</span><span class="fu">sudo</span> apt update <span class="kw">&amp;&amp;</span> <span class="fu">sudo</span> apt install curl -y<span class="kw">)</span></span>
+                        <span id="cb29-2"><a href="#cb29-2" aria-hidden="true"></a><span class="ex">curl</span> -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg <span class="kw">|</span> <span class="fu">sudo</span> dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg <span class="kw">\</span></span>
+                        <span id="cb29-3"><a href="#cb29-3" aria-hidden="true"></a><span class="kw">&amp;&amp;</span> <span class="fu">sudo</span> chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg <span class="kw">\</span></span>
+                        <span id="cb29-4"><a href="#cb29-4" aria-hidden="true"></a><span class="kw">&amp;&amp;</span> <span class="bu">echo</span> <span class="st">&quot;deb [arch=</span><span class="va">$(</span><span class="ex">dpkg</span> --print-architecture<span class="va">)</span><span class="st"> signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main&quot;</span> <span class="kw">|</span> <span class="fu">sudo</span> tee /etc/apt/sources.list.d/github-cli.list <span class="op">&gt;</span> /dev/null <span class="kw">\</span></span>
+                        <span id="cb29-5"><a href="#cb29-5" aria-hidden="true"></a><span class="kw">&amp;&amp;</span> <span class="fu">sudo</span> apt update <span class="kw">\</span></span>
+                        <span id="cb29-6"><a href="#cb29-6" aria-hidden="true"></a><span class="kw">&amp;&amp;</span> <span class="fu">sudo</span> apt install gh -y</span></code></pre></div>
+                        <div class="sourceCode" id="cb30"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true"></a>$ <span class="ex">gh</span> --version</span>
+                        <span id="cb30-2"><a href="#cb30-2" aria-hidden="true"></a><span class="ex">gh</span> version 2.28.0 (2023-04-25)</span>
+                        <span id="cb30-3"><a href="#cb30-3" aria-hidden="true"></a><span class="ex">https</span>://github.com/cli/cli/releases/tag/v2.28.0</span></code></pre></div>
                         <p>できた。ログインは後で。</p>
                         <p>前から書こうとしてた<a href="https://zenn.dev/kaityo256/articles/quadratic_equation">二次方程式の話</a>を書いた。講義の余談で話したもの。</p>
                         <h2 id="月02日火"><a href="#02">05月02日(火)</a> <a id="02"></a></h2>
                         <p>ChatGPT-4は、いわゆる「自己言及のパラドックス」を知っている。では、一見「自己言及のパラドックス」に見えるが、そうではないものを指定したらどうなるか？</p>
-                        <div class="sourceCode" id="cb28"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true"></a>以下の二人の話を聞いて、AとBがそれぞれ嘘をついているか、本当のことを言っているかを判定してください。</span>
-                        <span id="cb28-2"><a href="#cb28-2" aria-hidden="true"></a>A「Bは嘘をついている」</span>
-                        <span id="cb28-3"><a href="#cb28-3" aria-hidden="true"></a>B「Aは嘘をついている」</span>
-                        <span id="cb28-4"><a href="#cb28-4" aria-hidden="true"></a></span>
-                        <span id="cb28-5"><a href="#cb28-5" aria-hidden="true"></a>この状況は、いわゆる「悪魔の証明」のパラドックスに似ています。AとBの主張が同時に正しいことはありません。Aが本当のことを言っている場合、Bは嘘をついていることになります。しかし、Bは「Aは嘘をついている」と言っているので、その主張が正しいと仮定すると、Aは本当のことを言っていないことになります。同様に、Bが本当のことを言っている場合、Aは嘘をついていることになりますが、それはAの主張が正しいことを意味します。どちらの主張も同時に正しいことはないため、この状況ではAとBがそれぞれ嘘をついているか、本当のことを言っているかを判断することはできません。</span></code></pre></div>
+                        <div class="sourceCode" id="cb31"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true"></a>以下の二人の話を聞いて、AとBがそれぞれ嘘をついているか、本当のことを言っているかを判定してください。</span>
+                        <span id="cb31-2"><a href="#cb31-2" aria-hidden="true"></a>A「Bは嘘をついている」</span>
+                        <span id="cb31-3"><a href="#cb31-3" aria-hidden="true"></a>B「Aは嘘をついている」</span>
+                        <span id="cb31-4"><a href="#cb31-4" aria-hidden="true"></a></span>
+                        <span id="cb31-5"><a href="#cb31-5" aria-hidden="true"></a>この状況は、いわゆる「悪魔の証明」のパラドックスに似ています。AとBの主張が同時に正しいことはありません。Aが本当のことを言っている場合、Bは嘘をついていることになります。しかし、Bは「Aは嘘をついている」と言っているので、その主張が正しいと仮定すると、Aは本当のことを言っていないことになります。同様に、Bが本当のことを言っている場合、Aは嘘をついていることになりますが、それはAの主張が正しいことを意味します。どちらの主張も同時に正しいことはないため、この状況ではAとBがそれぞれ嘘をついているか、本当のことを言っているかを判断することはできません。</span></code></pre></div>
                         <p>実は「AとBのどちらかが嘘つき」というパターンは許されるため、パラドックスにはならないのだが、パラドックスと勘違いしている。聞き方によってはそれを回避できる。</p>
-                        <div class="sourceCode" id="cb29"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true"></a>以下の二人の話を聞いて、AとBが二人とも本当のことを言っているか、二人とも嘘をついているか、それともどちらか一方が嘘をついているかを論じてください。</span>
-                        <span id="cb29-2"><a href="#cb29-2" aria-hidden="true"></a>A「Bは嘘をついている」</span>
-                        <span id="cb29-3"><a href="#cb29-3" aria-hidden="true"></a>B「Aは嘘をついている」</span>
-                        <span id="cb29-4"><a href="#cb29-4" aria-hidden="true"></a></span>
-                        <span id="cb29-5"><a href="#cb29-5" aria-hidden="true"></a>の二人の会話は、いわゆる「悪魔の証明」や「リアルパラドックス」と呼ばれるタイプの問題です。AとBの発言を検証すると、次のようなパターンが考えられます。</span>
-                        <span id="cb29-6"><a href="#cb29-6" aria-hidden="true"></a></span>
-                        <span id="cb29-7"><a href="#cb29-7" aria-hidden="true"></a>AもBも本当のことを言っている。</span>
-                        <span id="cb29-8"><a href="#cb29-8" aria-hidden="true"></a>AもBも嘘をついている。</span>
-                        <span id="cb29-9"><a href="#cb29-9" aria-hidden="true"></a>Aだけが嘘をついている。</span>
-                        <span id="cb29-10"><a href="#cb29-10" aria-hidden="true"></a>Bだけが嘘をついている。</span>
-                        <span id="cb29-11"><a href="#cb29-11" aria-hidden="true"></a>まず1のパターンについて考えると、Aが「Bは嘘をついている」と言っていて、Bが「Aは嘘をついている」と言っている場合、両方の発言が真実であることにはなりません。なぜなら、Aが真実を言っているとすれば、Bの発言は嘘になるため、Bの発言も真実になるわけではないからです。</span>
-                        <span id="cb29-12"><a href="#cb29-12" aria-hidden="true"></a></span>
-                        <span id="cb29-13"><a href="#cb29-13" aria-hidden="true"></a>2のパターンについて考えると、Aが「Bは嘘をついている」と嘘をついており、Bが「Aは嘘をついている」と嘘をついている場合、実際にはAの発言が真実で、Bの発言も真実になります。しかし、これは矛盾しているため、このパターンも成立しないことがわかります。</span>
-                        <span id="cb29-14"><a href="#cb29-14" aria-hidden="true"></a></span>
-                        <span id="cb29-15"><a href="#cb29-15" aria-hidden="true"></a>3のパターンについて考えると、Aだけが嘘をついて「Bは嘘をついている」と言っている場合、実際にはBは真実を言っており、「Aは嘘をついている」というBの発言も真実になります。これは矛盾がないため、可能性があるパターンです。</span>
-                        <span id="cb29-16"><a href="#cb29-16" aria-hidden="true"></a></span>
-                        <span id="cb29-17"><a href="#cb29-17" aria-hidden="true"></a>4のパターンについて考えると、Bだけが嘘をついて「Aは嘘をついている」と言っている場合、実際にはAは真実を言っており、「Bは嘘をついている」というAの発言も真実になります。これも矛盾がないため、可能性があるパターンです。</span>
-                        <span id="cb29-18"><a href="#cb29-18" aria-hidden="true"></a></span>
-                        <span id="cb29-19"><a href="#cb29-19" aria-hidden="true"></a>結論として、AとBが二人とも本当のことを言っているか、二人とも嘘をついているかではなく、どちらか一方が嘘をついている可能性が高いです。具体的には、3のパターン（Aだけが嘘をついている）か4のパターン（Bだけが嘘をついている）のど</span></code></pre></div>
+                        <div class="sourceCode" id="cb32"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true"></a>以下の二人の話を聞いて、AとBが二人とも本当のことを言っているか、二人とも嘘をついているか、それともどちらか一方が嘘をついているかを論じてください。</span>
+                        <span id="cb32-2"><a href="#cb32-2" aria-hidden="true"></a>A「Bは嘘をついている」</span>
+                        <span id="cb32-3"><a href="#cb32-3" aria-hidden="true"></a>B「Aは嘘をついている」</span>
+                        <span id="cb32-4"><a href="#cb32-4" aria-hidden="true"></a></span>
+                        <span id="cb32-5"><a href="#cb32-5" aria-hidden="true"></a>の二人の会話は、いわゆる「悪魔の証明」や「リアルパラドックス」と呼ばれるタイプの問題です。AとBの発言を検証すると、次のようなパターンが考えられます。</span>
+                        <span id="cb32-6"><a href="#cb32-6" aria-hidden="true"></a></span>
+                        <span id="cb32-7"><a href="#cb32-7" aria-hidden="true"></a>AもBも本当のことを言っている。</span>
+                        <span id="cb32-8"><a href="#cb32-8" aria-hidden="true"></a>AもBも嘘をついている。</span>
+                        <span id="cb32-9"><a href="#cb32-9" aria-hidden="true"></a>Aだけが嘘をついている。</span>
+                        <span id="cb32-10"><a href="#cb32-10" aria-hidden="true"></a>Bだけが嘘をついている。</span>
+                        <span id="cb32-11"><a href="#cb32-11" aria-hidden="true"></a>まず1のパターンについて考えると、Aが「Bは嘘をついている」と言っていて、Bが「Aは嘘をついている」と言っている場合、両方の発言が真実であることにはなりません。なぜなら、Aが真実を言っているとすれば、Bの発言は嘘になるため、Bの発言も真実になるわけではないからです。</span>
+                        <span id="cb32-12"><a href="#cb32-12" aria-hidden="true"></a></span>
+                        <span id="cb32-13"><a href="#cb32-13" aria-hidden="true"></a>2のパターンについて考えると、Aが「Bは嘘をついている」と嘘をついており、Bが「Aは嘘をついている」と嘘をついている場合、実際にはAの発言が真実で、Bの発言も真実になります。しかし、これは矛盾しているため、このパターンも成立しないことがわかります。</span>
+                        <span id="cb32-14"><a href="#cb32-14" aria-hidden="true"></a></span>
+                        <span id="cb32-15"><a href="#cb32-15" aria-hidden="true"></a>3のパターンについて考えると、Aだけが嘘をついて「Bは嘘をついている」と言っている場合、実際にはBは真実を言っており、「Aは嘘をついている」というBの発言も真実になります。これは矛盾がないため、可能性があるパターンです。</span>
+                        <span id="cb32-16"><a href="#cb32-16" aria-hidden="true"></a></span>
+                        <span id="cb32-17"><a href="#cb32-17" aria-hidden="true"></a>4のパターンについて考えると、Bだけが嘘をついて「Aは嘘をついている」と言っている場合、実際にはAは真実を言っており、「Bは嘘をついている」というAの発言も真実になります。これも矛盾がないため、可能性があるパターンです。</span>
+                        <span id="cb32-18"><a href="#cb32-18" aria-hidden="true"></a></span>
+                        <span id="cb32-19"><a href="#cb32-19" aria-hidden="true"></a>結論として、AとBが二人とも本当のことを言っているか、二人とも嘘をついているかではなく、どちらか一方が嘘をついている可能性が高いです。具体的には、3のパターン（Aだけが嘘をついている）か4のパターン（Bだけが嘘をついている）のど</span></code></pre></div>
                         <p>正しく推定できた。</p>
                         <p>ChatGPTはひし形と正方形の関係を推定できない。</p>
-                        <div class="sourceCode" id="cb30"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true"></a>「ひし形」とはどのような形ですか？</span>
-                        <span id="cb30-2"><a href="#cb30-2" aria-hidden="true"></a></span>
-                        <span id="cb30-3"><a href="#cb30-3" aria-hidden="true"></a>「ひし形」は、日本語で菱形（りょうけい）とも呼ばれる平面図形で、四辺形の一種です。ひし形は、対向する2組の辺が等しい長さであり、かつ対角線が互いに垂直二等分される特徴を持っています。英語では &quot;rhombus&quot; と呼ばれています。</span>
-                        <span id="cb30-4"><a href="#cb30-4" aria-hidden="true"></a></span>
-                        <span id="cb30-5"><a href="#cb30-5" aria-hidden="true"></a>ひし形は、正方形を特別なケースとして含んでいます。正方形の場合、すべての辺が等しい長さであり、内角もすべて90度ですが、一般的なひし形では内角は異なる場合があります。ひし形の対角線は互いに垂直であり、それぞれの対角線上の2点は等距離になります。</span>
-                        <span id="cb30-6"><a href="#cb30-6" aria-hidden="true"></a></span>
-                        <span id="cb30-7"><a href="#cb30-7" aria-hidden="true"></a>ひし形のうち、一つの角が直角であるようなものをなんと呼びますか？</span>
-                        <span id="cb30-8"><a href="#cb30-8" aria-hidden="true"></a></span>
-                        <span id="cb30-9"><a href="#cb30-9" aria-hidden="true"></a>一つの角が直角であるひし形は、「直角ひし形」と呼ばれます。英語では &quot;right-angled rhombus&quot; と言います。この図形は、対角線の一つが他方の対角線の半分の長さで、また両対角線が互いに垂直であるという特徴を持ちます。直角ひし形は、直角三角形を二つ合わせた形になります。</span></code></pre></div>
+                        <div class="sourceCode" id="cb33"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true"></a>「ひし形」とはどのような形ですか？</span>
+                        <span id="cb33-2"><a href="#cb33-2" aria-hidden="true"></a></span>
+                        <span id="cb33-3"><a href="#cb33-3" aria-hidden="true"></a>「ひし形」は、日本語で菱形（りょうけい）とも呼ばれる平面図形で、四辺形の一種です。ひし形は、対向する2組の辺が等しい長さであり、かつ対角線が互いに垂直二等分される特徴を持っています。英語では &quot;rhombus&quot; と呼ばれています。</span>
+                        <span id="cb33-4"><a href="#cb33-4" aria-hidden="true"></a></span>
+                        <span id="cb33-5"><a href="#cb33-5" aria-hidden="true"></a>ひし形は、正方形を特別なケースとして含んでいます。正方形の場合、すべての辺が等しい長さであり、内角もすべて90度ですが、一般的なひし形では内角は異なる場合があります。ひし形の対角線は互いに垂直であり、それぞれの対角線上の2点は等距離になります。</span>
+                        <span id="cb33-6"><a href="#cb33-6" aria-hidden="true"></a></span>
+                        <span id="cb33-7"><a href="#cb33-7" aria-hidden="true"></a>ひし形のうち、一つの角が直角であるようなものをなんと呼びますか？</span>
+                        <span id="cb33-8"><a href="#cb33-8" aria-hidden="true"></a></span>
+                        <span id="cb33-9"><a href="#cb33-9" aria-hidden="true"></a>一つの角が直角であるひし形は、「直角ひし形」と呼ばれます。英語では &quot;right-angled rhombus&quot; と言います。この図形は、対角線の一つが他方の対角線の半分の長さで、また両対角線が互いに垂直であるという特徴を持ちます。直角ひし形は、直角三角形を二つ合わせた形になります。</span></code></pre></div>
                         <p>英語だと正しく推定できる。</p>
-                        <div class="sourceCode" id="cb31"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true"></a>What name is given to a rectangle that is rhombic and such that one angle is a right angle?</span>
-                        <span id="cb31-2"><a href="#cb31-2" aria-hidden="true"></a></span>
-                        <span id="cb31-3"><a href="#cb31-3" aria-hidden="true"></a>A rectangle that is rhombic and has one right angle is called a square. A square is a special type of rectangle where all four sides are equal in length, and all four angles are right angles. In other words, a square is both a rectangle and a rhombus.</span></code></pre></div>
+                        <div class="sourceCode" id="cb34"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true"></a>What name is given to a rectangle that is rhombic and such that one angle is a right angle?</span>
+                        <span id="cb34-2"><a href="#cb34-2" aria-hidden="true"></a></span>
+                        <span id="cb34-3"><a href="#cb34-3" aria-hidden="true"></a>A rectangle that is rhombic and has one right angle is called a square. A square is a special type of rectangle where all four sides are equal in length, and all four angles are right angles. In other words, a square is both a rectangle and a rhombus.</span></code></pre></div>
                         <p>大学生並の知性があるかと思えば、たまに小学生並と感じることもある。</p>
                         <p><a href="https://sharegpt.com/c/jnAWL4w">三角形の60度の角</a></p>
                         <p>ふむ。</p>
