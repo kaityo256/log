@@ -22,6 +22,41 @@
     <article class="markdown-body">
                         <h1 id="年6月">2023年6月</h1>
                         <p><a href="index.html">ログ一覧</a></p>
+                        <h2 id="月19日月"><a href="#19">06月19日(月)</a> <a id="19"></a></h2>
+                        <p>うお、Macにpptxgrepが入ってない。ビルドしようとしたが、dmdが入ってない。</p>
+                        <div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="fu">git</span> clone git@github.com:kaityo256/pptxgrep.git</span>
+                        <span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a><span class="bu">cd</span> pptxgrep</span>
+                        <span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a><span class="ex">brew</span> install dmd</span></code></pre></div>
+                        <p>コンパイル。</p>
+                        <div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a>$ <span class="ex">dmd</span> pptxgrep.d</span>
+                        <span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a><span class="ex">pptxgrep.d</span>(8)<span class="bu">:</span> Error: unable to read module <span class="kw">`</span><span class="ex">xml</span><span class="kw">`</span></span>
+                        <span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a><span class="ex">pptxgrep.d</span>(8)<span class="bu">:</span>        Expected <span class="st">&#39;std/xml.d&#39;</span> or <span class="st">&#39;std/xml/package.d&#39;</span> in one of the following import paths:</span>
+                        <span id="cb2-4"><a href="#cb2-4" aria-hidden="true"></a><span class="ex">import</span> path[0] = /usr/local/opt/dmd/include/dlang/dmd</span></code></pre></div>
+                        <p>うげ。xmlがインポートできない。調べたら<code>std.xml</code>が非推奨になってた。もう別の言語で書くか。Rustか、Goかなぁ。面倒だからC++かなぁ。</p>
+                        <p>時間があったらGoで書いてみるか・・・</p>
+                        <p>とりあえずインストールだけ。</p>
+                        <ul>
+                        <li><a href="https://go.dev/dl/">https://go.dev/dl/</a>に行く</li>
+                        <li><a href="https://go.dev/dl/go1.20.5.darwin-amd64.pkg">https://go.dev/dl/go1.20.5.darwin-amd64.pkg</a>をダウンロード</li>
+                        </ul>
+                        <div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a>$ <span class="ex">go</span> version</span>
+                        <span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a><span class="ex">go</span> version go1.20.5 darwin/amd64</span></code></pre></div>
+                        <p>はいったぞ。</p>
+                        <ul>
+                        <li>VSCodeにRich Go language support for Visual Studio Codeをインストール</li>
+                        </ul>
+                        <p>そしたらVSCodeがさらに以下のツールを入れた。</p>
+                        <div class="sourceCode" id="cb4"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a>  gotests</span>
+                        <span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a>  gomodifytags</span>
+                        <span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a>  impl</span>
+                        <span id="cb4-4"><a href="#cb4-4" aria-hidden="true"></a>  goplay</span>
+                        <span id="cb4-5"><a href="#cb4-5" aria-hidden="true"></a>  dlv</span>
+                        <span id="cb4-6"><a href="#cb4-6" aria-hidden="true"></a>  staticcheck</span>
+                        <span id="cb4-7"><a href="#cb4-7" aria-hidden="true"></a>  gopls</span></code></pre></div>
+                        <p>後でGoでなんか書いてみよう(←いつだ？)。</p>
+                        <p>数理物理、今回はまともに講義できたけど、反変ベクトル、共変ベクトルの混乱を引きずってるな。来年からは縦ベクトル、横ベクトルとdx, ∂xの双対性だけ説明して、反変、共変の説明はやめよう。</p>
+                        <h2 id="月18日日"><a href="#18">06月18日(日)</a> <a id="18"></a></h2>
+                        <p>NOP</p>
                         <h2 id="月17日土"><a href="#17">06月17日(土)</a> <a id="17"></a></h2>
                         <p><a href="https://www.intel.co.jp/content/www/jp/ja/products/sku/230497/intel-core-i913900kf-processor-36m-cache-up-to-5-80-ghz/specifications.html">インテル® Core™ i9-13900KF プロセッサー</a></p>
                         <p>ターボブーストで5.8GHz。最近の石はこんなことになってるのか。すごいな。全く情報を追えてない。</p>
@@ -46,20 +81,20 @@
                         <p>懸案だった名刺発注済ませた。これまでコロナでほとんど人に会っておらず、名刺もほとんど消費してなかったのだが、最近は人に会うことが増えて名刺の減りが激しく尽きてしまった。</p>
                         <p>どうでも良いけど、「このメールはこれまで名刺を交換させていただいた方にお送りしております」という嘘をついて送ってくる営業メール、どうなのよ？ 僕が計測機器メーカーの人と名刺交換するわけないでしょ。</p>
                         <p>古いAMD EPYCマシンで<code>Python Setup.py egg_info" Failed with Error Code 1</code>というエラー。おそらくpipが古い。久しぶりにyum updateしたり。</p>
-                        <div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="fu">wget</span> https://bootstrap.pypa.io/pip/3.6/get-pip.py </span>
-                        <span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a><span class="fu">sudo</span> python3 get-pip.py</span></code></pre></div>
+                        <div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="fu">wget</span> https://bootstrap.pypa.io/pip/3.6/get-pip.py </span>
+                        <span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a><span class="fu">sudo</span> python3 get-pip.py</span></code></pre></div>
                         <p>sudoはよくないらしいが。</p>
                         <p>と思ったら、venvが通らなくなった。</p>
-                        <div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a>$ <span class="ex">python3</span> -m venv env</span>
-                        <span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a><span class="ex">Error</span>: Command <span class="st">&#39;[&#39;</span>/home/watanabe/temp/env/bin/python3<span class="st">&#39;, &#39;</span>-Im<span class="st">&#39;, &#39;</span>ensurepip<span class="st">&#39;, &#39;</span>--upgrade<span class="st">&#39;, &#39;</span>--default-pip<span class="st">&#39;]&#39;</span> returned non-zero exit status 1.</span></code></pre></div>
+                        <div class="sourceCode" id="cb6"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a>$ <span class="ex">python3</span> -m venv env</span>
+                        <span id="cb6-2"><a href="#cb6-2" aria-hidden="true"></a><span class="ex">Error</span>: Command <span class="st">&#39;[&#39;</span>/home/watanabe/temp/env/bin/python3<span class="st">&#39;, &#39;</span>-Im<span class="st">&#39;, &#39;</span>ensurepip<span class="st">&#39;, &#39;</span>--upgrade<span class="st">&#39;, &#39;</span>--default-pip<span class="st">&#39;]&#39;</span> returned non-zero exit status 1.</span></code></pre></div>
                         <p>とあるものを受け取る予定になっていたが、その配達が遅れ、慌てて取りに行くも鍵を忘れて居室に戻り、受け取ったことを別の人に連絡しなければならないのにそれを失念し、学生向けのアナウンスを作ったら日付が間違いだらけ。古いPCのエラーなんとかしようとしたらPython環境を破壊。今日はダメだ。</p>
                         <p>ハイブリッドミーティング用にビデオカメラをZoomにつなげる確認。ビデオのHDMI出力にコンバータ(IO DATAのGV-HUVC)をつなぎ、USBをPCにつなげるだけ。あとはZoom側でマイク、ビデオソースをIO DATAのGV-HUVCを選べばOK。簡単。USBとHDMI素晴らしい。規格考えた人えらい。</p>
-                        <div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="ex">python3</span> -m venv myenv --without-pip  </span>
-                        <span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a><span class="bu">source</span> myenv/bin/activate </span>
-                        <span id="cb3-3"><a href="#cb3-3" aria-hidden="true"></a><span class="fu">wget</span> https://bootstrap.pypa.io/pip/3.6/get-pip.py</span>
-                        <span id="cb3-4"><a href="#cb3-4" aria-hidden="true"></a><span class="ex">python3</span> get-pip.py</span>
-                        <span id="cb3-5"><a href="#cb3-5" aria-hidden="true"></a><span class="ex">python3</span> -m pip install --upgrade pip</span>
-                        <span id="cb3-6"><a href="#cb3-6" aria-hidden="true"></a><span class="ex">python3</span> -m pip install tensorflow Pillow</span></code></pre></div>
+                        <div class="sourceCode" id="cb7"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a><span class="ex">python3</span> -m venv myenv --without-pip  </span>
+                        <span id="cb7-2"><a href="#cb7-2" aria-hidden="true"></a><span class="bu">source</span> myenv/bin/activate </span>
+                        <span id="cb7-3"><a href="#cb7-3" aria-hidden="true"></a><span class="fu">wget</span> https://bootstrap.pypa.io/pip/3.6/get-pip.py</span>
+                        <span id="cb7-4"><a href="#cb7-4" aria-hidden="true"></a><span class="ex">python3</span> get-pip.py</span>
+                        <span id="cb7-5"><a href="#cb7-5" aria-hidden="true"></a><span class="ex">python3</span> -m pip install --upgrade pip</span>
+                        <span id="cb7-6"><a href="#cb7-6" aria-hidden="true"></a><span class="ex">python3</span> -m pip install tensorflow Pillow</span></code></pre></div>
                         <h2 id="月13日火"><a href="#13">06月13日(火)</a> <a id="13"></a></h2>
                         <p>あれだけ大量にあったはずの赤ボールペンがまったく居室になくなって「ムキーッ」ってなってる。</p>
                         <p>だいたい赤ボールペンを使う時は赤ボールペンが必要な書類と一緒に家に持ち帰り、赤を入れ終わった書類だけ学校に持ってくるので、赤ボールペンは家に置き去りになるんだよね。</p>
@@ -78,12 +113,12 @@
                         <p>うわ、査読のリマインダ来た。忘れてた(締め切りはまだ)。</p>
                         <h2 id="月09日金"><a href="#09">06月09日(金)</a> <a id="09"></a></h2>
                         <p>計算サーバの調子が悪い。</p>
-                        <div class="sourceCode" id="cb4"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a>login: timed out after 60 second</span></code></pre></div>
+                        <div class="sourceCode" id="cb8"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a>login: timed out after 60 second</span></code></pre></div>
                         <p>とか、</p>
-                        <div class="sourceCode" id="cb5"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a>Starting OpenSSH server daemon... </span>
-                        <span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a>[FAILED] Failed to start Login Service.</span>
-                        <span id="cb5-3"><a href="#cb5-3" aria-hidden="true"></a>See &#39;systemctl status systemd-logind.service&#39; for details. [FAILED] Failed to start OpenSSH server daemon. </span>
-                        <span id="cb5-4"><a href="#cb5-4" aria-hidden="true"></a>See systemctl status sshd.service&#39; for details.</span></code></pre></div>
+                        <div class="sourceCode" id="cb9"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a>Starting OpenSSH server daemon... </span>
+                        <span id="cb9-2"><a href="#cb9-2" aria-hidden="true"></a>[FAILED] Failed to start Login Service.</span>
+                        <span id="cb9-3"><a href="#cb9-3" aria-hidden="true"></a>See &#39;systemctl status systemd-logind.service&#39; for details. [FAILED] Failed to start OpenSSH server daemon. </span>
+                        <span id="cb9-4"><a href="#cb9-4" aria-hidden="true"></a>See systemctl status sshd.service&#39; for details.</span></code></pre></div>
                         <p>とか言われる。なんだかなぁもう。</p>
                         <p>講義。今日は数学的準備。かなり疲れた。</p>
                         <p>大学院の教職について調べた。学部を卒業することで取得できる免許状が一種免許状、大学院を取得することで取得できる免許状が専修免許状。</p>
