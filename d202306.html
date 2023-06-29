@@ -78,6 +78,20 @@
                         <p>と、ローカル設定するよう修正。</p>
                         <p>さらに、前からやろうやろうと思っていたIPAフォントの同封を実施。ライセンスをちゃんと読んだら同封して良さそうだったので。こういうオリジナルライセンスって、きっちり読まないと何をして良いか、よくないかがわからないので面倒なんだよなぁ。</p>
                         <p>しかし、しばらく触ってないといろんなものがdeprecatedになってて、それで世の中の進歩を知る感じになって、自分だけ取り残されてる気持ちになってイヤになりますね。</p>
+                        <p>古いバージョンのRubyを入れる。</p>
+                        <div class="sourceCode" id="cb7"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a><span class="ex">rbenv</span> install 2.7.8  </span>
+                        <span id="cb7-2"><a href="#cb7-2" aria-hidden="true"></a><span class="ex">rbenv</span> local 2.7.8</span></code></pre></div>
+                        <p>うん、どちらも動くようになった。</p>
+                        <p>結局、PrawnのGemがメンテされていないのが悪いので、</p>
+                        <div class="sourceCode" id="cb8"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a><span class="co"># frozen_string_literal: true</span></span>
+                        <span id="cb8-2"><a href="#cb8-2" aria-hidden="true"></a></span>
+                        <span id="cb8-3"><a href="#cb8-3" aria-hidden="true"></a><span class="bu">source</span> <span class="st">&quot;https://rubygems.org&quot;</span></span>
+                        <span id="cb8-4"><a href="#cb8-4" aria-hidden="true"></a></span>
+                        <span id="cb8-5"><a href="#cb8-5" aria-hidden="true"></a><span class="ex">git_source</span>(:github) {<span class="kw">|</span><span class="ex">repo_name</span><span class="kw">|</span> <span class="st">&quot;https://github.com/#{repo_name}&quot;</span> }</span>
+                        <span id="cb8-6"><a href="#cb8-6" aria-hidden="true"></a></span>
+                        <span id="cb8-7"><a href="#cb8-7" aria-hidden="true"></a><span class="ex">gem</span> <span class="st">&quot;prawn&quot;</span>, github: <span class="st">&quot;prawnpdf/prawn&quot;</span></span></code></pre></div>
+                        <p>と、GitHubから取るようにすればOKだった。これで<code>matrix</code>は不要。</p>
+                        <p>ついでに前から気になってた<a href="https://github.com/kaityo256/lammps_collision">lammps_collision</a>の<code>format</code>文字列をf-stringに修正。学生さんがこれをスタートに改造することが多いので、formatを使い続けちゃうんだよね。</p>
                         <h2 id="月28日水"><a href="#28">06月28日(水)</a> <a id="28"></a></h2>
                         <p>頭痛がひどい。</p>
                         <p>しばらく使っていないサービスの大会確認が来た。住所が情報基盤センター時代のもの。必要になったら再入会することにして、とりあえず退会しておいた。</p>
@@ -101,30 +115,30 @@
                         <p>ずっと解析力学の講義を持ちたいと思っていて、念願かなってこうして講義しているわけだけど、思い入れがある分、準備にすごい時間がかかっていて、それでいて他の仕事も結構あるのでしんどい。</p>
                         <h2 id="月22日木"><a href="#22">06月22日(木)</a> <a id="22"></a></h2>
                         <p>pandocを使ってmarkdownからpdfを作ると、boldsymbolが太字にならない問題、bmを使ってもうまくいかない。仕方ないのでpandocが吐いたtexソースを見て二分探索。最終的に</p>
-                        <div class="sourceCode" id="cb7"><pre class="sourceCode latex"><code class="sourceCode latex"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a><span class="bu">\usepackage</span>{<span class="ex">unicode-math</span>} </span></code></pre></div>
+                        <div class="sourceCode" id="cb9"><pre class="sourceCode latex"><code class="sourceCode latex"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a><span class="bu">\usepackage</span>{<span class="ex">unicode-math</span>} </span></code></pre></div>
                         <p>が問題を起こしていることが判明。</p>
                         <p>つまり、</p>
-                        <div class="sourceCode" id="cb8"><pre class="sourceCode tex"><code class="sourceCode latex"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a><span class="bu">\documentclass</span>{<span class="ex">ltjarticle</span>}</span>
-                        <span id="cb8-2"><a href="#cb8-2" aria-hidden="true"></a><span class="bu">\usepackage</span>{<span class="ex">amsmath</span>}</span>
-                        <span id="cb8-3"><a href="#cb8-3" aria-hidden="true"></a><span class="kw">\begin</span>{<span class="ex">document</span>}</span>
-                        <span id="cb8-4"><a href="#cb8-4" aria-hidden="true"></a><span class="ss">$$</span></span>
-                        <span id="cb8-5"><a href="#cb8-5" aria-hidden="true"></a><span class="ss">  </span><span class="sc">\boldsymbol</span><span class="ss">{r} = r</span></span>
-                        <span id="cb8-6"><a href="#cb8-6" aria-hidden="true"></a><span class="ss">$$</span></span>
-                        <span id="cb8-7"><a href="#cb8-7" aria-hidden="true"></a><span class="kw">\end</span>{<span class="ex">document</span>}</span></code></pre></div>
+                        <div class="sourceCode" id="cb10"><pre class="sourceCode tex"><code class="sourceCode latex"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true"></a><span class="bu">\documentclass</span>{<span class="ex">ltjarticle</span>}</span>
+                        <span id="cb10-2"><a href="#cb10-2" aria-hidden="true"></a><span class="bu">\usepackage</span>{<span class="ex">amsmath</span>}</span>
+                        <span id="cb10-3"><a href="#cb10-3" aria-hidden="true"></a><span class="kw">\begin</span>{<span class="ex">document</span>}</span>
+                        <span id="cb10-4"><a href="#cb10-4" aria-hidden="true"></a><span class="ss">$$</span></span>
+                        <span id="cb10-5"><a href="#cb10-5" aria-hidden="true"></a><span class="ss">  </span><span class="sc">\boldsymbol</span><span class="ss">{r} = r</span></span>
+                        <span id="cb10-6"><a href="#cb10-6" aria-hidden="true"></a><span class="ss">$$</span></span>
+                        <span id="cb10-7"><a href="#cb10-7" aria-hidden="true"></a><span class="kw">\end</span>{<span class="ex">document</span>}</span></code></pre></div>
                         <p>というファイルをつくってlualatexでコンパイルしてもボールドになるが、</p>
-                        <div class="sourceCode" id="cb9"><pre class="sourceCode tex"><code class="sourceCode latex"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a><span class="bu">\documentclass</span>{<span class="ex">ltjarticle</span>}</span>
-                        <span id="cb9-2"><a href="#cb9-2" aria-hidden="true"></a><span class="bu">\usepackage</span>{<span class="ex">amsmath</span>}</span>
-                        <span id="cb9-3"><a href="#cb9-3" aria-hidden="true"></a><span class="bu">\usepackage</span>{<span class="ex">unicode-math</span>}</span>
-                        <span id="cb9-4"><a href="#cb9-4" aria-hidden="true"></a><span class="kw">\begin</span>{<span class="ex">document</span>}</span>
-                        <span id="cb9-5"><a href="#cb9-5" aria-hidden="true"></a><span class="ss">$$</span></span>
-                        <span id="cb9-6"><a href="#cb9-6" aria-hidden="true"></a><span class="ss">  </span><span class="sc">\boldsymbol</span><span class="ss">{r} = r</span></span>
-                        <span id="cb9-7"><a href="#cb9-7" aria-hidden="true"></a><span class="ss">$$</span></span>
-                        <span id="cb9-8"><a href="#cb9-8" aria-hidden="true"></a><span class="kw">\end</span>{<span class="ex">document</span>}</span></code></pre></div>
+                        <div class="sourceCode" id="cb11"><pre class="sourceCode tex"><code class="sourceCode latex"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true"></a><span class="bu">\documentclass</span>{<span class="ex">ltjarticle</span>}</span>
+                        <span id="cb11-2"><a href="#cb11-2" aria-hidden="true"></a><span class="bu">\usepackage</span>{<span class="ex">amsmath</span>}</span>
+                        <span id="cb11-3"><a href="#cb11-3" aria-hidden="true"></a><span class="bu">\usepackage</span>{<span class="ex">unicode-math</span>}</span>
+                        <span id="cb11-4"><a href="#cb11-4" aria-hidden="true"></a><span class="kw">\begin</span>{<span class="ex">document</span>}</span>
+                        <span id="cb11-5"><a href="#cb11-5" aria-hidden="true"></a><span class="ss">$$</span></span>
+                        <span id="cb11-6"><a href="#cb11-6" aria-hidden="true"></a><span class="ss">  </span><span class="sc">\boldsymbol</span><span class="ss">{r} = r</span></span>
+                        <span id="cb11-7"><a href="#cb11-7" aria-hidden="true"></a><span class="ss">$$</span></span>
+                        <span id="cb11-8"><a href="#cb11-8" aria-hidden="true"></a><span class="kw">\end</span>{<span class="ex">document</span>}</span></code></pre></div>
                         <p>とするとうまくいかない。</p>
                         <p>検索したら<a href="https://tex.stackexchange.com/a/55417">解決策</a>を見つけた。</p>
-                        <div class="sourceCode" id="cb10"><pre class="sourceCode tex"><code class="sourceCode latex"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true"></a><span class="fu">\setmainfont</span>{XITS}</span>
-                        <span id="cb10-2"><a href="#cb10-2" aria-hidden="true"></a><span class="fu">\setmathfont</span>{XITS Math}</span>
-                        <span id="cb10-3"><a href="#cb10-3" aria-hidden="true"></a><span class="fu">\setmathfont</span>[version=bold,FakeBold=3.5]{XITS Math}</span></code></pre></div>
+                        <div class="sourceCode" id="cb12"><pre class="sourceCode tex"><code class="sourceCode latex"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true"></a><span class="fu">\setmainfont</span>{XITS}</span>
+                        <span id="cb12-2"><a href="#cb12-2" aria-hidden="true"></a><span class="fu">\setmathfont</span>{XITS Math}</span>
+                        <span id="cb12-3"><a href="#cb12-3" aria-hidden="true"></a><span class="fu">\setmathfont</span>[version=bold,FakeBold=3.5]{XITS Math}</span></code></pre></div>
                         <p>を追加するとうまくいく。ちょっとフォントが変わってしまうが。</p>
                         <p>いろいろ調べたが、結局「太字の斜体を使うな」というのが正しいらしい。<code>\mathbf</code>を使うのが正解。どうしてもやりたければ上記のworkaroundでなんとかする。</p>
                         <p>ハンズオン。バッチシステムの使い方。</p>
@@ -136,24 +150,24 @@
                         <h2 id="月20日火"><a href="#20">06月20日(火)</a> <a id="20"></a></h2>
                         <p>数理物理、毎回講義の後に質問の列ができて「真面目だなぁ」と思ってたんだけど、単に僕の講義がわかりにくいだけ、という可能性も・・・</p>
                         <p>計算サーバのノードが死んでる件、どうしようもないので、とりあえず生きているノードだけで回すことにする。まず、</p>
-                        <div class="sourceCode" id="cb11"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true"></a><span class="ex">qmgr</span> -c <span class="st">&#39;p n hostname&#39;</span></span></code></pre></div>
+                        <div class="sourceCode" id="cb13"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true"></a><span class="ex">qmgr</span> -c <span class="st">&#39;p n hostname&#39;</span></span></code></pre></div>
                         <p>で現在の設定を調べて保存。その上で、つながらないノードを、</p>
-                        <div class="sourceCode" id="cb12"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true"></a><span class="fu">sudo</span> qmgr -c <span class="st">&quot;set node hostname state = offline&quot;</span></span></code></pre></div>
+                        <div class="sourceCode" id="cb14"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true"></a><span class="fu">sudo</span> qmgr -c <span class="st">&quot;set node hostname state = offline&quot;</span></span></code></pre></div>
                         <p>で一時的に停止。復活は</p>
-                        <div class="sourceCode" id="cb13"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true"></a><span class="fu">sudo</span> qmgr -c <span class="st">&quot;set node hostname state = free&quot;</span></span></code></pre></div>
+                        <div class="sourceCode" id="cb15"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true"></a><span class="fu">sudo</span> qmgr -c <span class="st">&quot;set node hostname state = free&quot;</span></span></code></pre></div>
                         <p>全状態を調べるには、</p>
-                        <div class="sourceCode" id="cb14"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true"></a><span class="ex">pbsnodes</span> -a</span></code></pre></div>
+                        <div class="sourceCode" id="cb16"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true"></a><span class="ex">pbsnodes</span> -a</span></code></pre></div>
                         <p>毎回調べてる気がするが。とりあえず2ノードだけ活かす設定に変更。これでハンズオンできるはず。</p>
                         <h2 id="月19日月"><a href="#19">06月19日(月)</a> <a id="19"></a></h2>
                         <p>うお、Macにpptxgrepが入ってない。ビルドしようとしたが、dmdが入ってない。</p>
-                        <div class="sourceCode" id="cb15"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true"></a><span class="fu">git</span> clone git@github.com:kaityo256/pptxgrep.git</span>
-                        <span id="cb15-2"><a href="#cb15-2" aria-hidden="true"></a><span class="bu">cd</span> pptxgrep</span>
-                        <span id="cb15-3"><a href="#cb15-3" aria-hidden="true"></a><span class="ex">brew</span> install dmd</span></code></pre></div>
+                        <div class="sourceCode" id="cb17"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true"></a><span class="fu">git</span> clone git@github.com:kaityo256/pptxgrep.git</span>
+                        <span id="cb17-2"><a href="#cb17-2" aria-hidden="true"></a><span class="bu">cd</span> pptxgrep</span>
+                        <span id="cb17-3"><a href="#cb17-3" aria-hidden="true"></a><span class="ex">brew</span> install dmd</span></code></pre></div>
                         <p>コンパイル。</p>
-                        <div class="sourceCode" id="cb16"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true"></a>$ <span class="ex">dmd</span> pptxgrep.d</span>
-                        <span id="cb16-2"><a href="#cb16-2" aria-hidden="true"></a><span class="ex">pptxgrep.d</span>(8)<span class="bu">:</span> Error: unable to read module <span class="kw">`</span><span class="ex">xml</span><span class="kw">`</span></span>
-                        <span id="cb16-3"><a href="#cb16-3" aria-hidden="true"></a><span class="ex">pptxgrep.d</span>(8)<span class="bu">:</span>        Expected <span class="st">&#39;std/xml.d&#39;</span> or <span class="st">&#39;std/xml/package.d&#39;</span> in one of the following import paths:</span>
-                        <span id="cb16-4"><a href="#cb16-4" aria-hidden="true"></a><span class="ex">import</span> path[0] = /usr/local/opt/dmd/include/dlang/dmd</span></code></pre></div>
+                        <div class="sourceCode" id="cb18"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true"></a>$ <span class="ex">dmd</span> pptxgrep.d</span>
+                        <span id="cb18-2"><a href="#cb18-2" aria-hidden="true"></a><span class="ex">pptxgrep.d</span>(8)<span class="bu">:</span> Error: unable to read module <span class="kw">`</span><span class="ex">xml</span><span class="kw">`</span></span>
+                        <span id="cb18-3"><a href="#cb18-3" aria-hidden="true"></a><span class="ex">pptxgrep.d</span>(8)<span class="bu">:</span>        Expected <span class="st">&#39;std/xml.d&#39;</span> or <span class="st">&#39;std/xml/package.d&#39;</span> in one of the following import paths:</span>
+                        <span id="cb18-4"><a href="#cb18-4" aria-hidden="true"></a><span class="ex">import</span> path[0] = /usr/local/opt/dmd/include/dlang/dmd</span></code></pre></div>
                         <p>うげ。xmlがインポートできない。調べたら<code>std.xml</code>が非推奨になってた。もう別の言語で書くか。Rustか、Goかなぁ。面倒だからC++かなぁ。</p>
                         <p>時間があったらGoで書いてみるか・・・</p>
                         <p>とりあえずインストールだけ。</p>
@@ -161,20 +175,20 @@
                         <li><a href="https://go.dev/dl/">https://go.dev/dl/</a>に行く</li>
                         <li><a href="https://go.dev/dl/go1.20.5.darwin-amd64.pkg">https://go.dev/dl/go1.20.5.darwin-amd64.pkg</a>をダウンロード</li>
                         </ul>
-                        <div class="sourceCode" id="cb17"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true"></a>$ <span class="ex">go</span> version</span>
-                        <span id="cb17-2"><a href="#cb17-2" aria-hidden="true"></a><span class="ex">go</span> version go1.20.5 darwin/amd64</span></code></pre></div>
+                        <div class="sourceCode" id="cb19"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true"></a>$ <span class="ex">go</span> version</span>
+                        <span id="cb19-2"><a href="#cb19-2" aria-hidden="true"></a><span class="ex">go</span> version go1.20.5 darwin/amd64</span></code></pre></div>
                         <p>はいったぞ。</p>
                         <ul>
                         <li>VSCodeにRich Go language support for Visual Studio Codeをインストール</li>
                         </ul>
                         <p>そしたらVSCodeがさらに以下のツールを入れた。</p>
-                        <div class="sourceCode" id="cb18"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true"></a>  gotests</span>
-                        <span id="cb18-2"><a href="#cb18-2" aria-hidden="true"></a>  gomodifytags</span>
-                        <span id="cb18-3"><a href="#cb18-3" aria-hidden="true"></a>  impl</span>
-                        <span id="cb18-4"><a href="#cb18-4" aria-hidden="true"></a>  goplay</span>
-                        <span id="cb18-5"><a href="#cb18-5" aria-hidden="true"></a>  dlv</span>
-                        <span id="cb18-6"><a href="#cb18-6" aria-hidden="true"></a>  staticcheck</span>
-                        <span id="cb18-7"><a href="#cb18-7" aria-hidden="true"></a>  gopls</span></code></pre></div>
+                        <div class="sourceCode" id="cb20"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true"></a>  gotests</span>
+                        <span id="cb20-2"><a href="#cb20-2" aria-hidden="true"></a>  gomodifytags</span>
+                        <span id="cb20-3"><a href="#cb20-3" aria-hidden="true"></a>  impl</span>
+                        <span id="cb20-4"><a href="#cb20-4" aria-hidden="true"></a>  goplay</span>
+                        <span id="cb20-5"><a href="#cb20-5" aria-hidden="true"></a>  dlv</span>
+                        <span id="cb20-6"><a href="#cb20-6" aria-hidden="true"></a>  staticcheck</span>
+                        <span id="cb20-7"><a href="#cb20-7" aria-hidden="true"></a>  gopls</span></code></pre></div>
                         <p>後でGoでなんか書いてみよう(←いつだ？)。</p>
                         <p>数理物理、今回はまともに講義できたけど、反変ベクトル、共変ベクトルの混乱を引きずってるな。来年からは縦ベクトル、横ベクトルとdx, ∂xの双対性だけ説明して、反変、共変の説明はやめよう。</p>
                         <h2 id="月18日日"><a href="#18">06月18日(日)</a> <a id="18"></a></h2>
@@ -203,20 +217,20 @@
                         <p>懸案だった名刺発注済ませた。これまでコロナでほとんど人に会っておらず、名刺もほとんど消費してなかったのだが、最近は人に会うことが増えて名刺の減りが激しく尽きてしまった。</p>
                         <p>どうでも良いけど、「このメールはこれまで名刺を交換させていただいた方にお送りしております」という嘘をついて送ってくる営業メール、どうなのよ？ 僕が計測機器メーカーの人と名刺交換するわけないでしょ。</p>
                         <p>古いAMD EPYCマシンで<code>Python Setup.py egg_info" Failed with Error Code 1</code>というエラー。おそらくpipが古い。久しぶりにyum updateしたり。</p>
-                        <div class="sourceCode" id="cb19"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true"></a><span class="fu">wget</span> https://bootstrap.pypa.io/pip/3.6/get-pip.py </span>
-                        <span id="cb19-2"><a href="#cb19-2" aria-hidden="true"></a><span class="fu">sudo</span> python3 get-pip.py</span></code></pre></div>
+                        <div class="sourceCode" id="cb21"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true"></a><span class="fu">wget</span> https://bootstrap.pypa.io/pip/3.6/get-pip.py </span>
+                        <span id="cb21-2"><a href="#cb21-2" aria-hidden="true"></a><span class="fu">sudo</span> python3 get-pip.py</span></code></pre></div>
                         <p>sudoはよくないらしいが。</p>
                         <p>と思ったら、venvが通らなくなった。</p>
-                        <div class="sourceCode" id="cb20"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true"></a>$ <span class="ex">python3</span> -m venv env</span>
-                        <span id="cb20-2"><a href="#cb20-2" aria-hidden="true"></a><span class="ex">Error</span>: Command <span class="st">&#39;[&#39;</span>/home/watanabe/temp/env/bin/python3<span class="st">&#39;, &#39;</span>-Im<span class="st">&#39;, &#39;</span>ensurepip<span class="st">&#39;, &#39;</span>--upgrade<span class="st">&#39;, &#39;</span>--default-pip<span class="st">&#39;]&#39;</span> returned non-zero exit status 1.</span></code></pre></div>
+                        <div class="sourceCode" id="cb22"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true"></a>$ <span class="ex">python3</span> -m venv env</span>
+                        <span id="cb22-2"><a href="#cb22-2" aria-hidden="true"></a><span class="ex">Error</span>: Command <span class="st">&#39;[&#39;</span>/home/watanabe/temp/env/bin/python3<span class="st">&#39;, &#39;</span>-Im<span class="st">&#39;, &#39;</span>ensurepip<span class="st">&#39;, &#39;</span>--upgrade<span class="st">&#39;, &#39;</span>--default-pip<span class="st">&#39;]&#39;</span> returned non-zero exit status 1.</span></code></pre></div>
                         <p>とあるものを受け取る予定になっていたが、その配達が遅れ、慌てて取りに行くも鍵を忘れて居室に戻り、受け取ったことを別の人に連絡しなければならないのにそれを失念し、学生向けのアナウンスを作ったら日付が間違いだらけ。古いPCのエラーなんとかしようとしたらPython環境を破壊。今日はダメだ。</p>
                         <p>ハイブリッドミーティング用にビデオカメラをZoomにつなげる確認。ビデオのHDMI出力にコンバータ(IO DATAのGV-HUVC)をつなぎ、USBをPCにつなげるだけ。あとはZoom側でマイク、ビデオソースをIO DATAのGV-HUVCを選べばOK。簡単。USBとHDMI素晴らしい。規格考えた人えらい。</p>
-                        <div class="sourceCode" id="cb21"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true"></a><span class="ex">python3</span> -m venv myenv --without-pip  </span>
-                        <span id="cb21-2"><a href="#cb21-2" aria-hidden="true"></a><span class="bu">source</span> myenv/bin/activate </span>
-                        <span id="cb21-3"><a href="#cb21-3" aria-hidden="true"></a><span class="fu">wget</span> https://bootstrap.pypa.io/pip/3.6/get-pip.py</span>
-                        <span id="cb21-4"><a href="#cb21-4" aria-hidden="true"></a><span class="ex">python3</span> get-pip.py</span>
-                        <span id="cb21-5"><a href="#cb21-5" aria-hidden="true"></a><span class="ex">python3</span> -m pip install --upgrade pip</span>
-                        <span id="cb21-6"><a href="#cb21-6" aria-hidden="true"></a><span class="ex">python3</span> -m pip install tensorflow Pillow</span></code></pre></div>
+                        <div class="sourceCode" id="cb23"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true"></a><span class="ex">python3</span> -m venv myenv --without-pip  </span>
+                        <span id="cb23-2"><a href="#cb23-2" aria-hidden="true"></a><span class="bu">source</span> myenv/bin/activate </span>
+                        <span id="cb23-3"><a href="#cb23-3" aria-hidden="true"></a><span class="fu">wget</span> https://bootstrap.pypa.io/pip/3.6/get-pip.py</span>
+                        <span id="cb23-4"><a href="#cb23-4" aria-hidden="true"></a><span class="ex">python3</span> get-pip.py</span>
+                        <span id="cb23-5"><a href="#cb23-5" aria-hidden="true"></a><span class="ex">python3</span> -m pip install --upgrade pip</span>
+                        <span id="cb23-6"><a href="#cb23-6" aria-hidden="true"></a><span class="ex">python3</span> -m pip install tensorflow Pillow</span></code></pre></div>
                         <h2 id="月13日火"><a href="#13">06月13日(火)</a> <a id="13"></a></h2>
                         <p>あれだけ大量にあったはずの赤ボールペンがまったく居室になくなって「ムキーッ」ってなってる。</p>
                         <p>だいたい赤ボールペンを使う時は赤ボールペンが必要な書類と一緒に家に持ち帰り、赤を入れ終わった書類だけ学校に持ってくるので、赤ボールペンは家に置き去りになるんだよね。</p>
@@ -235,12 +249,12 @@
                         <p>うわ、査読のリマインダ来た。忘れてた(締め切りはまだ)。</p>
                         <h2 id="月09日金"><a href="#09">06月09日(金)</a> <a id="09"></a></h2>
                         <p>計算サーバの調子が悪い。</p>
-                        <div class="sourceCode" id="cb22"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true"></a>login: timed out after 60 second</span></code></pre></div>
+                        <div class="sourceCode" id="cb24"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true"></a>login: timed out after 60 second</span></code></pre></div>
                         <p>とか、</p>
-                        <div class="sourceCode" id="cb23"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true"></a>Starting OpenSSH server daemon... </span>
-                        <span id="cb23-2"><a href="#cb23-2" aria-hidden="true"></a>[FAILED] Failed to start Login Service.</span>
-                        <span id="cb23-3"><a href="#cb23-3" aria-hidden="true"></a>See &#39;systemctl status systemd-logind.service&#39; for details. [FAILED] Failed to start OpenSSH server daemon. </span>
-                        <span id="cb23-4"><a href="#cb23-4" aria-hidden="true"></a>See systemctl status sshd.service&#39; for details.</span></code></pre></div>
+                        <div class="sourceCode" id="cb25"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true"></a>Starting OpenSSH server daemon... </span>
+                        <span id="cb25-2"><a href="#cb25-2" aria-hidden="true"></a>[FAILED] Failed to start Login Service.</span>
+                        <span id="cb25-3"><a href="#cb25-3" aria-hidden="true"></a>See &#39;systemctl status systemd-logind.service&#39; for details. [FAILED] Failed to start OpenSSH server daemon. </span>
+                        <span id="cb25-4"><a href="#cb25-4" aria-hidden="true"></a>See systemctl status sshd.service&#39; for details.</span></code></pre></div>
                         <p>とか言われる。なんだかなぁもう。</p>
                         <p>講義。今日は数学的準備。かなり疲れた。</p>
                         <p>大学院の教職について調べた。学部を卒業することで取得できる免許状が一種免許状、大学院を取得することで取得できる免許状が専修免許状。</p>
