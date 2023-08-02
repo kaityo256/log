@@ -21,6 +21,70 @@
   <body>
     <article class="markdown-body">
                         <h1 id="年8月">2023年8月</h1>
+                        <h2 id="月02日水"><a href="#02">08月02日(水)</a> <a id="02"></a></h2>
+                        <p>昨日のまとめ。</p>
+                        <p>Markdownで書いたファイルをRe:VIEWに変換してPDF化するコードが動かない。ものすごく昔は、RedcarpetがRe:VIEWレンダラを持っていたのでそれを使っていたのだが、途中でなくなったらしい。仕方なく<code>md2review</code>を使ったが、エラーが出る。問題は数式の中にMarkdownの予約シンボルがあるとバグること。</p>
+                        <p>たとえばこんなファイルを食わせてみると、</p>
+                        <div class="sourceCode" id="cb1"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="fu"># test</span></span>
+                        <span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a></span>
+                        <span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a>$$</span>
+                        <span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a>a_1 + a_2</span>
+                        <span id="cb1-5"><a href="#cb1-5" aria-hidden="true"></a>$$</span></code></pre></div>
+                        <p>こうなってしまう。</p>
+                        <div class="sourceCode" id="cb2"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a>= test</span>
+                        <span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a></span>
+                        <span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a></span>
+                        <span id="cb2-4"><a href="#cb2-4" aria-hidden="true"></a>$$</span>
+                        <span id="cb2-5"><a href="#cb2-5" aria-hidden="true"></a>a@&lt;b&gt;{1 + a}2</span>
+                        <span id="cb2-6"><a href="#cb2-6" aria-hidden="true"></a>$$</span></code></pre></div>
+                        <p><code>_</code>で挟まれた場所を太字にしようとしている。</p>
+                        <p>あとはこんなのが、</p>
+                        <div class="sourceCode" id="cb3"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="fu"># test</span></span>
+                        <span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a></span>
+                        <span id="cb3-3"><a href="#cb3-3" aria-hidden="true"></a>$$</span>
+                        <span id="cb3-4"><a href="#cb3-4" aria-hidden="true"></a>a^*+b^*</span>
+                        <span id="cb3-5"><a href="#cb3-5" aria-hidden="true"></a>$$</span></code></pre></div>
+                        <p>こうなる。</p>
+                        <div class="sourceCode" id="cb4"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a>= test</span>
+                        <span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a>$$</span>
+                        <span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a>a^@&lt;b&gt;{+b^}</span>
+                        <span id="cb4-4"><a href="#cb4-4" aria-hidden="true"></a>$$</span></code></pre></div>
+                        <p>さらに、改行も処理されてしまう。これが、</p>
+                        <div class="sourceCode" id="cb5"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a>$$</span>
+                        <span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a>\begin{aligned}</span>
+                        <span id="cb5-3"><a href="#cb5-3" aria-hidden="true"></a>a &amp;= 1<span class="sc">\\</span></span>
+                        <span id="cb5-4"><a href="#cb5-4" aria-hidden="true"></a>b &amp;= 2</span>
+                        <span id="cb5-5"><a href="#cb5-5" aria-hidden="true"></a>\end{aligned}</span>
+                        <span id="cb5-6"><a href="#cb5-6" aria-hidden="true"></a>$$</span></code></pre></div>
+                        <p>こうなる。</p>
+                        <div class="sourceCode" id="cb6"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a>$$</span>
+                        <span id="cb6-2"><a href="#cb6-2" aria-hidden="true"></a>\begin{aligned}</span>
+                        <span id="cb6-3"><a href="#cb6-3" aria-hidden="true"></a>a &amp;= 1\</span>
+                        <span id="cb6-4"><a href="#cb6-4" aria-hidden="true"></a>b &amp;= 2</span>
+                        <span id="cb6-5"><a href="#cb6-5" aria-hidden="true"></a>\end{aligned}</span>
+                        <span id="cb6-6"><a href="#cb6-6" aria-hidden="true"></a>$$</span></code></pre></div>
+                        <p>というわけで、問題になりそうな記号類を全てエスケープしてからmd2reviewに食わせて、その後もとに戻す、という処理をしたのだが、makefileが</p>
+                        <pre class="make"><code>%.re: ../%/README.md
+                          ruby pre.rb $^ &gt; $*.pre
+                          md2review $*.pre &gt; $*.post
+                          ruby post.rb $*.post &gt; $*.re</code></pre>
+                        <p>という感じになってダサい。おそらくRedcarpetのレンダラを自作するのがまっとうな解決策だが、そこまですべきかなぁ・・・</p>
+                        <p>あれ？手元の環境には<code>redcarpet/render/review</code>があるぞ？なんでだ？</p>
+                        <p>こんなコードを書いてみる。</p>
+                        <div class="sourceCode" id="cb8"><pre class="sourceCode rb"><code class="sourceCode ruby"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a>require <span class="st">&#39;redcarpet&#39;</span></span>
+                        <span id="cb8-2"><a href="#cb8-2" aria-hidden="true"></a>a = <span class="dt">$LOADED_FEATURES</span>.dup()</span>
+                        <span id="cb8-3"><a href="#cb8-3" aria-hidden="true"></a>require <span class="st">&#39;redcarpet/render/review&#39;</span></span>
+                        <span id="cb8-4"><a href="#cb8-4" aria-hidden="true"></a>b = <span class="dt">$LOADED_FEATURES</span></span>
+                        <span id="cb8-5"><a href="#cb8-5" aria-hidden="true"></a></span>
+                        <span id="cb8-6"><a href="#cb8-6" aria-hidden="true"></a>puts b-a</span></code></pre></div>
+                        <p>結果。</p>
+                        <div class="sourceCode" id="cb9"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a>/Users/watanabe/.rbenv/versions/3.2.2/lib/ruby/3.2.0/digest/version.rb</span>
+                        <span id="cb9-2"><a href="#cb9-2" aria-hidden="true"></a>/Users/watanabe/.rbenv/versions/3.2.2/lib/ruby/3.2.0/x86_64-darwin22/digest.bundle</span>
+                        <span id="cb9-3"><a href="#cb9-3" aria-hidden="true"></a>/Users/watanabe/.rbenv/versions/3.2.2/lib/ruby/3.2.0/digest/loader.rb</span>
+                        <span id="cb9-4"><a href="#cb9-4" aria-hidden="true"></a>/Users/watanabe/.rbenv/versions/3.2.2/lib/ruby/3.2.0/digest.rb</span>
+                        <span id="cb9-5"><a href="#cb9-5" aria-hidden="true"></a>/Users/watanabe/.rbenv/versions/3.2.2/lib/ruby/3.2.0/x86_64-darwin22/digest/md5.bundle</span>
+                        <span id="cb9-6"><a href="#cb9-6" aria-hidden="true"></a>/Users/watanabe/.rbenv/versions/3.2.2/lib/ruby/gems/3.2.0/gems/md2review-1.12.1/lib/redcarpet/render/review.rb</span></code></pre></div>
+                        <p><code>md2review</code>によりレンダラに<code>render/review</code>が追加されている。なるほど。それじゃ、これを使えばいちいちファイルに何度も吐かなくて済むはずか。</p>
                         <h2 id="月01日火"><a href="#01">08月01日(火)</a> <a id="01"></a></h2>
                         <p>もう8月ですかそうですか。</p>
                         <p>えらい先生がいっぱいいる会議でぺーぺーの僕が発言してしまう問題、もちろん僕に問題はあるんだけど、別に会議が好きとか目立ちたいとかそういうのは全くなくって、むしろ会議なんて大嫌いだけど、僕の信じる幸せな未来の実現に少しでも近づけるための努力である、ということは、誰かに知っておいて欲しい気はする。</p>
