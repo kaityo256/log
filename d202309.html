@@ -22,10 +22,36 @@
   <body>
     <article class="markdown-body">
                         <h1 id="年9月">2023年9月</h1>
+                        <h2 id="月22日金"><a href="#22">09月22日(金)</a> <a id="22"></a></h2>
+                        <p>昨日のコード、もう少しスッキリ書けるなと思って修正。</p>
+                        <div class="sourceCode" id="cb1"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="pp">#include </span><span class="im">&lt;cstdio&gt;</span></span>
+                        <span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a></span>
+                        <span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a><span class="dt">int</span> main(){</span>
+                        <span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a>  <span class="at">const</span> <span class="dt">char</span> *str[] = {<span class="st">&quot;fizz&quot;</span>, <span class="st">&quot;buzz&quot;</span>};</span>
+                        <span id="cb1-5"><a href="#cb1-5" aria-hidden="true"></a>  <span class="dt">int</span> a = <span class="dv">0</span>, b = <span class="dv">0</span>, c = <span class="dv">0</span>;</span>
+                        <span id="cb1-6"><a href="#cb1-6" aria-hidden="true"></a>  a = ++a + --a;</span>
+                        <span id="cb1-7"><a href="#cb1-7" aria-hidden="true"></a>  b = --b + ++b + ++b;</span>
+                        <span id="cb1-8"><a href="#cb1-8" aria-hidden="true"></a>  c = ++c + ++c + b;</span>
+                        <span id="cb1-9"><a href="#cb1-9" aria-hidden="true"></a>  <span class="cf">for</span> (<span class="dt">int</span> i=<span class="dv">1</span>;i&lt;<span class="dv">16</span>;i++){</span>
+                        <span id="cb1-10"><a href="#cb1-10" aria-hidden="true"></a>    <span class="cf">if</span> (i%c==<span class="dv">0</span>){</span>
+                        <span id="cb1-11"><a href="#cb1-11" aria-hidden="true"></a>      printf(<span class="st">&quot;</span><span class="sc">%s\n</span><span class="st">&quot;</span>,str[b]);</span>
+                        <span id="cb1-12"><a href="#cb1-12" aria-hidden="true"></a>    }<span class="cf">else</span>{</span>
+                        <span id="cb1-13"><a href="#cb1-13" aria-hidden="true"></a>      printf(<span class="st">&quot;</span><span class="sc">%d\n</span><span class="st">&quot;</span>,i);</span>
+                        <span id="cb1-14"><a href="#cb1-14" aria-hidden="true"></a>    }</span>
+                        <span id="cb1-15"><a href="#cb1-15" aria-hidden="true"></a>  }</span>
+                        <span id="cb1-16"><a href="#cb1-16" aria-hidden="true"></a>}</span></code></pre></div>
+                        <p>前はif文が2つあってあまりきれいじゃなかったので整理した。</p>
+                        <div class="sourceCode" id="cb2"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a>  a = ++a + --a;</span>
+                        <span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a>  b = --b + ++b + ++b;</span>
+                        <span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a>  c = ++c + ++c + b;</span></code></pre></div>
+                        <p>このあたりに黒魔術感があって気に入っている。</p>
                         <h2 id="月21日木"><a href="#21">09月21日(木)</a> <a id="21"></a></h2>
                         <p>重い腰をあげ、仕事で必要な文房具を買おうと思ったら生協がリニューアルでしまっていた。一回休み。</p>
                         <p>研究室ミーティング。</p>
                         <p>Slackの立て替え払い請求がうまくいってないようなので、ウェブから再度申請してみた。いまいち予算の新システムの使い方がよくわかっていない。</p>
+                        <p>なんかまた界隈がFizzBuzzで盛り上がっているらしい。みんなこういうの好きね。</p>
+                        <p>そういえばclang++とg++で前置インクリメントの解釈が違うので、それでFizzBuzzできるなぁ、と思って書いてみた。</p>
+                        <p><a href="https://zenn.dev/kaityo256/articles/fizzbuzz_undefined">未定義動作でFizzBuzz</a></p>
                         <h2 id="月20日水"><a href="#20">09月20日(水)</a> <a id="20"></a></h2>
                         <p>Slackの2FA、学会会場で対応しようとしたら電波の問題かショートメッセージが届かず、何度か繰り返したらロックされたっぽい。面倒くさいなぁ。しばらく待ってからすべてのデバイスでログインしなおした。スマホだと、パスワード、メール、ショートメッセージと、3FAになっている。</p>
                         <p>発言しなくて良い会議で発言する癖がある。自分にとって発言してもなんら得はない(仕事が増えるので損はある)。でも、そういうところで発言しないでおいて、後出しで文句とか言いたくないので、自分になんらかの発言権があるのなら、そこで少しでも自分が考える「よりよい未来」につながるように努力はしたい。</p>
@@ -161,35 +187,35 @@
                         <p><a href="https://ledge.ai/articles/riken_gogaku_fugaku">理研 AI用スパコン「語岳」整備 「富岳」と組み合わせ「世界一」と同等性能確保</a></p>
                         <p>ダジャレかい。</p>
                         <p>bundleを使うたびに使い方をググってる気がする。</p>
-                        <div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a>$ <span class="ex">bundle</span> -v </span>
-                        <span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a><span class="ex">Calling</span> <span class="kw">`</span><span class="ex">DidYouMean</span>::SPELL_CHECKERS.merge!(error_name =<span class="op">&gt;</span> spell_checker)<span class="st">&#39; has been deprecated. Please call `DidYouMean.correct_error(error_name, spell_checker)&#39;</span> <span class="ex">instead.</span></span>
-                        <span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a><span class="ex">Bundler</span> version 2.2.24</span></code></pre></div>
+                        <div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a>$ <span class="ex">bundle</span> -v </span>
+                        <span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a><span class="ex">Calling</span> <span class="kw">`</span><span class="ex">DidYouMean</span>::SPELL_CHECKERS.merge!(error_name =<span class="op">&gt;</span> spell_checker)<span class="st">&#39; has been deprecated. Please call `DidYouMean.correct_error(error_name, spell_checker)&#39;</span> <span class="ex">instead.</span></span>
+                        <span id="cb3-3"><a href="#cb3-3" aria-hidden="true"></a><span class="ex">Bundler</span> version 2.2.24</span></code></pre></div>
                         <p>この警告はBundlerが古いから。アップデートすると治る。</p>
-                        <div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="ex">bundle</span> update --bundler</span></code></pre></div>
+                        <div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="ex">bundle</span> update --bundler</span></code></pre></div>
                         <p>ローカルにインストールする時、<code>--local</code>はdeprecated. config setで設定していて、installを引数なしで使う。</p>
-                        <div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="ex">bundle</span> config set --local path <span class="st">&#39;vendor/bundle&#39;</span></span>
-                        <span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a><span class="ex">bundle</span> install</span></code></pre></div>
+                        <div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="ex">bundle</span> config set --local path <span class="st">&#39;vendor/bundle&#39;</span></span>
+                        <span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a><span class="ex">bundle</span> install</span></code></pre></div>
                         <p>これ↑も500回くらいググった気がする。</p>
                         <p>面倒なので<code>make install</code>で上記が実行されるようにした。</p>
                         <h2 id="月06日水"><a href="#06">09月06日(水)</a> <a id="06"></a></h2>
                         <p>エクセルで「平成13年 6月」とか「令和 5年 3月」とか書かれている行を一気に西暦表示に変換する方法・・・をChatGPTに聞いてみた。</p>
-                        <div class="sourceCode" id="cb4"><pre class="sourceCode vb"><code class="sourceCode monobasic"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a>=IF(ISNUMBER(SEARCH(<span class="st">&quot;平成&quot;</span>,C33)), </span>
-                        <span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a>    <span class="st">&quot;19&quot;</span>&amp;TEXT(VALUE(MID(C33,3,2))+88,<span class="st">&quot;##&quot;</span>)&amp;<span class="st">&quot;年 &quot;</span>&amp;MID(C33,6,LEN(C33)-5), </span>
-                        <span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a>IF(ISNUMBER(SEARCH(<span class="st">&quot;令和&quot;</span>,C33)), </span>
-                        <span id="cb4-4"><a href="#cb4-4" aria-hidden="true"></a>    <span class="st">&quot;20&quot;</span>&amp;TEXT(VALUE(MID(C33,3,2))+18,<span class="st">&quot;##&quot;</span>)&amp;<span class="st">&quot;年 &quot;</span>&amp;MID(C33,6,LEN(C33)-5), </span>
-                        <span id="cb4-5"><a href="#cb4-5" aria-hidden="true"></a>    C33))</span></code></pre></div>
+                        <div class="sourceCode" id="cb6"><pre class="sourceCode vb"><code class="sourceCode monobasic"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a>=IF(ISNUMBER(SEARCH(<span class="st">&quot;平成&quot;</span>,C33)), </span>
+                        <span id="cb6-2"><a href="#cb6-2" aria-hidden="true"></a>    <span class="st">&quot;19&quot;</span>&amp;TEXT(VALUE(MID(C33,3,2))+88,<span class="st">&quot;##&quot;</span>)&amp;<span class="st">&quot;年 &quot;</span>&amp;MID(C33,6,LEN(C33)-5), </span>
+                        <span id="cb6-3"><a href="#cb6-3" aria-hidden="true"></a>IF(ISNUMBER(SEARCH(<span class="st">&quot;令和&quot;</span>,C33)), </span>
+                        <span id="cb6-4"><a href="#cb6-4" aria-hidden="true"></a>    <span class="st">&quot;20&quot;</span>&amp;TEXT(VALUE(MID(C33,3,2))+18,<span class="st">&quot;##&quot;</span>)&amp;<span class="st">&quot;年 &quot;</span>&amp;MID(C33,6,LEN(C33)-5), </span>
+                        <span id="cb6-5"><a href="#cb6-5" aria-hidden="true"></a>    C33))</span></code></pre></div>
                         <p>全然ダメじゃん。なんどかやりなおしてとりあえず平成はできた。</p>
-                        <div class="sourceCode" id="cb5"><pre class="sourceCode vb"><code class="sourceCode monobasic"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a>=IF(ISNUMBER(SEARCH(<span class="st">&quot;平成&quot;</span>,C33)), TEXT(VALUE(MID(C33,3,2))+1988,<span class="st">&quot;####&quot;</span>)&amp;<span class="st">&quot;年&quot;</span>&amp;MID(C33,6,LEN(C33)-5), C33)</span></code></pre></div>
+                        <div class="sourceCode" id="cb7"><pre class="sourceCode vb"><code class="sourceCode monobasic"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a>=IF(ISNUMBER(SEARCH(<span class="st">&quot;平成&quot;</span>,C33)), TEXT(VALUE(MID(C33,3,2))+1988,<span class="st">&quot;####&quot;</span>)&amp;<span class="st">&quot;年&quot;</span>&amp;MID(C33,6,LEN(C33)-5), C33)</span></code></pre></div>
                         <p>令和にも対応させた。</p>
-                        <div class="sourceCode" id="cb6"><pre class="sourceCode vb"><code class="sourceCode monobasic"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a>=IF(ISNUMBER(SEARCH(<span class="st">&quot;平成&quot;</span>,C33)), TEXT(VALUE(MID(C33,3,2))+1988,<span class="st">&quot;####&quot;</span>)&amp;<span class="st">&quot;年&quot;</span>&amp;MID(C33,6,LEN(C33)-5), IF(ISNUMBER(SEARCH(<span class="st">&quot;令和&quot;</span>,C33)), TEXT(VALUE(MID(C33,3,2))+2018,<span class="st">&quot;####&quot;</span>)&amp;<span class="st">&quot;年&quot;</span>&amp;MID(C33,6,LEN(C33)-5), C33))</span></code></pre></div>
+                        <div class="sourceCode" id="cb8"><pre class="sourceCode vb"><code class="sourceCode monobasic"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a>=IF(ISNUMBER(SEARCH(<span class="st">&quot;平成&quot;</span>,C33)), TEXT(VALUE(MID(C33,3,2))+1988,<span class="st">&quot;####&quot;</span>)&amp;<span class="st">&quot;年&quot;</span>&amp;MID(C33,6,LEN(C33)-5), IF(ISNUMBER(SEARCH(<span class="st">&quot;令和&quot;</span>,C33)), TEXT(VALUE(MID(C33,3,2))+2018,<span class="st">&quot;####&quot;</span>)&amp;<span class="st">&quot;年&quot;</span>&amp;MID(C33,6,LEN(C33)-5), C33))</span></code></pre></div>
                         <p>「令和元年」→「エラー」ムキー！！！！！</p>
-                        <div class="sourceCode" id="cb7"><pre class="sourceCode vb"><code class="sourceCode monobasic"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a>=IF(ISNUMBER(SEARCH(<span class="st">&quot;平成&quot;</span>,C33)), TEXT(VALUE(MID(C33,3,2))+1988,<span class="st">&quot;####&quot;</span>)&amp;<span class="st">&quot;年&quot;</span>&amp;MID(C33,6,LEN(C33)-5), IF(ISNUMBER(SEARCH(<span class="st">&quot;令和元年&quot;</span>,C33)), <span class="st">&quot;2019年&quot;</span>&amp;MID(C33,7,LEN(C33)-6),IF(ISNUMBER(SEARCH(<span class="st">&quot;令和&quot;</span>,C33)), TEXT(VALUE(MID(C33,3,2))+2018,<span class="st">&quot;####&quot;</span>)&amp;<span class="st">&quot;年&quot;</span>&amp;MID(C33,6,LEN(C33)-5), C33)))</span></code></pre></div>
+                        <div class="sourceCode" id="cb9"><pre class="sourceCode vb"><code class="sourceCode monobasic"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a>=IF(ISNUMBER(SEARCH(<span class="st">&quot;平成&quot;</span>,C33)), TEXT(VALUE(MID(C33,3,2))+1988,<span class="st">&quot;####&quot;</span>)&amp;<span class="st">&quot;年&quot;</span>&amp;MID(C33,6,LEN(C33)-5), IF(ISNUMBER(SEARCH(<span class="st">&quot;令和元年&quot;</span>,C33)), <span class="st">&quot;2019年&quot;</span>&amp;MID(C33,7,LEN(C33)-6),IF(ISNUMBER(SEARCH(<span class="st">&quot;令和&quot;</span>,C33)), TEXT(VALUE(MID(C33,3,2))+2018,<span class="st">&quot;####&quot;</span>)&amp;<span class="st">&quot;年&quot;</span>&amp;MID(C33,6,LEN(C33)-5), C33)))</span></code></pre></div>
                         <p>「令和元年7月」→「2019年月」ムキー！！！！</p>
-                        <div class="sourceCode" id="cb8"><pre class="sourceCode vb"><code class="sourceCode monobasic"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a>=IF(ISNUMBER(SEARCH(<span class="st">&quot;平成&quot;</span>,C33)), </span>
-                        <span id="cb8-2"><a href="#cb8-2" aria-hidden="true"></a>    TEXT(VALUE(IF(MID(C33,3,1)=<span class="st">&quot;元&quot;</span>,1,MID(C33,3,2)))+1988,<span class="st">&quot;####&quot;</span>)&amp;<span class="st">&quot;年&quot;</span>&amp;MID(C33,IF(MID(C33,3,1)=<span class="st">&quot;元&quot;</span>,5,6),LEN(C33)-IF(MID(C33,3,1)=<span class="st">&quot;元&quot;</span>,4,5)), </span>
-                        <span id="cb8-3"><a href="#cb8-3" aria-hidden="true"></a>IF(ISNUMBER(SEARCH(<span class="st">&quot;令和&quot;</span>,C33)), </span>
-                        <span id="cb8-4"><a href="#cb8-4" aria-hidden="true"></a>    TEXT(VALUE(IF(MID(C33,3,1)=<span class="st">&quot;元&quot;</span>,1,MID(C33,3,2)))+2018,<span class="st">&quot;####&quot;</span>)&amp;<span class="st">&quot;年&quot;</span>&amp;MID(C33,IF(MID(C33,3,1)=<span class="st">&quot;元&quot;</span>,7,6),LEN(C33)-IF(MID(C33,3,1)=<span class="st">&quot;元&quot;</span>,6,5)), </span>
-                        <span id="cb8-5"><a href="#cb8-5" aria-hidden="true"></a>    C33))</span></code></pre></div>
+                        <div class="sourceCode" id="cb10"><pre class="sourceCode vb"><code class="sourceCode monobasic"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true"></a>=IF(ISNUMBER(SEARCH(<span class="st">&quot;平成&quot;</span>,C33)), </span>
+                        <span id="cb10-2"><a href="#cb10-2" aria-hidden="true"></a>    TEXT(VALUE(IF(MID(C33,3,1)=<span class="st">&quot;元&quot;</span>,1,MID(C33,3,2)))+1988,<span class="st">&quot;####&quot;</span>)&amp;<span class="st">&quot;年&quot;</span>&amp;MID(C33,IF(MID(C33,3,1)=<span class="st">&quot;元&quot;</span>,5,6),LEN(C33)-IF(MID(C33,3,1)=<span class="st">&quot;元&quot;</span>,4,5)), </span>
+                        <span id="cb10-3"><a href="#cb10-3" aria-hidden="true"></a>IF(ISNUMBER(SEARCH(<span class="st">&quot;令和&quot;</span>,C33)), </span>
+                        <span id="cb10-4"><a href="#cb10-4" aria-hidden="true"></a>    TEXT(VALUE(IF(MID(C33,3,1)=<span class="st">&quot;元&quot;</span>,1,MID(C33,3,2)))+2018,<span class="st">&quot;####&quot;</span>)&amp;<span class="st">&quot;年&quot;</span>&amp;MID(C33,IF(MID(C33,3,1)=<span class="st">&quot;元&quot;</span>,7,6),LEN(C33)-IF(MID(C33,3,1)=<span class="st">&quot;元&quot;</span>,6,5)), </span>
+                        <span id="cb10-5"><a href="#cb10-5" aria-hidden="true"></a>    C33))</span></code></pre></div>
                         <p>「令和元年7月」→「2019年」ムキー！！！！！！！！！！！！！！！！</p>
                         <p>今見てみると、いろいろ決め打ちでなんとかしようとしてドツボってる感じだな。自分で正規表現とかでスクリプト書いた方が早いな。</p>
                         <p><a href="https://github.com/kaityo256/github">GitHub演習の講義ノート</a>に「SSH認証」の項目を書き始めた。公開鍵による認証が何をやってるかわからない学生が多く、必要だと思ったので。</p>
