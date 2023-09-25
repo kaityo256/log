@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+                <title>2018年11月</title>
+    <style type="text/css">
+      code {
+        white-space: pre;
+      }
+    </style>
+        <style type="text/css"></style>
+
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- link rel="stylesheet" href="github-markdown.css" type="text/css" / -->
+          </head>
+
+  <body>
+    <article class="markdown-body">
+                        <h1 id="年11月">2018年11月</h1>
+                        <h2 id="月30日金"><a href="#30">11月30日(金)</a> <a id="30"></a></h2>
+                        <p>　もう11月終わるの？本当に何もできないまま毎日が過ぎている感覚。つらい。</p>
+                        <h2 id="月29日木"><a href="#29">11月29日(木)</a> <a id="29"></a></h2>
+                        <p>　ランダムビット論文を再投稿。 SS研の報告書も合体させて送った。</p>
+                        <h2 id="月28日水"><a href="#28">11月28日(水)</a> <a id="28"></a></h2>
+                        <p>歯医者。治療はこれで終わったはず。</p>
+                        <p>　ランダムビット論文の修正。これで終わったはず。</p>
+                        <h2 id="月27日火"><a href="#27">11月27日(火)</a> <a id="27"></a></h2>
+                        <p>　とある報告書を書いていた。ほぼ書き上げたはず。</p>
+                        <h2 id="月26日月"><a href="#26">11月26日(月)</a> <a id="26"></a></h2>
+                        <p>　最近、太ももに肉がついて悲しい。</p>
+                        <p>　LaTeXiT(Ver 2.11.0)が動かなくなった。おそらくMojave関連だろう。 TexLive (MacTex 2018)を再インストールしてみる。 <a href="https://qiita.com/khys/items/c47d73af8993890cb9e5">ここ</a>を参考に。</p>
+                        <div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a>$ <span class="ex">brew</span> cask install mactex</span>
+                        <span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a>==<span class="op">&gt;</span> <span class="ex">We</span><span class="st">&#39;ll set permissions properly so we won&#39;</span>t need sudo in the future.</span></code></pre></div>
+                        <p>なんだこりゃ？いつかsudo不要にするけど、今は要るからごめんねってこと？</p>
+                        <p>　あまり理解していないがこれもやってみる。</p>
+                        <div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a>$ <span class="fu">sudo</span> tlmgr update --self --all</span>
+                        <span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a><span class="bu">[</span>  1/601] auto-remove: fontloader-luaotfload ... done</span>
+                        <span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a>[  2/601, ??:??/??:??] update: a2ping [69k] (46893 -&gt; 49161) ... done</span>
+                        <span id="cb2-4"><a href="#cb2-4" aria-hidden="true"></a>[  3/601, 00:15/40:58:55] update: aastex [724k] (39929 -&gt; 47692) ... done</span>
+                        <span id="cb2-5"><a href="#cb2-5" aria-hidden="true"></a>...</span></code></pre></div>
+                        <p>　おおぅ、これは時間かかりそうだな・・・。</p>
+                        <p>アップデート終わったが、LaTeXitがまだ使えない。悲しい・・・。</p>
+                        <p>miがMojaveでobsoleteだという表示が出たので最新版にアップデートしたのだが、大幅にデザインが変わっていて慣れない。 結局このHTMLもVSCodeで書くことにした。 もういい加減、ここも生HTMLではなくてMarkdownかなにかで書くかなぁ・・・。</p>
+                        <p>VSCodeにLaTeX Workshop入れた。ついでにlatex-previewを入れようとしたが、なぜか動作せず。 LaTeX WorkshopにPDF Preview機能がついており、それがちゃんと動作したのでvscode-pdfをアンインストール。 Markdownのリンク先のPDFが開けなくて困りそうな気もするが・・・。</p>
+                        <p>どうでもいいが、Qiitaその他でMarkdownのプレビューは右にあっても全く違和感ないのに、なぜかLaTeXに関してはプレビューが左にあって欲しいなぁ。なぜだ？とりあえず右プレビューに頑張って慣れるか・・・。</p>
+                        <p>もう一度gdbチャレンジ。</p>
+                        <div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a>$ <span class="fu">git</span> clone --depth=1 git://sourceware.org/git/binutils-gdb.git </span>
+                        <span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a>$ <span class="bu">cd</span> binutils-gdb </span>
+                        <span id="cb3-3"><a href="#cb3-3" aria-hidden="true"></a>$ <span class="ex">./configure</span> --disable-intl --prefix=<span class="va">$HOME</span>/local</span>
+                        <span id="cb3-4"><a href="#cb3-4" aria-hidden="true"></a>$ <span class="fu">make</span> all-gdb</span></code></pre></div>
+                        <p>駄目だ。有象無象のエラーが出てきてどうにもならない。</p>
+                        <h2 id="月25日日"><a href="#25">11月25日(日)</a> <a id="25"></a></h2>
+                        <p>覚書。</p>
+                        <div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="ex">./a.out</span> difficult.txt <span class="op">&gt;</span> difficult_answer.txt  149.16s user 1.21s system 98% cpu 2:32.04 total</span>
+                        <span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a><span class="ex">./a.out</span> difficult.txt <span class="op">&gt;</span> difficult_a.txt  151.04s user 1.20s system 99% cpu 2:33.62 total</span></code></pre></div>
+                        <p>　Hidden Singlesのところがもっと高速化できそう。</p>
+                        <h2 id="月24日土"><a href="#24">11月24日(土)</a> <a id="24"></a></h2>
+                        <p>　NOP</p>
+                        <h2 id="月23日金"><a href="#23">11月23日(金)</a> <a id="23"></a></h2>
+                        <p>　何してたっけか？思い出した、論文の再投稿原稿書いて、共著者に送ったんだ。</p>
+                        <h2 id="月22日木"><a href="#22">11月22日(木)</a> <a id="22"></a></h2>
+                        <p>　数式を含むMarkdownをPDF化しようとして苦労した。 数式がある場合はTeX経由が良いと思われるが、Markdownに外部リソースの画像があると苦しい。というわけでバッジを外した。 あと、Makefileの書き方を真面目に調べたら、もうずいぶん前からサフィックスルールはobsoleteなのね。 というわけでパターンルールで書き直した。 GitHubでもPDFが見えるようになってめでたい。</p>
+                        <p>生のソフトウェアを「バニラ」と呼ぶ語源について。</p>
+                        <ul>
+                        <li>IBM’s BookMasterでは、デフォルトをvanilla、特別な設定をmochaと呼んでいたらしい。
+                        <ul>
+                        <li>ftp://public.dhe.ibm.com/printers/products/dcf/samples/B2H.HTM</li>
+                        <li>https://whatis.techtarget.com/definition/vanilla</li>
+                        </ul></li>
+                        <li>2005年にLinux KernelのVanillaについて議論がある
+                        <ul>
+                        <li>http://lkml.iu.edu/hypermail/linux/kernel/0510.1/0248.html</li>
+                        </ul></li>
+                        <li>1990年に「vanilla workstation」という言い方を見つけた。
+                        <ul>
+                        <li>http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.38.7497&amp;rep=rep1&amp;type=pdf</li>
+                        </ul></li>
+                        <li>1994年 Vanilla UNIX
+                        <ul>
+                        <li>http://www.ais.org/~jrh/acn/ACN6-1.pdf</li>
+                        </ul></li>
+                        <li>1989年
+                        <ul>
+                        <li>Vanilla UNIX</li>
+                        <li>https://www.usenix.org/legacy/publications/compsystems/1989/fall_shapiro.pdf</li>
+                        </ul></li>
+                        <li>1985年 COMPUTE! ISSUE 56 / JANUARY 1985 / PAGE 52
+                        <ul>
+                        <li>plain-vanilla BASIC</li>
+                        <li>https://www.atarimagazines.com/compute/issue56/107_1_MSX_IS_COMING.php</li>
+                        </ul></li>
+                        <li>1983年
+                        <ul>
+                        <li>「vanilla MS-DOS」</li>
+                        <li>https://archive.org/stream/byte-magazine-1983-10/1983_10_BYTE_08-10_UNIX_djvu.txt</li>
+                        </ul></li>
+                        <li>1993年
+                        <ul>
+                        <li>http://www.catb.org/jargon/oldversions/jarg2912.txt</li>
+                        </ul></li>
+                        </ul>
+                        <div class="sourceCode" id="cb5"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a>  THIS IS THE JARGON FILE, VERSION 2.9.12, 10 MAY 1993 </span>
+                        <span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a>  Applied to hardware and</span>
+                        <span id="cb5-3"><a href="#cb5-3" aria-hidden="true"></a>   software, as in &quot;Vanilla Version 7 UNIX can&#39;t run on a</span>
+                        <span id="cb5-4"><a href="#cb5-4" aria-hidden="true"></a>   vanilla 11/34.&quot;  Also used to orthogonalize chip nomenclature; for</span>
+                        <span id="cb5-5"><a href="#cb5-5" aria-hidden="true"></a>   instance, a 74V00 means what TI calls a 7400, as distinct from</span>
+                        <span id="cb5-6"><a href="#cb5-6" aria-hidden="true"></a>   a 74LS00, etc. </span></code></pre></div>
+                        <ul>
+                        <li>1984年
+                        <ul>
+                        <li>Vanilla UNIX</li>
+                        <li>http://www.ittoday.info/AIMS/DSM/84-01-19.pdf</li>
+                        </ul></li>
+                        <li>1982年のメーリングリスト
+                        <ul>
+                        <li>https://tech-insider.org/vms/research/1982/0111.html</li>
+                        </ul></li>
+                        </ul>
+                        <div class="sourceCode" id="cb6"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a>Date: Tue Jan 19 22:14:54 1982</span>
+                        <span id="cb6-2"><a href="#cb6-2" aria-hidden="true"></a>Subject: VAX/VMS versus Unix</span>
+                        <span id="cb6-3"><a href="#cb6-3" aria-hidden="true"></a>he vanilla version of Unix does not address</span>
+                        <span id="cb6-4"><a href="#cb6-4" aria-hidden="true"></a>these problems, although the Berkeley group has done some work</span>
+                        <span id="cb6-5"><a href="#cb6-5" aria-hidden="true"></a>in this area.</span></code></pre></div>
+                        <ul>
+                        <li>vanilla DOS
+                        <ul>
+                        <li>http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.62.7636&amp;rep=rep1&amp;type=pdf</li>
+                        </ul></li>
+                        <li>1991
+                        <ul>
+                        <li>http://www.leeandmelindavarian.com/Melinda/neuvm.pdf</li>
+                        <li>“Vanilla” CP-67 systems created System/360 virtual machines,</li>
+                        </ul></li>
+                        </ul>
+                        <p>https://archive.org/stream/byte-magazine-1981-09/BYTE_Vol_06-09_1981-09_Artifical_Intelligence_djvu.txt</p>
+                        <div class="sourceCode" id="cb7"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a>BYTE Magazine Volume 06 Number 09 - Artificial Intelligence&quot;</span>
+                        <span id="cb7-2"><a href="#cb7-2" aria-hidden="true"></a>In contrast to the Star, the recently unveiled Xerox 820 </span>
+                        <span id="cb7-3"><a href="#cb7-3" aria-hidden="true"></a>personal computer (see page 441) is disappointing. It&#39;s a </span>
+                        <span id="cb7-4"><a href="#cb7-4" aria-hidden="true"></a>competently designed machine but very &quot;plain vanilla,&quot; </span>
+                        <span id="cb7-5"><a href="#cb7-5" aria-hidden="true"></a>sporting a Z80 processor, CP/M, two 5V4-inch floppy </span>
+                        <span id="cb7-6"><a href="#cb7-6" aria-hidden="true"></a>disk drives (which give the user a paltry 92 K bytes of </span>
+                        <span id="cb7-7"><a href="#cb7-7" aria-hidden="true"></a>unformatted storage per floppy disk), and no high- </span>
+                        <span id="cb7-8"><a href="#cb7-8" aria-hidden="true"></a>resolution graphics.</span></code></pre></div>
+                        <p>1990年中盤までは「“vanilla”」と二重引用符をつける人が多い。「これは比喩だよ」という意味を込めていると思われる。</p>
+                        <p>　生JSをVanillaJSと呼ぶ。オリジナルのAngbandもバニラ。</p>
+                        <h2 id="月21日水"><a href="#21">11月21日(水)</a> <a id="21"></a></h2>
+                        <p>　ミーティング。</p>
+                        <p>　ゼミで最小二乗法を真面目に導出し、トレーニング誤差とテスト誤差を評価する例題をやった。 大変勉強になった。</p>
+                        <h2 id="月20日火"><a href="#20">11月20日(火)</a> <a id="20"></a></h2>
+                        <p>　打ち合わせとか。どうも不調だ。</p>
+                        <h2 id="月19日月"><a href="#19">11月19日(月)</a> <a id="19"></a></h2>
+                        <p>　GitHubでIssueを立てて、対応するブランチを作成、プルリクを作ってマージ、ブランチを削除するまでやった。 Issue番号に対応したブランチを作り、コミットメッセージに「Closes #3」とかやると自動でissueがcloseする。 さらに、対応するブランチもマージされたら「Delete Branch」が出てくるので削除。ふむふむ。</p>
+                        <h2 id="月18日日"><a href="#18">11月18日(日)</a> <a id="18"></a></h2>
+                        <p>　数独少し進めた。だいぶプログラム脳が戻ってきた。</p>
+                        <h2 id="月17日土"><a href="#17">11月17日(土)</a> <a id="17"></a></h2>
+                        <h2 id="月17日土-1"><a href="#17">11月17日(土)</a> <a id="17"></a></h2>
+                        <p>x86infoがAMD EPYCに対応していない。</p>
+                        <div class="sourceCode" id="cb8"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a>$ <span class="fu">sudo</span> yum install pciutils-devel </span>
+                        <span id="cb8-2"><a href="#cb8-2" aria-hidden="true"></a>$ <span class="fu">git</span> clone https://github.com/kernelslacker/x86info.git </span>
+                        <span id="cb8-3"><a href="#cb8-3" aria-hidden="true"></a>$ <span class="fu">wget</span> ftp://atrey.karlin.mff.cuni.cz/pub/linux/pci/pciutils-3.6.2.tar.gz</span>
+                        <span id="cb8-4"><a href="#cb8-4" aria-hidden="true"></a>$  <span class="fu">tar</span> xvzf pciutils-3.6.2.tar.gz </span>
+                        <span id="cb8-5"><a href="#cb8-5" aria-hidden="true"></a>$ <span class="fu">make</span> install-lib</span>
+                        <span id="cb8-6"><a href="#cb8-6" aria-hidden="true"></a>$ <span class="bu">export</span> <span class="va">PKG_CONFIG_PATH=$HOME</span>/build/pciutils-3.6.2/lib</span>
+                        <span id="cb8-7"><a href="#cb8-7" aria-hidden="true"></a>$ <span class="fu">wget</span> http://zlib.net/zlib-1.2.11.tar.gz</span>
+                        <span id="cb8-8"><a href="#cb8-8" aria-hidden="true"></a>$ <span class="fu">tar</span> xvzf zlib-1.2.11.tar.gz </span>
+                        <span id="cb8-9"><a href="#cb8-9" aria-hidden="true"></a>$ <span class="bu">cd</span> zlib-1.2.11</span>
+                        <span id="cb8-10"><a href="#cb8-10" aria-hidden="true"></a>$ <span class="ex">./configure</span> --prefix=<span class="va">$HOME</span>/local</span></code></pre></div>
+                        <p>x86infoのMakefileでLDFLAGS = -Wl,-z,relro,-z,now -lzで、最後に-lzを付け加えないとダメだった。</p>
+                        <div class="sourceCode" id="cb9"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a>$ <span class="fu">wget</span> http://vault.centos.org/7.5.1804/os/Source/SPackages/x86info-1.30-6.el7.src.rpm</span></code></pre></div>
+                        <h2 id="月16日金"><a href="#16">11月16日(金)</a> <a id="16"></a></h2>
+                        <p>　Kでコードが動かなくなっていた原因判明。自分が入れたバグだった。 座標をローカルに一度コピーしないと性能が出ないのだが、その際に4要素にした影響が出ていた。 ようするにAVX2対応のために4要素対応にしたところとKで3要素を前提にしているところがバグっていた。 うーん。</p>
+                        <p>　とりあえず直してベンチマークを投げた。ウィークスケーリングだけでいいかなぁ。</p>
+                        <p>　Kにアクセスできるようにしたりマニュアル読み返したりしてたら結構時間がかかってしまった・・・。</p>
+                        <p>　うーむ、数独まで手がまわらなかったな。</p>
+                        <h2 id="月15日木"><a href="#15">11月15日(木)</a> <a id="15"></a></h2>
+                        <p>　SIMD化とか。最近よくプログラムを組んでおり、ようやく「勘」を取り戻しつつある。</p>
+                        <h2 id="月14日水"><a href="#14">11月14日(水)</a> <a id="14"></a></h2>
+                        <p>　年末調整。「本人の所得見積額」という項目がある(増えた？)んだけど、なんだこれ？ 平成30年から配偶者控除に所得制限がかかったらしい。とりあえず源泉徴収票をひっぱりだして記入。 とにかく終わった。なんか一つ控除証明書が見つからずにわたわたしたが、書類の山に埋もれていた。 なんだか疲れた。</p>
+                        <p>　AMDEPYCでgem install cairoがこける。これはruby-develが入ってなかったから。</p>
+                        <pre><code>$ sudo yum -y install ruby-devel
+                        $ sudo gem install cairo  </code></pre>
+                        <h2 id="月13日火"><a href="#13">11月13日(火)</a> <a id="13"></a></h2>
+                        <p>　MDACPの開発をGitHubに一本化する。これまで自前サーバでSubversion、 自前サーバでgit-svn、そして自前サーバでgitとVCSを変えてきたのだが、要望があってGitHubにリポジトリを上げた。 そうしたらどれが最新かよくわからなくなってきたので。今日、DiffをとってGitHub版が最新であることを確認。 ローカルのリポジトリを消した。</p>
+                        <p>　ついでにSourceForge.netのウェブサイトもObsoleteにした。SourceForge.netでは、 /home/project-web/mdacp/htdocsがウェブ置き場になっている。ここを書き換える。</p>
+                        <p>　で、Kで開発環境を整えようと.vimrcをコピーしたらエラー。Vimのバージョンが古い。しょうがないので8.0を入れる。 <a href="d201805.html#d04">この手順</a>でいけた。昔の俺GJ。</p>
+                        <p>　Kでmakefile.dependを作れるようにmakefileを修正。</p>
+                        <p>　午前中はSF.netからGitHubへのリダイレクトとKの開発環境構築で溶けた。</p>
+                        <p>　Mac Mojaveではgdbが使えない。原因は<a href="https://stackoverflow.com/questions/52529838/gdb-8-2-cant-recognized-executable-file-on-macos-mojave-10-14">ここ</a>にあるように、新しいロードコマンドを追加したから。</p>
+                        <div class="sourceCode" id="cb11"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true"></a>$ <span class="fu">git</span> clone --depth 1 git://sourceware.org/git/binutils-gdb.git  </span>
+                        <span id="cb11-2"><a href="#cb11-2" aria-hidden="true"></a>$ <span class="ex">./configure</span></span>
+                        <span id="cb11-3"><a href="#cb11-3" aria-hidden="true"></a>$ <span class="fu">make</span></span>
+                        <span id="cb11-4"><a href="#cb11-4" aria-hidden="true"></a><span class="ex">In</span> file included from ./../include/alloca-conf.h:16,</span>
+                        <span id="cb11-5"><a href="#cb11-5" aria-hidden="true"></a>                 <span class="ex">from</span> xsym.c:24:</span>
+                        <span id="cb11-6"><a href="#cb11-6" aria-hidden="true"></a><span class="ex">./../intl</span>/config.h:<span class="ex">210</span>: error: <span class="st">&quot;PACKAGE_VERSION&quot;</span> redefined [-Werror]</span>
+                        <span id="cb11-7"><a href="#cb11-7" aria-hidden="true"></a> <span class="co">#define PACKAGE_VERSION &quot;&quot;</span></span>
+                        <span id="cb11-8"><a href="#cb11-8" aria-hidden="true"></a> </span>
+                        <span id="cb11-9"><a href="#cb11-9" aria-hidden="true"></a><span class="ex">In</span> file included from sysdep.h:29,</span>
+                        <span id="cb11-10"><a href="#cb11-10" aria-hidden="true"></a>                 <span class="ex">from</span> xsym.c:23:</span>
+                        <span id="cb11-11"><a href="#cb11-11" aria-hidden="true"></a><span class="ex">config.h</span>:325: note: this is the location of the previous definition</span>
+                        <span id="cb11-12"><a href="#cb11-12" aria-hidden="true"></a> <span class="co">#define PACKAGE_VERSION &quot;2.31.51&quot;</span></span>
+                        <span id="cb11-13"><a href="#cb11-13" aria-hidden="true"></a> </span>
+                        <span id="cb11-14"><a href="#cb11-14" aria-hidden="true"></a><span class="ex">cc1</span>: all warnings being treated as errors</span>
+                        <span id="cb11-15"><a href="#cb11-15" aria-hidden="true"></a><span class="ex">make</span>[4]: *** [xsym.lo] Error 1</span>
+                        <span id="cb11-16"><a href="#cb11-16" aria-hidden="true"></a><span class="ex">make</span>[3]: *** [all-recursive] Error 1</span>
+                        <span id="cb11-17"><a href="#cb11-17" aria-hidden="true"></a><span class="ex">make</span>[2]: *** [all] Error 2</span>
+                        <span id="cb11-18"><a href="#cb11-18" aria-hidden="true"></a><span class="ex">make</span>[1]: *** [all-bfd] Error 2</span>
+                        <span id="cb11-19"><a href="#cb11-19" aria-hidden="true"></a><span class="ex">make</span>: *** [all] Error 2</span></code></pre></div>
+                        <p>　うーん、コケますね。</p>
+                        <h2 id="月12日月"><a href="#12">11月12日(月)</a> <a id="12"></a></h2>
+                        <p>　NOP</p>
+                        <h2 id="月11日日"><a href="#11">11月11日(日)</a> <a id="11"></a></h2>
+                        <p>　NOP</p>
+                        <h2 id="月10日土"><a href="#10">11月10日(土)</a> <a id="10"></a></h2>
+                        <p>　ミーティング＠東京駅。</p>
+                        <h2 id="月09日金"><a href="#09">11月09日(金)</a> <a id="09"></a></h2>
+                        <p>　何してたか覚えてない。</p>
+                        <h2 id="月08日木"><a href="#08">11月08日(木)</a> <a id="08"></a></h2>
+                        <p>　なんかバタバタする。インフルエンザの予防接種受けた。</p>
+                        <h2 id="月07日水"><a href="#07">11月07日(水)</a> <a id="07"></a></h2>
+                        <p>　メーリングリストマネージャ(MLM)の現在。</p>
+                        <ul>
+                        <li><a href="http://old.greatcircle.com/majordomo/">Majordomo</a> 昔よくこれが使われていたが、現在は更新されていない。最終更新 2000年。</li>
+                        <li><a href="http://www.fml.org/">fml</a> 国産のメーリングリストマネージャ。インターネット黎明期(1990年代の後半から2000年前半にかけて?)によく使われていたMLM。「fml 設定」とかで検索をかけると2000年代の記事がよくひっかかる。 今回調べてみたらまだ更新されており、非常に驚いた。</li>
+                        <li><a href="http://www.list.org/">GNU Mailman</a>これも昔からよく使われているMLM。</li>
+                        <li><a href="http://www.lsoft.com/products/listserv.asp">LISTSERV</a>。世界初のMLMらしい。詳しくは知らない。</li>
+                        </ul>
+                        <p>　他にもSympaとかDada Mailなどがあるらしいが、詳しくは知らない。</p>
+                        <p>　もともと、Mailmanの設定画面があまりに古臭いので、もうMailmanのメンテは死んだのかと思っていたら我々が使っているのがMailman2で、 いまはMailman3が出ていることを知ったのがはじまり。あと、Mailman3はDockerで起動することが推奨というか想定されているらしい。</p>
+                        <p>　なんというか、インターネット黎明期を知るものとして、最近の技術革新には目を見張るというか、もはや完全に置いていかれている状況だ・・・。</p>
+                        <div class="sourceCode" id="cb12"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true"></a>$  <span class="fu">git</span> clone -b unstable --depth 1 https://github.com/lammps/lammps.git mylammps</span>
+                        <span id="cb12-2"><a href="#cb12-2" aria-hidden="true"></a>$ <span class="bu">cd</span> mylammps</span>
+                        <span id="cb12-3"><a href="#cb12-3" aria-hidden="true"></a>$ <span class="fu">mkdir</span> build </span>
+                        <span id="cb12-4"><a href="#cb12-4" aria-hidden="true"></a>$ <span class="ex">module</span> load cmake </span>
+                        <span id="cb12-5"><a href="#cb12-5" aria-hidden="true"></a>$ <span class="fu">cmake</span> ../cmake  </span>
+                        <span id="cb12-6"><a href="#cb12-6" aria-hidden="true"></a>$ <span class="fu">make</span></span></code></pre></div>
+                        <p>　とりあえずこれでいける。ccmakeでコンパイラを変えたらビルドもできた。</p>
+                        <h2 id="月07日水-1"><a href="#07">11月07日(水)</a> <a id="07"></a></h2>
+                        <p>　歯医者。二本目終了。次が最後かな。</p>
+                        <p>　CMP-MLからTwitterへの転送、うまくいった。 いろいろ面倒だったな・・・。</p>
+                        <p>　まとめると、</p>
+                        <ul>
+                        <li>WordPressを自前で運用</li>
+                        <li>メーリングリスト用にMailmanを運用</li>
+                        <li>メール投稿をするためにPostieプラグインを利用</li>
+                        <li>投稿された情報をTwitterに転送するためにNextScripts: Social Networks Auto-Poster (SNAP)を利用</li>
+                        </ul>
+                        <p>　という感じですか。SNAPからTwitterにアクセスするためにはTwitter Appsの設定が必要で、それが面倒くさかった。</p>
+                        <h2 id="月06日火"><a href="#06">11月06日(火)</a> <a id="06"></a></h2>
+                        <p>　計算科学特論英語なおし。意外に時間がかかって、一日かけて半分しか進まなかった。</p>
+                        <h2 id="月05日月"><a href="#05">11月05日(月)</a> <a id="05"></a></h2>
+                        <p>　とあるプログラムを完成させた。</p>
+                        <p>　ようやく英文教科書のコメントを読み始める。コメントが多く、簡単には修正できなそう。 よく見たらLaTeXソースがなかったので送ってもらうように頼んで見る。</p>
+                        <p>　SNSを少し控えようと思う。</p>
+                        <p>　「自分の博士課程は失敗だった」というブログを見た。研究者になれなかった、という意味で失敗だったと書いているが、 ちゃんと就職できており、逆にそういう自信もあって、「失敗だった」と振り返っているのだと思う。 そういう意味で「本当に全く失敗だった」とは思っていないんだと思うが、それでも読んでいて胸が苦しくなった。</p>
+                        <p>　自分の博士課程を振り返るに、「成功だった」と胸をはることはできない。学振も取れていないし、論文ももっと書けたはず。 「自分はがんばった」と言い切ることはできる。しかし、その「がんばった」には研究以外も含まれている。 もし就職できていなかったら、「研究以外」に手をつけた時間を悔いるだろう。 しかし、その「研究以外」には、例えば未踏も含まれるわけで、やっぱり自分を構成する重要なファクターだったのだと思う。 そのあたり、割り切れない思いがあり、言語化が難しい。</p>
+                        <p>　研究がうまくいかないとき、研究以外のことで「がんばった感」を得ようとする気持ち、すごくよく分かる。 そして、しばらくしてから振り返って「あぁ、もっと研究に時間をかければよかった」と後悔する気持ちも。 でも、研究以外のこともやっぱり重要なんだ。それが研究につながるから、ということもあるけれど、 「やりたいことをやるのであり、やりたいことの大部分が研究と重なっている」状態が望ましい。 もし「やりたいこと」と「研究」の重なりが小さい時に、「やりたいこと」を「研究」に寄せようとするとすごく苦しくなる。</p>
+                        <h2 id="月04日日"><a href="#04">11月04日(日)</a> <a id="04"></a></h2>
+                        <p>　NOP。</p>
+                        <h2 id="月03日土"><a href="#03">11月03日(土)</a> <a id="03"></a></h2>
+                        <p>　英文教科書の修正をしようと思ったが、別案件が入って手が出ず。</p>
+                        <h2 id="月02日金"><a href="#02">11月02日(金)</a> <a id="02"></a></h2>
+                        <p>　ランダムビット論文、修正して共著者に投げた。</p>
+                        <p>　AMDのEPYCマシン、メモリ増設のためにパソコン宅急便で集荷依頼を出していたが、その集荷が来た。</p>
+                        <h2 id="月01日木"><a href="#01">11月01日(木)</a> <a id="01"></a></h2>
+                        <p>　もう11月か。もう焦る気持ちを通り越して達観しはじめた。</p>
+                        <p>　LastPassいいな。マルチデバイス共有、多段階認証と、これまでプレミアム限定だった機能がほとんど無料開放されている。 どこでお金儲けてるんだろ？これまで優先順位が低いサイトではパスワードを使いまわしていたが、それも全部ガチパスワードに修正し、 LastPassに放り込んで行く。</p>
+                        <p>　だけどLastPassの<a href="https://lastpass.com/premium/payment">プレミアムアップグレードのページ</a>、やる気なさすぎじゃない？ プレミアムで何ができるのかの説明がほとんどない。</p>
+                        <p>　AMD EPYCマシンのメモリ増設のためにPCを梱包した。 次に送付。まずはヤマト運輸の「webで送り状を作成する」を選択。 クロネコメンバーズにログインが必要。送り状システムC2で印刷する。 印刷後、そのまま「集荷依頼」に移行できるのでスムーズだ。 ちょっとUIに戸惑ったけど、このシステムはわりと動線がよく考えられてる。</p>
+                        <p>　ついでにクロネコメンバーズの住所が古かったので修正。神戸分室とか出てきた。懐かしい・・・。</p>
+                        <p>　もう少し真面目に曰記を残すことにした。後で自分で読み返すために。</p>
+                        <p>　ネットの情報、特にランキング系の奴、どうしても「炎上系」が上位に食い込んでしまう。 また、読者層が広い「新人エンジニア応援」系も。僕が欲しいのは「恐ろしく高度な技術でアホなことをする記事」とか、 「よく知ってると思ってた技術で実は知らなかったことを教えてくれる」ものなので、こういうニーズとは合わない。 特にひどいのがQiitaで、トップページに「トレンド」が表示されるようになってからは見る頻度が激減した。 まだ新着記事の方がましだった。はてブのホットエントリー(いわゆるホッテントリ)も、炎上ものばかり。 昔Gunosyを使っていたが、これも「うーん」と思うようになってやめてしまった。今は改善されたのかもしれないが・・・。</p>
+                        <p>　というわけで、いまのところキュレーションメディアとしては<a href="https://menthas.com/">Menthas</a>を使っているが、さて・・・。</p>
+          </article>
+  </body>
+
+  </html>
