@@ -21,6 +21,18 @@
   <body>
     <article class="markdown-body">
                         <h1 id="年10月">2023年10月</h1>
+                        <h2 id="月05日木"><a href="#05">10月05日(木)</a> <a id="05"></a></h2>
+                        <p>気温が急激に下がった。体調を崩したか？</p>
+                        <p>Markdown→Re:VIEW→(LaTeX)→PDFという形で執筆しているのだが、図の参照をして欲しい、という要望。Markdownには図の参照機能がないが、Re:VIEWにはある。Re:VIEWでは、</p>
+                        <pre class="re"><code>//image[vcs_history][vcs_history]{}</code></pre>
+                        <p>という形で図を読み込み、</p>
+                        <pre class="re"><code>@&lt;img&gt;{vcs_history}</code></pre>
+                        <p>という形で参照する。面倒なので、Markdown側で</p>
+                        <div class="sourceCode" id="cb3"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="al">![vcs_history](fig/vcs_history.png)</span></span>
+                        <span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a></span>
+                        <span id="cb3-3"><a href="#cb3-3" aria-hidden="true"></a>簡単にバージョン管理システムの歴史を見てみよう(@<span class="kw">&lt;img&gt;</span>{vcs_history})。</span></code></pre></div>
+                        <p>としてそのまま突っ込んだらうまくいった。とりあえずこれでやって、エラーが出たら考えよう。</p>
+                        <p>なんかRe:VIEWの図の参照機能、公式ドキュメント読んでもよくわからず、結局ChatGPTに聞いた。ChatGTPすごい。</p>
                         <h2 id="月04日水"><a href="#04">10月04日(水)</a> <a id="04"></a></h2>
                         <p>超絶眠い。</p>
                         <p>メモ。<a href="https://doi.org/10.1103/PhysRevE.106.055306">Lifted directed-worm algorithm</a> イジングにおけるワームアルゴリズムの改良？僕が使いたい系に使えるかもしれない。</p>
