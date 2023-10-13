@@ -21,7 +21,154 @@
   <body>
     <article class="markdown-body">
                         <h1 id="年10月">2023年10月</h1>
-                        <h2 id="月11日wed"><a href="#11">10月11日(Wed)</a> <a id="11"></a></h2>
+                        <h2 id="月13日fri"><a href="#13">10月13日(Fri)</a> <a id="13"></a></h2>
+                        <p>外に出られない問題、Gatewayが192.168.1.1ではなく192.168.1.2だったからだった。アホすぎる。</p>
+                        <p>Ubuntuのネットワーク管理、netplanとかいうものになっててよくわからない。</p>
+                        <div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="ex">Attaching</span> to webui-docker-auto-1</span>
+                        <span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a><span class="ex">Error</span> response from daemon: failed to create task for container: failed to create shim task: OCI runtime create failed: runc create failed: unable to start container process: error during container init: error running hook #0: error running hook: exit status 1, stdout: , stderr: Auto-detected mode as <span class="st">&#39;legacy&#39;</span></span>
+                        <span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a><span class="ex">nvidia-container-cli</span>: initialization error: nvml error: driver not loaded: unknown</span></code></pre></div>
+                        <p><code>/etc/nvidia-container-runtime/config.toml</code>の中の</p>
+                        <pre class="toml"><code>no-cgroups = false</code></pre>
+                        <p>を有効にしてDocker再起動。</p>
+                        <div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="ex">nvidia-container-cli</span>: initialization error: nvml error: driver not loaded: unknown</span></code></pre></div>
+                        <p>ダメですね。</p>
+                        <div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a>$ <span class="ex">nvidia-smi</span></span>
+                        <span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a><span class="ex">NVIDIA-SMI</span> has failed because it couldn<span class="st">&#39;t communicate with the NVIDIA driver. Make sure that the latest NVIDIA driver is installed and running.</span></span></code></pre></div>
+                        <p>うげ、そもそもドライバを認識してないぞ。</p>
+                        <div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a>$ <span class="ex">lsb_release</span> -a</span>
+                        <span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a><span class="ex">No</span> LSB modules are available.</span>
+                        <span id="cb5-3"><a href="#cb5-3" aria-hidden="true"></a><span class="ex">Distributor</span> ID: Ubuntu</span>
+                        <span id="cb5-4"><a href="#cb5-4" aria-hidden="true"></a><span class="ex">Description</span>:    Ubuntu 20.04.6 LTS</span>
+                        <span id="cb5-5"><a href="#cb5-5" aria-hidden="true"></a><span class="ex">Release</span>:    20.04</span>
+                        <span id="cb5-6"><a href="#cb5-6" aria-hidden="true"></a><span class="ex">Codename</span>:   focal</span></code></pre></div>
+                        <div class="sourceCode" id="cb6"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="fu">sudo</span> apt update -y</span>
+                        <span id="cb6-2"><a href="#cb6-2" aria-hidden="true"></a><span class="fu">sudo</span> apt upgrade</span>
+                        <span id="cb6-3"><a href="#cb6-3" aria-hidden="true"></a><span class="fu">sudo</span> apt install -y ubuntu-drivers-common</span></code></pre></div>
+                        <p>ドライバを調べる。</p>
+                        <div class="sourceCode" id="cb7"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a>$ <span class="ex">ubuntu-drivers</span> devices <span class="kw">|</span> <span class="fu">grep</span> recommended <span class="kw">|</span> <span class="fu">awk</span> <span class="st">&#39;{print $3}&#39;</span></span>
+                        <span id="cb7-2"><a href="#cb7-2" aria-hidden="true"></a><span class="ex">nvidia-driver-535-server-open</span></span></code></pre></div>
+                        <div class="sourceCode" id="cb8"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a>$ <span class="ex">lspci</span> <span class="kw">|</span> <span class="fu">grep</span> -i nvidia</span>
+                        <span id="cb8-2"><a href="#cb8-2" aria-hidden="true"></a><span class="ex">c1</span>:00.0 VGA compatible controller: NVIDIA Corporation GA106 [RTX A2000 12GB] (rev a1)</span>
+                        <span id="cb8-3"><a href="#cb8-3" aria-hidden="true"></a><span class="ex">c1</span>:00.1 Audio device: NVIDIA Corporation GA106 High Definition Audio Controller (rev a1)</span></code></pre></div>
+                        <div class="sourceCode" id="cb9"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a><span class="fu">sudo</span> apt --fix-broken install <span class="kw">&amp;&amp;</span> <span class="fu">sudo</span> apt upgrad</span></code></pre></div>
+                        <p>ダメ。</p>
+                        <div class="sourceCode" id="cb10"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true"></a>$ <span class="fu">sudo</span> apt install nvidia-driver-535</span>
+                        <span id="cb10-2"><a href="#cb10-2" aria-hidden="true"></a><span class="ex">Reading</span> package lists... Done</span>
+                        <span id="cb10-3"><a href="#cb10-3" aria-hidden="true"></a><span class="ex">Building</span> dependency tree       </span>
+                        <span id="cb10-4"><a href="#cb10-4" aria-hidden="true"></a><span class="ex">Reading</span> state information... Done</span>
+                        <span id="cb10-5"><a href="#cb10-5" aria-hidden="true"></a><span class="ex">Some</span> packages could not be installed. This may mean that you have</span>
+                        <span id="cb10-6"><a href="#cb10-6" aria-hidden="true"></a><span class="ex">requested</span> an impossible situation or if you are using the unstable</span>
+                        <span id="cb10-7"><a href="#cb10-7" aria-hidden="true"></a><span class="ex">distribution</span> that some required packages have not yet been created</span>
+                        <span id="cb10-8"><a href="#cb10-8" aria-hidden="true"></a><span class="ex">or</span> been moved out of Incoming.</span>
+                        <span id="cb10-9"><a href="#cb10-9" aria-hidden="true"></a><span class="ex">The</span> following information may help to resolve the situation:</span>
+                        <span id="cb10-10"><a href="#cb10-10" aria-hidden="true"></a></span>
+                        <span id="cb10-11"><a href="#cb10-11" aria-hidden="true"></a><span class="ex">The</span> following packages have unmet dependencies:</span>
+                        <span id="cb10-12"><a href="#cb10-12" aria-hidden="true"></a> <span class="ex">nvidia-driver-535</span> : Depends: libnvidia-gl-535 (= 535.113.01-0ubuntu0.20.04.1) <span class="ex">but</span> it is not going to be installed</span>
+                        <span id="cb10-13"><a href="#cb10-13" aria-hidden="true"></a>                     <span class="ex">Depends</span>: libnvidia-compute-535 (= 535.113.01-0ubuntu0.20.04.1) <span class="ex">but</span> it is not going to be installed</span>
+                        <span id="cb10-14"><a href="#cb10-14" aria-hidden="true"></a>                     <span class="ex">Depends</span>: libnvidia-extra-535 (= 535.113.01-0ubuntu0.20.04.1) <span class="ex">but</span> it is not going to be installed</span>
+                        <span id="cb10-15"><a href="#cb10-15" aria-hidden="true"></a>                     <span class="ex">Depends</span>: nvidia-compute-utils-535 (= 535.113.01-0ubuntu0.20.04.1) <span class="ex">but</span> it is not going to be installed</span>
+                        <span id="cb10-16"><a href="#cb10-16" aria-hidden="true"></a>                     <span class="ex">Depends</span>: libnvidia-decode-535 (= 535.113.01-0ubuntu0.20.04.1) <span class="ex">but</span> it is not going to be installed</span>
+                        <span id="cb10-17"><a href="#cb10-17" aria-hidden="true"></a>                     <span class="ex">Depends</span>: libnvidia-encode-535 (= 535.113.01-0ubuntu0.20.04.1) <span class="ex">but</span> it is not going to be installed</span>
+                        <span id="cb10-18"><a href="#cb10-18" aria-hidden="true"></a>                     <span class="ex">Depends</span>: nvidia-utils-535 (= 535.113.01-0ubuntu0.20.04.1) <span class="ex">but</span> it is not going to be installed</span>
+                        <span id="cb10-19"><a href="#cb10-19" aria-hidden="true"></a>                     <span class="ex">Depends</span>: xserver-xorg-video-nvidia-535 (= 535.113.01-0ubuntu0.20.04.1) <span class="ex">but</span> it is not going to be installed</span>
+                        <span id="cb10-20"><a href="#cb10-20" aria-hidden="true"></a>                     <span class="ex">Depends</span>: libnvidia-cfg1-535 (= 535.113.01-0ubuntu0.20.04.1) <span class="ex">but</span> it is not going to be installed</span>
+                        <span id="cb10-21"><a href="#cb10-21" aria-hidden="true"></a>                     <span class="ex">Depends</span>: libnvidia-fbc1-535 (= 535.113.01-0ubuntu0.20.04.1) <span class="ex">but</span> it is not going to be installed</span>
+                        <span id="cb10-22"><a href="#cb10-22" aria-hidden="true"></a>                     <span class="ex">Recommends</span>: libnvidia-compute-535:i386 (= 535.113.01-0ubuntu0.20.04.1)</span>
+                        <span id="cb10-23"><a href="#cb10-23" aria-hidden="true"></a>                     <span class="ex">Recommends</span>: libnvidia-decode-535:i386 (= 535.113.01-0ubuntu0.20.04.1)</span>
+                        <span id="cb10-24"><a href="#cb10-24" aria-hidden="true"></a>                     <span class="ex">Recommends</span>: libnvidia-encode-535:i386 (= 535.113.01-0ubuntu0.20.04.1)</span>
+                        <span id="cb10-25"><a href="#cb10-25" aria-hidden="true"></a>                     <span class="ex">Recommends</span>: libnvidia-fbc1-535:i386 (= 535.113.01-0ubuntu0.20.04.1)</span>
+                        <span id="cb10-26"><a href="#cb10-26" aria-hidden="true"></a>                     <span class="ex">Recommends</span>: libnvidia-gl-535:i386 (= 535.113.01-0ubuntu0.20.04.1)</span>
+                        <span id="cb10-27"><a href="#cb10-27" aria-hidden="true"></a><span class="ex">E</span>: Unable to correct problems, you have held broken packages.</span></code></pre></div>
+                        <p>Recommendsを一個ずつ入れていくか。</p>
+                        <div class="sourceCode" id="cb11"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true"></a><span class="fu">sudo</span> apt install -y libnvidia-compute-535 libnvidia-decode-535 libnvidia-encode-535 libnvidia-fbc1-535 libnvidia-gl-535</span></code></pre></div>
+                        <div class="sourceCode" id="cb12"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true"></a>$ <span class="ex">nvidia-smi</span></span>
+                        <span id="cb12-2"><a href="#cb12-2" aria-hidden="true"></a><span class="ex">-bash</span>: /usr/bin/nvidia-smi: No such file or directory</span></code></pre></div>
+                        <p>状況悪化。</p>
+                        <div class="sourceCode" id="cb13"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true"></a>$ <span class="fu">sudo</span> apt install nvidia-driver-535</span>
+                        <span id="cb13-2"><a href="#cb13-2" aria-hidden="true"></a><span class="ex">Reading</span> package lists... Done</span>
+                        <span id="cb13-3"><a href="#cb13-3" aria-hidden="true"></a><span class="ex">Building</span> dependency tree       </span>
+                        <span id="cb13-4"><a href="#cb13-4" aria-hidden="true"></a><span class="ex">Reading</span> state information... Done</span>
+                        <span id="cb13-5"><a href="#cb13-5" aria-hidden="true"></a><span class="ex">Some</span> packages could not be installed. This may mean that you have</span>
+                        <span id="cb13-6"><a href="#cb13-6" aria-hidden="true"></a><span class="ex">requested</span> an impossible situation or if you are using the unstable</span>
+                        <span id="cb13-7"><a href="#cb13-7" aria-hidden="true"></a><span class="ex">distribution</span> that some required packages have not yet been created</span>
+                        <span id="cb13-8"><a href="#cb13-8" aria-hidden="true"></a><span class="ex">or</span> been moved out of Incoming.</span>
+                        <span id="cb13-9"><a href="#cb13-9" aria-hidden="true"></a><span class="ex">The</span> following information may help to resolve the situation:</span>
+                        <span id="cb13-10"><a href="#cb13-10" aria-hidden="true"></a></span>
+                        <span id="cb13-11"><a href="#cb13-11" aria-hidden="true"></a><span class="ex">The</span> following packages have unmet dependencies:</span>
+                        <span id="cb13-12"><a href="#cb13-12" aria-hidden="true"></a> <span class="ex">nvidia-driver-535</span> : Depends: libnvidia-extra-535 (= 535.113.01-0ubuntu0.20.04.1) <span class="ex">but</span> it is not going to be installed</span>
+                        <span id="cb13-13"><a href="#cb13-13" aria-hidden="true"></a>                     <span class="ex">Depends</span>: xserver-xorg-video-nvidia-535 (= 535.113.01-0ubuntu0.20.04.1) <span class="ex">but</span> it is not going to be installed</span>
+                        <span id="cb13-14"><a href="#cb13-14" aria-hidden="true"></a>                     <span class="ex">Depends</span>: libnvidia-cfg1-535 (= 535.113.01-0ubuntu0.20.04.1) <span class="ex">but</span> it is not going to be installed</span>
+                        <span id="cb13-15"><a href="#cb13-15" aria-hidden="true"></a><span class="ex">E</span>: Unable to correct problems, you have held broken packages.</span></code></pre></div>
+                        <div class="sourceCode" id="cb14"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true"></a><span class="fu">sudo</span> apt install -y xserver-xorg-video-nvidia-535  libnvidia-cfg1-535</span></code></pre></div>
+                        <p>まだダメ。</p>
+                        <div class="sourceCode" id="cb15"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true"></a>$ <span class="fu">sudo</span> ubuntu-drivers autoinstall</span>
+                        <span id="cb15-2"><a href="#cb15-2" aria-hidden="true"></a><span class="kw">(</span><span class="ex">snip</span><span class="kw">)</span></span>
+                        <span id="cb15-3"><a href="#cb15-3" aria-hidden="true"></a><span class="ex">W</span>: Possible missing firmware /lib/firmware/ast_dp501_fw.bin for module ast</span>
+                        <span id="cb15-4"><a href="#cb15-4" aria-hidden="true"></a><span class="ex">Processing</span> triggers for linux-image-5.4.0-164-generic (5.4.0-164.181) <span class="ex">...</span></span>
+                        <span id="cb15-5"><a href="#cb15-5" aria-hidden="true"></a><span class="ex">/etc/kernel/postinst.d</span>/dkms:</span>
+                        <span id="cb15-6"><a href="#cb15-6" aria-hidden="true"></a> <span class="ex">*</span> dkms: running auto installation service for kernel 5.4.0-164-generic</span>
+                        <span id="cb15-7"><a href="#cb15-7" aria-hidden="true"></a>   <span class="ex">...done.</span></span>
+                        <span id="cb15-8"><a href="#cb15-8" aria-hidden="true"></a><span class="ex">/etc/kernel/postinst.d</span>/initramfs-tools:</span>
+                        <span id="cb15-9"><a href="#cb15-9" aria-hidden="true"></a><span class="ex">update-initramfs</span>: Generating /boot/initrd.img-5.4.0-164-generic</span>
+                        <span id="cb15-10"><a href="#cb15-10" aria-hidden="true"></a><span class="ex">W</span>: Possible missing firmware /lib/firmware/ast_dp501_fw.bin for module ast</span>
+                        <span id="cb15-11"><a href="#cb15-11" aria-hidden="true"></a><span class="ex">/etc/kernel/postinst.d</span>/zz-update-grub:</span>
+                        <span id="cb15-12"><a href="#cb15-12" aria-hidden="true"></a><span class="ex">Sourcing</span> file <span class="kw">`</span><span class="ex">/etc/default/grub</span><span class="st">&#39;</span></span>
+                        <span id="cb15-13"><a href="#cb15-13" aria-hidden="true"></a><span class="st">Sourcing file `/etc/default/grub.d/init-select.cfg&#39;</span></span>
+                        <span id="cb15-14"><a href="#cb15-14" aria-hidden="true"></a><span class="ex">Generating</span> grub configuration file ...</span>
+                        <span id="cb15-15"><a href="#cb15-15" aria-hidden="true"></a><span class="ex">Found</span> linux image: /boot/vmlinuz-5.4.0-164-generic</span>
+                        <span id="cb15-16"><a href="#cb15-16" aria-hidden="true"></a><span class="ex">Found</span> initrd image: /boot/initrd.img-5.4.0-164-generic</span>
+                        <span id="cb15-17"><a href="#cb15-17" aria-hidden="true"></a><span class="ex">Found</span> linux image: /boot/vmlinuz-5.4.0-128-generic</span>
+                        <span id="cb15-18"><a href="#cb15-18" aria-hidden="true"></a><span class="ex">Found</span> initrd image: /boot/initrd.img-5.4.0-128-generic</span>
+                        <span id="cb15-19"><a href="#cb15-19" aria-hidden="true"></a><span class="ex">Adding</span> boot menu entry for UEFI Firmware Settings</span>
+                        <span id="cb15-20"><a href="#cb15-20" aria-hidden="true"></a><span class="kw">done</span></span></code></pre></div>
+                        <div class="sourceCode" id="cb16"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true"></a><span class="fu">sudo</span> apt install -y nvidia-driver-535-server</span></code></pre></div>
+                        <div class="sourceCode" id="cb17"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true"></a>$ <span class="ex">nvidia-smi</span></span>
+                        <span id="cb17-2"><a href="#cb17-2" aria-hidden="true"></a><span class="ex">Fri</span> Oct 13 11:43:25 2023       </span>
+                        <span id="cb17-3"><a href="#cb17-3" aria-hidden="true"></a><span class="ex">+---------------------------------------------------------------------------------------+</span></span>
+                        <span id="cb17-4"><a href="#cb17-4" aria-hidden="true"></a><span class="kw">|</span> <span class="ex">NVIDIA-SMI</span> 535.113.01             Driver Version: 535.113.01   CUDA Version: 12.2     <span class="kw">|</span></span>
+                        <span id="cb17-5"><a href="#cb17-5" aria-hidden="true"></a><span class="kw">|</span><span class="ex">-----------------------------------------+----------------------+----------------------+</span></span>
+                        <span id="cb17-6"><a href="#cb17-6" aria-hidden="true"></a><span class="kw">|</span> <span class="ex">GPU</span>  Name                 Persistence-M <span class="kw">|</span> <span class="ex">Bus-Id</span>        Disp.A <span class="kw">|</span> <span class="ex">Volatile</span> Uncorr. ECC <span class="kw">|</span></span>
+                        <span id="cb17-7"><a href="#cb17-7" aria-hidden="true"></a><span class="kw">|</span> <span class="ex">Fan</span>  Temp   Perf          Pwr:Usage/Cap <span class="kw">|</span>         <span class="ex">Memory-Usage</span> <span class="kw">|</span> <span class="ex">GPU-Util</span>  Compute M. <span class="kw">|</span></span>
+                        <span id="cb17-8"><a href="#cb17-8" aria-hidden="true"></a><span class="kw">|</span>                                         <span class="kw">|</span>                      <span class="kw">|</span>               <span class="ex">MIG</span> M. <span class="kw">|</span></span>
+                        <span id="cb17-9"><a href="#cb17-9" aria-hidden="true"></a><span class="kw">|</span>=========================================<span class="ex">+</span>======================+======================<span class="kw">|</span></span>
+                        <span id="cb17-10"><a href="#cb17-10" aria-hidden="true"></a><span class="kw">|</span>   <span class="ex">0</span>  NVIDIA RTX A2000 12GB          Off <span class="kw">|</span> <span class="ex">00000000</span>:C1:00.0 Off <span class="kw">|</span>                  <span class="ex">Off</span> <span class="kw">|</span></span>
+                        <span id="cb17-11"><a href="#cb17-11" aria-hidden="true"></a><span class="kw">|</span> <span class="ex">30%</span>   53C    P0              N/A /  70W <span class="kw">|</span>      <span class="ex">1MiB</span> / 12282MiB <span class="kw">|</span>      <span class="ex">0%</span>      Default <span class="kw">|</span></span>
+                        <span id="cb17-12"><a href="#cb17-12" aria-hidden="true"></a><span class="kw">|</span>                                         <span class="kw">|</span>                      <span class="kw">|</span>                  <span class="ex">N/A</span> <span class="kw">|</span></span>
+                        <span id="cb17-13"><a href="#cb17-13" aria-hidden="true"></a><span class="ex">+-----------------------------------------+----------------------+----------------------+</span></span>
+                        <span id="cb17-14"><a href="#cb17-14" aria-hidden="true"></a>                                                                                         </span>
+                        <span id="cb17-15"><a href="#cb17-15" aria-hidden="true"></a><span class="ex">+---------------------------------------------------------------------------------------+</span></span>
+                        <span id="cb17-16"><a href="#cb17-16" aria-hidden="true"></a><span class="kw">|</span> <span class="ex">Processes</span>:                                                                            <span class="kw">|</span></span>
+                        <span id="cb17-17"><a href="#cb17-17" aria-hidden="true"></a><span class="kw">|</span>  <span class="ex">GPU</span>   GI   CI        PID   Type   Process name                            GPU Memory <span class="kw">|</span></span>
+                        <span id="cb17-18"><a href="#cb17-18" aria-hidden="true"></a><span class="kw">|</span>        <span class="ex">ID</span>   ID                                                             Usage      <span class="kw">|</span></span>
+                        <span id="cb17-19"><a href="#cb17-19" aria-hidden="true"></a><span class="kw">|</span>=======================================================================================<span class="kw">|</span></span>
+                        <span id="cb17-20"><a href="#cb17-20" aria-hidden="true"></a><span class="kw">|</span>  <span class="ex">No</span> running processes found                                                           <span class="kw">|</span></span>
+                        <span id="cb17-21"><a href="#cb17-21" aria-hidden="true"></a><span class="ex">+---------------------------------------------------------------------------------------+</span></span></code></pre></div>
+                        <p>通った！！</p>
+                        <p>UbuntuにChromeインストール。</p>
+                        <div class="sourceCode" id="cb18"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true"></a><span class="bu">cd</span> build</span>
+                        <span id="cb18-2"><a href="#cb18-2" aria-hidden="true"></a><span class="fu">wget</span> https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb</span>
+                        <span id="cb18-3"><a href="#cb18-3" aria-hidden="true"></a><span class="fu">sudo</span> apt install ./google-chrome-stable_current_amd64.deb</span></code></pre></div>
+                        <p>stable-diffusion-webui-dockerが動いた。</p>
+                        <p>後のためにまとめておこう。DHCP配下にあるマシンを、固定IPアドレスにして研究室サーバにぶら下げた。すると、ログインはできるが、git cloneができない。nslookupもできない。そもそも外にpingが通らない。sshはできているから、ネットワークに問題はないと考えた(これが敗因)。</p>
+                        <p>まずありそうなのが、ファイアウォール。同じプライベート空間の他のマシンが大丈夫なので、マシン独自のファイアウォールが走っていることを疑うが、動いていない。</p>
+                        <p>名前がひけないので、DNSを疑った。いろいろやったが、DNSを明示的に指定してnslookupしても届かない。ここでおかしいと思い始める。</p>
+                        <p>最終的に、<code>ping 8.8.8.8</code>が通らないことで、絶対に変だと想う。ゲートウェイも少し疑ったのだが、netstat -rでは他のマシンのGatewayが</p>
+                        <div class="sourceCode" id="cb19"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true"></a>$ <span class="fu">netstat</span> -r</span>
+                        <span id="cb19-2"><a href="#cb19-2" aria-hidden="true"></a><span class="ex">Kernel</span> IP routing table</span>
+                        <span id="cb19-3"><a href="#cb19-3" aria-hidden="true"></a><span class="ex">Destination</span>     Gateway         Genmask         Flags   MSS Window  irtt Iface</span>
+                        <span id="cb19-4"><a href="#cb19-4" aria-hidden="true"></a><span class="ex">default</span>         gateway         0.0.0.0         UG        0 0          0 em1</span>
+                        <span id="cb19-5"><a href="#cb19-5" aria-hidden="true"></a><span class="ex">192.168.1.0</span>     0.0.0.0         255.255.255.0   U         0 0          0 em1</span></code></pre></div>
+                        <p>と、IPアドレスが見えないので、間違いに気づかなかった。</p>
+                        <p>最終的に、無事なマシンで</p>
+                        <div class="sourceCode" id="cb20"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true"></a>$ <span class="fu">sudo</span> cat /etc/sysconfig/network-scripts/ifcfg-em1</span>
+                        <span id="cb20-2"><a href="#cb20-2" aria-hidden="true"></a><span class="kw">(</span><span class="ex">snip</span><span class="kw">)</span></span>
+                        <span id="cb20-3"><a href="#cb20-3" aria-hidden="true"></a><span class="va">GATEWAY=</span>192.168.1.2 # ←あっ！</span></code></pre></div>
+                        <p>要するに、デフォルトゲートウェイのIPアドレスが間違っていた。プライベートアドレス空間では問題なく通信できて、外に出られないのだから、真っ先にデフォルトゲートウェイを疑うべきだったな。</p>
+                        <p>まぁ、今の僕の知識ではこれに最初から気づくのは無理だっただろう。SEは経験ですね。</p>
+                        <h2 id="月12日木"><a href="#12">10月12日(木)</a> <a id="12"></a></h2>
+                        <p>輪講。研究室ミーティング。</p>
+                        <p>GPGPUマシンを研究室サーバにぶら下げる作業、敗北。っていうか今はUbuntuってnetplanでネットワーク管理するの？なんか見るたびに管理方法が変わってる気がするんだけど。</p>
+                        <h2 id="月11日水"><a href="#11">10月11日(水)</a> <a id="11"></a></h2>
                         <p>不足書類提出した。</p>
                         <p>会議 x 2。</p>
                         <p>なんにもしていないのにノートPCがのファンが回りだして、タスクマネージャで調べたらWindows Updateがかかっていた。あぁ、今日は第二水曜日だったか。</p>
@@ -55,9 +202,9 @@
                         <p>という形で図を読み込み、</p>
                         <pre class="re"><code>@&lt;img&gt;{vcs_history}</code></pre>
                         <p>という形で参照する。面倒なので、Markdown側で</p>
-                        <div class="sourceCode" id="cb3"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="al">![vcs_history](fig/vcs_history.png)</span></span>
-                        <span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a></span>
-                        <span id="cb3-3"><a href="#cb3-3" aria-hidden="true"></a>簡単にバージョン管理システムの歴史を見てみよう(@<span class="kw">&lt;img&gt;</span>{vcs_history})。</span></code></pre></div>
+                        <div class="sourceCode" id="cb23"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true"></a><span class="al">![vcs_history](fig/vcs_history.png)</span></span>
+                        <span id="cb23-2"><a href="#cb23-2" aria-hidden="true"></a></span>
+                        <span id="cb23-3"><a href="#cb23-3" aria-hidden="true"></a>簡単にバージョン管理システムの歴史を見てみよう(@<span class="kw">&lt;img&gt;</span>{vcs_history})。</span></code></pre></div>
                         <p>としてそのまま突っ込んだらうまくいった。とりあえずこれでやって、エラーが出たら考えよう。</p>
                         <p>なんかRe:VIEWの図の参照機能、公式ドキュメント読んでもよくわからず、結局ChatGPTに聞いた。ChatGTPすごい。</p>
                         <p>というわけで書籍の執筆を進める。もともとがわりと無理やり詰め込んだ講義ノートだったので、本にしようと思うといろいろ気になるところが出てくるなぁ。</p>
