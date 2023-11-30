@@ -32,6 +32,9 @@
                         <span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a><span class="ex">npm</span> install -g textlint</span>
                         <span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a><span class="ex">npm</span> install -g npm@10.2.4 </span></code></pre></div>
                         <p>これで警告は減ったが、まだ<code>.textlintrc</code>が無いよと言われる。ルートディレクトリに<code>.textlintignore</code>を置いても駄目。各ディレクトリで<code>touch .textlintrc</code>を実行。これ、良い方法ないかなぁ。</p>
+                        <p>nvmがログインのたびに古いバージョンを見てしまう問題、</p>
+                        <div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a> <span class="ex">nvm</span> alias default 20.9.0 </span></code></pre></div>
+                        <p>で解決した。</p>
                         <h2 id="月29日水"><a href="#29">11月29日(水)</a> <a id="29"></a></h2>
                         <p>1on1とか、明日の発表準備とか。</p>
                         <h2 id="月28日火"><a href="#28">11月28日(火)</a> <a id="28"></a></h2>
@@ -61,31 +64,31 @@
                         <p>研究室分け説明会。今年は二回説明の時間を設定したけど、来年から説明時間とか作らなくて良いかもな。あと、卒論や修論を読めることをK-LMSに書いたほうが良いかも。</p>
                         <h2 id="月20日月"><a href="#20">11月20日(月)</a> <a id="20"></a></h2>
                         <p>textlintを入れようとしたがnode.jsが古かったっぽい。</p>
-                        <div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="ex">brew</span> install nodebrew </span></code></pre></div>
+                        <div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="ex">brew</span> install nodebrew </span></code></pre></div>
                         <p><code>.zshrc_mine.zsh</code>に以下を追加。</p>
-                        <div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="bu">export</span> <span class="va">PATH=$HOME</span>/.nodebrew/current/bin:<span class="va">$PATH</span></span></code></pre></div>
+                        <div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="bu">export</span> <span class="va">PATH=$HOME</span>/.nodebrew/current/bin:<span class="va">$PATH</span></span></code></pre></div>
                         <p>最新版をインストール。</p>
-                        <div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="ex">nodebrew</span> install latest</span></code></pre></div>
-                        <div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a>$ <span class="ex">nodebrew</span> list  </span>
-                        <span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a><span class="ex">v21.2.0</span></span>
-                        <span id="cb5-3"><a href="#cb5-3" aria-hidden="true"></a></span>
-                        <span id="cb5-4"><a href="#cb5-4" aria-hidden="true"></a><span class="ex">current</span>: none</span></code></pre></div>
+                        <div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="ex">nodebrew</span> install latest</span></code></pre></div>
+                        <div class="sourceCode" id="cb6"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a>$ <span class="ex">nodebrew</span> list  </span>
+                        <span id="cb6-2"><a href="#cb6-2" aria-hidden="true"></a><span class="ex">v21.2.0</span></span>
+                        <span id="cb6-3"><a href="#cb6-3" aria-hidden="true"></a></span>
+                        <span id="cb6-4"><a href="#cb6-4" aria-hidden="true"></a><span class="ex">current</span>: none</span></code></pre></div>
                         <p>バージョン指定。</p>
-                        <div class="sourceCode" id="cb6"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="ex">nodebrew</span> use @v21.2.0</span></code></pre></div>
+                        <div class="sourceCode" id="cb7"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a><span class="ex">nodebrew</span> use @v21.2.0</span></code></pre></div>
                         <p>うまくいかない。</p>
                         <p>あー、nvmもインストールしてて、それとぶつかってた。</p>
-                        <div class="sourceCode" id="cb7"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a><span class="ex">nvm</span> install 20.9.0</span>
-                        <span id="cb7-2"><a href="#cb7-2" aria-hidden="true"></a><span class="ex">nvm</span> use v20.9.0</span></code></pre></div>
+                        <div class="sourceCode" id="cb8"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a><span class="ex">nvm</span> install 20.9.0</span>
+                        <span id="cb8-2"><a href="#cb8-2" aria-hidden="true"></a><span class="ex">nvm</span> use v20.9.0</span></code></pre></div>
                         <p>以下は執筆ディレクトリで。</p>
-                        <div class="sourceCode" id="cb8"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a><span class="ex">npm</span> init -y</span>
-                        <span id="cb8-2"><a href="#cb8-2" aria-hidden="true"></a><span class="ex">npx</span> textlint --init</span>
-                        <span id="cb8-3"><a href="#cb8-3" aria-hidden="true"></a><span class="ex">npm</span> install --save-dev <span class="kw">\</span></span>
-                        <span id="cb8-4"><a href="#cb8-4" aria-hidden="true"></a>    <span class="ex">textlint</span> <span class="kw">\</span></span>
-                        <span id="cb8-5"><a href="#cb8-5" aria-hidden="true"></a>    <span class="ex">textlint-rule-preset-ja-spacing</span> <span class="kw">\</span></span>
-                        <span id="cb8-6"><a href="#cb8-6" aria-hidden="true"></a>    <span class="ex">textlint-rule-preset-ja-technical-writing</span> <span class="kw">\</span></span>
-                        <span id="cb8-7"><a href="#cb8-7" aria-hidden="true"></a>    <span class="ex">textlint-rule-spellcheck-tech-word</span></span></code></pre></div>
+                        <div class="sourceCode" id="cb9"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a><span class="ex">npm</span> init -y</span>
+                        <span id="cb9-2"><a href="#cb9-2" aria-hidden="true"></a><span class="ex">npx</span> textlint --init</span>
+                        <span id="cb9-3"><a href="#cb9-3" aria-hidden="true"></a><span class="ex">npm</span> install --save-dev <span class="kw">\</span></span>
+                        <span id="cb9-4"><a href="#cb9-4" aria-hidden="true"></a>    <span class="ex">textlint</span> <span class="kw">\</span></span>
+                        <span id="cb9-5"><a href="#cb9-5" aria-hidden="true"></a>    <span class="ex">textlint-rule-preset-ja-spacing</span> <span class="kw">\</span></span>
+                        <span id="cb9-6"><a href="#cb9-6" aria-hidden="true"></a>    <span class="ex">textlint-rule-preset-ja-technical-writing</span> <span class="kw">\</span></span>
+                        <span id="cb9-7"><a href="#cb9-7" aria-hidden="true"></a>    <span class="ex">textlint-rule-spellcheck-tech-word</span></span></code></pre></div>
                         <p>いまいち<code>packages.json</code>がよくわかっていない。一度これを作ったら、あとは</p>
-                        <div class="sourceCode" id="cb9"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a><span class="ex">npm</span> install</span></code></pre></div>
+                        <div class="sourceCode" id="cb10"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true"></a><span class="ex">npm</span> install</span></code></pre></div>
                         <p>でどこも同じ環境になる、という理解でいいのか？bundleも同じ？</p>
                         <h2 id="月19日日"><a href="#19">11月19日(日)</a> <a id="19"></a></h2>
                         <p>NOP</p>
@@ -118,22 +121,22 @@
                         <p>macOSをsonoma 14.1.1にアップデート。今のところ問題ないが、デスクトップクリックでウィンドウがどくようになったのに戸惑う。</p>
                         <h2 id="月13日月"><a href="#13">11月13日(月)</a> <a id="13"></a></h2>
                         <p><code>cd log</code>とうち間違えて<code>log</code>と打ったらなんか出てきた。</p>
-                        <div class="sourceCode" id="cb10"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true"></a>log(1)                      General Commands Manual                     log(1)</span>
-                        <span id="cb10-2"><a href="#cb10-2" aria-hidden="true"></a></span>
-                        <span id="cb10-3"><a href="#cb10-3" aria-hidden="true"></a>NAME</span>
-                        <span id="cb10-4"><a href="#cb10-4" aria-hidden="true"></a>     log – Access system wide log messages created by os_log, os_trace and</span>
-                        <span id="cb10-5"><a href="#cb10-5" aria-hidden="true"></a>     other logging systems.</span></code></pre></div>
-                        <p>なんじゃこりゃ？調べてみたが、BSD由来っぽい。</p>
-                        <p>Linuxだと数学関数のが出てくる。</p>
-                        <div class="sourceCode" id="cb11"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true"></a>LOG(3)                     Linux Programmer&#39;s Manual                    LOG(3)</span>
+                        <div class="sourceCode" id="cb11"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true"></a>log(1)                      General Commands Manual                     log(1)</span>
                         <span id="cb11-2"><a href="#cb11-2" aria-hidden="true"></a></span>
                         <span id="cb11-3"><a href="#cb11-3" aria-hidden="true"></a>NAME</span>
-                        <span id="cb11-4"><a href="#cb11-4" aria-hidden="true"></a>       log, logf, logl - natural logarithmic function</span></code></pre></div>
+                        <span id="cb11-4"><a href="#cb11-4" aria-hidden="true"></a>     log – Access system wide log messages created by os_log, os_trace and</span>
+                        <span id="cb11-5"><a href="#cb11-5" aria-hidden="true"></a>     other logging systems.</span></code></pre></div>
+                        <p>なんじゃこりゃ？調べてみたが、BSD由来っぽい。</p>
+                        <p>Linuxだと数学関数のが出てくる。</p>
+                        <div class="sourceCode" id="cb12"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true"></a>LOG(3)                     Linux Programmer&#39;s Manual                    LOG(3)</span>
+                        <span id="cb12-2"><a href="#cb12-2" aria-hidden="true"></a></span>
+                        <span id="cb12-3"><a href="#cb12-3" aria-hidden="true"></a>NAME</span>
+                        <span id="cb12-4"><a href="#cb12-4" aria-hidden="true"></a>       log, logf, logl - natural logarithmic function</span></code></pre></div>
                         <p>GitHub演習。なんか一人もアカウント凍結が出なかった。去年のでホワイトリストに入れてもらえたかな？</p>
                         <h2 id="月12日日"><a href="#12">11月12日(日)</a> <a id="12"></a></h2>
                         <p>おそらくはじめて<code>ls</code>や<code>cp</code>で正規表現を使った。</p>
                         <p>A列にあるIDが、M列のどこかにある場合「3」を表示するコマンド。</p>
-                        <div class="sourceCode" id="cb12"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true"></a>=ARRAYFORMULA(IF(ISNUMBER(MATCH(A2:A, M:M, 0)), 3, &quot;&quot;))</span></code></pre></div>
+                        <div class="sourceCode" id="cb13"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true"></a>=ARRAYFORMULA(IF(ISNUMBER(MATCH(A2:A, M:M, 0)), 3, &quot;&quot;))</span></code></pre></div>
                         <p>GitHub演習のプルリクチェック。いや、もうググるよりChatGPTに聞いた方が早い。ARRAYFORMULAなんて知らなかったよ。</p>
                         <p>GitHub演習第三回のレポート採点。</p>
                         <p>プログラミング基礎同演習第六回のレポート採点。</p>
