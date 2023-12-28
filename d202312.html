@@ -21,6 +21,38 @@
   <body>
     <article class="markdown-body">
                         <h1 id="年12月">2023年12月</h1>
+                        <h2 id="月28日木"><a href="#28">12月28日(木)</a> <a id="28"></a></h2>
+                        <div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a>$ <span class="ex">icpc</span></span>
+                        <span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a></span>
+                        <span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a><span class="ex">Error</span>: A license for Comp-CL is not available (-16,287)<span class="ex">.</span></span>
+                        <span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a></span>
+                        <span id="cb1-5"><a href="#cb1-5" aria-hidden="true"></a><span class="ex">License</span> file(s) <span class="ex">used</span> were (in this order)<span class="bu">:</span></span>
+                        <span id="cb1-6"><a href="#cb1-6" aria-hidden="true"></a><span class="ex">**</span>  1.  /opt/intel/compilers_and_libraries_2020.0.166/linux/licenses</span>
+                        <span id="cb1-7"><a href="#cb1-7" aria-hidden="true"></a><span class="ex">**</span>  2.  /opt/intel/licenses/COM_L__CPPFOR_GDXV-5J47RJPC.lic</span>
+                        <span id="cb1-8"><a href="#cb1-8" aria-hidden="true"></a><span class="ex">**</span>  3.  /opt/intel/licenses/l_5J47RJPC.lic</span>
+                        <span id="cb1-9"><a href="#cb1-9" aria-hidden="true"></a><span class="ex">**</span>  4.  /opt/intel/licenses/server.lic</span>
+                        <span id="cb1-10"><a href="#cb1-10" aria-hidden="true"></a><span class="ex">**</span>  5.  /opt/intel/licenses/watanabe-login.lic</span>
+                        <span id="cb1-11"><a href="#cb1-11" aria-hidden="true"></a><span class="ex">**</span>  6.  /home/yamamoto/intel/licenses</span>
+                        <span id="cb1-12"><a href="#cb1-12" aria-hidden="true"></a><span class="ex">**</span>  7.  /opt/intel/compilers_and_libraries_2019.4.243/linux/bin/intel64/../../Licenses</span>
+                        <span id="cb1-13"><a href="#cb1-13" aria-hidden="true"></a><span class="ex">**</span>  8.  /home/yamamoto/Licenses</span>
+                        <span id="cb1-14"><a href="#cb1-14" aria-hidden="true"></a><span class="ex">**</span>  9.  /Users/Shared/Library/Application Support/Intel/Licenses</span>
+                        <span id="cb1-15"><a href="#cb1-15" aria-hidden="true"></a><span class="ex">**</span>  10.  /opt/intel/compilers_and_libraries_2019.4.243/linux/bin/intel64/*.lic</span>
+                        <span id="cb1-16"><a href="#cb1-16" aria-hidden="true"></a></span>
+                        <span id="cb1-17"><a href="#cb1-17" aria-hidden="true"></a><span class="ex">Please</span> refer http://software.intel.com/sites/support/ for more information..</span>
+                        <span id="cb1-18"><a href="#cb1-18" aria-hidden="true"></a></span>
+                        <span id="cb1-19"><a href="#cb1-19" aria-hidden="true"></a><span class="ex">icpc</span>: error #10052: could not checkout FLEXlm license</span></code></pre></div>
+                        <p>またIntelコンパイラのライセンスサーバが死んだ。日記にgrepかけて復活手順を確認。パスを隠す意味もないだろうから、復活の手順を書いておく。</p>
+                        <p>ライセンスサーバのプロセス番号とコマンドの確認。</p>
+                        <div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a>$ <span class="fu">sudo</span> ps aux <span class="kw">|</span> <span class="fu">grep</span> lmgrd</span>
+                        <span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a><span class="ex">root</span>       4426  0.0  0.0  25572    80 ?        Sl    8月21   3:04 /opt/intel/licenseserver/lmgrd -c /opt/intel/licenses/COM_L__CPPFOR_GDXV-5J47RJPC.lic -l /opt/intel/licenseserver/flexnet_logfile.txt</span></code></pre></div>
+                        <p>ライセンスサーバを殺す。</p>
+                        <div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="fu">sudo</span> kill -KILL 4426</span></code></pre></div>
+                        <p>ライセンスサーバ再起動。psで確認したコマンドをそのまま入力。</p>
+                        <div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="ex">/opt/intel/licenseserver/lmgrd</span> -c /opt/intel/licenses/COM_L__CPPFOR_GDXV-5J47RJPC.lic -l /opt/intel/licenseserver/flexnet_logfile.txt</span></code></pre></div>
+                        <div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a>$ <span class="ex">icpc</span> --version</span>
+                        <span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a><span class="ex">icpc</span> (ICC) <span class="ex">19.0.4.243</span> 20190416</span>
+                        <span id="cb5-3"><a href="#cb5-3" aria-hidden="true"></a><span class="ex">Copyright</span> (C) <span class="ex">1985-2019</span> Intel Corporation.  All rights reserved.</span></code></pre></div>
+                        <p>復活。日記書いてて良かった。</p>
                         <h2 id="月27日水"><a href="#27">12月27日(水)</a> <a id="27"></a></h2>
                         <p>会議とか。</p>
                         <p>仕事納め(ちっとも納まってない)。</p>
@@ -169,38 +201,38 @@
                         <p>もうこの会議で発言するのやめよう。僕は必要ないはずだし。</p>
                         <h2 id="月10日日"><a href="#10">12月10日(日)</a> <a id="10"></a></h2>
                         <p>WSLのターミナルで<code>code .</code>と入力したらエラー。</p>
-                        <div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a>$ <span class="ex">code</span> .</span>
-                        <span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a><span class="ex">Updating</span> VS Code Server to version af28b32d7e553898b2a91af498b1fb666fdebe0c</span>
-                        <span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a><span class="ex">Removing</span> previous installation...</span>
-                        <span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a><span class="ex">Installing</span> VS Code Server for x64 (af28b32d7e553898b2a91af498b1fb666fdebe0c)</span>
-                        <span id="cb1-5"><a href="#cb1-5" aria-hidden="true"></a><span class="ex">Downloading</span>: 100%</span>
-                        <span id="cb1-6"><a href="#cb1-6" aria-hidden="true"></a><span class="ex">Failed</span></span>
-                        <span id="cb1-7"><a href="#cb1-7" aria-hidden="true"></a><span class="ex">--2023-12-10</span> 00:50:11--  https://update.code.visualstudio.com/commit:af28b32d7e553898b2a91af498b1fb666fdebe0c/server-linux-x64/stable</span>
-                        <span id="cb1-8"><a href="#cb1-8" aria-hidden="true"></a><span class="ex">update.code.visualstudio.com</span> (update.code.visualstudio.com) を<span class="ex">DNS</span>に問いあわせています... 13.107.246.46, 13.107.213.46, 2620:1ec:bdf::46, ...</span>
-                        <span id="cb1-9"><a href="#cb1-9" aria-hidden="true"></a><span class="ex">update.code.visualstudio.com</span> (update.code.visualstudio.com)<span class="kw">|</span><span class="ex">13.107.246.46</span><span class="kw">|</span>:<span class="ex">443</span> に接続しています... 接続しました。</span>
-                        <span id="cb1-10"><a href="#cb1-10" aria-hidden="true"></a>エラー: <span class="ex">update.code.visualstudio.com</span> の証明書(発行者: <span class="kw">`</span><span class="va">CN=</span>Microsoft <span class="ex">Azure</span> RSA TLS Issuing CA 08,O=Microsoft Corporation,C=US<span class="st">&#39;)の検証に失敗しました:</span></span>
-                        <span id="cb1-11"><a href="#cb1-11" aria-hidden="true"></a><span class="st">  発行された証明書はまだ有効ではありません。</span></span>
-                        <span id="cb1-12"><a href="#cb1-12" aria-hidden="true"></a><span class="st">update.code.visualstudio.com に安全の確認をしないで接続するには、`--no-check-certificate&#39;</span> を使ってください。</span>
-                        <span id="cb1-13"><a href="#cb1-13" aria-hidden="true"></a><span class="ex">ERROR</span>: Failed to download https://update.code.visualstudio.com/commit:af28b32d7e553898b2a91af498b1fb666fdebe0c/server-linux-x64/stable to /home/watanabe/.vscode-server/bin/af28b32d7e553898b2a91af498b1fb666fdebe0c-1702137011.tar.gz</span>
-                        <span id="cb1-14"><a href="#cb1-14" aria-hidden="true"></a><span class="ex">Please</span> install missing certificates.</span>
-                        <span id="cb1-15"><a href="#cb1-15" aria-hidden="true"></a><span class="ex">Debian</span>/Ubuntu:  <span class="fu">sudo</span> apt-get install ca-certificates</span></code></pre></div>
+                        <div class="sourceCode" id="cb6"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a>$ <span class="ex">code</span> .</span>
+                        <span id="cb6-2"><a href="#cb6-2" aria-hidden="true"></a><span class="ex">Updating</span> VS Code Server to version af28b32d7e553898b2a91af498b1fb666fdebe0c</span>
+                        <span id="cb6-3"><a href="#cb6-3" aria-hidden="true"></a><span class="ex">Removing</span> previous installation...</span>
+                        <span id="cb6-4"><a href="#cb6-4" aria-hidden="true"></a><span class="ex">Installing</span> VS Code Server for x64 (af28b32d7e553898b2a91af498b1fb666fdebe0c)</span>
+                        <span id="cb6-5"><a href="#cb6-5" aria-hidden="true"></a><span class="ex">Downloading</span>: 100%</span>
+                        <span id="cb6-6"><a href="#cb6-6" aria-hidden="true"></a><span class="ex">Failed</span></span>
+                        <span id="cb6-7"><a href="#cb6-7" aria-hidden="true"></a><span class="ex">--2023-12-10</span> 00:50:11--  https://update.code.visualstudio.com/commit:af28b32d7e553898b2a91af498b1fb666fdebe0c/server-linux-x64/stable</span>
+                        <span id="cb6-8"><a href="#cb6-8" aria-hidden="true"></a><span class="ex">update.code.visualstudio.com</span> (update.code.visualstudio.com) を<span class="ex">DNS</span>に問いあわせています... 13.107.246.46, 13.107.213.46, 2620:1ec:bdf::46, ...</span>
+                        <span id="cb6-9"><a href="#cb6-9" aria-hidden="true"></a><span class="ex">update.code.visualstudio.com</span> (update.code.visualstudio.com)<span class="kw">|</span><span class="ex">13.107.246.46</span><span class="kw">|</span>:<span class="ex">443</span> に接続しています... 接続しました。</span>
+                        <span id="cb6-10"><a href="#cb6-10" aria-hidden="true"></a>エラー: <span class="ex">update.code.visualstudio.com</span> の証明書(発行者: <span class="kw">`</span><span class="va">CN=</span>Microsoft <span class="ex">Azure</span> RSA TLS Issuing CA 08,O=Microsoft Corporation,C=US<span class="st">&#39;)の検証に失敗しました:</span></span>
+                        <span id="cb6-11"><a href="#cb6-11" aria-hidden="true"></a><span class="st">  発行された証明書はまだ有効ではありません。</span></span>
+                        <span id="cb6-12"><a href="#cb6-12" aria-hidden="true"></a><span class="st">update.code.visualstudio.com に安全の確認をしないで接続するには、`--no-check-certificate&#39;</span> を使ってください。</span>
+                        <span id="cb6-13"><a href="#cb6-13" aria-hidden="true"></a><span class="ex">ERROR</span>: Failed to download https://update.code.visualstudio.com/commit:af28b32d7e553898b2a91af498b1fb666fdebe0c/server-linux-x64/stable to /home/watanabe/.vscode-server/bin/af28b32d7e553898b2a91af498b1fb666fdebe0c-1702137011.tar.gz</span>
+                        <span id="cb6-14"><a href="#cb6-14" aria-hidden="true"></a><span class="ex">Please</span> install missing certificates.</span>
+                        <span id="cb6-15"><a href="#cb6-15" aria-hidden="true"></a><span class="ex">Debian</span>/Ubuntu:  <span class="fu">sudo</span> apt-get install ca-certificates</span></code></pre></div>
                         <p>証明書が有効でないというエラー。あれ？と思ってChatGPTに証明書の有効性を確認するコマンドを聞いて実行。</p>
-                        <div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a>$ <span class="ex">openssl</span> s_client -servername update.code.visualstudio.com -connect update.code.visualstudio.com:443 <span class="kw">|</span> <span class="ex">openssl</span> x509 -noout -dates</span>
-                        <span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a><span class="va">depth=</span>2 <span class="ex">C</span> = US, O = DigiCert Inc, OU = www.digicert.com, CN = DigiCert Global Root G2</span>
-                        <span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a><span class="ex">verify</span> return:1</span>
-                        <span id="cb2-4"><a href="#cb2-4" aria-hidden="true"></a><span class="va">depth=</span>1 <span class="ex">C</span> = US, O = Microsoft Corporation, CN = Microsoft Azure RSA TLS Issuing CA 08</span>
-                        <span id="cb2-5"><a href="#cb2-5" aria-hidden="true"></a><span class="ex">verify</span> return:1</span>
-                        <span id="cb2-6"><a href="#cb2-6" aria-hidden="true"></a><span class="va">depth=</span>0 <span class="ex">C</span> = US, ST = WA, L = Redmond, O = Microsoft Corporation, CN = update.code.visualstudio.com</span>
-                        <span id="cb2-7"><a href="#cb2-7" aria-hidden="true"></a><span class="ex">verify</span> error:num=9:certificate is not yet valid</span>
-                        <span id="cb2-8"><a href="#cb2-8" aria-hidden="true"></a><span class="va">notBefore=</span>Dec  <span class="ex">9</span> 18:17:28 2023 GMT</span>
-                        <span id="cb2-9"><a href="#cb2-9" aria-hidden="true"></a><span class="ex">verify</span> return:1</span>
-                        <span id="cb2-10"><a href="#cb2-10" aria-hidden="true"></a><span class="va">depth=</span>0 <span class="ex">C</span> = US, ST = WA, L = Redmond, O = Microsoft Corporation, CN = update.code.visualstudio.com</span>
-                        <span id="cb2-11"><a href="#cb2-11" aria-hidden="true"></a><span class="va">notBefore=</span>Dec  <span class="ex">9</span> 18:17:28 2023 GMT</span>
-                        <span id="cb2-12"><a href="#cb2-12" aria-hidden="true"></a><span class="ex">verify</span> return:1</span>
-                        <span id="cb2-13"><a href="#cb2-13" aria-hidden="true"></a><span class="va">notBefore=</span>Dec  <span class="ex">9</span> 18:17:28 2023 GMT</span>
-                        <span id="cb2-14"><a href="#cb2-14" aria-hidden="true"></a><span class="va">notAfter=</span>Jun  <span class="ex">6</span> 18:17:28 2024 GMT</span></code></pre></div>
+                        <div class="sourceCode" id="cb7"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a>$ <span class="ex">openssl</span> s_client -servername update.code.visualstudio.com -connect update.code.visualstudio.com:443 <span class="kw">|</span> <span class="ex">openssl</span> x509 -noout -dates</span>
+                        <span id="cb7-2"><a href="#cb7-2" aria-hidden="true"></a><span class="va">depth=</span>2 <span class="ex">C</span> = US, O = DigiCert Inc, OU = www.digicert.com, CN = DigiCert Global Root G2</span>
+                        <span id="cb7-3"><a href="#cb7-3" aria-hidden="true"></a><span class="ex">verify</span> return:1</span>
+                        <span id="cb7-4"><a href="#cb7-4" aria-hidden="true"></a><span class="va">depth=</span>1 <span class="ex">C</span> = US, O = Microsoft Corporation, CN = Microsoft Azure RSA TLS Issuing CA 08</span>
+                        <span id="cb7-5"><a href="#cb7-5" aria-hidden="true"></a><span class="ex">verify</span> return:1</span>
+                        <span id="cb7-6"><a href="#cb7-6" aria-hidden="true"></a><span class="va">depth=</span>0 <span class="ex">C</span> = US, ST = WA, L = Redmond, O = Microsoft Corporation, CN = update.code.visualstudio.com</span>
+                        <span id="cb7-7"><a href="#cb7-7" aria-hidden="true"></a><span class="ex">verify</span> error:num=9:certificate is not yet valid</span>
+                        <span id="cb7-8"><a href="#cb7-8" aria-hidden="true"></a><span class="va">notBefore=</span>Dec  <span class="ex">9</span> 18:17:28 2023 GMT</span>
+                        <span id="cb7-9"><a href="#cb7-9" aria-hidden="true"></a><span class="ex">verify</span> return:1</span>
+                        <span id="cb7-10"><a href="#cb7-10" aria-hidden="true"></a><span class="va">depth=</span>0 <span class="ex">C</span> = US, ST = WA, L = Redmond, O = Microsoft Corporation, CN = update.code.visualstudio.com</span>
+                        <span id="cb7-11"><a href="#cb7-11" aria-hidden="true"></a><span class="va">notBefore=</span>Dec  <span class="ex">9</span> 18:17:28 2023 GMT</span>
+                        <span id="cb7-12"><a href="#cb7-12" aria-hidden="true"></a><span class="ex">verify</span> return:1</span>
+                        <span id="cb7-13"><a href="#cb7-13" aria-hidden="true"></a><span class="va">notBefore=</span>Dec  <span class="ex">9</span> 18:17:28 2023 GMT</span>
+                        <span id="cb7-14"><a href="#cb7-14" aria-hidden="true"></a><span class="va">notAfter=</span>Jun  <span class="ex">6</span> 18:17:28 2024 GMT</span></code></pre></div>
                         <p>「verify error:num=9:certificate is not yet valid」。まだ有効でない？ここで、さっきのメッセージに「発行された証明書は <strong>まだ</strong> 有効ではありません。」と書いてあったことに気づく。WSLの時計がずれてたんだ。</p>
-                        <div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="fu">sudo</span> /usr/sbin/hwclock -s</span></code></pre></div>
+                        <div class="sourceCode" id="cb8"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a><span class="fu">sudo</span> /usr/sbin/hwclock -s</span></code></pre></div>
                         <p>これで動いた。10分毎に実行するようcronに入れてたんだけど、実行されてないっぽいなぁ。</p>
                         <p>JCPのProof見た。「Fig. 10 (a)」みたいな奴、わざわざ「Fig.<sub></sub>(a)」と、括弧前に空白を入れてたんだけど、Proofでは消されている。</p>
                         <p>塩漬け仕事、一つ片付けた。すぐ終わるんだけど、なんか腰が重いんだ。</p>
