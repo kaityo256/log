@@ -30,6 +30,12 @@
                         <p>しかし、日記に書けない仕事も増えたため、忙しさのわりには日記は薄くなる。悲しい。</p>
                         <p>この悲しさは、「自分も歳をとったな」という悲しさ。</p>
                         <p>年賀状。何人かの方から「今年をもって年賀状を送るのをやめる」という「年賀状卒業宣言」。時代ですね。</p>
+                        <p>上記の日記をコミットする際に、</p>
+                        <div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="fu">git</span> commit -am <span class="st">&quot;:tada: Happy New Year!&quot;</span></span></code></pre></div>
+                        <p>とやったら、</p>
+                        <div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="ex">dquote%</span></span></code></pre></div>
+                        <p>と言われてしまった。あれ？Gitのコミットメッセージって!ダメだったっけ？と思って調べたが、これはzsh(bash)の機能でヒストリ展開というものがあり、!に続けた文字で実行された過去のコマンドに展開されるとのこと。そういえばそんなのあったな。</p>
+                        <p>これはシェルの機能だから、VSCodeからなら普通にこのメッセージでコミットできる。</p>
           </article>
   </body>
 
