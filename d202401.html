@@ -21,6 +21,14 @@
   <body>
     <article class="markdown-body">
                         <h1 id="年1月">2024年1月</h1>
+                        <h2 id="月07日日"><a href="#07">01月07日(日)</a> <a id="07"></a></h2>
+                        <p>冬タイヤに履き替えた。車検の予約入れた。カーナビの入れ替え予約入れた。</p>
+                        <p>疲れがたまっている。</p>
+                        <p>プログラミング基礎同演習のレポートを採点した。集中力を欠いており、時間がかかってしまった。</p>
+                        <p>npmとnpxの違いがよくわかっていなかったので調べた。npmはパッケージマネージャ。npxは現在インストールされていないものを一時的にインストール、実行、アンインストールする仕組み。一度インストールしたものはnpxで実行する必要はない。また、ローカルにインストールされたもの(npm –save-dev)を実行する場合も、パスを指定しないで実行できるので、npx経由で実行する。なるほど。</p>
+                        <p>package.jsonだけが存在し、node_modulesが存在しない場合、</p>
+                        <div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="ex">npm</span> install</span></code></pre></div>
+                        <p>だけで必要なパッケージがインストールされる。bundlerと同じだ。bundlerがnpmをマネしたのかと思ったが、bundlerの方が公開が早かったみたい。</p>
                         <h2 id="月06日土"><a href="#06">01月06日(土)</a> <a id="06"></a></h2>
                         <p>いろいろ家庭のタスクをこなした。</p>
                         <p>今気がついたのだが、長文日記を書く時、それはその日の最初に書いている。つまり、日記じゃない。おそらくそれまでにぼんやり考えていたことを通勤中にまとめて、それを吐き出してるっぽい。なので、午前中に用事が入っていると日記が書けなくなる。</p>
@@ -56,9 +64,9 @@
                         <p>この悲しさは、「自分も歳をとったな」という悲しさ。</p>
                         <p>年賀状。何人かの方から「今年をもって年賀状を送るのをやめる」という「年賀状卒業宣言」。時代ですね。</p>
                         <p>上記の日記をコミットする際に、</p>
-                        <div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="fu">git</span> commit -am <span class="st">&quot;:tada: Happy New Year!&quot;</span></span></code></pre></div>
+                        <div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="fu">git</span> commit -am <span class="st">&quot;:tada: Happy New Year!&quot;</span></span></code></pre></div>
                         <p>とやったら、</p>
-                        <div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="ex">dquote%</span></span></code></pre></div>
+                        <div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="ex">dquote%</span></span></code></pre></div>
                         <p>と言われてしまった。あれ？Gitのコミットメッセージって!ダメだったっけ？と思って調べたが、これはzsh(bash)の機能でヒストリ展開というものがあり、!に続けた文字で実行された過去のコマンドに展開されるとのこと。そういえばそんなのあったな。</p>
                         <p>これはシェルの機能だから、VSCodeからなら普通にこのメッセージでコミットできる。</p>
           </article>
