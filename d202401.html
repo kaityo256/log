@@ -21,6 +21,15 @@
   <body>
     <article class="markdown-body">
                         <h1 id="年1月">2024年1月</h1>
+                        <h2 id="月11日木"><a href="#11">01月11日(木)</a> <a id="11"></a></h2>
+                        <p>恐ろしく寒い。</p>
+                        <p>Gitのsubmodule、clone –recursiveした直後はdetached HEAD状態になっっているのか。もともとsubmoduleがハッシュを差しているから、cloneで持ってくるのがハッシュ指定になるんだな。</p>
+                        <p>すべて<code>main</code>にするには</p>
+                        <div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="fu">git</span> submodule foreach git switch main</span></code></pre></div>
+                        <p>すればOK。</p>
+                        <p>会議。笑顔を褒められた。</p>
+                        <h2 id="月10日水"><a href="#10">01月10日(水)</a> <a id="10"></a></h2>
+                        <p>NOP</p>
                         <h2 id="月09日火"><a href="#09">01月09日(火)</a> <a id="09"></a></h2>
                         <p>仕事始め。アナウンスしたりとかメール書いたりとか。</p>
                         <p>VSCode+ePub環境、絶対あると思って調べてみたらあった。</p>
@@ -31,44 +40,44 @@
                         <li><a href="https://calibre-ebook.com/">calibre</a></li>
                         </ul>
                         <p><a href="https://github.com/shd101wyy/ebook-example">shd101wyy/ebook-example</a>をクローンして、ALICE.mdをプレビューする。そこで右クリックし、「export」「eBook」「ePub」とすると、epubファイルができるはずだが、以下のエラーが出てできない。</p>
-                        <div class="sourceCode" id="cb1"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a>Error: spawn ebook-convert ENOENT</span></code></pre></div>
+                        <div class="sourceCode" id="cb2"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a>Error: spawn ebook-convert ENOENT</span></code></pre></div>
                         <p>調べたら<a href="https://github.com/shd101wyy/vscode-markdown-preview-enhanced/issues/1337">当該issue</a>を見つけた。</p>
                         <p>calibreを入れることで入るebook-convertにパスが通っていなかったのが原因(puppeteerは不要っぽい？)。.zshrcに</p>
-                        <div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="bu">export</span> <span class="va">PATH=$PATH</span>:/Applications/calibre.app/Contents/MacOS</span></code></pre></div>
+                        <div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="bu">export</span> <span class="va">PATH=$PATH</span>:/Applications/calibre.app/Contents/MacOS</span></code></pre></div>
                         <p>でコンバートできるようになった・・・が、画像が入らないな。</p>
                         <p>あと、calibreもスタンドアロン型じゃなくて使いづらいなぁ。単体のePubファイルのビューワーが欲しい。</p>
                         <p>単体ビューワ、calibreにあった。ebook-viewerだ。こういうのが欲しかった。これで表示すると以下のエラーがでる。</p>
-                        <div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a>$ <span class="ex">ebook-viewer</span> ALICE.epub</span>
-                        <span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a><span class="ex">2024-01-09</span> 15:43:21.675 ebook-viewer[70554:3524665] WARNING: Secure coding is not enabled for restorable state! Enable secure coding by implementing NSApplicationDelegate.applicationSupportsSecureRestorableState: and returning YES.</span>
-                        <span id="cb3-3"><a href="#cb3-3" aria-hidden="true"></a><span class="ex">ERROR</span>: clbr://internal.sandbox/book/__index__:0: Not allowed to load local resource: file:///Users/watanabe/github/ebook-example/aiw-illustrations/1book4.jpg</span></code></pre></div>
+                        <div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a>$ <span class="ex">ebook-viewer</span> ALICE.epub</span>
+                        <span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a><span class="ex">2024-01-09</span> 15:43:21.675 ebook-viewer[70554:3524665] WARNING: Secure coding is not enabled for restorable state! Enable secure coding by implementing NSApplicationDelegate.applicationSupportsSecureRestorableState: and returning YES.</span>
+                        <span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a><span class="ex">ERROR</span>: clbr://internal.sandbox/book/__index__:0: Not allowed to load local resource: file:///Users/watanabe/github/ebook-example/aiw-illustrations/1book4.jpg</span></code></pre></div>
                         <p>要するに外にある画像ファイルをそのまま参照しているため、セキュリティエラーとなっている。</p>
                         <p>epubはzipファイルだそうなのでunzipして見てみてると、imgタグが絶対パスになっている。</p>
                         <p>もともとリポジトリに入っていたepubファイルはこんな感じ。</p>
-                        <div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a>$ <span class="ex">zipinfo</span> -1 ALICE.epub</span>
-                        <span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a><span class="ex">mimetype</span></span>
-                        <span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a><span class="ex">META-INF/</span></span>
-                        <span id="cb4-4"><a href="#cb4-4" aria-hidden="true"></a><span class="ex">META-INF/container.xml</span></span>
-                        <span id="cb4-5"><a href="#cb4-5" aria-hidden="true"></a><span class="ex">1book1.jpg</span></span>
-                        <span id="cb4-6"><a href="#cb4-6" aria-hidden="true"></a><span class="ex">1book2.jpg</span></span>
-                        <span id="cb4-7"><a href="#cb4-7" aria-hidden="true"></a><span class="ex">1book3.jpg</span></span>
-                        <span id="cb4-8"><a href="#cb4-8" aria-hidden="true"></a><span class="ex">1book4.jpg</span></span>
-                        <span id="cb4-9"><a href="#cb4-9" aria-hidden="true"></a><span class="ex">1book5.jpg</span></span>
-                        <span id="cb4-10"><a href="#cb4-10" aria-hidden="true"></a><span class="ex">1book6.jpg</span></span>
-                        <span id="cb4-11"><a href="#cb4-11" aria-hidden="true"></a><span class="ex">1book7.jpg</span></span>
-                        <span id="cb4-12"><a href="#cb4-12" aria-hidden="true"></a><span class="ex">1book8.jpg</span></span>
-                        <span id="cb4-13"><a href="#cb4-13" aria-hidden="true"></a><span class="ex">1book9.jpg</span></span>
-                        <span id="cb4-14"><a href="#cb4-14" aria-hidden="true"></a><span class="ex">content.opf</span></span>
-                        <span id="cb4-15"><a href="#cb4-15" aria-hidden="true"></a><span class="ex">cover.jpg</span></span>
-                        <span id="cb4-16"><a href="#cb4-16" aria-hidden="true"></a><span class="ex">markdown-preview-enhanced11689-70041-13kc8if.h8bpy3z0k9_split_000.html</span></span>
-                        <span id="cb4-17"><a href="#cb4-17" aria-hidden="true"></a><span class="ex">markdown-preview-enhanced11689-70041-13kc8if.h8bpy3z0k9_split_001.html</span></span>
-                        <span id="cb4-18"><a href="#cb4-18" aria-hidden="true"></a><span class="ex">markdown-preview-enhanced11689-70041-13kc8if.h8bpy3z0k9_split_002.html</span></span>
-                        <span id="cb4-19"><a href="#cb4-19" aria-hidden="true"></a><span class="ex">markdown-preview-enhanced11689-70041-13kc8if.h8bpy3z0k9_split_003.html</span></span>
-                        <span id="cb4-20"><a href="#cb4-20" aria-hidden="true"></a><span class="ex">markdown-preview-enhanced11689-70041-13kc8if.h8bpy3z0k9_split_004.html</span></span>
-                        <span id="cb4-21"><a href="#cb4-21" aria-hidden="true"></a><span class="ex">markdown-preview-enhanced11689-70041-13kc8if.h8bpy3z0k9_split_005.html</span></span>
-                        <span id="cb4-22"><a href="#cb4-22" aria-hidden="true"></a><span class="ex">page_styles.css</span></span>
-                        <span id="cb4-23"><a href="#cb4-23" aria-hidden="true"></a><span class="ex">stylesheet.css</span></span>
-                        <span id="cb4-24"><a href="#cb4-24" aria-hidden="true"></a><span class="ex">titlepage.xhtml</span></span>
-                        <span id="cb4-25"><a href="#cb4-25" aria-hidden="true"></a><span class="ex">toc.ncx</span></span></code></pre></div>
+                        <div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a>$ <span class="ex">zipinfo</span> -1 ALICE.epub</span>
+                        <span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a><span class="ex">mimetype</span></span>
+                        <span id="cb5-3"><a href="#cb5-3" aria-hidden="true"></a><span class="ex">META-INF/</span></span>
+                        <span id="cb5-4"><a href="#cb5-4" aria-hidden="true"></a><span class="ex">META-INF/container.xml</span></span>
+                        <span id="cb5-5"><a href="#cb5-5" aria-hidden="true"></a><span class="ex">1book1.jpg</span></span>
+                        <span id="cb5-6"><a href="#cb5-6" aria-hidden="true"></a><span class="ex">1book2.jpg</span></span>
+                        <span id="cb5-7"><a href="#cb5-7" aria-hidden="true"></a><span class="ex">1book3.jpg</span></span>
+                        <span id="cb5-8"><a href="#cb5-8" aria-hidden="true"></a><span class="ex">1book4.jpg</span></span>
+                        <span id="cb5-9"><a href="#cb5-9" aria-hidden="true"></a><span class="ex">1book5.jpg</span></span>
+                        <span id="cb5-10"><a href="#cb5-10" aria-hidden="true"></a><span class="ex">1book6.jpg</span></span>
+                        <span id="cb5-11"><a href="#cb5-11" aria-hidden="true"></a><span class="ex">1book7.jpg</span></span>
+                        <span id="cb5-12"><a href="#cb5-12" aria-hidden="true"></a><span class="ex">1book8.jpg</span></span>
+                        <span id="cb5-13"><a href="#cb5-13" aria-hidden="true"></a><span class="ex">1book9.jpg</span></span>
+                        <span id="cb5-14"><a href="#cb5-14" aria-hidden="true"></a><span class="ex">content.opf</span></span>
+                        <span id="cb5-15"><a href="#cb5-15" aria-hidden="true"></a><span class="ex">cover.jpg</span></span>
+                        <span id="cb5-16"><a href="#cb5-16" aria-hidden="true"></a><span class="ex">markdown-preview-enhanced11689-70041-13kc8if.h8bpy3z0k9_split_000.html</span></span>
+                        <span id="cb5-17"><a href="#cb5-17" aria-hidden="true"></a><span class="ex">markdown-preview-enhanced11689-70041-13kc8if.h8bpy3z0k9_split_001.html</span></span>
+                        <span id="cb5-18"><a href="#cb5-18" aria-hidden="true"></a><span class="ex">markdown-preview-enhanced11689-70041-13kc8if.h8bpy3z0k9_split_002.html</span></span>
+                        <span id="cb5-19"><a href="#cb5-19" aria-hidden="true"></a><span class="ex">markdown-preview-enhanced11689-70041-13kc8if.h8bpy3z0k9_split_003.html</span></span>
+                        <span id="cb5-20"><a href="#cb5-20" aria-hidden="true"></a><span class="ex">markdown-preview-enhanced11689-70041-13kc8if.h8bpy3z0k9_split_004.html</span></span>
+                        <span id="cb5-21"><a href="#cb5-21" aria-hidden="true"></a><span class="ex">markdown-preview-enhanced11689-70041-13kc8if.h8bpy3z0k9_split_005.html</span></span>
+                        <span id="cb5-22"><a href="#cb5-22" aria-hidden="true"></a><span class="ex">page_styles.css</span></span>
+                        <span id="cb5-23"><a href="#cb5-23" aria-hidden="true"></a><span class="ex">stylesheet.css</span></span>
+                        <span id="cb5-24"><a href="#cb5-24" aria-hidden="true"></a><span class="ex">titlepage.xhtml</span></span>
+                        <span id="cb5-25"><a href="#cb5-25" aria-hidden="true"></a><span class="ex">toc.ncx</span></span></code></pre></div>
                         <p>jpgが生でルートに展開されており、htmlがそこを参照するようになっている。ebook-convertはおそらくそこまでやってくれないのｄ，えmarkdown preview enhancedが内部でなにかやっている？</p>
                         <p>ITCのWS室利用アンケート提出した。</p>
                         <p>矢上科目の出講希望確定した。</p>
@@ -96,12 +105,12 @@
                         <p>プログラミング基礎同演習のレポートを採点した。集中力を欠いており、時間がかかってしまった。</p>
                         <p>npmとnpxの違いがよくわかっていなかったので調べた。npmはパッケージマネージャ。npxは現在インストールされていないものを一時的にインストール、実行、アンインストールする仕組み。一度インストールしたものはnpxで実行する必要はない。また、ローカルにインストールされたもの(npm –save-dev)を実行する場合も、パスを指定しないで実行できるので、npx経由で実行する。なるほど。</p>
                         <p>package.jsonだけが存在し、node_modulesが存在しない場合、</p>
-                        <div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="ex">npm</span> install</span></code></pre></div>
+                        <div class="sourceCode" id="cb6"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="ex">npm</span> install</span></code></pre></div>
                         <p>だけで必要なパッケージがインストールされる。bundlerと同じだ。bundlerがnpmをマネしたのかと思ったが、bundlerの方が公開が早かったみたい。</p>
                         <p>textlintが.textlintignoreを無視する問題、textlint-ignore-exampleで試したが、</p>
-                        <div class="sourceCode" id="cb6"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="ex">npx</span> textlint *</span></code></pre></div>
+                        <div class="sourceCode" id="cb7"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a><span class="ex">npx</span> textlint *</span></code></pre></div>
                         <p>だと.textlintignoreが無視されて、</p>
-                        <div class="sourceCode" id="cb7"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a><span class="ex">npx</span> textlint <span class="st">&quot;*&quot;</span></span></code></pre></div>
+                        <div class="sourceCode" id="cb8"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a><span class="ex">npx</span> textlint <span class="st">&quot;*&quot;</span></span></code></pre></div>
                         <p>だとちゃんと反映された。よくわからん。これをVSCodeで反映させるにはどうすればいいんだ？</p>
                         <h2 id="月06日土"><a href="#06">01月06日(土)</a> <a id="06"></a></h2>
                         <p>いろいろ家庭のタスクをこなした。</p>
@@ -138,9 +147,9 @@
                         <p>この悲しさは、「自分も歳をとったな」という悲しさ。</p>
                         <p>年賀状。何人かの方から「今年をもって年賀状を送るのをやめる」という「年賀状卒業宣言」。時代ですね。</p>
                         <p>上記の日記をコミットする際に、</p>
-                        <div class="sourceCode" id="cb8"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a><span class="fu">git</span> commit -am <span class="st">&quot;:tada: Happy New Year!&quot;</span></span></code></pre></div>
+                        <div class="sourceCode" id="cb9"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a><span class="fu">git</span> commit -am <span class="st">&quot;:tada: Happy New Year!&quot;</span></span></code></pre></div>
                         <p>とやったら、</p>
-                        <div class="sourceCode" id="cb9"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a><span class="ex">dquote%</span></span></code></pre></div>
+                        <div class="sourceCode" id="cb10"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true"></a><span class="ex">dquote%</span></span></code></pre></div>
                         <p>と言われてしまった。あれ？Gitのコミットメッセージって!ダメだったっけ？と思って調べたが、これはzsh(bash)の機能でヒストリ展開というものがあり、!に続けた文字で実行された過去のコマンドに展開されるとのこと。そういえばそんなのあったな。</p>
                         <p>これはシェルの機能だから、VSCodeからなら普通にこのメッセージでコミットできる。</p>
           </article>
