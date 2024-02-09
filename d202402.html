@@ -21,6 +21,21 @@
   <body>
     <article class="markdown-body">
                         <h1 id="年2月">2024年2月</h1>
+                        <h2 id="月09日金"><a href="#09">02月09日(金)</a> <a id="09"></a></h2>
+                        <p>博士論文公聴会。</p>
+                        <p>修論のタイトルを承認した。</p>
+                        <p>卒論・修論の最終提出の案内を流した。</p>
+                        <p>Swendsen-WangのGPGPU実装。</p>
+                        <ul>
+                        <li><a href="https://doi.org/10.1016/j.cpc.2013.10.029">CUDA programs for the GPU computing of the Swendsen–Wang multi-cluster spin flip algorithm: 2D and 3D Ising, Potts, and XY models</a></li>
+                        <li><a href="https://doi.org/10.1016/j.cpc.2015.10.003">Improved CUDA programs for GPU computing of Swendsen–Wang multi-cluster spin flip algorithm: 2D and 3D Ising, Potts, and XY models</a></li>
+                        </ul>
+                        <p>どちらもソースコードが公開されている。これは、</p>
+                        <p><a href="https://doi.org/10.1016/j.parco.2010.07.002">Parallel graph component labelling with GPUs and CUDA</a></p>
+                        <p>に基づいている。グラフの並列処理について、どうしてもアトミックな処理が必要になるが、それはCUDAの<code>atomicMin()</code>を利用している。</p>
+                        <p>量子系でも似たような処理が必要になるが、それについては藤堂さんが論文を出している。</p>
+                        <p><a href="https://doi.org/10.1016/j.cpc.2019.01.004">Parallel loop cluster quantum Monte Carlo simulation of quantum magnets based on global union-find graph algorithm</a></p>
+                        <p>ここではロック機構としてcompare-and-swap atomic instructionを使っている。Intel x86なら<code>cmpxchgl</code>、SPARCなら<code>cas</code>だそうな。</p>
                         <h2 id="月08日木"><a href="#08">02月08日(木)</a> <a id="08"></a></h2>
                         <p>修士論文発表会。</p>
                         <p>科研費様式F-2-1を提出した。</p>
