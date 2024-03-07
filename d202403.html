@@ -21,6 +21,31 @@
   <body>
     <article class="markdown-body">
                         <h1 id="年3月">2024年3月</h1>
+                        <h2 id="月07日木"><a href="#07">03月07日(木)</a> <a id="07"></a></h2>
+                        <p>ハンズオン。論文の読み方、探し方。</p>
+                        <p>研究室ミーティング。</p>
+                        <p>研究室ウェブサイトがまた「データベース接続確立エラー」。</p>
+                        <p>またかと思ってmariadbを再起動したが治らない。あれ？と焦ったら、ウェブサーバではなく計算サーバにログインしてた。道理でアクセスログが全然残ってないなと思った。アホ過ぎる。</p>
+                        <div class="sourceCode" id="cb1"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a>240307 14:18:34 mysqld_safe Number of processes running now: 0</span>
+                        <span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a>240307 14:18:39 mysqld_safe mysqld restarted</span>
+                        <span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a>240307 14:18:48 [Note] /usr/libexec/mysqld (mysqld 5.5.68-MariaDB) starting as process 30844 ...</span>
+                        <span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a>240307 14:18:49 InnoDB: The InnoDB memory heap is disabled</span>
+                        <span id="cb1-5"><a href="#cb1-5" aria-hidden="true"></a>240307 14:18:49 InnoDB: Mutexes and rw_locks use GCC atomic builtins</span>
+                        <span id="cb1-6"><a href="#cb1-6" aria-hidden="true"></a>240307 14:18:49 InnoDB: Compressed tables use zlib 1.2.7</span>
+                        <span id="cb1-7"><a href="#cb1-7" aria-hidden="true"></a>240307 14:18:49 InnoDB: Using Linux native AIO</span>
+                        <span id="cb1-8"><a href="#cb1-8" aria-hidden="true"></a>240307 14:18:49 InnoDB: Initializing buffer pool, size = 128.0M</span>
+                        <span id="cb1-9"><a href="#cb1-9" aria-hidden="true"></a>240307 14:18:50 InnoDB: Completed initialization of buffer pool</span>
+                        <span id="cb1-10"><a href="#cb1-10" aria-hidden="true"></a>240307 14:18:50 InnoDB: highest supported file format is Barracuda.</span>
+                        <span id="cb1-11"><a href="#cb1-11" aria-hidden="true"></a>InnoDB: The log sequence number in ibdata files does not match</span>
+                        <span id="cb1-12"><a href="#cb1-12" aria-hidden="true"></a>InnoDB: the log sequence number in the ib_logfiles!</span>
+                        <span id="cb1-13"><a href="#cb1-13" aria-hidden="true"></a>InnoDB: Restoring possible half-written data pages from the doublewrite buffer...</span>
+                        <span id="cb1-14"><a href="#cb1-14" aria-hidden="true"></a>240307 14:18:57 mysqld_safe mysqld from pid file /var/run/mariadb/mariadb.pid ended</span></code></pre></div>
+                        <p>なんかデータベースの不整合が起きて、その復旧をしようとして死んだ、という感じですかね。</p>
+                        <p><code>ps aux | grep mysql</code>しても出てこないので死んでますな。</p>
+                        <div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="fu">sudo</span> service mariadb restart</span></code></pre></div>
+                        <p>で起動。</p>
+                        <p>なんか今日の14:18にmysqldが再起動して、不整合で死んだ感じだな。</p>
+                        <p>アクセスログを調べたが、そのあたりで攻撃を受けている(例えばコマンドインジェクション)のは間違いないが、成功はしておらず、他に怪しいログは見当たらない。なんで死んだんだろう？</p>
                         <h2 id="月06日水"><a href="#06">03月06日(水)</a> <a id="06"></a></h2>
                         <p>会議の直前に会議資料を作る泥縄ぶり。</p>
                         <p>会議。</p>
