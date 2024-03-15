@@ -21,6 +21,16 @@
   <body>
     <article class="markdown-body">
                         <h1 id="年3月">2024年3月</h1>
+                        <h2 id="月15日金"><a href="#15">03月15日(金)</a> <a id="15"></a></h2>
+                        <p>Pythonのパッケージを作ってGitHubで公開する方法を確認した。</p>
+                        <p>NumpyとCupyの共存。</p>
+                        <div class="sourceCode" id="cb1"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="cf">try</span>:</span>
+                        <span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a>    <span class="im">import</span> cupy <span class="im">as</span> np</span>
+                        <span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a>    has_GPU <span class="op">=</span> <span class="va">True</span></span>
+                        <span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a><span class="cf">except</span> <span class="pp">ImportError</span>:</span>
+                        <span id="cb1-5"><a href="#cb1-5" aria-hidden="true"></a>    <span class="im">import</span> numpy <span class="im">as</span> np</span>
+                        <span id="cb1-6"><a href="#cb1-6" aria-hidden="true"></a>    has_GPU <span class="op">=</span> <span class="va">False</span></span></code></pre></div>
+                        <p>共通命令しか使っていなければこれでいけるはず。</p>
                         <h2 id="月14日木"><a href="#14">03月14日(木)</a> <a id="14"></a></h2>
                         <p>ラベルシールのプリントがかすれる。設定を「ラベル紙」「厚紙」にしたらまともになった。</p>
                         <p>研究室ミーティング。</p>
@@ -29,7 +39,7 @@
                         <p>サーバ管理。死んだノードの復活がうまくいかず。むーん。</p>
                         <p>今年度の卒論・修論をアップロードした。</p>
                         <p>convertを使おうとしたら使えない。OSがバージョン上がって使えなくなったっぽい。</p>
-                        <div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="ex">brew</span> install imagemagick</span></code></pre></div>
+                        <div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="ex">brew</span> install imagemagick</span></code></pre></div>
                         <p>時間かかるなぁ。</p>
                         <p>インストールできたので対応した。</p>
                         <p>ミーティング予定表更新した。</p>
@@ -59,23 +69,23 @@
                         <p>研究室ミーティング。</p>
                         <p>研究室ウェブサイトがまた「データベース接続確立エラー」。</p>
                         <p>またかと思ってmariadbを再起動したが治らない。あれ？と焦ったら、ウェブサーバではなく計算サーバにログインしてた。道理でアクセスログが全然残ってないなと思った。最近眠くて頭が全く働いてない。</p>
-                        <div class="sourceCode" id="cb2"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a>240307 14:18:34 mysqld_safe Number of processes running now: 0</span>
-                        <span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a>240307 14:18:39 mysqld_safe mysqld restarted</span>
-                        <span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a>240307 14:18:48 [Note] /usr/libexec/mysqld (mysqld 5.5.68-MariaDB) starting as process 30844 ...</span>
-                        <span id="cb2-4"><a href="#cb2-4" aria-hidden="true"></a>240307 14:18:49 InnoDB: The InnoDB memory heap is disabled</span>
-                        <span id="cb2-5"><a href="#cb2-5" aria-hidden="true"></a>240307 14:18:49 InnoDB: Mutexes and rw_locks use GCC atomic builtins</span>
-                        <span id="cb2-6"><a href="#cb2-6" aria-hidden="true"></a>240307 14:18:49 InnoDB: Compressed tables use zlib 1.2.7</span>
-                        <span id="cb2-7"><a href="#cb2-7" aria-hidden="true"></a>240307 14:18:49 InnoDB: Using Linux native AIO</span>
-                        <span id="cb2-8"><a href="#cb2-8" aria-hidden="true"></a>240307 14:18:49 InnoDB: Initializing buffer pool, size = 128.0M</span>
-                        <span id="cb2-9"><a href="#cb2-9" aria-hidden="true"></a>240307 14:18:50 InnoDB: Completed initialization of buffer pool</span>
-                        <span id="cb2-10"><a href="#cb2-10" aria-hidden="true"></a>240307 14:18:50 InnoDB: highest supported file format is Barracuda.</span>
-                        <span id="cb2-11"><a href="#cb2-11" aria-hidden="true"></a>InnoDB: The log sequence number in ibdata files does not match</span>
-                        <span id="cb2-12"><a href="#cb2-12" aria-hidden="true"></a>InnoDB: the log sequence number in the ib_logfiles!</span>
-                        <span id="cb2-13"><a href="#cb2-13" aria-hidden="true"></a>InnoDB: Restoring possible half-written data pages from the doublewrite buffer...</span>
-                        <span id="cb2-14"><a href="#cb2-14" aria-hidden="true"></a>240307 14:18:57 mysqld_safe mysqld from pid file /var/run/mariadb/mariadb.pid ended</span></code></pre></div>
+                        <div class="sourceCode" id="cb3"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a>240307 14:18:34 mysqld_safe Number of processes running now: 0</span>
+                        <span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a>240307 14:18:39 mysqld_safe mysqld restarted</span>
+                        <span id="cb3-3"><a href="#cb3-3" aria-hidden="true"></a>240307 14:18:48 [Note] /usr/libexec/mysqld (mysqld 5.5.68-MariaDB) starting as process 30844 ...</span>
+                        <span id="cb3-4"><a href="#cb3-4" aria-hidden="true"></a>240307 14:18:49 InnoDB: The InnoDB memory heap is disabled</span>
+                        <span id="cb3-5"><a href="#cb3-5" aria-hidden="true"></a>240307 14:18:49 InnoDB: Mutexes and rw_locks use GCC atomic builtins</span>
+                        <span id="cb3-6"><a href="#cb3-6" aria-hidden="true"></a>240307 14:18:49 InnoDB: Compressed tables use zlib 1.2.7</span>
+                        <span id="cb3-7"><a href="#cb3-7" aria-hidden="true"></a>240307 14:18:49 InnoDB: Using Linux native AIO</span>
+                        <span id="cb3-8"><a href="#cb3-8" aria-hidden="true"></a>240307 14:18:49 InnoDB: Initializing buffer pool, size = 128.0M</span>
+                        <span id="cb3-9"><a href="#cb3-9" aria-hidden="true"></a>240307 14:18:50 InnoDB: Completed initialization of buffer pool</span>
+                        <span id="cb3-10"><a href="#cb3-10" aria-hidden="true"></a>240307 14:18:50 InnoDB: highest supported file format is Barracuda.</span>
+                        <span id="cb3-11"><a href="#cb3-11" aria-hidden="true"></a>InnoDB: The log sequence number in ibdata files does not match</span>
+                        <span id="cb3-12"><a href="#cb3-12" aria-hidden="true"></a>InnoDB: the log sequence number in the ib_logfiles!</span>
+                        <span id="cb3-13"><a href="#cb3-13" aria-hidden="true"></a>InnoDB: Restoring possible half-written data pages from the doublewrite buffer...</span>
+                        <span id="cb3-14"><a href="#cb3-14" aria-hidden="true"></a>240307 14:18:57 mysqld_safe mysqld from pid file /var/run/mariadb/mariadb.pid ended</span></code></pre></div>
                         <p>なんかデータベースの不整合が起きて、その復旧をしようとして死んだ、という感じですかね。</p>
                         <p><code>ps aux | grep mysql</code>しても出てこないので死んでますな。</p>
-                        <div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="fu">sudo</span> service mariadb restart</span></code></pre></div>
+                        <div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="fu">sudo</span> service mariadb restart</span></code></pre></div>
                         <p>で起動。</p>
                         <p>なんか今日の14:18にmysqldが再起動して、不整合で死んだ感じだな。</p>
                         <p>アクセスログを調べたが、そのあたりで攻撃を受けている(例えばコマンドインジェクション)のは間違いないが、成功はしておらず、他に怪しいログは見当たらない。なんで死んだんだろう？</p>
