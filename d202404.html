@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+                <title>2024年4月</title>
+    <style type="text/css">
+      code {
+        white-space: pre;
+      }
+    </style>
+        <style type="text/css"></style>
+
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- link rel="stylesheet" href="github-markdown.css" type="text/css" / -->
+          </head>
+
+  <body>
+    <article class="markdown-body">
+                        <h1 id="年4月">2024年4月</h1>
+                        <h2 id="月04日木"><a href="#04">04月04日(木)</a> <a id="04"></a></h2>
+                        <p>今日発表の輪講の準備が終わった。直前過ぎる。</p>
+                        <p>自作Pythonパッケージのインストールに失敗。setup.pyに標準パッケージである<code>logging</code>を入れたのが原因。無関係の<code>logging</code>を入れようとしてバグったらしい。標準パッケージと同じ名前の別のパッケージがあるの、すごく嫌な感じだな。Python2のパッケージがPython3で標準に入ったとか？</p>
+                        <p>ChatGPTに聞いてみた。</p>
+                        <blockquote>
+                        <p>PythonのloggingパッケージはPython2から標準パッケージでしたか？</p>
+                        </blockquote>
+                        <blockquote>
+                        <p>PythonのloggingパッケージはPython 2.3で標準ライブラリとして導入されました。これは2003年にリリースされたバージョンです。その前は、loggingモジュールは外部ライブラリとして利用可能でしたが、Pythonの標準ライブラリには含まれていませんでした。したがって、Python 2.3以降、loggingはPythonの標準パッケージとなっています。</p>
+                        </blockquote>
+                        <p>なるほど。</p>
+                        <p>シミュレーション工学のページ作った。</p>
+                        <h2 id="月03日水"><a href="#03">04月03日(水)</a> <a id="03"></a></h2>
+                        <p>会議。yaml_cvを使っている人に挨拶された。自分のコードが人の役に立つとうれしい。</p>
+                        <h2 id="月02日火"><a href="#02">04月02日(火)</a> <a id="02"></a></h2>
+                        <p>疲れが残っている。</p>
+                        <p>僕の学位取得年月日は2004年3月25日。なんか必要だったので学位記を引っ張り出した。この情報、10年に一度くらい必要になるんだけど、researchmapとかORC-IDとかで公開できないもんかな。</p>
+                        <p>久しぶりにresearchmapにログインしたら、英語所属が名古屋大学になってた。久しぶりすぎた。</p>
+                        <p>指導委託の書類送付。</p>
+                        <p>研究室所属学生＋利用室提出。</p>
+                        <p>昨日の疲れが残っている中作業しているのでミスが目立つし、そもそも効率が非常に悪い。</p>
+                        <p>ImageMagickのコマンド群の一つ<code>identify</code>を初めて知った。こんな感じに使う。</p>
+                        <div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a>$ <span class="ex">identify</span> test.jpg </span>
+                        <span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a><span class="ex">test.jpg</span> JPEG 3840x2160 3840x2160+0+0 8-bit sRGB 388362B 0.000u 0:00.002</span></code></pre></div>
+                        <p>format文字列が指定できる。いろいろ自動処理に使えそう。Awkと組み合わせるとか。</p>
+                        <div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a>$ <span class="ex">identify</span> -format <span class="st">&quot;%w %h\n&quot;</span> test.jpg</span>
+                        <span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a><span class="ex">3840</span> 2160</span></code></pre></div>
+                        <p>気になってちゃんと調べたら、ImageMagickのコマンドはconvert, mogrity, indentify, montage, composite, displayの6つらしい。思ったより少なかった。</p>
+                        <p>今調べたら、全部<code>magick</code>というコマンドから呼び出せる形になってる。magickは2016年にリリースされたバージョン7から導入され、<code>convert</code>は後方互換性のために残されてるとか、そういう位置づけっぽい。知らなかった。</p>
+                        <p>8年も前の変更を知らずに生きていたのか。どんどん世界に取り残されているなぁ・・・</p>
+                        <p>物性研スパコンのジョブ投入権更新＋新規追加。</p>
+                        <p>輪講の準備。一節できなかった。明日か明後日できるか？</p>
+                        <h2 id="月01日月"><a href="#01">04月01日(月)</a> <a id="01"></a></h2>
+                        <p>NOP</p>
+                        <p>新年度が始まってしまった。</p>
+          </article>
+  </body>
+
+  </html>
