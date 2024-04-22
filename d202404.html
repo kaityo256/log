@@ -21,7 +21,43 @@
   <body>
     <article class="markdown-body">
                         <h1 id="年4月">2024年4月</h1>
-                        <h2 id="月20日sat"><a href="#20">04月20日(Sat)</a> <a id="20"></a></h2>
+                        <h2 id="月22日月"><a href="#22">04月22日(月)</a> <a id="22"></a></h2>
+                        <p>また研究室サーバが落ちた。ChatGPTに聞いたらmytopかhtopで監視しろ、ということなので、まずはhtopを入れてみる。</p>
+                        <div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="fu">sudo</span> yum install htop</span></code></pre></div>
+                        <p>PIDを指定してメモリ使用量を取得するコマンドとpidofを組み合わせて、mysqldの利用メモリを取得。</p>
+                        <div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="fu">ps</span> -p <span class="kw">`</span> <span class="fu">pidof</span> mysqld<span class="kw">`</span> -o %mem,rss,vsz </span></code></pre></div>
+                        <p>elapsed timeも表示しよう。</p>
+                        <div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a>$ <span class="fu">ps</span> -p <span class="kw">`</span> <span class="fu">pidof</span> mysqld<span class="kw">`</span> -o etime -o %mem,rss,vsz   </span>
+                        <span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a>   <span class="ex">01</span>:16:57  4.6 95876 1102716</span></code></pre></div>
+                        <p>結局こんなシェルスクリプトを書いてcrontabに仕込んだ。</p>
+                        <div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="co">#/usr/bin/bash</span></span>
+                        <span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a><span class="va">DATE=</span><span class="kw">`</span><span class="fu">date</span> +<span class="st">&quot;%Y-%m-%d %H:%M:%S&quot;</span><span class="kw">`</span></span>
+                        <span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a><span class="va">MYSQLPID=</span><span class="kw">`</span><span class="fu">pidof</span> mysqld<span class="kw">`</span></span>
+                        <span id="cb4-4"><a href="#cb4-4" aria-hidden="true"></a><span class="va">PID=</span><span class="kw">`</span><span class="fu">ps</span> -h -p <span class="va">$MYSQLPID</span> -o etime -o %mem,rss,vsz<span class="kw">`</span></span>
+                        <span id="cb4-5"><a href="#cb4-5" aria-hidden="true"></a></span>
+                        <span id="cb4-6"><a href="#cb4-6" aria-hidden="true"></a><span class="bu">echo</span> <span class="va">$DATE</span>, <span class="va">$PID</span> <span class="op">&gt;&gt;</span> /home/watanabe/log/psmysqld.log</span></code></pre></div>
+                        <p>おっとpidofが見つからないというメールが飛んできた。</p>
+                        <div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="co">#/usr/bin/bash</span></span>
+                        <span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a><span class="va">DATE=</span><span class="kw">`</span><span class="fu">date</span> +<span class="st">&quot;%Y-%m-%d %H:%M:%S&quot;</span><span class="kw">`</span></span>
+                        <span id="cb5-3"><a href="#cb5-3" aria-hidden="true"></a><span class="va">MYSQLPID=</span><span class="kw">`</span><span class="ex">/usr/sbin/pidof</span> mysqld<span class="kw">`</span></span>
+                        <span id="cb5-4"><a href="#cb5-4" aria-hidden="true"></a><span class="va">PID=</span><span class="kw">`</span><span class="fu">ps</span> -h -p <span class="va">$MYSQLPID</span> -o etime -o %mem,rss,vsz<span class="kw">`</span></span>
+                        <span id="cb5-5"><a href="#cb5-5" aria-hidden="true"></a></span>
+                        <span id="cb5-6"><a href="#cb5-6" aria-hidden="true"></a><span class="bu">echo</span> <span class="va">$DATE</span>, <span class="va">$PID</span> <span class="op">&gt;&gt;</span> /home/watanabe/log/psmysqld.log</span></code></pre></div>
+                        <p>これでOKっぽい。とりあえず5分おきで動いたことを確認してから毎時間に変更。</p>
+                        <div class="sourceCode" id="cb6"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a>$ <span class="fu">cat</span> psmysqld.log</span>
+                        <span id="cb6-2"><a href="#cb6-2" aria-hidden="true"></a><span class="fu">date</span>                 elapsed  %MEM  RSS VSZ</span>
+                        <span id="cb6-3"><a href="#cb6-3" aria-hidden="true"></a><span class="ex">2024-04-22</span> 11:05:01, 01:38:52 4.6 95936 1102716</span>
+                        <span id="cb6-4"><a href="#cb6-4" aria-hidden="true"></a><span class="ex">2024-04-22</span> 11:10:01, 01:43:52 4.6 95936 1102716</span>
+                        <span id="cb6-5"><a href="#cb6-5" aria-hidden="true"></a><span class="ex">2024-04-22</span> 11:15:01, 01:48:52 4.6 95936 1102716</span>
+                        <span id="cb6-6"><a href="#cb6-6" aria-hidden="true"></a><span class="ex">2024-04-22</span> 11:20:01, 01:53:51 4.6 95984 1102716</span>
+                        <span id="cb6-7"><a href="#cb6-7" aria-hidden="true"></a><span class="ex">2024-04-22</span> 11:25:01, 01:58:51 4.6 95984 1102716</span>
+                        <span id="cb6-8"><a href="#cb6-8" aria-hidden="true"></a><span class="ex">2024-04-22</span> 11:30:01, 02:03:51 4.6 95984 1102716</span>
+                        <span id="cb6-9"><a href="#cb6-9" aria-hidden="true"></a><span class="ex">2024-04-22</span> 12:00:01, 02:33:51 4.6 96164 1102716</span></code></pre></div>
+                        <p>できてるな。最初から%MEMが4.6なのが気になる。とりあえずはこれでしばらく様子見。</p>
+                        <h2 id="月21日日"><a href="#21">04月21日(日)</a> <a id="21"></a></h2>
+                        <p>似田貝先生の追悼記念研究会。高等研で集まった様々な分野の研究者による発表。</p>
+                        <p>社会学者である清水亮先生の発表と西森さんのアリの話が面白かった。</p>
+                        <h2 id="月20日土"><a href="#20">04月20日(土)</a> <a id="20"></a></h2>
                         <p>ようやく活動開始、みたいな。</p>
                         <p>新しい名刺届いた。なんか説明がウェブから消えてたので本当に注文できたか心配だったのだが、ちゃんと届いて良かった。</p>
                         <p>古い名刺が大量に余ってるんだけどどうしよう。引きこもり生活がバレてしまう。</p>
@@ -70,16 +106,16 @@
                         <p>タスクログによると、学生さんの論文を確認していたらしい。</p>
                         <h2 id="月08日月"><a href="#08">04月08日(月)</a> <a id="08"></a></h2>
                         <p>sshfsのインストール。WSL</p>
-                        <div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="fu">sudo</span> apt -y update</span>
-                        <span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a><span class="fu">sudo</span> apt -y install sshfs</span></code></pre></div>
+                        <div class="sourceCode" id="cb7"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a><span class="fu">sudo</span> apt -y update</span>
+                        <span id="cb7-2"><a href="#cb7-2" aria-hidden="true"></a><span class="fu">sudo</span> apt -y install sshfs</span></code></pre></div>
                         <p>Mac。</p>
-                        <div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="ex">brew</span> install sshfs</span></code></pre></div>
+                        <div class="sourceCode" id="cb8"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a><span class="ex">brew</span> install sshfs</span></code></pre></div>
                         <p>マウント。</p>
-                        <div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="ex">sshfs</span> username@watanabe-login.appi.keio.ac.jp:path/to/dir ~/somedir</span></code></pre></div>
+                        <div class="sourceCode" id="cb9"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a><span class="ex">sshfs</span> username@watanabe-login.appi.keio.ac.jp:path/to/dir ~/somedir</span></code></pre></div>
                         <p>WSLでのアンマウント。</p>
-                        <div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="ex">fusermount</span> -u ~/somedir</span></code></pre></div>
+                        <div class="sourceCode" id="cb10"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true"></a><span class="ex">fusermount</span> -u ~/somedir</span></code></pre></div>
                         <p>Macでのアンマウント。</p>
-                        <div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="ex">diskutil</span> unmount somedir</span></code></pre></div>
+                        <div class="sourceCode" id="cb11"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true"></a><span class="ex">diskutil</span> unmount somedir</span></code></pre></div>
                         <p>なんかVSCodeのMarkdown Previewが変わってて見づらい。元に戻したい。</p>
                         <p>板書講義の録画用機材メモ。</p>
                         <ul>
@@ -92,37 +128,37 @@
                         <h2 id="月06日土"><a href="#06">04月06日(土)</a> <a id="06"></a></h2>
                         <p>NOP</p>
                         <p>日記のビルドに失敗したという連絡。どうもタイトルの<code># 2024年4月</code>をつけ忘れたせいで、makefileの</p>
-                        <div class="sourceCode" id="cb6"><pre class="sourceCode mk"><code class="sourceCode makefile"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="dv">docs/%.html:</span><span class="dt"> log/%.md</span></span>
-                        <span id="cb6-2"><a href="#cb6-2" aria-hidden="true"></a>  TITLE=<span class="ch">$(</span><span class="kw">shell</span><span class="st"> head -1 </span><span class="ch">$&lt;</span><span class="st"> | sed -e &#39;1 s/^# \(.*\)</span><span class="ch">$$</span><span class="st">/\1/g&#39;</span><span class="ch">)</span>; pandoc -s <span class="ch">$&lt;</span> -o <span class="ch">$@</span> <span class="ch">$(</span><span class="dt">PANDOC_HTMLOPT</span><span class="ch">)</span> --metadata pagetitle=<span class="ch">$$</span>TITLE</span></code></pre></div>
+                        <div class="sourceCode" id="cb12"><pre class="sourceCode mk"><code class="sourceCode makefile"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true"></a><span class="dv">docs/%.html:</span><span class="dt"> log/%.md</span></span>
+                        <span id="cb12-2"><a href="#cb12-2" aria-hidden="true"></a>  TITLE=<span class="ch">$(</span><span class="kw">shell</span><span class="st"> head -1 </span><span class="ch">$&lt;</span><span class="st"> | sed -e &#39;1 s/^# \(.*\)</span><span class="ch">$$</span><span class="st">/\1/g&#39;</span><span class="ch">)</span>; pandoc -s <span class="ch">$&lt;</span> -o <span class="ch">$@</span> <span class="ch">$(</span><span class="dt">PANDOC_HTMLOPT</span><span class="ch">)</span> --metadata pagetitle=<span class="ch">$$</span>TITLE</span></code></pre></div>
                         <p>というコマンドが、</p>
-                        <div class="sourceCode" id="cb7"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a><span class="va">TITLE=</span>## [<span class="ex">04</span>月02日(火)]<span class="kw">(</span>#<span class="ex">02</span><span class="kw">)</span> <span class="op">&lt;</span><span class="ex">a</span> id=<span class="st">&quot;02&quot;</span><span class="op">&gt;&lt;</span>/a<span class="op">&gt;</span><span class="kw">;</span> <span class="ex">pandoc</span> -s log/d202404.md -o docs/d202404.html --mathjax -t html --template=template  --metadata pagetitle=<span class="va">$TITLE</span></span>
-                        <span id="cb7-2"><a href="#cb7-2" aria-hidden="true"></a><span class="ex">/bin</span>/sh: <span class="ex">1</span>: Syntax error: <span class="st">&quot;(&quot;</span> unexpected</span></code></pre></div>
+                        <div class="sourceCode" id="cb13"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true"></a><span class="va">TITLE=</span>## [<span class="ex">04</span>月02日(火)]<span class="kw">(</span>#<span class="ex">02</span><span class="kw">)</span> <span class="op">&lt;</span><span class="ex">a</span> id=<span class="st">&quot;02&quot;</span><span class="op">&gt;&lt;</span>/a<span class="op">&gt;</span><span class="kw">;</span> <span class="ex">pandoc</span> -s log/d202404.md -o docs/d202404.html --mathjax -t html --template=template  --metadata pagetitle=<span class="va">$TITLE</span></span>
+                        <span id="cb13-2"><a href="#cb13-2" aria-hidden="true"></a><span class="ex">/bin</span>/sh: <span class="ex">1</span>: Syntax error: <span class="st">&quot;(&quot;</span> unexpected</span></code></pre></div>
                         <p>となり、カッコ対応がおかしくなったせいだった。ローカルではうまくいくのだが、シェルの違いか？</p>
                         <h2 id="月05日金"><a href="#05">04月05日(金)</a> <a id="05"></a></h2>
                         <p>サイトに卒業式、学位授与式の情報を追加。ついでにウェブサイトのCocoonの設定をいろいろ変更。</p>
                         <p>懸案だった「過去のお知らせ一覧」を表示できるようにした。まず、URLとしては<code>https://www.calc.appi.keio.ac.jp/category/news/</code>でお知らせ一覧が表示できる。これをサイドバーにいれる。</p>
                         <p>方法はCocoon設定ではなく「外観」「カスタマイズ」「ウィジェット」「サイドバー」。そこに</p>
-                        <div class="sourceCode" id="cb8"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a>[showwhatsnew]</span></code></pre></div>
+                        <div class="sourceCode" id="cb14"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true"></a>[showwhatsnew]</span></code></pre></div>
                         <p>とあるのを、</p>
-                        <div class="sourceCode" id="cb9"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a>[showwhatsnew]</span>
-                        <span id="cb9-2"><a href="#cb9-2" aria-hidden="true"></a>もっと見る</span></code></pre></div>
+                        <div class="sourceCode" id="cb15"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true"></a>[showwhatsnew]</span>
+                        <span id="cb15-2"><a href="#cb15-2" aria-hidden="true"></a>もっと見る</span></code></pre></div>
                         <p>にして、「もっと見る」から<a href="https://www.calc.appi.keio.ac.jp/category/news/">https://www.calc.appi.keio.ac.jp/category/news/</a>にリンクをはった。</p>
                         <p>latexindentが動かない。</p>
-                        <div class="sourceCode" id="cb10"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true"></a>$ <span class="ex">latexindent</span></span>
-                        <span id="cb10-2"><a href="#cb10-2" aria-hidden="true"></a><span class="ex">Can</span><span class="st">&#39;t locate File/HomeDir.pm in @INC (you may need to install the File::HomeDir module) (@INC contains: /usr/local/texlive/2022/texmf-dist/scripts/latexindent /Library/Perl/5.34/darwin-thread-multi-2level /Library/Perl/5.34 /Network/Library/Perl/5.34/darwin-thread-multi-2level /Network/Library/Perl/5.34 /Library/Perl/Updates/5.34.1 /System/Library/Perl/5.34/darwin-thread-multi-2level /System/Library/Perl/5.34 /System/Library/Perl/Extras/5.34/darwin-thread-multi-2level /System/Library/Perl/Extras/5.34) at /usr/local/texlive/2022/texmf-dist/scripts/latexindent/LatexIndent/GetYamlSettings.pm line 24.</span></span>
-                        <span id="cb10-3"><a href="#cb10-3" aria-hidden="true"></a><span class="st">BEGIN failed--compilation aborted at /usr/local/texlive/2022/texmf-dist/scripts/latexindent/LatexIndent/GetYamlSettings.pm line 24.</span></span>
-                        <span id="cb10-4"><a href="#cb10-4" aria-hidden="true"></a><span class="st">Compilation failed in require at /usr/local/texlive/2022/texmf-dist/scripts/latexindent/LatexIndent/Verbatim.pm line 23.</span></span>
-                        <span id="cb10-5"><a href="#cb10-5" aria-hidden="true"></a><span class="st">BEGIN failed--compilation aborted at /usr/local/texlive/2022/texmf-dist/scripts/latexindent/LatexIndent/Verbatim.pm line 23.</span></span>
-                        <span id="cb10-6"><a href="#cb10-6" aria-hidden="true"></a><span class="st">Compilation failed in require at /usr/local/texlive/2022/texmf-dist/scripts/latexindent/LatexIndent/Lines.pm line 23.</span></span>
-                        <span id="cb10-7"><a href="#cb10-7" aria-hidden="true"></a><span class="st">BEGIN failed--compilation aborted at /usr/local/texlive/2022/texmf-dist/scripts/latexindent/LatexIndent/Lines.pm line 23.</span></span>
-                        <span id="cb10-8"><a href="#cb10-8" aria-hidden="true"></a><span class="st">Compilation failed in require at /usr/local/texlive/2022/texmf-dist/scripts/latexindent/LatexIndent/Document.pm line 30.</span></span>
-                        <span id="cb10-9"><a href="#cb10-9" aria-hidden="true"></a><span class="st">BEGIN failed--compilation aborted at /usr/local/texlive/2022/texmf-dist/scripts/latexindent/LatexIndent/Document.pm line 30.</span></span>
-                        <span id="cb10-10"><a href="#cb10-10" aria-hidden="true"></a><span class="st">Compilation failed in require at /usr/local/bin/latexindent line 27.</span></span>
-                        <span id="cb10-11"><a href="#cb10-11" aria-hidden="true"></a><span class="st">BEGIN failed--compilation aborted at /usr/local/bin/latexindent line 27.</span></span></code></pre></div>
+                        <div class="sourceCode" id="cb16"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true"></a>$ <span class="ex">latexindent</span></span>
+                        <span id="cb16-2"><a href="#cb16-2" aria-hidden="true"></a><span class="ex">Can</span><span class="st">&#39;t locate File/HomeDir.pm in @INC (you may need to install the File::HomeDir module) (@INC contains: /usr/local/texlive/2022/texmf-dist/scripts/latexindent /Library/Perl/5.34/darwin-thread-multi-2level /Library/Perl/5.34 /Network/Library/Perl/5.34/darwin-thread-multi-2level /Network/Library/Perl/5.34 /Library/Perl/Updates/5.34.1 /System/Library/Perl/5.34/darwin-thread-multi-2level /System/Library/Perl/5.34 /System/Library/Perl/Extras/5.34/darwin-thread-multi-2level /System/Library/Perl/Extras/5.34) at /usr/local/texlive/2022/texmf-dist/scripts/latexindent/LatexIndent/GetYamlSettings.pm line 24.</span></span>
+                        <span id="cb16-3"><a href="#cb16-3" aria-hidden="true"></a><span class="st">BEGIN failed--compilation aborted at /usr/local/texlive/2022/texmf-dist/scripts/latexindent/LatexIndent/GetYamlSettings.pm line 24.</span></span>
+                        <span id="cb16-4"><a href="#cb16-4" aria-hidden="true"></a><span class="st">Compilation failed in require at /usr/local/texlive/2022/texmf-dist/scripts/latexindent/LatexIndent/Verbatim.pm line 23.</span></span>
+                        <span id="cb16-5"><a href="#cb16-5" aria-hidden="true"></a><span class="st">BEGIN failed--compilation aborted at /usr/local/texlive/2022/texmf-dist/scripts/latexindent/LatexIndent/Verbatim.pm line 23.</span></span>
+                        <span id="cb16-6"><a href="#cb16-6" aria-hidden="true"></a><span class="st">Compilation failed in require at /usr/local/texlive/2022/texmf-dist/scripts/latexindent/LatexIndent/Lines.pm line 23.</span></span>
+                        <span id="cb16-7"><a href="#cb16-7" aria-hidden="true"></a><span class="st">BEGIN failed--compilation aborted at /usr/local/texlive/2022/texmf-dist/scripts/latexindent/LatexIndent/Lines.pm line 23.</span></span>
+                        <span id="cb16-8"><a href="#cb16-8" aria-hidden="true"></a><span class="st">Compilation failed in require at /usr/local/texlive/2022/texmf-dist/scripts/latexindent/LatexIndent/Document.pm line 30.</span></span>
+                        <span id="cb16-9"><a href="#cb16-9" aria-hidden="true"></a><span class="st">BEGIN failed--compilation aborted at /usr/local/texlive/2022/texmf-dist/scripts/latexindent/LatexIndent/Document.pm line 30.</span></span>
+                        <span id="cb16-10"><a href="#cb16-10" aria-hidden="true"></a><span class="st">Compilation failed in require at /usr/local/bin/latexindent line 27.</span></span>
+                        <span id="cb16-11"><a href="#cb16-11" aria-hidden="true"></a><span class="st">BEGIN failed--compilation aborted at /usr/local/bin/latexindent line 27.</span></span></code></pre></div>
                         <p><a href="https://zenn.dev/ganariya/articles/vscode-latex-indent">ここ</a>を参考に設定してみる。</p>
-                        <div class="sourceCode" id="cb11"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true"></a><span class="ex">brew</span> install perl</span>
-                        <span id="cb11-2"><a href="#cb11-2" aria-hidden="true"></a><span class="ex">brew</span> install cpanm</span>
-                        <span id="cb11-3"><a href="#cb11-3" aria-hidden="true"></a><span class="ex">cpanm</span> Log::Log4perl Log::Dispatch::File YAML::Tiny File::HomeDir Unicode::GCString</span></code></pre></div>
+                        <div class="sourceCode" id="cb17"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true"></a><span class="ex">brew</span> install perl</span>
+                        <span id="cb17-2"><a href="#cb17-2" aria-hidden="true"></a><span class="ex">brew</span> install cpanm</span>
+                        <span id="cb17-3"><a href="#cb17-3" aria-hidden="true"></a><span class="ex">cpanm</span> Log::Log4perl Log::Dispatch::File YAML::Tiny File::HomeDir Unicode::GCString</span></code></pre></div>
                         <p>latexindentがエラーを出さなくなった。VSCodeもlatexindentがそのまま通るようになった。</p>
                         <p>春季安全教育提出した。</p>
                         <p>就任なんとか計画出した。</p>
@@ -149,11 +185,11 @@
                         <p>研究室所属学生＋利用室提出。</p>
                         <p>昨日の疲れが残っている中作業しているのでミスが目立つし、そもそも効率が非常に悪い。</p>
                         <p>ImageMagickのコマンド群の一つ<code>identify</code>を初めて知った。こんな感じに使う。</p>
-                        <div class="sourceCode" id="cb12"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true"></a>$ <span class="ex">identify</span> test.jpg </span>
-                        <span id="cb12-2"><a href="#cb12-2" aria-hidden="true"></a><span class="ex">test.jpg</span> JPEG 3840x2160 3840x2160+0+0 8-bit sRGB 388362B 0.000u 0:00.002</span></code></pre></div>
+                        <div class="sourceCode" id="cb18"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true"></a>$ <span class="ex">identify</span> test.jpg </span>
+                        <span id="cb18-2"><a href="#cb18-2" aria-hidden="true"></a><span class="ex">test.jpg</span> JPEG 3840x2160 3840x2160+0+0 8-bit sRGB 388362B 0.000u 0:00.002</span></code></pre></div>
                         <p>format文字列が指定できる。いろいろ自動処理に使えそう。Awkと組み合わせるとか。</p>
-                        <div class="sourceCode" id="cb13"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true"></a>$ <span class="ex">identify</span> -format <span class="st">&quot;%w %h\n&quot;</span> test.jpg</span>
-                        <span id="cb13-2"><a href="#cb13-2" aria-hidden="true"></a><span class="ex">3840</span> 2160</span></code></pre></div>
+                        <div class="sourceCode" id="cb19"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true"></a>$ <span class="ex">identify</span> -format <span class="st">&quot;%w %h\n&quot;</span> test.jpg</span>
+                        <span id="cb19-2"><a href="#cb19-2" aria-hidden="true"></a><span class="ex">3840</span> 2160</span></code></pre></div>
                         <p>気になってちゃんと調べたら、ImageMagickのコマンドはconvert, mogrity, indentify, montage, composite, displayの6つらしい。思ったより少なかった。</p>
                         <p>今調べたら、全部<code>magick</code>というコマンドから呼び出せる形になってる。magickは2016年にリリースされたバージョン7から導入され、<code>convert</code>は後方互換性のために残されてるとか、そういう位置づけっぽい。知らなかった。</p>
                         <p>8年も前の変更を知らずに生きていたのか。どんどん世界に取り残されているなぁ・・・</p>
