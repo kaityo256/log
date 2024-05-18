@@ -21,6 +21,18 @@
   <body>
     <article class="markdown-body">
                         <h1 id="年5月">2024年5月</h1>
+                        <h2 id="月18日土"><a href="#18">05月18日(土)</a> <a id="18"></a></h2>
+                        <p>川島先生還暦記念会＆BBQ。懐かしい面々。皆さんお久しぶりです。</p>
+                        <p>研究室ウェブサイトまた死んだ。死んでいる状態でmysqldにpidofする。</p>
+                        <div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a>$ <span class="ex">/usr/sbin/pidof</span> mysqld<span class="kw">;</span><span class="bu">echo</span> <span class="va">$?</span></span>
+                        <span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a><span class="ex">1</span></span>
+                        <span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a></span>
+                        <span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a>$ <span class="fu">sudo</span> service mariadb restart</span>
+                        <span id="cb1-5"><a href="#cb1-5" aria-hidden="true"></a></span>
+                        <span id="cb1-6"><a href="#cb1-6" aria-hidden="true"></a>$ <span class="ex">/usr/sbin/pidof</span> mysqld<span class="kw">;</span><span class="bu">echo</span> <span class="va">$?</span></span>
+                        <span id="cb1-7"><a href="#cb1-7" aria-hidden="true"></a><span class="ex">25188</span></span>
+                        <span id="cb1-8"><a href="#cb1-8" aria-hidden="true"></a><span class="ex">0</span></span></code></pre></div>
+                        <p>というわけで、死んでいる状態ならpidofの返り値が1、そうでなければ0となるので、これを使って監視することに。</p>
                         <h2 id="月17日金"><a href="#17">05月17日(金)</a> <a id="17"></a></h2>
                         <p>ミーティングいっぱい。メールを書くお仕事も。</p>
                         <p>ずっとサボっていた keio.jpのメールを普段使うアドレスに転送するように。大事なメールを見逃したので。</p>
@@ -32,6 +44,7 @@
                         <p>輪講。研究室ミーティング。</p>
                         <p>ハンズオンはParaView。少しUIが変わっていたから修正しないと。</p>
                         <p>Adobe ELTAのライセンス来た。助かった。</p>
+                        <p>教授・准教授就任講演の映像公開可否の問い合わせ。准教授就任講演は完全公開にしたんだけど、次はさすがに塾内限定にすることにした。内輪ネタ多めの予定だしね・・・。</p>
                         <h2 id="月15日水"><a href="#15">05月15日(水)</a> <a id="15"></a></h2>
                         <p>VMDのアンケート答えてるんだけど、なぜ性別と人種答えないといけないんだろ？ なんか最近海外のアンケートで性別と人種答えさせるのが多いんだけど、なぜだ？</p>
                         <p>Adobe ELTAのライセンス申請、返事がこないなぁ、と思ったら、メールではなくGoogle Formからの申請だった。慌ててやりなおした。しまったなぁ。</p>
@@ -116,18 +129,18 @@
                         <h2 id="月01日水"><a href="#01">05月01日(水)</a> <a id="01"></a></h2>
                         <p>え、もう五月なの？いろいろ厳しいんだけど。</p>
                         <p>ChatGPTにことわざの意味を聞いてみた。</p>
-                        <div class="sourceCode" id="cb1"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a>「井の中の蛙、大海を知らず」の意味を教えて下さい。</span>
-                        <span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a></span>
-                        <span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a></span>
-                        <span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a>「井の中の蛙、大海を知らず」という言葉は、日本のことわざで、字面通りには「井戸の中のカエルは大きな海を知らない」という意味です。このことわざは、狭い世界や限られた経験の中で生きる人が、外の広い世界や多様な経験を知らないことを指摘しています。つまり、自分の知っていることや経験したことだけが全てだと思い込むことの危険性を警告するために使われます。</span>
-                        <span id="cb1-5"><a href="#cb1-5" aria-hidden="true"></a></span>
-                        <span id="cb1-6"><a href="#cb1-6" aria-hidden="true"></a>この表現は、自己の視野を広げる重要性を認識し、他人の意見や異なる文化を理解しようとする態度の大切さを教えるためにも引用されることがあります。</span>
-                        <span id="cb1-7"><a href="#cb1-7" aria-hidden="true"></a></span>
-                        <span id="cb1-8"><a href="#cb1-8" aria-hidden="true"></a>「井の中の蛙、大海を知らず。されど空の青さを知る」の意味を教えて下さい。</span>
-                        <span id="cb1-9"><a href="#cb1-9" aria-hidden="true"></a></span>
-                        <span id="cb1-10"><a href="#cb1-10" aria-hidden="true"></a>「井の中の蛙、大海を知らず。されど空の青さを知る」という言葉は、先ほどのことわざ「井の中の蛙、大海を知らず」に続けて、さらに意味を深めた表現です。このフレーズは、井戸の中のカエルが大きな海を知らないことを指摘しつつも、それでも彼は自分の位置から見える空の青さを知っていると述べています。</span>
-                        <span id="cb1-11"><a href="#cb1-11" aria-hidden="true"></a></span>
-                        <span id="cb1-12"><a href="#cb1-12" aria-hidden="true"></a>この追加された部分は、人が自分の限られた環境や経験の中でしか物事を見ていないかもしれないが、それでもその環境や経験が持つ独自の価値や美しさ、教訓を理解し、それを大切にすることができるという点を強調しています。つまり、限られた環境の中にも学びや価値があると認識し、自分の世界を肯定的に見る視点を示しています。このことわざは、狭い世界にいることの欠点だけでなく、その中での学びや発見の可能性をも教えてくれます。</span></code></pre></div>
+                        <div class="sourceCode" id="cb2"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a>「井の中の蛙、大海を知らず」の意味を教えて下さい。</span>
+                        <span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a></span>
+                        <span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a></span>
+                        <span id="cb2-4"><a href="#cb2-4" aria-hidden="true"></a>「井の中の蛙、大海を知らず」という言葉は、日本のことわざで、字面通りには「井戸の中のカエルは大きな海を知らない」という意味です。このことわざは、狭い世界や限られた経験の中で生きる人が、外の広い世界や多様な経験を知らないことを指摘しています。つまり、自分の知っていることや経験したことだけが全てだと思い込むことの危険性を警告するために使われます。</span>
+                        <span id="cb2-5"><a href="#cb2-5" aria-hidden="true"></a></span>
+                        <span id="cb2-6"><a href="#cb2-6" aria-hidden="true"></a>この表現は、自己の視野を広げる重要性を認識し、他人の意見や異なる文化を理解しようとする態度の大切さを教えるためにも引用されることがあります。</span>
+                        <span id="cb2-7"><a href="#cb2-7" aria-hidden="true"></a></span>
+                        <span id="cb2-8"><a href="#cb2-8" aria-hidden="true"></a>「井の中の蛙、大海を知らず。されど空の青さを知る」の意味を教えて下さい。</span>
+                        <span id="cb2-9"><a href="#cb2-9" aria-hidden="true"></a></span>
+                        <span id="cb2-10"><a href="#cb2-10" aria-hidden="true"></a>「井の中の蛙、大海を知らず。されど空の青さを知る」という言葉は、先ほどのことわざ「井の中の蛙、大海を知らず」に続けて、さらに意味を深めた表現です。このフレーズは、井戸の中のカエルが大きな海を知らないことを指摘しつつも、それでも彼は自分の位置から見える空の青さを知っていると述べています。</span>
+                        <span id="cb2-11"><a href="#cb2-11" aria-hidden="true"></a></span>
+                        <span id="cb2-12"><a href="#cb2-12" aria-hidden="true"></a>この追加された部分は、人が自分の限られた環境や経験の中でしか物事を見ていないかもしれないが、それでもその環境や経験が持つ独自の価値や美しさ、教訓を理解し、それを大切にすることができるという点を強調しています。つまり、限られた環境の中にも学びや価値があると認識し、自分の世界を肯定的に見る視点を示しています。このことわざは、狭い世界にいることの欠点だけでなく、その中での学びや発見の可能性をも教えてくれます。</span></code></pre></div>
                         <p>なんかそれっぽい文章を書かせたら完璧だなぁ。</p>
                         <p>lab_startupの記述が古いのを修正。UbuntuはDockerでまっさらな環境を作ることができるから確認が楽だなぁ。Macで問題が起きると面倒。</p>
                         <p>講義準備、時間かけたがスライド16枚くらいしか作れなかった。やばい。</p>
