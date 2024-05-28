@@ -21,20 +21,32 @@
   <body>
     <article class="markdown-body">
                         <h1 id="年5月">2024年5月</h1>
+                        <h2 id="月28日火"><a href="#28">05月28日(火)</a> <a id="28"></a></h2>
+                        <p>数理物理のK-LMSのモジュール公開した。完全に自転車操業。</p>
+                        <p>明日、新計算原理の報告会だ。</p>
+                        <p>Webサーバのmariadbの生存確認スクリプト、crontabで実行したスクリプトが標準出力、標準エラー出力になにか吐いたらメールが飛ぶの知らずに、死ぬほどメールが飛ぶ仕様になってた。しかも毎分確認してたので、メールがrootに12000通とか来てた。とりあえずメールを飛ばさないように修正。</p>
+                        <p>cronで実行しているcertbotもメールを飛ばすが、こちらは一日一回だからいいかな。</p>
+                        <p>JFMのstyleを試そうとしたが、どうもローカルのtexliveが古い？</p>
+                        <p>とりあえず最新にしてみる。</p>
+                        <div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="ex">curl</span> -OL http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz</span>
+                        <span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a><span class="fu">tar</span> xvf install-tl-unx.tar.gz</span>
+                        <span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a><span class="bu">cd</span> install-tl-2*</span>
+                        <span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a><span class="fu">sudo</span> ./install-tl</span></code></pre></div>
+                        <p>2時間かかると出てきたな・・・。</p>
                         <h2 id="月27日月"><a href="#27">05月27日(月)</a> <a id="27"></a></h2>
                         <p>シミュレーション工学、今学期の最後。なんか今回は時間配分が下手だった気がするなぁ。</p>
                         <p>しばらくRuby触ってなかったからかなり忘れてる。rbenvも完全に忘れてる。</p>
-                        <div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="ex">brew</span> update</span>
-                        <span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a><span class="ex">brew</span> upgrade ruby-build</span>
-                        <span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a><span class="ex">rbenv</span> install 3.3.1</span>
-                        <span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a><span class="ex">rbenv</span> local 3.3.1 </span>
-                        <span id="cb1-5"><a href="#cb1-5" aria-hidden="true"></a><span class="ex">gem</span> install ruby-lsp</span>
-                        <span id="cb1-6"><a href="#cb1-6" aria-hidden="true"></a><span class="ex">gem</span> install rubocop</span></code></pre></div>
+                        <div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="ex">brew</span> update</span>
+                        <span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a><span class="ex">brew</span> upgrade ruby-build</span>
+                        <span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a><span class="ex">rbenv</span> install 3.3.1</span>
+                        <span id="cb2-4"><a href="#cb2-4" aria-hidden="true"></a><span class="ex">rbenv</span> local 3.3.1 </span>
+                        <span id="cb2-5"><a href="#cb2-5" aria-hidden="true"></a><span class="ex">gem</span> install ruby-lsp</span>
+                        <span id="cb2-6"><a href="#cb2-6" aria-hidden="true"></a><span class="ex">gem</span> install rubocop</span></code></pre></div>
                         <p>そしてVSCodeにRuby LSP拡張を入れる。settings.jsonに</p>
-                        <div class="sourceCode" id="cb2"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a>    <span class="er">&quot;rubyLsp.formatter&quot;:</span> <span class="er">&quot;rubocop&quot;,</span></span>
-                        <span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a>    <span class="er">&quot;</span><span class="ot">[</span><span class="er">ruby</span><span class="ot">]</span><span class="er">&quot;:</span> <span class="fu">{</span></span>
-                        <span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a>        <span class="dt">&quot;editor.formatOnSave&quot;</span><span class="fu">:</span> <span class="kw">true</span></span>
-                        <span id="cb2-4"><a href="#cb2-4" aria-hidden="true"></a>    <span class="fu">}</span></span></code></pre></div>
+                        <div class="sourceCode" id="cb3"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a>    <span class="er">&quot;rubyLsp.formatter&quot;:</span> <span class="er">&quot;rubocop&quot;,</span></span>
+                        <span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a>    <span class="er">&quot;</span><span class="ot">[</span><span class="er">ruby</span><span class="ot">]</span><span class="er">&quot;:</span> <span class="fu">{</span></span>
+                        <span id="cb3-3"><a href="#cb3-3" aria-hidden="true"></a>        <span class="dt">&quot;editor.formatOnSave&quot;</span><span class="fu">:</span> <span class="kw">true</span></span>
+                        <span id="cb3-4"><a href="#cb3-4" aria-hidden="true"></a>    <span class="fu">}</span></span></code></pre></div>
                         <p>を追加。FormatOnSaveがワンテンポ遅れるのが気になる。</p>
                         <p>Slackの立て替え払い出した。</p>
                         <h2 id="月26日日"><a href="#26">05月26日(日)</a> <a id="26"></a></h2>
@@ -75,14 +87,14 @@
                         <h2 id="月18日土"><a href="#18">05月18日(土)</a> <a id="18"></a></h2>
                         <p>川島先生還暦記念会＆BBQ。懐かしい面々。皆さんお久しぶりです。</p>
                         <p>研究室ウェブサイトまた死んだ。死んでいる状態でmysqldにpidofする。</p>
-                        <div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a>$ <span class="ex">/usr/sbin/pidof</span> mysqld<span class="kw">;</span><span class="bu">echo</span> <span class="va">$?</span></span>
-                        <span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a><span class="ex">1</span></span>
-                        <span id="cb3-3"><a href="#cb3-3" aria-hidden="true"></a></span>
-                        <span id="cb3-4"><a href="#cb3-4" aria-hidden="true"></a>$ <span class="fu">sudo</span> service mariadb restart</span>
-                        <span id="cb3-5"><a href="#cb3-5" aria-hidden="true"></a></span>
-                        <span id="cb3-6"><a href="#cb3-6" aria-hidden="true"></a>$ <span class="ex">/usr/sbin/pidof</span> mysqld<span class="kw">;</span><span class="bu">echo</span> <span class="va">$?</span></span>
-                        <span id="cb3-7"><a href="#cb3-7" aria-hidden="true"></a><span class="ex">25188</span></span>
-                        <span id="cb3-8"><a href="#cb3-8" aria-hidden="true"></a><span class="ex">0</span></span></code></pre></div>
+                        <div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a>$ <span class="ex">/usr/sbin/pidof</span> mysqld<span class="kw">;</span><span class="bu">echo</span> <span class="va">$?</span></span>
+                        <span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a><span class="ex">1</span></span>
+                        <span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a></span>
+                        <span id="cb4-4"><a href="#cb4-4" aria-hidden="true"></a>$ <span class="fu">sudo</span> service mariadb restart</span>
+                        <span id="cb4-5"><a href="#cb4-5" aria-hidden="true"></a></span>
+                        <span id="cb4-6"><a href="#cb4-6" aria-hidden="true"></a>$ <span class="ex">/usr/sbin/pidof</span> mysqld<span class="kw">;</span><span class="bu">echo</span> <span class="va">$?</span></span>
+                        <span id="cb4-7"><a href="#cb4-7" aria-hidden="true"></a><span class="ex">25188</span></span>
+                        <span id="cb4-8"><a href="#cb4-8" aria-hidden="true"></a><span class="ex">0</span></span></code></pre></div>
                         <p>というわけで、死んでいる状態ならpidofの返り値が1、そうでなければ0となるので、これを使って監視することに。</p>
                         <h2 id="月17日金"><a href="#17">05月17日(金)</a> <a id="17"></a></h2>
                         <p>ミーティングいっぱい。メールを書くお仕事も。</p>
@@ -180,18 +192,18 @@
                         <h2 id="月01日水"><a href="#01">05月01日(水)</a> <a id="01"></a></h2>
                         <p>え、もう五月なの？いろいろ厳しいんだけど。</p>
                         <p>ChatGPTにことわざの意味を聞いてみた。</p>
-                        <div class="sourceCode" id="cb4"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a>「井の中の蛙、大海を知らず」の意味を教えて下さい。</span>
-                        <span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a></span>
-                        <span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a></span>
-                        <span id="cb4-4"><a href="#cb4-4" aria-hidden="true"></a>「井の中の蛙、大海を知らず」という言葉は、日本のことわざで、字面通りには「井戸の中のカエルは大きな海を知らない」という意味です。このことわざは、狭い世界や限られた経験の中で生きる人が、外の広い世界や多様な経験を知らないことを指摘しています。つまり、自分の知っていることや経験したことだけが全てだと思い込むことの危険性を警告するために使われます。</span>
-                        <span id="cb4-5"><a href="#cb4-5" aria-hidden="true"></a></span>
-                        <span id="cb4-6"><a href="#cb4-6" aria-hidden="true"></a>この表現は、自己の視野を広げる重要性を認識し、他人の意見や異なる文化を理解しようとする態度の大切さを教えるためにも引用されることがあります。</span>
-                        <span id="cb4-7"><a href="#cb4-7" aria-hidden="true"></a></span>
-                        <span id="cb4-8"><a href="#cb4-8" aria-hidden="true"></a>「井の中の蛙、大海を知らず。されど空の青さを知る」の意味を教えて下さい。</span>
-                        <span id="cb4-9"><a href="#cb4-9" aria-hidden="true"></a></span>
-                        <span id="cb4-10"><a href="#cb4-10" aria-hidden="true"></a>「井の中の蛙、大海を知らず。されど空の青さを知る」という言葉は、先ほどのことわざ「井の中の蛙、大海を知らず」に続けて、さらに意味を深めた表現です。このフレーズは、井戸の中のカエルが大きな海を知らないことを指摘しつつも、それでも彼は自分の位置から見える空の青さを知っていると述べています。</span>
-                        <span id="cb4-11"><a href="#cb4-11" aria-hidden="true"></a></span>
-                        <span id="cb4-12"><a href="#cb4-12" aria-hidden="true"></a>この追加された部分は、人が自分の限られた環境や経験の中でしか物事を見ていないかもしれないが、それでもその環境や経験が持つ独自の価値や美しさ、教訓を理解し、それを大切にすることができるという点を強調しています。つまり、限られた環境の中にも学びや価値があると認識し、自分の世界を肯定的に見る視点を示しています。このことわざは、狭い世界にいることの欠点だけでなく、その中での学びや発見の可能性をも教えてくれます。</span></code></pre></div>
+                        <div class="sourceCode" id="cb5"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a>「井の中の蛙、大海を知らず」の意味を教えて下さい。</span>
+                        <span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a></span>
+                        <span id="cb5-3"><a href="#cb5-3" aria-hidden="true"></a></span>
+                        <span id="cb5-4"><a href="#cb5-4" aria-hidden="true"></a>「井の中の蛙、大海を知らず」という言葉は、日本のことわざで、字面通りには「井戸の中のカエルは大きな海を知らない」という意味です。このことわざは、狭い世界や限られた経験の中で生きる人が、外の広い世界や多様な経験を知らないことを指摘しています。つまり、自分の知っていることや経験したことだけが全てだと思い込むことの危険性を警告するために使われます。</span>
+                        <span id="cb5-5"><a href="#cb5-5" aria-hidden="true"></a></span>
+                        <span id="cb5-6"><a href="#cb5-6" aria-hidden="true"></a>この表現は、自己の視野を広げる重要性を認識し、他人の意見や異なる文化を理解しようとする態度の大切さを教えるためにも引用されることがあります。</span>
+                        <span id="cb5-7"><a href="#cb5-7" aria-hidden="true"></a></span>
+                        <span id="cb5-8"><a href="#cb5-8" aria-hidden="true"></a>「井の中の蛙、大海を知らず。されど空の青さを知る」の意味を教えて下さい。</span>
+                        <span id="cb5-9"><a href="#cb5-9" aria-hidden="true"></a></span>
+                        <span id="cb5-10"><a href="#cb5-10" aria-hidden="true"></a>「井の中の蛙、大海を知らず。されど空の青さを知る」という言葉は、先ほどのことわざ「井の中の蛙、大海を知らず」に続けて、さらに意味を深めた表現です。このフレーズは、井戸の中のカエルが大きな海を知らないことを指摘しつつも、それでも彼は自分の位置から見える空の青さを知っていると述べています。</span>
+                        <span id="cb5-11"><a href="#cb5-11" aria-hidden="true"></a></span>
+                        <span id="cb5-12"><a href="#cb5-12" aria-hidden="true"></a>この追加された部分は、人が自分の限られた環境や経験の中でしか物事を見ていないかもしれないが、それでもその環境や経験が持つ独自の価値や美しさ、教訓を理解し、それを大切にすることができるという点を強調しています。つまり、限られた環境の中にも学びや価値があると認識し、自分の世界を肯定的に見る視点を示しています。このことわざは、狭い世界にいることの欠点だけでなく、その中での学びや発見の可能性をも教えてくれます。</span></code></pre></div>
                         <p>なんかそれっぽい文章を書かせたら完璧だなぁ。</p>
                         <p>lab_startupの記述が古いのを修正。UbuntuはDockerでまっさらな環境を作ることができるから確認が楽だなぁ。Macで問題が起きると面倒。</p>
                         <p>講義準備、時間かけたがスライド16枚くらいしか作れなかった。やばい。</p>
