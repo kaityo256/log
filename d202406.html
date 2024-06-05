@@ -21,50 +21,68 @@
   <body>
     <article class="markdown-body">
                         <h1 id="年6月">2024年6月</h1>
+                        <h2 id="月05日水"><a href="#05">06月05日(水)</a> <a id="05"></a></h2>
+                        <div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a>$ <span class="ex">dmd</span> pptxgrep.d</span>
+                        <span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a><span class="ex">pptxgrep.d</span>(8)<span class="bu">:</span> Error: unable to read module <span class="kw">`</span><span class="ex">xml</span><span class="kw">`</span></span>
+                        <span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a><span class="ex">pptxgrep.d</span>(8)<span class="bu">:</span>        Expected <span class="st">&#39;std/xml.d&#39;</span> or <span class="st">&#39;std/xml/package.d&#39;</span> in one of the following import paths:</span>
+                        <span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a><span class="ex">import</span> path[0] = /usr/local/opt/dmd/include/dlang/dmd</span></code></pre></div>
+                        <p>xmlライブラリが読み込めない。</p>
+                        <p>五億年ぶりにMacでD言語のコードをコンパイル。</p>
+                        <div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="ex">brew</span> upgrade dmd</span>
+                        <span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a><span class="ex">dub</span> fetch dxml</span></code></pre></div>
+                        <p>でもコンパイルできない。いろいろ調べたが、<a href="https://docarchives.dlang.io/v2.094.0/phobos/std_xml.html"><code>std.xml</code>がobsoleteになっているらしい？</a></p>
+                        <div class="sourceCode" id="cb3"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a>Warning: This module is considered out-dated and not up to Phobos&#39; current standards. It will be removed from Phobos in 2.101.0. If you still need it, go to https://github.com/DigitalMars/undeaD</span></code></pre></div>
+                        <div class="sourceCode" id="cb4"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a>$ dmd --version</span>
+                        <span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a>DMD64 D Compiler v2.109.0</span>
+                        <span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a></span>
+                        <span id="cb4-4"><a href="#cb4-4" aria-hidden="true"></a>Copyright (C) 1999-2024 by The D Language Foundation, All Rights Reserved written by Walter Bright</span></code></pre></div>
+                        <p>Phobosのバージョンとコンパイラのバージョン一致しているの？なら2.109だから、std.xmlは消えたんだな。</p>
+                        <p>ってことは今はpptxgrepは再コンパイルしたら使えないのか。また別の言語で作り直すかなぁ。次は何でやるかなぁ。</p>
                         <h2 id="月04日火"><a href="#04">06月04日(火)</a> <a id="04"></a></h2>
                         <p>数理物理の録画を確認したが、音が駄目だった。ワイヤレスマイクが必要。RODE Wireless GOが良いらしいが、さすがに高い(4万〜5万)。いろいろ調べてサンワダイレクトの400-MCW001を頼んでみた。</p>
                         <p>メモ。古い環境でPython仮想環境を構築する方法。pip無しで仮想環境を構築してから、後でpipをローカルにインストールする。</p>
-                        <div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="ex">python3</span> -m venv myenv --without-pip  </span>
-                        <span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a><span class="bu">source</span> myenv/bin/activate </span>
-                        <span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a><span class="fu">wget</span> https://bootstrap.pypa.io/pip/3.6/get-pip.py</span>
-                        <span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a><span class="ex">python3</span> get-pip.py</span></code></pre></div>
+                        <div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="ex">python3</span> -m venv myenv --without-pip  </span>
+                        <span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a><span class="bu">source</span> myenv/bin/activate </span>
+                        <span id="cb5-3"><a href="#cb5-3" aria-hidden="true"></a><span class="fu">wget</span> https://bootstrap.pypa.io/pip/3.6/get-pip.py</span>
+                        <span id="cb5-4"><a href="#cb5-4" aria-hidden="true"></a><span class="ex">python3</span> get-pip.py</span></code></pre></div>
                         <p>NumPyが裏でなんスレッド使っているか確認。<code>threadpoolctl</code>をインストール。</p>
-                        <div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="ex">python3</span> -m pip install threadpoolctl ipython</span></code></pre></div>
+                        <div class="sourceCode" id="cb6"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="ex">python3</span> -m pip install threadpoolctl ipython</span></code></pre></div>
                         <p>ipython3上で以下を実行。</p>
-                        <div class="sourceCode" id="cb3"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a>from threadpoolctl import threadpool_info</span>
-                        <span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a>import numpy as np</span>
-                        <span id="cb3-3"><a href="#cb3-3" aria-hidden="true"></a>threadpool_info()</span></code></pre></div>
+                        <div class="sourceCode" id="cb7"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a>from threadpoolctl import threadpool_info</span>
+                        <span id="cb7-2"><a href="#cb7-2" aria-hidden="true"></a>import numpy as np</span>
+                        <span id="cb7-3"><a href="#cb7-3" aria-hidden="true"></a>threadpool_info()</span></code></pre></div>
                         <p>計算ノード。</p>
-                        <div class="sourceCode" id="cb4"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a>[{&#39;user_api&#39;: &#39;blas&#39;,</span>
-                        <span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a>  &#39;internal_api&#39;: &#39;openblas&#39;,</span>
-                        <span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a>  &#39;prefix&#39;: &#39;libopenblas&#39;,</span>
-                        <span id="cb4-4"><a href="#cb4-4" aria-hidden="true"></a>  &#39;filepath&#39;: &#39;/home/watanabe/github/simple_rbm/myenv/lib/python3.6/site-packages/numpy.libs/libopenblasp-r0-09e95953.3.13.so&#39;,</span>
-                        <span id="cb4-5"><a href="#cb4-5" aria-hidden="true"></a>  &#39;version&#39;: &#39;0.3.13&#39;,</span>
-                        <span id="cb4-6"><a href="#cb4-6" aria-hidden="true"></a>  &#39;threading_layer&#39;: &#39;pthreads&#39;,</span>
-                        <span id="cb4-7"><a href="#cb4-7" aria-hidden="true"></a>  &#39;architecture&#39;: &#39;SkylakeX&#39;,</span>
-                        <span id="cb4-8"><a href="#cb4-8" aria-hidden="true"></a>  &#39;num_threads&#39;: 40}]</span></code></pre></div>
+                        <div class="sourceCode" id="cb8"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a>[{&#39;user_api&#39;: &#39;blas&#39;,</span>
+                        <span id="cb8-2"><a href="#cb8-2" aria-hidden="true"></a>  &#39;internal_api&#39;: &#39;openblas&#39;,</span>
+                        <span id="cb8-3"><a href="#cb8-3" aria-hidden="true"></a>  &#39;prefix&#39;: &#39;libopenblas&#39;,</span>
+                        <span id="cb8-4"><a href="#cb8-4" aria-hidden="true"></a>  &#39;filepath&#39;: &#39;/home/watanabe/github/simple_rbm/myenv/lib/python3.6/site-packages/numpy.libs/libopenblasp-r0-09e95953.3.13.so&#39;,</span>
+                        <span id="cb8-5"><a href="#cb8-5" aria-hidden="true"></a>  &#39;version&#39;: &#39;0.3.13&#39;,</span>
+                        <span id="cb8-6"><a href="#cb8-6" aria-hidden="true"></a>  &#39;threading_layer&#39;: &#39;pthreads&#39;,</span>
+                        <span id="cb8-7"><a href="#cb8-7" aria-hidden="true"></a>  &#39;architecture&#39;: &#39;SkylakeX&#39;,</span>
+                        <span id="cb8-8"><a href="#cb8-8" aria-hidden="true"></a>  &#39;num_threads&#39;: 40}]</span></code></pre></div>
                         <p>AMD EPYC</p>
-                        <div class="sourceCode" id="cb5"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a>[{&#39;user_api&#39;: &#39;blas&#39;,</span>
-                        <span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a>  &#39;internal_api&#39;: &#39;openblas&#39;,</span>
-                        <span id="cb5-3"><a href="#cb5-3" aria-hidden="true"></a>  &#39;prefix&#39;: &#39;libopenblas&#39;,</span>
-                        <span id="cb5-4"><a href="#cb5-4" aria-hidden="true"></a>  &#39;filepath&#39;: &#39;/home/watanabe/github/simple_rbm/myenv/lib/python3.6/site-packages/numpy.libs/libopenblasp-r0-09e95953.3.13.so&#39;,</span>
-                        <span id="cb5-5"><a href="#cb5-5" aria-hidden="true"></a>  &#39;version&#39;: &#39;0.3.13&#39;,</span>
-                        <span id="cb5-6"><a href="#cb5-6" aria-hidden="true"></a>  &#39;threading_layer&#39;: &#39;pthreads&#39;,</span>
-                        <span id="cb5-7"><a href="#cb5-7" aria-hidden="true"></a>  &#39;architecture&#39;: &#39;Zen&#39;,</span>
-                        <span id="cb5-8"><a href="#cb5-8" aria-hidden="true"></a>  &#39;num_threads&#39;: 32}]</span></code></pre></div>
+                        <div class="sourceCode" id="cb9"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a>[{&#39;user_api&#39;: &#39;blas&#39;,</span>
+                        <span id="cb9-2"><a href="#cb9-2" aria-hidden="true"></a>  &#39;internal_api&#39;: &#39;openblas&#39;,</span>
+                        <span id="cb9-3"><a href="#cb9-3" aria-hidden="true"></a>  &#39;prefix&#39;: &#39;libopenblas&#39;,</span>
+                        <span id="cb9-4"><a href="#cb9-4" aria-hidden="true"></a>  &#39;filepath&#39;: &#39;/home/watanabe/github/simple_rbm/myenv/lib/python3.6/site-packages/numpy.libs/libopenblasp-r0-09e95953.3.13.so&#39;,</span>
+                        <span id="cb9-5"><a href="#cb9-5" aria-hidden="true"></a>  &#39;version&#39;: &#39;0.3.13&#39;,</span>
+                        <span id="cb9-6"><a href="#cb9-6" aria-hidden="true"></a>  &#39;threading_layer&#39;: &#39;pthreads&#39;,</span>
+                        <span id="cb9-7"><a href="#cb9-7" aria-hidden="true"></a>  &#39;architecture&#39;: &#39;Zen&#39;,</span>
+                        <span id="cb9-8"><a href="#cb9-8" aria-hidden="true"></a>  &#39;num_threads&#39;: 32}]</span></code></pre></div>
                         <p>Mac。</p>
-                        <div class="sourceCode" id="cb6"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a>[{&#39;user_api&#39;: &#39;blas&#39;,</span>
-                        <span id="cb6-2"><a href="#cb6-2" aria-hidden="true"></a>  &#39;internal_api&#39;: &#39;openblas&#39;,</span>
-                        <span id="cb6-3"><a href="#cb6-3" aria-hidden="true"></a>  &#39;num_threads&#39;: 10,</span>
-                        <span id="cb6-4"><a href="#cb6-4" aria-hidden="true"></a>  &#39;prefix&#39;: &#39;libopenblas&#39;,</span>
-                        <span id="cb6-5"><a href="#cb6-5" aria-hidden="true"></a>  &#39;filepath&#39;: &#39;/Users/watanabe/github/simple_rbm/myenv/lib/python3.12/site-packages/numpy/.dylibs/libopenblas64_.0.dylib&#39;,</span>
-                        <span id="cb6-6"><a href="#cb6-6" aria-hidden="true"></a>  &#39;version&#39;: &#39;0.3.23.dev&#39;,</span>
-                        <span id="cb6-7"><a href="#cb6-7" aria-hidden="true"></a>  &#39;threading_layer&#39;: &#39;pthreads&#39;,</span>
-                        <span id="cb6-8"><a href="#cb6-8" aria-hidden="true"></a>  &#39;architecture&#39;: &#39;Haswell&#39;}]</span></code></pre></div>
+                        <div class="sourceCode" id="cb10"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true"></a>[{&#39;user_api&#39;: &#39;blas&#39;,</span>
+                        <span id="cb10-2"><a href="#cb10-2" aria-hidden="true"></a>  &#39;internal_api&#39;: &#39;openblas&#39;,</span>
+                        <span id="cb10-3"><a href="#cb10-3" aria-hidden="true"></a>  &#39;num_threads&#39;: 10,</span>
+                        <span id="cb10-4"><a href="#cb10-4" aria-hidden="true"></a>  &#39;prefix&#39;: &#39;libopenblas&#39;,</span>
+                        <span id="cb10-5"><a href="#cb10-5" aria-hidden="true"></a>  &#39;filepath&#39;: &#39;/Users/watanabe/github/simple_rbm/myenv/lib/python3.12/site-packages/numpy/.dylibs/libopenblas64_.0.dylib&#39;,</span>
+                        <span id="cb10-6"><a href="#cb10-6" aria-hidden="true"></a>  &#39;version&#39;: &#39;0.3.23.dev&#39;,</span>
+                        <span id="cb10-7"><a href="#cb10-7" aria-hidden="true"></a>  &#39;threading_layer&#39;: &#39;pthreads&#39;,</span>
+                        <span id="cb10-8"><a href="#cb10-8" aria-hidden="true"></a>  &#39;architecture&#39;: &#39;Haswell&#39;}]</span></code></pre></div>
                         <p>OpenBLASのスレッド数設定は<code>OPENBLAS_NUM_THREADS</code>だそうな。なので、NumPyが裏で使うスレッド数を設定するには、</p>
-                        <div class="sourceCode" id="cb7"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a>OPENBLAS_NUM_THREADS<span class="op">=</span><span class="dv">1</span> python3 hoge.py</span></code></pre></div>
+                        <div class="sourceCode" id="cb11"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true"></a>OPENBLAS_NUM_THREADS<span class="op">=</span><span class="dv">1</span> python3 hoge.py</span></code></pre></div>
                         <p>などとすれば良い。<code>OMP_NUM_THREADS</code>じゃないのか・・・。</p>
                         <p>2024年度 理工学部 教授・准教授就任講演。僕はトップバッター。今回はちゃんとネクタイをした。</p>
+                        <p>いかん、頭が全く回らん。</p>
                         <h2 id="月03日月"><a href="#03">06月03日(月)</a> <a id="03"></a></h2>
                         <p>数理物理第一回。とりあえずなんとか終えた。</p>
                         <p>録画もしたが、音が厳しいな。やはりワイヤレスマイクから入力する必要がある。買うか。</p>
