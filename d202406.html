@@ -21,6 +21,30 @@
   <body>
     <article class="markdown-body">
                         <h1 id="年6月">2024年6月</h1>
+                        <h2 id="月26日水"><a href="#26">06月26日(水)</a> <a id="26"></a></h2>
+                        <p>Jekyllを試す。まずはJekyllをインストール。</p>
+                        <div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="ex">gem</span> install jekyll</span>
+                        <span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a><span class="fu">mkdir</span> jekyll_test </span>
+                        <span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a><span class="bu">cd</span> jekyll_test</span>
+                        <span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a><span class="ex">bundle</span> init</span></code></pre></div>
+                        <p>GemfileにJekyllを追加。</p>
+                        <div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="ex">bundle</span> config set path <span class="st">&#39;vendor/bundle&#39;</span></span>
+                        <span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a><span class="ex">bundle</span> install</span>
+                        <span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a><span class="ex">bundle</span> exec jekyll s</span></code></pre></div>
+                        <div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a>$ <span class="ex">bundle</span> exec jekyll new . --force</span>
+                        <span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a>$ <span class="ex">bundle</span> install</span></code></pre></div>
+                        <p>駄目だ。よくわからん。もっと簡単なやつが欲しい。</p>
+                        <p>hugoを試す。</p>
+                        <div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="ex">brew</span> install hugo</span>
+                        <span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a><span class="ex">hugo</span> new site hugo_test</span>
+                        <span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a><span class="bu">cd</span> hugo_test</span>
+                        <span id="cb4-4"><a href="#cb4-4" aria-hidden="true"></a><span class="fu">git</span> init</span>
+                        <span id="cb4-5"><a href="#cb4-5" aria-hidden="true"></a><span class="fu">git</span> submodule add https://github.com/theNewDynamic/gohugo-theme-ananke.git themes/ananke</span>
+                        <span id="cb4-6"><a href="#cb4-6" aria-hidden="true"></a><span class="bu">echo</span> <span class="st">&quot;theme = &#39;ananke&#39;&quot;</span> <span class="op">&gt;&gt;</span> hugo.toml</span>
+                        <span id="cb4-7"><a href="#cb4-7" aria-hidden="true"></a><span class="ex">hugo</span> server</span></code></pre></div>
+                        <p>できた。</p>
+                        <p>んー、でもよくわかんないや。もう面倒だからPandocで行く。すまん。</p>
+                        <p>結局Markdown+Pandocで書いた。うーむむ。</p>
                         <h2 id="月25日火"><a href="#25">06月25日(火)</a> <a id="25"></a></h2>
                         <p>数理物理の中間予想問題集の解答に間違い多数。指摘感謝。駄目だなぁ。</p>
                         <p>日本物理学会の宿とった。参加申し込みもした。</p>
@@ -47,15 +71,15 @@
                         <h2 id="月18日火"><a href="#18">06月18日(火)</a> <a id="18"></a></h2>
                         <p>VSCodeのDraw.io拡張がPDFを吐けないことの対処。</p>
                         <p>まずdraw.ioをインストール。</p>
-                        <div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="ex">brew</span> install --cask drawio</span></code></pre></div>
+                        <div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="ex">brew</span> install --cask drawio</span></code></pre></div>
                         <p>デフォルトでパスが通らないので、alias。</p>
-                        <div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="bu">alias</span> draw.io=/Applications/draw.io.app/Contents/MacOS/draw.io  </span></code></pre></div>
+                        <div class="sourceCode" id="cb6"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="bu">alias</span> draw.io=/Applications/draw.io.app/Contents/MacOS/draw.io  </span></code></pre></div>
                         <p>drawioファイルをpdfに変換。</p>
-                        <div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="ex">draw.io</span> -xf pdf -o test.pdf test.drawio</span></code></pre></div>
+                        <div class="sourceCode" id="cb7"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a><span class="ex">draw.io</span> -xf pdf -o test.pdf test.drawio</span></code></pre></div>
                         <p><code>includegraphics</code>にwidthを指定したら通らない。原因は</p>
-                        <div class="sourceCode" id="cb4"><pre class="sourceCode tex"><code class="sourceCode latex"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="bu">\usepackage</span>[dvipdfmx]{<span class="ex">graphics</span>}</span></code></pre></div>
+                        <div class="sourceCode" id="cb8"><pre class="sourceCode tex"><code class="sourceCode latex"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a><span class="bu">\usepackage</span>[dvipdfmx]{<span class="ex">graphics</span>}</span></code></pre></div>
                         <p>と書いていたから。正しくは</p>
-                        <div class="sourceCode" id="cb5"><pre class="sourceCode tex"><code class="sourceCode latex"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="bu">\usepackage</span>[dvipdfmx]{<span class="ex">graphicx</span>}</span></code></pre></div>
+                        <div class="sourceCode" id="cb9"><pre class="sourceCode tex"><code class="sourceCode latex"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a><span class="bu">\usepackage</span>[dvipdfmx]{<span class="ex">graphicx</span>}</span></code></pre></div>
                         <p>アホ過ぎる。</p>
                         <h2 id="月17日月"><a href="#17">06月17日(月)</a> <a id="17"></a></h2>
                         <p>数理物理。極座標で計算ミスして混乱。直前でやることにしたから。</p>
@@ -98,20 +122,20 @@
                         <p>自分のつぶやきを検索してみたら、2023年1月にBinderさんが亡くなったことに触れているな。全く覚えていなかった。ひどいもんだ。</p>
                         <p><a href="https://www.fz-juelich.de/en/ias/jsc/news/news-items/news-flashes/2022/prof-binder-obituary">Obituary Prof. Dr. Kurt Binder</a></p>
                         <h2 id="月05日水"><a href="#05">06月05日(水)</a> <a id="05"></a></h2>
-                        <div class="sourceCode" id="cb6"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a>$ <span class="ex">dmd</span> pptxgrep.d</span>
-                        <span id="cb6-2"><a href="#cb6-2" aria-hidden="true"></a><span class="ex">pptxgrep.d</span>(8)<span class="bu">:</span> Error: unable to read module <span class="kw">`</span><span class="ex">xml</span><span class="kw">`</span></span>
-                        <span id="cb6-3"><a href="#cb6-3" aria-hidden="true"></a><span class="ex">pptxgrep.d</span>(8)<span class="bu">:</span>        Expected <span class="st">&#39;std/xml.d&#39;</span> or <span class="st">&#39;std/xml/package.d&#39;</span> in one of the following import paths:</span>
-                        <span id="cb6-4"><a href="#cb6-4" aria-hidden="true"></a><span class="ex">import</span> path[0] = /usr/local/opt/dmd/include/dlang/dmd</span></code></pre></div>
+                        <div class="sourceCode" id="cb10"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true"></a>$ <span class="ex">dmd</span> pptxgrep.d</span>
+                        <span id="cb10-2"><a href="#cb10-2" aria-hidden="true"></a><span class="ex">pptxgrep.d</span>(8)<span class="bu">:</span> Error: unable to read module <span class="kw">`</span><span class="ex">xml</span><span class="kw">`</span></span>
+                        <span id="cb10-3"><a href="#cb10-3" aria-hidden="true"></a><span class="ex">pptxgrep.d</span>(8)<span class="bu">:</span>        Expected <span class="st">&#39;std/xml.d&#39;</span> or <span class="st">&#39;std/xml/package.d&#39;</span> in one of the following import paths:</span>
+                        <span id="cb10-4"><a href="#cb10-4" aria-hidden="true"></a><span class="ex">import</span> path[0] = /usr/local/opt/dmd/include/dlang/dmd</span></code></pre></div>
                         <p>xmlライブラリが読み込めない。</p>
                         <p>五億年ぶりにMacでD言語のコードをコンパイル。</p>
-                        <div class="sourceCode" id="cb7"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a><span class="ex">brew</span> upgrade dmd</span>
-                        <span id="cb7-2"><a href="#cb7-2" aria-hidden="true"></a><span class="ex">dub</span> fetch dxml</span></code></pre></div>
+                        <div class="sourceCode" id="cb11"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true"></a><span class="ex">brew</span> upgrade dmd</span>
+                        <span id="cb11-2"><a href="#cb11-2" aria-hidden="true"></a><span class="ex">dub</span> fetch dxml</span></code></pre></div>
                         <p>でもコンパイルできない。いろいろ調べたが、<a href="https://docarchives.dlang.io/v2.094.0/phobos/std_xml.html"><code>std.xml</code>がobsoleteになっているらしい？</a></p>
-                        <div class="sourceCode" id="cb8"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a>Warning: This module is considered out-dated and not up to Phobos&#39; current standards. It will be removed from Phobos in 2.101.0. If you still need it, go to https://github.com/DigitalMars/undeaD</span></code></pre></div>
-                        <div class="sourceCode" id="cb9"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a>$ dmd --version</span>
-                        <span id="cb9-2"><a href="#cb9-2" aria-hidden="true"></a>DMD64 D Compiler v2.109.0</span>
-                        <span id="cb9-3"><a href="#cb9-3" aria-hidden="true"></a></span>
-                        <span id="cb9-4"><a href="#cb9-4" aria-hidden="true"></a>Copyright (C) 1999-2024 by The D Language Foundation, All Rights Reserved written by Walter Bright</span></code></pre></div>
+                        <div class="sourceCode" id="cb12"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true"></a>Warning: This module is considered out-dated and not up to Phobos&#39; current standards. It will be removed from Phobos in 2.101.0. If you still need it, go to https://github.com/DigitalMars/undeaD</span></code></pre></div>
+                        <div class="sourceCode" id="cb13"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true"></a>$ dmd --version</span>
+                        <span id="cb13-2"><a href="#cb13-2" aria-hidden="true"></a>DMD64 D Compiler v2.109.0</span>
+                        <span id="cb13-3"><a href="#cb13-3" aria-hidden="true"></a></span>
+                        <span id="cb13-4"><a href="#cb13-4" aria-hidden="true"></a>Copyright (C) 1999-2024 by The D Language Foundation, All Rights Reserved written by Walter Bright</span></code></pre></div>
                         <p>Phobosのバージョンとコンパイラのバージョン一致しているの？なら2.109だから、std.xmlは消えたんだな。</p>
                         <p>ってことは今はpptxgrepは再コンパイルしたら使えないのか。また別の言語で作り直すかなぁ。次は何でやるかなぁ。</p>
                         <p><a href="https://pc.watch.impress.co.jp/docs/news/event/1596852.html">Lion CoveとSkymontの詳細が明らかに。Hyper-Threading「非対応」で電力効率爆上げ</a></p>
@@ -121,45 +145,45 @@
                         <h2 id="月04日火"><a href="#04">06月04日(火)</a> <a id="04"></a></h2>
                         <p>数理物理の録画を確認したが、音が駄目だった。ワイヤレスマイクが必要。RODE Wireless GOが良いらしいが、さすがに高い(4万〜5万)。いろいろ調べてサンワダイレクトの400-MCW001を頼んでみた。</p>
                         <p>メモ。古い環境でPython仮想環境を構築する方法。pip無しで仮想環境を構築してから、後でpipをローカルにインストールする。</p>
-                        <div class="sourceCode" id="cb10"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true"></a><span class="ex">python3</span> -m venv myenv --without-pip  </span>
-                        <span id="cb10-2"><a href="#cb10-2" aria-hidden="true"></a><span class="bu">source</span> myenv/bin/activate </span>
-                        <span id="cb10-3"><a href="#cb10-3" aria-hidden="true"></a><span class="fu">wget</span> https://bootstrap.pypa.io/pip/3.6/get-pip.py</span>
-                        <span id="cb10-4"><a href="#cb10-4" aria-hidden="true"></a><span class="ex">python3</span> get-pip.py</span></code></pre></div>
+                        <div class="sourceCode" id="cb14"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true"></a><span class="ex">python3</span> -m venv myenv --without-pip  </span>
+                        <span id="cb14-2"><a href="#cb14-2" aria-hidden="true"></a><span class="bu">source</span> myenv/bin/activate </span>
+                        <span id="cb14-3"><a href="#cb14-3" aria-hidden="true"></a><span class="fu">wget</span> https://bootstrap.pypa.io/pip/3.6/get-pip.py</span>
+                        <span id="cb14-4"><a href="#cb14-4" aria-hidden="true"></a><span class="ex">python3</span> get-pip.py</span></code></pre></div>
                         <p>NumPyが裏でなんスレッド使っているか確認。<code>threadpoolctl</code>をインストール。</p>
-                        <div class="sourceCode" id="cb11"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true"></a><span class="ex">python3</span> -m pip install threadpoolctl ipython</span></code></pre></div>
+                        <div class="sourceCode" id="cb15"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true"></a><span class="ex">python3</span> -m pip install threadpoolctl ipython</span></code></pre></div>
                         <p>ipython3上で以下を実行。</p>
-                        <div class="sourceCode" id="cb12"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true"></a>from threadpoolctl import threadpool_info</span>
-                        <span id="cb12-2"><a href="#cb12-2" aria-hidden="true"></a>import numpy as np</span>
-                        <span id="cb12-3"><a href="#cb12-3" aria-hidden="true"></a>threadpool_info()</span></code></pre></div>
+                        <div class="sourceCode" id="cb16"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true"></a>from threadpoolctl import threadpool_info</span>
+                        <span id="cb16-2"><a href="#cb16-2" aria-hidden="true"></a>import numpy as np</span>
+                        <span id="cb16-3"><a href="#cb16-3" aria-hidden="true"></a>threadpool_info()</span></code></pre></div>
                         <p>計算ノード。</p>
-                        <div class="sourceCode" id="cb13"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true"></a>[{&#39;user_api&#39;: &#39;blas&#39;,</span>
-                        <span id="cb13-2"><a href="#cb13-2" aria-hidden="true"></a>  &#39;internal_api&#39;: &#39;openblas&#39;,</span>
-                        <span id="cb13-3"><a href="#cb13-3" aria-hidden="true"></a>  &#39;prefix&#39;: &#39;libopenblas&#39;,</span>
-                        <span id="cb13-4"><a href="#cb13-4" aria-hidden="true"></a>  &#39;filepath&#39;: &#39;/home/watanabe/github/simple_rbm/myenv/lib/python3.6/site-packages/numpy.libs/libopenblasp-r0-09e95953.3.13.so&#39;,</span>
-                        <span id="cb13-5"><a href="#cb13-5" aria-hidden="true"></a>  &#39;version&#39;: &#39;0.3.13&#39;,</span>
-                        <span id="cb13-6"><a href="#cb13-6" aria-hidden="true"></a>  &#39;threading_layer&#39;: &#39;pthreads&#39;,</span>
-                        <span id="cb13-7"><a href="#cb13-7" aria-hidden="true"></a>  &#39;architecture&#39;: &#39;SkylakeX&#39;,</span>
-                        <span id="cb13-8"><a href="#cb13-8" aria-hidden="true"></a>  &#39;num_threads&#39;: 40}]</span></code></pre></div>
+                        <div class="sourceCode" id="cb17"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true"></a>[{&#39;user_api&#39;: &#39;blas&#39;,</span>
+                        <span id="cb17-2"><a href="#cb17-2" aria-hidden="true"></a>  &#39;internal_api&#39;: &#39;openblas&#39;,</span>
+                        <span id="cb17-3"><a href="#cb17-3" aria-hidden="true"></a>  &#39;prefix&#39;: &#39;libopenblas&#39;,</span>
+                        <span id="cb17-4"><a href="#cb17-4" aria-hidden="true"></a>  &#39;filepath&#39;: &#39;/home/watanabe/github/simple_rbm/myenv/lib/python3.6/site-packages/numpy.libs/libopenblasp-r0-09e95953.3.13.so&#39;,</span>
+                        <span id="cb17-5"><a href="#cb17-5" aria-hidden="true"></a>  &#39;version&#39;: &#39;0.3.13&#39;,</span>
+                        <span id="cb17-6"><a href="#cb17-6" aria-hidden="true"></a>  &#39;threading_layer&#39;: &#39;pthreads&#39;,</span>
+                        <span id="cb17-7"><a href="#cb17-7" aria-hidden="true"></a>  &#39;architecture&#39;: &#39;SkylakeX&#39;,</span>
+                        <span id="cb17-8"><a href="#cb17-8" aria-hidden="true"></a>  &#39;num_threads&#39;: 40}]</span></code></pre></div>
                         <p>AMD EPYC</p>
-                        <div class="sourceCode" id="cb14"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true"></a>[{&#39;user_api&#39;: &#39;blas&#39;,</span>
-                        <span id="cb14-2"><a href="#cb14-2" aria-hidden="true"></a>  &#39;internal_api&#39;: &#39;openblas&#39;,</span>
-                        <span id="cb14-3"><a href="#cb14-3" aria-hidden="true"></a>  &#39;prefix&#39;: &#39;libopenblas&#39;,</span>
-                        <span id="cb14-4"><a href="#cb14-4" aria-hidden="true"></a>  &#39;filepath&#39;: &#39;/home/watanabe/github/simple_rbm/myenv/lib/python3.6/site-packages/numpy.libs/libopenblasp-r0-09e95953.3.13.so&#39;,</span>
-                        <span id="cb14-5"><a href="#cb14-5" aria-hidden="true"></a>  &#39;version&#39;: &#39;0.3.13&#39;,</span>
-                        <span id="cb14-6"><a href="#cb14-6" aria-hidden="true"></a>  &#39;threading_layer&#39;: &#39;pthreads&#39;,</span>
-                        <span id="cb14-7"><a href="#cb14-7" aria-hidden="true"></a>  &#39;architecture&#39;: &#39;Zen&#39;,</span>
-                        <span id="cb14-8"><a href="#cb14-8" aria-hidden="true"></a>  &#39;num_threads&#39;: 32}]</span></code></pre></div>
+                        <div class="sourceCode" id="cb18"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true"></a>[{&#39;user_api&#39;: &#39;blas&#39;,</span>
+                        <span id="cb18-2"><a href="#cb18-2" aria-hidden="true"></a>  &#39;internal_api&#39;: &#39;openblas&#39;,</span>
+                        <span id="cb18-3"><a href="#cb18-3" aria-hidden="true"></a>  &#39;prefix&#39;: &#39;libopenblas&#39;,</span>
+                        <span id="cb18-4"><a href="#cb18-4" aria-hidden="true"></a>  &#39;filepath&#39;: &#39;/home/watanabe/github/simple_rbm/myenv/lib/python3.6/site-packages/numpy.libs/libopenblasp-r0-09e95953.3.13.so&#39;,</span>
+                        <span id="cb18-5"><a href="#cb18-5" aria-hidden="true"></a>  &#39;version&#39;: &#39;0.3.13&#39;,</span>
+                        <span id="cb18-6"><a href="#cb18-6" aria-hidden="true"></a>  &#39;threading_layer&#39;: &#39;pthreads&#39;,</span>
+                        <span id="cb18-7"><a href="#cb18-7" aria-hidden="true"></a>  &#39;architecture&#39;: &#39;Zen&#39;,</span>
+                        <span id="cb18-8"><a href="#cb18-8" aria-hidden="true"></a>  &#39;num_threads&#39;: 32}]</span></code></pre></div>
                         <p>Mac。</p>
-                        <div class="sourceCode" id="cb15"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true"></a>[{&#39;user_api&#39;: &#39;blas&#39;,</span>
-                        <span id="cb15-2"><a href="#cb15-2" aria-hidden="true"></a>  &#39;internal_api&#39;: &#39;openblas&#39;,</span>
-                        <span id="cb15-3"><a href="#cb15-3" aria-hidden="true"></a>  &#39;num_threads&#39;: 10,</span>
-                        <span id="cb15-4"><a href="#cb15-4" aria-hidden="true"></a>  &#39;prefix&#39;: &#39;libopenblas&#39;,</span>
-                        <span id="cb15-5"><a href="#cb15-5" aria-hidden="true"></a>  &#39;filepath&#39;: &#39;/Users/watanabe/github/simple_rbm/myenv/lib/python3.12/site-packages/numpy/.dylibs/libopenblas64_.0.dylib&#39;,</span>
-                        <span id="cb15-6"><a href="#cb15-6" aria-hidden="true"></a>  &#39;version&#39;: &#39;0.3.23.dev&#39;,</span>
-                        <span id="cb15-7"><a href="#cb15-7" aria-hidden="true"></a>  &#39;threading_layer&#39;: &#39;pthreads&#39;,</span>
-                        <span id="cb15-8"><a href="#cb15-8" aria-hidden="true"></a>  &#39;architecture&#39;: &#39;Haswell&#39;}]</span></code></pre></div>
+                        <div class="sourceCode" id="cb19"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true"></a>[{&#39;user_api&#39;: &#39;blas&#39;,</span>
+                        <span id="cb19-2"><a href="#cb19-2" aria-hidden="true"></a>  &#39;internal_api&#39;: &#39;openblas&#39;,</span>
+                        <span id="cb19-3"><a href="#cb19-3" aria-hidden="true"></a>  &#39;num_threads&#39;: 10,</span>
+                        <span id="cb19-4"><a href="#cb19-4" aria-hidden="true"></a>  &#39;prefix&#39;: &#39;libopenblas&#39;,</span>
+                        <span id="cb19-5"><a href="#cb19-5" aria-hidden="true"></a>  &#39;filepath&#39;: &#39;/Users/watanabe/github/simple_rbm/myenv/lib/python3.12/site-packages/numpy/.dylibs/libopenblas64_.0.dylib&#39;,</span>
+                        <span id="cb19-6"><a href="#cb19-6" aria-hidden="true"></a>  &#39;version&#39;: &#39;0.3.23.dev&#39;,</span>
+                        <span id="cb19-7"><a href="#cb19-7" aria-hidden="true"></a>  &#39;threading_layer&#39;: &#39;pthreads&#39;,</span>
+                        <span id="cb19-8"><a href="#cb19-8" aria-hidden="true"></a>  &#39;architecture&#39;: &#39;Haswell&#39;}]</span></code></pre></div>
                         <p>OpenBLASのスレッド数設定は<code>OPENBLAS_NUM_THREADS</code>だそうな。なので、NumPyが裏で使うスレッド数を設定するには、</p>
-                        <div class="sourceCode" id="cb16"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true"></a>OPENBLAS_NUM_THREADS<span class="op">=</span><span class="dv">1</span> python3 hoge.py</span></code></pre></div>
+                        <div class="sourceCode" id="cb20"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true"></a>OPENBLAS_NUM_THREADS<span class="op">=</span><span class="dv">1</span> python3 hoge.py</span></code></pre></div>
                         <p>などとすれば良い。<code>OMP_NUM_THREADS</code>じゃないのか・・・。</p>
                         <p>2024年度 理工学部 教授・准教授就任講演。僕はトップバッター。今回はちゃんとネクタイをした。</p>
                         <p>いかん、頭が全く回らん。</p>
