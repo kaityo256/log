@@ -21,6 +21,17 @@
   <body>
     <article class="markdown-body">
                         <h1 id="年8月">2024年8月</h1>
+                        <h2 id="月07日水"><a href="#07">08月07日(水)</a> <a id="07"></a></h2>
+                        <p>過去の卒論、修論を全てesaにアップロード。</p>
+                        <p>そういえばesaっていつ使い始めたっけ？と調べたら、6/6使用開始＋アカデミックプラン申請、6/11に申請が通り、本格的に使い始めたっぽい。</p>
+                        <p>というわけで過去の日記を追記(禁断の歴史修正)。</p>
+                        <p>こういう情報こそ日記に書くべきだと思うのだが。</p>
+                        <p>esaは10MB以上のファイルを添付できない。いくつかの卒論/修論がこの制約に引っかかってしまったのでlightweight版を作ったが、一つだけどうにもならない。以下は失敗例。</p>
+                        <div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="fu">ps2pdf</span> thesis.pdf output.pdf</span>
+                        <span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a><span class="fu">gs</span> -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/ebook -dNOPAUSE -dQUIET -dBATCH -sOutputFile=output.pdf thesis.pdf</span>
+                        <span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a><span class="fu">ps2pdf</span> -dPDFSETTINGS=/ebook  thesis.pdf output.pdf  </span></code></pre></div>
+                        <p>MacのQuartzフィルタの「Reduce File Size」も駄目だった(ファイルサイズが増えた)。</p>
+                        <p>これまでの卒論、修論見てると、そのまま論文になりそうな(でもpublishしていない)結果が結構あって、力不足を感じる。卒論で結果が出た場合は論文まで持っていけているケースが多い(N=3)が、修論で結果が出た場合は学生が卒業してしまうこともあって論文にできていない。頑張らないといけない。</p>
                         <h2 id="月06日火"><a href="#06">08月06日(火)</a> <a id="06"></a></h2>
                         <p>プレゼンテーション技法発表会の準備とか。</p>
                         <h2 id="月05日月"><a href="#05">08月05日(月)</a> <a id="05"></a></h2>
