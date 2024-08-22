@@ -21,6 +21,13 @@
   <body>
     <article class="markdown-body">
                         <h1 id="年8月">2024年8月</h1>
+                        <h2 id="月22日木"><a href="#22">08月22日(木)</a> <a id="22"></a></h2>
+                        <p>解決後にLastPassから「状況をチェックするからアカウントDMしてくれ」というので、アカウント名、解決までの道のりをVSCodeに書き溜めてからDMにコピペしたらTwitterから「怪しいアクセスがあったのでアカウントをロックしました。あなたが人間であることを証明してください」とか言われてしょうもないミニゲームやらされた。</p>
+                        <p>なんとか回復して、無事にLastPassにDMできた。いや、黙ってBitwardenにいけばいいんだけど、長年プレミアムユーザやってて愛着もあったので。最後に</p>
+                        <div class="sourceCode" id="cb1"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a>The previous security incidents and the current troubles have been very disappointing to me.</span>
+                        <span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a></span>
+                        <span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a>Due to these ongoing issues, I am considering switching to another password manager. Thank you for your assistance so far.</span></code></pre></div>
+                        <p>って書いてさようなら。</p>
                         <h2 id="月21日水"><a href="#21">08月21日(水)</a> <a id="21"></a></h2>
                         <p>業務復帰。</p>
                         <p>えっと、なんか日記が二週間ほど飛んでるんだが？</p>
@@ -31,6 +38,7 @@
                         <p>メモ。</p>
                         <p><a href="https://carbon.now.sh/">carbon</a></p>
                         <p>ソースコードを良さげなイメージにする。SNSに貼る用。</p>
+                        <p>LastPass、メール経由で2FAを無効化できた。EdgeやBraveからLastPassにログインしたが、同じ症状でVaultにアクセスできないまま。</p>
                         <h2 id="月20日火"><a href="#20">08月20日(火)</a> <a id="20"></a></h2>
                         <p>お休み。暑い。汗だく。</p>
                         <p>時間がたったらスマホが復活しないかと期待したが、無理だった。</p>
@@ -70,9 +78,9 @@
                         <p>というわけで過去の日記を追記(禁断の歴史修正)。</p>
                         <p>こういう情報こそ日記に書くべきだと思うのだが。</p>
                         <p>esaは10MB以上のファイルを添付できない。いくつかの卒論/修論がこの制約に引っかかってしまったのでlightweight版を作ったが、一つだけどうにもならない。以下は失敗例。</p>
-                        <div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="fu">ps2pdf</span> thesis.pdf output.pdf</span>
-                        <span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a><span class="fu">gs</span> -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/ebook -dNOPAUSE -dQUIET -dBATCH -sOutputFile=output.pdf thesis.pdf</span>
-                        <span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a><span class="fu">ps2pdf</span> -dPDFSETTINGS=/ebook  thesis.pdf output.pdf  </span></code></pre></div>
+                        <div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="fu">ps2pdf</span> thesis.pdf output.pdf</span>
+                        <span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a><span class="fu">gs</span> -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/ebook -dNOPAUSE -dQUIET -dBATCH -sOutputFile=output.pdf thesis.pdf</span>
+                        <span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a><span class="fu">ps2pdf</span> -dPDFSETTINGS=/ebook  thesis.pdf output.pdf  </span></code></pre></div>
                         <p>MacのQuartzフィルタの「Reduce File Size」も駄目だった(ファイルサイズが増えた)。</p>
                         <p>これまでの卒論、修論見てると、そのまま論文になりそうな(でもpublishしていない)結果が結構あって、力不足を感じる。卒論で結果が出た場合は論文まで持っていけているケースが多い(N=3)が、修論で結果が出た場合は学生が卒業してしまうこともあって論文にできていない。頑張らないといけない。</p>
                         <p>FDアンケートのコメントを返した。</p>
