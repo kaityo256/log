@@ -21,12 +21,34 @@
   <body>
     <article class="markdown-body">
                         <h1 id="年8月">2024年8月</h1>
+                        <h2 id="月28日水"><a href="#28">08月28日(水)</a> <a id="28"></a></h2>
+                        <p>VMDでプロンプトからファイルをロード(MacのUIがおかしいので)。</p>
+                        <div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="bu">cd</span> path/to/dir</span>
+                        <span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a><span class="ex">mol</span> new bond.lammpstrj</span></code></pre></div>
+                        <div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="fu">mkdir</span> build_serial</span>
+                        <span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a><span class="bu">cd</span> build_serial</span>
+                        <span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a><span class="fu">cmake</span> ../cmake -DPKG_MOLECULE=yes</span>
+                        <span id="cb2-4"><a href="#cb2-4" aria-hidden="true"></a><span class="fu">make</span> -j 4</span></code></pre></div>
+                        <p>会議とか印刷とか。</p>
+                        <p>日記を書く暇もないぞ。</p>
+                        <h2 id="月27日火"><a href="#27">08月27日(火)</a> <a id="27"></a></h2>
+                        <p>忙しい忙しい。</p>
+                        <p>サーバ復活。すっと復活して良かった。</p>
+                        <h2 id="月26日月"><a href="#26">08月26日(月)</a> <a id="26"></a></h2>
+                        <p>忙しい忙しい。</p>
+                        <h2 id="月25日日"><a href="#25">08月25日(日)</a> <a id="25"></a></h2>
+                        <p>NOP</p>
+                        <h2 id="月24日土"><a href="#24">08月24日(土)</a> <a id="24"></a></h2>
+                        <p>NOP</p>
+                        <h2 id="月23日金"><a href="#23">08月23日(金)</a> <a id="23"></a></h2>
+                        <p>面接とか。</p>
+                        <p>停電対応。</p>
                         <h2 id="月22日木"><a href="#22">08月22日(木)</a> <a id="22"></a></h2>
                         <p>解決後にLastPassから「状況をチェックするからアカウントDMしてくれ」というので、アカウント名、解決までの道のりをVSCodeに書き溜めてからDMにコピペしたらTwitterから「怪しいアクセスがあったのでアカウントをロックしました。あなたが人間であることを証明してください」とか言われてしょうもないミニゲームやらされた。</p>
                         <p>なんとか回復して、無事にLastPassにDMできた。いや、黙ってBitwardenにいけばいいんだけど、長年プレミアムユーザやってて愛着もあったので。最後に</p>
-                        <div class="sourceCode" id="cb1"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a>The previous security incidents and the current troubles have been very disappointing to me.</span>
-                        <span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a></span>
-                        <span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a>Due to these ongoing issues, I am considering switching to another password manager. Thank you for your assistance so far.</span></code></pre></div>
+                        <div class="sourceCode" id="cb3"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a>The previous security incidents and the current troubles have been very disappointing to me.</span>
+                        <span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a></span>
+                        <span id="cb3-3"><a href="#cb3-3" aria-hidden="true"></a>Due to these ongoing issues, I am considering switching to another password manager. Thank you for your assistance so far.</span></code></pre></div>
                         <p>って書いてさようなら。</p>
                         <h2 id="月21日水"><a href="#21">08月21日(水)</a> <a id="21"></a></h2>
                         <p>業務復帰。</p>
@@ -78,9 +100,9 @@
                         <p>というわけで過去の日記を追記(禁断の歴史修正)。</p>
                         <p>こういう情報こそ日記に書くべきだと思うのだが。</p>
                         <p>esaは10MB以上のファイルを添付できない。いくつかの卒論/修論がこの制約に引っかかってしまったのでlightweight版を作ったが、一つだけどうにもならない。以下は失敗例。</p>
-                        <div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="fu">ps2pdf</span> thesis.pdf output.pdf</span>
-                        <span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a><span class="fu">gs</span> -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/ebook -dNOPAUSE -dQUIET -dBATCH -sOutputFile=output.pdf thesis.pdf</span>
-                        <span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a><span class="fu">ps2pdf</span> -dPDFSETTINGS=/ebook  thesis.pdf output.pdf  </span></code></pre></div>
+                        <div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="fu">ps2pdf</span> thesis.pdf output.pdf</span>
+                        <span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a><span class="fu">gs</span> -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/ebook -dNOPAUSE -dQUIET -dBATCH -sOutputFile=output.pdf thesis.pdf</span>
+                        <span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a><span class="fu">ps2pdf</span> -dPDFSETTINGS=/ebook  thesis.pdf output.pdf  </span></code></pre></div>
                         <p>MacのQuartzフィルタの「Reduce File Size」も駄目だった(ファイルサイズが増えた)。</p>
                         <p>これまでの卒論、修論見てると、そのまま論文になりそうな(でもpublishしていない)結果が結構あって、力不足を感じる。卒論で結果が出た場合は論文まで持っていけているケースが多い(N=3)が、修論で結果が出た場合は学生が卒業してしまうこともあって論文にできていない。頑張らないといけない。</p>
                         <p>FDアンケートのコメントを返した。</p>
