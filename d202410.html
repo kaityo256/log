@@ -29,15 +29,26 @@
                         <li>描画の原点が左上であることを伝える</li>
                         </ul>
                         <p>学生さんに紹介用論文を紹介した。</p>
+                        <p>関数内で大きな配列を宣言する奴、クラス定義でも起きるというのは罠だな。</p>
+                        <div class="sourceCode" id="cb1"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="kw">class</span> Hoge{</span>
+                        <span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a>  <span class="dt">void</span> func(){</span>
+                        <span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a>    <span class="dt">double</span> large_array[HUGE_NUMBER];</span>
+                        <span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a>  }</span>
+                        <span id="cb1-5"><a href="#cb1-5" aria-hidden="true"></a>};</span></code></pre></div>
+                        <p>みたいな奴を、</p>
+                        <div class="sourceCode" id="cb2"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="dt">void</span> fuga(){</span>
+                        <span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a>  Hoge h;</span>
+                        <span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a>}</span></code></pre></div>
+                        <p>みたいに宣言するとスタックを使い切る問題。どこかにメモっておこう。</p>
                         <h2 id="月02日水"><a href="#02">10月02日(水)</a> <a id="02"></a></h2>
                         <p>今日のSPAMその1</p>
-                        <div class="sourceCode" id="cb1"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a>Subject: 父さんです</span>
-                        <span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a>どうだ、元気か？こっちはまぁなんだ、母さんともナニがあれだしぼちぼちだ。ところで向かいの酒屋さんが教えてくれたんだがお前こういうの知っているか？すまんがひとつ買って送ってくれ、クーポン券があるから安く買えるらしい（下記参照）。よろしく頼むよ（余談だが向かいの酒屋が最近やたらとうちに来るんだが何か知っているか？）</span></code></pre></div>
+                        <div class="sourceCode" id="cb3"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a>Subject: 父さんです</span>
+                        <span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a>どうだ、元気か？こっちはまぁなんだ、母さんともナニがあれだしぼちぼちだ。ところで向かいの酒屋さんが教えてくれたんだがお前こういうの知っているか？すまんがひとつ買って送ってくれ、クーポン券があるから安く買えるらしい（下記参照）。よろしく頼むよ（余談だが向かいの酒屋が最近やたらとうちに来るんだが何か知っているか？）</span></code></pre></div>
                         <p>今日のSPAMその2</p>
-                        <div class="sourceCode" id="cb2"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a>Subject: 母ちゃんだよ</span>
-                        <span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a>あんた元気にしてるかい？たまにはこっちに帰ってきて顔見せなさいっ（はぁと）今日はね、あんたに見せたいものがあってメールしたんだよ（うふふｗ）むかいの酒屋さんがね教えてくれたんだよ（勘違いしないでよねっ）ちゃんと読みなさいよ</span></code></pre></div>
+                        <div class="sourceCode" id="cb4"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a>Subject: 母ちゃんだよ</span>
+                        <span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a>あんた元気にしてるかい？たまにはこっちに帰ってきて顔見せなさいっ（はぁと）今日はね、あんたに見せたいものがあってメールしたんだよ（うふふｗ）むかいの酒屋さんがね教えてくれたんだよ（勘違いしないでよねっ）ちゃんと読みなさいよ</span></code></pre></div>
                         <p>異なる送り先からストーリー性のあるSPAMを送りつけるというアイディア。きらいじゃない。</p>
-                        <div class="sourceCode" id="cb3"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a>ワフちゃん、、、ワフちゃんよ、、、お前何してんだよお前「消しゴムマジックで消せるのさ」って言ってたよな。お前が消えてどうすんだよワフちゃん、、、お前に割引コードやるからさこれ買ってテレビ見ろや</span></code></pre></div>
+                        <div class="sourceCode" id="cb5"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a>ワフちゃん、、、ワフちゃんよ、、、お前何してんだよお前「消しゴムマジックで消せるのさ」って言ってたよな。お前が消えてどうすんだよワフちゃん、、、お前に割引コードやるからさこれ買ってテレビ見ろや</span></code></pre></div>
                         <p>↑これも結構好き。</p>
                         <p>プログラミング基礎同演習。修正点。</p>
                         <ul>
@@ -48,20 +59,20 @@
                         <h2 id="月01日火"><a href="#01">10月01日(火)</a> <a id="01"></a></h2>
                         <p>10月になってしまった。</p>
                         <p>Rockey Linuxにgnuplotをインストール。</p>
-                        <div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a>$ <span class="fu">sudo</span> dnf update</span>
-                        <span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a><span class="ex">Last</span> metadata expiration check: 0:51:51 ago on Tue Oct  1 11:49:13 2024.</span>
-                        <span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a><span class="ex">Error</span>: </span>
-                        <span id="cb4-4"><a href="#cb4-4" aria-hidden="true"></a> <span class="ex">Problem</span>: cannot install the best update candidate for package libpq-devel-13.11-1.el9.x86_64</span>
-                        <span id="cb4-5"><a href="#cb4-5" aria-hidden="true"></a>  <span class="ex">-</span> nothing provides perl(IPC::Run) <span class="ex">needed</span> by postgresql16-devel-16.4-1PGDG.rhel9.x86_64 from pgdg16</span>
-                        <span id="cb4-6"><a href="#cb4-6" aria-hidden="true"></a>  <span class="ex">-</span> nothing provides perl(IPC::Run) <span class="ex">needed</span> by postgresql15-devel-15.8-1PGDG.rhel9.x86_64 from pgdg15</span>
-                        <span id="cb4-7"><a href="#cb4-7" aria-hidden="true"></a>  <span class="ex">-</span> nothing provides perl(IPC::Run) <span class="ex">needed</span> by postgresql14-devel-14.13-2PGDG.rhel9.x86_64 from pgdg14</span>
-                        <span id="cb4-8"><a href="#cb4-8" aria-hidden="true"></a>  <span class="ex">-</span> nothing provides perl(IPC::Run) <span class="ex">needed</span> by postgresql13-devel-13.16-2PGDG.rhel9.x86_64 from pgdg13</span>
-                        <span id="cb4-9"><a href="#cb4-9" aria-hidden="true"></a>  <span class="ex">-</span> nothing provides perl(IPC::Run) <span class="ex">needed</span> by postgresql12-devel-12.20-2PGDG.rhel9.x86_64 from pgdg12</span>
-                        <span id="cb4-10"><a href="#cb4-10" aria-hidden="true"></a><span class="kw">(</span><span class="ex">try</span> to add <span class="st">&#39;--skip-broken&#39;</span> to skip uninstallable packages or <span class="st">&#39;--nobest&#39;</span> to use not only best candidate packages<span class="kw">)</span></span></code></pre></div>
+                        <div class="sourceCode" id="cb6"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a>$ <span class="fu">sudo</span> dnf update</span>
+                        <span id="cb6-2"><a href="#cb6-2" aria-hidden="true"></a><span class="ex">Last</span> metadata expiration check: 0:51:51 ago on Tue Oct  1 11:49:13 2024.</span>
+                        <span id="cb6-3"><a href="#cb6-3" aria-hidden="true"></a><span class="ex">Error</span>: </span>
+                        <span id="cb6-4"><a href="#cb6-4" aria-hidden="true"></a> <span class="ex">Problem</span>: cannot install the best update candidate for package libpq-devel-13.11-1.el9.x86_64</span>
+                        <span id="cb6-5"><a href="#cb6-5" aria-hidden="true"></a>  <span class="ex">-</span> nothing provides perl(IPC::Run) <span class="ex">needed</span> by postgresql16-devel-16.4-1PGDG.rhel9.x86_64 from pgdg16</span>
+                        <span id="cb6-6"><a href="#cb6-6" aria-hidden="true"></a>  <span class="ex">-</span> nothing provides perl(IPC::Run) <span class="ex">needed</span> by postgresql15-devel-15.8-1PGDG.rhel9.x86_64 from pgdg15</span>
+                        <span id="cb6-7"><a href="#cb6-7" aria-hidden="true"></a>  <span class="ex">-</span> nothing provides perl(IPC::Run) <span class="ex">needed</span> by postgresql14-devel-14.13-2PGDG.rhel9.x86_64 from pgdg14</span>
+                        <span id="cb6-8"><a href="#cb6-8" aria-hidden="true"></a>  <span class="ex">-</span> nothing provides perl(IPC::Run) <span class="ex">needed</span> by postgresql13-devel-13.16-2PGDG.rhel9.x86_64 from pgdg13</span>
+                        <span id="cb6-9"><a href="#cb6-9" aria-hidden="true"></a>  <span class="ex">-</span> nothing provides perl(IPC::Run) <span class="ex">needed</span> by postgresql12-devel-12.20-2PGDG.rhel9.x86_64 from pgdg12</span>
+                        <span id="cb6-10"><a href="#cb6-10" aria-hidden="true"></a><span class="kw">(</span><span class="ex">try</span> to add <span class="st">&#39;--skip-broken&#39;</span> to skip uninstallable packages or <span class="st">&#39;--nobest&#39;</span> to use not only best candidate packages<span class="kw">)</span></span></code></pre></div>
                         <p>なんかエラーが出た。</p>
-                        <div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="fu">sudo</span> dnf install libpq-devel --nobest</span></code></pre></div>
+                        <div class="sourceCode" id="cb7"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a><span class="fu">sudo</span> dnf install libpq-devel --nobest</span></code></pre></div>
                         <p>で解決。</p>
-                        <div class="sourceCode" id="cb6"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="fu">sudo</span> dnf install gnuplot</span></code></pre></div>
+                        <div class="sourceCode" id="cb8"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a><span class="fu">sudo</span> dnf install gnuplot</span></code></pre></div>
                         <p>はいったな。</p>
                         <p>プログラミング基礎同演習第一回。</p>
                         <p>その後書類仕事。3時間かかった……</p>
