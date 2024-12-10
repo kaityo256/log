@@ -26,6 +26,18 @@
                         <p>まず、USBを刺しても自動認識しない。OKIの設定アプリからじゃないと認識しない。USB認識時の音もならないから、ケーブルが死んでるかと思って違うケーブルを探しにいってしまった。</p>
                         <p>あと、プリンターのセットアップアプリが、ユーザの入力待ちになっているのに「推定、あと15分」というプログレスバーがアニメーションしているため、こちらがアクションしなければならない状態であることに気が付かなかった。</p>
                         <p>もっと言えば、セットアップアプリ系はモーダルにして手前に表示しないとだめでしょう。起動時にエディタの後ろに隠れてどこにあるかわからなかった。</p>
+                        <p>いつの間にかWSLのopenコマンドが使えなくなった。cmd.exeからUbuntu上のファイルが開けなくなったようだ。結局全部explorer.exeにした。</p>
+                        <div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="kw">function</span><span class="fu"> open()</span> <span class="kw">{</span></span>
+                        <span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a>    <span class="kw">if</span><span class="bu"> [</span> <span class="va">$#</span> <span class="ot">!=</span> 1<span class="bu"> ]</span>; <span class="kw">then</span></span>
+                        <span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a>        <span class="ex">explorer.exe</span> .</span>
+                        <span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a>    <span class="kw">else</span></span>
+                        <span id="cb1-5"><a href="#cb1-5" aria-hidden="true"></a>        <span class="kw">if</span><span class="bu"> [</span> <span class="ot">-e</span> <span class="va">$1</span><span class="bu"> ]</span>; <span class="kw">then</span></span>
+                        <span id="cb1-6"><a href="#cb1-6" aria-hidden="true"></a>            <span class="ex">explorer.exe</span> <span class="va">$(</span><span class="ex">wslpath</span> -w <span class="va">$1)</span> <span class="op">2&gt;</span> /dev/null</span>
+                        <span id="cb1-7"><a href="#cb1-7" aria-hidden="true"></a>        <span class="kw">else</span></span>
+                        <span id="cb1-8"><a href="#cb1-8" aria-hidden="true"></a>            <span class="bu">echo</span> <span class="st">&quot;open: </span><span class="va">$1</span><span class="st"> : No such file or directory&quot;</span> </span>
+                        <span id="cb1-9"><a href="#cb1-9" aria-hidden="true"></a>        <span class="kw">fi</span></span>
+                        <span id="cb1-10"><a href="#cb1-10" aria-hidden="true"></a>    <span class="kw">fi</span></span>
+                        <span id="cb1-11"><a href="#cb1-11" aria-hidden="true"></a><span class="kw">}</span></span></code></pre></div>
                         <h2 id="月09日月"><a href="#09">12月09日(月)</a> <a id="09"></a></h2>
                         <p>午前中は予備審査。そこから1on1たくさん。そして土日にできなかったレポートの採点。</p>
                         <p>正直、実験と講義が入るとわりと体力的に厳しいところに、土日も休めないとかなりきつい。</p>
@@ -36,18 +48,18 @@
                         <p>土日も仕事。</p>
                         <h2 id="月06日金"><a href="#06">12月06日(金)</a> <a id="06"></a></h2>
                         <p>MIDIをMacで演奏しようとしてみた。</p>
-                        <div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="ex">brew</span> install fluidsynth </span>
-                        <span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a><span class="ex">fluidsynth</span> -i hoge.mid</span>
-                        <span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a><span class="ex">FluidSynth</span> runtime version 2.4.1</span>
-                        <span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a><span class="ex">Copyright</span> (C) <span class="ex">2000-2024</span> Peter Hanappe and others.</span>
-                        <span id="cb1-5"><a href="#cb1-5" aria-hidden="true"></a><span class="ex">Distributed</span> under the LGPL license.</span>
-                        <span id="cb1-6"><a href="#cb1-6" aria-hidden="true"></a><span class="ex">SoundFont</span>(R) <span class="ex">is</span> a registered trademark of Creative Technology Ltd.</span>
-                        <span id="cb1-7"><a href="#cb1-7" aria-hidden="true"></a></span>
-                        <span id="cb1-8"><a href="#cb1-8" aria-hidden="true"></a><span class="ex">fluidsynth</span>: error: fluid_sfloader_load()<span class="bu">:</span> Failed to open <span class="st">&#39;/usr/local/Cellar/fluid-synth/2.4.1/share/soundfonts/default.sf2&#39;</span>: File does not exist.</span>
-                        <span id="cb1-9"><a href="#cb1-9" aria-hidden="true"></a><span class="ex">fluidsynth</span>: error: Unable to open file <span class="st">&#39;/usr/local/Cellar/fluid-synth/2.4.1/share/soundfonts/default.sf2&#39;</span></span>
-                        <span id="cb1-10"><a href="#cb1-10" aria-hidden="true"></a><span class="ex">fluidsynth</span>: error: Failed to load SoundFont <span class="st">&quot;/usr/local/Cellar/fluid-synth/2.4.1/share/soundfonts/default.sf2&quot;</span></span>
-                        <span id="cb1-11"><a href="#cb1-11" aria-hidden="true"></a><span class="ex">fluidsynth</span>: Ignoring unrecognized meta event type 0x21</span>
-                        <span id="cb1-12"><a href="#cb1-12" aria-hidden="true"></a><span class="ex">fluidsynth</span>: warning: No preset found on channel 0 [bank=0 prog=0]</span></code></pre></div>
+                        <div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="ex">brew</span> install fluidsynth </span>
+                        <span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a><span class="ex">fluidsynth</span> -i hoge.mid</span>
+                        <span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a><span class="ex">FluidSynth</span> runtime version 2.4.1</span>
+                        <span id="cb2-4"><a href="#cb2-4" aria-hidden="true"></a><span class="ex">Copyright</span> (C) <span class="ex">2000-2024</span> Peter Hanappe and others.</span>
+                        <span id="cb2-5"><a href="#cb2-5" aria-hidden="true"></a><span class="ex">Distributed</span> under the LGPL license.</span>
+                        <span id="cb2-6"><a href="#cb2-6" aria-hidden="true"></a><span class="ex">SoundFont</span>(R) <span class="ex">is</span> a registered trademark of Creative Technology Ltd.</span>
+                        <span id="cb2-7"><a href="#cb2-7" aria-hidden="true"></a></span>
+                        <span id="cb2-8"><a href="#cb2-8" aria-hidden="true"></a><span class="ex">fluidsynth</span>: error: fluid_sfloader_load()<span class="bu">:</span> Failed to open <span class="st">&#39;/usr/local/Cellar/fluid-synth/2.4.1/share/soundfonts/default.sf2&#39;</span>: File does not exist.</span>
+                        <span id="cb2-9"><a href="#cb2-9" aria-hidden="true"></a><span class="ex">fluidsynth</span>: error: Unable to open file <span class="st">&#39;/usr/local/Cellar/fluid-synth/2.4.1/share/soundfonts/default.sf2&#39;</span></span>
+                        <span id="cb2-10"><a href="#cb2-10" aria-hidden="true"></a><span class="ex">fluidsynth</span>: error: Failed to load SoundFont <span class="st">&quot;/usr/local/Cellar/fluid-synth/2.4.1/share/soundfonts/default.sf2&quot;</span></span>
+                        <span id="cb2-11"><a href="#cb2-11" aria-hidden="true"></a><span class="ex">fluidsynth</span>: Ignoring unrecognized meta event type 0x21</span>
+                        <span id="cb2-12"><a href="#cb2-12" aria-hidden="true"></a><span class="ex">fluidsynth</span>: warning: No preset found on channel 0 [bank=0 prog=0]</span></code></pre></div>
                         <p>Sound Fontがなさそう。面倒なのでウェブプレイヤー使った。Windowsだとメディアプレーヤーで直接いけた。</p>
                         <p>研究室ミーティングは森田さんにお願いした。うちは統計力学の研究室なので！たまに忘れそうになるけど！</p>
                         <p>その後、無限に仕事を片付けてた。うーん。</p>
