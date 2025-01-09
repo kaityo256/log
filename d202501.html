@@ -21,13 +21,20 @@
   <body>
     <article class="markdown-body">
                         <h1 id="年1月">2025年1月</h1>
-                        <h2 id="月08日水"><a href="#08">01月08日(水)</a> <a id="08"></a></h2>
-                        <p>ありゃ、日記をpushし忘れている。いい加減ブログかなにか使ってウェブで直接書けという話なんだけど。</p>
-                        <p>大小のタスクが詰まりすぎて何から手をつけてよいかわからなくなってる。</p>
-                        <p>最近、Devin AIがすごい、という噂が流れている。</p>
-                        <p><a href="https://zenn.dev/ubie_dev/articles/devin-for-test">Devin AIにテストを丸ごと書かせてCIがパスするまで作業してもらう方法</a></p>
-                        <p>機能の講義では「インターネットは時間と空間の制約を取っ払った。AIは、マンパワーの制約を取っ払うだろう」と言った。それが現実のものになっているらしい。</p>
-                        <p><a href="https://speakerdeck.com/kaityo256/simulation-03">シミュレーション工学のスライド</a>の表示がおかしいという指摘を受けて修正。ローカルのファイルはおかしくないが、アップロードされていたファイルはフォントが重なってしまっている。再アップロードしたら治った。どういうこっちゃ？MacかなにかでPDF化して、PDF化失敗してたのに気付かずにアップロードした？それともSpeakerDeck側でバグった？</p>
+                        <h2 id="月09日木"><a href="#09">01月09日(木)</a> <a id="09"></a></h2>
+                        <p>今度は水曜日の分をpushし忘れた。やれやれだ。</p>
+                        <p>指導委託延長書類返した。</p>
+                        <h2 id="月07日火"><a href="#07">01月07日(火)</a> <a id="07"></a></h2>
+                        <p>D論公聴会。</p>
+                        <p>PDFのdiffをとりたい。</p>
+                        <div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="ex">brew</span> install diff-pdf</span>
+                        <span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a><span class="ex">diff-pdf</span> --output-diff=output.pdf file1.pdf file2.pdf</span></code></pre></div>
+                        <p>結果は微妙だなぁ。pdftotext+diffの方が楽かも。改行等の整形が必要だけど。</p>
+                        <p>なんか査読した。</p>
+                        <p>プログラミング基礎同演習。今回は乱数。</p>
+                        <p>メール。</p>
+                        <p>FSのSlackの建て替えが3ヶ月分溜まってたので申請。</p>
+                        <p>なんか一つ一つは大したことがないんだけど、タスク切換えコストが高い僕は、細かいタスクが大量にあるとスループットが激減する。</p>
                         <h2 id="月06日月"><a href="#06">01月06日(月)</a> <a id="06"></a></h2>
                         <p>仕事はじめ。</p>
                         <p>まずは注文していたディスプレイの受取＆検収。アマゾンビジネスでも検収が必要。送り状で良いらしい。</p>
@@ -39,7 +46,7 @@
                         <p>公聴会のために論文チェック。</p>
                         <p>タスクを6つこなし、3つ積み残した。</p>
                         <p>未だにGit Submoduleの管理がよくわからなくなる。submoduleのrecursive cloneに失敗すると、Detached head状態になる。ミスってそのままgit add commitすると、Gitがその状態を覚えてしまう。あと、git restoreがうまくいかない。</p>
-                        <div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="fu">git</span> restore --recurse-submodules .</span></code></pre></div>
+                        <div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="fu">git</span> restore --recurse-submodules .</span></code></pre></div>
                         <p>としないといけない。微妙によくわからない。</p>
                         <p>多分日記をゆっくり書けるのは今日が最後だろうな。</p>
                         <h2 id="月05日日"><a href="#05">01月05日(日)</a> <a id="05"></a></h2>
