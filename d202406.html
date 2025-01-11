@@ -21,217 +21,293 @@
   <body>
     <article class="markdown-body">
                         <h1 id="年6月">2024年6月</h1>
-                        <h2 id="月30日日"><a href="#30">06月30日(日)</a> <a id="30"></a></h2>
+                        <h2 id="月30日日"><a href="#30">06月30日(日)</a>
+                        <a id="30"></a></h2>
                         <p>講義の準備をしなくては。</p>
-                        <h2 id="月29日土"><a href="#29">06月29日(土)</a> <a id="29"></a></h2>
-                        <p>VSCodeのPython linter。今はblackが良いっぽい。</p>
-                        <div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="ex">python3</span> -m pip install black</span></code></pre></div>
-                        <p>その上でVSCodeにBlack Formatter拡張を追加。Microsoftがサポートしているのか。</p>
+                        <h2 id="月29日土"><a href="#29">06月29日(土)</a>
+                        <a id="29"></a></h2>
+                        <p>VSCodeのPython
+                        linter。今はblackが良いっぽい。</p>
+                        <div class="sourceCode" id="cb1"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> <span class="at">-m</span> pip install black</span></code></pre></div>
+                        <p>その上でVSCodeにBlack
+                        Formatter拡張を追加。Microsoftがサポートしているのか。</p>
                         <p>家のPCにlammpsが入っていなかったのでインストール。</p>
-                        <div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="fu">sudo</span> apt-get update</span>
-                        <span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a><span class="fu">sudo</span> apt install lammps</span></code></pre></div>
+                        <div class="sourceCode" id="cb2"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get update</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install lammps</span></code></pre></div>
                         <p>書こうと思っていた記事書いた。</p>
-                        <p><a href="https://zenn.dev/kaityo256/articles/programming_howto">プログラム、下から作るか？上から作るか？</a></p>
-                        <h2 id="月28日金"><a href="#28">06月28日(金)</a> <a id="28"></a></h2>
+                        <p><a
+                        href="https://zenn.dev/kaityo256/articles/programming_howto">プログラム、下から作るか？上から作るか？</a></p>
+                        <h2 id="月28日金"><a href="#28">06月28日(金)</a>
+                        <a id="28"></a></h2>
                         <p>ここらへん日記書いた記憶があるから、多分conflictするな＞実際にしてた。</p>
                         <p>数理物理中間テスト。今年の量はちょうど良かったかな。</p>
-                        <h2 id="月27日木"><a href="#27">06月27日(木)</a> <a id="27"></a></h2>
+                        <h2 id="月27日木"><a href="#27">06月27日(木)</a>
+                        <a id="27"></a></h2>
                         <p>数理物理中間テスト代替。来年はやらない予定。</p>
                         <p>VSCodeのDraw.ioがpdfを吐けないことの対応。</p>
                         <p>いちいち</p>
-                        <div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="ex">draw.io</span> -xf pdf -o filename.pdf filename.drawio</span></code></pre></div>
+                        <div class="sourceCode" id="cb3"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">draw.io</span> <span class="at">-xf</span> pdf <span class="at">-o</span> filename.pdf filename.drawio</span></code></pre></div>
                         <p>と入力したくない。</p>
                         <blockquote>
-                        <p>「d2pdf filename.drawio」 と入力したら 「draw.io -xf pdf -o filename.pdf filename.drawio」 と展開されるbash aliasもしくは関数を定義してください。</p>
+                        <p>「d2pdf filename.drawio」 と入力したら
+                        「draw.io -xf pdf -o filename.pdf
+                        filename.drawio」 と展開されるbash
+                        aliasもしくは関数を定義してください。</p>
                         </blockquote>
                         <p>というわけでできたのがこちら。</p>
-                        <div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="fu">d2pdf()</span> <span class="kw">{</span></span>
-                        <span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a>    <span class="bu">local</span> <span class="va">input_file=</span><span class="st">&quot;</span><span class="va">$1</span><span class="st">&quot;</span></span>
-                        <span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a>    <span class="bu">local</span> <span class="va">output_file=</span><span class="st">&quot;</span><span class="va">${input_file%</span>.drawio<span class="va">}</span><span class="st">.pdf&quot;</span></span>
-                        <span id="cb4-4"><a href="#cb4-4" aria-hidden="true"></a>    <span class="ex">draw.io</span> -xf pdf -o <span class="st">&quot;</span><span class="va">$output_file</span><span class="st">&quot;</span> <span class="st">&quot;</span><span class="va">$input_file</span><span class="st">&quot;</span></span>
-                        <span id="cb4-5"><a href="#cb4-5" aria-hidden="true"></a><span class="kw">}</span></span></code></pre></div>
+                        <div class="sourceCode" id="cb4"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">d2pdf()</span> <span class="kw">{</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">local</span> <span class="va">input_file</span><span class="op">=</span><span class="st">&quot;</span><span class="va">$1</span><span class="st">&quot;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">local</span> <span class="va">output_file</span><span class="op">=</span><span class="st">&quot;</span><span class="va">${input_file</span><span class="op">%</span>.drawio<span class="va">}</span><span class="st">.pdf&quot;</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="ex">draw.io</span> <span class="at">-xf</span> pdf <span class="at">-o</span> <span class="st">&quot;</span><span class="va">$output_file</span><span class="st">&quot;</span> <span class="st">&quot;</span><span class="va">$input_file</span><span class="st">&quot;</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span></code></pre></div>
                         <p>こういう作業はChatGPTの方が圧倒的に速い。</p>
                         <p>WSLのUbuntuにも入れたいが、snapdがないためインストールできない。一応回避策はあるが、どうするかな。</p>
                         <p>輪講。</p>
                         <p>研究室ミーティング。</p>
                         <p>とても重い(研究とは全く関係ない)仕事をようやくひとつ片付けた。</p>
                         <p>最近、外に出せない仕事ばかりでしんどい。</p>
-                        <h2 id="月26日水"><a href="#26">06月26日(水)</a> <a id="26"></a></h2>
+                        <h2 id="月26日水"><a href="#26">06月26日(水)</a>
+                        <a id="26"></a></h2>
                         <p>Jekyllを試す。まずはJekyllをインストール。</p>
-                        <div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="ex">gem</span> install jekyll</span>
-                        <span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a><span class="fu">mkdir</span> jekyll_test </span>
-                        <span id="cb5-3"><a href="#cb5-3" aria-hidden="true"></a><span class="bu">cd</span> jekyll_test</span>
-                        <span id="cb5-4"><a href="#cb5-4" aria-hidden="true"></a><span class="ex">bundle</span> init</span></code></pre></div>
+                        <div class="sourceCode" id="cb5"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">gem</span> install jekyll</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> jekyll_test </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> jekyll_test</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="ex">bundle</span> init</span></code></pre></div>
                         <p>GemfileにJekyllを追加。</p>
-                        <div class="sourceCode" id="cb6"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="ex">bundle</span> config set path <span class="st">&#39;vendor/bundle&#39;</span></span>
-                        <span id="cb6-2"><a href="#cb6-2" aria-hidden="true"></a><span class="ex">bundle</span> install</span>
-                        <span id="cb6-3"><a href="#cb6-3" aria-hidden="true"></a><span class="ex">bundle</span> exec jekyll s</span></code></pre></div>
-                        <div class="sourceCode" id="cb7"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a><span class="ex">bundle</span> exec jekyll new . --force</span>
-                        <span id="cb7-2"><a href="#cb7-2" aria-hidden="true"></a><span class="ex">bundle</span> install</span></code></pre></div>
+                        <div class="sourceCode" id="cb6"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">bundle</span> config set path <span class="st">&#39;vendor/bundle&#39;</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">bundle</span> install</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="ex">bundle</span> exec jekyll s</span></code></pre></div>
+                        <div class="sourceCode" id="cb7"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">bundle</span> exec jekyll new . <span class="at">--force</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">bundle</span> install</span></code></pre></div>
                         <p>駄目だ。よくわからん。もっと簡単なやつが欲しい。</p>
                         <p>hugoを試す。</p>
-                        <div class="sourceCode" id="cb8"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a><span class="ex">brew</span> install hugo</span>
-                        <span id="cb8-2"><a href="#cb8-2" aria-hidden="true"></a><span class="ex">hugo</span> new site hugo_test</span>
-                        <span id="cb8-3"><a href="#cb8-3" aria-hidden="true"></a><span class="bu">cd</span> hugo_test</span>
-                        <span id="cb8-4"><a href="#cb8-4" aria-hidden="true"></a><span class="fu">git</span> init</span>
-                        <span id="cb8-5"><a href="#cb8-5" aria-hidden="true"></a><span class="fu">git</span> submodule add https://github.com/theNewDynamic/gohugo-theme-ananke.git themes/ananke</span>
-                        <span id="cb8-6"><a href="#cb8-6" aria-hidden="true"></a><span class="bu">echo</span> <span class="st">&quot;theme = &#39;ananke&#39;&quot;</span> <span class="op">&gt;&gt;</span> hugo.toml</span>
-                        <span id="cb8-7"><a href="#cb8-7" aria-hidden="true"></a><span class="ex">hugo</span> server</span></code></pre></div>
+                        <div class="sourceCode" id="cb8"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> install hugo</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">hugo</span> new site hugo_test</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> hugo_test</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> init</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> submodule add https://github.com/theNewDynamic/gohugo-theme-ananke.git themes/ananke</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;theme = &#39;ananke&#39;&quot;</span> <span class="op">&gt;&gt;</span> hugo.toml</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="ex">hugo</span> server</span></code></pre></div>
                         <p>できた。</p>
                         <p>んー、でもよくわかんないや。もう面倒だからPandocで行く。すまん。</p>
                         <p>結局Markdown+Pandocで書いた。うーむむ。</p>
-                        <h2 id="月25日火"><a href="#25">06月25日(火)</a> <a id="25"></a></h2>
+                        <h2 id="月25日火"><a href="#25">06月25日(火)</a>
+                        <a id="25"></a></h2>
                         <p>数理物理の中間予想問題集の解答に間違い多数。指摘感謝。駄目だなぁ。</p>
                         <p>日本物理学会の宿とった。参加申し込みもした。</p>
                         <p>なんか、自分より年上の人がどんどん退職され、自分より若い人がどんどん活躍し、自分はどうすればいいんだろう、という気持ちに。いや、目の前のことをがんばるしかないんだけど……</p>
                         <p>次回は自分も発表できるようにがんばりたい。</p>
-                        <h2 id="月24日月"><a href="#24">06月24日(月)</a> <a id="24"></a></h2>
+                        <h2 id="月24日月"><a href="#24">06月24日(月)</a>
+                        <a id="24"></a></h2>
                         <p>数理物理。今日はラグランジアンの点変換への共変性の証明。昨年は一変数だけやって多変数はやらなかったが、今回はちゃんと両方やった。</p>
                         <p>数理物理の中間の解答用紙作った。昨年は中間をWordで、期末をイラレで作ったが、今年は両方Wordでいいや。</p>
                         <p>その他いろいろの仕事。多くの仕事を積み残した。</p>
-                        <h2 id="月23日日"><a href="#23">06月23日(日)</a> <a id="23"></a></h2>
+                        <h2 id="月23日日"><a href="#23">06月23日(日)</a>
+                        <a id="23"></a></h2>
                         <p>NOP</p>
-                        <h2 id="月22日土"><a href="#22">06月22日(土)</a> <a id="22"></a></h2>
+                        <h2 id="月22日土"><a href="#22">06月22日(土)</a>
+                        <a id="22"></a></h2>
                         <p>NOP</p>
                         <p>次の数理物理の予習。ラグランジアンの点変換への共変性の証明はかなりややこしいので、ちゃんと「そら」で導出できるように練習。</p>
-                        <h2 id="月21日金"><a href="#21">06月21日(金)</a> <a id="21"></a></h2>
+                        <h2 id="月21日金"><a href="#21">06月21日(金)</a>
+                        <a id="21"></a></h2>
                         <p>数理物理。今日は変分原理。時間的にはちょうど良かった。スネルの法則を軸にした説明はわりとよくまとまったのではないか。</p>
-                        <p>今回、初めてWireless GO IIを使ってみたが、圧倒的に音質が良い。高いだけはある。これからこちらを使うことにしよう。</p>
-                        <h2 id="月20日木"><a href="#20">06月20日(木)</a> <a id="20"></a></h2>
+                        <p>今回、初めてWireless GO
+                        IIを使ってみたが、圧倒的に音質が良い。高いだけはある。これからこちらを使うことにしよう。</p>
+                        <h2 id="月20日木"><a href="#20">06月20日(木)</a>
+                        <a id="20"></a></h2>
                         <p>輪講。研究室ミーティング。</p>
                         <p>数理物理の中間試験予想問題集＋解答例を作ったぞ。</p>
-                        <h2 id="月19日水"><a href="#19">06月19日(水)</a> <a id="19"></a></h2>
+                        <h2 id="月19日水"><a href="#19">06月19日(水)</a>
+                        <a id="19"></a></h2>
                         <p>いろいろ。</p>
                         <p>自分の残り時間、というものを考える。</p>
-                        <h2 id="月18日火"><a href="#18">06月18日(火)</a> <a id="18"></a></h2>
+                        <h2 id="月18日火"><a href="#18">06月18日(火)</a>
+                        <a id="18"></a></h2>
                         <p>VSCodeのDraw.io拡張がPDFを吐けないことの対処。</p>
                         <p>まずdraw.ioをインストール。</p>
-                        <div class="sourceCode" id="cb9"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a><span class="ex">brew</span> install --cask drawio</span></code></pre></div>
+                        <div class="sourceCode" id="cb9"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> install <span class="at">--cask</span> drawio</span></code></pre></div>
                         <p>デフォルトでパスが通らないので、alias。</p>
-                        <div class="sourceCode" id="cb10"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true"></a><span class="bu">alias</span> draw.io=/Applications/draw.io.app/Contents/MacOS/draw.io  </span></code></pre></div>
+                        <div class="sourceCode" id="cb10"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="bu">alias</span> draw.io=/Applications/draw.io.app/Contents/MacOS/draw.io  </span></code></pre></div>
                         <p>drawioファイルをpdfに変換。</p>
-                        <div class="sourceCode" id="cb11"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true"></a><span class="ex">draw.io</span> -xf pdf -o test.pdf test.drawio</span></code></pre></div>
+                        <div class="sourceCode" id="cb11"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">draw.io</span> <span class="at">-xf</span> pdf <span class="at">-o</span> test.pdf test.drawio</span></code></pre></div>
                         <p><code>includegraphics</code>にwidthを指定したら通らない。原因は</p>
-                        <div class="sourceCode" id="cb12"><pre class="sourceCode tex"><code class="sourceCode latex"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true"></a><span class="bu">\usepackage</span>[dvipdfmx]{<span class="ex">graphics</span>}</span></code></pre></div>
+                        <div class="sourceCode" id="cb12"><pre
+                        class="sourceCode tex"><code class="sourceCode latex"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="bu">\usepackage</span>[dvipdfmx]{<span class="ex">graphics</span>}</span></code></pre></div>
                         <p>と書いていたから。正しくは</p>
-                        <div class="sourceCode" id="cb13"><pre class="sourceCode tex"><code class="sourceCode latex"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true"></a><span class="bu">\usepackage</span>[dvipdfmx]{<span class="ex">graphicx</span>}</span></code></pre></div>
+                        <div class="sourceCode" id="cb13"><pre
+                        class="sourceCode tex"><code class="sourceCode latex"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="bu">\usepackage</span>[dvipdfmx]{<span class="ex">graphicx</span>}</span></code></pre></div>
                         <p>アホ過ぎる。</p>
-                        <h2 id="月17日月"><a href="#17">06月17日(月)</a> <a id="17"></a></h2>
+                        <h2 id="月17日月"><a href="#17">06月17日(月)</a>
+                        <a id="17"></a></h2>
                         <p>数理物理。極座標で計算ミスして混乱。直前でやることにしたから。</p>
                         <p>去年、上付き下付きで混乱したからそこはしっかりやったんだけど、今回は簡単だと思って予習不足だった。やーねー。</p>
                         <p>あと、30分ほど早く終わってしまった。もう少し内容に工夫が必要。</p>
                         <p>講義動画を見返して、符号ミスをしたところを発見。凹む。</p>
-                        <h2 id="月16日日"><a href="#16">06月16日(日)</a> <a id="16"></a></h2>
+                        <h2 id="月16日日"><a href="#16">06月16日(日)</a>
+                        <a id="16"></a></h2>
                         <p>NOP</p>
-                        <h2 id="月15日土"><a href="#15">06月15日(土)</a> <a id="15"></a></h2>
-                        <p>今週は本当に忙しくて、月曜から日記を書いてなかった。Google Calendarの予定を見て何をしていたか確認する感じ。</p>
+                        <h2 id="月15日土"><a href="#15">06月15日(土)</a>
+                        <a id="15"></a></h2>
+                        <p>今週は本当に忙しくて、月曜から日記を書いてなかった。Google
+                        Calendarの予定を見て何をしていたか確認する感じ。</p>
                         <p>レポートの採点。4時間半くらいかかったぞ。</p>
                         <p>講義ノートの更新をしたかったが、月曜日の予習で精一杯だった。うーん。</p>
-                        <h2 id="月14日金"><a href="#14">06月14日(金)</a> <a id="14"></a></h2>
+                        <h2 id="月14日金"><a href="#14">06月14日(金)</a>
+                        <a id="14"></a></h2>
                         <p>1on1が4回。偉い人がいる会議。</p>
                         <p>数理物理。今日は仮想仕事。</p>
                         <p>物理情報工学特別講義。今日は富士通の本多さん。Ontennaの人。</p>
-                        <p>昨年はデンマークにいると聞いていたので、講義はないだろうと油断していたらオンラインで繋いだらしい。 今年はもう帰国されたとのことで講義後にかけつけた。</p>
+                        <p>昨年はデンマークにいると聞いていたので、講義はないだろうと油断していたらオンラインで繋いだらしい。
+                        今年はもう帰国されたとのことで講義後にかけつけた。</p>
                         <p>Ontennaもエキマトペも、ワークショップも、なんか理想やアイディアを「形にする」のがすごい。</p>
                         <p>「なにかを形にするのはとても大変で、いろいろ苦労もあると思いますが、どうやって乗り越えていますか？」と聞いたら、「誰を笑顔にしたいかを考える」という回答がきたのが印象的。</p>
-                        <h2 id="月13日木"><a href="#13">06月13日(木)</a> <a id="13"></a></h2>
+                        <h2 id="月13日木"><a href="#13">06月13日(木)</a>
+                        <a id="13"></a></h2>
                         <p>輪講。研究室ミーティング。講義準備。</p>
-                        <h2 id="月12日水"><a href="#12">06月12日(水)</a> <a id="12"></a></h2>
+                        <h2 id="月12日水"><a href="#12">06月12日(水)</a>
+                        <a id="12"></a></h2>
                         <p>ほぼ何もできなかった。</p>
-                        <h2 id="月11日火"><a href="#11">06月11日(火)</a> <a id="11"></a></h2>
+                        <h2 id="月11日火"><a href="#11">06月11日(火)</a>
+                        <a id="11"></a></h2>
                         <p>お仕事。</p>
                         <p>esaのアカデミックプランが承認。研究室内部情報はPukiwikiからesaに移動させる。</p>
-                        <h2 id="月10日月"><a href="#10">06月10日(月)</a> <a id="10"></a></h2>
+                        <h2 id="月10日月"><a href="#10">06月10日(月)</a>
+                        <a id="10"></a></h2>
                         <p>数理物理第三回。いい感じだったのに、マイクの電池が切れて途中で音が録音されてなかった・・・orz</p>
-                        <h2 id="月07日金"><a href="#07">06月07日(金)</a> <a id="07"></a></h2>
+                        <h2 id="月07日金"><a href="#07">06月07日(金)</a>
+                        <a id="07"></a></h2>
                         <p>数理物理第二回。途中でカメラが追いかけてきてくれなかった。マイクがぶら下げていた金具とぶつかってしまって音も割れた。</p>
                         <p>講義はギリギリ時間内には終わったが、なんか足元がおぼつかない感じだったな・・・</p>
                         <p>夏季安全点検報告した。</p>
-                        <h2 id="月06日木"><a href="#06">06月06日(木)</a> <a id="06"></a></h2>
+                        <h2 id="月06日木"><a href="#06">06月06日(木)</a>
+                        <a id="06"></a></h2>
                         <p>研究室ミーティング。</p>
                         <p>さくらインターネットの立て替え払い出した。</p>
                         <p>そういえばBinderさん元気かな、と思ったら、亡くなってた・・・</p>
-                        <p><a href="https://en.wikipedia.org/wiki/Kurt_Binder">Kurt Binder</a></p>
+                        <p><a
+                        href="https://en.wikipedia.org/wiki/Kurt_Binder">Kurt
+                        Binder</a></p>
                         <p>2022年9月。2年前か・・・</p>
                         <p>追悼研究会も実施されてた。</p>
-                        <p><a href="https://www.cecam.org/workshop-details/computational-statistical-physics-in-the-21st-century-the-legacy-of-kurt-binder-1256">Computational statistical physics in the 21st century: The legacy of Kurt Binder</a></p>
+                        <p><a
+                        href="https://www.cecam.org/workshop-details/computational-statistical-physics-in-the-21st-century-the-legacy-of-kurt-binder-1256">Computational
+                        statistical physics in the 21st century: The
+                        legacy of Kurt Binder</a></p>
                         <p>自分のつぶやきを検索してみたら、2023年1月にBinderさんが亡くなったことに触れているな。全く覚えていなかった。ひどいもんだ。</p>
-                        <p><a href="https://www.fz-juelich.de/en/ias/jsc/news/news-items/news-flashes/2022/prof-binder-obituary">Obituary Prof. Dr. Kurt Binder</a></p>
+                        <p><a
+                        href="https://www.fz-juelich.de/en/ias/jsc/news/news-items/news-flashes/2022/prof-binder-obituary">Obituary
+                        Prof. Dr. Kurt Binder</a></p>
                         <p>Pukiwikiを卒業するため、esaを使い始めてみた。</p>
-                        <h2 id="月05日水"><a href="#05">06月05日(水)</a> <a id="05"></a></h2>
-                        <div class="sourceCode" id="cb14"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true"></a>$ <span class="ex">dmd</span> pptxgrep.d</span>
-                        <span id="cb14-2"><a href="#cb14-2" aria-hidden="true"></a><span class="ex">pptxgrep.d</span>(8)<span class="bu">:</span> Error: unable to read module <span class="kw">`</span><span class="ex">xml</span><span class="kw">`</span></span>
-                        <span id="cb14-3"><a href="#cb14-3" aria-hidden="true"></a><span class="ex">pptxgrep.d</span>(8)<span class="bu">:</span>        Expected <span class="st">&#39;std/xml.d&#39;</span> or <span class="st">&#39;std/xml/package.d&#39;</span> in one of the following import paths:</span>
-                        <span id="cb14-4"><a href="#cb14-4" aria-hidden="true"></a><span class="ex">import</span> path[0] = /usr/local/opt/dmd/include/dlang/dmd</span></code></pre></div>
+                        <h2 id="月05日水"><a href="#05">06月05日(水)</a>
+                        <a id="05"></a></h2>
+                        <div class="sourceCode" id="cb14"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> dmd pptxgrep.d</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pptxgrep.d</span><span class="er">(</span><span class="ex">8</span><span class="kw">)</span><span class="bu">:</span> Error: unable to read module <span class="kw">`</span><span class="ex">xml</span><span class="kw">`</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pptxgrep.d</span><span class="er">(</span><span class="ex">8</span><span class="kw">)</span><span class="bu">:</span>        Expected <span class="st">&#39;std/xml.d&#39;</span> or <span class="st">&#39;std/xml/package.d&#39;</span> in one of the following import paths:</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="ex">import</span> path<span class="pp">[</span><span class="ss">0</span><span class="pp">]</span> = /usr/local/opt/dmd/include/dlang/dmd</span></code></pre></div>
                         <p>xmlライブラリが読み込めない。</p>
                         <p>五億年ぶりにMacでD言語のコードをコンパイル。</p>
-                        <div class="sourceCode" id="cb15"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true"></a><span class="ex">brew</span> upgrade dmd</span>
-                        <span id="cb15-2"><a href="#cb15-2" aria-hidden="true"></a><span class="ex">dub</span> fetch dxml</span></code></pre></div>
-                        <p>でもコンパイルできない。いろいろ調べたが、<a href="https://docarchives.dlang.io/v2.094.0/phobos/std_xml.html"><code>std.xml</code>がobsoleteになっているらしい？</a></p>
-                        <div class="sourceCode" id="cb16"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true"></a>Warning: This module is considered out-dated and not up to Phobos&#39; current standards. It will be removed from Phobos in 2.101.0. If you still need it, go to https://github.com/DigitalMars/undeaD</span></code></pre></div>
-                        <div class="sourceCode" id="cb17"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true"></a>$ dmd --version</span>
-                        <span id="cb17-2"><a href="#cb17-2" aria-hidden="true"></a>DMD64 D Compiler v2.109.0</span>
-                        <span id="cb17-3"><a href="#cb17-3" aria-hidden="true"></a></span>
-                        <span id="cb17-4"><a href="#cb17-4" aria-hidden="true"></a>Copyright (C) 1999-2024 by The D Language Foundation, All Rights Reserved written by Walter Bright</span></code></pre></div>
+                        <div class="sourceCode" id="cb15"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> upgrade dmd</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="ex">dub</span> fetch dxml</span></code></pre></div>
+                        <p>でもコンパイルできない。いろいろ調べたが、<a
+                        href="https://docarchives.dlang.io/v2.094.0/phobos/std_xml.html"><code>std.xml</code>がobsoleteになっているらしい？</a></p>
+                        <div class="sourceCode" id="cb16"><pre
+                        class="sourceCode txt"><code class="sourceCode default"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>Warning: This module is considered out-dated and not up to Phobos&#39; current standards. It will be removed from Phobos in 2.101.0. If you still need it, go to https://github.com/DigitalMars/undeaD</span></code></pre></div>
+                        <div class="sourceCode" id="cb17"><pre
+                        class="sourceCode txt"><code class="sourceCode default"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>$ dmd --version</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>DMD64 D Compiler v2.109.0</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>Copyright (C) 1999-2024 by The D Language Foundation, All Rights Reserved written by Walter Bright</span></code></pre></div>
                         <p>Phobosのバージョンとコンパイラのバージョン一致しているの？なら2.109だから、std.xmlは消えたんだな。</p>
                         <p>ってことは今はpptxgrepは再コンパイルしたら使えないのか。また別の言語で作り直すかなぁ。次は何でやるかなぁ。</p>
-                        <p><a href="https://pc.watch.impress.co.jp/docs/news/event/1596852.html">Lion CoveとSkymontの詳細が明らかに。Hyper-Threading「非対応」で電力効率爆上げ</a></p>
+                        <p><a
+                        href="https://pc.watch.impress.co.jp/docs/news/event/1596852.html">Lion
+                        CoveとSkymontの詳細が明らかに。Hyper-Threading「非対応」で電力効率爆上げ</a></p>
                         <p>ついにHT廃止ですか。</p>
                         <p>なんとなく昔のスライドをサルベージした。</p>
-                        <p><a href="https://speakerdeck.com/kaityo256/hyper-threading">ハイパースレッディングの 並列化効率への影響</a></p>
-                        <h2 id="月04日火"><a href="#04">06月04日(火)</a> <a id="04"></a></h2>
-                        <p>数理物理の録画を確認したが、音が駄目だった。ワイヤレスマイクが必要。RODE Wireless GOが良いらしいが、さすがに高い(4万〜5万)。いろいろ調べてサンワダイレクトの400-MCW001を頼んでみた。</p>
+                        <p><a
+                        href="https://speakerdeck.com/kaityo256/hyper-threading">ハイパースレッディングの
+                        並列化効率への影響</a></p>
+                        <h2 id="月04日火"><a href="#04">06月04日(火)</a>
+                        <a id="04"></a></h2>
+                        <p>数理物理の録画を確認したが、音が駄目だった。ワイヤレスマイクが必要。RODE
+                        Wireless
+                        GOが良いらしいが、さすがに高い(4万〜5万)。いろいろ調べてサンワダイレクトの400-MCW001を頼んでみた。</p>
                         <p>メモ。古い環境でPython仮想環境を構築する方法。pip無しで仮想環境を構築してから、後でpipをローカルにインストールする。</p>
-                        <div class="sourceCode" id="cb18"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true"></a><span class="ex">python3</span> -m venv myenv --without-pip  </span>
-                        <span id="cb18-2"><a href="#cb18-2" aria-hidden="true"></a><span class="bu">source</span> myenv/bin/activate </span>
-                        <span id="cb18-3"><a href="#cb18-3" aria-hidden="true"></a><span class="fu">wget</span> https://bootstrap.pypa.io/pip/3.6/get-pip.py</span>
-                        <span id="cb18-4"><a href="#cb18-4" aria-hidden="true"></a><span class="ex">python3</span> get-pip.py</span></code></pre></div>
+                        <div class="sourceCode" id="cb18"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> <span class="at">-m</span> venv myenv <span class="at">--without-pip</span>  </span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> myenv/bin/activate </span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://bootstrap.pypa.io/pip/3.6/get-pip.py</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> get-pip.py</span></code></pre></div>
                         <p>NumPyが裏でなんスレッド使っているか確認。<code>threadpoolctl</code>をインストール。</p>
-                        <div class="sourceCode" id="cb19"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true"></a><span class="ex">python3</span> -m pip install threadpoolctl ipython</span></code></pre></div>
+                        <div class="sourceCode" id="cb19"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> <span class="at">-m</span> pip install threadpoolctl ipython</span></code></pre></div>
                         <p>ipython3上で以下を実行。</p>
-                        <div class="sourceCode" id="cb20"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true"></a>from threadpoolctl import threadpool_info</span>
-                        <span id="cb20-2"><a href="#cb20-2" aria-hidden="true"></a>import numpy as np</span>
-                        <span id="cb20-3"><a href="#cb20-3" aria-hidden="true"></a>threadpool_info()</span></code></pre></div>
+                        <div class="sourceCode" id="cb20"><pre
+                        class="sourceCode txt"><code class="sourceCode default"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>from threadpoolctl import threadpool_info</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>import numpy as np</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>threadpool_info()</span></code></pre></div>
                         <p>計算ノード。</p>
-                        <div class="sourceCode" id="cb21"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true"></a>[{&#39;user_api&#39;: &#39;blas&#39;,</span>
-                        <span id="cb21-2"><a href="#cb21-2" aria-hidden="true"></a>  &#39;internal_api&#39;: &#39;openblas&#39;,</span>
-                        <span id="cb21-3"><a href="#cb21-3" aria-hidden="true"></a>  &#39;prefix&#39;: &#39;libopenblas&#39;,</span>
-                        <span id="cb21-4"><a href="#cb21-4" aria-hidden="true"></a>  &#39;filepath&#39;: &#39;/home/watanabe/github/simple_rbm/myenv/lib/python3.6/site-packages/numpy.libs/libopenblasp-r0-09e95953.3.13.so&#39;,</span>
-                        <span id="cb21-5"><a href="#cb21-5" aria-hidden="true"></a>  &#39;version&#39;: &#39;0.3.13&#39;,</span>
-                        <span id="cb21-6"><a href="#cb21-6" aria-hidden="true"></a>  &#39;threading_layer&#39;: &#39;pthreads&#39;,</span>
-                        <span id="cb21-7"><a href="#cb21-7" aria-hidden="true"></a>  &#39;architecture&#39;: &#39;SkylakeX&#39;,</span>
-                        <span id="cb21-8"><a href="#cb21-8" aria-hidden="true"></a>  &#39;num_threads&#39;: 40}]</span></code></pre></div>
+                        <div class="sourceCode" id="cb21"><pre
+                        class="sourceCode txt"><code class="sourceCode default"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>[{&#39;user_api&#39;: &#39;blas&#39;,</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  &#39;internal_api&#39;: &#39;openblas&#39;,</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  &#39;prefix&#39;: &#39;libopenblas&#39;,</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  &#39;filepath&#39;: &#39;/home/watanabe/github/simple_rbm/myenv/lib/python3.6/site-packages/numpy.libs/libopenblasp-r0-09e95953.3.13.so&#39;,</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  &#39;version&#39;: &#39;0.3.13&#39;,</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>  &#39;threading_layer&#39;: &#39;pthreads&#39;,</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>  &#39;architecture&#39;: &#39;SkylakeX&#39;,</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>  &#39;num_threads&#39;: 40}]</span></code></pre></div>
                         <p>AMD EPYC</p>
-                        <div class="sourceCode" id="cb22"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true"></a>[{&#39;user_api&#39;: &#39;blas&#39;,</span>
-                        <span id="cb22-2"><a href="#cb22-2" aria-hidden="true"></a>  &#39;internal_api&#39;: &#39;openblas&#39;,</span>
-                        <span id="cb22-3"><a href="#cb22-3" aria-hidden="true"></a>  &#39;prefix&#39;: &#39;libopenblas&#39;,</span>
-                        <span id="cb22-4"><a href="#cb22-4" aria-hidden="true"></a>  &#39;filepath&#39;: &#39;/home/watanabe/github/simple_rbm/myenv/lib/python3.6/site-packages/numpy.libs/libopenblasp-r0-09e95953.3.13.so&#39;,</span>
-                        <span id="cb22-5"><a href="#cb22-5" aria-hidden="true"></a>  &#39;version&#39;: &#39;0.3.13&#39;,</span>
-                        <span id="cb22-6"><a href="#cb22-6" aria-hidden="true"></a>  &#39;threading_layer&#39;: &#39;pthreads&#39;,</span>
-                        <span id="cb22-7"><a href="#cb22-7" aria-hidden="true"></a>  &#39;architecture&#39;: &#39;Zen&#39;,</span>
-                        <span id="cb22-8"><a href="#cb22-8" aria-hidden="true"></a>  &#39;num_threads&#39;: 32}]</span></code></pre></div>
+                        <div class="sourceCode" id="cb22"><pre
+                        class="sourceCode txt"><code class="sourceCode default"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>[{&#39;user_api&#39;: &#39;blas&#39;,</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  &#39;internal_api&#39;: &#39;openblas&#39;,</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  &#39;prefix&#39;: &#39;libopenblas&#39;,</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  &#39;filepath&#39;: &#39;/home/watanabe/github/simple_rbm/myenv/lib/python3.6/site-packages/numpy.libs/libopenblasp-r0-09e95953.3.13.so&#39;,</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  &#39;version&#39;: &#39;0.3.13&#39;,</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>  &#39;threading_layer&#39;: &#39;pthreads&#39;,</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>  &#39;architecture&#39;: &#39;Zen&#39;,</span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>  &#39;num_threads&#39;: 32}]</span></code></pre></div>
                         <p>Mac。</p>
-                        <div class="sourceCode" id="cb23"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true"></a>[{&#39;user_api&#39;: &#39;blas&#39;,</span>
-                        <span id="cb23-2"><a href="#cb23-2" aria-hidden="true"></a>  &#39;internal_api&#39;: &#39;openblas&#39;,</span>
-                        <span id="cb23-3"><a href="#cb23-3" aria-hidden="true"></a>  &#39;num_threads&#39;: 10,</span>
-                        <span id="cb23-4"><a href="#cb23-4" aria-hidden="true"></a>  &#39;prefix&#39;: &#39;libopenblas&#39;,</span>
-                        <span id="cb23-5"><a href="#cb23-5" aria-hidden="true"></a>  &#39;filepath&#39;: &#39;/Users/watanabe/github/simple_rbm/myenv/lib/python3.12/site-packages/numpy/.dylibs/libopenblas64_.0.dylib&#39;,</span>
-                        <span id="cb23-6"><a href="#cb23-6" aria-hidden="true"></a>  &#39;version&#39;: &#39;0.3.23.dev&#39;,</span>
-                        <span id="cb23-7"><a href="#cb23-7" aria-hidden="true"></a>  &#39;threading_layer&#39;: &#39;pthreads&#39;,</span>
-                        <span id="cb23-8"><a href="#cb23-8" aria-hidden="true"></a>  &#39;architecture&#39;: &#39;Haswell&#39;}]</span></code></pre></div>
+                        <div class="sourceCode" id="cb23"><pre
+                        class="sourceCode txt"><code class="sourceCode default"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>[{&#39;user_api&#39;: &#39;blas&#39;,</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  &#39;internal_api&#39;: &#39;openblas&#39;,</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  &#39;num_threads&#39;: 10,</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  &#39;prefix&#39;: &#39;libopenblas&#39;,</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>  &#39;filepath&#39;: &#39;/Users/watanabe/github/simple_rbm/myenv/lib/python3.12/site-packages/numpy/.dylibs/libopenblas64_.0.dylib&#39;,</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>  &#39;version&#39;: &#39;0.3.23.dev&#39;,</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>  &#39;threading_layer&#39;: &#39;pthreads&#39;,</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>  &#39;architecture&#39;: &#39;Haswell&#39;}]</span></code></pre></div>
                         <p>OpenBLASのスレッド数設定は<code>OPENBLAS_NUM_THREADS</code>だそうな。なので、NumPyが裏で使うスレッド数を設定するには、</p>
-                        <div class="sourceCode" id="cb24"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true"></a>OPENBLAS_NUM_THREADS<span class="op">=</span><span class="dv">1</span> python3 hoge.py</span></code></pre></div>
+                        <div class="sourceCode" id="cb24"><pre
+                        class="sourceCode py"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>OPENBLAS_NUM_THREADS<span class="op">=</span><span class="dv">1</span> python3 hoge.py</span></code></pre></div>
                         <p>などとすれば良い。<code>OMP_NUM_THREADS</code>じゃないのか・・・。</p>
-                        <p>2024年度 理工学部 教授・准教授就任講演。僕はトップバッター。今回はちゃんとネクタイをした。</p>
+                        <p>2024年度 理工学部
+                        教授・准教授就任講演。僕はトップバッター。今回はちゃんとネクタイをした。</p>
                         <p>いかん、頭が全く回らん。</p>
-                        <h2 id="月03日月"><a href="#03">06月03日(月)</a> <a id="03"></a></h2>
+                        <h2 id="月03日月"><a href="#03">06月03日(月)</a>
+                        <a id="03"></a></h2>
                         <p>数理物理第一回。とりあえずなんとか終えた。</p>
                         <p>録画もしたが、音が厳しいな。やはりワイヤレスマイクから入力する必要がある。買うか。</p>
                         <p>明日も発表があるんだよな・・・</p>
                         <p>数理物理の試験形態入力済ませた。</p>
-                        <h2 id="月02日日"><a href="#02">06月02日(日)</a> <a id="02"></a></h2>
+                        <h2 id="月02日日"><a href="#02">06月02日(日)</a>
+                        <a id="02"></a></h2>
                         <p>数理物理の講義予習。黒板ガリガリ1時間半は体力を消耗する。これが週２日はきつい。</p>
-                        <h2 id="月01日土"><a href="#01">06月01日(土)</a> <a id="01"></a></h2>
+                        <h2 id="月01日土"><a href="#01">06月01日(土)</a>
+                        <a id="01"></a></h2>
                         <p>NOP</p>
           </article>
   </body>

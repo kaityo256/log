@@ -22,169 +22,228 @@
     <article class="markdown-body">
                         <h1 id="年7月">2021年7月</h1>
                         <p><a href="index.html">ログ一覧</a></p>
-                        <h2 id="月31日土"><a href="#31">07月31日(土)</a> <a id="31"></a></h2>
-                        <p>Windows 10でウィンドウのメニューが画面の上に隠れて移動できなくなった時、Win+矢印キーで動かすと楽。</p>
-                        <p><a href="https://github.com/kaityo256/python2cpp">Pythonを知っている人向けのC++入門</a>、しばらく前に書きはじめて放置してたけど、読んでいる人がいたことに気をよくして少し追記した。いや、こんなことをする暇、まったくないんだけれども。</p>
-                        <h2 id="月30日金"><a href="#30">07月30日(金)</a> <a id="30"></a></h2>
+                        <h2 id="月31日土"><a href="#31">07月31日(土)</a>
+                        <a id="31"></a></h2>
+                        <p>Windows
+                        10でウィンドウのメニューが画面の上に隠れて移動できなくなった時、Win+矢印キーで動かすと楽。</p>
+                        <p><a
+                        href="https://github.com/kaityo256/python2cpp">Pythonを知っている人向けのC++入門</a>、しばらく前に書きはじめて放置してたけど、読んでいる人がいたことに気をよくして少し追記した。いや、こんなことをする暇、まったくないんだけれども。</p>
+                        <h2 id="月30日金"><a href="#30">07月30日(金)</a>
+                        <a id="30"></a></h2>
                         <p>研究室サーバでPBSが死んだ。qstatができない。</p>
-                        <div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a>$ <span class="ex">qstat</span></span>
-                        <span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a><span class="ex">Connection</span> refused</span>
-                        <span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a><span class="ex">qstat</span>: cannot connect to server watanabe-login (errno=111)</span></code></pre></div>
+                        <div class="sourceCode" id="cb1"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> qstat</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Connection</span> refused</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">qstat:</span> cannot connect to server watanabe-login <span class="er">(</span><span class="va">errno</span><span class="op">=</span>111<span class="kw">)</span></span></code></pre></div>
                         <p>とりあえず</p>
-                        <div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="ex">/etc/init.d/pbs</span> start</span></code></pre></div>
+                        <div class="sourceCode" id="cb2"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">/etc/init.d/pbs</span> start</span></code></pre></div>
                         <p>で復活させたが、MPIも死んでいるらしい。研究室サーバでMPIを使おうとするとこんな感じのエラーを吐く。</p>
-                        <div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a>$ <span class="ex">mpirun</span> -np 2 ./a.out</span>
-                        <span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a><span class="ex">PMIX</span> ERROR: OUT-OF-RESOURCE in file gds_dstore.c at line 1178</span>
-                        <span id="cb3-3"><a href="#cb3-3" aria-hidden="true"></a><span class="ex">PMIX</span> ERROR: OUT-OF-RESOURCE in file gds_dstore.c at line 1313</span>
-                        <span id="cb3-4"><a href="#cb3-4" aria-hidden="true"></a><span class="ex">PMIX</span> ERROR: OUT-OF-RESOURCE in file gds_dstore.c at line 2331</span>
-                        <span id="cb3-5"><a href="#cb3-5" aria-hidden="true"></a><span class="ex">PMIX</span> ERROR: OUT-OF-RESOURCE in file gds_dstore.c at line 3148</span>
-                        <span id="cb3-6"><a href="#cb3-6" aria-hidden="true"></a><span class="ex">PMIX</span> ERROR: OUT-OF-RESOURCE in file gds_dstore.c at line 3180</span>
-                        <span id="cb3-7"><a href="#cb3-7" aria-hidden="true"></a><span class="ex">PMIX</span> ERROR: OUT-OF-RESOURCE in file server/pmix_server.c at line 2170</span></code></pre></div>
+                        <div class="sourceCode" id="cb3"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> mpirun <span class="at">-np</span> 2 ./a.out</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">PMIX</span> ERROR: OUT-OF-RESOURCE in file gds_dstore.c at line 1178</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ex">PMIX</span> ERROR: OUT-OF-RESOURCE in file gds_dstore.c at line 1313</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="ex">PMIX</span> ERROR: OUT-OF-RESOURCE in file gds_dstore.c at line 2331</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="ex">PMIX</span> ERROR: OUT-OF-RESOURCE in file gds_dstore.c at line 3148</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="ex">PMIX</span> ERROR: OUT-OF-RESOURCE in file gds_dstore.c at line 3180</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="ex">PMIX</span> ERROR: OUT-OF-RESOURCE in file server/pmix_server.c at line 2170</span></code></pre></div>
                         <p>原因不明。ググってもよくわからなかったので再起動をかけたらいけた。</p>
                         <p>査読依頼が来たが、ちょっと分野が違うのでちゃんとしたプロを推薦した。</p>
                         <p>研究室見学(オンライン)。今年二人目。がんばって良い研究室を探してくださいまし。</p>
                         <p>昨日の研究室ミーティングの録画を編集してアップロード。欠席者向けに。</p>
                         <p>すごく重い仕事をなんとかこなした。結構時間かかった・・・</p>
-                        <h2 id="月29日木"><a href="#29">07月29日(木)</a> <a id="29"></a></h2>
+                        <h2 id="月29日木"><a href="#29">07月29日(木)</a>
+                        <a id="29"></a></h2>
                         <p>CUDAのブロックとか思い出した。そうだそうだ、そんなプログラミングモデルだった。</p>
                         <p>やっぱりCUDAの形が好きだな。</p>
                         <p>研究室ミーティング。学生さんの発表が毎回とても勉強になる。すばらしい。</p>
                         <p>輪講。発表者が熱出してて大変だった。オンラインだと発表できてしまう。</p>
                         <p>レポートの採点。時間かかった。</p>
-                        <h2 id="月28日水"><a href="#28">07月28日(水)</a> <a id="28"></a></h2>
+                        <h2 id="月28日水"><a href="#28">07月28日(水)</a>
+                        <a id="28"></a></h2>
                         <p>学校のマシンのOfficeも大学のライセンスで最新版に更新。ついでにMacも更新して再起動したので様々なアカウントで多段認証をしなきゃいけなくて面倒。</p>
                         <p>予算執行計画。目処がついた。</p>
                         <p>資料作成。</p>
-                        <p>Ubuntuのexamples.desktopというファイルが何をするか調べたくて「examples.desktop ubuntu」で検索したら、英語サイトを日本語に自動翻訳したサイトが多数出てきてげんなり。Chromeにブラックリストを導入したつもりが、いつのまにか消えている？</p>
+                        <p>Ubuntuのexamples.desktopというファイルが何をするか調べたくて「examples.desktop
+                        ubuntu」で検索したら、英語サイトを日本語に自動翻訳したサイトが多数出てきてげんなり。Chromeにブラックリストを導入したつもりが、いつのまにか消えている？</p>
                         <p>いずれにせよ、example.desktopは消して良いらしいので消した。</p>
                         <p>久しぶりにCUDA触った。</p>
-                        <h2 id="月27日火"><a href="#27">07月27日(火)</a> <a id="27"></a></h2>
-                        <p>Young Soft Matter Seminar。液滴の融合のダイナミクス。グリセリンと水の二層にしておいて、水領域にグリセリン液滴を作って、グリセリン領域と液滴が合体する際の「ネック」のスケーリング則を調べる。粘度に依存しないダイナミクスが観測される。</p>
-                        <p>N. Yanagisawa and R. Kurita Sci. Rep. 9 5152 (2019) N. Yanagisawa Soft matter 17, 1738-1745 (2021)</p>
+                        <h2 id="月27日火"><a href="#27">07月27日(火)</a>
+                        <a id="27"></a></h2>
+                        <p>Young Soft Matter
+                        Seminar。液滴の融合のダイナミクス。グリセリンと水の二層にしておいて、水領域にグリセリン液滴を作って、グリセリン領域と液滴が合体する際の「ネック」のスケーリング則を調べる。粘度に依存しないダイナミクスが観測される。</p>
+                        <p>N. Yanagisawa and R. Kurita Sci. Rep. 9 5152
+                        (2019) N. Yanagisawa Soft matter 17, 1738-1745
+                        (2021)</p>
                         <p>泡沫(foam)。液体分率によって変わる。dry→wet→bubbly。wet/bubblyの相転移がジャミング転移を起こす。泡がジャミング転移を起こすの知らなかったな。泡沫が崩壊する際、液滴がすっ飛ぶことで共同崩壊を起こすというもの。泡を安定化させるのにグリセロールを使う。なるほど。数値計算をやっていると、こういう実験の話はとても興味深い。</p>
                         <p>なんか、オンラインセミナーが増えたのいいなぁ。その場に行って、議論するのもいいけど、気楽に参加できるのがすごく良い。</p>
-                        <p><a href="https://dragonflare.blog.jp/archives/pi_from_experiment.html">完全弾性衝突をする二つの物体の衝突回数から円周率が出てくる話</a>。面白い。</p>
+                        <p><a
+                        href="https://dragonflare.blog.jp/archives/pi_from_experiment.html">完全弾性衝突をする二つの物体の衝突回数から円周率が出てくる話</a>。面白い。</p>
                         <p>死ぬほど面倒くさい計算、ようやく最後まで式が通ったぞ！！！！</p>
                         <p>ノートを改訂して共著者に送った。もう論文にできると良いな。</p>
-                        <h2 id="月26日月"><a href="#26">07月26日(月)</a> <a id="26"></a></h2>
-                        <p>さて、やるべきことがたくさんあるぞ・・・と。とりあえず日記をマージした。git stashはほとんどこのリポジトリでしか使っていない。</p>
-                        <p>何年かぶりにGPGPUプログラミングをした。CUDA超久しぶりに書いたな。VS CodeのSSH Remoteでそのまま編集できる。便利だ・・・。</p>
-                        <h2 id="月25日日"><a href="#25">07月25日(日)</a> <a id="25"></a></h2>
+                        <h2 id="月26日月"><a href="#26">07月26日(月)</a>
+                        <a id="26"></a></h2>
+                        <p>さて、やるべきことがたくさんあるぞ・・・と。とりあえず日記をマージした。git
+                        stashはほとんどこのリポジトリでしか使っていない。</p>
+                        <p>何年かぶりにGPGPUプログラミングをした。CUDA超久しぶりに書いたな。VS
+                        CodeのSSH
+                        Remoteでそのまま編集できる。便利だ・・・。</p>
+                        <h2 id="月25日日"><a href="#25">07月25日(日)</a>
+                        <a id="25"></a></h2>
                         <p>体調があまり良くないな。</p>
                         <p>noteのおすすめに「東大卒ママのお受験日記」みたいなのが出てきてうへぇ、となった。</p>
-                        <h2 id="月24日土"><a href="#24">07月24日(土)</a> <a id="24"></a></h2>
-                        <p>息子の夏休みの宿題で「ビオトープを作って観察せよ」みたいのがあった。どうして良いかわからなかったので、シーモンキー飼育セットを購入。いまは「おばけえびすいすい水族館」という名前で発売されている。種としては<a href="https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%AB%E3%83%86%E3%83%9F%E3%82%A2">アルテミア</a>という、ホウネンエビに似ているが、ホウネンエビは淡水性、アルテミアは海水性。ただ、目まで同じ(ホウネンエビ目)。懐かしい。</p>
-                        <h2 id="月23日金"><a href="#23">07月23日(金)</a> <a id="24"></a></h2>
-                        <p>お休み。一本<a href="https://zenn.dev/kaityo256/articles/msd_fft_python">記事を書いた</a>。</p>
-                        <h2 id="月22日木"><a href="#22">07月22日(木)</a> <a id="22"></a></h2>
+                        <h2 id="月24日土"><a href="#24">07月24日(土)</a>
+                        <a id="24"></a></h2>
+                        <p>息子の夏休みの宿題で「ビオトープを作って観察せよ」みたいのがあった。どうして良いかわからなかったので、シーモンキー飼育セットを購入。いまは「おばけえびすいすい水族館」という名前で発売されている。種としては<a
+                        href="https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%AB%E3%83%86%E3%83%9F%E3%82%A2">アルテミア</a>という、ホウネンエビに似ているが、ホウネンエビは淡水性、アルテミアは海水性。ただ、目まで同じ(ホウネンエビ目)。懐かしい。</p>
+                        <h2 id="月23日金"><a href="#23">07月23日(金)</a>
+                        <a id="24"></a></h2>
+                        <p>お休み。一本<a
+                        href="https://zenn.dev/kaityo256/articles/msd_fft_python">記事を書いた</a>。</p>
+                        <h2 id="月22日木"><a href="#22">07月22日(木)</a>
+                        <a id="22"></a></h2>
                         <p>お休み。子供が熱を出したりしてバタバタ。</p>
-                        <h2 id="月21日水"><a href="#21">07月21日(水)</a> <a id="21"></a></h2>
+                        <h2 id="月21日水"><a href="#21">07月21日(水)</a>
+                        <a id="21"></a></h2>
                         <p>月火の日記を学校に置き忘れてきた。あとでmergeしよう。</p>
                         <p>推薦書一通書いた。</p>
                         <p>家のマシンのOfficeのライセンスが切れてしまったので、アンインストールして学校のライセンスで取り直した。SSO便利。</p>
-                        <h2 id="月20日火"><a href="#20">07月20日(火)</a> <a id="20"></a></h2>
-                        <p><a href="https://swopp.github.io/2021/program/">SWoPP</a>の座長。無事にできたと思う。</p>
+                        <h2 id="月20日火"><a href="#20">07月20日(火)</a>
+                        <a id="20"></a></h2>
+                        <p><a
+                        href="https://swopp.github.io/2021/program/">SWoPP</a>の座長。無事にできたと思う。</p>
                         <p>N年ぶりくらいに訪問者カウンタのあるウェブサイトを見た。</p>
                         <p>EPYCって「エピック」じゃなくて「イーピーワイシー」って呼ぶのか？</p>
-                        <h2 id="月19日月"><a href="#19">07月19日(月)</a> <a id="19"></a></h2>
+                        <h2 id="月19日月"><a href="#19">07月19日(月)</a>
+                        <a id="19"></a></h2>
                         <p>学生さんの論文、途中まで朱を入れて返した。</p>
                         <p>OS自作もくもく会。</p>
-                        <h2 id="月18日日"><a href="#18">07月18日(日)</a> <a id="18"></a></h2>
+                        <h2 id="月18日日"><a href="#18">07月18日(日)</a>
+                        <a id="18"></a></h2>
                         <p>ダメだ。全く集中できない。</p>
-                        <h2 id="月17日土"><a href="#17">07月17日(土)</a> <a id="17"></a></h2>
+                        <h2 id="月17日土"><a href="#17">07月17日(土)</a>
+                        <a id="17"></a></h2>
                         <p>学会の予稿出した。学生さんの論文見れてない。しんどい。</p>
-                        <h2 id="月16日金"><a href="#16">07月16日(金)</a> <a id="16"></a></h2>
+                        <h2 id="月16日金"><a href="#16">07月16日(金)</a>
+                        <a id="16"></a></h2>
                         <p>在宅勤務。塩漬け論文の続き。</p>
-                        <h2 id="月15日木"><a href="#15">07月15日(木)</a> <a id="15"></a></h2>
+                        <h2 id="月15日木"><a href="#15">07月15日(木)</a>
+                        <a id="15"></a></h2>
                         <p>研究室ミーティング。本読み輪講。</p>
-                        <h2 id="月14日水"><a href="#14">07月14日(水)</a> <a id="14"></a></h2>
+                        <h2 id="月14日水"><a href="#14">07月14日(水)</a>
+                        <a id="14"></a></h2>
                         <p>会議。</p>
                         <p>クラスター表現の計算を間違えまくってものすごく時間がかかった。ひどいもんだ。</p>
                         <p>あー、学生さんの論文見れてないぞ。すごく申し訳ない。</p>
-                        <h2 id="月13日火"><a href="#13">07月13日(火)</a> <a id="13"></a></h2>
+                        <h2 id="月13日火"><a href="#13">07月13日(火)</a>
+                        <a id="13"></a></h2>
                         <p>風邪をひいた。なんか日曜日に集中力を著しく欠いていたからこうなると思ってたんだ。しかし面白いなぁ。風邪をひくと、具体的な症状が2〜3日前に集中力が著しく落ちる、というのがかなりの精度で成り立つんだよなぁ。</p>
                         <p>メールしたりとか。二つある論文は進まず。苦しい。</p>
-                        <h2 id="月12日月"><a href="#12">07月12日(月)</a> <a id="12"></a></h2>
+                        <h2 id="月12日月"><a href="#12">07月12日(月)</a>
+                        <a id="12"></a></h2>
                         <p>その、「禁煙にはこうすれば良いですよ。自分は喫煙したことないですけど」みたいな「アドバイス」をしたがる人が多いのはなぜだろうか。なんか、「なにかの役に立ちたい。でも自分には特にスキルはない」という人が、焦ってなにかをしようとするとろくなことがない気がする。デマの拡散とか。</p>
                         <p>最近著しく集中力を欠いている。集中力を欠くと、↑こういうこと(ネットの闇成分への反応)を言いがちなので良くない。自覚はあるんですよ。</p>
                         <p>追加予算執行の確認した。メールもした。</p>
-                        <p>WSL2のDISPLAY、hostname.mshome.netで取れるという記事をみて試したんだけど、hostname + mshome.netで取れるIPアドレスが172.23.96.1とかで、それだとなぜうちの環境ではダメ。192.168の、Windows側のIPじゃないとXが通じなかった。172はWSL側のIPアドレスだと思うんだけど、そのあたりの関係がどうなっているかよくわかってない。</p>
+                        <p>WSL2のDISPLAY、hostname.mshome.netで取れるという記事をみて試したんだけど、hostname
+                        +
+                        mshome.netで取れるIPアドレスが172.23.96.1とかで、それだとなぜうちの環境ではダメ。192.168の、Windows側のIPじゃないとXが通じなかった。172はWSL側のIPアドレスだと思うんだけど、そのあたりの関係がどうなっているかよくわかってない。</p>
                         <p>C++の一様初期化というのを知った。C++11で導入。こんなコードを考える。</p>
-                        <div class="sourceCode" id="cb4"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="pp">#include </span><span class="im">&lt;cstdio&gt;</span></span>
-                        <span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a></span>
-                        <span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a><span class="kw">struct</span> Hoge {</span>
-                        <span id="cb4-4"><a href="#cb4-4" aria-hidden="true"></a>};</span>
-                        <span id="cb4-5"><a href="#cb4-5" aria-hidden="true"></a></span>
-                        <span id="cb4-6"><a href="#cb4-6" aria-hidden="true"></a><span class="dt">int</span> main(){</span>
-                        <span id="cb4-7"><a href="#cb4-7" aria-hidden="true"></a>  Hoge h();</span>
-                        <span id="cb4-8"><a href="#cb4-8" aria-hidden="true"></a>}</span></code></pre></div>
+                        <div class="sourceCode" id="cb4"><pre
+                        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;cstdio&gt;</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="kw">struct</span> Hoge <span class="op">{</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">(){</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  Hoge h<span class="op">();</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
                         <p>これは、おそらく無引数のクラス<code>Hoge</code>の型の変数<code>h</code>の宣言を意図しているが、実際には<code>Hoge</code>を返す関数<code>h</code>のプロトタイプ宣言とみなされる。clang++は昔から、gccは11から警告<code>-Wvexing-parse</code>が導入、デフォルトでオンなっているため、警告が出る。</p>
-                        <div class="sourceCode" id="cb5"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a>prog.cc: In function &#39;int main()&#39;:</span>
-                        <span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a>prog.cc:7:9: warning: empty parentheses were disambiguated as a function declaration [-Wvexing-parse]</span>
-                        <span id="cb5-3"><a href="#cb5-3" aria-hidden="true"></a>    7 |   Hoge h();</span>
-                        <span id="cb5-4"><a href="#cb5-4" aria-hidden="true"></a>      |         ^~</span>
-                        <span id="cb5-5"><a href="#cb5-5" aria-hidden="true"></a>prog.cc:7:9: note: remove parentheses to default-initialize a variable</span>
-                        <span id="cb5-6"><a href="#cb5-6" aria-hidden="true"></a>    7 |   Hoge h();</span>
-                        <span id="cb5-7"><a href="#cb5-7" aria-hidden="true"></a>      |         ^~</span>
-                        <span id="cb5-8"><a href="#cb5-8" aria-hidden="true"></a>      |         --</span>
-                        <span id="cb5-9"><a href="#cb5-9" aria-hidden="true"></a>prog.cc:7:9: note: or replace parentheses with braces to aggregate-initialize a variable</span>
-                        <span id="cb5-10"><a href="#cb5-10" aria-hidden="true"></a>0</span></code></pre></div>
+                        <div class="sourceCode" id="cb5"><pre
+                        class="sourceCode txt"><code class="sourceCode default"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>prog.cc: In function &#39;int main()&#39;:</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>prog.cc:7:9: warning: empty parentheses were disambiguated as a function declaration [-Wvexing-parse]</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    7 |   Hoge h();</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>      |         ^~</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>prog.cc:7:9: note: remove parentheses to default-initialize a variable</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    7 |   Hoge h();</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>      |         ^~</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>      |         --</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>prog.cc:7:9: note: or replace parentheses with braces to aggregate-initialize a variable</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>0</span></code></pre></div>
                         <p>C++11から、コンストラクタ呼び出しに中括弧を使える。</p>
-                        <div class="sourceCode" id="cb6"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="pp">#include </span><span class="im">&lt;cstdio&gt;</span></span>
-                        <span id="cb6-2"><a href="#cb6-2" aria-hidden="true"></a></span>
-                        <span id="cb6-3"><a href="#cb6-3" aria-hidden="true"></a><span class="kw">struct</span> Hoge {</span>
-                        <span id="cb6-4"><a href="#cb6-4" aria-hidden="true"></a>};</span>
-                        <span id="cb6-5"><a href="#cb6-5" aria-hidden="true"></a></span>
-                        <span id="cb6-6"><a href="#cb6-6" aria-hidden="true"></a><span class="dt">int</span> main(){</span>
-                        <span id="cb6-7"><a href="#cb6-7" aria-hidden="true"></a>  Hoge h{};</span>
-                        <span id="cb6-8"><a href="#cb6-8" aria-hidden="true"></a>}</span></code></pre></div>
+                        <div class="sourceCode" id="cb6"><pre
+                        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;cstdio&gt;</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="kw">struct</span> Hoge <span class="op">{</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">(){</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  Hoge h<span class="op">{};</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
                         <p>これで紛れがなくなる。他にも使い捨て構造体を作るのに便利らしい。なるほど。</p>
-                        <h2 id="月11日日"><a href="#11">07月11日(日)</a> <a id="11"></a></h2>
+                        <h2 id="月11日日"><a href="#11">07月11日(日)</a>
+                        <a id="11"></a></h2>
                         <p>学生の論文を見ようとしたが、集中力を欠いた。厳しい。</p>
-                        <h2 id="月10日土"><a href="#10">07月10日(土)</a> <a id="10"></a></h2>
+                        <h2 id="月10日土"><a href="#10">07月10日(土)</a>
+                        <a id="10"></a></h2>
                         <p>すげー寝た。</p>
                         <p>塩漬けテーマの論文化のための資料書いた。</p>
-                        <h2 id="月09日金"><a href="#09">07月09日(金)</a> <a id="09"></a></h2>
+                        <h2 id="月09日金"><a href="#09">07月09日(金)</a>
+                        <a id="09"></a></h2>
                         <p>学習指導の日程とか確認。</p>
                         <p>なんか、うっかり非常に粘着な人がいる話題に触れて、非常に粘着されている人を観測してしまった。こういうの、意見に賛成か反対かに関わらず、その分野全体にたいして非常に迷惑。</p>
                         <p>いま思いついたんだけど、SurveyMonkeyですごくがんばったらゲームブックができるのか。ゲームブックを簡単に作ることができるシステムとか面白いかなぁ。</p>
-                        <p>GitHub演習、アドベンチャーゲームを作らせるつもりなんだけど、制作ツールないか調べてみたら、ティラノスクリプトというのが良いらしい。簡単にできるかなぁ。とりあえず<a href="https://2426.sv01.novelgame.jp/game/2426/DOTOKOI/">ドトコイ</a>をプレイしてみた。一通りのことはできそうだなぁ。</p>
+                        <p>GitHub演習、アドベンチャーゲームを作らせるつもりなんだけど、制作ツールないか調べてみたら、ティラノスクリプトというのが良いらしい。簡単にできるかなぁ。とりあえず<a
+                        href="https://2426.sv01.novelgame.jp/game/2426/DOTOKOI/">ドトコイ</a>をプレイしてみた。一通りのことはできそうだなぁ。</p>
                         <p>学生さんの概要見た。</p>
                         <p>学会の予稿書いた。gnuplotでpdfcairoで出力しようとすると縦横比がおかしくなる問題、<code>set term pdfcairo size 4,3</code>で解決した。しかし、MacのplatexでPDFのサイズが読み込めない。理由がわからない。mediabbを使うか迷ったが、結局epsで吐いた。</p>
                         <p>恐ろしく集中力を欠いたが、最低限の仕事はできたか？</p>
-                        <p>研究室サーバのルータのポートが足りないので増やさないといけない。今刺さってるのがYamaha RTX 830。<a href="http://www.rtpro.yamaha.co.jp/RT/manual/rtx830/Users.pdf">マニュアル</a>。</p>
-                        <p>研究室サーバでsshでログインしてfirefoxが表示できない問題、ssh -Cでできた。Compressionオプションだそうだが、なぜこれでいけるのかよくわかってない。</p>
-                        <p>YAMAHA RTX830は実売5万円くらいかな。Yamaha RTX1210で12万くらい。</p>
-                        <h2 id="月08日木"><a href="#08">07月08日(木)</a> <a id="08"></a></h2>
+                        <p>研究室サーバのルータのポートが足りないので増やさないといけない。今刺さってるのがYamaha
+                        RTX 830。<a
+                        href="http://www.rtpro.yamaha.co.jp/RT/manual/rtx830/Users.pdf">マニュアル</a>。</p>
+                        <p>研究室サーバでsshでログインしてfirefoxが表示できない問題、ssh
+                        -Cでできた。Compressionオプションだそうだが、なぜこれでいけるのかよくわかってない。</p>
+                        <p>YAMAHA RTX830は実売5万円くらいかな。Yamaha
+                        RTX1210で12万くらい。</p>
+                        <h2 id="月08日木"><a href="#08">07月08日(木)</a>
+                        <a id="08"></a></h2>
                         <p>物理学会の座長引き受けた。久しぶりでは？そもそも発表が久しぶりか。</p>
                         <p>研究室ミーティング。輪講。</p>
                         <p>学生さんのためにサンプルコードを書いた。1時間くらいで組む予定が3時間くらいかかってしまった。なんかプログラミング力落ちてるよなぁ。</p>
-                        <h2 id="月07日水"><a href="#07">07月07日(水)</a> <a id="07"></a></h2>
+                        <h2 id="月07日水"><a href="#07">07月07日(水)</a>
+                        <a id="07"></a></h2>
                         <p>Facebookの友達リクエスト、「確認」「リクエストを削除」なのよくないよなぁ。「確認」が、「どんな人なのか確認」と思っちゃう。これ、「承認」にすべきだと思う。Confirmの直訳なんだろうけど。スマホからだと「承認」になるっぽいなぁ。</p>
                         <p>座長をするSWoPP、情報処理学会のマイページから参加申し込みしようとしたらつながらない。まぁいっか。</p>
                         <p>物理情報特別講義の講義ビデオ編集、アップロードした。これで最後だ。</p>
                         <p>被扶養者調査、確認した。</p>
-                        <h2 id="月06日火"><a href="#06">07月06日(火)</a> <a id="06"></a></h2>
+                        <h2 id="月06日火"><a href="#06">07月06日(火)</a>
+                        <a id="06"></a></h2>
                         <p>念のため在宅勤務。左手は痛いが、心配していた高熱は出なかった。若くない、ということか・・・。倦怠感はあるが、副反応なのか持病なのかよくわからん。</p>
                         <p>レポートの採点。</p>
-                        <h2 id="月05日月"><a href="#05">07月05日(月)</a> <a id="05"></a></h2>
+                        <h2 id="月05日月"><a href="#05">07月05日(月)</a>
+                        <a id="05"></a></h2>
                         <p>ワクチン注射受けた。</p>
                         <p>OS自作もくもく会。OSの助けを借りずにグラフィックを描画。感慨深いものがある。いつかどこかに感想を書こう。</p>
-                        <h2 id="月04日日"><a href="#04">07月04日(日)</a> <a id="04"></a></h2>
+                        <h2 id="月04日日"><a href="#04">07月04日(日)</a>
+                        <a id="04"></a></h2>
                         <p>観劇。久しぶりに高速にのった。</p>
-                        <h2 id="月03日土"><a href="#03">07月03日(土)</a> <a id="03"></a></h2>
+                        <h2 id="月03日土"><a href="#03">07月03日(土)</a>
+                        <a id="03"></a></h2>
                         <p>あるオンラインミーティングに参加。</p>
-                        <h2 id="月02日金"><a href="#02">07月02日(金)</a> <a id="02"></a></h2>
+                        <h2 id="月02日金"><a href="#02">07月02日(金)</a>
+                        <a id="02"></a></h2>
                         <p>研究室ミーティング。Langevin方程式の話。Fokker-PlanckをどうしてもFocker-Planckと書いてしまう。</p>
-                        <h2 id="月01日木"><a href="#01">07月01日(木)</a> <a id="01"></a></h2>
+                        <h2 id="月01日木"><a href="#01">07月01日(木)</a>
+                        <a id="01"></a></h2>
                         <p>似鳥さんの講義。</p>
                         <p>A64FXのレイテンシが9もあるの？レジスタが32本しかないと、普通に足りないのでは？</p>
                         <p>ARMの逆数近似、8bitなんだ。</p>
                         <p>svrsqrte_f64が逆数近似かな。</p>
                         <p>__restrictをつけると、エイリアスがないことを宣言できる。</p>
-                        <p>ストア命令もFPUのパイプを消費するのマジか。 ロード命令は消費しない。</p>
+                        <p>ストア命令もFPUのパイプを消費するのマジか。
+                        ロード命令は消費しない。</p>
                         <p>srqrtsという補助命令がある</p>
-                        <p>Tree Height Reduction (THR)という考えがあることを知った。</p>
+                        <p>Tree Height Reduction
+                        (THR)という考えがあることを知った。</p>
                         <p>SWPが効くのはtrad mode。-KfastでSWP</p>
                         <p>IntelコンパイラにLLVMベースのがあるのか！</p>
                         <p>引き算の順序で性能が代わる。x86はメモリをオペランドに取れるから。</p>

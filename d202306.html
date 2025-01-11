@@ -22,276 +22,364 @@
     <article class="markdown-body">
                         <h1 id="年6月">2023年6月</h1>
                         <p><a href="index.html">ログ一覧</a></p>
-                        <h2 id="月30日金"><a href="#30">06月30日(金)</a> <a id="30"></a></h2>
+                        <h2 id="月30日金"><a href="#30">06月30日(金)</a>
+                        <a id="30"></a></h2>
                         <p>数理物理の中間テスト。一時間の予定が11分で終わる人が出て驚いた。いや、少し簡単だったかなとは思ったけどさ。</p>
                         <p>その後採点。9割近くが満点でとても感心した。中間試験予想問題集を用意し、そこからそのまま出したから、ちゃんと勉強してくればもちろん解けるんだけど、僕は今の大学生がそんなに真面目だとは思わなかった。正直、全く勉強せずに来る学生が3割はいると思っていた。良い方に予想が裏切られた。</p>
-                        <h2 id="月29日木"><a href="#29">06月29日(木)</a> <a id="29"></a></h2>
-                        <p>yaml_cvにPR。Ruby 3.1以降で動かないらしい。確認。まずMacにRuby 3.1をインストールするためにrenvを入れる。</p>
-                        <div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="ex">brew</span> install rbenv ruby-build</span></code></pre></div>
-                        <div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a>$ <span class="ex">rbenv</span> init - </span>
-                        <span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a><span class="bu">export</span> <span class="va">PATH=</span><span class="st">&quot;/Users/watanabe/.rbenv/shims:</span><span class="va">${PATH}</span><span class="st">&quot;</span></span>
-                        <span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a><span class="bu">export</span> <span class="va">RBENV_SHELL=</span>zsh</span>
-                        <span id="cb2-4"><a href="#cb2-4" aria-hidden="true"></a><span class="bu">source</span> <span class="st">&#39;/usr/local/Cellar/rbenv/1.2.0/libexec/../completions/rbenv.zsh&#39;</span></span>
-                        <span id="cb2-5"><a href="#cb2-5" aria-hidden="true"></a><span class="bu">command</span> rbenv rehash <span class="op">2&gt;</span>/dev/null</span>
-                        <span id="cb2-6"><a href="#cb2-6" aria-hidden="true"></a><span class="fu">rbenv()</span> <span class="kw">{</span></span>
-                        <span id="cb2-7"><a href="#cb2-7" aria-hidden="true"></a>  <span class="bu">local</span> <span class="va">command</span></span>
-                        <span id="cb2-8"><a href="#cb2-8" aria-hidden="true"></a>  <span class="va">command=</span><span class="st">&quot;</span><span class="va">${1:-}</span><span class="st">&quot;</span></span>
-                        <span id="cb2-9"><a href="#cb2-9" aria-hidden="true"></a>  <span class="kw">if</span><span class="bu"> [</span> <span class="st">&quot;</span><span class="va">$#</span><span class="st">&quot;</span> <span class="ot">-gt</span> 0<span class="bu"> ]</span>; <span class="kw">then</span></span>
-                        <span id="cb2-10"><a href="#cb2-10" aria-hidden="true"></a>    <span class="bu">shift</span></span>
-                        <span id="cb2-11"><a href="#cb2-11" aria-hidden="true"></a>  <span class="kw">fi</span></span>
-                        <span id="cb2-12"><a href="#cb2-12" aria-hidden="true"></a></span>
-                        <span id="cb2-13"><a href="#cb2-13" aria-hidden="true"></a>  <span class="kw">case</span> <span class="st">&quot;</span><span class="va">$command</span><span class="st">&quot;</span><span class="kw"> in</span></span>
-                        <span id="cb2-14"><a href="#cb2-14" aria-hidden="true"></a>  rehash<span class="kw">|</span>shell<span class="kw">)</span></span>
-                        <span id="cb2-15"><a href="#cb2-15" aria-hidden="true"></a>    <span class="bu">eval</span> <span class="st">&quot;</span><span class="va">$(</span><span class="ex">rbenv</span> <span class="st">&quot;sh-</span><span class="va">$command</span><span class="st">&quot;</span> <span class="st">&quot;</span><span class="va">$@</span><span class="st">&quot;</span><span class="va">)</span><span class="st">&quot;</span><span class="kw">;;</span></span>
-                        <span id="cb2-16"><a href="#cb2-16" aria-hidden="true"></a>  <span class="ex">*</span>)</span>
-                        <span id="cb2-17"><a href="#cb2-17" aria-hidden="true"></a>    <span class="bu">command</span> rbenv <span class="st">&quot;</span><span class="va">$command</span><span class="st">&quot;</span> <span class="st">&quot;</span><span class="va">$@</span><span class="st">&quot;</span><span class="kw">;;</span></span>
-                        <span id="cb2-18"><a href="#cb2-18" aria-hidden="true"></a>  <span class="kw">esac</span></span>
-                        <span id="cb2-19"><a href="#cb2-19" aria-hidden="true"></a><span class="kw">}</span></span></code></pre></div>
+                        <h2 id="月29日木"><a href="#29">06月29日(木)</a>
+                        <a id="29"></a></h2>
+                        <p>yaml_cvにPR。Ruby
+                        3.1以降で動かないらしい。確認。まずMacにRuby
+                        3.1をインストールするためにrenvを入れる。</p>
+                        <div class="sourceCode" id="cb1"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> install rbenv ruby-build</span></code></pre></div>
+                        <div class="sourceCode" id="cb2"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> rbenv init <span class="at">-</span> </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">PATH</span><span class="op">=</span><span class="st">&quot;/Users/watanabe/.rbenv/shims:</span><span class="va">${PATH}</span><span class="st">&quot;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">RBENV_SHELL</span><span class="op">=</span>zsh</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> <span class="st">&#39;/usr/local/Cellar/rbenv/1.2.0/libexec/../completions/rbenv.zsh&#39;</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="bu">command</span> rbenv rehash <span class="dv">2</span><span class="op">&gt;</span>/dev/null</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">rbenv()</span> <span class="kw">{</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="bu">local</span> <span class="va">command</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="va">command</span><span class="op">=</span><span class="st">&quot;</span><span class="va">${1</span><span class="op">:-</span><span class="va">}</span><span class="st">&quot;</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> <span class="bu">[</span> <span class="st">&quot;</span><span class="va">$#</span><span class="st">&quot;</span> <span class="ot">-gt</span> 0 <span class="bu">]</span><span class="kw">;</span> <span class="cf">then</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">shift</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="cf">fi</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>  <span class="cf">case</span> <span class="st">&quot;</span><span class="va">$command</span><span class="st">&quot;</span> <span class="kw">in</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>  <span class="ss">rehash</span><span class="kw">|</span><span class="ss">shell</span><span class="kw">)</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    <span class="bu">eval</span> <span class="st">&quot;</span><span class="va">$(</span><span class="ex">rbenv</span> <span class="st">&quot;sh-</span><span class="va">$command</span><span class="st">&quot;</span> <span class="st">&quot;</span><span class="va">$@</span><span class="st">&quot;</span><span class="va">)</span><span class="st">&quot;</span><span class="cf">;;</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>  <span class="pp">*</span><span class="kw">)</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    <span class="bu">command</span> rbenv <span class="st">&quot;</span><span class="va">$command</span><span class="st">&quot;</span> <span class="st">&quot;</span><span class="va">$@</span><span class="st">&quot;</span><span class="cf">;;</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>  <span class="cf">esac</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span></code></pre></div>
                         <p>出てきた内容を<code>.zshrc</code>に追加(僕の場合は<code>.zshrc_mine.zsh</code>)。</p>
-                        <div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a>$ <span class="ex">rbenv</span> install --list</span>
-                        <span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a><span class="ex">3.0.6</span></span>
-                        <span id="cb3-3"><a href="#cb3-3" aria-hidden="true"></a><span class="ex">3.1.4</span></span>
-                        <span id="cb3-4"><a href="#cb3-4" aria-hidden="true"></a><span class="ex">3.2.2</span></span>
-                        <span id="cb3-5"><a href="#cb3-5" aria-hidden="true"></a><span class="ex">jruby-9.4.3.0</span></span>
-                        <span id="cb3-6"><a href="#cb3-6" aria-hidden="true"></a><span class="ex">mruby-3.2.0</span></span>
-                        <span id="cb3-7"><a href="#cb3-7" aria-hidden="true"></a><span class="ex">picoruby-3.0.0</span></span>
-                        <span id="cb3-8"><a href="#cb3-8" aria-hidden="true"></a><span class="ex">truffleruby-23.0.0</span></span>
-                        <span id="cb3-9"><a href="#cb3-9" aria-hidden="true"></a><span class="ex">truffleruby+graalvm-23.0.0</span></span>
-                        <span id="cb3-10"><a href="#cb3-10" aria-hidden="true"></a></span>
-                        <span id="cb3-11"><a href="#cb3-11" aria-hidden="true"></a><span class="ex">Only</span> latest stable releases for each Ruby implementation are shown.</span>
-                        <span id="cb3-12"><a href="#cb3-12" aria-hidden="true"></a><span class="ex">Use</span> <span class="st">&#39;rbenv install --list-all / -L&#39;</span> to show all local versions.</span></code></pre></div>
+                        <div class="sourceCode" id="cb3"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> rbenv install <span class="at">--list</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">3.0.6</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ex">3.1.4</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="ex">3.2.2</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="ex">jruby-9.4.3.0</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="ex">mruby-3.2.0</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="ex">picoruby-3.0.0</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="ex">truffleruby-23.0.0</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="ex">truffleruby+graalvm-23.0.0</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="ex">Only</span> latest stable releases for each Ruby implementation are shown.</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="ex">Use</span> <span class="st">&#39;rbenv install --list-all / -L&#39;</span> to show all local versions.</span></code></pre></div>
                         <p>まず2.6で実行。</p>
-                        <div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a>$ <span class="ex">ruby</span> --version</span>
-                        <span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a><span class="ex">ruby</span> 2.6.10p210 (2022-04-12 revision 67958) [<span class="ex">universal.x86_64-darwin22</span>]</span>
-                        <span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a>$ <span class="ex">ruby</span> make_cv.rb</span>
-                        <span id="cb4-4"><a href="#cb4-4" aria-hidden="true"></a><span class="ex">input</span>  file: data.yaml</span>
-                        <span id="cb4-5"><a href="#cb4-5" aria-hidden="true"></a><span class="ex">style</span>  file: style.txt</span>
-                        <span id="cb4-6"><a href="#cb4-6" aria-hidden="true"></a><span class="ex">output</span> file: output.pdf</span>
-                        <span id="cb4-7"><a href="#cb4-7" aria-hidden="true"></a><span class="ex">Done.</span></span></code></pre></div>
+                        <div class="sourceCode" id="cb4"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ruby <span class="at">--version</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">ruby</span> 2.6.10p210 <span class="er">(</span><span class="ex">2022-04-12</span> revision 67958<span class="kw">)</span> <span class="ex">[universal.x86_64-darwin22]</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ruby make_cv.rb</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="ex">input</span>  file: data.yaml</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="ex">style</span>  file: style.txt</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="ex">output</span> file: output.pdf</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="ex">Done.</span></span></code></pre></div>
                         <p>できてる。</p>
-                        <div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a>$ <span class="ex">rbenv</span> install 3.2.2</span>
-                        <span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a>$ <span class="ex">rbenv</span> global 3.2.2  </span>
-                        <span id="cb5-3"><a href="#cb5-3" aria-hidden="true"></a>$ <span class="ex">ruby</span> --version</span>
-                        <span id="cb5-4"><a href="#cb5-4" aria-hidden="true"></a><span class="ex">ruby</span> 3.2.2 (2023-03-30 revision e51014f9c0) [<span class="ex">x86_64-darwin22</span>]</span></code></pre></div>
+                        <div class="sourceCode" id="cb5"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> rbenv install 3.2.2</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> rbenv global 3.2.2  </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ruby <span class="at">--version</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="ex">ruby</span> 3.2.2 <span class="er">(</span><span class="ex">2023-03-30</span> revision e51014f9c0<span class="kw">)</span> <span class="ex">[x86_64-darwin22]</span></span></code></pre></div>
                         <p>いつのまにか、Rubyで<code>Dir.exists?</code>と<code>File.exists?</code>が非推奨になったと。</p>
-                        <p>というわけでPRをマージしたらRuby 3.2.2でも動くことを確認。さらに、bundle –without documentationがdeprecatedになっていたので、</p>
-                        <div class="sourceCode" id="cb6"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="ex">bundle</span> config path vendor/bundle</span>
-                        <span id="cb6-2"><a href="#cb6-2" aria-hidden="true"></a><span class="ex">bundle</span> config set --local without <span class="st">&#39;documentation&#39;</span></span>
-                        <span id="cb6-3"><a href="#cb6-3" aria-hidden="true"></a><span class="ex">bundle</span> install</span></code></pre></div>
+                        <p>というわけでPRをマージしたらRuby
+                        3.2.2でも動くことを確認。さらに、bundle –without
+                        documentationがdeprecatedになっていたので、</p>
+                        <div class="sourceCode" id="cb6"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">bundle</span> config path vendor/bundle</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">bundle</span> config set <span class="at">--local</span> without <span class="st">&#39;documentation&#39;</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="ex">bundle</span> install</span></code></pre></div>
                         <p>と、ローカル設定するよう修正。</p>
                         <p>さらに、前からやろうやろうと思っていたIPAフォントの同封を実施。ライセンスをちゃんと読んだら同封して良さそうだったので。こういうオリジナルライセンスって、きっちり読まないと何をして良いか、よくないかがわからないので面倒なんだよなぁ。</p>
                         <p>しかし、しばらく触ってないといろんなものがdeprecatedになってて、それで世の中の進歩を知る感じになって、自分だけ取り残されてる気持ちになってイヤになりますね。</p>
                         <p>古いバージョンのRubyを入れる。</p>
-                        <div class="sourceCode" id="cb7"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a><span class="ex">rbenv</span> install 2.7.8  </span>
-                        <span id="cb7-2"><a href="#cb7-2" aria-hidden="true"></a><span class="ex">rbenv</span> local 2.7.8</span></code></pre></div>
+                        <div class="sourceCode" id="cb7"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">rbenv</span> install 2.7.8  </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">rbenv</span> local 2.7.8</span></code></pre></div>
                         <p>うん、どちらも動くようになった。</p>
                         <p>結局、PrawnのGemがメンテされていないのが悪いので、</p>
-                        <div class="sourceCode" id="cb8"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a><span class="co"># frozen_string_literal: true</span></span>
-                        <span id="cb8-2"><a href="#cb8-2" aria-hidden="true"></a></span>
-                        <span id="cb8-3"><a href="#cb8-3" aria-hidden="true"></a><span class="bu">source</span> <span class="st">&quot;https://rubygems.org&quot;</span></span>
-                        <span id="cb8-4"><a href="#cb8-4" aria-hidden="true"></a></span>
-                        <span id="cb8-5"><a href="#cb8-5" aria-hidden="true"></a><span class="ex">git_source</span>(:github) {<span class="kw">|</span><span class="ex">repo_name</span><span class="kw">|</span> <span class="st">&quot;https://github.com/#{repo_name}&quot;</span> }</span>
-                        <span id="cb8-6"><a href="#cb8-6" aria-hidden="true"></a></span>
-                        <span id="cb8-7"><a href="#cb8-7" aria-hidden="true"></a><span class="ex">gem</span> <span class="st">&quot;prawn&quot;</span>, github: <span class="st">&quot;prawnpdf/prawn&quot;</span></span></code></pre></div>
+                        <div class="sourceCode" id="cb8"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># frozen_string_literal: true</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> <span class="st">&quot;https://rubygems.org&quot;</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="ex">git_source</span><span class="er">(</span><span class="ex">:github</span><span class="kw">)</span> <span class="ex">{</span><span class="kw">|</span><span class="ex">repo_name</span><span class="kw">|</span> <span class="st">&quot;https://github.com/#{repo_name}&quot;</span> }</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="ex">gem</span> <span class="st">&quot;prawn&quot;</span>, github: <span class="st">&quot;prawnpdf/prawn&quot;</span></span></code></pre></div>
                         <p>と、GitHubから取るようにすればOKだった。これで<code>matrix</code>は不要。</p>
-                        <p>ついでに前から気になってた<a href="https://github.com/kaityo256/lammps_collision">lammps_collision</a>の<code>format</code>文字列をf-stringに修正。学生さんがこれをスタートに改造することが多いので、formatを使い続けちゃうんだよね。</p>
-                        <h2 id="月28日水"><a href="#28">06月28日(水)</a> <a id="28"></a></h2>
+                        <p>ついでに前から気になってた<a
+                        href="https://github.com/kaityo256/lammps_collision">lammps_collision</a>の<code>format</code>文字列をf-stringに修正。学生さんがこれをスタートに改造することが多いので、formatを使い続けちゃうんだよね。</p>
+                        <h2 id="月28日水"><a href="#28">06月28日(水)</a>
+                        <a id="28"></a></h2>
                         <p>頭痛がひどい。</p>
                         <p>しばらく使っていないサービスの大会確認が来た。住所が情報基盤センター時代のもの。必要になったら再入会することにして、とりあえず退会しておいた。</p>
                         <p>Wordで用意されたテンプレート、重くて重くていじるのに死ぬほど時間がかかったので、PDFにしてAIで読み込んで編集した。すごく遠回りしている気がするが……</p>
-                        <h2 id="月27日火"><a href="#27">06月27日(火)</a> <a id="27"></a></h2>
+                        <h2 id="月27日火"><a href="#27">06月27日(火)</a>
+                        <a id="27"></a></h2>
                         <p>おおう、先週の木曜日から日記書いてない。</p>
                         <p>「いづれも」もOKなんだ(歴史的仮名遣い,)。知らなかった。</p>
                         <p>実験レポート採点。</p>
-                        <p><a href="https://www.youtube.com/watch?v=ot0I7YE7VcE&amp;list=PLOU2XLYxmsIKqt_HI3yc516rbBca_hli2">AI/ML Sessions at Google IO 2023</a> 良さげ。</p>
+                        <p><a
+                        href="https://www.youtube.com/watch?v=ot0I7YE7VcE&amp;list=PLOU2XLYxmsIKqt_HI3yc516rbBca_hli2">AI/ML
+                        Sessions at Google IO 2023</a> 良さげ。</p>
                         <p>学生さんの論文チェック。長くおまたせして申し訳ない。あとは校閲だして投稿ですね。</p>
-                        <h2 id="月26日月"><a href="#26">06月26日(月)</a> <a id="26"></a></h2>
+                        <h2 id="月26日月"><a href="#26">06月26日(月)</a>
+                        <a id="26"></a></h2>
                         <p>解析力学。今日はラグランジュ形式の力学。</p>
                         <p>FSのヒアリング。量子化学と量子コンピュータ。</p>
                         <p>学習指導のお仕事。時間に追われてながら複数の仕事を並行してやってるので、最近ミスが多い。</p>
-                        <h2 id="月25日日"><a href="#25">06月25日(日)</a> <a id="25"></a></h2>
+                        <h2 id="月25日日"><a href="#25">06月25日(日)</a>
+                        <a id="25"></a></h2>
                         <p>NOP</p>
-                        <h2 id="月24日土"><a href="#24">06月24日(土)</a> <a id="24"></a></h2>
+                        <h2 id="月24日土"><a href="#24">06月24日(土)</a>
+                        <a id="24"></a></h2>
                         <p>NOP</p>
-                        <h2 id="月23日金"><a href="#23">06月23日(金)</a> <a id="23"></a></h2>
+                        <h2 id="月23日金"><a href="#23">06月23日(金)</a>
+                        <a id="23"></a></h2>
                         <p>解析力学。今日は変分原理。一番キモとなる部分だが、ちゃんと話せただろうか。</p>
                         <p>ずっと解析力学の講義を持ちたいと思っていて、念願かなってこうして講義しているわけだけど、思い入れがある分、準備にすごい時間がかかっていて、それでいて他の仕事も結構あるのでしんどい。</p>
-                        <h2 id="月22日木"><a href="#22">06月22日(木)</a> <a id="22"></a></h2>
+                        <h2 id="月22日木"><a href="#22">06月22日(木)</a>
+                        <a id="22"></a></h2>
                         <p>pandocを使ってmarkdownからpdfを作ると、boldsymbolが太字にならない問題、bmを使ってもうまくいかない。仕方ないのでpandocが吐いたtexソースを見て二分探索。最終的に</p>
-                        <div class="sourceCode" id="cb9"><pre class="sourceCode latex"><code class="sourceCode latex"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a><span class="bu">\usepackage</span>{<span class="ex">unicode-math</span>} </span></code></pre></div>
+                        <div class="sourceCode" id="cb9"><pre
+                        class="sourceCode latex"><code class="sourceCode latex"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="bu">\usepackage</span>{<span class="ex">unicode-math</span>} </span></code></pre></div>
                         <p>が問題を起こしていることが判明。</p>
                         <p>つまり、</p>
-                        <div class="sourceCode" id="cb10"><pre class="sourceCode tex"><code class="sourceCode latex"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true"></a><span class="bu">\documentclass</span>{<span class="ex">ltjarticle</span>}</span>
-                        <span id="cb10-2"><a href="#cb10-2" aria-hidden="true"></a><span class="bu">\usepackage</span>{<span class="ex">amsmath</span>}</span>
-                        <span id="cb10-3"><a href="#cb10-3" aria-hidden="true"></a><span class="kw">\begin</span>{<span class="ex">document</span>}</span>
-                        <span id="cb10-4"><a href="#cb10-4" aria-hidden="true"></a><span class="ss">$$</span></span>
-                        <span id="cb10-5"><a href="#cb10-5" aria-hidden="true"></a><span class="ss">  </span><span class="sc">\boldsymbol</span><span class="ss">{r} = r</span></span>
-                        <span id="cb10-6"><a href="#cb10-6" aria-hidden="true"></a><span class="ss">$$</span></span>
-                        <span id="cb10-7"><a href="#cb10-7" aria-hidden="true"></a><span class="kw">\end</span>{<span class="ex">document</span>}</span></code></pre></div>
+                        <div class="sourceCode" id="cb10"><pre
+                        class="sourceCode tex"><code class="sourceCode latex"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="bu">\documentclass</span>{<span class="ex">ltjarticle</span>}</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="bu">\usepackage</span>{<span class="ex">amsmath</span>}</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">document</span>}</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="ss">$$</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="ss">  </span><span class="sc">\boldsymbol</span><span class="ss">{r} = r</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="ss">$$</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">document</span>}</span></code></pre></div>
                         <p>というファイルをつくってlualatexでコンパイルしてもボールドになるが、</p>
-                        <div class="sourceCode" id="cb11"><pre class="sourceCode tex"><code class="sourceCode latex"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true"></a><span class="bu">\documentclass</span>{<span class="ex">ltjarticle</span>}</span>
-                        <span id="cb11-2"><a href="#cb11-2" aria-hidden="true"></a><span class="bu">\usepackage</span>{<span class="ex">amsmath</span>}</span>
-                        <span id="cb11-3"><a href="#cb11-3" aria-hidden="true"></a><span class="bu">\usepackage</span>{<span class="ex">unicode-math</span>}</span>
-                        <span id="cb11-4"><a href="#cb11-4" aria-hidden="true"></a><span class="kw">\begin</span>{<span class="ex">document</span>}</span>
-                        <span id="cb11-5"><a href="#cb11-5" aria-hidden="true"></a><span class="ss">$$</span></span>
-                        <span id="cb11-6"><a href="#cb11-6" aria-hidden="true"></a><span class="ss">  </span><span class="sc">\boldsymbol</span><span class="ss">{r} = r</span></span>
-                        <span id="cb11-7"><a href="#cb11-7" aria-hidden="true"></a><span class="ss">$$</span></span>
-                        <span id="cb11-8"><a href="#cb11-8" aria-hidden="true"></a><span class="kw">\end</span>{<span class="ex">document</span>}</span></code></pre></div>
+                        <div class="sourceCode" id="cb11"><pre
+                        class="sourceCode tex"><code class="sourceCode latex"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="bu">\documentclass</span>{<span class="ex">ltjarticle</span>}</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="bu">\usepackage</span>{<span class="ex">amsmath</span>}</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="bu">\usepackage</span>{<span class="ex">unicode-math</span>}</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">document</span>}</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="ss">$$</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="ss">  </span><span class="sc">\boldsymbol</span><span class="ss">{r} = r</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="ss">$$</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">document</span>}</span></code></pre></div>
                         <p>とするとうまくいかない。</p>
-                        <p>検索したら<a href="https://tex.stackexchange.com/a/55417">解決策</a>を見つけた。</p>
-                        <div class="sourceCode" id="cb12"><pre class="sourceCode tex"><code class="sourceCode latex"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true"></a><span class="fu">\setmainfont</span>{XITS}</span>
-                        <span id="cb12-2"><a href="#cb12-2" aria-hidden="true"></a><span class="fu">\setmathfont</span>{XITS Math}</span>
-                        <span id="cb12-3"><a href="#cb12-3" aria-hidden="true"></a><span class="fu">\setmathfont</span>[version=bold,FakeBold=3.5]{XITS Math}</span></code></pre></div>
+                        <p>検索したら<a
+                        href="https://tex.stackexchange.com/a/55417">解決策</a>を見つけた。</p>
+                        <div class="sourceCode" id="cb12"><pre
+                        class="sourceCode tex"><code class="sourceCode latex"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">\setmainfont</span>{XITS}</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">\setmathfont</span>{XITS Math}</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">\setmathfont</span>[version=bold,FakeBold=3.5]{XITS Math}</span></code></pre></div>
                         <p>を追加するとうまくいく。ちょっとフォントが変わってしまうが。</p>
                         <p>いろいろ調べたが、結局「太字の斜体を使うな」というのが正しいらしい。<code>\mathbf</code>を使うのが正解。どうしてもやりたければ上記のworkaroundでなんとかする。</p>
                         <p>ハンズオン。バッチシステムの使い方。</p>
                         <p>研究室ミーティング。レイリーテイラー不安定性。</p>
-                        <p>輪講。シャノンエントロピーとKL divergence。</p>
-                        <p><a href="https://linesegment.web.fc2.com/index.html">このサイト</a>すごい。高木貞治の解析概論が丸々載っている。</p>
-                        <h2 id="月21日水"><a href="#21">06月21日(水)</a> <a id="21"></a></h2>
+                        <p>輪講。シャノンエントロピーとKL
+                        divergence。</p>
+                        <p><a
+                        href="https://linesegment.web.fc2.com/index.html">このサイト</a>すごい。高木貞治の解析概論が丸々載っている。</p>
+                        <h2 id="月21日水"><a href="#21">06月21日(水)</a>
+                        <a id="21"></a></h2>
                         <p>ここに書いても仕方ないことなんだけど、大学教員が公共の場で自分の大学の学生を悪く言うの、よくないと思うな。その人が教育熱心で、かつ「こういう学生であって欲しい」という気持ちの裏返しなんだと思うんだけど、教育効果という意味ではマイナスだし、その人の印象も悪くなる。「こういう学生であって欲しい」というイメージがあり、そういう学生が増えて欲しいなら、「そういう学生」を見つけた時にSNSで褒めればいいと思う。</p>
-                        <h2 id="月20日火"><a href="#20">06月20日(火)</a> <a id="20"></a></h2>
+                        <h2 id="月20日火"><a href="#20">06月20日(火)</a>
+                        <a id="20"></a></h2>
                         <p>数理物理、毎回講義の後に質問の列ができて「真面目だなぁ」と思ってたんだけど、単に僕の講義がわかりにくいだけ、という可能性も・・・</p>
                         <p>計算サーバのノードが死んでる件、どうしようもないので、とりあえず生きているノードだけで回すことにする。まず、</p>
-                        <div class="sourceCode" id="cb13"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true"></a><span class="ex">qmgr</span> -c <span class="st">&#39;p n hostname&#39;</span></span></code></pre></div>
+                        <div class="sourceCode" id="cb13"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">qmgr</span> <span class="at">-c</span> <span class="st">&#39;p n hostname&#39;</span></span></code></pre></div>
                         <p>で現在の設定を調べて保存。その上で、つながらないノードを、</p>
-                        <div class="sourceCode" id="cb14"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true"></a><span class="fu">sudo</span> qmgr -c <span class="st">&quot;set node hostname state = offline&quot;</span></span></code></pre></div>
+                        <div class="sourceCode" id="cb14"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> qmgr <span class="at">-c</span> <span class="st">&quot;set node hostname state = offline&quot;</span></span></code></pre></div>
                         <p>で一時的に停止。復活は</p>
-                        <div class="sourceCode" id="cb15"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true"></a><span class="fu">sudo</span> qmgr -c <span class="st">&quot;set node hostname state = free&quot;</span></span></code></pre></div>
+                        <div class="sourceCode" id="cb15"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> qmgr <span class="at">-c</span> <span class="st">&quot;set node hostname state = free&quot;</span></span></code></pre></div>
                         <p>全状態を調べるには、</p>
-                        <div class="sourceCode" id="cb16"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true"></a><span class="ex">pbsnodes</span> -a</span></code></pre></div>
+                        <div class="sourceCode" id="cb16"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pbsnodes</span> <span class="at">-a</span></span></code></pre></div>
                         <p>毎回調べてる気がするが。とりあえず2ノードだけ活かす設定に変更。これでハンズオンできるはず。</p>
-                        <h2 id="月19日月"><a href="#19">06月19日(月)</a> <a id="19"></a></h2>
+                        <h2 id="月19日月"><a href="#19">06月19日(月)</a>
+                        <a id="19"></a></h2>
                         <p>うお、Macにpptxgrepが入ってない。ビルドしようとしたが、dmdが入ってない。</p>
-                        <div class="sourceCode" id="cb17"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true"></a><span class="fu">git</span> clone git@github.com:kaityo256/pptxgrep.git</span>
-                        <span id="cb17-2"><a href="#cb17-2" aria-hidden="true"></a><span class="bu">cd</span> pptxgrep</span>
-                        <span id="cb17-3"><a href="#cb17-3" aria-hidden="true"></a><span class="ex">brew</span> install dmd</span></code></pre></div>
+                        <div class="sourceCode" id="cb17"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone git@github.com:kaityo256/pptxgrep.git</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> pptxgrep</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> install dmd</span></code></pre></div>
                         <p>コンパイル。</p>
-                        <div class="sourceCode" id="cb18"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true"></a>$ <span class="ex">dmd</span> pptxgrep.d</span>
-                        <span id="cb18-2"><a href="#cb18-2" aria-hidden="true"></a><span class="ex">pptxgrep.d</span>(8)<span class="bu">:</span> Error: unable to read module <span class="kw">`</span><span class="ex">xml</span><span class="kw">`</span></span>
-                        <span id="cb18-3"><a href="#cb18-3" aria-hidden="true"></a><span class="ex">pptxgrep.d</span>(8)<span class="bu">:</span>        Expected <span class="st">&#39;std/xml.d&#39;</span> or <span class="st">&#39;std/xml/package.d&#39;</span> in one of the following import paths:</span>
-                        <span id="cb18-4"><a href="#cb18-4" aria-hidden="true"></a><span class="ex">import</span> path[0] = /usr/local/opt/dmd/include/dlang/dmd</span></code></pre></div>
+                        <div class="sourceCode" id="cb18"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> dmd pptxgrep.d</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pptxgrep.d</span><span class="er">(</span><span class="ex">8</span><span class="kw">)</span><span class="bu">:</span> Error: unable to read module <span class="kw">`</span><span class="ex">xml</span><span class="kw">`</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pptxgrep.d</span><span class="er">(</span><span class="ex">8</span><span class="kw">)</span><span class="bu">:</span>        Expected <span class="st">&#39;std/xml.d&#39;</span> or <span class="st">&#39;std/xml/package.d&#39;</span> in one of the following import paths:</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="ex">import</span> path<span class="pp">[</span><span class="ss">0</span><span class="pp">]</span> = /usr/local/opt/dmd/include/dlang/dmd</span></code></pre></div>
                         <p>うげ。xmlがインポートできない。調べたら<code>std.xml</code>が非推奨になってた。もう別の言語で書くか。Rustか、Goかなぁ。面倒だからC++かなぁ。</p>
                         <p>時間があったらGoで書いてみるか・・・</p>
                         <p>とりあえずインストールだけ。</p>
                         <ul>
-                        <li><a href="https://go.dev/dl/">https://go.dev/dl/</a>に行く</li>
-                        <li><a href="https://go.dev/dl/go1.20.5.darwin-amd64.pkg">https://go.dev/dl/go1.20.5.darwin-amd64.pkg</a>をダウンロード</li>
+                        <li><a
+                        href="https://go.dev/dl/">https://go.dev/dl/</a>に行く</li>
+                        <li><a
+                        href="https://go.dev/dl/go1.20.5.darwin-amd64.pkg">https://go.dev/dl/go1.20.5.darwin-amd64.pkg</a>をダウンロード</li>
                         </ul>
-                        <div class="sourceCode" id="cb19"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true"></a>$ <span class="ex">go</span> version</span>
-                        <span id="cb19-2"><a href="#cb19-2" aria-hidden="true"></a><span class="ex">go</span> version go1.20.5 darwin/amd64</span></code></pre></div>
+                        <div class="sourceCode" id="cb19"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> go version</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="ex">go</span> version go1.20.5 darwin/amd64</span></code></pre></div>
                         <p>はいったぞ。</p>
                         <ul>
-                        <li>VSCodeにRich Go language support for Visual Studio Codeをインストール</li>
+                        <li>VSCodeにRich Go language support for Visual
+                        Studio Codeをインストール</li>
                         </ul>
                         <p>そしたらVSCodeがさらに以下のツールを入れた。</p>
-                        <div class="sourceCode" id="cb20"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true"></a>  gotests</span>
-                        <span id="cb20-2"><a href="#cb20-2" aria-hidden="true"></a>  gomodifytags</span>
-                        <span id="cb20-3"><a href="#cb20-3" aria-hidden="true"></a>  impl</span>
-                        <span id="cb20-4"><a href="#cb20-4" aria-hidden="true"></a>  goplay</span>
-                        <span id="cb20-5"><a href="#cb20-5" aria-hidden="true"></a>  dlv</span>
-                        <span id="cb20-6"><a href="#cb20-6" aria-hidden="true"></a>  staticcheck</span>
-                        <span id="cb20-7"><a href="#cb20-7" aria-hidden="true"></a>  gopls</span></code></pre></div>
+                        <div class="sourceCode" id="cb20"><pre
+                        class="sourceCode txt"><code class="sourceCode default"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>  gotests</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  gomodifytags</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  impl</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  goplay</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>  dlv</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>  staticcheck</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>  gopls</span></code></pre></div>
                         <p>後でGoでなんか書いてみよう(←いつだ？)。</p>
-                        <p>数理物理、今回はまともに講義できたけど、反変ベクトル、共変ベクトルの混乱を引きずってるな。来年からは縦ベクトル、横ベクトルとdx, ∂xの双対性だけ説明して、反変、共変の説明はやめよう。</p>
-                        <h2 id="月18日日"><a href="#18">06月18日(日)</a> <a id="18"></a></h2>
+                        <p>数理物理、今回はまともに講義できたけど、反変ベクトル、共変ベクトルの混乱を引きずってるな。来年からは縦ベクトル、横ベクトルとdx,
+                        ∂xの双対性だけ説明して、反変、共変の説明はやめよう。</p>
+                        <h2 id="月18日日"><a href="#18">06月18日(日)</a>
+                        <a id="18"></a></h2>
                         <p>NOP</p>
-                        <h2 id="月17日土"><a href="#17">06月17日(土)</a> <a id="17"></a></h2>
-                        <p><a href="https://www.intel.co.jp/content/www/jp/ja/products/sku/230497/intel-core-i913900kf-processor-36m-cache-up-to-5-80-ghz/specifications.html">インテル® Core™ i9-13900KF プロセッサー</a></p>
+                        <h2 id="月17日土"><a href="#17">06月17日(土)</a>
+                        <a id="17"></a></h2>
+                        <p><a
+                        href="https://www.intel.co.jp/content/www/jp/ja/products/sku/230497/intel-core-i913900kf-processor-36m-cache-up-to-5-80-ghz/specifications.html">インテル®
+                        Core™ i9-13900KF プロセッサー</a></p>
                         <p>ターボブーストで5.8GHz。最近の石はこんなことになってるのか。すごいな。全く情報を追えてない。</p>
                         <p>数理物理、中間テスト前までの講義ノートと、中間テスト予想問題まで作った。予想問題は整形しないと配れないな。LaTeX使うか？</p>
-                        <h2 id="月16日金"><a href="#16">06月16日(金)</a> <a id="16"></a></h2>
+                        <h2 id="月16日金"><a href="#16">06月16日(金)</a>
+                        <a id="16"></a></h2>
                         <p>メモ。</p>
-                        <p><a href="https://matt.might.net/articles/phd-school-in-pictures/">The illustrated guide to a Ph.D.</a></p>
-                        <p>Ph. Dを目指す人に向けたメッセージで有名なやつ。これ、難病である自分の息子を助けたい、という動機があったことを初めて知った。</p>
+                        <p><a
+                        href="https://matt.might.net/articles/phd-school-in-pictures/">The
+                        illustrated guide to a Ph.D.</a></p>
+                        <p>Ph.
+                        Dを目指す人に向けたメッセージで有名なやつ。これ、難病である自分の息子を助けたい、という動機があったことを初めて知った。</p>
                         <p>数理物理。今度はちゃんと予習していったので、ちゃんと講義できたぜ。前回できなかった分もいれたからちょっと駆け足になっちゃったのが反省点。</p>
-                        <h2 id="月15日木"><a href="#15">06月15日(木)</a> <a id="15"></a></h2>
+                        <h2 id="月15日木"><a href="#15">06月15日(木)</a>
+                        <a id="15"></a></h2>
                         <p>最近研究が全くできていないのがしんどいなぁ。</p>
                         <p>朝セミナー。</p>
                         <p>昼セミナー。</p>
                         <p>輪講。</p>
                         <p>D論チェック。</p>
                         <p>メール処理。</p>
-                        <h2 id="月14日水"><a href="#14">06月14日(水)</a> <a id="14"></a></h2>
+                        <h2 id="月14日水"><a href="#14">06月14日(水)</a>
+                        <a id="14"></a></h2>
                         <p>夏季安全点検報告した。</p>
                         <p>ある数学的な概念について検索したら某質問回答サイトがひっかかったんだけど、内容がわりとヤバい気がする。初学者に、知識が怪しい中級者が答えている、みたいなイメージ。うーん。</p>
                         <p>あと、このサイト、「質問の体をとったマウンティング」が多くてびっくりする。「東大の数学の入試問題は、本当に数学がわかっている人が作っているのですか？」みたいな。いろいろすごい。</p>
                         <p>ウェブでのパスワードの変更、最初の「新しいパスワード」はコピペを許し、２つ目の「確認のためにもう一度入力してください」をコピペ不可にするの、意味がよくわからない。パスワードマネージャーを使っている場合、パスワードジェネレータを使って自動生成し、それをコピーして貼り付けるわけで、明らかに人間が記憶するより安全だし、一回目はコピペを許しているため、パスワードがクリップボードに入らないようにするみたいなセキュリティの意味もない(そもそもコピペしようとしてコピペ禁止に気づくので意味がない)。</p>
                         <p>懸案だった名刺発注済ませた。これまでコロナでほとんど人に会っておらず、名刺もほとんど消費してなかったのだが、最近は人に会うことが増えて名刺の減りが激しく尽きてしまった。</p>
-                        <p>どうでも良いけど、「このメールはこれまで名刺を交換させていただいた方にお送りしております」という嘘をついて送ってくる営業メール、どうなのよ？ 僕が計測機器メーカーの人と名刺交換するわけないでしょ。</p>
-                        <p>古いAMD EPYCマシンで<code>Python Setup.py egg_info" Failed with Error Code 1</code>というエラー。おそらくpipが古い。久しぶりにyum updateしたり。</p>
-                        <div class="sourceCode" id="cb21"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true"></a><span class="fu">wget</span> https://bootstrap.pypa.io/pip/3.6/get-pip.py </span>
-                        <span id="cb21-2"><a href="#cb21-2" aria-hidden="true"></a><span class="fu">sudo</span> python3 get-pip.py</span></code></pre></div>
+                        <p>どうでも良いけど、「このメールはこれまで名刺を交換させていただいた方にお送りしております」という嘘をついて送ってくる営業メール、どうなのよ？
+                        僕が計測機器メーカーの人と名刺交換するわけないでしょ。</p>
+                        <p>古いAMD
+                        EPYCマシンで<code>Python Setup.py egg_info" Failed with Error Code 1</code>というエラー。おそらくpipが古い。久しぶりにyum
+                        updateしたり。</p>
+                        <div class="sourceCode" id="cb21"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://bootstrap.pypa.io/pip/3.6/get-pip.py </span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> python3 get-pip.py</span></code></pre></div>
                         <p>sudoはよくないらしいが。</p>
                         <p>と思ったら、venvが通らなくなった。</p>
-                        <div class="sourceCode" id="cb22"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true"></a>$ <span class="ex">python3</span> -m venv env</span>
-                        <span id="cb22-2"><a href="#cb22-2" aria-hidden="true"></a><span class="ex">Error</span>: Command <span class="st">&#39;[&#39;</span>/home/watanabe/temp/env/bin/python3<span class="st">&#39;, &#39;</span>-Im<span class="st">&#39;, &#39;</span>ensurepip<span class="st">&#39;, &#39;</span>--upgrade<span class="st">&#39;, &#39;</span>--default-pip<span class="st">&#39;]&#39;</span> returned non-zero exit status 1.</span></code></pre></div>
+                        <div class="sourceCode" id="cb22"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> python3 <span class="at">-m</span> venv env</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Error:</span> Command <span class="st">&#39;[&#39;</span>/home/watanabe/temp/env/bin/python3<span class="st">&#39;, &#39;</span>-Im<span class="st">&#39;, &#39;</span>ensurepip<span class="st">&#39;, &#39;</span>--upgrade<span class="st">&#39;, &#39;</span>--default-pip<span class="st">&#39;]&#39;</span> returned non-zero exit status 1.</span></code></pre></div>
                         <p>とあるものを受け取る予定になっていたが、その配達が遅れ、慌てて取りに行くも鍵を忘れて居室に戻り、受け取ったことを別の人に連絡しなければならないのにそれを失念し、学生向けのアナウンスを作ったら日付が間違いだらけ。古いPCのエラーなんとかしようとしたらPython環境を破壊。今日はダメだ。</p>
-                        <p>ハイブリッドミーティング用にビデオカメラをZoomにつなげる確認。ビデオのHDMI出力にコンバータ(IO DATAのGV-HUVC)をつなぎ、USBをPCにつなげるだけ。あとはZoom側でマイク、ビデオソースをIO DATAのGV-HUVCを選べばOK。簡単。USBとHDMI素晴らしい。規格考えた人えらい。</p>
-                        <div class="sourceCode" id="cb23"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true"></a><span class="ex">python3</span> -m venv myenv --without-pip  </span>
-                        <span id="cb23-2"><a href="#cb23-2" aria-hidden="true"></a><span class="bu">source</span> myenv/bin/activate </span>
-                        <span id="cb23-3"><a href="#cb23-3" aria-hidden="true"></a><span class="fu">wget</span> https://bootstrap.pypa.io/pip/3.6/get-pip.py</span>
-                        <span id="cb23-4"><a href="#cb23-4" aria-hidden="true"></a><span class="ex">python3</span> get-pip.py</span>
-                        <span id="cb23-5"><a href="#cb23-5" aria-hidden="true"></a><span class="ex">python3</span> -m pip install --upgrade pip</span>
-                        <span id="cb23-6"><a href="#cb23-6" aria-hidden="true"></a><span class="ex">python3</span> -m pip install tensorflow Pillow</span></code></pre></div>
-                        <h2 id="月13日火"><a href="#13">06月13日(火)</a> <a id="13"></a></h2>
+                        <p>ハイブリッドミーティング用にビデオカメラをZoomにつなげる確認。ビデオのHDMI出力にコンバータ(IO
+                        DATAのGV-HUVC)をつなぎ、USBをPCにつなげるだけ。あとはZoom側でマイク、ビデオソースをIO
+                        DATAのGV-HUVCを選べばOK。簡単。USBとHDMI素晴らしい。規格考えた人えらい。</p>
+                        <div class="sourceCode" id="cb23"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> <span class="at">-m</span> venv myenv <span class="at">--without-pip</span>  </span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> myenv/bin/activate </span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://bootstrap.pypa.io/pip/3.6/get-pip.py</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> get-pip.py</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> <span class="at">-m</span> pip install <span class="at">--upgrade</span> pip</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> <span class="at">-m</span> pip install tensorflow Pillow</span></code></pre></div>
+                        <h2 id="月13日火"><a href="#13">06月13日(火)</a>
+                        <a id="13"></a></h2>
                         <p>あれだけ大量にあったはずの赤ボールペンがまったく居室になくなって「ムキーッ」ってなってる。</p>
                         <p>だいたい赤ボールペンを使う時は赤ボールペンが必要な書類と一緒に家に持ち帰り、赤を入れ終わった書類だけ学校に持ってくるので、赤ボールペンは家に置き去りになるんだよね。</p>
                         <p>SPAMがひどい。</p>
                         <p>「おめでたい事にお手持ちの携帯電話1つでアルバイトをする事が出来るようになりました！」</p>
                         <p>それはまことにおめでたいですね。</p>
-                        <h2 id="月12日月"><a href="#12">06月12日(月)</a> <a id="12"></a></h2>
-                        <p><a href="https://www.jstage.jst.go.jp/article/oubutsu/92/6/92_365/_article/-char/ja/">教育系YouTuberのまなざし</a>読んだ。炎上するほどの内容ではないとは思うが、センシティブな話題かな、とは思う。</p>
+                        <h2 id="月12日月"><a href="#12">06月12日(月)</a>
+                        <a id="12"></a></h2>
+                        <p><a
+                        href="https://www.jstage.jst.go.jp/article/oubutsu/92/6/92_365/_article/-char/ja/">教育系YouTuberのまなざし</a>読んだ。炎上するほどの内容ではないとは思うが、センシティブな話題かな、とは思う。</p>
                         <p>学部の講義は非常に重要であり、それを研究者が担当すべきであるというのが僕の意見だが、必ずしも好きで講義をしていない教員もいる、というのは事実であろう。</p>
                         <p>僕は、オンライン講義/オンデマンド講義という選択肢があることは重要だと思うが、対面講義がオンライン/オンデマンドに置き換わるべきではないという考え。オンデマンド講義は、優秀でやる気のある学生は伸びるが、能力はあるがやる気が普通の学生が落ちこぼれやすくなってしまう。また、教員側の勉強という意味でも、基礎的な講義は担当すべき。</p>
                         <p>という偉そうなことを書いておいて、今日の講義で立ち往生してしまった。授業の予習をしようとしたら講義ノートの表記が間違っており、そこで混乱して修正しきれないうちに講義。見切り発車で講義したら案の定混乱してしまった。申し訳ない。これなら「完成した講義動画」の方がマシですね。次回からちゃんとします。</p>
-                        <h2 id="月11日日"><a href="#11">06月11日(日)</a> <a id="11"></a></h2>
+                        <h2 id="月11日日"><a href="#11">06月11日(日)</a>
+                        <a id="11"></a></h2>
                         <p>というわけで査読返したぞ、と。</p>
-                        <p><a href="https://www.jstage.jst.go.jp/article/oubutsu/92/6/92_365/_article/-char/ja/">教育系YouTuberのまなざし</a>という記事が話題になっているのでメモ。いろいろ思うところはある。</p>
-                        <h2 id="月10日土"><a href="#10">06月10日(土)</a> <a id="10"></a></h2>
+                        <p><a
+                        href="https://www.jstage.jst.go.jp/article/oubutsu/92/6/92_365/_article/-char/ja/">教育系YouTuberのまなざし</a>という記事が話題になっているのでメモ。いろいろ思うところはある。</p>
+                        <h2 id="月10日土"><a href="#10">06月10日(土)</a>
+                        <a id="10"></a></h2>
                         <p>うわ、査読のリマインダ来た。忘れてた(締め切りはまだ)。</p>
-                        <h2 id="月09日金"><a href="#09">06月09日(金)</a> <a id="09"></a></h2>
+                        <h2 id="月09日金"><a href="#09">06月09日(金)</a>
+                        <a id="09"></a></h2>
                         <p>計算サーバの調子が悪い。</p>
-                        <div class="sourceCode" id="cb24"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true"></a>login: timed out after 60 second</span></code></pre></div>
+                        <div class="sourceCode" id="cb24"><pre
+                        class="sourceCode txt"><code class="sourceCode default"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>login: timed out after 60 second</span></code></pre></div>
                         <p>とか、</p>
-                        <div class="sourceCode" id="cb25"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true"></a>Starting OpenSSH server daemon... </span>
-                        <span id="cb25-2"><a href="#cb25-2" aria-hidden="true"></a>[FAILED] Failed to start Login Service.</span>
-                        <span id="cb25-3"><a href="#cb25-3" aria-hidden="true"></a>See &#39;systemctl status systemd-logind.service&#39; for details. [FAILED] Failed to start OpenSSH server daemon. </span>
-                        <span id="cb25-4"><a href="#cb25-4" aria-hidden="true"></a>See systemctl status sshd.service&#39; for details.</span></code></pre></div>
+                        <div class="sourceCode" id="cb25"><pre
+                        class="sourceCode txt"><code class="sourceCode default"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>Starting OpenSSH server daemon... </span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>[FAILED] Failed to start Login Service.</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>See &#39;systemctl status systemd-logind.service&#39; for details. [FAILED] Failed to start OpenSSH server daemon. </span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>See systemctl status sshd.service&#39; for details.</span></code></pre></div>
                         <p>とか言われる。なんだかなぁもう。</p>
                         <p>講義。今日は数学的準備。かなり疲れた。</p>
                         <p>大学院の教職について調べた。学部を卒業することで取得できる免許状が一種免許状、大学院を取得することで取得できる免許状が専修免許状。</p>
                         <p>というわけで、問い合わせメール。返事が来たら、長いこと懸案だった大学院の科目整理の目処がつく……</p>
-                        <h2 id="月08日木"><a href="#08">06月08日(木)</a> <a id="08"></a></h2>
+                        <h2 id="月08日木"><a href="#08">06月08日(木)</a>
+                        <a id="08"></a></h2>
                         <p>重い仕事を一つ片付けた。</p>
                         <p>原則として広告ブロッカーは使わないことにしていたのだが、スマホであまりにも誤タッチが多いのと、広告によるデータ通信量が馬鹿にならない(通勤時、テキストしか読んでないので、通信はほとんど広告の画像と思われる)ので、広告ブロッカー付きのブラウザを入れてしまった。とりあえずBraveというのを入れたが、これは快適だ・・・</p>
                         <p>学習指導のお仕事。今日中に終わらなかった・・・</p>
-                        <h2 id="月07日水"><a href="#07">06月07日(水)</a> <a id="07"></a></h2>
+                        <h2 id="月07日水"><a href="#07">06月07日(水)</a>
+                        <a id="07"></a></h2>
                         <p>体が重いなぁ。</p>
                         <p>会議。</p>
                         <p>頭が回らない。いろいろ手配。</p>
-                        <p><a href="https://note.com/inuro/n/n7ec7cf15cf9c">とにかく日本の住所のヤバさをもっと知るべきだと思います</a></p>
+                        <p><a
+                        href="https://note.com/inuro/n/n7ec7cf15cf9c">とにかく日本の住所のヤバさをもっと知るべきだと思います</a></p>
                         <p>最近話題になった「日本の住所」の名寄せの問題。この手の名寄せは極めて面倒。大臣が「AIを活用」と言ったことに対して、「Excelで2時間程度でできるでしょ」と発言した人が炎上していた。年金問題でも名寄せが問題になり、当時の大臣が「プログラムを使えばすぐにできる」と発言していた。今回の大臣(担当部署が違うが)は、少なくとも問題を難しいと理解している。</p>
-                        <p>Cookpadの人員削減により、Rubyのフルタイムコミッタが二人退職することに。<a href="https://note.com/ruiu/n/ndfcda9adb748">オープンソースビジネスの挑戦と現実</a>も見て、なんというか、オープンなものに関わって食べていくことの難しさを感じた。Wikipediaの寄付とかね。</p>
+                        <p>Cookpadの人員削減により、Rubyのフルタイムコミッタが二人退職することに。<a
+                        href="https://note.com/ruiu/n/ndfcda9adb748">オープンソースビジネスの挑戦と現実</a>も見て、なんというか、オープンなものに関わって食べていくことの難しさを感じた。Wikipediaの寄付とかね。</p>
                         <p>シミュレーション工学のレポートのコメント回答をアップロード。</p>
-                        <h2 id="月06日火"><a href="#06">06月06日(火)</a> <a id="06"></a></h2>
+                        <h2 id="月06日火"><a href="#06">06月06日(火)</a>
+                        <a id="06"></a></h2>
                         <p>会議＠日本橋。ものすごく久しぶりに南北線に乗った。</p>
                         <p>シミュレーション工学のレポート採点。ものすごく時間かかった。</p>
                         <p>復数の全く関係ないプロジェクトが走っていて、頭が混乱する。そのせいか、仕事でミスをしてしまった。凹む。</p>
                         <p>共立出版から本が届いていて、なにかと思ったら、宮下先生が新しい教科書を書いたようで、その著者献本だったようだ。フロー式という、30題の例題とていねいな解説があるシリーズ。1日1題例題を解いて、30日で一通り読み終わることが想定されている。統計力学の教科書の多くは演習問題がおまけ扱いで、解答も略解しかないものが多かったが、これはかなり丁寧に書いてある。また、発展問題もあるので自分の理解の確認もできる。</p>
-                        <h2 id="月05日月"><a href="#05">06月05日(月)</a> <a id="05"></a></h2>
-                        <p><a href="https://en.wikipedia.org/wiki/Kardashian_Index">Kardashian Index</a>というものを知った。論文の引用数とTwitterのフォロワー数の関係で、Kが大きいほど、研究内容に比べて社会的名声が不当に高く、逆なら不当に低いことを示す。要するにKが大きかったら「お前Twitterやってないで論文書けよ」という指数。まともな研究者ならK=5らしい。</p>
-                        <p>というわけで<a href="https://theinformationalturn.net/kardashian-index/">Kardashian Index Calculator</a>で計算してみたら、僕はK=39.5ですね。研究内容に比べて、不当にフォロワー数が多い。はい、論文書きます・・・</p>
+                        <h2 id="月05日月"><a href="#05">06月05日(月)</a>
+                        <a id="05"></a></h2>
+                        <p><a
+                        href="https://en.wikipedia.org/wiki/Kardashian_Index">Kardashian
+                        Index</a>というものを知った。論文の引用数とTwitterのフォロワー数の関係で、Kが大きいほど、研究内容に比べて社会的名声が不当に高く、逆なら不当に低いことを示す。要するにKが大きかったら「お前Twitterやってないで論文書けよ」という指数。まともな研究者ならK=5らしい。</p>
+                        <p>というわけで<a
+                        href="https://theinformationalturn.net/kardashian-index/">Kardashian
+                        Index
+                        Calculator</a>で計算してみたら、僕はK=39.5ですね。研究内容に比べて、不当にフォロワー数が多い。はい、論文書きます・・・</p>
                         <p>ちなみに、僕の適正フォロワー数は386人らしい。これをK倍すると実際のフォロワー数になるから、うん、計算あってますね(泣)。</p>
                         <p>解析力学の講義。教室が暑かった。ゆっくりしゃべったけど、みなさんついてきたかな？</p>
-                        <h2 id="月04日日"><a href="#04">06月04日(日)</a> <a id="04"></a></h2>
+                        <h2 id="月04日日"><a href="#04">06月04日(日)</a>
+                        <a id="04"></a></h2>
                         <p>久しぶりに科学技術館に行った。</p>
-                        <h2 id="月03日土"><a href="#03">06月03日(土)</a> <a id="03"></a></h2>
+                        <h2 id="月03日土"><a href="#03">06月03日(土)</a>
+                        <a id="03"></a></h2>
                         <p>NOP</p>
-                        <h2 id="月02日金"><a href="#02">06月02日(金)</a> <a id="02"></a></h2>
+                        <h2 id="月02日金"><a href="#02">06月02日(金)</a>
+                        <a id="02"></a></h2>
                         <p>台風？</p>
                         <p>がんばって講義ノートを書く。</p>
-                        <h2 id="月01日木"><a href="#01">06月01日(木)</a> <a id="01"></a></h2>
+                        <h2 id="月01日木"><a href="#01">06月01日(木)</a>
+                        <a id="01"></a></h2>
                         <p>6月になってしまった。</p>
                         <p>写真撮影。ハンズオン。研究室ミーティング。輪講</p>
                         <p>試験予定を提出。定期試験をするのは初めてで、いろいろ勝手がわからない。</p>

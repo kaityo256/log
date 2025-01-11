@@ -16,68 +16,86 @@
     <link rel="stylesheet" href="style.css" type="text/css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- link rel="stylesheet" href="github-markdown.css" type="text/css" / -->
-        <script src="/usr/share/javascript/mathjax/tex-mml-chtml.js" type="text/javascript"></script>
+        <script src="/usr/share/javascript/mathjax/MathJax.js"
+        type="text/javascript"></script>
           </head>
 
   <body>
     <article class="markdown-body">
                         <h1 id="年9月">2022年9月</h1>
                         <p><a href="index.html">ログ一覧</a></p>
-                        <h2 id="月30日金"><a href="#30">09月30日(金)</a> <a id="30"></a></h2>
+                        <h2 id="月30日金"><a href="#30">09月30日(金)</a>
+                        <a id="30"></a></h2>
                         <p>湯川さん来訪。久しぶりにがっつり研究の話をした気がする。</p>
                         <p>今週の1on1で、M2は全員、修士論文リポジトリをGitHubに作って、僕をコラボレータにした。</p>
-                        <h2 id="月29日木"><a href="#29">09月29日(木)</a> <a id="29"></a></h2>
+                        <h2 id="月29日木"><a href="#29">09月29日(木)</a>
+                        <a id="29"></a></h2>
                         <p>午前中はなんか重要そうな会議。</p>
                         <p>午後から個別ミーティング4件、研究室ミーティング、輪講。</p>
                         <p>秋学期安全教育を実施した。名簿も提出。</p>
                         <p>査読一つ済ませた。</p>
-                        <h2 id="月28日水"><a href="#28">09月28日(水)</a> <a id="28"></a></h2>
+                        <h2 id="月28日水"><a href="#28">09月28日(水)</a>
+                        <a id="28"></a></h2>
                         <p>ずっとRBMの講義ばかりみてたから、YouTubeがRBMの講義をsuggestするようになった。</p>
                         <ul>
-                        <li><a href="https://www.youtube.com/watch?v=wfFf5Fj-rzE">Deep Learning Lecture 10.3 - Restricted Boltzmann Machines</a></li>
+                        <li><a
+                        href="https://www.youtube.com/watch?v=wfFf5Fj-rzE">Deep
+                        Learning Lecture 10.3 - Restricted Boltzmann
+                        Machines</a></li>
                         </ul>
                         <p>これよさそうだな。っていうか、日本語の情報、ほとんどないなぁ。</p>
                         <p>物理情報工学ソフトウェア開発演習の準備、たぶん終わった。</p>
                         <p>懇親会のお仕事。</p>
                         <p>Zoomで学生さんとミーティングしてると、学生さんと自分の顔色の違いが気になる。学生さん、若いもんなぁ・・・</p>
                         <p>Windowsのアップデート。WSLも更新したっぽい。PowerShellから</p>
-                        <div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="ex">wsl</span> --update</span></code></pre></div>
+                        <div class="sourceCode" id="cb1"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">wsl</span> <span class="at">--update</span></span></code></pre></div>
                         <p>で更新完了。</p>
-                        <h2 id="月27日火"><a href="#27">09月27日(火)</a> <a id="27"></a></h2>
+                        <h2 id="月27日火"><a href="#27">09月27日(火)</a>
+                        <a id="27"></a></h2>
                         <p>今日やるべきことリスト</p>
                         <ul>
                         <li>プログラミング基礎同演習講義準備</li>
                         <li>物理情報工学ソフトウェア開発演習講義準備</li>
                         </ul>
                         <p>プログラミング基礎同演習の課題をPDF化するスクリプトがエラー。</p>
-                        <div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a>$ <span class="ex">pandoc</span> assignment.md -s -o assignment.pdf --highlight-style tango --latex-engine=lualatex -V documentclass=ltjarticle -V geometry:margin=1in -H ../mytemplate.tex</span>
-                        <span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a><span class="ex">--latex-engine</span> has been removed.  Use --pdf-engine instead.</span>
-                        <span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a><span class="ex">Try</span> pandoc --help for more information.</span></code></pre></div>
+                        <div class="sourceCode" id="cb2"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> pandoc assignment.md <span class="at">-s</span> <span class="at">-o</span> assignment.pdf <span class="at">--highlight-style</span> tango <span class="at">--latex-engine</span><span class="op">=</span>lualatex <span class="at">-V</span> documentclass=ltjarticle <span class="at">-V</span> geometry:margin=1in <span class="at">-H</span> ../mytemplate.tex</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">--latex-engine</span> has been removed.  Use <span class="at">--pdf-engine</span> instead.</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Try</span> pandoc <span class="at">--help</span> for more information.</span></code></pre></div>
                         <p><code>--latex-engine</code>が消えている。<code>--pdf-engine</code>を使えとのことなので、Makefileを修正。そこだけ修正してなんとかなった。GitHubリポジトリのスライドが古かったので講義で使っているスライドに修正。</p>
                         <p>pptxからpdfにするのが鬱陶しかったので、スクリプトから変換できないか確認。</p>
-                        <div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="ex">python3</span> -m venv myenv</span>
-                        <span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a><span class="ex">python3</span> -m pip install --upgrade pip</span>
-                        <span id="cb3-3"><a href="#cb3-3" aria-hidden="true"></a><span class="ex">python3</span> -m pip install aspose.slides</span></code></pre></div>
+                        <div class="sourceCode" id="cb3"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> <span class="at">-m</span> venv myenv</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> <span class="at">-m</span> pip install <span class="at">--upgrade</span> pip</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> <span class="at">-m</span> pip install aspose.slides</span></code></pre></div>
                         <p>あー、今気づいたけど、仮想環境作ってるのにactivate忘れてる。そして、pipのアップグレード中に手作業でpptxからpdfへの変換作業が終わっている(ありがち)。</p>
                         <p>一応試してみる。</p>
-                        <div class="sourceCode" id="cb4"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="im">import</span> aspose.slides <span class="im">as</span> slides</span>
-                        <span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a></span>
-                        <span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a>pptx <span class="op">=</span> slides.Presentation(<span class="st">&quot;slide.pptx&quot;</span>)</span>
-                        <span id="cb4-4"><a href="#cb4-4" aria-hidden="true"></a>pptx.save(<span class="st">&quot;slide.pdf&quot;</span>, slides.export.SaveFormat.PDF)</span></code></pre></div>
-                        <div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a>$ <span class="ex">python3</span> conv.py</span>
-                        <span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a><span class="ex">Traceback</span> (most recent call last)<span class="bu">:</span></span>
-                        <span id="cb5-3"><a href="#cb5-3" aria-hidden="true"></a>  <span class="ex">File</span> <span class="st">&quot;conv.py&quot;</span>, line 3, in <span class="op">&lt;</span>module<span class="op">&gt;</span></span>
-                        <span id="cb5-4"><a href="#cb5-4" aria-hidden="true"></a>    <span class="ex">pptx</span> = slides.Presentation(<span class="st">&quot;slide.pptx&quot;</span>)</span>
-                        <span id="cb5-5"><a href="#cb5-5" aria-hidden="true"></a><span class="ex">RuntimeError</span>: Proxy error(PptxReadException)<span class="bu">:</span> The type initializer for <span class="st">&#39;Gdip&#39;</span> threw an exception. ---<span class="op">&gt;</span> TypeInitializationException: The type initializer for <span class="st">&#39;Gdip&#39;</span> threw an exception. ---<span class="op">&gt;</span> DllNotFoundException: Unable to load shared library <span class="st">&#39;libgdiplus&#39;</span> or one of its dependencies. In order to help diagnose loading problems, consider setting the LD_DEBUG environment variable: liblibgdiplus: cannot open shared object file: No such file or directory</span></code></pre></div>
+                        <div class="sourceCode" id="cb4"><pre
+                        class="sourceCode py"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> aspose.slides <span class="im">as</span> slides</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>pptx <span class="op">=</span> slides.Presentation(<span class="st">&quot;slide.pptx&quot;</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>pptx.save(<span class="st">&quot;slide.pdf&quot;</span>, slides.export.SaveFormat.PDF)</span></code></pre></div>
+                        <div class="sourceCode" id="cb5"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> python3 conv.py</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Traceback</span> <span class="er">(</span><span class="ex">most</span> recent call last<span class="kw">)</span><span class="bu">:</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="ex">File</span> <span class="st">&quot;conv.py&quot;</span>, line 3, in <span class="op">&lt;</span>module<span class="op">&gt;</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="ex">pptx</span> = slides.Presentation<span class="er">(</span><span class="st">&quot;slide.pptx&quot;</span><span class="kw">)</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="ex">RuntimeError:</span> Proxy error<span class="er">(</span><span class="ex">PptxReadException</span><span class="kw">)</span><span class="bu">:</span> The type initializer for <span class="st">&#39;Gdip&#39;</span> threw an exception. <span class="at">---</span><span class="op">&gt;</span> TypeInitializationException: The type initializer for <span class="st">&#39;Gdip&#39;</span> threw an exception. <span class="at">---</span><span class="op">&gt;</span> DllNotFoundException: Unable to load shared library <span class="st">&#39;libgdiplus&#39;</span> or one of its dependencies. In order to help diagnose loading problems, consider setting the LD_DEBUG environment variable: liblibgdiplus: cannot open shared object file: No such file or directory</span></code></pre></div>
                         <p><code>libgdiplus</code>ってのが必要っぽい。入れてみる。</p>
-                        <div class="sourceCode" id="cb6"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="fu">sudo</span> apt-get update -y</span>
-                        <span id="cb6-2"><a href="#cb6-2" aria-hidden="true"></a><span class="fu">sudo</span> apt-get install -y libgdiplus</span></code></pre></div>
-                        <div class="sourceCode" id="cb7"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a><span class="ex">python3</span> conv.py</span></code></pre></div>
-                        <p>できた。・・・が「Evaluation only. Created with Aspose.Slides for .NETうんちゃら」という文章が追加される。なんやねん。あと、フォントがおかしくてダメ。おとなしくWindows側でRubyでwin32oleとか使った方がよさそう。</p>
+                        <div class="sourceCode" id="cb6"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get update <span class="at">-y</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get install <span class="at">-y</span> libgdiplus</span></code></pre></div>
+                        <div class="sourceCode" id="cb7"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> conv.py</span></code></pre></div>
+                        <p>できた。・・・が「Evaluation only. Created
+                        with Aspose.Slides for
+                        .NETうんちゃら」という文章が追加される。なんやねん。あと、フォントがおかしくてダメ。おとなしくWindows側でRubyでwin32oleとか使った方がよさそう。</p>
                         <p>モジュールを全14回分作成。講義スライドを全てPDF化してアップロード。レポート課題をアップロード。レポートの締め切りを確認してレポートの提出先作成。出席確認クイズを作成。オンデマンド講義動画を確認して共有URLを作って貼り付け。TAの追加。ここまでやってから「公開」して、アナウンス。</p>
                         <p>なんというか、昔に比べて講義準備が大変になってない？講義ノートとスライドだけ教室に持っていけば良かったのが、今はめちゃくちゃやることがある気がする。</p>
                         <p>で、次は物理情報工学ソフトウェア開発演習か。</p>
-                        <h2 id="月26日月"><a href="#26">09月26日(月)</a> <a id="26"></a></h2>
+                        <h2 id="月26日月"><a href="#26">09月26日(月)</a>
+                        <a id="26"></a></h2>
                         <p>情報コンセント確認。全て使用済み？ギガビットスイッチで分ける必要あり。最近はギガビットでも安いんだなぁ。</p>
                         <p>iMac環境構築。</p>
                         <ul>
@@ -90,123 +108,201 @@
                         <li>Python3のインストール。</li>
                         <li>pandocのインストール。</li>
                         </ul>
-                        <p>自分で言うのもなんだけど、<a href="https://github.com/kaityo256/lab_startup">数値計算用PCセットアップ資料</a>が便利。</p>
+                        <p>自分で言うのもなんだけど、<a
+                        href="https://github.com/kaityo256/lab_startup">数値計算用PCセットアップ資料</a>が便利。</p>
                         <p>セミナーの準備してたら、投稿中の論文に間違いを見つけてしまった。ガーン。すぐに編集部に連絡して対応。申し訳ないことをした。結果が間違ってるとかじゃなくて本当によかった。</p>
                         <p>10/18のセミナー準備完了。</p>
-                        <h2 id="月25日日"><a href="#25">09月25日(日)</a> <a id="25"></a></h2>
+                        <h2 id="月25日日"><a href="#25">09月25日(日)</a>
+                        <a id="25"></a></h2>
                         <p>発表スライドを作っていた。</p>
-                        <h2 id="月24日土"><a href="#24">09月24日(土)</a> <a id="24"></a></h2>
+                        <h2 id="月24日土"><a href="#24">09月24日(土)</a>
+                        <a id="24"></a></h2>
                         <p>技術記事を会社の宣伝としてQiitaだのZennだのに書く、というケースが増えてて、それ自体は良いんだけど、わりとQiitaはそれで僕の趣味から外れてしまったという感じがするので、Zennはそうならないと良いなあ、と思いつつ。</p>
                         <p>最終的にマネタイズする、ということを考えると、組織としての会社ユーザが増えるほうが良いと思われるので難しい。</p>
-                        <h2 id="月23日金"><a href="#23">09月23日(金)</a> <a id="23"></a></h2>
+                        <h2 id="月23日金"><a href="#23">09月23日(金)</a>
+                        <a id="23"></a></h2>
                         <p>セミナーを引き受けた。講義準備と重なって死にそう。とりあえず20%くらいスライドを作った。</p>
                         <p>なんかツイートがバズって取材申し込みっぽいのがわりと来るんだけど、それに淡々と対応する。ツイートがバズると、ネットニュースの人からDMが来て「記事にして良いですか」的なことを聞かれるので、それに「いいですよ」と答えるだけ。なんか記憶にあるだけでも10回以上ネットニュースの記事になってるので、もう慣れっこというか。</p>
                         <p>っていうかバズり慣れしている指導教員ってどうなのよ。研究成果が出てないのにテレビに出て「有識者」っぽい顔をしている、なんちゃって研究者と同じ匂いがしない？</p>
-                        <h2 id="月22日木"><a href="#22">09月22日(木)</a> <a id="22"></a></h2>
+                        <h2 id="月22日木"><a href="#22">09月22日(木)</a>
+                        <a id="22"></a></h2>
                         <p>研究室ミーティング。秋学期の1on1決め。っていうか研究室WikiをGitHubに移行したい。</p>
-                        <h2 id="月21日水"><a href="#21">09月21日(水)</a> <a id="21"></a></h2>
+                        <h2 id="月21日水"><a href="#21">09月21日(水)</a>
+                        <a id="21"></a></h2>
                         <p>iMac復活計画。まずはメール。Thunderbirdを導入。メールはGMailでPOPで読んでいるいるが、GMail+POPは最大30分くらいのタイムラグがあるため、ThunderBird+IMAPでも読めるようにしている。IMAPサーバ上にメールが大量にあったので、少し整理した。</p>
                         <p>MacにHomebrewをインストール。それに伴い、lab_startupを少し整理。それまでPythonにあったHomebrewのインストールを別ページに独立させた。</p>
                         <p>ボルツマンマシンの三本目の記事を書き始めた。</p>
                         <p>リモートにブランチ<code>branch</code>がある状態で<code>git fetch</code>した。するとローカルに<code>origin/branch</code>が出現する。この状態で<code>git switch branch</code>とすると、<code>git switch -c branch origin/branch</code>と同じことになる。なるほど。これ、どこかにまとめた方が良いかなぁ。</p>
-                        <h2 id="月20日火"><a href="#20">09月20日(火)</a> <a id="20"></a></h2>
+                        <h2 id="月20日火"><a href="#20">09月20日(火)</a>
+                        <a id="20"></a></h2>
                         <p>野村研セミナー。自動微分によるハミルトニアンの設計について。</p>
                         <p>RBMの勉強続き。このポストがわかりやすい。</p>
                         <ul>
-                        <li><a href="https://medium.com/datatype/restricted-boltzmann-machine-a-complete-analysis-part-3-contrastive-divergence-algorithm-3d06bbebb10c">https://medium.com/datatype/restricted-boltzmann-machine-a-complete-analysis-part-3-contrastive-divergence-algorithm-3d06bbebb10c</a></li>
+                        <li><a
+                        href="https://medium.com/datatype/restricted-boltzmann-machine-a-complete-analysis-part-3-contrastive-divergence-algorithm-3d06bbebb10c">https://medium.com/datatype/restricted-boltzmann-machine-a-complete-analysis-part-3-contrastive-divergence-algorithm-3d06bbebb10c</a></li>
                         </ul>
                         <p>早くサンプルコードを書かないと。</p>
-                        <h2 id="月19日月"><a href="#19">09月19日(月)</a> <a id="19"></a></h2>
-                        <p><a href="https://asanobuturi.github.io/document/2022/PC98APCOS/index.html">自作OSで文字列をPC98に表示する</a></p>
+                        <h2 id="月19日月"><a href="#19">09月19日(月)</a>
+                        <a id="19"></a></h2>
+                        <p><a
+                        href="https://asanobuturi.github.io/document/2022/PC98APCOS/index.html">自作OSで文字列をPC98に表示する</a></p>
                         <p>すごい。また高校生が自作OSを作ってる。そして参考文献に川合さんの30日OS自作本。この本、多くの人の人生に影響を与えている。僕もこういう本が書きたい。30日並列MD本とか書きたい。</p>
                         <p>いやしかし、最近の高校生は部誌をMarkdownで集めてGitHubで公開するのか。時代だな・・・</p>
                         <p>RBMの学習の勉強。</p>
                         <ul>
-                        <li><a href="https://www.youtube.com/watch?v=EpU7wZwoe9A">Ankur Moitra（MIT）-制限付きボルツマンマシンの学習</a>←よくわからなかった</li>
-                        <li>このHugo Larochelleさん(Université de Sherbrooke)の一連の講義が一番わかりやすいっぽい。
+                        <li><a
+                        href="https://www.youtube.com/watch?v=EpU7wZwoe9A">Ankur
+                        Moitra（MIT）-制限付きボルツマンマシンの学習</a>←よくわからなかった</li>
+                        <li>このHugo Larochelleさん(Université de
+                        Sherbrooke)の一連の講義が一番わかりやすいっぽい。
                         <ul>
-                        <li><a href="https://www.youtube.com/watch?v=MD8qXWucJBY">Neural networks [5.4] : Restricted Boltzmann machine - contrastive divergence</a></li>
-                        <li><a href="https://www.youtube.com/watch?v=wMb7cads0go">Neural networks [5.5] : Restricted Boltzmann machine - contrastive divergence (parameter update)</a></li>
-                        <li><a href="https://github.com/dataplayer12/RBM">上記の講義によるPython実装</a></li>
+                        <li><a
+                        href="https://www.youtube.com/watch?v=MD8qXWucJBY">Neural
+                        networks [5.4] : Restricted Boltzmann machine -
+                        contrastive divergence</a></li>
+                        <li><a
+                        href="https://www.youtube.com/watch?v=wMb7cads0go">Neural
+                        networks [5.5] : Restricted Boltzmann machine -
+                        contrastive divergence (parameter
+                        update)</a></li>
+                        <li><a
+                        href="https://github.com/dataplayer12/RBM">上記の講義によるPython実装</a></li>
                         </ul></li>
                         </ul>
                         <p>ようやくKL距離と対数尤度関数が結びついた。忘れない内にまとめておく。</p>
-                        <p>確率変数<span class="math inline">\(\hat{X}\)</span>を考える。この確率変数はN種類の値をとり得るとする。<span class="math inline">\(\hat{X} = i\)</span>となることを「事象<span class="math inline">\(i\)</span>」と呼ぶ。ある事象<span class="math inline">\(i\)</span>が起きる真の確率を<span class="math inline">\(q_i\)</span>とし、それをモデルで再現したいとする。モデルパラメータが<span class="math inline">\(\theta\)</span>の時に、そのモデルにおいて事象<span class="math inline">\(i\)</span>が起きる確率を<span class="math inline">\(p_i(\theta)\)</span>とする。真の分布とモデルによる分布のKL距離は</p>
+                        <p>確率変数<span
+                        class="math inline">\(\hat{X}\)</span>を考える。この確率変数はN種類の値をとり得るとする。<span
+                        class="math inline">\(\hat{X} =
+                        i\)</span>となることを「事象<span
+                        class="math inline">\(i\)</span>」と呼ぶ。ある事象<span
+                        class="math inline">\(i\)</span>が起きる真の確率を<span
+                        class="math inline">\(q_i\)</span>とし、それをモデルで再現したいとする。モデルパラメータが<span
+                        class="math inline">\(\theta\)</span>の時に、そのモデルにおいて事象<span
+                        class="math inline">\(i\)</span>が起きる確率を<span
+                        class="math inline">\(p_i(\theta)\)</span>とする。真の分布とモデルによる分布のKL距離は</p>
                         <p><span class="math display">\[
                         \begin{aligned}
-                        KL(\vec{q}|\vec{p}(\theta)) &amp; \equiv \sum_i^N q_i \log \frac{q_i}{p_i} \\
-                        &amp;= \sum_i^N q_i \log q_i - \sum_i^N q_i \log p_i
+                        KL(\vec{q}|\vec{p}(\theta)) &amp; \equiv
+                        \sum_i^N q_i \log \frac{q_i}{p_i} \\
+                        &amp;= \sum_i^N q_i \log q_i - \sum_i^N q_i \log
+                        p_i
                         \end{aligned}
                         \]</span></p>
-                        <p>この距離をパラメータ<span class="math inline">\(\theta\)</span>で微分するので、第一項は消え、第二項だけ考えれば良い。</p>
-                        <p>さて、いま真の分布がわからない代わりに、<span class="math inline">\(T\)</span>回事象を観測し、その<span class="math inline">\(k\)</span>回目の事象が<span class="math inline">\(S_k\)</span>であったとしよう。この時、尤度関数<span class="math inline">\(l(\theta)\)</span>は</p>
+                        <p>この距離をパラメータ<span
+                        class="math inline">\(\theta\)</span>で微分するので、第一項は消え、第二項だけ考えれば良い。</p>
+                        <p>さて、いま真の分布がわからない代わりに、<span
+                        class="math inline">\(T\)</span>回事象を観測し、その<span
+                        class="math inline">\(k\)</span>回目の事象が<span
+                        class="math inline">\(S_k\)</span>であったとしよう。この時、尤度関数<span
+                        class="math inline">\(l(\theta)\)</span>は</p>
                         <p><span class="math display">\[
                         l(\theta) = \prod_k^T P(\hat{X} = S_t | \theta)
                         \]</span></p>
-                        <p>で表される。ただし<span class="math inline">\(P(\hat{X} = S_t | \theta)\)</span>は、パラメータ<span class="math inline">\(\theta\)</span>のもとで、確率変数が値<span class="math inline">\(S_t\)</span>を取る確率である。後のために対数尤度にしておく。</p>
+                        <p>で表される。ただし<span
+                        class="math inline">\(P(\hat{X} = S_t |
+                        \theta)\)</span>は、パラメータ<span
+                        class="math inline">\(\theta\)</span>のもとで、確率変数が値<span
+                        class="math inline">\(S_t\)</span>を取る確率である。後のために対数尤度にしておく。</p>
                         <p><span class="math display">\[
-                        \log l(\theta) = \sum_t^T \log P(\hat{X} = S_t | \theta)
+                        \log l(\theta) = \sum_t^T \log P(\hat{X} = S_t |
+                        \theta)
                         \]</span></p>
-                        <p>さて、<span class="math inline">\(T\)</span>回の試行のうち、事象<span class="math inline">\(i\)</span>が起きた回数を<span class="math inline">\(n_i\)</span>とする。すると、先程の尤度関数の和を試行に関する和から、事象の種類に関する和に書き直すことができる。</p>
+                        <p>さて、<span
+                        class="math inline">\(T\)</span>回の試行のうち、事象<span
+                        class="math inline">\(i\)</span>が起きた回数を<span
+                        class="math inline">\(n_i\)</span>とする。すると、先程の尤度関数の和を試行に関する和から、事象の種類に関する和に書き直すことができる。</p>
                         <p><span class="math display">\[
-                        \log l(\theta) = \sum_i^N n_i \log P(\hat{X} = i | \theta)
+                        \log l(\theta) = \sum_i^N n_i \log P(\hat{X} = i
+                        | \theta)
                         \]</span></p>
-                        <p><span class="math inline">\(P(\hat{X} = i | \theta)\)</span>は、パラメータ<span class="math inline">\(\theta\)</span>において事象<span class="math inline">\(i\)</span>が起きる確率であるから<span class="math inline">\(p_i\)</span>のことである。したがって、</p>
+                        <p><span class="math inline">\(P(\hat{X} = i |
+                        \theta)\)</span>は、パラメータ<span
+                        class="math inline">\(\theta\)</span>において事象<span
+                        class="math inline">\(i\)</span>が起きる確率であるから<span
+                        class="math inline">\(p_i\)</span>のことである。したがって、</p>
                         <p><span class="math display">\[
                         \log l(\theta) = \sum_i^N n_i \log p_i
                         \]</span></p>
-                        <p>両辺を試行回数<span class="math inline">\(T\)</span>で割ると、</p>
+                        <p>両辺を試行回数<span
+                        class="math inline">\(T\)</span>で割ると、</p>
                         <p><span class="math display">\[
-                        \frac{1}{T}\log l(\theta) = \sum_i^N \frac{n_i}{T} \log p_i
+                        \frac{1}{T}\log l(\theta) = \sum_i^N
+                        \frac{n_i}{T} \log p_i
                         \]</span></p>
-                        <p><span class="math inline">\(T\)</span>回の試行のうち、事象<span class="math inline">\(i\)</span>が起きた回数が<span class="math inline">\(n_i\)</span>なので、事象<span class="math inline">\(i\)</span>が起きる確率<span class="math inline">\(q_i\)</span>は<span class="math inline">\(n_i/T\)</span>で近似できる。すると、</p>
+                        <p><span
+                        class="math inline">\(T\)</span>回の試行のうち、事象<span
+                        class="math inline">\(i\)</span>が起きた回数が<span
+                        class="math inline">\(n_i\)</span>なので、事象<span
+                        class="math inline">\(i\)</span>が起きる確率<span
+                        class="math inline">\(q_i\)</span>は<span
+                        class="math inline">\(n_i/T\)</span>で近似できる。すると、</p>
                         <p><span class="math display">\[
                         \begin{aligned}
-                        \frac{1}{T}\log l(\theta) &amp;= \sum_i^N \frac{n_i}{T} \log p_i\\
+                        \frac{1}{T}\log l(\theta) &amp;= \sum_i^N
+                        \frac{n_i}{T} \log p_i\\
                         &amp;\sim \sum_i^N q_i \log p_i
                         \end{aligned}
                         \]</span></p>
                         <p>これは、KL距離の第二項にほかならない。</p>
-                        <h2 id="月17日土"><a href="#17">09月17日(土)</a> <a id="17"></a></h2>
-                        <p>メモ。「Stable Diffusion」のWebUI+Docker版。</p>
-                        <p><a href="https://github.com/AbdBarho/stable-diffusion-webui-docker">stable-diffusion-webui-docker</a></p>
+                        <h2 id="月17日土"><a href="#17">09月17日(土)</a>
+                        <a id="17"></a></h2>
+                        <p>メモ。「Stable
+                        Diffusion」のWebUI+Docker版。</p>
+                        <p><a
+                        href="https://github.com/AbdBarho/stable-diffusion-webui-docker">stable-diffusion-webui-docker</a></p>
                         <p>研究室のGPUマシンで試してみたい。</p>
-                        <p>学生さんが踏んだスパコンのエラー、UCXに起因するらしい。UCXとはUnited Communication X Frameworkの略で、UC-S、UC-T、UC-Pなどのコンポーネントからなる。踏んだエラーは<a href="https://github.com/openucx/ucx/pull/7353">これ</a>だな。大量の通信パケットがあると、パケットの順番が前後してしまうことがあるらしく、それでAssertion Failedしてしまう模様。上流では対応が完了しており、スパコンでも次のメンテでアップデート予定とのこと。</p>
+                        <p>学生さんが踏んだスパコンのエラー、UCXに起因するらしい。UCXとはUnited
+                        Communication X
+                        Frameworkの略で、UC-S、UC-T、UC-Pなどのコンポーネントからなる。踏んだエラーは<a
+                        href="https://github.com/openucx/ucx/pull/7353">これ</a>だな。大量の通信パケットがあると、パケットの順番が前後してしまうことがあるらしく、それでAssertion
+                        Failedしてしまう模様。上流では対応が完了しており、スパコンでも次のメンテでアップデート予定とのこと。</p>
                         <p>こういうのがあると、「スパコンの研究室」って感じがしてきて良いですね。</p>
-                        <h2 id="月16日金"><a href="#16">09月16日(金)</a> <a id="16"></a></h2>
+                        <h2 id="月16日金"><a href="#16">09月16日(金)</a>
+                        <a id="16"></a></h2>
                         <p>卒論中間発表。</p>
                         <p>共著論文、アクセプトされたとのこと。慶應での初めての共同研究。めでたい。</p>
-                        <h2 id="月15日木"><a href="#15">09月15日(木)</a> <a id="15"></a></h2>
+                        <h2 id="月15日木"><a href="#15">09月15日(木)</a>
+                        <a id="15"></a></h2>
                         <p>大学に来たら、ドアに置手紙。名古屋大学時代に同じ講座だった先生が訪問してくださったとのこと。ちょうど学会で入れ違いになってしまって残念。名古屋での日々を思い出す。じっくりと研究に取り組めて、すごく良い環境だったと思います。今の忙しい日々も嫌いではないですが。</p>
                         <p>研究室ミーティング。プレゼンテーション技法発表会の練習。明日皆さんがんばってね。</p>
                         <p>学会の参加費の立て替え払い請求をしようとして、参加費がわかるページを印刷しようとするが、学会のページが印刷時にレイアウトが崩れてしまう。面倒なので、ブラウザがレンダリングした状態をキャプチャして、画像として印刷した。うーん。</p>
                         <p>学会の立て替え払い請求出した。4人分。増えてきた。こういう出費はうれしい。</p>
                         <p>GitHub演習のTAの募集をかけた。学会のために後手に回ってしまった。</p>
-                        <h2 id="月14日水"><a href="#14">09月14日(水)</a> <a id="14"></a></h2>
+                        <h2 id="月14日水"><a href="#14">09月14日(水)</a>
+                        <a id="14"></a></h2>
                         <p>学会。</p>
                         <p>学会で話しかけられた。自分の書いたMD記事が参考になっているとのこと。ありがたい。書いてみるもんですね。</p>
                         <p>学生さんの発表。かなり注目を浴びており、終わった後も質問攻め。良かった。</p>
                         <p>別の用事があるためにすぐに帰る。これで久々の物理学会おしまい。やっぱり対面がいいですね。</p>
-                        <h2 id="月13日火"><a href="#13">09月13日(火)</a> <a id="13"></a></h2>
+                        <h2 id="月13日火"><a href="#13">09月13日(火)</a>
+                        <a id="13"></a></h2>
                         <p>物理学会。座長。みんなエントロピーを分解してた。</p>
                         <p>学生さんの発表。3件とも無事に終わってよかった。</p>
                         <p>メモ。</p>
                         <ul>
                         <li>Buttinoni PRL 2013 ヤヌス粒子の話</li>
-                        <li>Vicsek Model PRL vol. 114 068101 (2015) Vicsek Waveが出る？</li>
-                        <li>Newtonian Event-Chain MC まっすぐ進むEvent-Chain MCに対して、Event-Driven型に進ませるもの。通常のECMCより緩和が早い？(少なくとも拡散は多い)</li>
-                        <li>Solet 係数 D. Stadelmier, Macromolecule, vol. 41, pp. 6205 (2008).</li>
+                        <li>Vicsek Model PRL vol. 114 068101 (2015)
+                        Vicsek Waveが出る？</li>
+                        <li>Newtonian Event-Chain MC
+                        まっすぐ進むEvent-Chain
+                        MCに対して、Event-Driven型に進ませるもの。通常のECMCより緩和が早い？(少なくとも拡散は多い)</li>
+                        <li>Solet 係数 D. Stadelmier, Macromolecule,
+                        vol. 41, pp. 6205 (2008).</li>
                         <li>ライデンフロスト現象</li>
-                        <li>Directional Quenching。カーンヒリヤードを線で冷やす。その冷却フロントの速度によって出てくる模様が異なり、相転移のような現象がおきる。</li>
-                        <li>並列組み立て可能性。一次元の原子の接続の相転移。佐々研の研究。Directional Percolationっぽいけどどうなのかな。</li>
+                        <li>Directional
+                        Quenching。カーンヒリヤードを線で冷やす。その冷却フロントの速度によって出てくる模様が異なり、相転移のような現象がおきる。</li>
+                        <li>並列組み立て可能性。一次元の原子の接続の相転移。佐々研の研究。Directional
+                        Percolationっぽいけどどうなのかな。</li>
                         <li>パラフィンの落下実験。奈良女の狐崎さんのところの実験。</li>
                         </ul>
                         <p>特にパラフィンの落下実験が面白かった。溶かしたパラフィンを温度制御した水に落下させる。水温と落下速度により、面白いことがおきる。特に、「ちょうど良い水温」の時が面白くなる。温度が低すぎるとすぐに固まってしまい、高すぎると衝突後に丸くなる時間がある。その中間だと、衝突で変形した状態でちょうど固まるので複雑な形状となる。</p>
                         <p>自分の書いたPython本を学生さんの輪講に使っているという話を聞いた。ありがたい限り。</p>
-                        <h2 id="月12日月"><a href="#12">09月12日(月)</a> <a id="12"></a></h2>
+                        <h2 id="月12日月"><a href="#12">09月12日(月)</a>
+                        <a id="12"></a></h2>
                         <p>学生さんが投げたジョブが変なエラーを吐いて死んでいたので、物性研に質問メールを投げる。おそらく我々が想定外の使い方をしているとかなんだと思うんだけど、こうやって無茶やる人がいるからスパコン運用の知見が溜まるわけで。いずれにせよ、こういうことが起きると、なんか「スパコンの研究室」って感じがして良いですね。</p>
                         <p>論文再投稿した。通るといいな。</p>
-                        <h2 id="月11日日"><a href="#11">09月11日(日)</a> <a id="11"></a></h2>
+                        <h2 id="月11日日"><a href="#11">09月11日(日)</a>
+                        <a id="11"></a></h2>
                         <p>最近、土日に全く動けず、進捗が作れていない。寝てるつもりだが、あまり休めてない。</p>
                         <p>ネットに自分の専門知識に関する網を張り、なにかひっかけては文句を言う、典型的な「警察」。ある人のツイートを見て、「あ、あの警察湧いてるだろうな」とおもったら案の定。こういうやりとりが「有益」だと思ってるんだろうな・・・。</p>
                         <p>全く見知らぬ人とやりとりするのは、相互作用、というか摩擦が強すぎ、すぐに心のエネルギーが減衰してしまう。こうして、一方的に情報を発信するブログに回帰する俺。うーん。</p>
@@ -214,70 +310,95 @@
                         <p>Qiita、Contribution数で表彰プログラムとかやってて、なんか、そういう雰囲気が苦手で抜けた、というのがある。いわゆる「いいね」を稼ぐ記事が良い記事であり、良い記事を書く著者が良い著者である、という風潮がどうにも苦手。論文でも似たような雰囲気を感じる。つまり、引用を稼ぐ論文が良い論文であり、良い論文を書く研究者が良い研究者である、という風潮。読まれない記事、論文を書いても仕方ないが、過度にKPIを求めるとおかしなことになるわけで、難しい。</p>
                         <p>この日記を書いているところを娘に見られて「ねぇパパ、つかれてうごけないってなに？」って聞かれてしまったorz</p>
                         <p>ネガティブなことを言うのも書くのも良くないね。</p>
-                        <h2 id="月10日土"><a href="#10">09月10日(土)</a> <a id="10"></a></h2>
+                        <h2 id="月10日土"><a href="#10">09月10日(土)</a>
+                        <a id="10"></a></h2>
                         <p>疲れて動けない。</p>
-                        <h2 id="月09日金"><a href="#09">09月09日(金)</a> <a id="09"></a></h2>
+                        <h2 id="月09日金"><a href="#09">09月09日(金)</a>
+                        <a id="09"></a></h2>
                         <p>iMac受け取り。修理代金無しとのことだったので「再現不可で返却」だと思ったが「再現は不可だが、ログでパニックを確認したためロジックボードを交換」とのこと。というわけでディスプレイ以外は新品になって帰ってきた。いやはや。</p>
                         <p>なんとか論文の査読レポートへの返事を書き終わったぞ。月曜日に再投稿だ。</p>
-                        <h2 id="月08日木"><a href="#08">09月08日(木)</a> <a id="08"></a></h2>
+                        <h2 id="月08日木"><a href="#08">09月08日(木)</a>
+                        <a id="08"></a></h2>
                         <p>研究室ミーティング。</p>
                         <p>4:15分にiMacの修理が終わったというメールを見て生協にかけつけたが、4時で営業終了だった。</p>
                         <p>zshのヒストリが壊れた。</p>
-                        <div class="sourceCode" id="cb8"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a>zsh: corrupt history file /home/username/.zsh_history</span></code></pre></div>
+                        <div class="sourceCode" id="cb8"><pre
+                        class="sourceCode txt"><code class="sourceCode default"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>zsh: corrupt history file /home/username/.zsh_history</span></code></pre></div>
                         <p>みたいなことを言われる。原因は<code>.zsh_history</code>におかしな文字列が含まれているため。<code>string</code>コマンドで修理できるらしいが、<code>vim</code>で直接なおした。</p>
                         <p>gitもおかしくなってる。</p>
-                        <div class="sourceCode" id="cb9"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a>$ <span class="fu">git</span> log</span>
-                        <span id="cb9-2"><a href="#cb9-2" aria-hidden="true"></a><span class="ex">error</span>: object file .git/objects/55/72ef2d220b5f3a2142c7c09e057c2e95b69873 is empty</span>
-                        <span id="cb9-3"><a href="#cb9-3" aria-hidden="true"></a><span class="ex">error</span>: object file .git/objects/55/72ef2d220b5f3a2142c7c09e057c2e95b69873 is empty</span>
-                        <span id="cb9-4"><a href="#cb9-4" aria-hidden="true"></a><span class="ex">fatal</span>: loose object 5572ef2d220b5f3a2142c7c09e057c2e95b69873 (stored in .git/objects/55/72ef2d220b5f3a2142c7c09e057c2e95b69873) <span class="ex">is</span> corrupt</span>
-                        <span id="cb9-5"><a href="#cb9-5" aria-hidden="true"></a><span class="ex">error</span>: object file .git/objects/55/72ef2d220b5f3a2142c7c09e057c2e95b69873 is empty</span>
-                        <span id="cb9-6"><a href="#cb9-6" aria-hidden="true"></a><span class="ex">error</span>: object file .git/objects/55/72ef2d220b5f3a2142c7c09e057c2e95b69873 is empty</span>
-                        <span id="cb9-7"><a href="#cb9-7" aria-hidden="true"></a><span class="ex">fatal</span>: loose object 5572ef2d220b5f3a2142c7c09e057c2e95b69873 (stored in .git/objects/55/72ef2d220b5f3a2142c7c09e057c2e95b69873) <span class="ex">is</span> corrupt</span></code></pre></div>
+                        <div class="sourceCode" id="cb9"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git log</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">error:</span> object file .git/objects/55/72ef2d220b5f3a2142c7c09e057c2e95b69873 is empty</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="ex">error:</span> object file .git/objects/55/72ef2d220b5f3a2142c7c09e057c2e95b69873 is empty</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="ex">fatal:</span> loose object 5572ef2d220b5f3a2142c7c09e057c2e95b69873 <span class="er">(</span><span class="ex">stored</span> in .git/objects/55/72ef2d220b5f3a2142c7c09e057c2e95b69873<span class="kw">)</span> <span class="ex">is</span> corrupt</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="ex">error:</span> object file .git/objects/55/72ef2d220b5f3a2142c7c09e057c2e95b69873 is empty</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="ex">error:</span> object file .git/objects/55/72ef2d220b5f3a2142c7c09e057c2e95b69873 is empty</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="ex">fatal:</span> loose object 5572ef2d220b5f3a2142c7c09e057c2e95b69873 <span class="er">(</span><span class="ex">stored</span> in .git/objects/55/72ef2d220b5f3a2142c7c09e057c2e95b69873<span class="kw">)</span> <span class="ex">is</span> corrupt</span></code></pre></div>
                         <p>どうもコミット時にファイルが壊れたっぽい。<code>.zsh_history</code>といい<code>git</code>といい、なんかファイルがおかしい。ハードディスクが不調なのか？怖すぎる。</p>
-                        <h2 id="月07日水"><a href="#07">09月07日(水)</a> <a id="07"></a></h2>
-                        <p>Adobe Acrobat Readerが開くのと同時に、Adobeのログイン画面が出る時があって鬱陶しい。設定での消し方がよくわからん。</p>
-                        <p>あるオープンアクセスジャーナルから、初めて査読依頼が届いた。そのジャーナル、名前だけ知っていたが、別の分野の雑誌だと思っていたので気に留めていなかった。しかし、自分の専門に近い論文が届いたのと、Editorがまともそう(Google Scholar調べ)だったので、査読を引き受けることに。</p>
+                        <h2 id="月07日水"><a href="#07">09月07日(水)</a>
+                        <a id="07"></a></h2>
+                        <p>Adobe Acrobat
+                        Readerが開くのと同時に、Adobeのログイン画面が出る時があって鬱陶しい。設定での消し方がよくわからん。</p>
+                        <p>あるオープンアクセスジャーナルから、初めて査読依頼が届いた。そのジャーナル、名前だけ知っていたが、別の分野の雑誌だと思っていたので気に留めていなかった。しかし、自分の専門に近い論文が届いたのと、Editorがまともそう(Google
+                        Scholar調べ)だったので、査読を引き受けることに。</p>
                         <p>オープンアクセスジャーナルって、どうなんだろうね・・・</p>
-                        <p>昔、<a href="https://note.com/kaityo256/n/n5c8134553ec5">明らかにハゲタカだったジャーナルの査読を引き受けた</a>ことがあったが、今回は「査読期間がまとも(短すぎない)」「Editorがまとも(明らかに研究者)」ということで大丈夫であろう。</p>
-                        <p>しかし、ついでにGoogle Scholarで知り合いの研究者の引用数とか調べて、ちょっと自分の論文の引用数の少なさに凹んでしまった。もっとちゃんと論文書かないとな。</p>
+                        <p>昔、<a
+                        href="https://note.com/kaityo256/n/n5c8134553ec5">明らかにハゲタカだったジャーナルの査読を引き受けた</a>ことがあったが、今回は「査読期間がまとも(短すぎない)」「Editorがまとも(明らかに研究者)」ということで大丈夫であろう。</p>
+                        <p>しかし、ついでにGoogle
+                        Scholarで知り合いの研究者の引用数とか調べて、ちょっと自分の論文の引用数の少なさに凹んでしまった。もっとちゃんと論文書かないとな。</p>
                         <p>査読はプライベートリポジトリでsvnで管理しているんだけど、だんだんしんどくなってきた。もうGitHubのプライベートリポジトリに移行するかな。プライベートリポジトリだと失敗して情報が流出したら自分の責任だけど、GitHubならGitHubのせいだし、正直、自分よりGitHubの方が信頼できる。</p>
                         <p>査読レポートの返事、コメント8つ中4つまで済ませた。なかなか思うように作業が進まない。</p>
-                        <h2 id="月06日火"><a href="#06">09月06日(火)</a> <a id="06"></a></h2>
+                        <h2 id="月06日火"><a href="#06">09月06日(火)</a>
+                        <a id="06"></a></h2>
                         <p>修理に出してたMacBookPro返ってきた。SSDの不具合。ボード一体型なので、ロジックボード全交換。それじゃ再インストールできないのも無理はないし、素人にはどうしようもない。すぐにプロに任せればよかった。</p>
                         <p>Subversionのリポジトリの状態をプロンプトに出す奴、これまで<code>LANG=C</code>を指定していたが、日本語(UTF-8)のファイルを管理するようになってバグるのでやめた。また、昔はdepthとしてimmediateを指定していたが、これももう速度が許容範囲になったので、その指定も外した。</p>
-                        <p>っていうかもうSubversion管理やめるかなぁ。少なくとも予算管理はsvn+xlsxよりGoogle SpreadSheetの方が便利な気がする。ただ、Google Oneの入会必須。Paper PileもGoogle Drive使うから、こちらもGoogle One要求。もう入るのは確定。あとは支払い方法を検討するだけだな。</p>
+                        <p>っていうかもうSubversion管理やめるかなぁ。少なくとも予算管理はsvn+xlsxよりGoogle
+                        SpreadSheetの方が便利な気がする。ただ、Google
+                        Oneの入会必須。Paper PileもGoogle
+                        Drive使うから、こちらもGoogle
+                        One要求。もう入るのは確定。あとは支払い方法を検討するだけだな。</p>
                         <p>学習指導のお仕事。</p>
                         <p>dvipdfmxがPDFのバージョンが古いとワーニングを出す。<code>-V</code>でマイナーバージョンを指定。とりあえず<code>-V 7</code>でいいのかな。<code>.latexmkrc</code>はこうなる.</p>
-                        <div class="sourceCode" id="cb10"><pre class="sourceCode perl"><code class="sourceCode perl"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true"></a><span class="kw">#!/usr/bin/env perl</span></span>
-                        <span id="cb10-2"><a href="#cb10-2" aria-hidden="true"></a></span>
-                        <span id="cb10-3"><a href="#cb10-3" aria-hidden="true"></a><span class="dt">$latex</span> = <span class="kw">&#39;</span><span class="st">platex -synctex=1 %O %S</span><span class="kw">&#39;</span>;</span>
-                        <span id="cb10-4"><a href="#cb10-4" aria-hidden="true"></a><span class="dt">$bibtex</span> = <span class="kw">&#39;</span><span class="st">pbibtex %O %B</span><span class="kw">&#39;</span>;</span>
-                        <span id="cb10-5"><a href="#cb10-5" aria-hidden="true"></a><span class="dt">$makeindex</span> = <span class="kw">&#39;</span><span class="st">memindex %O -o %D %S</span><span class="kw">&#39;</span>;</span>
-                        <span id="cb10-6"><a href="#cb10-6" aria-hidden="true"></a><span class="dt">$pdf_mode</span> = <span class="dv">3</span>;</span>
-                        <span id="cb10-7"><a href="#cb10-7" aria-hidden="true"></a><span class="dt">$dvipdf</span> = <span class="kw">&#39;</span><span class="st">dvipdfmx -V 7 %O -o %D %S</span><span class="kw">&#39;</span>;</span></code></pre></div>
+                        <div class="sourceCode" id="cb10"><pre
+                        class="sourceCode perl"><code class="sourceCode perl"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">#!/usr/bin/env perl</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="dt">$latex</span> = <span class="ot">&#39;</span><span class="ss">platex -synctex=1 %O %S</span><span class="ot">&#39;</span>;</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="dt">$bibtex</span> = <span class="ot">&#39;</span><span class="ss">pbibtex %O %B</span><span class="ot">&#39;</span>;</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="dt">$makeindex</span> = <span class="ot">&#39;</span><span class="ss">memindex %O -o %D %S</span><span class="ot">&#39;</span>;</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="dt">$pdf_mode</span> = <span class="dv">3</span>;</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="dt">$dvipdf</span> = <span class="ot">&#39;</span><span class="ss">dvipdfmx -V 7 %O -o %D %S</span><span class="ot">&#39;</span>;</span></code></pre></div>
                         <p>Macでどうなるか確認しないと。</p>
-                        <h2 id="月05日月"><a href="#05">09月05日(月)</a> <a id="05"></a></h2>
+                        <h2 id="月05日月"><a href="#05">09月05日(月)</a>
+                        <a id="05"></a></h2>
                         <p>cron化しているはずのhwclockが仕事をしていない。確認する。</p>
-                        <div class="sourceCode" id="cb11"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true"></a>$ <span class="fu">sudo</span> hwclock -s</span>
-                        <span id="cb11-2"><a href="#cb11-2" aria-hidden="true"></a><span class="ex">hwclock</span>: クロックティックを待つための /dev/rtc0 への select() が時間切れになりました</span></code></pre></div>
+                        <div class="sourceCode" id="cb11"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> sudo hwclock <span class="at">-s</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="ex">hwclock:</span> クロックティックを待つための /dev/rtc0 への select<span class="er">(</span><span class="kw">)</span> <span class="ex">が時間切れになりました</span></span></code></pre></div>
                         <p>なんだこりゃ？</p>
                         <p>学習指導のお仕事。いかん、また後手に回っている。たまに引継ぎ資料を読み返さないとダメだ。</p>
                         <p>査読レポート。査読者のコメントをたぶん理解できた。あとは返事するだけ(その時間をいつ作るんだ？)。</p>
-                        <h2 id="月04日日"><a href="#04">09月04日(日)</a> <a id="04"></a></h2>
+                        <h2 id="月04日日"><a href="#04">09月04日(日)</a>
+                        <a id="04"></a></h2>
                         <p>体調が悪い。査読レポートを少しチェック。</p>
                         <p>寝る前に「なろう小説」を読んでいるが、いいところでエタってるのが結構ある。AIが続きを書いてくれないかな・・・</p>
-                        <h2 id="月03日土"><a href="#03">09月03日(土)</a> <a id="03"></a></h2>
+                        <h2 id="月03日土"><a href="#03">09月03日(土)</a>
+                        <a id="03"></a></h2>
                         <p>子供を遊びにつれていく。</p>
                         <p>RBMの学習について勉強した。</p>
-                        <h2 id="月02日金"><a href="#02">09月02日(金)</a> <a id="02"></a></h2>
-                        <p><a href="https://zenn.dev/saka1/articles/0498f7c8dbdba8">巨大テキストファイルをsortコマンドでソートしてみる</a></p>
+                        <h2 id="月02日金"><a href="#02">09月02日(金)</a>
+                        <a id="02"></a></h2>
+                        <p><a
+                        href="https://zenn.dev/saka1/articles/0498f7c8dbdba8">巨大テキストファイルをsortコマンドでソートしてみる</a></p>
                         <p>面白かった。いろいろ頑張るより、既存のツール使っちゃった方が早い、というのはありがちな結論。また、<code>GNU sort</code>が、情報が全てメモリに乗らないファイルをソートできるとか、並列ソートに対応しているとか知らなかった。すごいな。</p>
                         <p>査読レポートの返事用に簡単な確認コードを書いたが厳密解と一致しない。コーディング力が落ちている。やばい。</p>
-                        <p>家に返ってから実装。っていうか三目並べの有効な全状態探索コード。落ち着いて書いたらちゃんと書けた。三目並べは全部で<span class="math inline">\(3**9 = 19683\)</span>通りあるが、そのうち有効な状態は5478通りだけで、勝負のつき方は対称性を考慮しないと全部で255168通り、ということを確認したかっただけ。</p>
+                        <p>家に返ってから実装。っていうか三目並べの有効な全状態探索コード。落ち着いて書いたらちゃんと書けた。三目並べは全部で<span
+                        class="math inline">\(3**9 =
+                        19683\)</span>通りあるが、そのうち有効な状態は5478通りだけで、勝負のつき方は対称性を考慮しないと全部で255168通り、ということを確認したかっただけ。</p>
                         <p>どうでも良いが、Pythonで書いて遅かったのでC++で書き直したのだが、Pythonは<code>a==b==c</code>みたいな比較ができるのに対して、C++は<code>a==b==c</code>が<code>(a==b)==c</code>と解釈されてしまうため、例えば<code>2==1==0</code>が真、<code>0==0==0</code>が偽と判定されてしまう。しばらくこのバグに気づかなかった。</p>
                         <p>でもまぁ、とにかく組めてよかった。</p>
                         <p>なんだか最近、コードを書く目的が「何か面白いことをしたい」という前向きの気持ちというよりは、「俺はまだやれる。プログラムが書ける」という確認の意味合いが強くなってきている気がして悲しい。こんな小さいコードではなく、ごついコードが書きたい。</p>
-                        <h2 id="月01日木"><a href="#01">09月01日(木)</a> <a id="01"></a></h2>
+                        <h2 id="月01日木"><a href="#01">09月01日(木)</a>
+                        <a id="01"></a></h2>
                         <p>もう9月ってマジか。</p>
                         <p>研究室ミーティング。輪講。</p>
                         <p>熱力学、統計力学で、一つの熱力学関数からルジャンドル変換で全部出てくるのは不思議。同様に統計力学ではラプラス変換で全部出てくる。数学的にはとてもきれいだけど、不思議。</p>

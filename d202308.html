@@ -21,150 +21,205 @@
   <body>
     <article class="markdown-body">
                         <h1 id="年8月">2023年8月</h1>
-                        <h2 id="月31日木"><a href="#31">08月31日(木)</a> <a id="31"></a></h2>
+                        <h2 id="月31日木"><a href="#31">08月31日(木)</a>
+                        <a id="31"></a></h2>
                         <p>また、鼻炎が酷くなった。目も痒いので、アレルギーだろう。前回は埃っぽい部屋だと思ったが、ずっと家にいたので違う。車か、部屋の空調か。とにかく今年は鼻がおかしくなることが多い。</p>
                         <p>焼くしかないのかなぁ。</p>
                         <p>会議。</p>
                         <p>会議。</p>
-                        <h2 id="月30日水"><a href="#30">08月30日(水)</a> <a id="30"></a></h2>
-                        <p>ツイッタランドで喧嘩してる研究者がいて、片方がもう片方のGoogle Scholar晒して「あなたのほとんどない業績貼っておきますね」と揶揄してたんだけど、それが僕より業績があって凹む。なんだかなぁ。</p>
+                        <h2 id="月30日水"><a href="#30">08月30日(水)</a>
+                        <a id="30"></a></h2>
+                        <p>ツイッタランドで喧嘩してる研究者がいて、片方がもう片方のGoogle
+                        Scholar晒して「あなたのほとんどない業績貼っておきますね」と揶揄してたんだけど、それが僕より業績があって凹む。なんだかなぁ。</p>
                         <p>出張書類再提出。こんどは大丈夫だったっぽい。</p>
                         <p>研究室見学。うちでは卒論、修論を2冊ずつ製本して、1冊はご自宅用、もう1冊は研究室保存用にしてるんだけど、研究室見学に来た時に「先輩たちはこういう卒論/修論書いてるよ」と見せられるのでいい感じだな。</p>
-                        <h2 id="月29日火"><a href="#29">08月29日(火)</a> <a id="29"></a></h2>
+                        <h2 id="月29日火"><a href="#29">08月29日(火)</a>
+                        <a id="29"></a></h2>
                         <p>学生さん論文の査読レポート返ってきた。比較的好意的なレポート。良かった。適切に返事をすれば通るだろう。</p>
-                        <p>前から縦書きの本を書きたいと思っていた。重い腰を上げてRe:VIEWでやってみることに。今は横書きの本をRe:VIEW starterで書いているが、生Re:VIEWも扱ってみる。</p>
+                        <p>前から縦書きの本を書きたいと思っていた。重い腰を上げてRe:VIEWでやってみることに。今は横書きの本をRe:VIEW
+                        starterで書いているが、生Re:VIEWも扱ってみる。</p>
                         <p>まずはRe:VIEWのインストール。</p>
-                        <div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="fu">sudo</span> gem install review</span></code></pre></div>
+                        <div class="sourceCode" id="cb1"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> gem install review</span></code></pre></div>
                         <p>gemをアップデートしろと言われた。</p>
-                        <div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="fu">sudo</span> gem update --system</span>
-                        <span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a><span class="fu">sudo</span> gem update</span></code></pre></div>
+                        <div class="sourceCode" id="cb2"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> gem update <span class="at">--system</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> gem update</span></code></pre></div>
                         <p><code>--system</code>がgem自体のアップデート、なしだとインストールされている各gemのアップデート。</p>
-                        <div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a>$ <span class="fu">which</span> review</span>
-                        <span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a><span class="ex">/Users/watanabe/.rbenv/shims/review</span></span></code></pre></div>
+                        <div class="sourceCode" id="cb3"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> which review</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">/Users/watanabe/.rbenv/shims/review</span></span></code></pre></div>
                         <p>全く忘れていたが、rbenvで管理しているんだな。</p>
                         <p>サンプルプロジェクトを作成してビルド。</p>
-                        <div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="bu">cd</span> github</span>
-                        <span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a><span class="ex">review-init</span> rvsample</span>
-                        <span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a><span class="bu">cd</span> rvsample</span>
-                        <span id="cb4-4"><a href="#cb4-4" aria-hidden="true"></a><span class="ex">review-epubmaker</span> config.yml</span></code></pre></div>
+                        <div class="sourceCode" id="cb4"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> github</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">review-init</span> rvsample</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> rvsample</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="ex">review-epubmaker</span> config.yml</span></code></pre></div>
                         <p>book.epubができるので、</p>
-                        <div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="ex">open</span> book.epub</span></code></pre></div>
+                        <div class="sourceCode" id="cb5"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">open</span> book.epub</span></code></pre></div>
                         <p>すると、iBookで開く。ここまでOK。</p>
-                        <p>縦書きは、<a href="https://github.com/kmuto/review/blob/master/doc/writing_vertical.ja.md">ここ</a>に従う。</p>
+                        <p>縦書きは、<a
+                        href="https://github.com/kmuto/review/blob/master/doc/writing_vertical.ja.md">ここ</a>に従う。</p>
                         <p>そのままだと「第1章」の1だけ横向きになるので、例えば<code>local.yml</code>に</p>
-                        <div class="sourceCode" id="cb6"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="fu">locale</span><span class="kw">:</span><span class="at"> ja</span></span>
-                        <span id="cb6-2"><a href="#cb6-2" aria-hidden="true"></a><span class="fu">chapter</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;第%pJ部&quot;</span></span></code></pre></div>
+                        <div class="sourceCode" id="cb6"><pre
+                        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">locale</span><span class="kw">:</span><span class="at"> ja</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">chapter</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;第%pJ部&quot;</span></span></code></pre></div>
                         <p>みたいに書くと第一部と漢数字になる。</p>
-                        <p>iBookはデバッグに全く向かない。開く度に本棚に登録されてしまう。なんかちょうどよいepub Readerはないかな。</p>
+                        <p>iBookはデバッグに全く向かない。開く度に本棚に登録されてしまう。なんかちょうどよいepub
+                        Readerはないかな。</p>
                         <p>開きっぱなしで、ファイルが更新された再読み込みされるものが良い。</p>
-                        <p>ChromeにはReadiumというものがあったが、<a href="https://blog.chromium.org/2020/01/moving-forward-from-chrome-apps.html">GoogleがChrome Appsのサポートをやめたらしい</a>。アナウンスを読んでも、なぜAppsをやめたかよくわからない。</p>
-                        <p>拡張機能は継続と。<a href="https://office-kabu.jp/chromebook/miscellaneous-impressions/chromebook-20200117">Chromeアプリ版として別途開発、サポートするのが大変だから、これからはAndroidアプリ版やWebアプリ版、Webサービスを使ってね</a>ということらしい。</p>
-                        <p>Readiumは拡張機能ではなく、Chrome Appsとして開発されていたため、この決断により使えなくなったと。</p>
-                        <p>Chromeのepub Reader使ってみたけど、表示が崩れてどうにもならなかった。iBookでなんとかするしかないのか？PDFで中身だけ確認して、偶に縦書きをEPUBで確認、みたいな。</p>
-                        <h2 id="月28日月"><a href="#28">08月28日(月)</a> <a id="28"></a></h2>
+                        <p>ChromeにはReadiumというものがあったが、<a
+                        href="https://blog.chromium.org/2020/01/moving-forward-from-chrome-apps.html">GoogleがChrome
+                        Appsのサポートをやめたらしい</a>。アナウンスを読んでも、なぜAppsをやめたかよくわからない。</p>
+                        <p>拡張機能は継続と。<a
+                        href="https://office-kabu.jp/chromebook/miscellaneous-impressions/chromebook-20200117">Chromeアプリ版として別途開発、サポートするのが大変だから、これからはAndroidアプリ版やWebアプリ版、Webサービスを使ってね</a>ということらしい。</p>
+                        <p>Readiumは拡張機能ではなく、Chrome
+                        Appsとして開発されていたため、この決断により使えなくなったと。</p>
+                        <p>Chromeのepub
+                        Reader使ってみたけど、表示が崩れてどうにもならなかった。iBookでなんとかするしかないのか？PDFで中身だけ確認して、偶に縦書きをEPUBで確認、みたいな。</p>
+                        <h2 id="月28日月"><a href="#28">08月28日(月)</a>
+                        <a id="28"></a></h2>
                         <p>英文校閲にも検収がいるとのこと。成果物と一緒に提出。</p>
                         <p>一日会議。</p>
                         <p>まだ動けない。</p>
-                        <p>死ぬほど久しぶりに後輩君に連絡をとった Part 2。</p>
-                        <h2 id="月27日日"><a href="#27">08月27日(日)</a> <a id="27"></a></h2>
+                        <p>死ぬほど久しぶりに後輩君に連絡をとった Part
+                        2。</p>
+                        <h2 id="月27日日"><a href="#27">08月27日(日)</a>
+                        <a id="27"></a></h2>
                         <p>NOP</p>
                         <p>体調がおもわしくない。引き続きアレルギー。鼻を焼くかなぁ。</p>
-                        <h2 id="月26日土"><a href="#26">08月26日(土)</a> <a id="26"></a></h2>
+                        <h2 id="月26日土"><a href="#26">08月26日(土)</a>
+                        <a id="26"></a></h2>
                         <p>NOP</p>
                         <p>病院へ。なんか、病院に行く途中で酷いアレルギー反応が。タイミング的に電車なんだけど、本当かなぁ？それとも昨日の部屋がホコリっぽかった？それにしては反応が出るのが遅すぎる気がする。</p>
                         <p>死ぬほど久しぶりに後輩君に連絡をとった。何年ぶりだろ？8年ぶりとか？</p>
-                        <h2 id="月25日金"><a href="#25">08月25日(金)</a> <a id="25"></a></h2>
+                        <h2 id="月25日金"><a href="#25">08月25日(金)</a>
+                        <a id="25"></a></h2>
                         <p>院試面接。</p>
                         <p>書類不備。</p>
-                        <h2 id="月24日木"><a href="#24">08月24日(木)</a> <a id="24"></a></h2>
+                        <h2 id="月24日木"><a href="#24">08月24日(木)</a>
+                        <a id="24"></a></h2>
                         <p>今年、高校野球で、坊主強制じゃない学校が活躍して話題になっている。言うまでもないことだが髪型と野球の上手さは無関係(そうでなければプロの選手の髪型が似てくるはず)なので、こういう時代錯誤なルールを強制しない学校の活躍は嬉しい。</p>
                         <p>で、思い出したというか、いつも考えてたことがあって、それは「努力でなく成果を誇れ」という言葉。これ、突き詰めると「結果が全て」につながる。年をとると、わりと環境や才能など、自分ではどうしようもないところで成功が決まっているのが見えてくる。この状態で「結果が全て」にしてしまうと、ほとんど運ゲーになってしまう。ちょっとピントがずれた努力であろうと、努力そのものを評価するのも大事。</p>
                         <p>研究室ミーティング。</p>
-                        <h2 id="月23日水"><a href="#23">08月23日(水)</a> <a id="23"></a></h2>
+                        <h2 id="月23日水"><a href="#23">08月23日(水)</a>
+                        <a id="23"></a></h2>
                         <p>どうにも集中できない時にはシュレッダー作業をするのだが、迷惑フォルダに振り分けられたメールの処理とかそれに似てる気がする。</p>
                         <p>FDアンケートに答えた。板書と講義ノートにミスが多すぎるという指摘。本当にすみません。</p>
                         <p>すごく腰が重かった仕事に取り掛かった。取りかかるまでが遅かったが、取り掛かったらだいぶ進んだ。まだ終わってないけど。</p>
                         <p>第105回高校野球で慶應義塾高校が優勝。107年ぶり2度目とか。すごい。日吉駅では「東急電鉄日吉駅一同」名義で祝福メッセージが掲げられ、号外も配られて混雑していた。</p>
-                        <h2 id="月22日火"><a href="#22">08月22日(火)</a> <a id="22"></a></h2>
+                        <h2 id="月22日火"><a href="#22">08月22日(火)</a>
+                        <a id="22"></a></h2>
                         <p>いろいろ忙しい。しかし、表に出せる成果が全くないのがしんどい。</p>
                         <p>まぁでも、普通は頑張って働いても、「具体的に何をした」ということを外に出せないのが普通なんだよな。研究者が一般的じゃないだけで。後はフルタイムのOSS開発者とか。</p>
-                        <h2 id="月21日月"><a href="#21">08月21日(月)</a> <a id="21"></a></h2>
+                        <h2 id="月21日月"><a href="#21">08月21日(月)</a>
+                        <a id="21"></a></h2>
                         <p>サーバ再起動。やはりノード2,3,4の調子が悪い。</p>
                         <p>土日の疲れを持ち越してる。</p>
                         <p>久しぶりにログインするマシン、Vimのdeinがおかしくなっていた。とりあえずアンインストールしてしまった。こういうところで地味に時間を使っていく。あと、時間がなんか細切れなのがしんどい。</p>
                         <p>日程調整のために「調整さん」使うのはわかる。わかるけど、150行を入力するの苦行でしょ。偉い人であらかじめANDとって、ある程度減らしてから展開してほしい。</p>
                         <p>とてもだいじなかいぎでとてもえらいせんせいがたのはなしにわりこんだ。きょうもぼくはくうきがよめないひとである。</p>
-                        <h2 id="月20日日"><a href="#20">08月20日(日)</a> <a id="20"></a></h2>
+                        <h2 id="月20日日"><a href="#20">08月20日(日)</a>
+                        <a id="20"></a></h2>
                         <p>NOP</p>
-                        <h2 id="月19日土"><a href="#19">08月19日(土)</a> <a id="19"></a></h2>
+                        <h2 id="月19日土"><a href="#19">08月19日(土)</a>
+                        <a id="19"></a></h2>
                         <p>NOP</p>
-                        <h2 id="月18日金"><a href="#18">08月18日(金)</a> <a id="18"></a></h2>
-                        <p><a href="https://www.good8squad.jp/news/01">eスポーツキャスター、なないさんの突然の訃報</a>。32歳。若すぎる。SFLの解説で、その落ち着いた話口調が好きだった。とても残念。村主崇行さんが亡くなったのは享年33歳ということで、同じくらいか。残された家族のことを思うと心が痛む。</p>
+                        <h2 id="月18日金"><a href="#18">08月18日(金)</a>
+                        <a id="18"></a></h2>
+                        <p><a
+                        href="https://www.good8squad.jp/news/01">eスポーツキャスター、なないさんの突然の訃報</a>。32歳。若すぎる。SFLの解説で、その落ち着いた話口調が好きだった。とても残念。村主崇行さんが亡くなったのは享年33歳ということで、同じくらいか。残された家族のことを思うと心が痛む。</p>
                         <p>自分はまだ何もこの世に残せていないが、とりあえず生きてはいる。</p>
                         <p>自分がアップロードした物理の講義資料に微分のドットをつけ忘れてたのを、「講義資料に間違い発見！大丈夫か慶應大学」みたいにネットで煽られているのを見つけてげんなりする。数百枚以上のスライドをアップロードしているんだから、誤植の10個や20個あるよ。普通に報告してくれればいいのに。</p>
                         <p>なんか別のところでも文句言われてた。がんばっても文句しか言われないのしんどいなぁ。</p>
                         <p>停電対応。</p>
-                        <div class="sourceCode" id="cb7"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a><span class="fu">sudo</span> umount /home</span></code></pre></div>
-                        <p>しようとしたらdevice is busyといわれてできない。</p>
-                        <div class="sourceCode" id="cb8"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a><span class="fu">sudo</span> lsof <span class="kw">|</span><span class="fu">grep</span> /home</span></code></pre></div>
+                        <div class="sourceCode" id="cb7"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> umount /home</span></code></pre></div>
+                        <p>しようとしたらdevice is
+                        busyといわれてできない。</p>
+                        <div class="sourceCode" id="cb8"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> lsof <span class="kw">|</span><span class="fu">grep</span> /home</span></code></pre></div>
                         <p>で調べたらユーザのVSCodeのサーバが動いていたのでkillで殺したらumountできた。</p>
                         <p>という対応をChatGPTに聞いて実行した。もうサーバ管理関係はChatGPTがないとできない。</p>
-                        <h2 id="月17日木"><a href="#17">08月17日(木)</a> <a id="17"></a></h2>
+                        <h2 id="月17日木"><a href="#17">08月17日(木)</a>
+                        <a id="17"></a></h2>
                         <p>独学の話が定期的に話題になる。独学は可能だ派と、難しい派。</p>
-                        <p>こういう議論でありがちなこととして、両者で「独学」に対するイメージが違う。 「◯◯は独学できるでしょうか？」と聞いてくる人のイメージする「独学」と、「◯◯の独学は可能だ」と言う人の「独学」はかなり違う。</p>
-                        <p>独学可能派の「独学」はかなりソリッドだ。プログラミングを独学する時、有名な本をとりあえず一冊読むし、何かわからないことがあったら公式ドキュメントを読むのが当然だと思ってる。 一方、聞いてくる人の「独学」は、かなりパッシブ。「特定の何かをしたら、何かスキルが身につく」みたいな、ゲームのスキル解放のようなイメージを持っている。 プログラミング独学サイトでは「解説」→「演習」を繰り返すが、解説部分を「読む」のではなく「見る」。ざっと流して、理解せずに演習に進み、そしてできないという。</p>
+                        <p>こういう議論でありがちなこととして、両者で「独学」に対するイメージが違う。
+                        「◯◯は独学できるでしょうか？」と聞いてくる人のイメージする「独学」と、「◯◯の独学は可能だ」と言う人の「独学」はかなり違う。</p>
+                        <p>独学可能派の「独学」はかなりソリッドだ。プログラミングを独学する時、有名な本をとりあえず一冊読むし、何かわからないことがあったら公式ドキュメントを読むのが当然だと思ってる。
+                        一方、聞いてくる人の「独学」は、かなりパッシブ。「特定の何かをしたら、何かスキルが身につく」みたいな、ゲームのスキル解放のようなイメージを持っている。
+                        プログラミング独学サイトでは「解説」→「演習」を繰り返すが、解説部分を「読む」のではなく「見る」。ざっと流して、理解せずに演習に進み、そしてできないという。</p>
                         <p>研究室ミーティング。関数型言語の話とロバストなRBMの話。</p>
                         <p>尾鍋先生の還暦祝いパーティは2008年11月8日(土)だった。これはサプライズパーティだった。</p>
                         <p>宮下先生の還暦祝いパーティはいつだったっけと思ったが、そちらは退職祝いだった。写真のデータによると2019年6月8日(土)らしい。ちょうど日記の空白期なので記録が残っていない。</p>
                         <p>M2の頃から日記を書きはじめ、それは2000年7月23日から2018年11月30日まで続いたようだ。慶應で日記を書き始めたのが2020年11月18日ですか。約2年の空白をはさんで、あしかけ20年書いている。18年分くらいの日記があるわけで、AIに食わせたら普通にジェネリック俺ができるんじゃないか。</p>
-                        <h2 id="月16日水"><a href="#16">08月16日(水)</a> <a id="16"></a></h2>
+                        <h2 id="月16日水"><a href="#16">08月16日(水)</a>
+                        <a id="16"></a></h2>
                         <p>どうしても昼間に時間が取れず、子供が寝てから夜中に仕事を片付けた。疲れた。</p>
                         <p>こういうのよくないってわかってるんだけどね。</p>
-                        <h2 id="月15日火"><a href="#15">08月15日(火)</a> <a id="15"></a></h2>
+                        <h2 id="月15日火"><a href="#15">08月15日(火)</a>
+                        <a id="15"></a></h2>
                         <p>近所の室内遊び場へ。鬼混んでた。</p>
                         <p>重い仕事。</p>
-                        <h2 id="月14日月"><a href="#14">08月14日(月)</a> <a id="14"></a></h2>
+                        <h2 id="月14日月"><a href="#14">08月14日(月)</a>
+                        <a id="14"></a></h2>
                         <p>国立科学博物館の企画展へ。今回のテーマは海。音声ガイドが桝太一なのが良かった。科博の企画展は音声ガイド借りないと価値が半減する・・・と書いて、もしこれをSNSに乗せたら「音声ガイド無しでも十分楽しかった(怒)」みたいなレスが来るのかなぁ、とか考えてしまう。いわゆるSNS疲れという奴か。</p>
                         <p>すごく昔、mixiあたりの時代に「SNS疲れ」が話題になった気がする。っていうかmixi懐かしい。</p>
-                        <h2 id="月13日日"><a href="#13">08月13日(日)</a> <a id="13"></a></h2>
+                        <h2 id="月13日日"><a href="#13">08月13日(日)</a>
+                        <a id="13"></a></h2>
                         <p>最近のサーバ管理者はcurlを使うんですかね。僕はwgetとか使ってた。調べてみたら、wgetはダイジェスト認証に対応していないっぽい。</p>
                         <p>昔はtelnetとか使ってたものじゃがのう……ﾖﾎﾞﾖﾎﾞ</p>
-                        <h2 id="月12日土"><a href="#12">08月12日(土)</a> <a id="12"></a></h2>
+                        <h2 id="月12日土"><a href="#12">08月12日(土)</a>
+                        <a id="12"></a></h2>
                         <p>重い仕事に手をつける。20%終了。</p>
                         <p>なんかひどい鼻炎になってしまった。数ヶ月に一度くらい酷い鼻炎になり、その度に鼻の粘膜を焼くことを検討するのだが、鼻を焼くと2,3日痛い上に、効果が半年程度なので迷ってしまう。スギ花粉アレルギーとかなら、シーズン前に焼くのが非常に効果的だが、ハウスダストアレルギーなので季節性がないのが面倒。</p>
-                        <h2 id="月11日金"><a href="#11">08月11日(金)</a> <a id="11"></a></h2>
-                        <p>いまPokemon GOをやっているのだが、ポケストップでアイテムを取らせる時に、写真を回させるUIなの面白いな。機能としては単にタッチさせるだけで良いのだが、「何かした」という感覚が強くなる。ゲームクリエイターが「スマホゲームは手触りだ」と言ってたのを思い出す。</p>
+                        <h2 id="月11日金"><a href="#11">08月11日(金)</a>
+                        <a id="11"></a></h2>
+                        <p>いまPokemon
+                        GOをやっているのだが、ポケストップでアイテムを取らせる時に、写真を回させるUIなの面白いな。機能としては単にタッチさせるだけで良いのだが、「何かした」という感覚が強くなる。ゲームクリエイターが「スマホゲームは手触りだ」と言ってたのを思い出す。</p>
                         <p>C言語についての初学者の記事に、ガチ勢がよってたかってコメントをしているの見てげんなりする。そういうのがC言語の闇だと思う。</p>
-                        <h2 id="月10日木"><a href="#10">08月10日(木)</a> <a id="10"></a></h2>
+                        <h2 id="月10日木"><a href="#10">08月10日(木)</a>
+                        <a id="10"></a></h2>
                         <p>Togetterで自分のつぶやきを全く使っていないのだが、「このまとめの意図はこうで、こういうことを伝えたくて作った」みたいな言説を見かけた。「ツイ主のこのつぶやきを一番主張したかったが、それだとウケが悪そうなので、こちらを先においた」みたいな感じ。他人のつぶやきをコラージュのように使った、一種の自己表現らしい。「他人の意見をコラージュにして自己表現をする」という発想がなかったので面白い。</p>
-                        <h2 id="月09日水"><a href="#09">08月09日(水)</a> <a id="09"></a></h2>
+                        <h2 id="月09日水"><a href="#09">08月09日(水)</a>
+                        <a id="09"></a></h2>
                         <p>夏休みの宿題の手伝い。</p>
                         <p>なんか「見たら絶対に気分が悪くなることがわかっているのに見ちゃうもの」ってあって、例えばはてなブックマークとか、Amazonの書評、Yahooニュースのコメントなんかがそうなんだけど、だんだんTwitterもそうなりつつある。フォローは大丈夫なんだけど、「おすすめ」はみんな喧嘩してて、でもそれを見ちゃって、そして後悔する。絶対有用な時間の使い方じゃない。</p>
                         <p>っていうかTwitterは見るだけでなく、呟いた後に後悔することが多い気がする。距離をとるべきだな。</p>
-                        <h2 id="月08日火"><a href="#08">08月08日(火)</a> <a id="08"></a></h2>
+                        <h2 id="月08日火"><a href="#08">08月08日(火)</a>
+                        <a id="08"></a></h2>
                         <p>恐ろしく眠い。</p>
                         <p>午前中は会議。</p>
                         <p>あれもしよう、これもしようと考えているが、どうにも時間が細切れで集中できない。あと眠い。</p>
                         <p>Todoistに3ヶ月ほど入ってて塩漬けになってたタスクを達成した。おそろしく簡単な作業だったのだが、なぜか腰が重かった。</p>
-                        <h2 id="月07日月"><a href="#07">08月07日(月)</a> <a id="07"></a></h2>
+                        <h2 id="月07日月"><a href="#07">08月07日(月)</a>
+                        <a id="07"></a></h2>
                         <p>1on1たくさん。</p>
                         <p>非常勤委嘱理由書出した。</p>
                         <p>学生さんが次に読む論文案投げた。</p>
-                        <h2 id="月06日日"><a href="#06">08月06日(日)</a> <a id="06"></a></h2>
+                        <h2 id="月06日日"><a href="#06">08月06日(日)</a>
+                        <a id="06"></a></h2>
                         <p>NOP</p>
                         <p>引き続き体が超絶重い。低気圧のせい？</p>
-                        <h2 id="月05日土"><a href="#05">08月05日(土)</a> <a id="05"></a></h2>
+                        <h2 id="月05日土"><a href="#05">08月05日(土)</a>
+                        <a id="05"></a></h2>
                         <p>NOP</p>
                         <p>ひどい鼻炎。体が重い。</p>
-                        <h2 id="月04日金"><a href="#04">08月04日(金)</a> <a id="04"></a></h2>
+                        <h2 id="月04日金"><a href="#04">08月04日(金)</a>
+                        <a id="04"></a></h2>
                         <p>会議。</p>
                         <p>最近、日記をゆっくり書く暇がない。午前中から何かしら予定が入っており、かつ「部屋に来たら大量にTodoリストにタスクを突っ込み、帰るまでになるべく消化する」という日々なので、ゆっくり自分の思考をまとめる余裕がない。家に帰ってから寝るまでPCに向かう時間は取れず、日記を書く時間がほとんどとれない。</p>
                         <p>いや、時間そのものは取れるんだけれど、日記って「書くぞ」と思って書くものじゃなくて、いろいろ考えていて「あ、これ将来の自分のために残しておこうかな」と思ったことを書くものなので、ある程度まとまった時間、何かに集中する時間がないと、そもそも日記を書こうとは思わないんだ。つまり、日記の長さは心の余裕と強い相関を持つ。</p>
                         <p>たまったメールの整理をした。まだ整理しきれてない。</p>
                         <p>長年(2年くらい？)の懸案だった学則改正の書類出した。だいぶタスクリストが痩せてきたぞ。塩漬けタスクが処理できはじめているのがうれしい。</p>
-                        <p>なんかみんな<a href="https://ccp2023.jp/">CCP2023</a>に行っちゃって、なんか一人研究から取り残されてる気持ちになる。</p>
-                        <p><a href="https://statphys28.org/">STATPHYS28</a>も、せっかく日本でやるのに全く参加できない。悲しい。</p>
-                        <h2 id="月03日木"><a href="#03">08月03日(木)</a> <a id="03"></a></h2>
+                        <p>なんかみんな<a
+                        href="https://ccp2023.jp/">CCP2023</a>に行っちゃって、なんか一人研究から取り残されてる気持ちになる。</p>
+                        <p><a
+                        href="https://statphys28.org/">STATPHYS28</a>も、せっかく日本でやるのに全く参加できない。悲しい。</p>
+                        <h2 id="月03日木"><a href="#03">08月03日(木)</a>
+                        <a id="03"></a></h2>
                         <p>中間発表振替。</p>
                         <p>研究室ミーティング。</p>
                         <p>CCP2023の出張関連書類提出した。</p>
@@ -172,7 +227,8 @@
                         <li>事前に提出するもの
                         <ul>
                         <li>学外活動届：本人と指導教員の押印の上で学生課に提出(コピーをとって自分でも保存)</li>
-                        <li>出張旅費申請書 (様式32)：本人と指導教員の押印が必要</li>
+                        <li>出張旅費申請書
+                        (様式32)：本人と指導教員の押印が必要</li>
                         <li>鉄道などの運賃が確認できる書類</li>
                         <li>出張用務・日程が確認できる書類</li>
                         <li>出張依頼書 (様式33)</li>
@@ -187,78 +243,89 @@
                         <p>本人の押印が必要なのは「学外活動届」と「出張旅費申請書」。残りの領収書全てに支払い責任者の押印。さらに、科研費で支払うなら科研費ハンコも押印。</p>
                         <p>これまでコロナ禍でほとんど出張していなかったので、手続きがよくわからなかった。これでもう大丈夫のはず？</p>
                         <p>今年は予定外の出費が多く、ほとんど公費を使い切っていたので、科研費があって本当によかった。</p>
-                        <h2 id="月02日水"><a href="#02">08月02日(水)</a> <a id="02"></a></h2>
+                        <h2 id="月02日水"><a href="#02">08月02日(水)</a>
+                        <a id="02"></a></h2>
                         <p>昨日のまとめ。</p>
                         <p>Markdownで書いたファイルをRe:VIEWに変換してPDF化するコードが動かない。ものすごく昔は、RedcarpetがRe:VIEWレンダラを持っていたのでそれを使っていたのだが、途中でなくなったらしい。仕方なく<code>md2review</code>を使ったが、エラーが出る。問題は数式の中にMarkdownの予約シンボルがあるとバグること。</p>
                         <p>たとえばこんなファイルを食わせてみると、</p>
-                        <div class="sourceCode" id="cb9"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a><span class="fu"># test</span></span>
-                        <span id="cb9-2"><a href="#cb9-2" aria-hidden="true"></a></span>
-                        <span id="cb9-3"><a href="#cb9-3" aria-hidden="true"></a>$$</span>
-                        <span id="cb9-4"><a href="#cb9-4" aria-hidden="true"></a>a_1 + a_2</span>
-                        <span id="cb9-5"><a href="#cb9-5" aria-hidden="true"></a>$$</span></code></pre></div>
+                        <div class="sourceCode" id="cb9"><pre
+                        class="sourceCode md"><code class="sourceCode markdown"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># test</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>a_1 + a_2</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>$$</span></code></pre></div>
                         <p>こうなってしまう。</p>
-                        <div class="sourceCode" id="cb10"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true"></a>= test</span>
-                        <span id="cb10-2"><a href="#cb10-2" aria-hidden="true"></a></span>
-                        <span id="cb10-3"><a href="#cb10-3" aria-hidden="true"></a></span>
-                        <span id="cb10-4"><a href="#cb10-4" aria-hidden="true"></a>$$</span>
-                        <span id="cb10-5"><a href="#cb10-5" aria-hidden="true"></a>a@&lt;b&gt;{1 + a}2</span>
-                        <span id="cb10-6"><a href="#cb10-6" aria-hidden="true"></a>$$</span></code></pre></div>
+                        <div class="sourceCode" id="cb10"><pre
+                        class="sourceCode txt"><code class="sourceCode default"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>= test</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>a@&lt;b&gt;{1 + a}2</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>$$</span></code></pre></div>
                         <p><code>_</code>で挟まれた場所を太字にしようとしている。</p>
                         <p>あとはこんなのが、</p>
-                        <div class="sourceCode" id="cb11"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true"></a><span class="fu"># test</span></span>
-                        <span id="cb11-2"><a href="#cb11-2" aria-hidden="true"></a></span>
-                        <span id="cb11-3"><a href="#cb11-3" aria-hidden="true"></a>$$</span>
-                        <span id="cb11-4"><a href="#cb11-4" aria-hidden="true"></a>a^*+b^*</span>
-                        <span id="cb11-5"><a href="#cb11-5" aria-hidden="true"></a>$$</span></code></pre></div>
+                        <div class="sourceCode" id="cb11"><pre
+                        class="sourceCode md"><code class="sourceCode markdown"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># test</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>a^*+b^*</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>$$</span></code></pre></div>
                         <p>こうなる。</p>
-                        <div class="sourceCode" id="cb12"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true"></a>= test</span>
-                        <span id="cb12-2"><a href="#cb12-2" aria-hidden="true"></a>$$</span>
-                        <span id="cb12-3"><a href="#cb12-3" aria-hidden="true"></a>a^@&lt;b&gt;{+b^}</span>
-                        <span id="cb12-4"><a href="#cb12-4" aria-hidden="true"></a>$$</span></code></pre></div>
+                        <div class="sourceCode" id="cb12"><pre
+                        class="sourceCode txt"><code class="sourceCode default"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>= test</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>a^@&lt;b&gt;{+b^}</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>$$</span></code></pre></div>
                         <p>さらに、改行も処理されてしまう。これが、</p>
-                        <div class="sourceCode" id="cb13"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true"></a>$$</span>
-                        <span id="cb13-2"><a href="#cb13-2" aria-hidden="true"></a>\begin{aligned}</span>
-                        <span id="cb13-3"><a href="#cb13-3" aria-hidden="true"></a>a &amp;= 1<span class="sc">\\</span></span>
-                        <span id="cb13-4"><a href="#cb13-4" aria-hidden="true"></a>b &amp;= 2</span>
-                        <span id="cb13-5"><a href="#cb13-5" aria-hidden="true"></a>\end{aligned}</span>
-                        <span id="cb13-6"><a href="#cb13-6" aria-hidden="true"></a>$$</span></code></pre></div>
+                        <div class="sourceCode" id="cb13"><pre
+                        class="sourceCode md"><code class="sourceCode markdown"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>\begin{aligned}</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>a &amp;= 1<span class="sc">\\</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>b &amp;= 2</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>\end{aligned}</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>$$</span></code></pre></div>
                         <p>こうなる。</p>
-                        <div class="sourceCode" id="cb14"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true"></a>$$</span>
-                        <span id="cb14-2"><a href="#cb14-2" aria-hidden="true"></a>\begin{aligned}</span>
-                        <span id="cb14-3"><a href="#cb14-3" aria-hidden="true"></a>a &amp;= 1\</span>
-                        <span id="cb14-4"><a href="#cb14-4" aria-hidden="true"></a>b &amp;= 2</span>
-                        <span id="cb14-5"><a href="#cb14-5" aria-hidden="true"></a>\end{aligned}</span>
-                        <span id="cb14-6"><a href="#cb14-6" aria-hidden="true"></a>$$</span></code></pre></div>
+                        <div class="sourceCode" id="cb14"><pre
+                        class="sourceCode txt"><code class="sourceCode default"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>\begin{aligned}</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>a &amp;= 1\</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>b &amp;= 2</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>\end{aligned}</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>$$</span></code></pre></div>
                         <p>というわけで、問題になりそうな記号類を全てエスケープしてからmd2reviewに食わせて、その後もとに戻す、という処理をしたのだが、makefileが</p>
                         <pre class="make"><code>%.re: ../%/README.md
-                          ruby pre.rb $^ &gt; $*.pre
-                          md2review $*.pre &gt; $*.post
-                          ruby post.rb $*.post &gt; $*.re</code></pre>
+  ruby pre.rb $^ &gt; $*.pre
+  md2review $*.pre &gt; $*.post
+  ruby post.rb $*.post &gt; $*.re</code></pre>
                         <p>という感じになってダサい。おそらくRedcarpetのレンダラを自作するのがまっとうな解決策だが、そこまですべきかなぁ・・・</p>
                         <p>あれ？手元の環境には<code>redcarpet/render/review</code>があるぞ？なんでだ？</p>
                         <p>こんなコードを書いてみる。</p>
-                        <div class="sourceCode" id="cb16"><pre class="sourceCode rb"><code class="sourceCode ruby"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true"></a>require <span class="st">&#39;redcarpet&#39;</span></span>
-                        <span id="cb16-2"><a href="#cb16-2" aria-hidden="true"></a>a = <span class="dt">$LOADED_FEATURES</span>.dup()</span>
-                        <span id="cb16-3"><a href="#cb16-3" aria-hidden="true"></a>require <span class="st">&#39;redcarpet/render/review&#39;</span></span>
-                        <span id="cb16-4"><a href="#cb16-4" aria-hidden="true"></a>b = <span class="dt">$LOADED_FEATURES</span></span>
-                        <span id="cb16-5"><a href="#cb16-5" aria-hidden="true"></a></span>
-                        <span id="cb16-6"><a href="#cb16-6" aria-hidden="true"></a>puts b-a</span></code></pre></div>
+                        <div class="sourceCode" id="cb16"><pre
+                        class="sourceCode rb"><code class="sourceCode ruby"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span> <span class="vs">&#39;redcarpet&#39;</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>a <span class="kw">=</span> <span class="va">$LOADED_FEATURES</span><span class="at">.dup</span>()</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span> <span class="vs">&#39;redcarpet/render/review&#39;</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>b <span class="kw">=</span> <span class="va">$LOADED_FEATURES</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="fu">puts</span> b<span class="kw">-</span>a</span></code></pre></div>
                         <p>結果。</p>
-                        <div class="sourceCode" id="cb17"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true"></a>/Users/watanabe/.rbenv/versions/3.2.2/lib/ruby/3.2.0/digest/version.rb</span>
-                        <span id="cb17-2"><a href="#cb17-2" aria-hidden="true"></a>/Users/watanabe/.rbenv/versions/3.2.2/lib/ruby/3.2.0/x86_64-darwin22/digest.bundle</span>
-                        <span id="cb17-3"><a href="#cb17-3" aria-hidden="true"></a>/Users/watanabe/.rbenv/versions/3.2.2/lib/ruby/3.2.0/digest/loader.rb</span>
-                        <span id="cb17-4"><a href="#cb17-4" aria-hidden="true"></a>/Users/watanabe/.rbenv/versions/3.2.2/lib/ruby/3.2.0/digest.rb</span>
-                        <span id="cb17-5"><a href="#cb17-5" aria-hidden="true"></a>/Users/watanabe/.rbenv/versions/3.2.2/lib/ruby/3.2.0/x86_64-darwin22/digest/md5.bundle</span>
-                        <span id="cb17-6"><a href="#cb17-6" aria-hidden="true"></a>/Users/watanabe/.rbenv/versions/3.2.2/lib/ruby/gems/3.2.0/gems/md2review-1.12.1/lib/redcarpet/render/review.rb</span></code></pre></div>
+                        <div class="sourceCode" id="cb17"><pre
+                        class="sourceCode txt"><code class="sourceCode default"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>/Users/watanabe/.rbenv/versions/3.2.2/lib/ruby/3.2.0/digest/version.rb</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>/Users/watanabe/.rbenv/versions/3.2.2/lib/ruby/3.2.0/x86_64-darwin22/digest.bundle</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>/Users/watanabe/.rbenv/versions/3.2.2/lib/ruby/3.2.0/digest/loader.rb</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>/Users/watanabe/.rbenv/versions/3.2.2/lib/ruby/3.2.0/digest.rb</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>/Users/watanabe/.rbenv/versions/3.2.2/lib/ruby/3.2.0/x86_64-darwin22/digest/md5.bundle</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>/Users/watanabe/.rbenv/versions/3.2.2/lib/ruby/gems/3.2.0/gems/md2review-1.12.1/lib/redcarpet/render/review.rb</span></code></pre></div>
                         <p><code>md2review</code>によりレンダラに<code>render/review</code>が追加されている。なるほど。それじゃ、これを使えばいちいちファイルに何度も吐かなくて済むはずか。</p>
                         <p>ひょっとして、昔からRedcarptはRe:VIEWには対応していなくて、僕がmd2reviewを入れたからメソッドが追加されたのを勘違いしていた？</p>
                         <p>1on1たくさん。</p>
                         <p>数理物理成績確定した。わりと理想的な成績分布だったのでは。</p>
                         <p>とりあえず解析力学のリポジトリ、<code>Redcarpet::Render::ReVIEW.new</code>を使って一括変換する形に修正。ついでにLinterとしてRubocopを入れたが、相変わらずうるさいのでrubocop.ymlに</p>
-                        <div class="sourceCode" id="cb18"><pre class="sourceCode yml"><code class="sourceCode yaml"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true"></a><span class="fu">Metrics</span><span class="kw">:</span></span>
-                        <span id="cb18-2"><a href="#cb18-2" aria-hidden="true"></a><span class="at">  </span><span class="fu">Enabled</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span></code></pre></div>
+                        <div class="sourceCode" id="cb18"><pre
+                        class="sourceCode yml"><code class="sourceCode yaml"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Metrics</span><span class="kw">:</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">Enabled</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span></code></pre></div>
                         <p>と書いてしまった。それでもまだうるさい。あと、若干動作が遅いのが気になるなぁ。</p>
-                        <h2 id="月01日火"><a href="#01">08月01日(火)</a> <a id="01"></a></h2>
+                        <h2 id="月01日火"><a href="#01">08月01日(火)</a>
+                        <a id="01"></a></h2>
                         <p>もう8月ですかそうですか。</p>
                         <p>えらい先生がいっぱいいる会議でぺーぺーの僕が発言してしまう問題、もちろん僕に問題はあるんだけど、別に会議が好きとか目立ちたいとかそういうのは全くなくって、むしろ会議なんて大嫌いだけど、僕の信じる幸せな未来の実現に少しでも近づけるための努力である、ということは、誰かに知っておいて欲しい気はする。</p>
                         <p>だいたい会議で発言したら仕事降ってくるわけだし。黙ってる方が局所的最適解なのは間違いないんだ。</p>

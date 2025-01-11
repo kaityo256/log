@@ -16,310 +16,413 @@
     <link rel="stylesheet" href="style.css" type="text/css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- link rel="stylesheet" href="github-markdown.css" type="text/css" / -->
-        <script src="/usr/share/javascript/mathjax/tex-mml-chtml.js" type="text/javascript"></script>
+        <script src="/usr/share/javascript/mathjax/MathJax.js"
+        type="text/javascript"></script>
           </head>
 
   <body>
     <article class="markdown-body">
                         <h1 id="年3月">2022年3月</h1>
                         <p><a href="index.html">ログ一覧</a></p>
-                        <h2 id="月31日木"><a href="#31">03月31日(木)</a> <a id="31"></a></h2>
+                        <h2 id="月31日木"><a href="#31">03月31日(木)</a>
+                        <a id="31"></a></h2>
                         <p>Ubuntu側でPowerShellを呼び出す。</p>
-                        <div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a>$ <span class="fu">cat</span> test.ps1</span>
-                        <span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a><span class="bu">echo</span> Hello</span>
-                        <span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a></span>
-                        <span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a>$ <span class="ex">powershell.exe</span> ./test.ps1</span>
-                        <span id="cb1-5"><a href="#cb1-5" aria-hidden="true"></a><span class="ex">./test.ps1</span> : ファイル <span class="dt">\\</span>wsl.localhost\Ubuntu\home\watanabe\test.ps1 を読み込めません。ファイル <span class="dt">\\</span>wsl.localhost\Ubuntu\home\watanabe\test.ps1 はデ</span>
-                        <span id="cb1-6"><a href="#cb1-6" aria-hidden="true"></a>ジタル署名されていません。このスクリプトは現在のシステムでは実行できません。スクリプトの実行および実行ポリシーの設定の詳細については、「<span class="ex">about_Exe</span></span>
-                        <span id="cb1-7"><a href="#cb1-7" aria-hidden="true"></a><span class="ex">cution_Policies</span>」(https://go.microsoft.com/fwlink/?LinkID=135170) を参照してください。</span>
-                        <span id="cb1-8"><a href="#cb1-8" aria-hidden="true"></a>発生場所 行:<span class="ex">1</span> 文字:1</span>
-                        <span id="cb1-9"><a href="#cb1-9" aria-hidden="true"></a><span class="ex">+</span> ./test.ps1</span>
-                        <span id="cb1-10"><a href="#cb1-10" aria-hidden="true"></a><span class="ex">+</span> ~~~~~~~~~~</span>
-                        <span id="cb1-11"><a href="#cb1-11" aria-hidden="true"></a>    <span class="ex">+</span> CategoryInfo          : セキュリティ エラー: (: ) []、<span class="ex">PSSecurityException</span></span>
-                        <span id="cb1-12"><a href="#cb1-12" aria-hidden="true"></a>    <span class="ex">+</span> FullyQualifiedErrorId : UnauthorizedAccess</span></code></pre></div>
+                        <div class="sourceCode" id="cb1"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cat test.ps1</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> Hello</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> powershell.exe ./test.ps1</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">./test.ps1</span> : ファイル <span class="dt">\\</span>wsl.localhost<span class="dt">\U</span>buntu<span class="dt">\h</span>ome<span class="dt">\w</span>atanabe<span class="dt">\t</span>est.ps1 を読み込めません。ファイル <span class="dt">\\</span>wsl.localhost<span class="dt">\U</span>buntu<span class="dt">\h</span>ome<span class="dt">\w</span>atanabe<span class="dt">\t</span>est.ps1 はデ</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="ex">ジタル署名されていません。このスクリプトは現在のシステムでは実行できません。スクリプトの実行および実行ポリシーの設定の詳細については、「about_Exe</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="ex">cution_Policies」</span><span class="er">(</span><span class="ex">https://go.microsoft.com/fwlink/?LinkID=135170</span><span class="kw">)</span> <span class="ex">を参照してください。</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="ex">発生場所</span> 行:1 文字:1</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="ex">+</span> ./test.ps1</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="ex">+</span> ~~~~~~~~~~</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="ex">+</span> CategoryInfo          : セキュリティ エラー: <span class="er">(</span><span class="bu">:</span> <span class="kw">)</span> <span class="ex">[]、PSSecurityException</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="ex">+</span> FullyQualifiedErrorId : UnauthorizedAccess</span></code></pre></div>
                         <p>うまくいかない。</p>
                         <p>Powershell側でセキュリティポリシーにBypassを指定。</p>
-                        <div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="ex">Set-ExecutionPolicy</span> -ExecutionPolicy Bypass -Scope CurrentUser</span></code></pre></div>
+                        <div class="sourceCode" id="cb2"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Set-ExecutionPolicy</span> <span class="at">-ExecutionPolicy</span> Bypass <span class="at">-Scope</span> CurrentUser</span></code></pre></div>
                         <p>WSL側でもう一度実行。</p>
-                        <div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a>$ <span class="ex">powershell.exe</span> ./test.ps1</span>
-                        <span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a><span class="ex">Hello</span></span></code></pre></div>
+                        <div class="sourceCode" id="cb3"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> powershell.exe ./test.ps1</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Hello</span></span></code></pre></div>
                         <p>実行できた。</p>
                         <p>テンポラリファイルの作成は<code>mktemp</code></p>
-                        <div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a>$ <span class="fu">mktemp</span></span>
-                        <span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a><span class="ex">/tmp/tmp.zmT3f40DJj</span></span>
-                        <span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a></span>
-                        <span id="cb4-4"><a href="#cb4-4" aria-hidden="true"></a>$ <span class="fu">mktemp</span></span>
-                        <span id="cb4-5"><a href="#cb4-5" aria-hidden="true"></a><span class="ex">/tmp/tmp.H5kr0JbakZ</span></span></code></pre></div>
+                        <div class="sourceCode" id="cb4"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> mktemp</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">/tmp/tmp.zmT3f40DJj</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> mktemp</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="ex">/tmp/tmp.H5kr0JbakZ</span></span></code></pre></div>
                         <p>これにps1つければよさそうだな。</p>
-                        <div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="bu">echo</span> <span class="kw">`</span><span class="fu">mktemp</span><span class="kw">`</span>.ps1</span>
-                        <span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a><span class="ex">/tmp/tmp.qkOuZhtCSi.ps1</span></span></code></pre></div>
-                        <p>PowerShell側で引数受け取りやファイル名抽出やって完成。備忘録として<a href="https://zenn.dev/kaityo256/articles/make_shortcut_from_wls">記事</a>にしておいた。</p>
+                        <div class="sourceCode" id="cb5"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="kw">`</span><span class="fu">mktemp</span><span class="kw">`</span>.ps1</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">/tmp/tmp.qkOuZhtCSi.ps1</span></span></code></pre></div>
+                        <p>PowerShell側で引数受け取りやファイル名抽出やって完成。備忘録として<a
+                        href="https://zenn.dev/kaityo256/articles/make_shortcut_from_wls">記事</a>にしておいた。</p>
                         <p>研究室ミーティング。トラブルにより輪講は延期。</p>
-                        <p>片桐さんと大島さんの教科書、<a href="https://note.com/kaityo256/n/n557d337ce71f">書評書いた</a>。比較のために数値解析の基礎 (篠原 能材著 理工学基礎シリーズ 日新出版)を引っ張り出したが、付箋がいっぱいついてる。結構がんばって読んでたんだな。</p>
-                        <p>Amazonでの<a href="https://www.amazon.co.jp/gp/customer-reviews/R95V53KX30B4O/ref=cm_cr_arp_d_rvw_ttl?ie=UTF8&amp;ASIN=4817300973">このレビュー</a>、多分著者本人だな・・・</p>
+                        <p>片桐さんと大島さんの教科書、<a
+                        href="https://note.com/kaityo256/n/n557d337ce71f">書評書いた</a>。比較のために数値解析の基礎
+                        (篠原 能材著 理工学基礎シリーズ
+                        日新出版)を引っ張り出したが、付箋がいっぱいついてる。結構がんばって読んでたんだな。</p>
+                        <p>Amazonでの<a
+                        href="https://www.amazon.co.jp/gp/customer-reviews/R95V53KX30B4O/ref=cm_cr_arp_d_rvw_ttl?ie=UTF8&amp;ASIN=4817300973">このレビュー</a>、多分著者本人だな・・・</p>
                         <p>家に帰る際、急に猛烈な吐き気。家に帰って吐いてしまった。</p>
-                        <h2 id="月30日水"><a href="#30">03月30日(水)</a> <a id="30"></a></h2>
+                        <h2 id="月30日水"><a href="#30">03月30日(水)</a>
+                        <a id="30"></a></h2>
                         <p>シミュレーション工学、第二回スライド作り終わった。これで少しは息をつけるか。</p>
                         <p>Twitterとかに意見を書くのはだめだな。有益な意見より、完全に面倒さがまさる。スライドとか、技術記事を書いたよ、というニュースフィードにしか使えない。</p>
                         <p>研究室所属学生名簿提出した。</p>
-                        <h2 id="月29日火"><a href="#29">03月29日(火)</a> <a id="29"></a></h2>
+                        <h2 id="月29日火"><a href="#29">03月29日(火)</a>
+                        <a id="29"></a></h2>
                         <p>WSLからWindowsにショートカットを作る。</p>
                         <p><code>$HOME</code>にファイルを作る。</p>
-                        <div class="sourceCode" id="cb6"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="bu">cd</span></span>
-                        <span id="cb6-2"><a href="#cb6-2" aria-hidden="true"></a><span class="bu">echo</span> <span class="st">&quot;Hello&quot;</span> <span class="op">&gt;</span> test.txt</span></code></pre></div>
-                        <div class="sourceCode" id="cb7"><pre class="sourceCode ps1"><code class="sourceCode powershell"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a><span class="va">$WshShell</span> = <span class="fu">New-Object</span> -comObject WScript.<span class="fu">Shell</span></span>
-                        <span id="cb7-2"><a href="#cb7-2" aria-hidden="true"></a><span class="va">$Shortcut</span> = <span class="va">$WshShell</span>.<span class="fu">CreateShortcut</span>(<span class="st">&quot;$Home\Desktop\test.txtへのショートカット.lnk&quot;</span>)</span>
-                        <span id="cb7-3"><a href="#cb7-3" aria-hidden="true"></a><span class="va">$Shortcut</span>.<span class="fu">TargetPath</span> = <span class="st">&quot;$Home\test.txt&quot;</span></span>
-                        <span id="cb7-4"><a href="#cb7-4" aria-hidden="true"></a><span class="va">$Shortcut</span>.<span class="fu">Save</span>()</span></code></pre></div>
+                        <div class="sourceCode" id="cb6"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;Hello&quot;</span> <span class="op">&gt;</span> test.txt</span></code></pre></div>
+                        <div class="sourceCode" id="cb7"><pre
+                        class="sourceCode ps1"><code class="sourceCode powershell"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="va">$WshShell</span> <span class="op">=</span> <span class="fu">New-Object</span> <span class="op">-</span>comObject WScript<span class="op">.</span><span class="fu">Shell</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="va">$Shortcut</span> <span class="op">=</span> <span class="va">$WshShell</span><span class="op">.</span><span class="fu">CreateShortcut</span><span class="op">(</span><span class="st">&quot;$Home\Desktop\test.txtへのショートカット.lnk&quot;</span><span class="op">)</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="va">$Shortcut</span><span class="op">.</span><span class="fu">TargetPath</span> <span class="op">=</span> <span class="st">&quot;$Home\test.txt&quot;</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="va">$Shortcut</span><span class="op">.</span><span class="fu">Save</span><span class="op">()</span></span></code></pre></div>
                         <p>これを実行すると、デスクトップに<code>test.txt</code>へのショートカットを作ることができる。</p>
                         <p>これは、コマンドラインからは実行できるが、<code>test.ps1</code>として実行すると、</p>
-                        <div class="sourceCode" id="cb8"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a>./test.ps1 : このシステムではスクリプトの実行が無効になっているため、ファイル C:\Users\watanabe\test.ps1 を読み込むこと</span>
-                        <span id="cb8-2"><a href="#cb8-2" aria-hidden="true"></a>ができません。詳細については、「about_Execution_Policies」(https://go.microsoft.com/fwlink/?LinkID=135170) を参照してく</span>
-                        <span id="cb8-3"><a href="#cb8-3" aria-hidden="true"></a>ださい。</span>
-                        <span id="cb8-4"><a href="#cb8-4" aria-hidden="true"></a>発生場所 行:1 文字:1</span>
-                        <span id="cb8-5"><a href="#cb8-5" aria-hidden="true"></a>+ ./test.ps1</span>
-                        <span id="cb8-6"><a href="#cb8-6" aria-hidden="true"></a>+ ~~~~~~~~~~</span>
-                        <span id="cb8-7"><a href="#cb8-7" aria-hidden="true"></a>    + CategoryInfo          : セキュリティ エラー: (: ) []、PSSecurityException</span>
-                        <span id="cb8-8"><a href="#cb8-8" aria-hidden="true"></a>    + FullyQualifiedErrorId : UnauthorizedAccess</span></code></pre></div>
+                        <div class="sourceCode" id="cb8"><pre
+                        class="sourceCode txt"><code class="sourceCode default"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>./test.ps1 : このシステムではスクリプトの実行が無効になっているため、ファイル C:\Users\watanabe\test.ps1 を読み込むこと</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>ができません。詳細については、「about_Execution_Policies」(https://go.microsoft.com/fwlink/?LinkID=135170) を参照してく</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>ださい。</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>発生場所 行:1 文字:1</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>+ ./test.ps1</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>+ ~~~~~~~~~~</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    + CategoryInfo          : セキュリティ エラー: (: ) []、PSSecurityException</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    + FullyQualifiedErrorId : UnauthorizedAccess</span></code></pre></div>
                         <p>と言われてしまう。セキュリティの問題らしい。</p>
                         <p>現在のポリシーを知るには<code>Get-ExecutionPolicy</code>を実行する。</p>
-                        <div class="sourceCode" id="cb9"><pre class="sourceCode ps1"><code class="sourceCode powershell"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a>$ <span class="fu">Get-ExecutionPolicy</span></span>
-                        <span id="cb9-2"><a href="#cb9-2" aria-hidden="true"></a>Restricted</span></code></pre></div>
+                        <div class="sourceCode" id="cb9"><pre
+                        class="sourceCode ps1"><code class="sourceCode powershell"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>$ <span class="fu">Get-ExecutionPolicy</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>Restricted</span></code></pre></div>
                         <p>スコープごとのポリシーの状態を調べるには<code>-List</code>を指定する。</p>
-                        <div class="sourceCode" id="cb10"><pre class="sourceCode ps1"><code class="sourceCode powershell"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true"></a>$ <span class="fu">Get-ExecutionPolicy</span> -List</span>
-                        <span id="cb10-2"><a href="#cb10-2" aria-hidden="true"></a></span>
-                        <span id="cb10-3"><a href="#cb10-3" aria-hidden="true"></a>        Scope ExecutionPolicy</span>
-                        <span id="cb10-4"><a href="#cb10-4" aria-hidden="true"></a>        ----- ---------------</span>
-                        <span id="cb10-5"><a href="#cb10-5" aria-hidden="true"></a>MachinePolicy       Undefined</span>
-                        <span id="cb10-6"><a href="#cb10-6" aria-hidden="true"></a>   UserPolicy       Undefined</span>
-                        <span id="cb10-7"><a href="#cb10-7" aria-hidden="true"></a>      <span class="kw">Process</span>       Undefined</span>
-                        <span id="cb10-8"><a href="#cb10-8" aria-hidden="true"></a>  CurrentUser       Undefined</span>
-                        <span id="cb10-9"><a href="#cb10-9" aria-hidden="true"></a> LocalMachine       Undefined</span></code></pre></div>
-                        <p>未指定(Undefined)の場合はRestricted(全てのスクリプトの実行を許可しない)が適用される。ポリシー一覧は<a href="https://docs.microsoft.com/ja-jp/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7.2">こちら</a>。</p>
+                        <div class="sourceCode" id="cb10"><pre
+                        class="sourceCode ps1"><code class="sourceCode powershell"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>$ <span class="fu">Get-ExecutionPolicy</span> <span class="op">-</span>List</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>        Scope ExecutionPolicy</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>        <span class="op">-----</span> <span class="op">---------------</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>MachinePolicy       Undefined</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>   UserPolicy       Undefined</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>      <span class="kw">Process</span>       Undefined</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  CurrentUser       Undefined</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a> LocalMachine       Undefined</span></code></pre></div>
+                        <p>未指定(Undefined)の場合はRestricted(全てのスクリプトの実行を許可しない)が適用される。ポリシー一覧は<a
+                        href="https://docs.microsoft.com/ja-jp/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7.2">こちら</a>。</p>
                         <p>ここでは、<code>RemoteSigned</code>を指定する。これはローカルなスクリプトは署名なしで実行できるが、インターネットからダウンロードされたスクリプトは署名を要求する。スコープは現在のユーザ(CurrentUser)を指定する。変更しようとすると警告が表示される。</p>
-                        <div class="sourceCode" id="cb11"><pre class="sourceCode ps1"><code class="sourceCode powershell"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true"></a>$ <span class="fu">Set-ExecutionPolicy</span> -ExecutionPolicy RemoteSigned -Scope CurrentUser</span>
-                        <span id="cb11-2"><a href="#cb11-2" aria-hidden="true"></a></span>
-                        <span id="cb11-3"><a href="#cb11-3" aria-hidden="true"></a>実行ポリシーの変更</span>
-                        <span id="cb11-4"><a href="#cb11-4" aria-hidden="true"></a>実行ポリシーは、信頼されていないスクリプトからの保護に役立ちます。実行ポリシーを変更すると、about_Execution_Policies</span>
-                        <span id="cb11-5"><a href="#cb11-5" aria-hidden="true"></a>のヘルプ トピック (https://go.<span class="fu">microsoft</span>.<span class="fu">com</span>/fwlink/?LinkID=135170)</span>
-                        <span id="cb11-6"><a href="#cb11-6" aria-hidden="true"></a>で説明されているセキュリティ上の危険にさらされる可能性があります。実行ポリシーを変更しますか?</span>
-                        <span id="cb11-7"><a href="#cb11-7" aria-hidden="true"></a>[Y] はい(Y)  [A] すべて続行(A)  [N] いいえ(N)  [L] すべて無視(L)  [S] 中断(S)  [?] ヘルプ (既定値は <span class="st">&quot;N&quot;</span>): y</span></code></pre></div>
+                        <div class="sourceCode" id="cb11"><pre
+                        class="sourceCode ps1"><code class="sourceCode powershell"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>$ <span class="fu">Set-ExecutionPolicy</span> <span class="op">-</span>ExecutionPolicy RemoteSigned <span class="op">-</span>Scope CurrentUser</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>実行ポリシーの変更</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>実行ポリシーは、信頼されていないスクリプトからの保護に役立ちます。実行ポリシーを変更すると、about_Execution_Policies</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>のヘルプ トピック <span class="op">(</span>https<span class="op">://</span>go<span class="op">.</span><span class="fu">microsoft</span><span class="op">.</span><span class="fu">com</span><span class="op">/</span>fwlink<span class="op">/?</span>LinkID<span class="op">=</span>135170<span class="op">)</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>で説明されているセキュリティ上の危険にさらされる可能性があります。実行ポリシーを変更しますか<span class="op">?</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="op">[</span>Y<span class="op">]</span> はい<span class="op">(</span>Y<span class="op">)</span>  <span class="op">[</span>A<span class="op">]</span> すべて続行<span class="op">(</span>A<span class="op">)</span>  <span class="op">[</span>N<span class="op">]</span> いいえ<span class="op">(</span>N<span class="op">)</span>  <span class="op">[</span>L<span class="op">]</span> すべて無視<span class="op">(</span>L<span class="op">)</span>  <span class="op">[</span>S<span class="op">]</span> 中断<span class="op">(</span>S<span class="op">)</span>  <span class="op">[?]</span> ヘルプ <span class="op">(</span>既定値は <span class="st">&quot;N&quot;</span><span class="op">):</span> y</span></code></pre></div>
                         <p>これで実行できるようになる。</p>
-                        <div class="sourceCode" id="cb12"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true"></a><span class="ex">./test.ps1</span></span></code></pre></div>
+                        <div class="sourceCode" id="cb12"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">./test.ps1</span></span></code></pre></div>
                         <p>これをWSLから実行しようとすると「リモート」扱いになるために実行できない。</p>
-                        <div class="sourceCode" id="cb13"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true"></a>$ <span class="ex">powershell.exe</span> -File test.ps1</span>
-                        <span id="cb13-2"><a href="#cb13-2" aria-hidden="true"></a>ファイル <span class="dt">\\</span><span class="ex">wsl.localhost</span>\Ubuntu\home\username\temp\test.ps1 を読み込めません。ファイル <span class="dt">\\</span>wsl.localhost\Ubuntu\home\username\temp\test.ps1 はデジタル署名されていません。このスクリプトは現在のシステムでは実行できません。スクリプトの実行およ</span>
-                        <span id="cb13-3"><a href="#cb13-3" aria-hidden="true"></a>び実行ポリシーの設定の詳細については、「<span class="ex">about_Execution_Policies</span>」(https://go.microsoft.com/fwlink/?LinkID=135170) を参</span>
-                        <span id="cb13-4"><a href="#cb13-4" aria-hidden="true"></a>照してください。</span>
-                        <span id="cb13-5"><a href="#cb13-5" aria-hidden="true"></a>    <span class="ex">+</span> CategoryInfo          : セキュリティ エラー: (: ) []、<span class="ex">ParentContainsErrorRecordException</span></span>
-                        <span id="cb13-6"><a href="#cb13-6" aria-hidden="true"></a>    <span class="ex">+</span> FullyQualifiedErrorId : UnauthorizedAccess</span></code></pre></div>
+                        <div class="sourceCode" id="cb13"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> powershell.exe <span class="at">-File</span> test.ps1</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="ex">ファイル</span> <span class="dt">\\</span>wsl.localhost<span class="dt">\U</span>buntu<span class="dt">\h</span>ome<span class="dt">\u</span>sername<span class="dt">\t</span>emp<span class="dt">\t</span>est.ps1 を読み込めません。ファイル <span class="dt">\\</span>wsl.localhost<span class="dt">\U</span>buntu<span class="dt">\h</span>ome<span class="dt">\u</span>sername<span class="dt">\t</span>emp<span class="dt">\t</span>est.ps1 はデジタル署名されていません。このスクリプトは現在のシステムでは実行できません。スクリプトの実行およ</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="ex">び実行ポリシーの設定の詳細については、「about_Execution_Policies」</span><span class="er">(</span><span class="ex">https://go.microsoft.com/fwlink/?LinkID=135170</span><span class="kw">)</span> <span class="ex">を参</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="ex">照してください。</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    <span class="ex">+</span> CategoryInfo          : セキュリティ エラー: <span class="er">(</span><span class="bu">:</span> <span class="kw">)</span> <span class="ex">[]、ParentContainsErrorRecordException</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    <span class="ex">+</span> FullyQualifiedErrorId : UnauthorizedAccess</span></code></pre></div>
                         <p><code>Unrestricted</code>にすると、毎回実行時に聞かれる。</p>
-                        <div class="sourceCode" id="cb14"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true"></a>$ <span class="ex">powershell.exe</span> -File test.ps1</span>
-                        <span id="cb14-2"><a href="#cb14-2" aria-hidden="true"></a></span>
-                        <span id="cb14-3"><a href="#cb14-3" aria-hidden="true"></a>セキュリティ警告</span>
-                        <span id="cb14-4"><a href="#cb14-4" aria-hidden="true"></a>信頼するスクリプトのみを実行してください。インターネットから入手したスクリプトは便利ですが、コンピューターに危害を及ぼ</span>
-                        <span id="cb14-5"><a href="#cb14-5" aria-hidden="true"></a>す可能性があります。このスクリプトを信頼する場合は、この警告メッセージが表示されないように、<span class="ex">Unblock-File</span></span>
-                        <span id="cb14-6"><a href="#cb14-6" aria-hidden="true"></a>コマンドレットを使用して、スクリプトの実行を許可してください。<span class="dt">\\</span><span class="ex">wsl.localhost</span>\Ubuntu\home\watanabe\temp\test.ps1</span>
-                        <span id="cb14-7"><a href="#cb14-7" aria-hidden="true"></a>を実行しますか<span class="ex">?</span></span>
-                        <span id="cb14-8"><a href="#cb14-8" aria-hidden="true"></a>[<span class="ex">D</span>] 実行しない(D)  [<span class="ex">R</span>] 一度だけ実行する(R)  [<span class="ex">S</span>] 中断(S)  [<span class="ex">?</span>] ヘルプ (既定値は <span class="st">&quot;D&quot;</span>)<span class="bu">:</span> R</span></code></pre></div>
+                        <div class="sourceCode" id="cb14"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> powershell.exe <span class="at">-File</span> test.ps1</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="ex">セキュリティ警告</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="ex">信頼するスクリプトのみを実行してください。インターネットから入手したスクリプトは便利ですが、コンピューターに危害を及ぼ</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="ex">す可能性があります。このスクリプトを信頼する場合は、この警告メッセージが表示されないように、Unblock-File</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="ex">コマンドレットを使用して、スクリプトの実行を許可してください。\\wsl.localhost\Ubuntu\home\watanabe\temp\test.ps1</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="ex">を実行しますか?</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="ex">[D]</span> 実行しない<span class="er">(</span><span class="ex">D</span><span class="kw">)</span>  <span class="ex">[R]</span> 一度だけ実行する<span class="er">(</span><span class="ex">R</span><span class="kw">)</span>  <span class="ex">[S]</span> 中断<span class="er">(</span><span class="ex">S</span><span class="kw">)</span>  <span class="ex">[?]</span> ヘルプ <span class="er">(</span><span class="ex">既定値は</span> <span class="st">&quot;D&quot;</span><span class="kw">)</span><span class="bu">:</span> R</span></code></pre></div>
                         <p><code>Bypass</code>にすると、聞かれないで実行されるが、危険なので非推奨。</p>
                         <p>あと、このままだと文字化けする。SJISで保存する必要がある。<code>nkf -s</code>で変換したらうまくいった。</p>
                         <p>署名の練習。まずはAllSignedにして、PowerShell上でも実行できないようにする。</p>
-                        <div class="sourceCode" id="cb15"><pre class="sourceCode ps1"><code class="sourceCode powershell"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true"></a>$ <span class="fu">Set-ExecutionPolicy</span> -ExecutionPolicy AllSigned -Scope CurrentUser</span>
-                        <span id="cb15-2"><a href="#cb15-2" aria-hidden="true"></a>$ ./test.<span class="fu">ps1</span></span>
-                        <span id="cb15-3"><a href="#cb15-3" aria-hidden="true"></a>./test.<span class="fu">ps1</span> : ファイル C:\Users\watanabe\test.<span class="fu">ps1</span> を読み込めません。ファイル C:\Users\watanabe\test.<span class="fu">ps1</span> はデジタル署名さ</span>
-                        <span id="cb15-4"><a href="#cb15-4" aria-hidden="true"></a>れていません。このスクリプトは現在のシステムでは実行できません。スクリプトの実行および実行ポリシーの設定の詳細について</span>
-                        <span id="cb15-5"><a href="#cb15-5" aria-hidden="true"></a>は、「about_Execution_Policies」(https://go.<span class="fu">microsoft</span>.<span class="fu">com</span>/fwlink/?LinkID=135170) を参照してください。</span>
-                        <span id="cb15-6"><a href="#cb15-6" aria-hidden="true"></a>発生場所 行:1 文字:1</span>
-                        <span id="cb15-7"><a href="#cb15-7" aria-hidden="true"></a>+ ./test.<span class="fu">ps1</span></span>
-                        <span id="cb15-8"><a href="#cb15-8" aria-hidden="true"></a>+ ~~~~~~~~~~</span>
-                        <span id="cb15-9"><a href="#cb15-9" aria-hidden="true"></a>    + CategoryInfo          : セキュリティ エラー: (: ) []、PSSecurityException</span>
-                        <span id="cb15-10"><a href="#cb15-10" aria-hidden="true"></a>    + FullyQualifiedErrorId : UnauthorizedAccess</span></code></pre></div>
-                        <p><a href="https://docs.microsoft.com/ja-jp/powershell/module/microsoft.powershell.core/about/about_signing?view=powershell-7.2">署名の仕方</a>。</p>
-                        <div class="sourceCode" id="cb16"><pre class="sourceCode ps1"><code class="sourceCode powershell"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true"></a><span class="va">$params</span> = @{</span>
-                        <span id="cb16-2"><a href="#cb16-2" aria-hidden="true"></a>    Subject = &#39;CN=PowerShell Code Signing Cert&#39;</span>
-                        <span id="cb16-3"><a href="#cb16-3" aria-hidden="true"></a>    <span class="fu">Type</span> = &#39;CodeSigning&#39;</span>
-                        <span id="cb16-4"><a href="#cb16-4" aria-hidden="true"></a>    CertStoreLocation = &#39;Cert:\CurrentUser\My&#39;</span>
-                        <span id="cb16-5"><a href="#cb16-5" aria-hidden="true"></a>    HashAlgorithm = &#39;sha256&#39;</span>
-                        <span id="cb16-6"><a href="#cb16-6" aria-hidden="true"></a>}</span>
-                        <span id="cb16-7"><a href="#cb16-7" aria-hidden="true"></a><span class="va">$cert</span> = New-SelfSignedCertificate @params</span></code></pre></div>
+                        <div class="sourceCode" id="cb15"><pre
+                        class="sourceCode ps1"><code class="sourceCode powershell"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>$ <span class="fu">Set-ExecutionPolicy</span> <span class="op">-</span>ExecutionPolicy AllSigned <span class="op">-</span>Scope CurrentUser</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>$ <span class="op">./</span>test<span class="op">.</span><span class="fu">ps1</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="op">./</span>test<span class="op">.</span><span class="fu">ps1</span> <span class="op">:</span> ファイル C<span class="op">:</span>\Users\watanabe\test<span class="op">.</span><span class="fu">ps1</span> を読み込めません。ファイル C<span class="op">:</span>\Users\watanabe\test<span class="op">.</span><span class="fu">ps1</span> はデジタル署名さ</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>れていません。このスクリプトは現在のシステムでは実行できません。スクリプトの実行および実行ポリシーの設定の詳細について</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>は、「about_Execution_Policies」<span class="op">(</span>https<span class="op">://</span>go<span class="op">.</span><span class="fu">microsoft</span><span class="op">.</span><span class="fu">com</span><span class="op">/</span>fwlink<span class="op">/?</span>LinkID<span class="op">=</span>135170<span class="op">)</span> を参照してください。</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>発生場所 行<span class="op">:</span>1 文字<span class="op">:</span>1</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="op">+</span> <span class="op">./</span>test<span class="op">.</span><span class="fu">ps1</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="op">+</span> <span class="op">~~~~~~~~~~</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> CategoryInfo          <span class="op">:</span> セキュリティ エラー<span class="op">:</span> <span class="op">(:</span> <span class="op">)</span> <span class="op">[]</span>、PSSecurityException</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> FullyQualifiedErrorId <span class="op">:</span> UnauthorizedAccess</span></code></pre></div>
+                        <p><a
+                        href="https://docs.microsoft.com/ja-jp/powershell/module/microsoft.powershell.core/about/about_signing?view=powershell-7.2">署名の仕方</a>。</p>
+                        <div class="sourceCode" id="cb16"><pre
+                        class="sourceCode ps1"><code class="sourceCode powershell"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="va">$params</span> <span class="op">=</span> @<span class="op">{</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    Subject <span class="op">=</span> <span class="st">&#39;CN=PowerShell Code Signing Cert&#39;</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">Type</span> <span class="op">=</span> <span class="st">&#39;CodeSigning&#39;</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    CertStoreLocation <span class="op">=</span> <span class="st">&#39;Cert:\CurrentUser\My&#39;</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    HashAlgorithm <span class="op">=</span> <span class="st">&#39;sha256&#39;</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="va">$cert</span> <span class="op">=</span> New<span class="op">-</span>SelfSignedCertificate @params</span></code></pre></div>
                         <p>これで良いのか。しかし、署名しようとしたらUnknownErrorで失敗。原因不明。あとで調べる。</p>
-                        <h2 id="月28日月"><a href="#28">03月28日(月)</a> <a id="28"></a></h2>
-                        <p>朝、単純サンプリングの誤差棒がおかしい理由がわかった。ある確率変数<span class="math inline">\(\hat{X}\)</span>と<span class="math inline">\(\hat{Y}\)</span>の比の期待値 $&lt; / &gt; $を計算する必要があったのだが、こいつらが強く相関していたため、誤差伝播の公式を使うと誤差棒をover estimateしてしまっていた。ちゃんと考慮したらまっとうな誤差棒になった。良かった。</p>
+                        <h2 id="月28日月"><a href="#28">03月28日(月)</a>
+                        <a id="28"></a></h2>
+                        <p>朝、単純サンプリングの誤差棒がおかしい理由がわかった。ある確率変数<span
+                        class="math inline">\(\hat{X}\)</span>と<span
+                        class="math inline">\(\hat{Y}\)</span>の比の期待値
+                        $&lt; / &gt;
+                        $を計算する必要があったのだが、こいつらが強く相関していたため、誤差伝播の公式を使うと誤差棒をover
+                        estimateしてしまっていた。ちゃんと考慮したらまっとうな誤差棒になった。良かった。</p>
                         <p>実験ガイダンス。</p>
                         <p>専修の表彰式。ちゃんとできてよかった。</p>
                         <p>懇親会費締めた。</p>
                         <p>ScanSnap設定した。有線でつないだら無線の設定も勝手にやってくれた。素晴らしい。</p>
-                        <h2 id="月27日日"><a href="#27">03月27日(日)</a> <a id="27"></a></h2>
+                        <h2 id="月27日日"><a href="#27">03月27日(日)</a>
+                        <a id="27"></a></h2>
                         <p>MCMCと単純サンプリングの性能があまり変わらず。ちゃんとMCMCを書き直した。しかし、単純サンプリングの誤差棒がおかしい。</p>
-                        <h2 id="月26日土"><a href="#26">03月26日(土)</a> <a id="26"></a></h2>
+                        <h2 id="月26日土"><a href="#26">03月26日(土)</a>
+                        <a id="26"></a></h2>
                         <p>講義準備。最初のスライド作った。</p>
-                        <h2 id="月25日金"><a href="#25">03月25日(金)</a> <a id="25"></a></h2>
-                        <p>研究室サーバにGit 2.X系を入れる(以前入れた気がするが)。</p>
-                        <div class="sourceCode" id="cb17"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true"></a>$ <span class="fu">git</span> --version</span>
-                        <span id="cb17-2"><a href="#cb17-2" aria-hidden="true"></a><span class="fu">git</span> version 1.8.3.1</span></code></pre></div>
+                        <h2 id="月25日金"><a href="#25">03月25日(金)</a>
+                        <a id="25"></a></h2>
+                        <p>研究室サーバにGit
+                        2.X系を入れる(以前入れた気がするが)。</p>
+                        <div class="sourceCode" id="cb17"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git <span class="at">--version</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> version 1.8.3.1</span></code></pre></div>
                         <p>古い。削除してから入れる。</p>
-                        <div class="sourceCode" id="cb18"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true"></a><span class="fu">sudo</span> yum remove git</span>
-                        <span id="cb18-2"><a href="#cb18-2" aria-hidden="true"></a><span class="fu">sudo</span> yum install <span class="kw">\</span></span>
-                        <span id="cb18-3"><a href="#cb18-3" aria-hidden="true"></a><span class="ex">https</span>://repo.ius.io/ius-release-el7.rpm <span class="kw">\</span></span>
-                        <span id="cb18-4"><a href="#cb18-4" aria-hidden="true"></a><span class="ex">https</span>://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm</span>
-                        <span id="cb18-5"><a href="#cb18-5" aria-hidden="true"></a><span class="fu">sudo</span> yum install git --enablerepo=ius --disablerepo=base,epel,extras,updates</span></code></pre></div>
-                        <div class="sourceCode" id="cb19"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true"></a>$ <span class="fu">git</span> --version</span>
-                        <span id="cb19-2"><a href="#cb19-2" aria-hidden="true"></a><span class="fu">git</span> version 2.24.4</span></code></pre></div>
+                        <div class="sourceCode" id="cb18"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> yum remove git</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> yum install <span class="dt">\</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>https://repo.ius.io/ius-release-el7.rpm <span class="dt">\</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> yum install git <span class="at">--enablerepo</span><span class="op">=</span>ius <span class="at">--disablerepo</span><span class="op">=</span>base,epel,extras,updates</span></code></pre></div>
+                        <div class="sourceCode" id="cb19"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git <span class="at">--version</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> version 2.24.4</span></code></pre></div>
                         <p>新しくなった。</p>
                         <p>講義スライド、第一回分はできたことにする。めちゃくちゃ難産だった。</p>
-                        <h2 id="月24日木"><a href="#24">03月24日(木)</a> <a id="24"></a></h2>
+                        <h2 id="月24日木"><a href="#24">03月24日(木)</a>
+                        <a id="24"></a></h2>
                         <p>打ち合わせ。ドアに「オンライン会議中」ってかけてなくて掃除の人が入ってきてしまって、すごく恐縮されて申し訳ないことをした。大事な会議の時にはかけておかないとな。</p>
                         <p>講義準備が終わらないぞ。</p>
-                        <h2 id="月23日水"><a href="#23">03月23日(水)</a> <a id="23"></a></h2>
+                        <h2 id="月23日水"><a href="#23">03月23日(水)</a>
+                        <a id="23"></a></h2>
                         <p>かなり大量のTodoを潰した。</p>
                         <p>駐車場利用申請出した。</p>
                         <p>推薦状書いた。</p>
                         <p>講義準備が全く進んでない。論文もかけてない。</p>
-                        <h2 id="月22日火"><a href="#22">03月22日(火)</a> <a id="22"></a></h2>
+                        <h2 id="月22日火"><a href="#22">03月22日(火)</a>
+                        <a id="22"></a></h2>
                         <p>ガイダンス録画。</p>
                         <p>講義準備。</p>
                         <p>忘れてたXbyak_aarch64のPRがマージされた。ひょっとしてつぶやきを見られたかしら？</p>
                         <p>Alder転移のあたりを書いてて、久しぶりにAlderさんの写真を掘り出した。有名人とあった時はちゃんとツーショット写真を撮っておかないとなぁ。</p>
-                        <h2 id="月21日月"><a href="#21">03月21日(月)</a> <a id="21"></a></h2>
+                        <h2 id="月21日月"><a href="#21">03月21日(月)</a>
+                        <a id="21"></a></h2>
                         <p>NOP</p>
                         <p>講義の準備が本当にヤバい。論文を書く時間も取れてない。しんどい。</p>
-                        <h2 id="月20日日"><a href="#20">03月20日(日)</a> <a id="20"></a></h2>
+                        <h2 id="月20日日"><a href="#20">03月20日(日)</a>
+                        <a id="20"></a></h2>
                         <p>NOP</p>
-                        <h2 id="月19日土"><a href="#19">03月19日(土)</a> <a id="19"></a></h2>
+                        <h2 id="月19日土"><a href="#19">03月19日(土)</a>
+                        <a id="19"></a></h2>
                         <p>NOP</p>
-                        <h2 id="月18日金"><a href="#18">03月18日(金)</a> <a id="18"></a></h2>
+                        <h2 id="月18日金"><a href="#18">03月18日(金)</a>
+                        <a id="18"></a></h2>
                         <p>HPC183の座長。学習指導のお仕事。</p>
-                        <h2 id="月17日木"><a href="#17">03月17日(木)</a> <a id="17"></a></h2>
+                        <h2 id="月17日木"><a href="#17">03月17日(木)</a>
+                        <a id="17"></a></h2>
                         <p>研究室ミーティング。本読み輪講。</p>
                         <p>物理学会。ポスター発表。お客さんが来てくれてよかった。しかし、19-21時はしんどい。</p>
-                        <h2 id="月16日水"><a href="#16">03月16日(水)</a> <a id="16"></a></h2>
+                        <h2 id="月16日水"><a href="#16">03月16日(水)</a>
+                        <a id="16"></a></h2>
                         <p>明日の輪講の準備した。</p>
                         <p>ガイダンス資料作った。</p>
                         <p>これだけで一日潰れてしまった。</p>
                         <p>中野さんの若手奨励賞講演。</p>
                         <p>夜はミーティング。</p>
-                        <p><a href="https://zenn.dev/kaityo256/articles/legendre_expression">ルジャンドル変換の話をZennに書いておいた</a>。接線タイプと面積タイプの説明があるが、両方を併記している説明はあまりないから。</p>
-                        <h2 id="月15日火"><a href="#15">03月15日(火)</a> <a id="15"></a></h2>
+                        <p><a
+                        href="https://zenn.dev/kaityo256/articles/legendre_expression">ルジャンドル変換の話をZennに書いておいた</a>。接線タイプと面積タイプの説明があるが、両方を併記している説明はあまりないから。</p>
+                        <h2 id="月15日火"><a href="#15">03月15日(火)</a>
+                        <a id="15"></a></h2>
                         <p>タイヤがパンクしてしまい、JAFを呼んだ。いつも電話なのだが、今回初めてJAFアプリを使ってみた。GPSをオンにして「ここに来てください」とやるだけ。15分後には到着。15分で作業完了。早い・便利・素晴らしい。</p>
                         <p>電話でなにか予約する、というのは未だにものすごくMPを使う。</p>
-                        <h2 id="月14日月"><a href="#14">03月14日(月)</a> <a id="14"></a></h2>
+                        <h2 id="月14日月"><a href="#14">03月14日(月)</a>
+                        <a id="14"></a></h2>
                         <p>職位付与申請出した。</p>
                         <p>確定申告の締め切りが近いので、慌てて夜中にやる。夜はe-Taxが全くつながらなかったが、夜中1時ごろにつながったので作業。</p>
                         <p>本を読んだりネットで調べたりしたがまったく概要がつかめず困っていたが、結局「国税庁動画チャンネル」の動画が非常にわかりやすかった。</p>
-                        <p>また、確定申告をするのにe-Taxのページ(e-tax.nta.go.jp)でなんとかしようとしていたが、入り口が国税庁 確定申告書等作成コーナー(www.keisan.nta.go.jp)であることにしばらく気づかずにハマった。また、カードリーダでマイナンバーカードを裏向きに(顔写真が下)挿入しなければならないことに気づかずにちょっとハマった。それ以外はわりとスムーズだった。各入力欄にフォーカスがあたった時のヘルプ画面がよくできている。</p>
+                        <p>また、確定申告をするのにe-Taxのページ(e-tax.nta.go.jp)でなんとかしようとしていたが、入り口が国税庁
+                        確定申告書等作成コーナー(www.keisan.nta.go.jp)であることにしばらく気づかずにハマった。また、カードリーダでマイナンバーカードを裏向きに(顔写真が下)挿入しなければならないことに気づかずにちょっとハマった。それ以外はわりとスムーズだった。各入力欄にフォーカスがあたった時のヘルプ画面がよくできている。</p>
                         <p>いろいろ言われていたが、政府のIT関連サービスは間違いなく良くなっている。作った人もそうだが、「中の人」ががんばったのだろう。素晴らしい。</p>
-                        <h2 id="月13日日"><a href="#13">03月13日(日)</a> <a id="13"></a></h2>
+                        <h2 id="月13日日"><a href="#13">03月13日(日)</a>
+                        <a id="13"></a></h2>
                         <p>仕事ができない。また「準備が全然できていないまま講義に臨む」夢を見てしまった。いい年こいて・・・</p>
                         <p>ネットで「自分の感覚がずれている(しかし、暗に世間の方が間違っていると主張する)」言説を見かけたのだが、その導入が「東大1年の頃、」だったので、「そういうところだぞ」と思った。「大学生の頃」とか「昔、」でいいじゃん。</p>
                         <p>昔、「学歴なんて関係ない」と主張する個人サイトが、非常に丁寧に「サイト主が東大卒である」ことが暗示される仕組みになっており、「あー」と思ったのを思い出した。</p>
-                        <h2 id="月12日土"><a href="#12">03月12日(土)</a> <a id="12"></a></h2>
+                        <h2 id="月12日土"><a href="#12">03月12日(土)</a>
+                        <a id="12"></a></h2>
                         <p>疲れた。</p>
                         <p>老害について考えている。例えば「○○するのは老害」という言説を見て、「自分はXXだから老害ではない」というのは、典型的な老害ムーブに見える。老害とはなにか？結局自分の保持した価値観が壊れることを恐れることではないのか？残り時間が少なくなっていき、自分が獲得したスキル、知識、地位の価値を守ろうとするムーブが「老害」なのではないか？</p>
-                        <h2 id="月11日金"><a href="#11">03月11日(金)</a> <a id="11"></a></h2>
+                        <h2 id="月11日金"><a href="#11">03月11日(金)</a>
+                        <a id="11"></a></h2>
                         <p>あー、学振の職位付与って毎年やる必要あるのか。知らなかった。</p>
                         <p>実験打ち合わせ。オンライン対応とか考えると面倒。でも担当の先生が全部準備してくださったのでありがたい。</p>
                         <p>ターミナルに陸軍型と海軍型があるのを知らなかった。陸軍型が外れるやつ、海軍型は外れない。</p>
                         <p>学会参加申し込んだ。登録を忘れていた。あと、学生さんのポスターの予稿も。いかんなぁ。</p>
-                        <h2 id="月10日木"><a href="#10">03月10日(木)</a> <a id="10"></a></h2>
-                        <p>Zoom API。慶応のアカウントではJWTは使えないらしい。ログイン後に「ソリューション」→「開発者プラットフォーム」を選ぶと<a href="https://developers.zoom.us">https://developers.zoom.us</a>にログイン状態で飛ぶが、それだとKeio IDで入れない。謎。</p>
-                        <p>ZoomのDeveloperページに飛んだら、右上の「BUILD APP」をクリック。OAuthを選んでCreate。</p>
-                        <p>App Nameは適当に。app typeはよくわからないので User-managed appを選ぶ。App Marketplaceではpublishしない。で、Create。</p>
-                        <p>App credentials: Client IDとClient secretを取得。Redirect URLは「<a href="http://localhost:8080」にしてみる。OAuth" class="uri">http://localhost:8080」にしてみる。OAuth</a> allow listはとりあえず無しでcontinue。</p>
+                        <h2 id="月10日木"><a href="#10">03月10日(木)</a>
+                        <a id="10"></a></h2>
+                        <p>Zoom
+                        API。慶応のアカウントではJWTは使えないらしい。ログイン後に「ソリューション」→「開発者プラットフォーム」を選ぶと<a
+                        href="https://developers.zoom.us">https://developers.zoom.us</a>にログイン状態で飛ぶが、それだとKeio
+                        IDで入れない。謎。</p>
+                        <p>ZoomのDeveloperページに飛んだら、右上の「BUILD
+                        APP」をクリック。OAuthを選んでCreate。</p>
+                        <p>App Nameは適当に。app
+                        typeはよくわからないので User-managed
+                        appを選ぶ。App
+                        Marketplaceではpublishしない。で、Create。</p>
+                        <p>App credentials: Client IDとClient
+                        secretを取得。Redirect URLは「<a
+                        href="http://localhost:8080」にしてみる。OAuth"
+                        class="uri">http://localhost:8080」にしてみる。OAuth</a>
+                        allow listはとりあえず無しでcontinue。</p>
                         <p>Scopesで、最低一つScopeを指定しないといけない。とりあえず「meeting:read」だけ指定してみる。</p>
-                        <p>杉山雄規先生最終講義。Optimal Velocity Modelで、相互作用が非対称だから、エネルギーが保存しない。したがって、必ず散逸項が必要になる。OV Modelでは、「自分の希望する速度と、現在の速度の差」が加速度となるが、この「現在の速度」が散逸項の役割を果たす。なるほど。</p>
+                        <p>杉山雄規先生最終講義。Optimal Velocity
+                        Modelで、相互作用が非対称だから、エネルギーが保存しない。したがって、必ず散逸項が必要になる。OV
+                        Modelでは、「自分の希望する速度と、現在の速度の差」が加速度となるが、この「現在の速度」が散逸項の役割を果たす。なるほど。</p>
                         <p>二次元OV模型も、いろいろ遊べそうだなぁ。</p>
                         <p>サイエンスカフェの返事だした。</p>
-                        <h2 id="月09日水"><a href="#09">03月09日(水)</a> <a id="09"></a></h2>
+                        <h2 id="月09日水"><a href="#09">03月09日(水)</a>
+                        <a id="09"></a></h2>
                         <p>そういえばMacにgsが無い。前回はMacTexを入れたが、今回はTeXLiveを入れたので入っていないようだ。MacTexでは独自のgsを入れるのでいろいろ面倒だという話があったが、TeXLiveではgsは入らない(?)ので、brewで入れてよかろう。</p>
-                        <div class="sourceCode" id="cb20"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true"></a><span class="ex">brew</span> install ghostscript</span></code></pre></div>
+                        <div class="sourceCode" id="cb20"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> install ghostscript</span></code></pre></div>
                         <p>うーん、ウィンドウが出ない。どうするんだっけ？</p>
                         <p>研究打ち合わせ。とても参考になった。やっぱりプロに聞くのが早い。多謝。</p>
-                        <h2 id="月08日火"><a href="#08">03月08日(火)</a> <a id="08"></a></h2>
+                        <h2 id="月08日火"><a href="#08">03月08日(火)</a>
+                        <a id="08"></a></h2>
                         <p>Macではターミナルからデスクトップやダウンロードフォルダにアクセスする場合、許可が必要になっている。おそらく意図しない情報ぶっこぬきに対応するためだろう。で、例えばデスクトップにあるPDFをリポジトリに持ってこようとして、</p>
-                        <div class="sourceCode" id="cb21"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true"></a><span class="fu">cp</span> ~/Desktop/hoge.pdf .</span></code></pre></div>
-                        <p>とした時、最初に「“ターミナル”から“デスクトップ”フォルダ内のファイルにアクセスしようとしています。」というシステムダイアログが出てくる。これで一度許可すれば次から聞かれないのだが、うっかり「許可しない」をクリックすると、二度と許可されずに</p>
-                        <div class="sourceCode" id="cb22"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true"></a>$ <span class="fu">ls</span></span>
-                        <span id="cb22-2"><a href="#cb22-2" aria-hidden="true"></a><span class="ex">ls</span>: .: Operation not permitted</span></code></pre></div>
-                        <p>みたいになってしまう。これはTCC (Transparency Consent and Control)というユーザ保護の仕組みで、デスクトップフォルダ、ダウンロードフォルダ、写真フォルダなど細かく制御されている。で、当該制御項目をリセットすればよいのだが、例えばデスクトップフォルダへのアクセスを制御するには、</p>
-                        <div class="sourceCode" id="cb23"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true"></a><span class="ex">tccutil</span> reset サービス名</span></code></pre></div>
+                        <div class="sourceCode" id="cb21"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> ~/Desktop/hoge.pdf .</span></code></pre></div>
+                        <p>とした時、最初に「“ターミナル”から”デスクトップ”フォルダ内のファイルにアクセスしようとしています。」というシステムダイアログが出てくる。これで一度許可すれば次から聞かれないのだが、うっかり「許可しない」をクリックすると、二度と許可されずに</p>
+                        <div class="sourceCode" id="cb22"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="ex">ls:</span> .: Operation not permitted</span></code></pre></div>
+                        <p>みたいになってしまう。これはTCC (Transparency
+                        Consent and
+                        Control)というユーザ保護の仕組みで、デスクトップフォルダ、ダウンロードフォルダ、写真フォルダなど細かく制御されている。で、当該制御項目をリセットすればよいのだが、例えばデスクトップフォルダへのアクセスを制御するには、</p>
+                        <div class="sourceCode" id="cb23"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="ex">tccutil</span> reset サービス名</span></code></pre></div>
                         <p>とすれば良いのだが、サービス名を調べるのが面倒。というわけで全部リセットしてしまい、必要に応じてまた許可すれば良い。</p>
-                        <div class="sourceCode" id="cb24"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true"></a><span class="ex">tccutil</span> reset All</span></code></pre></div>
+                        <div class="sourceCode" id="cb24"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="ex">tccutil</span> reset All</span></code></pre></div>
                         <p>必要なのはわかるが、いろいろ面倒だ・・・</p>
                         <p>学生さん論文、少し進めた。</p>
-                        <h2 id="月07日月"><a href="#07">03月07日(月)</a> <a id="07"></a></h2>
+                        <h2 id="月07日月"><a href="#07">03月07日(月)</a>
+                        <a id="07"></a></h2>
                         <p>製本した卒論、郵送した。</p>
                         <p>卒論テーマ案と「最初の論文」案、ようやくできた。本当は金曜日には作るはずだったのだが。</p>
                         <p>自然科学実験の会議。</p>
                         <p>gnuplotハンズオン。いろいろ不手際があった。事前にXを飛ばすのをちゃんと確認しておかないといけない。特にWSLが鬼門。</p>
-                        <h2 id="月06日日"><a href="#06">03月06日(日)</a> <a id="06"></a></h2>
+                        <h2 id="月06日日"><a href="#06">03月06日(日)</a>
+                        <a id="06"></a></h2>
                         <p>NOP</p>
                         <p>体が全く動かない。</p>
-                        <h2 id="月05日土"><a href="#05">03月05日(土)</a> <a id="05"></a></h2>
+                        <h2 id="月05日土"><a href="#05">03月05日(土)</a>
+                        <a id="05"></a></h2>
                         <p>NOP</p>
                         <p>体が全く動かない。</p>
-                        <h2 id="月04日金"><a href="#04">03月04日(金)</a> <a id="04"></a></h2>
+                        <h2 id="月04日金"><a href="#04">03月04日(金)</a>
+                        <a id="04"></a></h2>
                         <p>来客対応。</p>
                         <p>卒論の郵送準備した。</p>
                         <p>Zoomの参加者取得方法メモ。</p>
                         <ul>
-                        <li><a href="https://qiita.com/coticoticotty/items/d247e1fe39a010c588c5">【GAS×ZOOM API】ミーティングの参加者をリアルタイムで取得する方法</a></li>
-                        <li><a href="https://support.zoom.us/hc/ja/articles/4409428659725-%E6%8B%9B%E5%BE%85%E6%B8%88%E3%81%BF%E3%83%9F%E3%83%BC%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0%E5%8F%82%E5%8A%A0%E8%80%85%E3%81%AE%E5%87%BA%E5%B8%AD%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E3%81%AE%E8%A1%A8%E7%A4%BA">招待済みミーティング参加者の出席ステータスの表示</a></li>
+                        <li><a
+                        href="https://qiita.com/coticoticotty/items/d247e1fe39a010c588c5">【GAS×ZOOM
+                        API】ミーティングの参加者をリアルタイムで取得する方法</a></li>
+                        <li><a
+                        href="https://support.zoom.us/hc/ja/articles/4409428659725-%E6%8B%9B%E5%BE%85%E6%B8%88%E3%81%BF%E3%83%9F%E3%83%BC%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0%E5%8F%82%E5%8A%A0%E8%80%85%E3%81%AE%E5%87%BA%E5%B8%AD%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E3%81%AE%E8%A1%A8%E7%A4%BA">招待済みミーティング参加者の出席ステータスの表示</a></li>
                         </ul>
-                        <h2 id="月03日木"><a href="#03">03月03日(木)</a> <a id="03"></a></h2>
+                        <h2 id="月03日木"><a href="#03">03月03日(木)</a>
+                        <a id="03"></a></h2>
                         <p>研究室ミーティング。中野さんのアクティブマターの話。面白い。LatticeでZ4はrelevantだけど、Z6がirrelevantだってやつ、ちょっと探した範囲では見つからなかった。どの論文だったかなぁ。</p>
-                        <p>僕の話は<a href="https://speakerdeck.com/kaityo256/markov-chain-monte-carlo">マルコフ連鎖モンテカルロ法の気持ち</a>。講義の準備を兼ねた話だが、まだこなれて無い気がする。</p>
+                        <p>僕の話は<a
+                        href="https://speakerdeck.com/kaityo256/markov-chain-monte-carlo">マルコフ連鎖モンテカルロ法の気持ち</a>。講義の準備を兼ねた話だが、まだこなれて無い気がする。</p>
                         <p>研究打ち合わせを依頼。</p>
-                        <h2 id="月02日水"><a href="#02">03月02日(水)</a> <a id="02"></a></h2>
-                        <p>次回ハンズオン(gnuplot)のためにX Windowの設定の確認。たまたままっさらに近いiMacがあったので試す。</p>
-                        <p><a href="https://www.xquartz.org/">https://www.xquartz.org/</a>から、最新版のXQuartz(2021年4月25日時点では<code>XQuartz-2.8.1.dmg</code>)をダウンロードし、dmgファイルを開いてXQuartz.pkgを実行してインストールする。</p>
+                        <h2 id="月02日水"><a href="#02">03月02日(水)</a>
+                        <a id="02"></a></h2>
+                        <p>次回ハンズオン(gnuplot)のためにX
+                        Windowの設定の確認。たまたままっさらに近いiMacがあったので試す。</p>
+                        <p><a
+                        href="https://www.xquartz.org/">https://www.xquartz.org/</a>から、最新版のXQuartz(2021年4月25日時点では<code>XQuartz-2.8.1.dmg</code>)をダウンロードし、dmgファイルを開いてXQuartz.pkgを実行してインストールする。</p>
                         <p>ローカルですぐにxeyesは動くようになったが、研究室サーバからXが飛ばない。エラーはこれ。</p>
-                        <div class="sourceCode" id="cb25"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true"></a>X11 forwarding request failed on channel 0</span></code></pre></div>
+                        <div class="sourceCode" id="cb25"><pre
+                        class="sourceCode txt"><code class="sourceCode default"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>X11 forwarding request failed on channel 0</span></code></pre></div>
                         <p>あれ、Ubuntuからもだめだ。サーバ側の問題かな。</p>
                         <p><code>/etc/ssh/sshd_config</code>に<code>X11Forwarding yes</code>はある。</p>
                         <p><code>/etc/ssh/sshd_config</code>に<code>X11UseLocalhost no</code>を設定して</p>
-                        <div class="sourceCode" id="cb26"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true"></a><span class="fu">sudo</span> service sshd restart</span></code></pre></div>
+                        <div class="sourceCode" id="cb26"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> service sshd restart</span></code></pre></div>
                         <p>してから再度接続したら通った。</p>
                         <p>とりあえずローカルにbrewでgnuplotを入れたら以下のメッセージが出た。あとで確認。</p>
-                        <div class="sourceCode" id="cb27"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true"></a>Disable this behaviour by setting HOMEBREW_NO_INSTALL_CLEANUP.</span>
-                        <span id="cb27-2"><a href="#cb27-2" aria-hidden="true"></a>Hide these hints with HOMEBREW_NO_ENV_HINTS (see `man brew`).</span></code></pre></div>
-                        <p>調べた。<a href="https://brew.sh/2019/02/02/homebrew-2.0.0/">brew 2.0.0からcleanupが自動で走るようになったらしい</a>。cleanup、reinstall、install、upgradeをトリガーとして、30日間走っていなければcleanupが勝手に走るとのこと。それが嫌なら<code>HOMEBREW_NO_INSTALL_CLEANUP</code>を設定してね。とのこと。cleanupして欲しいし、このヒントは不要なので、<code>HOMEBREW_NO_ENV_HINTS</code>を設定しておく。</p>
-                        <p>環境変数について何も知らなかった。<a href="https://stackoverflow.com/a/65141342">setとenvの違い</a>。</p>
+                        <div class="sourceCode" id="cb27"><pre
+                        class="sourceCode txt"><code class="sourceCode default"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>Disable this behaviour by setting HOMEBREW_NO_INSTALL_CLEANUP.</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>Hide these hints with HOMEBREW_NO_ENV_HINTS (see `man brew`).</span></code></pre></div>
+                        <p>調べた。<a
+                        href="https://brew.sh/2019/02/02/homebrew-2.0.0/">brew
+                        2.0.0からcleanupが自動で走るようになったらしい</a>。cleanup、reinstall、install、upgradeをトリガーとして、30日間走っていなければcleanupが勝手に走るとのこと。それが嫌なら<code>HOMEBREW_NO_INSTALL_CLEANUP</code>を設定してね。とのこと。cleanupして欲しいし、このヒントは不要なので、<code>HOMEBREW_NO_ENV_HINTS</code>を設定しておく。</p>
+                        <p>環境変数について何も知らなかった。<a
+                        href="https://stackoverflow.com/a/65141342">setとenvの違い</a>。</p>
                         <p>単に値を入れるだけだと、setではひっかかるが、envにはひっかからない。</p>
-                        <div class="sourceCode" id="cb28"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true"></a>$ <span class="va">ABC=</span>xyz</span>
-                        <span id="cb28-2"><a href="#cb28-2" aria-hidden="true"></a>$ <span class="kw">set</span> <span class="kw">|</span> <span class="fu">grep</span> ABC</span>
-                        <span id="cb28-3"><a href="#cb28-3" aria-hidden="true"></a><span class="va">ABC=</span>xyz</span>
-                        <span id="cb28-4"><a href="#cb28-4" aria-hidden="true"></a>$ <span class="fu">env</span> <span class="kw">|</span> <span class="fu">grep</span> ABC</span></code></pre></div>
+                        <div class="sourceCode" id="cb28"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ABC=xyz</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> set <span class="kw">|</span> <span class="fu">grep</span> ABC</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="va">ABC</span><span class="op">=</span>xyz</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> env <span class="kw">|</span> <span class="fu">grep</span> ABC</span></code></pre></div>
                         <p>exportすると、「それが定義されたときにexportされる」という情報が付与される。</p>
-                        <div class="sourceCode" id="cb29"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true"></a>$ <span class="bu">export</span> <span class="va">ABC</span>  # この時点ではなにも値が設定されない</span>
-                        <span id="cb29-2"><a href="#cb29-2" aria-hidden="true"></a>$ <span class="kw">set</span> <span class="kw">|</span> <span class="fu">grep</span> ABC</span>
-                        <span id="cb29-3"><a href="#cb29-3" aria-hidden="true"></a><span class="va">ABC=</span><span class="st">&#39;&#39;</span></span>
-                        <span id="cb29-4"><a href="#cb29-4" aria-hidden="true"></a>$ <span class="fu">env</span> <span class="kw">|</span> <span class="fu">grep</span> ABC</span>
-                        <span id="cb29-5"><a href="#cb29-5" aria-hidden="true"></a>$ <span class="ex">ABC</span> = xyz # 値を設定</span>
-                        <span id="cb29-6"><a href="#cb29-6" aria-hidden="true"></a>$ <span class="kw">set</span> <span class="kw">|</span> <span class="fu">grep</span> ABC</span>
-                        <span id="cb29-7"><a href="#cb29-7" aria-hidden="true"></a><span class="va">ABC=</span>xyz</span>
-                        <span id="cb29-8"><a href="#cb29-8" aria-hidden="true"></a>$ <span class="fu">env</span> <span class="kw">|</span> <span class="fu">grep</span> ABC</span>
-                        <span id="cb29-9"><a href="#cb29-9" aria-hidden="true"></a><span class="va">ABC=</span>xyz</span></code></pre></div>
+                        <div class="sourceCode" id="cb29"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> export ABC  <span class="co"># この時点ではなにも値が設定されない</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> set <span class="kw">|</span> <span class="fu">grep</span> ABC</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="va">ABC</span><span class="op">=</span><span class="st">&#39;&#39;</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> env <span class="kw">|</span> <span class="fu">grep</span> ABC</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ABC = xyz <span class="co"># 値を設定</span></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> set <span class="kw">|</span> <span class="fu">grep</span> ABC</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a><span class="va">ABC</span><span class="op">=</span>xyz</span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> env <span class="kw">|</span> <span class="fu">grep</span> ABC</span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a><span class="va">ABC</span><span class="op">=</span>xyz</span></code></pre></div>
                         <p>う、Macではexportした時点で空文字列が設定されるな。</p>
                         <p>Linux+Bash</p>
-                        <div class="sourceCode" id="cb30"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true"></a>$ <span class="bu">export</span> <span class="va">ABC</span></span>
-                        <span id="cb30-2"><a href="#cb30-2" aria-hidden="true"></a>$ <span class="kw">set</span> <span class="kw">|</span> <span class="fu">grep</span> ABC</span>
-                        <span id="cb30-3"><a href="#cb30-3" aria-hidden="true"></a><span class="va">_=</span>ABC</span></code></pre></div>
+                        <div class="sourceCode" id="cb30"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> export ABC</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> set <span class="kw">|</span> <span class="fu">grep</span> ABC</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="va">_</span><span class="op">=</span>ABC</span></code></pre></div>
                         <p>やっぱり空文字列か。</p>
                         <p>Ubuntu + Zsh</p>
-                        <div class="sourceCode" id="cb31"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true"></a>$ <span class="bu">export</span> <span class="va">ABC</span></span>
-                        <span id="cb31-2"><a href="#cb31-2" aria-hidden="true"></a>$ <span class="kw">set</span> <span class="kw">|</span> <span class="fu">grep</span> ABC</span>
-                        <span id="cb31-3"><a href="#cb31-3" aria-hidden="true"></a><span class="va">ABC=</span><span class="st">&#39;&#39;</span></span></code></pre></div>
+                        <div class="sourceCode" id="cb31"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> export ABC</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> set <span class="kw">|</span> <span class="fu">grep</span> ABC</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="va">ABC</span><span class="op">=</span><span class="st">&#39;&#39;</span></span></code></pre></div>
                         <p>これはOSというよりシェルの違いか。<code>export</code>した時点で空文字列が設定されるんだな。</p>
                         <p>シェル変数と環境変数の違いをちゃんと認識していなかった。シェル変数は現在のシェルのみで有効、環境変数は子プロセスにも受け継がれる。</p>
                         <p><code>env</code>は環境変数の一覧、<code>set</code>はシェル変数と環境変数の一覧を表示。<code>export</code>も環境変数一覧。</p>
                         <p>時間割の確認。とりあえず自分の担当講義は「教育支援システム」→「出講カレンダー」で確認できる。また、学事日程は同画面の「資料ダウンロード」からダウンロード可能(これが欲しかった)。大学院のまだかな？</p>
                         <p>学生さん論文、少し修正。</p>
-                        <h2 id="月01日火"><a href="#01">03月01日(火)</a> <a id="01"></a></h2>
+                        <h2 id="月01日火"><a href="#01">03月01日(火)</a>
+                        <a id="01"></a></h2>
                         <p>3月になってしまった。月が変わるたびに進捗のなさに絶望してしまう。</p>
                         <p>ディスプレイが大きくなったので、VSCodeのフォントも大きくしてみる。っていうか老眼・・・</p>
                         <p>木曜日の発表の準備。2時間でできるかな？→3時間半かかった。</p>
-                        <p>学習指導のお仕事。VS CodeにMarkdown PDFが入ってなかったので入れたが、なぜかうまくいかなかった。後で原因究明すること。</p>
+                        <p>学習指導のお仕事。VS CodeにMarkdown
+                        PDFが入ってなかったので入れたが、なぜかうまくいかなかった。後で原因究明すること。</p>
           </article>
   </body>
 

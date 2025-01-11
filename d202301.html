@@ -22,75 +22,96 @@
     <article class="markdown-body">
                         <h1 id="年1月">2023年1月</h1>
                         <p><a href="index.html">ログ一覧</a></p>
-                        <h2 id="月31日火"><a href="#31">01月31日(火)</a> <a id="31"></a></h2>
+                        <h2 id="月31日火"><a href="#31">01月31日(火)</a>
+                        <a id="31"></a></h2>
                         <p>matplotlibでfontが見つからないと言われる。</p>
-                        <div class="sourceCode" id="cb1"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a>findfont: Font family &#39;Times New Roman&#39; not found.</span>
-                        <span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a>findfont: Font family &#39;Times New Roman&#39; not found.</span>
-                        <span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a>findfont: Font family &#39;Times New Roman&#39; not found.</span>
-                        <span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a>findfont: Font family &#39;Times New Roman&#39; not found.</span>
-                        <span id="cb1-5"><a href="#cb1-5" aria-hidden="true"></a>findfont: Font family &#39;Times New Roman&#39; not found.</span>
-                        <span id="cb1-6"><a href="#cb1-6" aria-hidden="true"></a>findfont: Font family &#39;Times New Roman&#39; not found.</span>
-                        <span id="cb1-7"><a href="#cb1-7" aria-hidden="true"></a>findfont: Font family &#39;Times New Roman&#39; not found.</span>
-                        <span id="cb1-8"><a href="#cb1-8" aria-hidden="true"></a>findfont: Font family &#39;Times New Roman&#39; not found.</span></code></pre></div>
+                        <div class="sourceCode" id="cb1"><pre
+                        class="sourceCode txt"><code class="sourceCode default"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>findfont: Font family &#39;Times New Roman&#39; not found.</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>findfont: Font family &#39;Times New Roman&#39; not found.</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>findfont: Font family &#39;Times New Roman&#39; not found.</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>findfont: Font family &#39;Times New Roman&#39; not found.</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>findfont: Font family &#39;Times New Roman&#39; not found.</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>findfont: Font family &#39;Times New Roman&#39; not found.</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>findfont: Font family &#39;Times New Roman&#39; not found.</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>findfont: Font family &#39;Times New Roman&#39; not found.</span></code></pre></div>
                         <p>Ubuntu系なら以下でインストールできる。matplotlibのキャッシュを消しておかないといけない。</p>
-                        <div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="fu">sudo</span> apt install msttcorefonts -qq</span>
-                        <span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a><span class="fu">rm</span> ~/.cache/matplotlib -rf</span></code></pre></div>
+                        <div class="sourceCode" id="cb2"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install msttcorefonts <span class="at">-qq</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> ~/.cache/matplotlib <span class="at">-rf</span></span></code></pre></div>
                         <p>LaTeXで作ったPDFをChrome系(だからEdgeも)のブラウザで見るとおかしくなる現象、Ryumin-Light-Identity-Hの埋め込みが禁止されているから。</p>
-                        <div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a>$ <span class="ex">pdffonts.exe</span> thesis.pdf</span>
-                        <span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a><span class="ex">name</span>                                 type              encoding         emb sub uni object ID</span>
-                        <span id="cb3-3"><a href="#cb3-3" aria-hidden="true"></a><span class="ex">------------------------------------</span> ----------------- ---------------- --- --- --- ---------</span>
-                        <span id="cb3-4"><a href="#cb3-4" aria-hidden="true"></a><span class="ex">Ryumin-Light-Identity-H</span>              CID Type 0        Identity-H       no  no  no       5  0</span>
-                        <span id="cb3-5"><a href="#cb3-5" aria-hidden="true"></a><span class="ex">WMQMSW+CMR12</span>                         Type 1C           Builtin          yes yes yes      6  0</span>
-                        <span id="cb3-6"><a href="#cb3-6" aria-hidden="true"></a><span class="ex">YZOQWI+CMR10</span>                         Type 1C           Builtin          yes yes yes      7  0</span>
-                        <span id="cb3-7"><a href="#cb3-7" aria-hidden="true"></a><span class="ex">KOIXZI+CMR17</span>                         Type 1C           Builtin          yes yes yes     14  0</span>
-                        <span id="cb3-8"><a href="#cb3-8" aria-hidden="true"></a><span class="ex">GothicBBB-Medium-Identity-H</span>          CID Type 0        Identity-H       no  no  no      19  0</span>
-                        <span id="cb3-9"><a href="#cb3-9" aria-hidden="true"></a><span class="ex">YBBHUL+CMSS10</span>                        Type 1C           Builtin          yes yes yes     20  0</span>
-                        <span id="cb3-10"><a href="#cb3-10" aria-hidden="true"></a><span class="ex">EUWIXX+CMSS17</span>                        Type 1C           Builtin          yes yes yes     27  0</span></code></pre></div>
-                        <p>Ryumin-Light-Identity-Hの埋め込みがnoになってる。この代替フォントとして、普通はMS Minchoを使うが、Chromeが変なフォントを探してしまうのでおかしくなるらしい。MS Minchoを指定して埋め込めなくもないが、かなり面倒なようだ。</p>
+                        <div class="sourceCode" id="cb3"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> pdffonts.exe thesis.pdf</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">name</span>                                 type              encoding         emb sub uni object ID</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ex">------------------------------------</span> <span class="at">-----------------</span> <span class="at">----------------</span> <span class="at">---</span> <span class="at">---</span> <span class="at">---</span> <span class="at">---------</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="ex">Ryumin-Light-Identity-H</span>              CID Type 0        Identity-H       no  no  no       5  0</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="ex">WMQMSW+CMR12</span>                         Type 1C           Builtin          yes yes yes      6  0</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="ex">YZOQWI+CMR10</span>                         Type 1C           Builtin          yes yes yes      7  0</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="ex">KOIXZI+CMR17</span>                         Type 1C           Builtin          yes yes yes     14  0</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="ex">GothicBBB-Medium-Identity-H</span>          CID Type 0        Identity-H       no  no  no      19  0</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="ex">YBBHUL+CMSS10</span>                        Type 1C           Builtin          yes yes yes     20  0</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="ex">EUWIXX+CMSS17</span>                        Type 1C           Builtin          yes yes yes     27  0</span></code></pre></div>
+                        <p>Ryumin-Light-Identity-Hの埋め込みがnoになってる。この代替フォントとして、普通はMS
+                        Minchoを使うが、Chromeが変なフォントを探してしまうのでおかしくなるらしい。MS
+                        Minchoを指定して埋め込めなくもないが、かなり面倒なようだ。</p>
                         <p>うーん、「スパコンを使う以上、hardware-awareなコードを書きなさい」という気持ちはすごくわかるんだけど、例えば「hardware-awareなコードを書ける計算物性科学者」にそこまでのニーズがあるのか、と言われると、ユーザに時間をかけてそのスキルを身に着けてくださいとは強く言えないような……</p>
                         <p>論文がacceptされた！長かった。</p>
                         <p>調べたら、この研究に関する最古のスライドが2012年4月。10年以上前だ……</p>
                         <p>諦めずに戦い抜いた。がんばった。</p>
-                        <h2 id="月30日月"><a href="#30">01月30日(月)</a> <a id="30"></a></h2>
+                        <h2 id="月30日月"><a href="#30">01月30日(月)</a>
+                        <a id="30"></a></h2>
                         <p>査読レポートへの返事案作成。</p>
                         <p>卒論チェック。</p>
-                        <h2 id="月29日日"><a href="#29">01月29日(日)</a> <a id="29"></a></h2>
+                        <h2 id="月29日日"><a href="#29">01月29日(日)</a>
+                        <a id="29"></a></h2>
                         <p>引き続き卒論チェック。</p>
                         <p>論文、再投稿した。今度こそ通るだろう。長かった。</p>
-                        <h2 id="月28日土"><a href="#28">01月28日(土)</a> <a id="28"></a></h2>
+                        <h2 id="月28日土"><a href="#28">01月28日(土)</a>
+                        <a id="28"></a></h2>
                         <p>卒論チェックとかしてた。修論もチェックしたはず。</p>
-                        <h2 id="月27日金"><a href="#27">01月27日(金)</a> <a id="27"></a></h2>
+                        <h2 id="月27日金"><a href="#27">01月27日(金)</a>
+                        <a id="27"></a></h2>
                         <p>学習指導のお仕事。</p>
-                        <p><a href="https://github.com/kaityo256/graduate_thesis">卒論テンプレート</a>と <a href="https://github.com/kaityo256/master_thesis">修論テンプレート</a>を修正。目次のレベルを深くして、ソースコードの色付を修正。</p>
+                        <p><a
+                        href="https://github.com/kaityo256/graduate_thesis">卒論テンプレート</a>と
+                        <a
+                        href="https://github.com/kaityo256/master_thesis">修論テンプレート</a>を修正。目次のレベルを深くして、ソースコードの色付を修正。</p>
                         <p>プリンタトナー注文した。</p>
                         <p>会議。</p>
                         <p>日記に「会議」とか「ミーティング」と書く意味は全く無いのだけど、なんというか、外向けに見せられるアウトプットがなくてしんどくて「怠けて無いよ」というポーズ、みたいな。</p>
                         <p>修論チェック。</p>
-                        <h2 id="月26日木"><a href="#26">01月26日(木)</a> <a id="26"></a></h2>
+                        <h2 id="月26日木"><a href="#26">01月26日(木)</a>
+                        <a id="26"></a></h2>
                         <p>修論発表練習会。</p>
                         <p>卒論発表練習会。</p>
-                        <h2 id="月25日水"><a href="#25">01月25日(水)</a> <a id="25"></a></h2>
+                        <h2 id="月25日水"><a href="#25">01月25日(水)</a>
+                        <a id="25"></a></h2>
                         <p>会議*2。ミーティング。学習指導のお仕事。懇親会係のお仕事。メールいっぱい。論文の査読レポートチェック。共著者にメール。</p>
-                        <h2 id="月24日火"><a href="#24">01月24日(火)</a> <a id="24"></a></h2>
+                        <h2 id="月24日火"><a href="#24">01月24日(火)</a>
+                        <a id="24"></a></h2>
                         <p>プログラミング基礎同演習最後の講義。</p>
-                        <h2 id="月23日月"><a href="#23">01月23日(月)</a> <a id="23"></a></h2>
+                        <h2 id="月23日月"><a href="#23">01月23日(月)</a>
+                        <a id="23"></a></h2>
                         <p>5億年ぶりくらいにmixiにログインした。パスワード覚えてたのがすごい。最後の書き込みは2016年09月22日だった。</p>
                         <p>学生のPC受け取り。あと書籍も。</p>
                         <p>ミーティング*2。</p>
                         <p>とある推薦書を書いた。</p>
                         <p>査読への返事案書いて共著者に投げた。</p>
                         <p>積んであるタスクを崩す速度とタスクが積まれる速度が平衡状態。賽の河原状態。っていうか若干積まれる速度の方が早い。</p>
-                        <h2 id="月22日日"><a href="#22">01月22日(日)</a> <a id="22"></a></h2>
+                        <h2 id="月22日日"><a href="#22">01月22日(日)</a>
+                        <a id="22"></a></h2>
                         <p>レポートの残り採点した。学生さんの要旨チェック。</p>
                         <p>冬タイヤに交換した。</p>
                         <p>大量のタスクをこなし、疲れが溜まっている。今月末締め切りの論文に手をつける時間がまったくとれない。講義準備も一週間手をつけられなかった。苦しい。</p>
-                        <h2 id="月21日土"><a href="#21">01月21日(土)</a> <a id="21"></a></h2>
+                        <h2 id="月21日土"><a href="#21">01月21日(土)</a>
+                        <a id="21"></a></h2>
                         <p>レポート2/3採点した。学生さんの要旨チェック。</p>
-                        <h2 id="月20日金"><a href="#20">01月20日(金)</a> <a id="20"></a></h2>
+                        <h2 id="月20日金"><a href="#20">01月20日(金)</a>
+                        <a id="20"></a></h2>
                         <p>学生さんの論文がJPSJに掲載決定になった。よかった。</p>
                         <p>gprof、ちゃんとWSLでも使えるみたいだな。Macだと</p>
-                        <div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a>$ <span class="ex">g++</span> -pg test.cpp</span>
-                        <span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a><span class="ex">clang</span>: error: the clang compiler does not support -pg option on versions of OS X 10.9 and later</span></code></pre></div>
+                        <div class="sourceCode" id="cb4"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> g++ <span class="at">-pg</span> test.cpp</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">clang:</span> error: the clang compiler does not support <span class="at">-pg</span> option on versions of OS X 10.9 and later</span></code></pre></div>
                         <p>って言われて使えない。perfもダメっぽいですね。</p>
                         <p>WSLではperfはビルドできるが、(少なくとも2020年時点では)ハードウェアカウンタをサポートしていないっぽい。</p>
                         <p>学生用のPC、5台中4台注文した。カスタマイズは納期的に厳しく、ありものじゃないとダメっぽい。</p>
@@ -98,107 +119,147 @@
                         <p>卒論の要旨やスライドを大量にチェック。</p>
                         <p>学習指導のお仕事。</p>
                         <p>学振PDの研究報告書の登録。</p>
-                        <h2 id="月19日木"><a href="#19">01月19日(木)</a> <a id="19"></a></h2>
+                        <h2 id="月19日木"><a href="#19">01月19日(木)</a>
+                        <a id="19"></a></h2>
                         <p>1on1。修論発表練習会。卒論発表練習会。</p>
                         <p>メールいっぱいかいた。つかれた。</p>
-                        <h2 id="月18日水"><a href="#18">01月18日(水)</a> <a id="18"></a></h2>
-                        <p>Granger causality、statsmodelsをインストールして、</p>
-                        <div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="ex">python3</span> -m pip install statsmodels   </span></code></pre></div>
+                        <h2 id="月18日水"><a href="#18">01月18日(水)</a>
+                        <a id="18"></a></h2>
+                        <p>Granger
+                        causality、statsmodelsをインストールして、</p>
+                        <div class="sourceCode" id="cb5"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> <span class="at">-m</span> pip install statsmodels   </span></code></pre></div>
                         <p>必要なものをインポートして、</p>
-                        <div class="sourceCode" id="cb6"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="im">from</span> statsmodels.tsa.stattools <span class="im">import</span> grangercausalitytests</span></code></pre></div>
+                        <div class="sourceCode" id="cb6"><pre
+                        class="sourceCode py"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> statsmodels.tsa.stattools <span class="im">import</span> grangercausalitytests</span></code></pre></div>
                         <p>適当にデータを作ってgrangercausalitytestsに食わせると</p>
-                        <div class="sourceCode" id="cb7"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a>grangercausalitytests(data, maxlag<span class="op">=</span>[<span class="dv">1</span>])</span></code></pre></div>
+                        <div class="sourceCode" id="cb7"><pre
+                        class="sourceCode py"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>grangercausalitytests(data, maxlag<span class="op">=</span>[<span class="dv">1</span>])</span></code></pre></div>
                         <p>結果が出てくる。楽ちんすぎる。dataは、<code>[N, 2]</code>の形の二次元配列で、二番目の変数が一番目の配列のデータにcausalityがあるかどうかを出力する。逆向きを調べたければ、</p>
-                        <div class="sourceCode" id="cb8"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a>grangercausalitytests(data[:, [<span class="dv">1</span>,<span class="dv">0</span>]], maxlag<span class="op">=</span>[<span class="dv">1</span>])</span></code></pre></div>
+                        <div class="sourceCode" id="cb8"><pre
+                        class="sourceCode py"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>grangercausalitytests(data[:, [<span class="dv">1</span>,<span class="dv">0</span>]], maxlag<span class="op">=</span>[<span class="dv">1</span>])</span></code></pre></div>
                         <p>でOK。VARモデルのtest_causalityだと、単なる乱数同士でもcausalityが出てしまう(棄却できない)。</p>
-                        <h2 id="月17日火"><a href="#17">01月17日(火)</a> <a id="17"></a></h2>
+                        <h2 id="月17日火"><a href="#17">01月17日(火)</a>
+                        <a id="17"></a></h2>
                         <p>講義。</p>
                         <p>学生さんの環境にlatexindentを入れようとしたらperl環境が壊れてlatexmkが動かなくなってしまった。焦ってplatexでコンパイルを試したが、bibtexが動かず、texliveを再インストール。</p>
                         <p>その再インストール(40分かかる)中に、日本語についてはbibtexではなくpbibtexを使う必要があったことに気がついた。焦るとダメだ・・・</p>
                         <p>情報処理学会の2023年度会費払った。</p>
-                        <h2 id="月16日月"><a href="#16">01月16日(月)</a> <a id="16"></a></h2>
-                        <p>最近、Hero WarsのCMがやたらと下品(おなら、ゲロ、トイレ)なのは何なの？Creatorがそっち系の趣味なの？これ、通報できないのかな。</p>
+                        <h2 id="月16日月"><a href="#16">01月16日(月)</a>
+                        <a id="16"></a></h2>
+                        <p>最近、Hero
+                        WarsのCMがやたらと下品(おなら、ゲロ、トイレ)なのは何なの？Creatorがそっち系の趣味なの？これ、通報できないのかな。</p>
                         <p>タイヤ交換の予約した。</p>
-                        <p>Speakerdeck、昨年<a href="https://blog.speakerdeck.com/2021-most-viewed-presentations/">2021 - Most Viewed Decks</a>のTop 5に選ばれたので一年間Proが無料になり、それでProにしていた。今年から有料になるはずだったが、今年も<a href="https://blog.speakerdeck.com/2022-most-viewed-decks/">2022 - Most Viewed Decks</a>のTop 5だったので、もう一年無料になるとのこと。</p>
-                        <p>これ、毎年Most Viewed Decksを生み出し続ければ、ずっとProが無料になるのでは。でもTop 5を毎年は厳しいか。</p>
+                        <p>Speakerdeck、昨年<a
+                        href="https://blog.speakerdeck.com/2021-most-viewed-presentations/">2021
+                        - Most Viewed Decks</a>のTop
+                        5に選ばれたので一年間Proが無料になり、それでProにしていた。今年から有料になるはずだったが、今年も<a
+                        href="https://blog.speakerdeck.com/2022-most-viewed-decks/">2022
+                        - Most Viewed Decks</a>のTop
+                        5だったので、もう一年無料になるとのこと。</p>
+                        <p>これ、毎年Most Viewed
+                        Decksを生み出し続ければ、ずっとProが無料になるのでは。でもTop
+                        5を毎年は厳しいか。</p>
                         <p>あ、CollectionsはPro Featureだったのか。</p>
                         <p>プログラミング基礎同演習、追加レポートの案内出した。すべてのレポートを第14回のレポートと同じ最終締め切りにしておき、その後から一週間追加レポートを受け付ける形。</p>
                         <p>情報処理学会の座長依頼来たので引き受ける。</p>
                         <p>学生さんの論文の査読レポート返事テンプレート作成。</p>
                         <p>その他メールをいくつか。</p>
                         <p>たいしたタスクはこなしていないんだけど、たとえ一つ5分で終わるタスクでも、数をこなすと頭が動かなくなってくる。特にまったく別の種類のタスクが混ざると凶悪。</p>
-                        <h2 id="月15日日"><a href="#15">01月15日(日)</a> <a id="15"></a></h2>
+                        <h2 id="月15日日"><a href="#15">01月15日(日)</a>
+                        <a id="15"></a></h2>
                         <p>卒論のタイトル、自分の学生全員分承認した。</p>
                         <p>修論の要旨、全員分チェックした。</p>
                         <p>プログラミング基礎同演習のレポート採点。2時間半くらいかかった。</p>
                         <p>懇親会係お仕事確認。</p>
                         <p>自分の論文のチェックができてない。</p>
                         <p>すごく忙しくしているのに、何一つできていない。なんか、自分だけが世の中から取り残されている気がする。</p>
-                        <h2 id="月14日土"><a href="#14">01月14日(土)</a> <a id="14"></a></h2>
+                        <h2 id="月14日土"><a href="#14">01月14日(土)</a>
+                        <a id="14"></a></h2>
                         <p>PTEPの論文がMacでコンパイルできない問題、原因がわかった。ロゴのnewlog.epsの変換に失敗しているからだ。</p>
-                        <div class="sourceCode" id="cb9"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a><span class="ex">pstopdf</span> newlogo.eps</span></code></pre></div>
+                        <div class="sourceCode" id="cb9"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pstopdf</span> newlogo.eps</span></code></pre></div>
                         <p>を実行するとコンパイルできる。うーん。</p>
-                        <h2 id="月13日金"><a href="#13">01月13日(金)</a> <a id="13"></a></h2>
+                        <h2 id="月13日金"><a href="#13">01月13日(金)</a>
+                        <a id="13"></a></h2>
                         <p>学習指導の仕事にミス。</p>
                         <p>ポスドクさんの職位申請について失念してた。異動が決まったときにすぐに必要な手続きについて連絡すべきだった。</p>
                         <p>グループ写真作った。だいぶ大所帯になったなぁ。</p>
                         <p>いい加減Subversionが面倒になってきた。いま、ファイルを追加してコミットしようとしたら、</p>
-                        <div class="sourceCode" id="cb10"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true"></a>〜.pdfは追加準備状態となっていますが、存在しません</span></code></pre></div>
+                        <div class="sourceCode" id="cb10"><pre
+                        class="sourceCode txt"><code class="sourceCode default"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>〜.pdfは追加準備状態となっていますが、存在しません</span></code></pre></div>
                         <p>というエラーが出る。とりあえず</p>
-                        <div class="sourceCode" id="cb11"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true"></a><span class="fu">svn</span> rm *.pdf</span></code></pre></div>
+                        <div class="sourceCode" id="cb11"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">svn</span> rm <span class="pp">*</span>.pdf</span></code></pre></div>
                         <p>してから、ファイル名を英語にして改めて追加したらうまくいった。日本語だったのがまずかった？面倒なので深堀りしないけど。</p>
-                        <p>論文修正しようとしたら、Formatting failed。Macのlatexindentが死んでいるらしい。</p>
-                        <div class="sourceCode" id="cb12"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true"></a>$ <span class="ex">latexindent</span> </span>
-                        <span id="cb12-2"><a href="#cb12-2" aria-hidden="true"></a><span class="ex">Can</span><span class="st">&#39;t locate File/HomeDir.pm in @INC (you may need to install the File::HomeDir module) (@INC contains: /usr/local/texlive/2022/texmf-dist/scripts/latexindent /Library/Perl/5.30/darwin-thread-multi-2level /Library/Perl/5.30 /Network/Library/Perl/5.30/darwin-thread-multi-2level /Network/Library/Perl/5.30 /Library/Perl/Updates/5.30.3 /System/Library/Perl/5.30/darwin-thread-multi-2level /System/Library/Perl/5.30 /System/Library/Perl/Extras/5.30/darwin-thread-multi-2level /System/Library/Perl/Extras/5.30) at /usr/local/texlive/2022/texmf-dist/scripts/latexindent/LatexIndent/GetYamlSettings.pm line 24.</span></span>
-                        <span id="cb12-3"><a href="#cb12-3" aria-hidden="true"></a><span class="st">BEGIN failed--compilation aborted at /usr/local/texlive/2022/texmf-dist/scripts/latexindent/LatexIndent/GetYamlSettings.pm line 24.</span></span>
-                        <span id="cb12-4"><a href="#cb12-4" aria-hidden="true"></a><span class="st">Compilation failed in require at /usr/local/texlive/2022/texmf-dist/scripts/latexindent/LatexIndent/Verbatim.pm line 23.</span></span>
-                        <span id="cb12-5"><a href="#cb12-5" aria-hidden="true"></a><span class="st">BEGIN failed--compilation aborted at /usr/local/texlive/2022/texmf-dist/scripts/latexindent/LatexIndent/Verbatim.pm line 23.</span></span>
-                        <span id="cb12-6"><a href="#cb12-6" aria-hidden="true"></a><span class="st">Compilation failed in require at /usr/local/texlive/2022/texmf-dist/scripts/latexindent/LatexIndent/Lines.pm line 23.</span></span>
-                        <span id="cb12-7"><a href="#cb12-7" aria-hidden="true"></a><span class="st">BEGIN failed--compilation aborted at /usr/local/texlive/2022/texmf-dist/scripts/latexindent/LatexIndent/Lines.pm line 23.</span></span>
-                        <span id="cb12-8"><a href="#cb12-8" aria-hidden="true"></a><span class="st">Compilation failed in require at /usr/local/texlive/2022/texmf-dist/scripts/latexindent/LatexIndent/Document.pm line 30.</span></span>
-                        <span id="cb12-9"><a href="#cb12-9" aria-hidden="true"></a><span class="st">BEGIN failed--compilation aborted at /usr/local/texlive/2022/texmf-dist/scripts/latexindent/LatexIndent/Document.pm line 30.</span></span>
-                        <span id="cb12-10"><a href="#cb12-10" aria-hidden="true"></a><span class="st">Compilation failed in require at /usr/local/bin/latexindent line 27.</span></span>
-                        <span id="cb12-11"><a href="#cb12-11" aria-hidden="true"></a><span class="st">BEGIN failed--compilation aborted at /usr/local/bin/latexindent line 27.</span></span></code></pre></div>
+                        <p>論文修正しようとしたら、Formatting
+                        failed。Macのlatexindentが死んでいるらしい。</p>
+                        <div class="sourceCode" id="cb12"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> latexindent </span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Can</span><span class="st">&#39;t locate File/HomeDir.pm in @INC (you may need to install the File::HomeDir module) (@INC contains: /usr/local/texlive/2022/texmf-dist/scripts/latexindent /Library/Perl/5.30/darwin-thread-multi-2level /Library/Perl/5.30 /Network/Library/Perl/5.30/darwin-thread-multi-2level /Network/Library/Perl/5.30 /Library/Perl/Updates/5.30.3 /System/Library/Perl/5.30/darwin-thread-multi-2level /System/Library/Perl/5.30 /System/Library/Perl/Extras/5.30/darwin-thread-multi-2level /System/Library/Perl/Extras/5.30) at /usr/local/texlive/2022/texmf-dist/scripts/latexindent/LatexIndent/GetYamlSettings.pm line 24.</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="st">BEGIN failed--compilation aborted at /usr/local/texlive/2022/texmf-dist/scripts/latexindent/LatexIndent/GetYamlSettings.pm line 24.</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="st">Compilation failed in require at /usr/local/texlive/2022/texmf-dist/scripts/latexindent/LatexIndent/Verbatim.pm line 23.</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="st">BEGIN failed--compilation aborted at /usr/local/texlive/2022/texmf-dist/scripts/latexindent/LatexIndent/Verbatim.pm line 23.</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="st">Compilation failed in require at /usr/local/texlive/2022/texmf-dist/scripts/latexindent/LatexIndent/Lines.pm line 23.</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="st">BEGIN failed--compilation aborted at /usr/local/texlive/2022/texmf-dist/scripts/latexindent/LatexIndent/Lines.pm line 23.</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="st">Compilation failed in require at /usr/local/texlive/2022/texmf-dist/scripts/latexindent/LatexIndent/Document.pm line 30.</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="st">BEGIN failed--compilation aborted at /usr/local/texlive/2022/texmf-dist/scripts/latexindent/LatexIndent/Document.pm line 30.</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="st">Compilation failed in require at /usr/local/bin/latexindent line 27.</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="st">BEGIN failed--compilation aborted at /usr/local/bin/latexindent line 27.</span></span></code></pre></div>
                         <p>いやな感じだなぁ。とりあえず<code>File::HomeDir</code>入れてみましょうか。</p>
-                        <div class="sourceCode" id="cb13"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true"></a><span class="fu">sudo</span> perl -MCPAN -e <span class="st">&#39;install &quot;File::HomeDir&quot;&#39;</span></span></code></pre></div>
-                        <div class="sourceCode" id="cb14"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true"></a>$ <span class="ex">latexindent</span> </span>
-                        <span id="cb14-2"><a href="#cb14-2" aria-hidden="true"></a><span class="ex">Please</span> enter text to be indented: (press CTRL+D when finished)</span></code></pre></div>
+                        <div class="sourceCode" id="cb13"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> perl <span class="at">-MCPAN</span> <span class="at">-e</span> <span class="st">&#39;install &quot;File::HomeDir&quot;&#39;</span></span></code></pre></div>
+                        <div class="sourceCode" id="cb14"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> latexindent </span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Please</span> enter text to be indented: <span class="er">(</span><span class="ex">press</span> CTRL+D when finished<span class="kw">)</span></span></code></pre></div>
                         <p>あ、うまくいった。なんか時間かかりそうだったけど、あっさりできてよかった。</p>
                         <p>いやしかし、何を書いても文句を言う人がいる、という感じだなぁ……</p>
                         <p>うーん、例えばさ、初めてPIとなる人が、自分の研究室をどのように運営するかって悩むじゃない？もちろん自分の出身研究室は大いに参考になるけど、時代も変わってくわけだし。その時に、他の研究室がどう運営しているかを公開してくれてたら助かるじゃない。例えば研究室の連絡にLineやSlackを使ってるという話を聞くとして、具体的にどういう使い方をしているかって気になるじゃない。特にSlackみたいな自由度が高いツール、どう使えばよいかはわからないよね。</p>
                         <p>そういう時に、ある程度使ってみて「こういう風に運営してうまくいっているよ」という事例があると、すごく助かると思うんだよね。その事例を見て、参考になるところは参考にすれば良いし、違うなと思えば変えれば良いし。</p>
                         <p>いずれにせよ、僕には情報を公開するメリットは無いんだ。でも公開するのは、そうやって他の人が公開してくれた情報で助かったことがあり、「次は僕の番」って思ってるからなんですよ。</p>
-                        <h2 id="月12日木"><a href="#12">01月12日(木)</a> <a id="12"></a></h2>
-                        <p>研究室ガイダンス。今年から<a href="https://speakerdeck.com/kaityo256/slack-local-rule">Slackの使い方</a>を追加。</p>
+                        <h2 id="月12日木"><a href="#12">01月12日(木)</a>
+                        <a id="12"></a></h2>
+                        <p>研究室ガイダンス。今年から<a
+                        href="https://speakerdeck.com/kaityo256/slack-local-rule">Slackの使い方</a>を追加。</p>
                         <p>あ、ワークスペース全体は<code>@all</code>じゃなくて<code>@everyone</code>だったわ。修正しとこ。</p>
-                        <h2 id="月11日水"><a href="#11">01月11日(水)</a> <a id="11"></a></h2>
+                        <h2 id="月11日水"><a href="#11">01月11日(水)</a>
+                        <a id="11"></a></h2>
                         <p>本格的始動。積み上がったタスクを見て萎える。</p>
-                        <p>BGMは相変わらず avex 24/7 Music Live。相川七瀬の「Nostalgia」とか流れて来て、おっさん直撃。</p>
-                        <p>git submodule管理している奴、<code>clone --recursive</code>すべきところをまたcloneしてしまった。その後</p>
-                        <div class="sourceCode" id="cb15"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true"></a><span class="fu">git</span> submodule update --init --recursive</span></code></pre></div>
+                        <p>BGMは相変わらず avex 24/7 Music
+                        Live。相川七瀬の「Nostalgia」とか流れて来て、おっさん直撃。</p>
+                        <p>git
+                        submodule管理している奴、<code>clone --recursive</code>すべきところをまたcloneしてしまった。その後</p>
+                        <div class="sourceCode" id="cb15"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> submodule update <span class="at">--init</span> <span class="at">--recursive</span></span></code></pre></div>
                         <p>とすればOK。っていうか、submoduleがあるリポジトリをcloneしたら<code>--recursive</code>がデフォルトでついて欲しい(そういうオプションが欲しい)が。</p>
                         <p>会議２つ。学習指導のお仕事。</p>
                         <p>なんかここに書けない仕事を大量にこなしているのだが、ここに書けないので外からは何もしてないように見えて悲しい。</p>
                         <p>あるところの住所変更手続きで、マイナンバーカードでできるというので、カードリーダでいけるのかと思ったら、「e-NINSHO公的個人認証アプリ」を使うとあり、それを使おうとしたらスマホが対応していなかった。っていうかそもそも評判最悪だな……</p>
                         <p>仕方なく画像アップロードで対応したが、マイナンバーカードの画像ってアップロードして良いものなの？そのあたりがさっぱりわからない。あと、チップと通信しないなら、マイナンバーカードを使う意味ってないと思うんだけど……</p>
-                        <h2 id="月10日火"><a href="#10">01月10日(火)</a> <a id="10"></a></h2>
+                        <h2 id="月10日火"><a href="#10">01月10日(火)</a>
+                        <a id="10"></a></h2>
                         <p>午前中にCTスキャン受けた。結果は慶応病院に郵送してくれるらしい。何もないと良いのだが。</p>
                         <p>待ち時間の間にCTの原理について勉強してしまった。ノーベル賞取ってるのね。あと、フーリエ変換が直接役に立つ例としても良さそう。</p>
                         <p>学生さんと1on1 * 2。</p>
                         <p>家で仕事は無理。</p>
-                        <p>地震の大きさを表す<a href="https://ja.wikipedia.org/wiki/%E3%83%9E%E3%82%B0%E3%83%8B%E3%83%81%E3%83%A5%E3%83%BC%E3%83%89">マグニチュード</a>に種類があることを初めて知った。我々がよく目にするには気象庁マグニチュード。っていうか、マグニチュードに国際基準なかったのか……</p>
-                        <h2 id="月09日月"><a href="#09">01月09日(月)</a> <a id="09"></a></h2>
+                        <p>地震の大きさを表す<a
+                        href="https://ja.wikipedia.org/wiki/%E3%83%9E%E3%82%B0%E3%83%8B%E3%83%81%E3%83%A5%E3%83%BC%E3%83%89">マグニチュード</a>に種類があることを初めて知った。我々がよく目にするには気象庁マグニチュード。っていうか、マグニチュードに国際基準なかったのか……</p>
+                        <h2 id="月09日月"><a href="#09">01月09日(月)</a>
+                        <a id="09"></a></h2>
                         <p>今日は外に出る用事があり、それで疲れてしまった。</p>
                         <p>極座標のラグランジアンの導出に手間取った。</p>
                         <p>いろいろ滞ってる。つらい。</p>
                         <p>昨日の奴、「一週間でなれる！スパコンプログラマ」のリポジトリのPDFを削除し、リリースのPDFへのリンクに変更。ビルドするものがリポジトリにあるの、あんまりよくないしね。ついでにPandocnのオプション<code>--shift-heading-level-by=-1</code>を設定して、HTMLのタイトルが表示されるようにしておいた。</p>
                         <p>いや、まったくこんなことをしている暇ないんだけどさ。いろいろ詰まっててしんどいので、まずは目に見える進捗が欲しくて。</p>
-                        <p>自分が苦労して書いて公開したものに反応があって嬉しかった、というのもある。結局、こういうのはmotivation drivenにならざるを得ない。だから、作った人のモチベーションを下げるような行為は慎まないといけない。特に「誰かが書いたものに一言エアリプコメントしては『自分の方がわかってるんだぞ』感」を出しているそこのあなた！なら自分で書いてください。</p>
+                        <p>自分が苦労して書いて公開したものに反応があって嬉しかった、というのもある。結局、こういうのはmotivation
+                        drivenにならざるを得ない。だから、作った人のモチベーションを下げるような行為は慎まないといけない。特に「誰かが書いたものに一言エアリプコメントしては『自分の方がわかってるんだぞ』感」を出しているそこのあなた！なら自分で書いてください。</p>
                         <p>・・・みたいなことをTwitterに書いたら面倒なんだろうな、と思うようになった時点で、もう僕にとってTwitterはダメかもなぁ。</p>
                         <p>「あの分野」とか「この分野」とかに(おそらくキーワード検索で)網を張って、自分が気に食わない論を張った瞬間に攻撃する人が結構いるじゃない？そうすると「その分野」がアンタッチャブルになるわけよね。そうして、なにか書こうとするたびに「あ、これ書くと面倒だな」と思うようになって書かなくなるわけ。これがメディアリテラシーと呼ぶものであるなら、なんだかなぁ、という気はする。</p>
-                        <h2 id="月08日日"><a href="#08">01月08日(日)</a> <a id="08"></a></h2>
+                        <h2 id="月08日日"><a href="#08">01月08日(日)</a>
+                        <a id="08"></a></h2>
                         <p>がんばれなかった。</p>
-                        <p><a href="https://github.com/kaityo256/sevendayshpc">一週間でなれる！スパコンプログラマ</a>にissue。図にリンクミスがあり、このリンクミスはMarkdown、HTMLともに修正済みだが、PDFが修正されていないので修正して欲しいとのこと。</p>
+                        <p><a
+                        href="https://github.com/kaityo256/sevendayshpc">一週間でなれる！スパコンプログラマ</a>にissue。図にリンクミスがあり、このリンクミスはMarkdown、HTMLともに修正済みだが、PDFが修正されていないので修正して欲しいとのこと。</p>
                         <p>で、Releaseを見てみたら、ちゃんと修正されている。アレ？と思って見てみたら、「PDF版はこちら」と、リポジトリのファイルに直リンしており、それが古い。つまり、</p>
                         <ul>
                         <li>僕がMarkdownを修正した後</li>
@@ -208,26 +269,36 @@
                         </ul>
                         <p>までは忘れなかったが、</p>
                         <ul>
-                        <li>作成したPDFをリポジトリのトップ階層にコピーしてcommit &amp; push</li>
+                        <li>作成したPDFをリポジトリのトップ階層にコピーしてcommit
+                        &amp; push</li>
                         </ul>
                         <p>することは忘れていたということか。</p>
                         <p>「PDF版はこちら」で、リリースの方をリンクするのが良いのだろうか。一応<code>releases/latest</code>で最新リリースにリンクできるが、それだと、PDFのダウンロードに二回クリックが必要になってしまう。</p>
                         <p>・・・と思っていたが、今は</p>
-                        <div class="sourceCode" id="cb16"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true"></a>https://github.com/USER/PROJECT/releases/latest/download/package.zip</span></code></pre></div>
+                        <div class="sourceCode" id="cb16"><pre
+                        class="sourceCode txt"><code class="sourceCode default"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>https://github.com/USER/PROJECT/releases/latest/download/package.zip</span></code></pre></div>
                         <p>が、最新リリースの<code>package</code>にリダイレクトされるようになったらしい。</p>
-                        <p>→<a href="https://stackoverflow.com/a/54836319">Is there a link to GitHub for downloading a file in the latest release of a repository?</a></p>
+                        <p>→<a
+                        href="https://stackoverflow.com/a/54836319">Is
+                        there a link to GitHub for downloading a file in
+                        the latest release of a repository?</a></p>
                         <p>つまり、リリースにPDFを含めることを忘れなければ、常に、</p>
-                        <div class="sourceCode" id="cb17"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true"></a>https://github.com/kaityo256/sevendayshpc/releases/latest/download/sevendayshpc.pdf</span></code></pre></div>
+                        <div class="sourceCode" id="cb17"><pre
+                        class="sourceCode txt"><code class="sourceCode default"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>https://github.com/kaityo256/sevendayshpc/releases/latest/download/sevendayshpc.pdf</span></code></pre></div>
                         <p>というリンクが最新のPDFを指すようになった。うん、リポジトリ直よりこっちの方が良いな。</p>
-                        <h2 id="月07日土"><a href="#07">01月07日(土)</a> <a id="07"></a></h2>
+                        <h2 id="月07日土"><a href="#07">01月07日(土)</a>
+                        <a id="07"></a></h2>
                         <p>ワクチンを打ったのが14時。寒気がしはじめたのが5時。熱が上がりきったのが7時くらいかな。最高で37度9分。だいたい15時間くらいして発熱する感じかな。</p>
                         <p>というわけで何もできなかった。明日がんばろう。</p>
-                        <h2 id="月06日金"><a href="#06">01月06日(金)</a> <a id="06"></a></h2>
+                        <h2 id="月06日金"><a href="#06">01月06日(金)</a>
+                        <a id="06"></a></h2>
                         <p>座長が決まらない。</p>
                         <p>Pythonのプロファイルを取るのはcProfileが良さそう。</p>
-                        <div class="sourceCode" id="cb18"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true"></a><span class="im">import</span> cProfile</span></code></pre></div>
+                        <div class="sourceCode" id="cb18"><pre
+                        class="sourceCode py"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> cProfile</span></code></pre></div>
                         <p>しておいて、プロファイルを取りたい関数を</p>
-                        <div class="sourceCode" id="cb19"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true"></a>cProfile.run(<span class="st">&#39;hoge(foo)&#39;</span>)</span></code></pre></div>
+                        <div class="sourceCode" id="cb19"><pre
+                        class="sourceCode py"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>cProfile.run(<span class="st">&#39;hoge(foo)&#39;</span>)</span></code></pre></div>
                         <p>のように引数付きで文字列で渡す。</p>
                         <p>kerasのmodelによる予想、<code>model.predict</code>だとかなり遅い。<code>model.predict_on_batch</code>にするだけで相当早くなった。これ以上の高速化はコードの全書き換えになるので厳しい。GPGPUで実行しちゃうのが早い気がする。</p>
                         <p>会議。</p>
@@ -235,88 +306,111 @@
                         <p>1on1ミーティング。</p>
                         <p>メール処理たくさん。</p>
                         <p>講義準備やばい。</p>
-                        <p>WSLやPowerShellが全て「ターミナル」に統一されてから、初回起動時にIMEが「_A」tという表示(半角英数モード)になるのに困っていた。これは「入力は英数字だが、変換を受け入れるモード」であり、Google日本語入力の独自モード。日本語入力時にCaps Lockを押すとこのモードになる。</p>
+                        <p>WSLやPowerShellが全て「ターミナル」に統一されてから、初回起動時にIMEが「_A」tという表示(半角英数モード)になるのに困っていた。これは「入力は英数字だが、変換を受け入れるモード」であり、Google日本語入力の独自モード。日本語入力時にCaps
+                        Lockを押すとこのモードになる。</p>
                         <p>さて、ターミナルを開くとこれがデフォルトになってしまう。僕はターミナル初回起動時にssh公開鍵のパスフレーズを入力しているのだが、これが表示されてしまうのでとても困る。</p>
-                        <p>調べてみたら、<a href="https://support.google.com/gboard/thread/180438722/windows-terminal-%E8%B5%B7%E5%8B%95%E6%99%82%E3%81%AE-%E5%85%A5%E5%8A%9B%E6%96%B9%E6%B3%95-%E3%81%AB%E9%96%A2%E3%81%99%E3%82%8B%E4%B8%8D%E5%85%B7%E5%90%88?hl=ja">Googleに質問している人がいた</a>。Googleでも対応できず、Microsoftに問い合わせろ、とのこと。</p>
+                        <p>調べてみたら、<a
+                        href="https://support.google.com/gboard/thread/180438722/windows-terminal-%E8%B5%B7%E5%8B%95%E6%99%82%E3%81%AE-%E5%85%A5%E5%8A%9B%E6%96%B9%E6%B3%95-%E3%81%AB%E9%96%A2%E3%81%99%E3%82%8B%E4%B8%8D%E5%85%B7%E5%90%88?hl=ja">Googleに質問している人がいた</a>。Googleでも対応できず、Microsoftに問い合わせろ、とのこと。</p>
                         <p>しかしこれ、Google日本語が「直接入力」と「半角英数」というモードを分けているのが問題な気がしてきた。直接入力は文字通り英数字を直接入力するわけだが、「半角英数」は、途中まで入力した半角英数から単語をsuggestするモード。実装した人には申し訳ないが、普通に要らない……</p>
                         <p>これ、日本語入力に入ってるわけだから、「日本人が英語を入力する助けをするモード」なんだろうか。</p>
-                        <p>解析力学の講義ノート、さすがに数式が多くてGitHubデフォルトのMarkdownプレビューでは苦しくなってきたから<a href="https://kaityo256.github.io/classical_mechanics/">HTML版</a>作った。</p>
+                        <p>解析力学の講義ノート、さすがに数式が多くてGitHubデフォルトのMarkdownプレビューでは苦しくなってきたから<a
+                        href="https://kaityo256.github.io/classical_mechanics/">HTML版</a>作った。</p>
                         <p>がんばって残りを書いていく。</p>
                         <p>夜中、流石にダルくなってきた。ワクチンの副作用かな。</p>
-                        <h2 id="月05日木"><a href="#05">01月05日(木)</a> <a id="05"></a></h2>
+                        <h2 id="月05日木"><a href="#05">01月05日(木)</a>
+                        <a id="05"></a></h2>
                         <p>Tensorflowをインストールしようとしたら、こんな警告が。</p>
-                        <div class="sourceCode" id="cb20"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true"></a>/home/username/.pyenv/versions/anaconda3-5.3.1/lib/python3.7/site-packages/tensorboard/compat/tensorflow_stub/dtypes.py:541: FutureWarning: Passing (type, 1) or &#39;1type&#39; as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / &#39;(1,)type&#39;.</span>
-                        <span id="cb20-2"><a href="#cb20-2" aria-hidden="true"></a>  _np_qint8 = np.dtype([(&quot;qint8&quot;, np.int8, 1)])</span></code></pre></div>
+                        <div class="sourceCode" id="cb20"><pre
+                        class="sourceCode txt"><code class="sourceCode default"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>/home/username/.pyenv/versions/anaconda3-5.3.1/lib/python3.7/site-packages/tensorboard/compat/tensorflow_stub/dtypes.py:541: FutureWarning: Passing (type, 1) or &#39;1type&#39; as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / &#39;(1,)type&#39;.</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  _np_qint8 = np.dtype([(&quot;qint8&quot;, np.int8, 1)])</span></code></pre></div>
                         <p>これはNumPyのバージョンが合っていないのだそう。</p>
-                        <div class="sourceCode" id="cb21"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true"></a>ERROR: pip&#39;s dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.</span>
-                        <span id="cb21-2"><a href="#cb21-2" aria-hidden="true"></a>tensorflow-cpu 2.2.0 requires scipy==1.4.1; python_version &gt;= &quot;3&quot;, but you have scipy 1.6.1 which is incompatible.</span>
-                        <span id="cb21-3"><a href="#cb21-3" aria-hidden="true"></a>tensorflow-cpu 2.2.0 requires tensorboard&lt;2.3.0,&gt;=2.2.0, but you have tensorboard 1.13.1 which is incompatible.</span>
-                        <span id="cb21-4"><a href="#cb21-4" aria-hidden="true"></a>tensorflow-cpu 2.2.0 requires tensorflow-estimator&lt;2.3.0,&gt;=2.2.0, but you have tensorflow-estimator 1.13.0 which is incompatible.</span></code></pre></div>
+                        <div class="sourceCode" id="cb21"><pre
+                        class="sourceCode txt"><code class="sourceCode default"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>ERROR: pip&#39;s dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>tensorflow-cpu 2.2.0 requires scipy==1.4.1; python_version &gt;= &quot;3&quot;, but you have scipy 1.6.1 which is incompatible.</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>tensorflow-cpu 2.2.0 requires tensorboard&lt;2.3.0,&gt;=2.2.0, but you have tensorboard 1.13.1 which is incompatible.</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>tensorflow-cpu 2.2.0 requires tensorflow-estimator&lt;2.3.0,&gt;=2.2.0, but you have tensorflow-estimator 1.13.0 which is incompatible.</span></code></pre></div>
                         <p>全体でなんとかすると事故りそうなので、仮想環境でなんとかする。</p>
-                        <div class="sourceCode" id="cb22"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true"></a><span class="ex">python3</span> -m venv tf</span>
-                        <span id="cb22-2"><a href="#cb22-2" aria-hidden="true"></a><span class="bu">source</span> tf/bin/activate</span>
-                        <span id="cb22-3"><a href="#cb22-3" aria-hidden="true"></a><span class="ex">python3</span> -m pip install --upgrade pip</span>
-                        <span id="cb22-4"><a href="#cb22-4" aria-hidden="true"></a><span class="ex">python3</span> -m pip install tensorflow</span></code></pre></div>
+                        <div class="sourceCode" id="cb22"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> <span class="at">-m</span> venv tf</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> tf/bin/activate</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> <span class="at">-m</span> pip install <span class="at">--upgrade</span> pip</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> <span class="at">-m</span> pip install tensorflow</span></code></pre></div>
                         <p>だめだ。Pythonのバージョンがダメっぽい。</p>
-                        <div class="sourceCode" id="cb23"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true"></a>$ <span class="ex">pyenv</span> versions</span>
-                        <span id="cb23-2"><a href="#cb23-2" aria-hidden="true"></a>  <span class="ex">system</span></span>
-                        <span id="cb23-3"><a href="#cb23-3" aria-hidden="true"></a><span class="ex">*</span> anaconda3-5.3.1 (set by /home/watanabe/.pyenv/version)</span></code></pre></div>
+                        <div class="sourceCode" id="cb23"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> pyenv versions</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="ex">system</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="ex">*</span> anaconda3-5.3.1 <span class="er">(</span><span class="bu">set</span> by /home/watanabe/.pyenv/version<span class="kw">)</span></span></code></pre></div>
                         <p>anacondaが悪さしてるっぽいのでsystemに変える。</p>
-                        <div class="sourceCode" id="cb24"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true"></a><span class="ex">pyenv</span> global system</span>
-                        <span id="cb24-2"><a href="#cb24-2" aria-hidden="true"></a>$ <span class="ex">python3</span> --version</span>
-                        <span id="cb24-3"><a href="#cb24-3" aria-hidden="true"></a><span class="ex">Python</span> 3.8.10</span></code></pre></div>
-                        <p>venvしようとしたら、python3-venvがないと言われ、入れようとしたらパッケージがたりないからapt-get update しろと言われる。 あらためて-m venvしようとしたらpipがないと言われる。</p>
-                        <div class="sourceCode" id="cb25"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true"></a><span class="fu">sudo</span> apt-get update</span>
-                        <span id="cb25-2"><a href="#cb25-2" aria-hidden="true"></a><span class="fu">sudo</span> apt-get install python3.8-venv</span>
-                        <span id="cb25-3"><a href="#cb25-3" aria-hidden="true"></a><span class="fu">sudo</span> apt install pip</span></code></pre></div>
+                        <div class="sourceCode" id="cb24"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pyenv</span> global system</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> python3 <span class="at">--version</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Python</span> 3.8.10</span></code></pre></div>
+                        <p>venvしようとしたら、python3-venvがないと言われ、入れようとしたらパッケージがたりないからapt-get
+                        update しろと言われる。 あらためて-m
+                        venvしようとしたらpipがないと言われる。</p>
+                        <div class="sourceCode" id="cb25"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get update</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get install python3.8-venv</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install pip</span></code></pre></div>
                         <p>あらためてもう一回。</p>
-                        <div class="sourceCode" id="cb26"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true"></a><span class="ex">python3</span> -m venv tf</span>
-                        <span id="cb26-2"><a href="#cb26-2" aria-hidden="true"></a><span class="bu">source</span> tf/bin/activate</span>
-                        <span id="cb26-3"><a href="#cb26-3" aria-hidden="true"></a><span class="ex">python3</span> -m pip install --upgrade pip</span>
-                        <span id="cb26-4"><a href="#cb26-4" aria-hidden="true"></a><span class="ex">python3</span> -m pip install tensorflow</span>
-                        <span id="cb26-5"><a href="#cb26-5" aria-hidden="true"></a><span class="ex">python3</span> -m pip install matplotlib</span></code></pre></div>
+                        <div class="sourceCode" id="cb26"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> <span class="at">-m</span> venv tf</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> tf/bin/activate</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> <span class="at">-m</span> pip install <span class="at">--upgrade</span> pip</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> <span class="at">-m</span> pip install tensorflow</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> <span class="at">-m</span> pip install matplotlib</span></code></pre></div>
                         <p>できた。tensoflowをインストールする時に、必要なバージョンを指定してnumpyだのscipyだのインストールしてくれるから、これでOK。</p>
                         <p>いやしかし面倒だなぁ。</p>
                         <p>TensorFlow.kerasで、モデルを保存してから読み込むと、</p>
-                        <div class="sourceCode" id="cb27"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).layer_with_weights-0.kernel</span>
-                        <span id="cb27-2"><a href="#cb27-2" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).layer_with_weights-0.bias</span>
-                        <span id="cb27-3"><a href="#cb27-3" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).layer_with_weights-1.kernel</span>
-                        <span id="cb27-4"><a href="#cb27-4" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).layer_with_weights-1.bias</span>
-                        <span id="cb27-5"><a href="#cb27-5" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).layer_with_weights-2.kernel</span>
-                        <span id="cb27-6"><a href="#cb27-6" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).layer_with_weights-2.bias</span>
-                        <span id="cb27-7"><a href="#cb27-7" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.1</span>
-                        <span id="cb27-8"><a href="#cb27-8" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.2</span>
-                        <span id="cb27-9"><a href="#cb27-9" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.3</span>
-                        <span id="cb27-10"><a href="#cb27-10" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.4</span>
-                        <span id="cb27-11"><a href="#cb27-11" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.5</span>
-                        <span id="cb27-12"><a href="#cb27-12" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.6</span>
-                        <span id="cb27-13"><a href="#cb27-13" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.7</span>
-                        <span id="cb27-14"><a href="#cb27-14" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.8</span>
-                        <span id="cb27-15"><a href="#cb27-15" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.9</span>
-                        <span id="cb27-16"><a href="#cb27-16" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.10</span>
-                        <span id="cb27-17"><a href="#cb27-17" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.11</span>
-                        <span id="cb27-18"><a href="#cb27-18" aria-hidden="true"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.12</span></code></pre></div>
+                        <div class="sourceCode" id="cb27"><pre
+                        class="sourceCode txt"><code class="sourceCode default"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).layer_with_weights-0.kernel</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).layer_with_weights-0.bias</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).layer_with_weights-1.kernel</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).layer_with_weights-1.bias</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).layer_with_weights-2.kernel</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).layer_with_weights-2.bias</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.1</span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.2</span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.3</span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.4</span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.5</span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.6</span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.7</span>
+<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.8</span>
+<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.9</span>
+<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.10</span>
+<span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.11</span>
+<span id="cb27-18"><a href="#cb27-18" aria-hidden="true" tabindex="-1"></a>WARNING:tensorflow:Value in checkpoint could not be found in the restored object: (root).optimizer._variables.12</span></code></pre></div>
                         <p>みたいなエラーが大量に出る問題、モデルの重みだけでなく、optimizerの状態を復元んしようとして失敗しているのが原因らしい。最適化を続けるのでなければモデルの重みだけで良いので、</p>
-                        <div class="sourceCode" id="cb28"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true"></a>model.load_weights(<span class="st">&#39;filename&#39;</span>).expect_partial()</span></code></pre></div>
+                        <div class="sourceCode" id="cb28"><pre
+                        class="sourceCode py"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>model.load_weights(<span class="st">&#39;filename&#39;</span>).expect_partial()</span></code></pre></div>
                         <p>と<code>expect_partial()</code>をつければOK。</p>
-                        <h2 id="月04日水"><a href="#04">01月04日(水)</a> <a id="04"></a></h2>
+                        <h2 id="月04日水"><a href="#04">01月04日(水)</a>
+                        <a id="04"></a></h2>
                         <p>情報処理学会プログラム編成準備。学生さんの卒論チェック。</p>
-                        <p>とある方から、Kurt Binderさんの訃報を聞く。<a href="https://www.fz-juelich.de/en/ias/jsc/news/news-items/news-flashes/2022/prof-binder-obituary">昨年9月に亡くなっていたとのこと</a>。</p>
-                        <p>伊藤研の同期が非平衡緩和をやっていて、Binder比と非平衡緩和を比べたりしてたのでBinder比については知ってたが、初めて会ったのは2002年のブルガリアでの夏の学校。そこでBinderさんの講義でSubbox Analysisを聞いて、ずっと記憶に残っており、10年後に粒子系に応用した。</p>
+                        <p>とある方から、Kurt Binderさんの訃報を聞く。<a
+                        href="https://www.fz-juelich.de/en/ias/jsc/news/news-items/news-flashes/2022/prof-binder-obituary">昨年9月に亡くなっていたとのこと</a>。</p>
+                        <p>伊藤研の同期が非平衡緩和をやっていて、Binder比と非平衡緩和を比べたりしてたのでBinder比については知ってたが、初めて会ったのは2002年のブルガリアでの夏の学校。そこでBinderさんの講義でSubbox
+                        Analysisを聞いて、ずっと記憶に残っており、10年後に粒子系に応用した。</p>
                         <p>Binderさんの論文はどれも有用できっちり書いてあったし、僕がある人に「○○さんのところにPDに行こうか迷っています」と相談したら「Binderのところに行く方が良い。○○さんは有名だけど中身がない(意訳)。Binderさんのところできっちりやる方が生産的だろう」みたいなことを言われたのを覚えている。</p>
                         <p>最後にお会いしたのはジョージアのワークショップだと思うが、記録がない。ご冥福をお祈りします。</p>
-                        <h2 id="月03日火"><a href="#04">01月03日(火)</a> <a id="04"></a></h2>
+                        <h2 id="月03日火"><a href="#04">01月03日(火)</a>
+                        <a id="04"></a></h2>
                         <p>家に子供がいる状態で仕事するの無理。無理無理無理無理カタツムリ。</p>
                         <p>情報処理学会のプログラム編成が近づいてきたので、マニュアル読んで内容を確認して、わからないところを質問。</p>
-                        <p>地上波、もはや「録画済みのコンテンツをリアルタイム配信」という、極めて不自由なメディアになってしまっている。ライブの音楽番組や、スポーツなど、リアルタイムでなければ見なくなってしまった。面白いコンテンツもあるが、録画して見るほどでもないというか、Amazon PrimeとNetflixに死ぬほどコンテンツがあるので、そのおすすめを見るだけで十分。親はまだ少しテレビを見ることもあるが、子どもたちは全く見ない。僕らの世代は、晩ごはんを食べながらみんなでテレビを見る、というのが家族団らんの風景だったが、今の世代は兄妹ですら、共通のコンテンツを見ない。この子達が親世代になったら、もう今の形の地上波はみないだろう。</p>
+                        <p>地上波、もはや「録画済みのコンテンツをリアルタイム配信」という、極めて不自由なメディアになってしまっている。ライブの音楽番組や、スポーツなど、リアルタイムでなければ見なくなってしまった。面白いコンテンツもあるが、録画して見るほどでもないというか、Amazon
+                        PrimeとNetflixに死ぬほどコンテンツがあるので、そのおすすめを見るだけで十分。親はまだ少しテレビを見ることもあるが、子どもたちは全く見ない。僕らの世代は、晩ごはんを食べながらみんなでテレビを見る、というのが家族団らんの風景だったが、今の世代は兄妹ですら、共通のコンテンツを見ない。この子達が親世代になったら、もう今の形の地上波はみないだろう。</p>
                         <p>世の中はどんどん変わっていくのだな……</p>
-                        <h2 id="月02日月"><a href="#02">01月02日(月)</a> <a id="02"></a></h2>
+                        <h2 id="月02日月"><a href="#02">01月02日(月)</a>
+                        <a id="02"></a></h2>
                         <p>体調が思わしくないが、解析力学の講義ノート書かないと。</p>
-                        <p>avexのYouTube「24時間365日 音楽ラジオ」が良い。ちょうど良く知ってる曲が流れるし、(僕にとって)ちょうど良く古い。野猿が流れた時は思わず声がでた。</p>
+                        <p>avexのYouTube「24時間365日
+                        音楽ラジオ」が良い。ちょうど良く知ってる曲が流れるし、(僕にとって)ちょうど良く古い。野猿が流れた時は思わず声がでた。</p>
                         <p>またちょっとTwitter書きすぎてるな。Twitterは(昔の)2ch化しており、意見を異にする人々がお互いに攻撃しあい、インテリさんたちが「日本が滅びる」と予言する場になってる。近寄ってはいけない。</p>
                         <p>Mastodonに行くのが良いのかなぁ。研究室のウェブサーバ、自腹さくらなんだけど、そこに立てるのはさすがに公私混同だよなぁ。</p>
                         <p>っつーかSNSとか日記とかやってないで論文と講義ノート書けって話だよな。</p>
-                        <h2 id="月01日日"><a href="#01">01月01日(日)</a> <a id="01"></a></h2>
+                        <h2 id="月01日日"><a href="#01">01月01日(日)</a>
+                        <a id="01"></a></h2>
                         <p>明けましておめでとうございます。今年もよろしくお願いいたします。</p>
                         <p>うぉ、丸2年、足掛け4年、続いたんですか。</p>
                         <p>昨年は「こんなとこ誰も見てなさそうだけど」って書いたけど、意外に読者が(少なくとも3人)いるっぽいので、なんというか、まぁ、今年もよろしくお願いいたします。</p>

@@ -22,24 +22,33 @@
     <article class="markdown-body">
                         <h1 id="年3月">2023年3月</h1>
                         <p><a href="index.html">ログ一覧</a></p>
-                        <h2 id="月31日金"><a href="#31">03月31日(金)</a> <a id="31"></a></h2>
+                        <h2 id="月31日金"><a href="#31">03月31日(金)</a>
+                        <a id="31"></a></h2>
                         <p>3月が終わってしまう。</p>
                         <p>朝、カラスがミスタードーナツのハニーディップと思しきドーナツ(無傷)をくわえてた。大物を捕まえましたね。</p>
                         <p>VSCodeのスニペットの<code>$CURRENT_DAY_NAME_SHORT</code>が「金」ではなく「Fri」になってしまう問題、VSCodeを日本語化したらなおった。っていうかいつのまにかVSCodeの日本語化拡張がおかしくなってた。uninstallしてinstallして再起動したらなおった(パソコンしぐさ)。</p>
-                        <p><a href="https://note.com/takefumihiraki/n/nf036cd8a54a4">筑波大学を退職します（a.k.a acadexit）</a></p>
+                        <p><a
+                        href="https://note.com/takefumihiraki/n/nf036cd8a54a4">筑波大学を退職します（a.k.a
+                        acadexit）</a></p>
                         <p>筑波大学の恵まれたテニュアトラック助教の職にある若手が大学をやめる、いわゆるacadexitの話。いろいろ考えてしまう……</p>
-                        <p>Subversionで、svn addした後で、commitする前にファイルを消してしまうと、「〜は追加準備状態となっていますが、存在しません」と表示されてコミットできなくなる。対応するためには、対象のファイルをrevertすれば良い。</p>
-                        <div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="fu">svn</span> revert hoge.pdf</span></code></pre></div>
+                        <p>Subversionで、svn
+                        addした後で、commitする前にファイルを消してしまうと、「〜は追加準備状態となっていますが、存在しません」と表示されてコミットできなくなる。対応するためには、対象のファイルをrevertすれば良い。</p>
+                        <div class="sourceCode" id="cb1"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">svn</span> revert hoge.pdf</span></code></pre></div>
                         <p>なんか日本語で検索しても良い情報が得られず、わざわざ</p>
-                        <div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="va">LANG=</span>C <span class="fu">svn</span> ci -m <span class="st">&quot;&quot;</span></span></code></pre></div>
+                        <div class="sourceCode" id="cb2"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="va">LANG</span><span class="op">=</span>C <span class="fu">svn</span> ci <span class="at">-m</span> <span class="st">&quot;&quot;</span></span></code></pre></div>
                         <p>みたいにして英語のエラーメッセージを出して、それで検索する、みたいなことをした。うーん。</p>
                         <p>懇親会費締めた。</p>
                         <p>2023年度春学期の研究室所属学生名簿提出した。</p>
                         <p>集中力を欠いた。講義準備が進まなかった。タスクも何個か落とした。厳しいなぁ。</p>
-                        <h2 id="月30日thu"><a href="#30">03月30日(Thu)</a> <a id="30"></a></h2>
+                        <h2 id="月30日thu"><a
+                        href="#30">03月30日(Thu)</a>
+                        <a id="30"></a></h2>
                         <p>輪講の本選び。</p>
                         <ul>
-                        <li>「しっかり学ぶ数理最適化 モデルからアルゴリズムまで」
+                        <li>「しっかり学ぶ数理最適化
+                        モデルからアルゴリズムまで」
                         <ul>
                         <li>機械学習ではないが、面白いテーマか。ただ、初学者向きではない？</li>
                         </ul></li>
@@ -48,7 +57,8 @@
                         <li>定番。やっぱりこれかなぁ。</li>
                         <li>https://www.amazon.co.jp/dp/4621061224</li>
                         </ul></li>
-                        <li>機械学習スタートアップシリーズ ベイズ推論による機械学習入門
+                        <li>機械学習スタートアップシリーズ
+                        ベイズ推論による機械学習入門
                         <ul>
                         <li>PRMLよりわかりやすいと評判。これでも良いかな。</li>
                         <li>https://www.amazon.co.jp/dp/4061538322</li>
@@ -60,160 +70,213 @@
                         </ul></li>
                         </ul>
                         <p>研究室ミーティング。その後ハンズオン。今日はMarkdown+LaTeX記法。</p>
-                        <p>WordPressがPHP 7.4にしろと言ってきたのをずっと放置してた。現在のバージョン。</p>
-                        <div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a>$ <span class="ex">php</span> --version</span>
-                        <span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a><span class="ex">PHP</span> 7.3.4 (cli) <span class="kw">(</span><span class="ex">built</span>: Apr  2 2019 13:48:50<span class="kw">)</span> <span class="kw">(</span> <span class="ex">NTS</span> <span class="kw">)</span></span>
-                        <span id="cb3-3"><a href="#cb3-3" aria-hidden="true"></a><span class="ex">Copyright</span> (c) <span class="ex">1997-2018</span> The PHP Group</span>
-                        <span id="cb3-4"><a href="#cb3-4" aria-hidden="true"></a><span class="ex">Zend</span> Engine v3.3.4, Copyright (c) <span class="ex">1998-2018</span> Zend Technologies</span></code></pre></div>
-                        <p>これを7.4にしないといけない。サーバはCentOS 7.9.2009。そもそもサーバのディストリビューションをなんとかしないといけない、という意見にはとりあえず耳を塞ぎ、PHPだけ上げてみる。EPELでいけるといいなぁ。</p>
-                        <div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="fu">sudo</span> yum -y install epel-release</span></code></pre></div>
-                        <p><a href="http://rpms.remirepo.net/">ここ</a>からREMIのリポジトリを探す。<code>ftp.riken.jp</code>の、<code>remi-release-7.rpm</code>かな。</p>
-                        <div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a>$ <span class="fu">sudo</span> yum -y install http://ftp.riken.jp/Linux/remi/enterprise/remi-release-7.rpm</span>
-                        <span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a>読み込んだプラグイン:<span class="ex">fastestmirror</span>, langpacks, product-id, search-disabled-repos, subscription-manager</span>
-                        <span id="cb5-3"><a href="#cb5-3" aria-hidden="true"></a></span>
-                        <span id="cb5-4"><a href="#cb5-4" aria-hidden="true"></a><span class="ex">This</span> system is not registered with an entitlement server. You can use subscription-manager to register.</span>
-                        <span id="cb5-5"><a href="#cb5-5" aria-hidden="true"></a></span>
-                        <span id="cb5-6"><a href="#cb5-6" aria-hidden="true"></a><span class="ex">remi-release-7.rpm</span>                                                            <span class="kw">|</span>  <span class="ex">27</span> kB  00:00:00     </span>
-                        <span id="cb5-7"><a href="#cb5-7" aria-hidden="true"></a><span class="ex">/var/tmp/yum-root-jhRPU5/remi-release-7.rpm</span> を調べています: remi-release-7.9-5.el7.remi.noarch</span>
-                        <span id="cb5-8"><a href="#cb5-8" aria-hidden="true"></a><span class="ex">/var/tmp/yum-root-jhRPU5</span>/remi-release-7.rpm: インストールされたパッケージを更新しません。</span>
-                        <span id="cb5-9"><a href="#cb5-9" aria-hidden="true"></a>エラー: 何もしません</span></code></pre></div>
+                        <p>WordPressがPHP
+                        7.4にしろと言ってきたのをずっと放置してた。現在のバージョン。</p>
+                        <div class="sourceCode" id="cb3"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> php <span class="at">--version</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">PHP</span> 7.3.4 <span class="er">(</span><span class="ex">cli</span><span class="kw">)</span> <span class="kw">(</span><span class="ex">built:</span> Apr  2 2019 13:48:50<span class="kw">)</span> <span class="kw">(</span> <span class="ex">NTS</span> <span class="kw">)</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Copyright</span> <span class="er">(</span><span class="ex">c</span><span class="kw">)</span> <span class="ex">1997-2018</span> The PHP Group</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="ex">Zend</span> Engine v3.3.4, Copyright <span class="er">(</span><span class="ex">c</span><span class="kw">)</span> <span class="ex">1998-2018</span> Zend Technologies</span></code></pre></div>
+                        <p>これを7.4にしないといけない。サーバはCentOS
+                        7.9.2009。そもそもサーバのディストリビューションをなんとかしないといけない、という意見にはとりあえず耳を塞ぎ、PHPだけ上げてみる。EPELでいけるといいなぁ。</p>
+                        <div class="sourceCode" id="cb4"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> yum <span class="at">-y</span> install epel-release</span></code></pre></div>
+                        <p><a
+                        href="http://rpms.remirepo.net/">ここ</a>からREMIのリポジトリを探す。<code>ftp.riken.jp</code>の、<code>remi-release-7.rpm</code>かな。</p>
+                        <div class="sourceCode" id="cb5"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> sudo yum <span class="at">-y</span> install http://ftp.riken.jp/Linux/remi/enterprise/remi-release-7.rpm</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">読み込んだプラグイン:fastestmirror,</span> langpacks, product-id, search-disabled-repos, subscription-manager</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="ex">This</span> system is not registered with an entitlement server. You can use subscription-manager to register.</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="ex">remi-release-7.rpm</span>                                                            <span class="kw">|</span>  <span class="ex">27</span> kB  00:00:00     </span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="ex">/var/tmp/yum-root-jhRPU5/remi-release-7.rpm</span> を調べています: remi-release-7.9-5.el7.remi.noarch</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="ex">/var/tmp/yum-root-jhRPU5/remi-release-7.rpm:</span> インストールされたパッケージを更新しません。</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="ex">エラー:</span> 何もしません</span></code></pre></div>
                         <p><code>yum search php74</code>で出てきたら成功。インストールしてみる。いきなりWPが動かなくなったりしませんように。</p>
-                        <div class="sourceCode" id="cb6"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="fu">sudo</span> yum -y install php74 php74-php </span></code></pre></div>
+                        <div class="sourceCode" id="cb6"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> yum <span class="at">-y</span> install php74 php74-php </span></code></pre></div>
                         <p>インストールされたか調べる。</p>
-                        <div class="sourceCode" id="cb7"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a>$ <span class="ex">php74</span> --version</span>
-                        <span id="cb7-2"><a href="#cb7-2" aria-hidden="true"></a><span class="ex">PHP</span> 7.4.33 (cli) <span class="kw">(</span><span class="ex">built</span>: Feb 14 2023 08:49:52<span class="kw">)</span> <span class="kw">(</span> <span class="ex">NTS</span> <span class="kw">)</span></span>
-                        <span id="cb7-3"><a href="#cb7-3" aria-hidden="true"></a><span class="ex">Copyright</span> (c) <span class="ex">The</span> PHP Group</span>
-                        <span id="cb7-4"><a href="#cb7-4" aria-hidden="true"></a><span class="ex">Zend</span> Engine v3.4.0, Copyright (c) <span class="ex">Zend</span> Technologies</span>
-                        <span id="cb7-5"><a href="#cb7-5" aria-hidden="true"></a></span>
-                        <span id="cb7-6"><a href="#cb7-6" aria-hidden="true"></a>$ <span class="ex">php</span> --version</span>
-                        <span id="cb7-7"><a href="#cb7-7" aria-hidden="true"></a><span class="ex">PHP</span> 7.3.4 (cli) <span class="kw">(</span><span class="ex">built</span>: Apr  2 2019 13:48:50<span class="kw">)</span> <span class="kw">(</span> <span class="ex">NTS</span> <span class="kw">)</span></span>
-                        <span id="cb7-8"><a href="#cb7-8" aria-hidden="true"></a><span class="ex">Copyright</span> (c) <span class="ex">1997-2018</span> The PHP Group</span>
-                        <span id="cb7-9"><a href="#cb7-9" aria-hidden="true"></a><span class="ex">Zend</span> Engine v3.3.4, Copyright (c) <span class="ex">1998-2018</span> Zend Technologies</span></code></pre></div>
-                        <p>php74は入ったけど、デフォルトはphp 7.3のままだなぁ。</p>
-                        <div class="sourceCode" id="cb8"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a>$ <span class="fu">which</span> php</span>
-                        <span id="cb8-2"><a href="#cb8-2" aria-hidden="true"></a><span class="ex">/usr/bin/php</span></span>
-                        <span id="cb8-3"><a href="#cb8-3" aria-hidden="true"></a></span>
-                        <span id="cb8-4"><a href="#cb8-4" aria-hidden="true"></a>$ <span class="fu">which</span> php74</span>
-                        <span id="cb8-5"><a href="#cb8-5" aria-hidden="true"></a><span class="ex">/usr/bin/php74</span></span></code></pre></div>
+                        <div class="sourceCode" id="cb7"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> php74 <span class="at">--version</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">PHP</span> 7.4.33 <span class="er">(</span><span class="ex">cli</span><span class="kw">)</span> <span class="kw">(</span><span class="ex">built:</span> Feb 14 2023 08:49:52<span class="kw">)</span> <span class="kw">(</span> <span class="ex">NTS</span> <span class="kw">)</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Copyright</span> <span class="er">(</span><span class="ex">c</span><span class="kw">)</span> <span class="ex">The</span> PHP Group</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="ex">Zend</span> Engine v3.4.0, Copyright <span class="er">(</span><span class="ex">c</span><span class="kw">)</span> <span class="ex">Zend</span> Technologies</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> php <span class="at">--version</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="ex">PHP</span> 7.3.4 <span class="er">(</span><span class="ex">cli</span><span class="kw">)</span> <span class="kw">(</span><span class="ex">built:</span> Apr  2 2019 13:48:50<span class="kw">)</span> <span class="kw">(</span> <span class="ex">NTS</span> <span class="kw">)</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="ex">Copyright</span> <span class="er">(</span><span class="ex">c</span><span class="kw">)</span> <span class="ex">1997-2018</span> The PHP Group</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="ex">Zend</span> Engine v3.3.4, Copyright <span class="er">(</span><span class="ex">c</span><span class="kw">)</span> <span class="ex">1998-2018</span> Zend Technologies</span></code></pre></div>
+                        <p>php74は入ったけど、デフォルトはphp
+                        7.3のままだなぁ。</p>
+                        <div class="sourceCode" id="cb8"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> which php</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">/usr/bin/php</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> which php74</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="ex">/usr/bin/php74</span></span></code></pre></div>
                         <p>なんかRHEL由来のサブスクリプションマネージャの問題らしい。ちゃんと登録するのが筋だろうが、面倒なので無効化してしまおう。<code>/etc/yum/pluginconf.d/subscription-manager.conf</code>の<code>enabled=1</code>を0に。その後yumをアップデート。</p>
-                        <div class="sourceCode" id="cb9"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a><span class="fu">sudo</span> yum clean all </span>
-                        <span id="cb9-2"><a href="#cb9-2" aria-hidden="true"></a><span class="fu">sudo</span> yum update</span></code></pre></div>
-                        <div class="sourceCode" id="cb10"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true"></a>$ <span class="ex">php</span> --version</span>
-                        <span id="cb10-2"><a href="#cb10-2" aria-hidden="true"></a><span class="ex">PHP</span> 7.4.33 (cli) <span class="kw">(</span><span class="ex">built</span>: Feb 14 2023 09:31:03<span class="kw">)</span> <span class="kw">(</span> <span class="ex">NTS</span> <span class="kw">)</span></span>
-                        <span id="cb10-3"><a href="#cb10-3" aria-hidden="true"></a><span class="ex">Copyright</span> (c) <span class="ex">The</span> PHP Group</span>
-                        <span id="cb10-4"><a href="#cb10-4" aria-hidden="true"></a><span class="ex">Zend</span> Engine v3.4.0, Copyright (c) <span class="ex">Zend</span> Technologies</span></code></pre></div>
-                        <p>できた。WordPressも無事に表示されたまま。よかった。デフォルトテーマのTwenty FourteenとTwenty Twenty-Threeを削除。</p>
+                        <div class="sourceCode" id="cb9"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> yum clean all </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> yum update</span></code></pre></div>
+                        <div class="sourceCode" id="cb10"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> php <span class="at">--version</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ex">PHP</span> 7.4.33 <span class="er">(</span><span class="ex">cli</span><span class="kw">)</span> <span class="kw">(</span><span class="ex">built:</span> Feb 14 2023 09:31:03<span class="kw">)</span> <span class="kw">(</span> <span class="ex">NTS</span> <span class="kw">)</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Copyright</span> <span class="er">(</span><span class="ex">c</span><span class="kw">)</span> <span class="ex">The</span> PHP Group</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="ex">Zend</span> Engine v3.4.0, Copyright <span class="er">(</span><span class="ex">c</span><span class="kw">)</span> <span class="ex">Zend</span> Technologies</span></code></pre></div>
+                        <p>できた。WordPressも無事に表示されたまま。よかった。デフォルトテーマのTwenty
+                        FourteenとTwenty Twenty-Threeを削除。</p>
                         <p>あと、imagick、zip、intlがあると良いと書いてある。ImageMagickエンジンのプラグインをインストール＆有効化。</p>
-                        <div class="sourceCode" id="cb11"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true"></a><span class="fu">sudo</span> yum install -y php-zip php-intl</span>
-                        <span id="cb11-2"><a href="#cb11-2" aria-hidden="true"></a><span class="fu">sudo</span> yum install -y ImageMagick-devel</span>
-                        <span id="cb11-3"><a href="#cb11-3" aria-hidden="true"></a><span class="fu">sudo</span> service httpd restart</span></code></pre></div>
+                        <div class="sourceCode" id="cb11"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> yum install <span class="at">-y</span> php-zip php-intl</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> yum install <span class="at">-y</span> ImageMagick-devel</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> service httpd restart</span></code></pre></div>
                         <p>ImageMagickを有効化するには<code>/etc/php.ini</code>に以下を追加。</p>
-                        <div class="sourceCode" id="cb12"><pre class="sourceCode php"><code class="sourceCode php"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true"></a>extension = <span class="kw">imagick</span>.so</span></code></pre></div>
+                        <div class="sourceCode" id="cb12"><pre
+                        class="sourceCode php"><code class="sourceCode php"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>extension <span class="op">=</span> <span class="bu">imagick</span><span class="op">.</span>so</span></code></pre></div>
                         <p>うーん、サイトヘルスから表示が消えない。</p>
-                        <div class="sourceCode" id="cb13"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true"></a>$ <span class="ex">php</span> -a</span>
-                        <span id="cb13-2"><a href="#cb13-2" aria-hidden="true"></a><span class="ex">php</span> <span class="op">&gt;</span> if (!extension_loaded(<span class="st">&#39;imagick&#39;</span>))<span class="kw">{</span> <span class="bu">echo</span> <span class="st">&quot;Not loaded&quot;</span><span class="kw">;}</span></span>
-                        <span id="cb13-3"><a href="#cb13-3" aria-hidden="true"></a><span class="ex">Not</span> loaded</span></code></pre></div>
+                        <div class="sourceCode" id="cb13"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> php <span class="at">-a</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="ex">php</span> <span class="op">&gt;</span> if <span class="er">(</span><span class="ex">!extension_loaded</span><span class="er">(</span><span class="st">&#39;imagick&#39;</span><span class="kw">)){</span> <span class="bu">echo</span> <span class="st">&quot;Not loaded&quot;</span><span class="kw">;}</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Not</span> loaded</span></code></pre></div>
                         <p>おっと。</p>
-                        <div class="sourceCode" id="cb14"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true"></a><span class="fu">sudo</span> yum install -y php-imagick </span></code></pre></div>
-                        <div class="sourceCode" id="cb15"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true"></a>$ <span class="ex">php</span> -a</span>
-                        <span id="cb15-2"><a href="#cb15-2" aria-hidden="true"></a><span class="ex">php</span> <span class="op">&gt;</span> echo extension_loaded(<span class="st">&#39;imagick&#39;</span>);</span>
-                        <span id="cb15-3"><a href="#cb15-3" aria-hidden="true"></a><span class="ex">1</span></span></code></pre></div>
+                        <div class="sourceCode" id="cb14"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> yum install <span class="at">-y</span> php-imagick </span></code></pre></div>
+                        <div class="sourceCode" id="cb15"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> php <span class="at">-a</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="ex">php</span> <span class="op">&gt;</span> echo extension_loaded<span class="er">(</span><span class="st">&#39;imagick&#39;</span><span class="kw">);</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="ex">1</span></span></code></pre></div>
                         <p>できた。apacheを再起動したらサイトヘルスから表示が消えた。めでたい。</p>
                         <p>うん、こんなことをやっている場合ではないんだ。知ってる。</p>
-                        <h2 id="月29日水"><a href="#29">03月29日(水)</a> <a id="29"></a></h2>
+                        <h2 id="月29日水"><a href="#29">03月29日(水)</a>
+                        <a id="29"></a></h2>
                         <p>お仕事とかメール処理とか。こりゃ大変そうだぞ……</p>
                         <p>わりとトップスピードで仕事してるのにまったく終わらず、それ以外の講義準備や論文執筆に手が回らない。ヤバいんだけど、どうしようもない。</p>
-                        <h2 id="月28日火"><a href="#28">03月28日(火)</a> <a id="28"></a></h2>
+                        <h2 id="月28日火"><a href="#28">03月28日(火)</a>
+                        <a id="28"></a></h2>
                         <p>なんか急にVSCodeのスニペットの<code>$CURRENT_DAY_NAME_SHORT</code>が「火」ではなく「Tue」と返すようになったぞ。言語設定がおかしくなったか？</p>
                         <p>今日は大学院の学事授与式。みなさん、おめでとうございます。</p>
                         <p>懇親会係の引き継ぎ資料作った。結構大変だった。これから会計報告を作らないといけない……</p>
-                        <h2 id="月27日月"><a href="#27">03月27日(月)</a> <a id="27"></a></h2>
+                        <h2 id="月27日月"><a href="#27">03月27日(月)</a>
+                        <a id="27"></a></h2>
                         <p>実験ガイダンス。</p>
-                        <p>Kudosから、「お前の論文の簡単な紹介を書け」と言われたので<a href="https://www.growkudos.com/publications/10.1063%252F5.0138733/reader">書いてみた</a>。</p>
+                        <p>Kudosから、「お前の論文の簡単な紹介を書け」と言われたので<a
+                        href="https://www.growkudos.com/publications/10.1063%252F5.0138733/reader">書いてみた</a>。</p>
                         <p>Kudosって何かと思ったが、英国発ベンチャーで、多くの出版社と提携しているらしい。10年ほど前にベータ版に参加してくれ、というメールが来てた。</p>
-                        <p>KudosとORCiD連携する時に出てくる「認証済みのアクセス」「アクセスを拒否」って、何を直訳したものなんだろうと調べてみたら「Authorize access」と「Deny access」だった。なぜか「Authorize access」が「Authorize「d」 access」として訳されているっぽい。Google翻訳でもDeepLでも普通に「アクセスを許可する」になるんだけど、ローカライズに古い翻訳ソフトを使って、そのままになってるのかな？</p>
+                        <p>KudosとORCiD連携する時に出てくる「認証済みのアクセス」「アクセスを拒否」って、何を直訳したものなんだろうと調べてみたら「Authorize
+                        access」と「Deny
+                        access」だった。なぜか「Authorize
+                        access」が「Authorize「d」
+                        access」として訳されているっぽい。Google翻訳でもDeepLでも普通に「アクセスを許可する」になるんだけど、ローカライズに古い翻訳ソフトを使って、そのままになってるのかな？</p>
                         <p>VSCodeのスニペットが効かなくなって困っていたが、単に開くフォルダを間違えていただけだった。ローカルの<code>.vscode</code>に登録されているので、別のフォルダを開くと使えなくなってしまう。</p>
                         <p>途中まで書いた講義ノートのRe:VIEW化メモ。</p>
                         <ul>
                         <li>Dockerを立ち上げる。</li>
                         <li>Re:VIEW用のディレクトリを掘る(reviewがあったので、今回はbuildに)</li>
                         <li>既存のRe:VIEWディレクトリからconfig.ymlをコピーして、タイトルなどを修正</li>
-                        <li>css, lib, layouts, styなどのディレクトリをコピー</li>
+                        <li>css, lib, layouts,
+                        styなどのディレクトリをコピー</li>
                         <li>style.cssをコピー</li>
                         <li>Rakefileをコピー</li>
                         <li>review-ext.rbもコピー</li>
-                        <li>cancelが使えなかった→ sty/mystyle.styでusepackage{cancel}で解決</li>
+                        <li>cancelが使えなかった→
+                        sty/mystyle.styでusepackage{cancel}で解決</li>
                         </ul>
                         <p>とりあえず目次だけでもなんとかなるように書いた。今の所B5で63ページ。進捗度50%くらい？ヤバい。</p>
-                        <h2 id="月26日日"><a href="#26">03月26日(日)</a> <a id="26"></a></h2>
+                        <h2 id="月26日日"><a href="#26">03月26日(日)</a>
+                        <a id="26"></a></h2>
                         <p>NOP</p>
                         <p>すごく寝た。体の芯の疲れは取れたが、逆に体が重くなったような。</p>
-                        <h2 id="月25日土"><a href="#25">03月25日(土)</a> <a id="25"></a></h2>
+                        <h2 id="月25日土"><a href="#25">03月25日(土)</a>
+                        <a id="25"></a></h2>
                         <p>NOP</p>
                         <p>夜中にお腹を下してトイレの住人に。</p>
-                        <h2 id="月24日金"><a href="#24">03月24日(金)</a> <a id="24"></a></h2>
+                        <h2 id="月24日金"><a href="#24">03月24日(金)</a>
+                        <a id="24"></a></h2>
                         <p>なんか、何かがバズるたびに「反響は？」とか「どんなお気持ちですか？」とか聞かれるんだけど、正直バズり慣れしてて、「相変わらず何がウケるかわからない世の中だな」としか思えなくなってしまった。過去のツイートのうち、RT数Fav数を隠したものを見て、どれがバズったかなんて、判別不可能だと思うよ。少なくとも僕はわかる気はしないな。</p>
                         <p>物理学会。学生さんの発表二件。とても順調で素晴らしい。</p>
                         <p>とりあえず学会発表3件をウェブサイトに追加しておいた。</p>
                         <p>論文も3件追加しておいた。</p>
                         <p>大学院学位授与式の準備した。</p>
                         <p>講義準備は全くもってできていない。</p>
-                        <h2 id="月23日木"><a href="#23">03月23日(木)</a> <a id="23"></a></h2>
+                        <h2 id="月23日木"><a href="#23">03月23日(木)</a>
+                        <a id="23"></a></h2>
                         <p>学部卒業式。みなさん、本当に卒業おめでとう。</p>
                         <p>卒業式のOB会というので、奥村さんが来訪。セミナーをしてくださった。一緒に写真を撮ってもらおうと思ってたのに忘れてしまった。</p>
                         <p>大学院のガイダンスの準備。全ての準備がギリギリだ。</p>
-                        <h2 id="月22日水"><a href="#22">03月22日(水)</a> <a id="22"></a></h2>
+                        <h2 id="月22日水"><a href="#22">03月22日(水)</a>
+                        <a id="22"></a></h2>
                         <p>NOPから復帰。溜まった仕事が多すぎて目が回りそう。</p>
                         <p>会議。物理学会の学生さんの最初の講演聞けなかった。</p>
                         <p>研究室ミーティング。</p>
                         <p>卒論5冊、修論4冊分の住所と手紙書いて、発送手続きした。昨年は3月3日には郵送したらしい。今年はバタバタして遅くなってしまった。</p>
-                        <p>来年度の駐車場の申し込みした。毎回駐車券番号を忘れてGoogle Photoで探すのでLastPassのNoteに書いておいた(来年まで覚えてられるかな？)。</p>
+                        <p>来年度の駐車場の申し込みした。毎回駐車券番号を忘れてGoogle
+                        Photoで探すのでLastPassのNoteに書いておいた(来年まで覚えてられるかな？)。</p>
                         <p>大学の柔道部の口座、オンラインで振り込みとかしたかったので規約を調べたが、金融機関のFAQによるとオンライン処理はできない模様。正確には、個人口座だとオンライン処理が無料でできるが、団体口座だとビジネスプランが必要で有料になるらしい。仕方ない。頻度は低いし、ATMで振り込むことにしよう。</p>
-                        <p><a href="https://doi.org/10.1063/5.0138733">学生さんの界面張力論文の正式版がJ. Chem. Phys.にpublishされた</a>。次々行きたい。</p>
-                        <h2 id="月21日火"><a href="#21">03月21日(火)</a> <a id="21"></a></h2>
+                        <p><a
+                        href="https://doi.org/10.1063/5.0138733">学生さんの界面張力論文の正式版がJ.
+                        Chem.
+                        Phys.にpublishされた</a>。次々行きたい。</p>
+                        <h2 id="月21日火"><a href="#21">03月21日(火)</a>
+                        <a id="21"></a></h2>
                         <p>NOP</p>
-                        <h2 id="月20日月"><a href="#20">03月20日(月)</a> <a id="20"></a></h2>
+                        <h2 id="月20日月"><a href="#20">03月20日(月)</a>
+                        <a id="20"></a></h2>
                         <p>NOP</p>
-                        <h2 id="月19日日"><a href="#19">03月19日(日)</a> <a id="19"></a></h2>
+                        <h2 id="月19日日"><a href="#19">03月19日(日)</a>
+                        <a id="19"></a></h2>
                         <p>NOP</p>
-                        <h2 id="月18日土"><a href="#18">03月18日(土)</a> <a id="18"></a></h2>
+                        <h2 id="月18日土"><a href="#18">03月18日(土)</a>
+                        <a id="18"></a></h2>
                         <p>NOP</p>
-                        <h2 id="月17日金"><a href="#17">03月17日(金)</a> <a id="17"></a></h2>
+                        <h2 id="月17日金"><a href="#17">03月17日(金)</a>
+                        <a id="17"></a></h2>
                         <p>予算、ほぼほぼ締めた。</p>
                         <p>駐車場の申請、なんかメンテ中でできないなぁと思ってたら、申請開始が3月22日からだった。</p>
                         <p>学習指導のお仕事。4月入学者確認。</p>
-                        <h2 id="月16日木"><a href="#16">03月16日(木)</a> <a id="16"></a></h2>
+                        <h2 id="月16日木"><a href="#16">03月16日(木)</a>
+                        <a id="16"></a></h2>
                         <p>JCPのProof返した。</p>
                         <p>ハンズオン。今日はgnuplot。</p>
                         <p>柔道部の振り込みした。</p>
-                        <h2 id="月15日水"><a href="#15">03月15日(水)</a> <a id="15"></a></h2>
-                        <p><a href="https://doi.org/10.1093/ptep/ptad022">Binder比論文が公開されていた</a>。ついでに自分の業績リストも更新。</p>
+                        <h2 id="月15日水"><a href="#15">03月15日(水)</a>
+                        <a id="15"></a></h2>
+                        <p><a
+                        href="https://doi.org/10.1093/ptep/ptad022">Binder比論文が公開されていた</a>。ついでに自分の業績リストも更新。</p>
                         <p>K-RISの方はORCID経由で取得できた。Binder比論文はまだ登録されてない。</p>
-                        <p>bundleが「Following files may not be writable, so sudo is needed:」というエラーを出した。</p>
-                        <div class="sourceCode" id="cb16"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true"></a>$ <span class="ex">bundle</span></span>
-                        <span id="cb16-2"><a href="#cb16-2" aria-hidden="true"></a><span class="ex">Using</span> bundler 2.2.24</span>
-                        <span id="cb16-3"><a href="#cb16-3" aria-hidden="true"></a><span class="ex">Using</span> temple 0.8.2</span>
-                        <span id="cb16-4"><a href="#cb16-4" aria-hidden="true"></a><span class="ex">Following</span> files may not be writable, so sudo is needed:</span>
-                        <span id="cb16-5"><a href="#cb16-5" aria-hidden="true"></a>  <span class="ex">/opt/rh/rh-ruby27/root/usr/bin</span></span>
-                        <span id="cb16-6"><a href="#cb16-6" aria-hidden="true"></a>  <span class="ex">/opt/rh/rh-ruby27/root/usr/share/gems</span></span>
-                        <span id="cb16-7"><a href="#cb16-7" aria-hidden="true"></a>  <span class="ex">/opt/rh/rh-ruby27/root/usr/share/gems/build_info</span></span>
-                        <span id="cb16-8"><a href="#cb16-8" aria-hidden="true"></a>  <span class="ex">/opt/rh/rh-ruby27/root/usr/share/gems/cache</span></span>
-                        <span id="cb16-9"><a href="#cb16-9" aria-hidden="true"></a>  <span class="ex">/opt/rh/rh-ruby27/root/usr/share/gems/doc</span></span>
-                        <span id="cb16-10"><a href="#cb16-10" aria-hidden="true"></a>  <span class="ex">/opt/rh/rh-ruby27/root/usr/share/gems/extensions</span></span>
-                        <span id="cb16-11"><a href="#cb16-11" aria-hidden="true"></a>  <span class="ex">/opt/rh/rh-ruby27/root/usr/share/gems/gems</span></span>
-                        <span id="cb16-12"><a href="#cb16-12" aria-hidden="true"></a>  <span class="ex">/opt/rh/rh-ruby27/root/usr/share/gems/specifications</span></span></code></pre></div>
+                        <p>bundleが「Following files may not be
+                        writable, so sudo is
+                        needed:」というエラーを出した。</p>
+                        <div class="sourceCode" id="cb16"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> bundle</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Using</span> bundler 2.2.24</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Using</span> temple 0.8.2</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="ex">Following</span> files may not be writable, so sudo is needed:</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="ex">/opt/rh/rh-ruby27/root/usr/bin</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  <span class="ex">/opt/rh/rh-ruby27/root/usr/share/gems</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  <span class="ex">/opt/rh/rh-ruby27/root/usr/share/gems/build_info</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>  <span class="ex">/opt/rh/rh-ruby27/root/usr/share/gems/cache</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>  <span class="ex">/opt/rh/rh-ruby27/root/usr/share/gems/doc</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>  <span class="ex">/opt/rh/rh-ruby27/root/usr/share/gems/extensions</span></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>  <span class="ex">/opt/rh/rh-ruby27/root/usr/share/gems/gems</span></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>  <span class="ex">/opt/rh/rh-ruby27/root/usr/share/gems/specifications</span></span></code></pre></div>
                         <p>デフォルトでインストールするgemのパスが変わったらしい。</p>
-                        <div class="sourceCode" id="cb17"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true"></a>$ <span class="ex">bundle</span> install --path ~/.gem</span>
-                        <span id="cb17-2"><a href="#cb17-2" aria-hidden="true"></a>[<span class="ex">DEPRECATED</span>] The <span class="kw">`</span><span class="ex">--path</span><span class="kw">`</span> flag is deprecated because it relies on being remembered across bundler invocations, which bundler will no longer do in future versions. Instead please use <span class="kw">`</span><span class="ex">bundle</span> config set --local path <span class="st">&#39;/home/watanabe/.gem&#39;</span><span class="kw">`</span>, and stop using this flag</span>
-                        <span id="cb17-3"><a href="#cb17-3" aria-hidden="true"></a><span class="ex">Could</span> not locate Gemfile</span></code></pre></div>
+                        <div class="sourceCode" id="cb17"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> bundle install <span class="at">--path</span> ~/.gem</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="ex">[DEPRECATED]</span> The <span class="kw">`</span><span class="ex">--path</span><span class="kw">`</span> flag is deprecated because it relies on being remembered across bundler invocations, which bundler will no longer do in future versions. Instead please use <span class="kw">`</span><span class="ex">bundle</span> config set <span class="at">--local</span> path <span class="st">&#39;/home/watanabe/.gem&#39;</span><span class="kw">`</span>, and stop using this flag</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Could</span> not locate Gemfile</span></code></pre></div>
                         <p>ありゃ、書式が古かったらしい。</p>
-                        <div class="sourceCode" id="cb18"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true"></a><span class="bu">export</span> <span class="va">GEM_HOME=$HOME</span>/.gem </span>
-                        <span id="cb18-2"><a href="#cb18-2" aria-hidden="true"></a><span class="ex">bundle</span> config set --local path ~/.gem</span></code></pre></div>
-                        <p>これで、Gemfileがあるところでbundle installすればOK。.zshrcに以下を追加しておく。</p>
-                        <div class="sourceCode" id="cb19"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true"></a><span class="bu">export</span> <span class="va">GEM_HOME=$HOME</span>/.gem</span>
-                        <span id="cb19-2"><a href="#cb19-2" aria-hidden="true"></a><span class="bu">export</span> <span class="va">PATH=$PATH</span>:~/.gem/ruby/2.7.0/bin</span></code></pre></div>
+                        <div class="sourceCode" id="cb18"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">GEM_HOME</span><span class="op">=</span><span class="va">$HOME</span>/.gem </span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="ex">bundle</span> config set <span class="at">--local</span> path ~/.gem</span></code></pre></div>
+                        <p>これで、Gemfileがあるところでbundle
+                        installすればOK。.zshrcに以下を追加しておく。</p>
+                        <div class="sourceCode" id="cb19"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">GEM_HOME</span><span class="op">=</span><span class="va">$HOME</span>/.gem</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">PATH</span><span class="op">=</span><span class="va">$PATH</span>:~/.gem/ruby/2.7.0/bin</span></code></pre></div>
                         <p><code>bundle exec</code>で実行する場合はPATHの設定は不要。パスにバージョン情報入っちゃってるし、いちいち<code>bundle exec</code>経由で実行したほうが良いな。</p>
-                        <h2 id="月14日火"><a href="#14">03月14日(火)</a> <a id="14"></a></h2>
+                        <h2 id="月14日火"><a href="#14">03月14日(火)</a>
+                        <a id="14"></a></h2>
                         <p>来年度の学事日程の確認。</p>
                         <p>げ、数理物理は1Qだと思ってたけど、実際は2Qだった。急遽実験の予定を代わっていただく。すみません。</p>
                         <ul>
@@ -226,36 +289,54 @@
                         <li>秋学期
                         <ul>
                         <li>プログラミング基礎同演習 火4</li>
-                        <li>物理情報工学ソフトウェア開発演習 月5/金5</li>
+                        <li>物理情報工学ソフトウェア開発演習
+                        月5/金5</li>
                         </ul></li>
                         </ul>
-                        <p>GHC、今日の今日まで「GNU Haskell Compiler」だと思ってた。実際には「Glasgow Haskell Compiler」だった。</p>
+                        <p>GHC、今日の今日まで「GNU Haskell
+                        Compiler」だと思ってた。実際には「Glasgow
+                        Haskell Compiler」だった。</p>
                         <p>うーん、クォータの講義が春/秋にそれぞれあるのはさすがに厳しい気がする。</p>
                         <p>講義準備が進んで無い病にかかっている。いろいろ予定が入ってきて、まとまった時間が全く取れてない。</p>
-                        <h2 id="月13日月"><a href="#13">03月13日(月)</a> <a id="13"></a></h2>
+                        <h2 id="月13日月"><a href="#13">03月13日(月)</a>
+                        <a id="13"></a></h2>
                         <p>娘の携帯の契約をした。以前より手続きが早くなった気がするけど、まだ40分くらいかかるなぁ。何に時間かかってるんだろう？</p>
                         <p>検索してて偶然見つけた。</p>
-                        <p><a href="https://jp.quora.com/profile/Petrosky-Tomio">Petrosky Tomio</a>。Petroskyさんだ。プロフィールを見る限り、おそらく本人。</p>
+                        <p><a
+                        href="https://jp.quora.com/profile/Petrosky-Tomio">Petrosky
+                        Tomio</a>。Petroskyさんだ。プロフィールを見る限り、おそらく本人。</p>
                         <p>昨日の続き。</p>
                         <p>未踏Jrへの募集について、某所に「応募するのはそれだけで偉い」と書いた。なぜなら応募したら評価されるから。採択/不採択の結果が出てしまうから。</p>
-                        <p>評価を恐れる、という気持ちはすごくよく分かる。何かを作ったときに、それを仲間内だけでまわしていれば、自分がクリエイターであると錯覚できる。 しかし、何かのコンペに出す、販売する、といった行動を起こすと、採択/不採択、売れる/売れないの結果が出てしまう。特に「採択/不採択」は結果が二値なので残酷だ。</p>
-                        <p>こういう話を見ると、<a href="https://dic.pixiv.net/a/%E9%A7%84%E3%82%B5%E3%82%A4%E3%82%AF%E3%83%AB">駄サイクル</a>の話を思い出す。</p>
+                        <p>評価を恐れる、という気持ちはすごくよく分かる。何かを作ったときに、それを仲間内だけでまわしていれば、自分がクリエイターであると錯覚できる。
+                        しかし、何かのコンペに出す、販売する、といった行動を起こすと、採択/不採択、売れる/売れないの結果が出てしまう。特に「採択/不採択」は結果が二値なので残酷だ。</p>
+                        <p>こういう話を見ると、<a
+                        href="https://dic.pixiv.net/a/%E9%A7%84%E3%82%B5%E3%82%A4%E3%82%AF%E3%83%AB">駄サイクル</a>の話を思い出す。</p>
                         <p>僕らは同じところにとどまっていてはいけない。もしクリエィティブな職業であると自認するなら、常に挑戦し、新しい場所で残酷な評価を受けとめ、上を目指し続けないといけない。</p>
                         <p>そういう意味で、講義ノートを出版する、というのも一つの挑戦なのかもしれない。「ウェブにある便利な情報」と、「お金を払ってでも欲しい情報」には大きなギャップがあるから。</p>
-                        <h2 id="月12日日"><a href="#12">03月12日(日)</a> <a id="12"></a></h2>
+                        <h2 id="月12日日"><a href="#12">03月12日(日)</a>
+                        <a id="12"></a></h2>
                         <p>NOP</p>
                         <p>講義の準備が厳しい。</p>
                         <p>未踏Jrの募集が始まったというニュースを見て、「作ろうと思うこと」と「実際に作ること」のギャップに思いを馳せた。</p>
                         <p>「何かを作りたい」と思う人は多い。しかし、ほとんどの人は実際に作ってみようとはしない。</p>
                         <p>例えば「ゲームを作りたい」と思ったとする。プログラミングなんて全くわからない。けどゲームが好きだ。自分ならこんなゲームを作るのに。</p>
-                        <p>それなら作って見ればいい。昔に比べて、ゲームを含めて何かを作るためのハードルは極めて低くなっている。第一歩は「ゲーム　作り方」で検索することだ。検索すると、どうやらゲームを動かすにはゲームエンジンというものがあり、それを使うためのツールというものがあるらしい。Unity、Unreal Engineなどを使うと手軽にすごいものが作れそうだ。これらのツールでは高度過ぎる？ではゲーム作成ツール、例えばMakerシリーズはどうだろう？昔、RPGツクールという名前だったもので、いまはRPG Makerという名前になっている。マウスでぽちぽちするだけでUnityで動くゲームが作れてしまう。今見てみたら、DL版で税別7980円。安くは無いが、どうせUnityやUEを勉強しようと数冊本を買ったらこれくらいすぐいく。</p>
-                        <p>どうしてもお金を払いたくない？なら、無料でアドベンチャー/ビジュアルノベル系のゲームが作れる<a href="https://tyrano.jp/">Tyranoスクリプト</a>や、Goのゲームエンジン <a href="https://ebitengine.org/ja/">EbitEngine</a>はどうだろう？無料だし、サンプルゲームも豊富なので、それらをいじればゲーム作りがどんな雰囲気かわかるだろう。ゲームを作るのは簡単だ。</p>
+                        <p>それなら作って見ればいい。昔に比べて、ゲームを含めて何かを作るためのハードルは極めて低くなっている。第一歩は「ゲーム　作り方」で検索することだ。検索すると、どうやらゲームを動かすにはゲームエンジンというものがあり、それを使うためのツールというものがあるらしい。Unity、Unreal
+                        Engineなどを使うと手軽にすごいものが作れそうだ。これらのツールでは高度過ぎる？ではゲーム作成ツール、例えばMakerシリーズはどうだろう？昔、RPGツクールという名前だったもので、いまはRPG
+                        Makerという名前になっている。マウスでぽちぽちするだけでUnityで動くゲームが作れてしまう。今見てみたら、DL版で税別7980円。安くは無いが、どうせUnityやUEを勉強しようと数冊本を買ったらこれくらいすぐいく。</p>
+                        <p>どうしてもお金を払いたくない？なら、無料でアドベンチャー/ビジュアルノベル系のゲームが作れる<a
+                        href="https://tyrano.jp/">Tyranoスクリプト</a>や、Goのゲームエンジン
+                        <a
+                        href="https://ebitengine.org/ja/">EbitEngine</a>はどうだろう？無料だし、サンプルゲームも豊富なので、それらをいじればゲーム作りがどんな雰囲気かわかるだろう。ゲームを作るのは簡単だ。</p>
                         <p>しかし、「ゲームを作りたい」という人はほとんどゲームを作らない。「ゲームを作りたい」から「作った」までには大きなギャップがある。</p>
-                        <p>・・・というところまではもやもやと認識していたのだけれど、今日偶然見つけた落合さんのNote <a href="https://note.com/ochyai/n/n781fb2209af4">大学教員８年目やってるとワナビーとモノづくり好きの区別がつくようになってくる→「へえ，〇〇がやりたくて大学に入ってきたんだ，でなんで今まではやってないの？」（次週）「え，どうして今週できなかったの？」</a>を見て言語化できた。</p>
+                        <p>・・・というところまではもやもやと認識していたのだけれど、今日偶然見つけた落合さんのNote
+                        <a
+                        href="https://note.com/ochyai/n/n781fb2209af4">大学教員８年目やってるとワナビーとモノづくり好きの区別がつくようになってくる→「へえ，〇〇がやりたくて大学に入ってきたんだ，でなんで今まではやってないの？」（次週）「え，どうして今週できなかったの？」</a>を見て言語化できた。</p>
                         <p>つまり「ゲームを作りたい」という彼らが欲しいのは「自分が作ったゲーム」という結果ではなく、「ゲームを作った自分」という結果だから。なるほど。</p>
-                        <h2 id="月11日土"><a href="#11">03月11日(土)</a> <a id="11"></a></h2>
+                        <h2 id="月11日土"><a href="#11">03月11日(土)</a>
+                        <a id="11"></a></h2>
                         <p>NOP</p>
-                        <h2 id="月10日金"><a href="#10">03月10日(金)</a> <a id="10"></a></h2>
+                        <h2 id="月10日金"><a href="#10">03月10日(金)</a>
+                        <a id="10"></a></h2>
                         <p>打ち合わせ。会議が一気に増えて、いきなりバッティングした。</p>
                         <p>修論の製本を受け取り。感慨深い。</p>
                         <p>角2封筒の住所の書き方を毎回検索している気がする。</p>
@@ -263,35 +344,45 @@
                         <p>会議。</p>
                         <p>Zennから参考になる記事２つ。</p>
                         <ul>
-                        <li><a href="https://zenn.dev/tetsu1008/articles/8027cbab954e5e">SSHの公開鍵認証とは何をやっているのか？</a></li>
-                        <li><a href="https://zenn.dev/tetsu1008/articles/1e3673ca1ece42">やはりお前らの「公開鍵暗号」はまちがっている。</a></li>
+                        <li><a
+                        href="https://zenn.dev/tetsu1008/articles/8027cbab954e5e">SSHの公開鍵認証とは何をやっているのか？</a></li>
+                        <li><a
+                        href="https://zenn.dev/tetsu1008/articles/1e3673ca1ece42">やはりお前らの「公開鍵暗号」はまちがっている。</a></li>
                         </ul>
                         <p>いわゆる暗認本でふんわりと読んだところが、わかりやすいフロー図で整理された。DH鍵共有とか、文章だけでは理解できてなかったのが、フロー図を見てなるほど、と思った。</p>
-                        <h2 id="月09日木"><a href="#09">03月09日(木)</a> <a id="09"></a></h2>
+                        <h2 id="月09日木"><a href="#09">03月09日(木)</a>
+                        <a id="09"></a></h2>
                         <p>研究室ミーティング。仮想通貨、ゲームと機械学習。いよいよなんでもありになってきた。</p>
                         <p>ハンズオン。今日はdocker。</p>
                         <p>Windows、タスクバーがたまに死んで、すぐに復活する、みたいな挙動をするんだけど、今日はついに死にっぱなしになった。仕方ないので再起動。</p>
                         <p>解析力学の講義ノートを少し進めた。「苦しんで覚える解析力学」はさすがにアレだったし、別に苦しむことが重要ではないので「普通に学ぶ解析力学」に名前変更。</p>
-                        <h2 id="月08日水"><a href="#08">03月08日(水)</a> <a id="08"></a></h2>
+                        <h2 id="月08日水"><a href="#08">03月08日(水)</a>
+                        <a id="08"></a></h2>
                         <p>会議1。</p>
                         <p>会議2。</p>
                         <p>会議3。</p>
                         <p>メール処理。</p>
                         <p>学生さん論文の概形作った。これで投稿せずに消え失せることは無くなったはず。</p>
-                        <h2 id="月07日火"><a href="#07">03月07日(火)</a> <a id="07"></a></h2>
+                        <h2 id="月07日火"><a href="#07">03月07日(火)</a>
+                        <a id="07"></a></h2>
                         <p>熱は下がったが、念のためにもう一度チェック。コロナ、インフルエンザともに陰性。よかった。明日から職場復帰できるとのこと。</p>
                         <p>しかし、丸２日を棒に振って、予定がガタガタである。</p>
-                        <p><a href="https://doi.org/10.1063/5.0138733">Accepted Manuscriptが公開された</a>。</p>
+                        <p><a
+                        href="https://doi.org/10.1063/5.0138733">Accepted
+                        Manuscriptが公開された</a>。</p>
                         <p>「一週間でなれる！スパコンプログラマ」にPRが来てた。CMakeのサポートが主だが、diffを見るといくつかミスも修正してくださっている。ありがたい。</p>
                         <p>明日の会議の準備。</p>
                         <p>PTEPの再Proof返した。</p>
-                        <h2 id="月06日月"><a href="#06">03月06日(月)</a> <a id="06"></a></h2>
+                        <h2 id="月06日月"><a href="#06">03月06日(月)</a>
+                        <a id="06"></a></h2>
                         <p>未明から発熱。すわコロナかと医者にいって検査。コロナ、インフルエンザともに陰性だったが、発熱から検査まで時間が短かったので、もし熱が下がらなかったら明日もう一度チェックしましょう、とのこと。僕が幹事である送別会は当然参加不可。いろいろ手配する申し訳ありません。</p>
                         <p>午前中は37度台だったのが、夜には38度台に。</p>
                         <p>学生さんの論文、JCPにAcceptされた！</p>
-                        <h2 id="月05日日"><a href="#05">03月05日(日)</a> <a id="05"></a></h2>
+                        <h2 id="月05日日"><a href="#05">03月05日(日)</a>
+                        <a id="05"></a></h2>
                         <p>体調がいまいち。</p>
-                        <h2 id="月04日土"><a href="#04">03月04日(土)</a> <a id="04"></a></h2>
+                        <h2 id="月04日土"><a href="#04">03月04日(土)</a>
+                        <a id="04"></a></h2>
                         <p>確定申告。マイナポータル連携で、医療費と住宅借入金等特別控除証明書が自動で連携された。</p>
                         <p>よし、確定申告終わった。結局必要なものは</p>
                         <ul>
@@ -304,7 +395,8 @@
                         <li>その他、支払調書があれば保存</li>
                         </ul>
                         <p>かな。住宅関連のはマイナポータル連携をしていれば入力されるはずだが、年末残高証明書を見ながら入力する箇所がある。</p>
-                        <h2 id="月03日金"><a href="#03">03月03日(金)</a> <a id="03"></a></h2>
+                        <h2 id="月03日金"><a href="#03">03月03日(金)</a>
+                        <a id="03"></a></h2>
                         <p>情報処理学会の座長＠電通大・・・のはずだったのだが、調布と田園調布を間違えるという失態を犯す。焦って本部に電話したら間違い電話してしまって「違いますけど」とか言われてしまった。いろいろダメだ。結局皆さん待っててくださって20分遅れでセッション開始。大変申し訳ありませんでした。</p>
                         <p>調布と田園調布は、もともと租庸調の調から来ているとのこと。調には繊維製品の納入を求める「正調」というものがあり、絹で納める調絹と、絹以外の布で納める調布に分けられ、その「調布」に由来する。</p>
                         <p>調布の起源は調布町であり、1889年にいくつかの村が合併することで誕生。昭和30年に調布町と神代町が合併して調布市となった。</p>
@@ -313,10 +405,16 @@
                         <p>論文再投稿。これで通るであろう。</p>
                         <p>もう一つの論文もまとまってきた。英語化開始。</p>
                         <p>渡辺研歓送迎会。研究室飲み会は3年ぶり2回目(←紅白歌手みたい)。大勢集まれて楽しかったです。幹事の学生さんありがとうございました。またいつか集まりましょう。</p>
-                        <h2 id="月02日木"><a href="#02">03月02日(木)</a> <a id="02"></a></h2>
-                        <p>WindowsのターミナルでVimの操作を確認してたらCtrl + Vが貼り付けになってて驚いた。 「設定」「操作」から削除可能だけど、Ctrl + Vで貼り付けできたほうが便利かな・・・。Ctrl + Cが乗っ取られると不便だけど。</p>
+                        <h2 id="月02日木"><a href="#02">03月02日(木)</a>
+                        <a id="02"></a></h2>
+                        <p>WindowsのターミナルでVimの操作を確認してたらCtrl
+                        + Vが貼り付けになってて驚いた。
+                        「設定」「操作」から削除可能だけど、Ctrl +
+                        Vで貼り付けできたほうが便利かな・・・。Ctrl +
+                        Cが乗っ取られると不便だけど。</p>
                         <p>研究室ミーティング。Vimハンズオン。</p>
-                        <h2 id="月01日水"><a href="#01">03月01日(水)</a> <a id="01"></a></h2>
+                        <h2 id="月01日水"><a href="#01">03月01日(水)</a>
+                        <a id="01"></a></h2>
                         <p>3月になってしまった。そして新たなファイルを作るタイミングで、ずっと2月のページに「1月」と書いていたことに気づいた。まぁ誰も見てないし。</p>
                         <p>午前中は私用。13時から15時まで会議。メール処理。15時から16時まで会議。</p>
                         <p>PTEPのProof返した。オンラインエディタがいまいち使い慣れなくて手こずった。</p>
