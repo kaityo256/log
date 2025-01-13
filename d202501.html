@@ -21,6 +21,9 @@
   <body>
     <article class="markdown-body">
                         <h1 id="年1月">2025年1月</h1>
+                        <h2 id="月13日月"><a href="#13">01月13日(月)</a>
+                        <a id="13"></a></h2>
+                        <p>日曜日の日記がない。なんか交互にマージしている。</p>
                         <h2 id="月11日土"><a href="#11">01月11日(土)</a>
                         <a id="11"></a></h2>
                         <p>追加計算。C++でも厳しい領域があるので、一部はスパコンに投げた。</p>
@@ -33,6 +36,29 @@
                         <a id="09"></a></h2>
                         <p>今度は水曜日の分をpushし忘れた。やれやれだ。</p>
                         <p>指導委託延長書類返した。</p>
+                        <p>VSCodeのLaTeX フォーマッタがエラー。</p>
+                        <div class="sourceCode" id="cb1"><pre
+                        class="sourceCode txt"><code class="sourceCode default"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>Formatting failed. Please refer to LaTeX Workshop Output for details.</span></code></pre></div>
+                        <div class="sourceCode" id="cb2"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> latexindent <span class="at">-l</span> manuscript.tex</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Attempt</span> to call undefined import method with arguments <span class="er">(</span><span class="st">&quot;@logFileLines&quot;</span><span class="kw">)</span> <span class="ex">via</span> package <span class="st">&quot;LatexIndent::Logger&quot;</span> <span class="er">(</span><span class="ex">Perhaps</span> you forgot to load the package<span class="pp">?</span><span class="kw">)</span> <span class="ex">at</span> /usr/local/texlive/2022/texmf-dist/scripts/latexindent/LatexIndent/Document.pm line 28.</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Can</span><span class="st">&#39;t locate YAML/Tiny.pm in @INC (you may need to install the YAML::Tiny module) (@INC entries checked: /usr/local/texlive/2022/texmf-dist/scripts/latexindent /usr/local/opt/perl/lib/perl5/site_perl/5.40/darwin-thread-multi-2level /usr/local/opt/perl/lib/perl5/site_perl/5.40 /usr/local/opt/perl/lib/perl5/5.40/darwin-thread-multi-2level /usr/local/opt/perl/lib/perl5/5.40 /usr/local/lib/perl5/site_perl/5.40) at /usr/local/texlive/2022/texmf-dist/scripts/latexindent/LatexIndent/GetYamlSettings.pm line 22.</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="st">BEGIN failed--compilation aborted at /usr/local/texlive/2022/texmf-dist/scripts/latexindent/LatexIndent/GetYamlSettings.pm line 22.</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="st">Compilation failed in require at /usr/local/texlive/2022/texmf-dist/scripts/latexindent/LatexIndent/Verbatim.pm line 23.</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="st">BEGIN failed--compilation aborted at /usr/local/texlive/2022/texmf-dist/scripts/latexindent/LatexIndent/Verbatim.pm line 23.</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="st">Compilation failed in require at /usr/local/texlive/2022/texmf-dist/scripts/latexindent/LatexIndent/Lines.pm line 23.</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="st">BEGIN failed--compilation aborted at /usr/local/texlive/2022/texmf-dist/scripts/latexindent/LatexIndent/Lines.pm line 23.</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="st">Compilation failed in require at /usr/local/texlive/2022/texmf-dist/scripts/latexindent/LatexIndent/Document.pm line 30.</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="st">BEGIN failed--compilation aborted at /usr/local/texlive/2022/texmf-dist/scripts/latexindent/LatexIndent/Document.pm line 30.</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="st">Compilation failed in require at /usr/local/bin/latexindent line 27.</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="st">BEGIN failed--compilation aborted at /usr/local/bin/latexindent line 27.</span></span></code></pre></div>
+                        <p>TeXLiveが古いな。</p>
+                        <div class="sourceCode" id="cb3"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> tlmgr <span class="at">--version</span>  </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">tlmgr</span> revision 63068 <span class="er">(</span><span class="ex">2022-04-18</span> 07:58:07 +0200<span class="kw">)</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ex">tlmgr</span> using installation: /usr/local/texlive/2022</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="ex">TeX</span> Live <span class="er">(</span><span class="ex">https://tug.org/texlive</span><span class="kw">)</span> <span class="ex">version</span> 2022</span></code></pre></div>
+                        <p>だめだ。後で新しいのをインストールしないと。</p>
                         <p>ガイダンス。</p>
                         <p>研究室ミーティング。自己紹介。</p>
                         <p>お仕事いっぱい。</p>
@@ -44,9 +70,9 @@
                         <a id="07"></a></h2>
                         <p>D論公聴会。</p>
                         <p>PDFのdiffをとりたい。</p>
-                        <div class="sourceCode" id="cb1"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> install diff-pdf</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">diff-pdf</span> <span class="at">--output-diff</span><span class="op">=</span>output.pdf file1.pdf file2.pdf</span></code></pre></div>
+                        <div class="sourceCode" id="cb4"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> install diff-pdf</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">diff-pdf</span> <span class="at">--output-diff</span><span class="op">=</span>output.pdf file1.pdf file2.pdf</span></code></pre></div>
                         <p>結果は微妙だなぁ。pdftotext+diffの方が楽かも。改行等の整形が必要だけど。</p>
                         <p>なんか査読した。</p>
                         <p>プログラミング基礎同演習。今回は乱数。</p>
@@ -70,8 +96,8 @@
                         head状態になる。ミスってそのままgit add
                         commitすると、Gitがその状態を覚えてしまう。あと、git
                         restoreがうまくいかない。</p>
-                        <div class="sourceCode" id="cb2"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> restore <span class="at">--recurse-submodules</span> .</span></code></pre></div>
+                        <div class="sourceCode" id="cb5"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> restore <span class="at">--recurse-submodules</span> .</span></code></pre></div>
                         <p>としないといけない。微妙によくわからない。</p>
                         <p>多分日記をゆっくり書けるのは今日が最後だろうな。</p>
                         <h2 id="月05日日"><a href="#05">01月05日(日)</a>
