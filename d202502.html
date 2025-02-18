@@ -21,9 +21,45 @@
   <body>
     <article class="markdown-body">
                         <h1 id="年2月">2025年2月</h1>
+                        <h2 id="月18日火"><a href="#18">02月18日(火)</a>
+                        <a id="18"></a></h2>
+                        <p>FSの予算を〆た。</p>
+                        <h2 id="月17日月"><a href="#17">02月17日(月)</a>
+                        <a id="17"></a></h2>
+                        <p>疲れているのだが、予算の〆のためにバタバタ。もっと早めに行動すべきだったのだが、12月からアホほど忙しかった(言い訳)。</p>
+                        <p>出張の後片付け。使わなくなったプリンタを運ぶ時に腰を痛めてしまった。</p>
+                        <h2 id="月16日日"><a href="#16">02月16日(日)</a>
+                        <a id="16"></a></h2>
+                        <p>出張から帰ってきた。マジで疲れた。</p>
+                        <h2 id="月15日土"><a href="#15">02月15日(土)</a>
+                        <a id="15"></a></h2>
+                        <p>出張。</p>
+                        <h2 id="月14日金"><a href="#14">02月14日(金)</a>
+                        <a id="14"></a></h2>
+                        <p>出張。</p>
+                        <h2 id="月13日木"><a href="#14">02月13日(木)</a>
+                        <a id="13"></a></h2>
+                        <p>出張。</p>
+                        <h2 id="月12日水"><a href="#12">02月12日(水)</a>
+                        <a id="12"></a></h2>
+                        <p>出張。</p>
+                        <h2 id="月11日火"><a href="#11">02月11日(火)</a>
+                        <a id="11"></a></h2>
+                        <p>出張。</p>
                         <h2 id="月10日月"><a href="#10">02月10日(月)</a>
                         <a id="10"></a></h2>
                         <p>科研費の支払請求書(F-2-1)を提出した。</p>
+                        <p>物理学会の参加申し込みした。</p>
+                        <p>arXivに論文を出す場合、PDFのままだとなぜかコンパイルできず、pdf2psでepsに変換しているのだが、内部にラスタ画像を含む場合、epsファイルのサイズが非常に大きくなる問題があった。これでarXivのファイル制限にひっかかってしまうのでGS側でダウンサンプルした。</p>
+                        <div class="sourceCode" id="cb1"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pdf2ps</span> <span class="at">-dPDFSETTINGS</span><span class="op">=</span>/screen input.pdf output.eps</span></code></pre></div>
+                        <p>ところがこれをするとデータがおかしくなり、手元ではコンパイルできるが向こうではできない。</p>
+                        <div class="sourceCode" id="cb2"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pdftops</span> <span class="at">-level3</span> <span class="at">-eps</span> <span class="at">-paper</span> match input.pdf output.eps</span></code></pre></div>
+                        <p>だとファイルサイズが小さくならない。</p>
+                        <p>最終的にどうにもならず、一度PDF→JPG→PDFとしてからEPSに落としてなんとかした。ものすごくアホなことをしている感があるがしょうがない。</p>
+                        <p>arXiv、無事にreplace出した。なんかどうでも良いところで時間かかったなぁ・・・</p>
+                        <p>物理学会の立て替え払い請求書などを整理。</p>
                         <h2 id="月09日日"><a href="#09">02月09日(日)</a>
                         <a id="09"></a></h2>
                         <p>NOP</p>
