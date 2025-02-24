@@ -21,6 +21,40 @@
   <body>
     <article class="markdown-body">
                         <h1 id="年2月">2025年2月</h1>
+                        <h2 id="月24日月"><a href="#24">02月24日(月)</a>
+                        <a id="24"></a></h2>
+                        <p>学生の卒論、修論は全て一つのGitリポジトリで管理し、それぞれ年号を分けてgit
+                        submoduleとしている。
+                        submoduleの性質上、デフォルトではコミットハッシュで管理されてしまうので、クローン直後は全て「頭が取れた状態」になってしまう。なので、</p>
+                        <div class="sourceCode" id="cb1"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> submodule foreach git switch main</span></code></pre></div>
+                        <p>しなければならない。この後で、</p>
+                        <div class="sourceCode" id="cb2"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> submodule foreach git pull</span></code></pre></div>
+                        <p>とすれば全部最新になる。</p>
+                        <p>製本用に卒論を印刷。このために紙を買っておいた。えらい。しかし、クリアファイルが足りなくなった。えらくない。</p>
+                        <h2 id="月23日日"><a href="#23">02月23日(日)</a>
+                        <a id="23"></a></h2>
+                        <p>教科書用の図をつくり終わった。疲れた。</p>
+                        <h2 id="月22日土"><a href="#22">02月22日(土)</a>
+                        <a id="22"></a></h2>
+                        <p>教科書用の図をいっぱい作った。</p>
+                        <h2 id="月21日金"><a href="#21">02月21日(金)</a>
+                        <a id="21"></a></h2>
+                        <p>被扶養調査のためにiBssにアカウント作成。調査は10月かな。なんでいま案内が来たんだろう？</p>
+                        <p>RHELの個人利用登録。</p>
+                        <ul>
+                        <li><a
+                        href="https://www.redhat.com/ja/global/japan">RedHatのサイトに行く</a></li>
+                        <li>ログインをクリック</li>
+                        <li>Registerをクリック</li>
+                        </ul>
+                        <h2 id="月20日木"><a href="#20">02月20日(木)</a>
+                        <a id="20"></a></h2>
+                        <p>教職課程の書類を提出。</p>
+                        <h2 id="月19日水"><a href="#19">02月19日(水)</a>
+                        <a id="19"></a></h2>
+                        <p>ひたすら教科書の図の作成。</p>
                         <h2 id="月18日火"><a href="#18">02月18日(火)</a>
                         <a id="18"></a></h2>
                         <p>FSの予算を〆た。</p>
@@ -53,11 +87,11 @@
                         <p>科研費の支払請求書(F-2-1)を提出した。</p>
                         <p>物理学会の参加申し込みした。</p>
                         <p>arXivに論文を出す場合、PDFのままだとなぜかコンパイルできず、pdf2psでepsに変換しているのだが、内部にラスタ画像を含む場合、epsファイルのサイズが非常に大きくなる問題があった。これでarXivのファイル制限にひっかかってしまうのでGS側でダウンサンプルした。</p>
-                        <div class="sourceCode" id="cb1"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pdf2ps</span> <span class="at">-dPDFSETTINGS</span><span class="op">=</span>/screen input.pdf output.eps</span></code></pre></div>
+                        <div class="sourceCode" id="cb3"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pdf2ps</span> <span class="at">-dPDFSETTINGS</span><span class="op">=</span>/screen input.pdf output.eps</span></code></pre></div>
                         <p>ところがこれをするとデータがおかしくなり、手元ではコンパイルできるが向こうではできない。</p>
-                        <div class="sourceCode" id="cb2"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pdftops</span> <span class="at">-level3</span> <span class="at">-eps</span> <span class="at">-paper</span> match input.pdf output.eps</span></code></pre></div>
+                        <div class="sourceCode" id="cb4"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pdftops</span> <span class="at">-level3</span> <span class="at">-eps</span> <span class="at">-paper</span> match input.pdf output.eps</span></code></pre></div>
                         <p>だとファイルサイズが小さくならない。</p>
                         <p>最終的にどうにもならず、一度PDF→JPG→PDFとしてからEPSに落としてなんとかした。ものすごくアホなことをしている感があるがしょうがない。</p>
                         <p>arXiv、無事にreplace出した。なんかどうでも良いところで時間かかったなぁ・・・</p>
