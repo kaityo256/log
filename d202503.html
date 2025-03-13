@@ -41,6 +41,22 @@
                         <p>ChatGPTに「2000年7月23日から今日まで何日間ですか？」と聞いたら、なんと8999日だそうな。マジで？ほぼ25年間なので25*365=9125だからそんなもんか。9000日分の日記。さすがにこれを全部AIに食わせたら「仮想俺」を作ることができそう。</p>
                         <p>明日は9000日目の日記か。ふむ。</p>
                         <p>学生時代、僕の公開日記を読んでいる人は多かった。今はここは誰も読んでいないはず。でも惰性で書き続けるのであろう。</p>
+                        <p>RockeyにDockerをインストール。</p>
+                        <div class="sourceCode" id="cb1"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> dnf config-manager <span class="at">--add-repo</span> https://download.docker.com/linux/rhel/docker-ce.repo</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> dnf <span class="at">-y</span> install docker-ce docker-ce-cli containerd.io docker-compose-plugin</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl <span class="at">--now</span> enable docker</span></code></pre></div>
+                        <p>Dockerインストール時にdockerグループが作られている。あとはこいつにグループパスワードを設定すればOK。</p>
+                        <div class="sourceCode" id="cb2"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> gpasswd docker</span></code></pre></div>
+                        <div class="sourceCode" id="cb3"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> docker ps</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">permission</span> denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get <span class="st">&quot;http://%2Fvar%2Frun%2Fdocker.sock/v1.48/containers/json&quot;</span>: dial unix /var/run/docker.sock: connect: permission denied</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> newgrp docker</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="ex">Password:</span> </span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> docker ps</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="ex">CONTAINER</span> ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES</span></code></pre></div>
+                        <p>通常では拒否られて、dockerグループに入ったら使える状態になった。</p>
                         <h2 id="月12日水"><a href="#12">03月12日(水)</a>
                         <a id="12"></a></h2>
                         <p>午前中は会議。</p>
@@ -64,10 +80,10 @@
                         <a id="11"></a></h2>
                         <p>サーバに公開鍵認証でログインできず、なぜかパスワードのみ。調べたらSELinuxのせいだった。本当になんなのこれ？</p>
                         <p>Macでtensorflowをinstallできない。Pythonのバージョン上限(下限ではなく)があるらしい。仮想環境を3.11を明示的に指定して作る必要がある。</p>
-                        <div class="sourceCode" id="cb1"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python3.11</span> <span class="at">-m</span> venv .venv</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> .venv/bin/activate</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> <span class="at">-m</span> pip install tensorflow Pillow pickles </span></code></pre></div>
+                        <div class="sourceCode" id="cb4"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python3.11</span> <span class="at">-m</span> venv .venv</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> .venv/bin/activate</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> <span class="at">-m</span> pip install tensorflow Pillow pickles </span></code></pre></div>
                         <p>塩漬けになっていた論文に朱入れ。これから加速していきたい。</p>
                         <p>GPGPUの存在判定をcupyのimportの成否で確認していたが、Google
                         ColabではランタイムがCPUでもcupyがimportできるためにバグっていた。なので、GPGPUの自動判定をやめて、ユーザに明示的に指定させる方法に修正。</p>
@@ -104,41 +120,41 @@
                         <p><a
                         href="https://github.com/rbenv/rbenv?tab=readme-ov-file#basic-git-checkout">Basic
                         Git Checkout</a></p>
-                        <div class="sourceCode" id="cb2"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/rbenv/rbenv.git ~/.rbenv</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">~/.rbenv/bin/rbenv</span> init </span></code></pre></div>
-                        <p>これで<code>.zprofile</code>に初期化スクリプトが書き込まれる。シェルを再起動。</p>
-                        <div class="sourceCode" id="cb3"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> rbenv <span class="at">--version</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">rbenv</span> 1.3.2</span></code></pre></div>
-                        <p>できた。</p>
-                        <div class="sourceCode" id="cb4"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> rbenv install <span class="at">-l</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">rbenv:</span> no such command <span class="kw">`</span><span class="ex">install</span><span class="st">&#39;</span></span></code></pre></div>
-                        <p>できてない。ruby-buildがないからだそうな。</p>
                         <div class="sourceCode" id="cb5"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/rbenv/ruby-build.git <span class="st">&quot;</span><span class="va">$(</span><span class="ex">rbenv</span> root<span class="va">)</span><span class="st">&quot;</span>/plugins/ruby-build</span></code></pre></div>
-                        <p>これでできた。</p>
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/rbenv/rbenv.git ~/.rbenv</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">~/.rbenv/bin/rbenv</span> init </span></code></pre></div>
+                        <p>これで<code>.zprofile</code>に初期化スクリプトが書き込まれる。シェルを再起動。</p>
                         <div class="sourceCode" id="cb6"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">rbenv</span> install 3.4.2</span></code></pre></div>
-                        <p>Rubyをソースからビルドしてるのか・・・</p>
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> rbenv <span class="at">--version</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">rbenv</span> 1.3.2</span></code></pre></div>
+                        <p>できた。</p>
                         <div class="sourceCode" id="cb7"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">***</span> Following extensions are not compiled:</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">psych:</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>        <span class="ex">Could</span> not be configured. It will not be installed.</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>        <span class="ex">Check</span> /tmp/ruby-build.20250305150914.60877.LwvClO/ruby-3.4.2/ext/psych/mkmf.log for more details.</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="ex">BUILD</span> FAILED <span class="er">(</span><span class="ex">Ubuntu</span> 20.04 on x86_64 using ruby-build 20250215<span class="kw">)</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="ex">You</span> can inspect the build directory at /tmp/ruby-build.20250305150914.60877.LwvClO</span></code></pre></div>
-                        <p>死んだ。libyaml-devがないのが原因らしい。</p>
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> rbenv install <span class="at">-l</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">rbenv:</span> no such command <span class="kw">`</span><span class="ex">install</span><span class="st">&#39;</span></span></code></pre></div>
+                        <p>できてない。ruby-buildがないからだそうな。</p>
                         <div class="sourceCode" id="cb8"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt update</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install <span class="at">-y</span> libyaml-dev</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="ex">rbenv</span> install 3.4.2</span></code></pre></div>
-                        <p>通った。</p>
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/rbenv/ruby-build.git <span class="st">&quot;</span><span class="va">$(</span><span class="ex">rbenv</span> root<span class="va">)</span><span class="st">&quot;</span>/plugins/ruby-build</span></code></pre></div>
+                        <p>これでできた。</p>
                         <div class="sourceCode" id="cb9"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">rbenv</span> global 3.4.2</span></code></pre></div>
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">rbenv</span> install 3.4.2</span></code></pre></div>
+                        <p>Rubyをソースからビルドしてるのか・・・</p>
+                        <div class="sourceCode" id="cb10"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">***</span> Following extensions are not compiled:</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ex">psych:</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>        <span class="ex">Could</span> not be configured. It will not be installed.</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>        <span class="ex">Check</span> /tmp/ruby-build.20250305150914.60877.LwvClO/ruby-3.4.2/ext/psych/mkmf.log for more details.</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="ex">BUILD</span> FAILED <span class="er">(</span><span class="ex">Ubuntu</span> 20.04 on x86_64 using ruby-build 20250215<span class="kw">)</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="ex">You</span> can inspect the build directory at /tmp/ruby-build.20250305150914.60877.LwvClO</span></code></pre></div>
+                        <p>死んだ。libyaml-devがないのが原因らしい。</p>
+                        <div class="sourceCode" id="cb11"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt update</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install <span class="at">-y</span> libyaml-dev</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="ex">rbenv</span> install 3.4.2</span></code></pre></div>
+                        <p>通った。</p>
+                        <div class="sourceCode" id="cb12"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">rbenv</span> global 3.4.2</span></code></pre></div>
                         <p>これでようやくbundle
                         installが通って、slimが使えるようになった。なんか迂遠すぎる。</p>
                         <p>タスクを2つ完了。思ったより重かった。なんというか、公開日記に書けない仕事が増えたせいで、日記が日記として役に立ってない。ほぼほぼTodoistのアクティビティログが日記となっている。なんだかなぁ。</p>
