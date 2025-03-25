@@ -6,5 +6,6 @@
         "other": "on"
     }
   },
-  "pasteImage.path": "${currentFileDir}/images"
+"pasteImage.path": "${currentFileDir}/images",
+"makefile.configureOnOpen": false
 }
