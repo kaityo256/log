@@ -77,6 +77,38 @@
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> kugui</span>
 <span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="ex">rclone</span> mount kugui: ~/kugui <span class="at">--vfs-cache-mode</span> writes <span class="at">--daemon</span></span></code></pre></div>
                         <p>こっちもいけた。これで行こう。</p>
+                        <p>Macにもインストール。</p>
+                        <div class="sourceCode" id="cb13"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> <span class="at">-v</span> <span class="kw">;</span> <span class="ex">curl</span> https://rclone.org/install.sh <span class="kw">|</span> <span class="fu">sudo</span> bash</span></code></pre></div>
+                        <p>パスワード入力後、以下のような画面が出てしばらく止まる。</p>
+                        <div class="sourceCode" id="cb14"><pre
+                        class="sourceCode txt"><code class="sourceCode default"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>                                 Dload  Upload   Total   Spent    Left  Speed</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>100  4734  100  4734    0     0   5010      0 --:--:-- --:--:-- --:--:--  5009</span></code></pre></div>
+                        <p>しばらく待って</p>
+                        <div class="sourceCode" id="cb15"><pre
+                        class="sourceCode txt"><code class="sourceCode default"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>rclone v1.69.1 has successfully installed.</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>Now run &quot;rclone config&quot; for setup. Check https://rclone.org/docs/ for more details.</span></code></pre></div>
+                        <p>と出ればOK。</p>
+                        <p>次にmacFUSEのインストール。</p>
+                        <p><a
+                        href="https://macfuse.github.io/">macfuseのサイト</a>に行ってdmgをダウンロード。
+                        macFUSE 4.10.1をダウンロード。「Install
+                        macFUSE」をダブルクリックしてインストール。</p>
+                        <p>「機能拡張がブロックされました」という表示が出るので「システム設定を開く」をクリック。</p>
+                        <p>「プライバシーとセキュリティ」の画面で「開発元”Benjamin
+                        Fleischer”のシステムソフトウェアの読み込みがブロックされました。」というメッセージの下の「許可」ボタンを押す。再起動を求められるので再起動する。</p>
+                        <p>一度<code>ssh ohtaka</code>でパスワードなしでログインできること(ssh-agentが起動して、秘密鍵を覚えていること)を確認する。</p>
+                        <div class="sourceCode" id="cb16"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">rclone</span> ls ohtaka: <span class="at">--max-depth</span><span class="op">=</span>1 </span></code></pre></div>
+                        <p>成功。</p>
+                        <div class="sourceCode" id="cb17"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> ohtaka</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="ex">rclone</span> mount ohtaka: ~/ohtaka <span class="at">--vfs-cache-mode</span> writes <span class="at">--daemon</span></span></code></pre></div>
+                        <p>これでWindows,
+                        Mac両方ともrcloneでスパコンサイトをローカルマウントできた。</p>
+                        <p>解析力学の著者校正返した。</p>
+                        <p>今日、会議x4の合間に、cloneのWindows/Macの動作確認した上に250ページ近い本の著者校正返したの偉すぎない？</p>
                         <h2 id="月15日火"><a href="#15">04月15日(火)</a>
                         <a id="15"></a></h2>
                         <p>sshfsの代替、rcloneが良いらしい。ただし、<a
@@ -133,10 +165,10 @@
                         <h2 id="月04日金"><a href="#04">04月04日(金)</a>
                         <a id="04"></a></h2>
                         <p>Rockeyにgnuplotインストール。</p>
-                        <div class="sourceCode" id="cb13"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> dnf install <span class="at">-y</span> epel-release</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> dnf install <span class="at">-y</span> epel-release</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> dnf install <span class="at">-y</span> gnuplot</span></code></pre></div>
+                        <div class="sourceCode" id="cb18"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> dnf install <span class="at">-y</span> epel-release</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> dnf install <span class="at">-y</span> epel-release</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> dnf install <span class="at">-y</span> gnuplot</span></code></pre></div>
                         <p>二回必要？</p>
                         <p>Adobeのライセンス整理。</p>
                         <p>K-LMSで「シミュレーション工学」のコース公開。本当は昨日公開すべきだったらしい。</p>
