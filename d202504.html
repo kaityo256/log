@@ -21,6 +21,48 @@
   <body>
     <article class="markdown-body">
                         <h1 id="年4月">2025年4月</h1>
+                        <h2 id="月30日水"><a href="#30">04月30日(水)</a>
+                        <a id="30"></a></h2>
+                        <p>昨日もっと忙しかったよなぁ、と思い返してみたら、査読レポート書いて返してたわ。なんかもうTodoistに書いていないことは全く覚えてない。
+                        TodoistというかLogistになっている。</p>
+                        <p>教科書の著者プロフィールのチェック。「博士課程」ではなく「博士後期課程」ではないか？という指摘で調べてみた。少なくとも2025年現在の募集要項を確認すると、東京大学大学院理学系研究科は「博士課程」、東京大学大学院工学系研究科は「博士後期課程」と書いてある。</p>
+                        <p>学位記には「博士課程」って書いてあるんだけどなぁ。</p>
+                        <p>重い腰を上げてGoをインストールする。</p>
+                        <div class="sourceCode" id="cb1"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> install go</span></code></pre></div>
+                        <div class="sourceCode" id="cb2"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> ooxmlgrep</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ooxmlgrep</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">go</span> mod init github.com/kaityo256/ooxmlgrep</span></code></pre></div>
+                        <p>GoのBuild方法がよくわからない。タスクを使ってみる。</p>
+                        <div class="sourceCode" id="cb3"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> install go-task/tap/go-task</span></code></pre></div>
+                        <p>これで<code>task build</code>でビルドできるようになった(そうなるようにTaskfile.ymlを作る)。</p>
+                        <div class="sourceCode" id="cb4"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> install goreleaser</span></code></pre></div>
+                        <div class="sourceCode" id="cb5"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">goreleaser</span> release <span class="at">--snapshot</span> <span class="at">--clean</span></span></code></pre></div>
+                        <p>でリリース準備ができることを確認(READMEとかLICENSEが必要)。</p>
+                        <div class="sourceCode" id="cb6"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> tag v0.1.0</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push origin v0.1.0</span></code></pre></div>
+                        <p>GitHub側でPublish Release。</p>
+                        <p>ghを入れてなかったのでインストール。</p>
+                        <div class="sourceCode" id="cb7"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> install gh</span></code></pre></div>
+                        <div class="sourceCode" id="cb8"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">gh</span> auth login</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">GITHUB_TOKEN</span><span class="op">=</span><span class="va">$(</span><span class="ex">gh</span> auth token<span class="va">)</span></span></code></pre></div>
+                        <p>あとは</p>
+                        <div class="sourceCode" id="cb9"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">goreleaser</span> release <span class="at">--clean</span></span></code></pre></div>
+                        <p>で最新のTagについて勝手にリリースを作ってくれる。</p>
+                        <p>というわけでpptxgrepのGo版ができたぞ。あっという間だったなぁ・・・</p>
+                        <p><a
+                        href="https://github.com/kaityo256/ooxmlgrep">github.com/kaityo256/ooxmlgrep</a></p>
+                        <div class="sourceCode" id="cb10"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">go</span> install github.com/kaityo256/ooxmlgrep@latest</span></code></pre></div>
+                        <p>でインストール可能。簡単、便利、動作もD原語版より圧倒的に早い！(なんでだろ？)</p>
                         <h2 id="月29日火"><a href="#29">04月29日(火)</a>
                         <a id="29"></a></h2>
                         <p>輪講。</p>
@@ -63,8 +105,8 @@
                         <h2 id="月21日月"><a href="#21">04月21日(月)</a>
                         <a id="21"></a></h2>
                         <p>WSL2(Ubuntu)ではデフォルトでpipが入ってない。</p>
-                        <div class="sourceCode" id="cb1"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install python3-pip</span></code></pre></div>
+                        <div class="sourceCode" id="cb11"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install python3-pip</span></code></pre></div>
                         <p>Pythonの仮想環境構築は1on1でやることにした。ハンズオンにしたほうが良い気もするが、今年度は間に合わない。</p>
                         <p>シミュレーション工学二回目。さすがに感想が減ったな。</p>
                         <p>面倒な仕事が面倒くさい(トートロジー)。</p>
@@ -95,70 +137,70 @@
                         <a id="16"></a></h2>
                         <p>Markdown→Re:VIEW→LaTeXでうまく動かない奴。<code>\left|</code>と<code>\right|</code>のせいだった。Re:VIEWの文中数式が<code>@&lt;m&gt;|hoge|</code>と、縦棒をデリミタとして使っているため。とりあえず文中の<code>\left|</code>、<code>\right|</code>を<code>\lvert</code>、<code>\rvert</code>にすることで対応。</p>
                         <p>rcloneをWSLにインストール。</p>
-                        <div class="sourceCode" id="cb2"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> <span class="at">-v</span> <span class="kw">;</span> <span class="ex">curl</span> https://rclone.org/install.sh <span class="kw">|</span> <span class="fu">sudo</span> bash</span></code></pre></div>
+                        <div class="sourceCode" id="cb12"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> <span class="at">-v</span> <span class="kw">;</span> <span class="ex">curl</span> https://rclone.org/install.sh <span class="kw">|</span> <span class="fu">sudo</span> bash</span></code></pre></div>
                         <p>実行に数分かかる。ダウンロード後に表示が止まるので不安になる。しばらくまって以下の様な表示が出たらOK。</p>
-                        <div class="sourceCode" id="cb3"><pre
-                        class="sourceCode txt"><code class="sourceCode default"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>rclone v1.69.1 has successfully installed.</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>Now run &quot;rclone config&quot; for setup. Check https://rclone.org/docs/ for more details.</span></code></pre></div>
+                        <div class="sourceCode" id="cb13"><pre
+                        class="sourceCode txt"><code class="sourceCode default"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>rclone v1.69.1 has successfully installed.</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>Now run &quot;rclone config&quot; for setup. Check https://rclone.org/docs/ for more details.</span></code></pre></div>
                         <p>FUSE(Filesystem in
                         Userspace)が必要だが、WSL2にはデフォルトで入っている模様。</p>
                         <p>設定は<code>rclone config</code>で対話的にもできるが、非常に冗長なので、コマンドラインから一気にやるのが楽。</p>
-                        <div class="sourceCode" id="cb4"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">rclone</span> config create server-name sftp host=hostname shell_type=unix</span></code></pre></div>
+                        <div class="sourceCode" id="cb14"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">rclone</span> config create server-name sftp host=hostname shell_type=unix</span></code></pre></div>
                         <p><code>servername</code>が今後使う名前。<code>hostname</code>がsshのホスト名。</p>
                         <p>これにより、<code>.config/rclone/rclone.conf</code>に必要な情報が書き込まれる。この後、</p>
-                        <div class="sourceCode" id="cb5"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">rclone</span> ls server-name: <span class="at">--max-depth</span><span class="op">=</span>1</span></code></pre></div>
+                        <div class="sourceCode" id="cb15"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">rclone</span> ls server-name: <span class="at">--max-depth</span><span class="op">=</span>1</span></code></pre></div>
                         <p>で<code>ls</code>が通ったら成功。</p>
                         <p>WSL2でのマウントには「fusermount3」が必要。</p>
-                        <div class="sourceCode" id="cb6"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt update</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install fuse3</span></code></pre></div>
-                        <div class="sourceCode" id="cb7"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span> fusermount3</span></code></pre></div>
+                        <div class="sourceCode" id="cb16"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt update</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install fuse3</span></code></pre></div>
+                        <div class="sourceCode" id="cb17"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span> fusermount3</span></code></pre></div>
                         <p>を実行し、<code>/usr/bin/fusermount3</code>と表示されればOK。</p>
                         <p>この状態で<code>server-name:temp</code>を<code>~temp</code>にデーモンモードでマウントするには、</p>
-                        <div class="sourceCode" id="cb8"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">rclone</span> mount server-name:temp ~/temp <span class="at">--vfs-cache-mode</span> writes <span class="at">--daemon</span></span></code></pre></div>
+                        <div class="sourceCode" id="cb18"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">rclone</span> mount server-name:temp ~/temp <span class="at">--vfs-cache-mode</span> writes <span class="at">--daemon</span></span></code></pre></div>
                         <p>とすればOK。unmountは、</p>
-                        <div class="sourceCode" id="cb9"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> umount temp</span></code></pre></div>
+                        <div class="sourceCode" id="cb19"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> umount temp</span></code></pre></div>
                         <p>とする。エディタで開いた状態のままだと</p>
-                        <div class="sourceCode" id="cb10"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">umount:</span> /home/watanabe/temp: target is busy.</span></code></pre></div>
+                        <div class="sourceCode" id="cb20"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="ex">umount:</span> /home/watanabe/temp: target is busy.</span></code></pre></div>
                         <p>などと言われるので、VSCodeを閉じてから<code>sudo umount temp</code>をやりなおす。</p>
-                        <div class="sourceCode" id="cb11"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">rclone</span> config create server-name sftp host=hostname</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="ex">rclone</span> config update server-name user=watanabe</span></code></pre></div>
+                        <div class="sourceCode" id="cb21"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="ex">rclone</span> config create server-name sftp host=hostname</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="ex">rclone</span> config update server-name user=watanabe</span></code></pre></div>
                         <p>と二行に分けた方が分かりやすいな。</p>
                         <p>物性研を試す。</p>
-                        <div class="sourceCode" id="cb12"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">rclone</span> config create ohtaka sftp host=ohtaka.issp.u-tokyo.ac.jp</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="ex">rclone</span> config update ohtaka user=k0xxxxx</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="ex">rclone</span> ls ohtaka: <span class="at">--max-depth</span><span class="op">=</span>1 </span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> ohtaka</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="ex">rclone</span> mount ohtaka: ~/ohtaka <span class="at">--vfs-cache-mode</span> writes <span class="at">--daemon</span></span></code></pre></div>
+                        <div class="sourceCode" id="cb22"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="ex">rclone</span> config create ohtaka sftp host=ohtaka.issp.u-tokyo.ac.jp</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="ex">rclone</span> config update ohtaka user=k0xxxxx</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="ex">rclone</span> ls ohtaka: <span class="at">--max-depth</span><span class="op">=</span>1 </span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> ohtaka</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="ex">rclone</span> mount ohtaka: ~/ohtaka <span class="at">--vfs-cache-mode</span> writes <span class="at">--daemon</span></span></code></pre></div>
                         <p><code>code .</code>はできないが、「フォルダーを開く」はいける。</p>
-                        <div class="sourceCode" id="cb13"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">rclone</span> config create kugui sftp host=kugui.issp.u-tokyo.ac.jp</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="ex">rclone</span> config update kugui user=k0xxxxx</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="ex">rclone</span> ls kugui: <span class="at">--max-depth</span><span class="op">=</span>1 </span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> kugui</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="ex">rclone</span> mount kugui: ~/kugui <span class="at">--vfs-cache-mode</span> writes <span class="at">--daemon</span></span></code></pre></div>
+                        <div class="sourceCode" id="cb23"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="ex">rclone</span> config create kugui sftp host=kugui.issp.u-tokyo.ac.jp</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="ex">rclone</span> config update kugui user=k0xxxxx</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="ex">rclone</span> ls kugui: <span class="at">--max-depth</span><span class="op">=</span>1 </span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> kugui</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="ex">rclone</span> mount kugui: ~/kugui <span class="at">--vfs-cache-mode</span> writes <span class="at">--daemon</span></span></code></pre></div>
                         <p>こっちもいけた。これで行こう。</p>
                         <p>Macにもインストール。</p>
-                        <div class="sourceCode" id="cb14"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> <span class="at">-v</span> <span class="kw">;</span> <span class="ex">curl</span> https://rclone.org/install.sh <span class="kw">|</span> <span class="fu">sudo</span> bash</span></code></pre></div>
+                        <div class="sourceCode" id="cb24"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> <span class="at">-v</span> <span class="kw">;</span> <span class="ex">curl</span> https://rclone.org/install.sh <span class="kw">|</span> <span class="fu">sudo</span> bash</span></code></pre></div>
                         <p>パスワード入力後、以下のような画面が出てしばらく止まる。</p>
-                        <div class="sourceCode" id="cb15"><pre
-                        class="sourceCode txt"><code class="sourceCode default"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>                                 Dload  Upload   Total   Spent    Left  Speed</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>100  4734  100  4734    0     0   5010      0 --:--:-- --:--:-- --:--:--  5009</span></code></pre></div>
+                        <div class="sourceCode" id="cb25"><pre
+                        class="sourceCode txt"><code class="sourceCode default"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>                                 Dload  Upload   Total   Spent    Left  Speed</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>100  4734  100  4734    0     0   5010      0 --:--:-- --:--:-- --:--:--  5009</span></code></pre></div>
                         <p>しばらく待って</p>
-                        <div class="sourceCode" id="cb16"><pre
-                        class="sourceCode txt"><code class="sourceCode default"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>rclone v1.69.1 has successfully installed.</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>Now run &quot;rclone config&quot; for setup. Check https://rclone.org/docs/ for more details.</span></code></pre></div>
+                        <div class="sourceCode" id="cb26"><pre
+                        class="sourceCode txt"><code class="sourceCode default"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>rclone v1.69.1 has successfully installed.</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>Now run &quot;rclone config&quot; for setup. Check https://rclone.org/docs/ for more details.</span></code></pre></div>
                         <p>と出ればOK。</p>
                         <p>次にmacFUSEのインストール。</p>
                         <p><a
@@ -169,12 +211,12 @@
                         <p>「プライバシーとセキュリティ」の画面で「開発元”Benjamin
                         Fleischer”のシステムソフトウェアの読み込みがブロックされました。」というメッセージの下の「許可」ボタンを押す。再起動を求められるので再起動する。</p>
                         <p>一度<code>ssh ohtaka</code>でパスワードなしでログインできること(ssh-agentが起動して、秘密鍵を覚えていること)を確認する。</p>
-                        <div class="sourceCode" id="cb17"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">rclone</span> ls ohtaka: <span class="at">--max-depth</span><span class="op">=</span>1 </span></code></pre></div>
+                        <div class="sourceCode" id="cb27"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="ex">rclone</span> ls ohtaka: <span class="at">--max-depth</span><span class="op">=</span>1 </span></code></pre></div>
                         <p>成功。</p>
-                        <div class="sourceCode" id="cb18"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> ohtaka</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="ex">rclone</span> mount ohtaka: ~/ohtaka <span class="at">--vfs-cache-mode</span> writes <span class="at">--daemon</span></span></code></pre></div>
+                        <div class="sourceCode" id="cb28"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> ohtaka</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="ex">rclone</span> mount ohtaka: ~/ohtaka <span class="at">--vfs-cache-mode</span> writes <span class="at">--daemon</span></span></code></pre></div>
                         <p>これでWindows,
                         Mac両方ともrcloneでスパコンサイトをローカルマウントできた。</p>
                         <p>解析力学の著者校正返した。</p>
@@ -235,10 +277,10 @@
                         <h2 id="月04日金"><a href="#04">04月04日(金)</a>
                         <a id="04"></a></h2>
                         <p>Rockeyにgnuplotインストール。</p>
-                        <div class="sourceCode" id="cb19"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> dnf install <span class="at">-y</span> epel-release</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> dnf install <span class="at">-y</span> epel-release</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> dnf install <span class="at">-y</span> gnuplot</span></code></pre></div>
+                        <div class="sourceCode" id="cb29"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> dnf install <span class="at">-y</span> epel-release</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> dnf install <span class="at">-y</span> epel-release</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> dnf install <span class="at">-y</span> gnuplot</span></code></pre></div>
                         <p>二回必要？</p>
                         <p>Adobeのライセンス整理。</p>
                         <p>K-LMSで「シミュレーション工学」のコース公開。本当は昨日公開すべきだったらしい。</p>
