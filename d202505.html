@@ -21,6 +21,31 @@
   <body>
     <article class="markdown-body">
                         <h1 id="年5月">2025年5月</h1>
+                        <h2 id="月25日日"><a href="#25">05月25日(日)</a>
+                        <a id="25"></a></h2>
+                        <p>1on1の日程入力した。PowerPointで作られた日程をChatGPTに食わせて名前と曜日を抽出。</p>
+                        <div class="sourceCode" id="cb1"><pre
+                        class="sourceCode txt"><code class="sourceCode default"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>この画像から1on1の日程を抜き出してください。例えば</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>1on1 (渡辺), 月曜日 10:00 -</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>と、一行に1つ、全員分の14行を出力してください。</span></code></pre></div>
+                        <p>出てきたCSVを少し修正して</p>
+                        <div class="sourceCode" id="cb2"><pre
+                        class="sourceCode txt"><code class="sourceCode default"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>以下のCSVデータから、Google Calendarインポート用のCSVデータを生成してください。</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>条件は以下の通りです。</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>* 各CSVデータには、タイトル, 曜日、開始時間が記載されています。</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>* 終了時間は開始時間の30分後です。</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>* 期間は5月26日から7月25日まで、毎週繰り返します。</span></code></pre></div>
+                        <p>そして出てきたCSVをGoogle
+                        Calendarにインポートしておしまい。手作業でやってた時はミスが多かったが、プロンプトが正しければほぼミスなし。便利な時代になったなぁ。</p>
+                        <h2 id="月24日土"><a href="#24">05月24日(土)</a>
+                        <a id="24"></a></h2>
+                        <p>NOP</p>
+                        <h2 id="月23日金"><a href="#23">05月23日(金)</a>
+                        <a id="23"></a></h2>
+                        <p>面倒な書類の面倒な対応をした。面倒だった。</p>
                         <h2 id="月22日木"><a href="#22">05月22日(木)</a>
                         <a id="22"></a></h2>
                         <p>ハンズオン。今日はAdobe Illustrator。</p>
@@ -126,15 +151,15 @@
                         <h2 id="月08日木"><a href="#08">05月08日(木)</a>
                         <a id="08"></a></h2>
                         <p>重い腰を上げて、自分が作って放置しているissue一覧を調べた。</p>
-                        <div class="sourceCode" id="cb1"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> gh search issues <span class="at">--author</span> <span class="st">&quot;@me&quot;</span> <span class="at">--limit</span> 1000</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Showing</span> 232 of 232 issues</span></code></pre></div>
+                        <div class="sourceCode" id="cb3"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> gh search issues <span class="at">--author</span> <span class="st">&quot;@me&quot;</span> <span class="at">--limit</span> 1000</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Showing</span> 232 of 232 issues</span></code></pre></div>
                         <p>232個か・・・と思ったが、これ開いたissueすべてだな。</p>
-                        <div class="sourceCode" id="cb2"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> gh search issues <span class="at">--author</span> <span class="st">&quot;@me&quot;</span> <span class="at">--state</span> open <span class="at">--limit</span> 1000</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Showing</span> 34 of 34 issues</span></code></pre></div>
+                        <div class="sourceCode" id="cb4"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> gh search issues <span class="at">--author</span> <span class="st">&quot;@me&quot;</span> <span class="at">--state</span> open <span class="at">--limit</span> 1000</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Showing</span> 34 of 34 issues</span></code></pre></div>
                         <p>34個。なるほど。一番古いので4年前。いつか整理しよう(←いつになるんですか？)。</p>
                         <p>塩漬けIssueを見てしまったので、とりあえずすぐ潰せる奴を潰した。残り33個。</p>
                         <p>やっぱり「可視化する」って大事だなぁ。その日、初めてログインするたびにopenなissueリストを表示するようにするか？さすがにウザすぎ？</p>
@@ -152,24 +177,24 @@
                         <p>数理物理のK-LMSモジュール公開。ついでにGoogle
                         Calendarに追加。</p>
                         <p>ふと思い立ってChatGPTに「CSV形式で一気にインポートできるか？」と聞いたらできた。ただ、CSV形式を用意するのが面倒だったので、</p>
-                        <div class="sourceCode" id="cb3"><pre
-                        class="sourceCode txt"><code class="sourceCode default"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>以下の14回の日程で「数理物理」という講義を行います。全て14:45から16:15までです。</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>公開についてはデフォルトの公開設定として、CSV形式に変換してください。</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>5/30</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>6/9</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>6/13</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>6/16</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>6/20</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>6/23</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>6/27</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>6/30</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>7/4</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>7/7</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>7/11</span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>7/14</span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>7/18</span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>7/21</span></code></pre></div>
+                        <div class="sourceCode" id="cb5"><pre
+                        class="sourceCode txt"><code class="sourceCode default"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>以下の14回の日程で「数理物理」という講義を行います。全て14:45から16:15までです。</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>公開についてはデフォルトの公開設定として、CSV形式に変換してください。</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>5/30</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>6/9</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>6/13</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>6/16</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>6/20</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>6/23</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>6/27</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>6/30</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>7/4</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>7/7</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>7/11</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>7/14</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>7/18</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>7/21</span></code></pre></div>
                         <p>と投げたら</p>
                         <pre class="csv"><code>Subject,Start Date,Start Time,End Date,End Time,All Day Event,Description,Location,Private
 数理物理,2025/05/30,14:45,2025/05/30,16:15,False,数理物理,,False
