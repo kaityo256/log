@@ -21,11 +21,54 @@
   <body>
     <article class="markdown-body">
                         <h1 id="年5月">2025年5月</h1>
+                        <h2 id="月27日火"><a href="#27">05月27日(火)</a>
+                        <a id="27"></a></h2>
+                        <p>サーバの再インストールにより、再度ホストベース認証を通るようにした。ログインノードはFQDNによる指定が必要など、いくつか罠があったが、とりあえず作業メモは残した。</p>
+                        <p>一番のポイントはsshdを別ポートでデバッグ用に開くこと。</p>
+                        <p>サーバ側</p>
+                        <div class="sourceCode" id="cb1"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> /usr/sbin/sshd <span class="at">-d</span> <span class="at">-p</span> 2222</span></code></pre></div>
+                        <p>クライアント側</p>
+                        <div class="sourceCode" id="cb2"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> <span class="at">-o</span> PreferredAuthentications=hostbased <span class="at">-vvv</span> servername</span></code></pre></div>
+                        <p>これで、サーバのデバッグログが取れる、もとのsshdが壊れない(失敗するとログインできなくなる)というメリットがある。また、地味にクライアント側でホストベース認証のみに制限するとログが見やすくなって便利。</p>
                         <h2 id="月26日月"><a href="#26">05月26日(月)</a>
                         <a id="26"></a></h2>
-                        <p>1on1の日程、全て非公開になってた・・・
-                        orz</p>
-                        <p>自分からは見えるので気づかなかった。</p>
+                        <p>1on1の日程、全て非公開になってた・・・ orz
+                        自分からは見えるので気づかなかった。</p>
+                        <p>ChatGPTに聞いたら、Google Cloud Console
+                        を使う方法を提案されたが、どうも有料っぽいので別のを聞いたらGAS
+                        (Google Apps
+                        Script)が使えるそうなので、それを実行した。</p>
+                        <p>こんなの。</p>
+                        <div class="sourceCode" id="cb3"><pre
+                        class="sourceCode js"><code class="sourceCode javascript"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">setVisibilityToDefaultFor1on1</span>() {</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> calendarId <span class="op">=</span> <span class="st">&#39;your_calendar_id@group.calendar.google.com&#39;</span><span class="op">;</span> <span class="co">// ← あなたのカレンダーIDに変更</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> calendar <span class="op">=</span> CalendarApp<span class="op">.</span><span class="fu">getCalendarById</span>(calendarId)<span class="op">;</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> now <span class="op">=</span> <span class="kw">new</span> <span class="bu">Date</span>()<span class="op">;</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> oneYearLater <span class="op">=</span> <span class="kw">new</span> <span class="bu">Date</span>()<span class="op">;</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  oneYearLater<span class="op">.</span><span class="fu">setFullYear</span>(now<span class="op">.</span><span class="fu">getFullYear</span>() <span class="op">+</span> <span class="dv">1</span>)<span class="op">;</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="co">// 1年間のイベントを取得</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> events <span class="op">=</span> calendar<span class="op">.</span><span class="fu">getEvents</span>(now<span class="op">,</span> oneYearLater)<span class="op">;</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> updatedCount <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (<span class="kw">const</span> <span class="bu">event</span> <span class="kw">of</span> events) {</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> title <span class="op">=</span> <span class="bu">event</span><span class="op">.</span><span class="fu">getTitle</span>()<span class="op">;</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (title<span class="op">.</span><span class="fu">includes</span>(<span class="st">&#39;1on1&#39;</span>) <span class="op">&amp;&amp;</span> <span class="bu">event</span><span class="op">.</span><span class="fu">getVisibility</span>() <span class="op">!==</span> CalendarApp<span class="op">.</span><span class="at">Visibility</span><span class="op">.</span><span class="at">DEFAULT</span>) {</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>      <span class="bu">event</span><span class="op">.</span><span class="fu">setVisibility</span>(CalendarApp<span class="op">.</span><span class="at">Visibility</span><span class="op">.</span><span class="at">DEFAULT</span>)<span class="op">;</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>      Logger<span class="op">.</span><span class="fu">log</span>(<span class="vs">`Updated: </span><span class="sc">${</span>title<span class="sc">}</span><span class="vs">`</span>)<span class="op">;</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>      updatedCount<span class="op">++;</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>  Logger<span class="op">.</span><span class="fu">log</span>(<span class="vs">`Total updated events: </span><span class="sc">${</span>updatedCount<span class="sc">}</span><span class="vs">`</span>)<span class="op">;</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+                        <p>これをGoogle Drive を開く →
+                        「新規」→「その他」→「Google Apps
+                        Script」に貼り付けて、カレンダーIDを修正してから実行。できた。</p>
                         <p>シミュレーション工学。時間ギリギリ。もう少し減らした方が良いかも。</p>
                         <p>FS報告書提出。</p>
                         <p>タイヤ交換電話。</p>
@@ -33,20 +76,20 @@
                         <h2 id="月25日日"><a href="#25">05月25日(日)</a>
                         <a id="25"></a></h2>
                         <p>1on1の日程入力した。PowerPointで作られた日程をChatGPTに食わせて名前と曜日を抽出。</p>
-                        <div class="sourceCode" id="cb1"><pre
-                        class="sourceCode txt"><code class="sourceCode default"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>この画像から1on1の日程を抜き出してください。例えば</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>1on1 (渡辺), 月曜日 10:00 -</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>と、一行に1つ、全員分の14行を出力してください。</span></code></pre></div>
+                        <div class="sourceCode" id="cb4"><pre
+                        class="sourceCode txt"><code class="sourceCode default"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>この画像から1on1の日程を抜き出してください。例えば</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>1on1 (渡辺), 月曜日 10:00 -</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>と、一行に1つ、全員分の14行を出力してください。</span></code></pre></div>
                         <p>出てきたCSVを少し修正して</p>
-                        <div class="sourceCode" id="cb2"><pre
-                        class="sourceCode txt"><code class="sourceCode default"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>以下のCSVデータから、Google Calendarインポート用のCSVデータを生成してください。</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>条件は以下の通りです。</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>* 各CSVデータには、タイトル, 曜日、開始時間が記載されています。</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>* 終了時間は開始時間の30分後です。</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>* 期間は5月26日から7月25日まで、毎週繰り返します。</span></code></pre></div>
+                        <div class="sourceCode" id="cb5"><pre
+                        class="sourceCode txt"><code class="sourceCode default"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>以下のCSVデータから、Google Calendarインポート用のCSVデータを生成してください。</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>条件は以下の通りです。</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>* 各CSVデータには、タイトル, 曜日、開始時間が記載されています。</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>* 終了時間は開始時間の30分後です。</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>* 期間は5月26日から7月25日まで、毎週繰り返します。</span></code></pre></div>
                         <p>そして出てきたCSVをGoogle
                         Calendarにインポートしておしまい。手作業でやってた時はミスが多かったが、プロンプトが正しければほぼミスなし。便利な時代になったなぁ。</p>
                         <h2 id="月24日土"><a href="#24">05月24日(土)</a>
@@ -161,15 +204,15 @@
                         <h2 id="月08日木"><a href="#08">05月08日(木)</a>
                         <a id="08"></a></h2>
                         <p>重い腰を上げて、自分が作って放置しているissue一覧を調べた。</p>
-                        <div class="sourceCode" id="cb3"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> gh search issues <span class="at">--author</span> <span class="st">&quot;@me&quot;</span> <span class="at">--limit</span> 1000</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Showing</span> 232 of 232 issues</span></code></pre></div>
+                        <div class="sourceCode" id="cb6"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> gh search issues <span class="at">--author</span> <span class="st">&quot;@me&quot;</span> <span class="at">--limit</span> 1000</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Showing</span> 232 of 232 issues</span></code></pre></div>
                         <p>232個か・・・と思ったが、これ開いたissueすべてだな。</p>
-                        <div class="sourceCode" id="cb4"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> gh search issues <span class="at">--author</span> <span class="st">&quot;@me&quot;</span> <span class="at">--state</span> open <span class="at">--limit</span> 1000</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Showing</span> 34 of 34 issues</span></code></pre></div>
+                        <div class="sourceCode" id="cb7"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> gh search issues <span class="at">--author</span> <span class="st">&quot;@me&quot;</span> <span class="at">--state</span> open <span class="at">--limit</span> 1000</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Showing</span> 34 of 34 issues</span></code></pre></div>
                         <p>34個。なるほど。一番古いので4年前。いつか整理しよう(←いつになるんですか？)。</p>
                         <p>塩漬けIssueを見てしまったので、とりあえずすぐ潰せる奴を潰した。残り33個。</p>
                         <p>やっぱり「可視化する」って大事だなぁ。その日、初めてログインするたびにopenなissueリストを表示するようにするか？さすがにウザすぎ？</p>
@@ -187,24 +230,24 @@
                         <p>数理物理のK-LMSモジュール公開。ついでにGoogle
                         Calendarに追加。</p>
                         <p>ふと思い立ってChatGPTに「CSV形式で一気にインポートできるか？」と聞いたらできた。ただ、CSV形式を用意するのが面倒だったので、</p>
-                        <div class="sourceCode" id="cb5"><pre
-                        class="sourceCode txt"><code class="sourceCode default"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>以下の14回の日程で「数理物理」という講義を行います。全て14:45から16:15までです。</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>公開についてはデフォルトの公開設定として、CSV形式に変換してください。</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>5/30</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>6/9</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>6/13</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>6/16</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>6/20</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>6/23</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>6/27</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>6/30</span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>7/4</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>7/7</span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>7/11</span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>7/14</span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>7/18</span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>7/21</span></code></pre></div>
+                        <div class="sourceCode" id="cb8"><pre
+                        class="sourceCode txt"><code class="sourceCode default"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>以下の14回の日程で「数理物理」という講義を行います。全て14:45から16:15までです。</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>公開についてはデフォルトの公開設定として、CSV形式に変換してください。</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>5/30</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>6/9</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>6/13</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>6/16</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>6/20</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>6/23</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>6/27</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>6/30</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>7/4</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>7/7</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>7/11</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>7/14</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>7/18</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>7/21</span></code></pre></div>
                         <p>と投げたら</p>
                         <pre class="csv"><code>Subject,Start Date,Start Time,End Date,End Time,All Day Event,Description,Location,Private
 数理物理,2025/05/30,14:45,2025/05/30,16:15,False,数理物理,,False
