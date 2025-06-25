@@ -23,6 +23,118 @@
   <body>
     <article class="markdown-body">
                         <h1 id="年6月">2025年6月</h1>
+                        <h2 id="月25日水"><a href="#25">06月25日(水)</a>
+                        <a id="25"></a></h2>
+                        <div class="sourceCode" id="cb1"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> build <span class="co"># もしbuildディレクトリがなければ作る</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> build</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://github.com/libffi/libffi/releases/download/v3.5.1/libffi-3.5.1.tar.gz</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> xvzf libffi-3.5.1.tar.gz</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> libffi-3.5.1/</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ./configure <span class="at">--prefix</span><span class="op">=</span><span class="va">$HOME</span>/local/libffi <span class="at">--disable-static</span> <span class="at">--with-pic</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> install</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">PKG_CONFIG_PATH</span><span class="op">=</span><span class="va">$HOME</span>/local/libffi/lib/pkgconfig:<span class="va">$PKG_CONFIG_PATH</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">CFLAGS</span><span class="op">=</span><span class="st">&quot;-I</span><span class="va">$HOME</span><span class="st">/local/libffi/include&quot;</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">LDFLAGS</span><span class="op">=</span><span class="st">&quot;-L</span><span class="va">$HOME</span><span class="st">/local/libffi/lib&quot;</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="bu">ulimit</span> <span class="at">-u</span> 300</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">env</span> <span class="dt">\</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  CFLAGS=<span class="st">&quot;-I</span><span class="va">$HOME</span><span class="st">/local/libffi/include&quot;</span> <span class="dt">\</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  LDFLAGS=<span class="st">&quot;-L</span><span class="va">$HOME</span><span class="st">/local/libffi/lib&quot;</span> <span class="dt">\</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  PKG_CONFIG_PATH=<span class="st">&quot;</span><span class="va">$HOME</span><span class="st">/local/libffi/lib/pkgconfig&quot;</span> <span class="dt">\</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>  pyenv install 3.10.14</span></code></pre></div>
+                        <div class="sourceCode" id="cb2"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> test</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> test</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> <span class="at">-m</span> venv .venv</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> .venv/bin/activate</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> <span class="at">-m</span> pip install scipy</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> <span class="at">-m</span> pip install deephyper</span></code></pre></div>
+                        <p>いろいろだめ。miniforgeに逃げる。</p>
+                        <div class="sourceCode" id="cb3"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> build</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">bash</span> Miniforge3-Linux-x86_64.sh</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="bu">eval</span> <span class="st">&quot;</span><span class="va">$(</span><span class="ex">/home/k0117/k011700/miniforge3/bin/conda</span> shell.bash hook<span class="va">)</span><span class="st">&quot;</span> </span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> init</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> create <span class="at">-n</span> myenv python=3.10</span></code></pre></div>
+                        <p>deephyperのテスト。</p>
+                        <div class="sourceCode" id="cb4"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> python3 test.py</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>     <span class="ex">p:b</span> p:function       p:x  ...  sol.p:function   sol.p:x sol.objective</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ex">0</span>      7      cubic <span class="at">-1.103350</span>  ...           cubic  8.374450    590.312101</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="ex">1</span>      3      cubic  8.374450  ...           cubic  8.374450    590.312101</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="ex">2</span>      6      cubic  4.680560  ...           cubic  8.374450    590.312101</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="ex">3</span>      9     linear  8.787395  ...           cubic  8.374450    590.312101</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="ex">4</span>      6      cubic  9.109560  ...           cubic  9.109560    761.948419</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="ex">..</span>   ...        ...       ...  ...             ...       ...           ...</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="ex">96</span>    10      cubic  9.999914  ...           cubic  9.999998   1009.999489</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="ex">97</span>    10      cubic  9.999943  ...           cubic  9.999998   1009.999489</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="ex">98</span>    10     linear  9.999705  ...           cubic  9.999998   1009.999489</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="ex">99</span>    10     linear  9.999884  ...           cubic  9.999998   1009.999489</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="ex">100</span>   10      cubic  9.999922  ...           cubic  9.999998   1009.999489</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="ex">[101</span> rows x 12 columns]</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="ex">Optimum</span> values</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="ex">function:</span> cubic</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="ex">x:</span> 9.99999829679699</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="ex">b:</span> 10</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="ex">y:</span> 1009.9994890391841</span></code></pre></div>
+                        <p>できてるな。</p>
+                        <p>シミュレーション工学のレポートの採点残り終えた。</p>
+                        <p>中間テスト作った。</p>
+                        <p>理事会のお仕事返した。</p>
+                        <p>いろいろ余裕がなさすぎる。数理物理の講義がある期間は何もできないと思っておいたほうが良さそう。</p>
+                        <h2 id="月24日火"><a href="#24">06月24日(火)</a>
+                        <a id="24"></a></h2>
+                        <p>物性研システムCにPython3.10.14をインストール。</p>
+                        <div class="sourceCode" id="cb5"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> https://pyenv.run <span class="kw">|</span> <span class="fu">bash</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">PYENV_ROOT</span><span class="op">=</span><span class="st">&quot;</span><span class="va">$HOME</span><span class="st">/.pyenv&quot;</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="kw">[[</span> <span class="ot">-d</span> <span class="va">$PYENV_ROOT</span>/bin <span class="kw">]]</span> <span class="kw">&amp;&amp;</span> <span class="bu">export</span> <span class="va">PATH</span><span class="op">=</span><span class="st">&quot;</span><span class="va">$PYENV_ROOT</span><span class="st">/bin:</span><span class="va">$PATH</span><span class="st">&quot;</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="bu">eval</span> <span class="st">&quot;</span><span class="va">$(</span><span class="ex">pyenv</span> init <span class="at">-</span> bash<span class="va">)</span><span class="st">&quot;</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="bu">eval</span> <span class="st">&quot;</span><span class="va">$(</span><span class="ex">pyenv</span> virtualenv-init <span class="at">-</span><span class="va">)</span><span class="st">&quot;</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">MAKEOPTS</span><span class="op">=</span><span class="st">&quot;-j1&quot;</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="fu">env</span> <span class="dt">\</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  CFLAGS=<span class="st">&quot;-I</span><span class="va">$HOME</span><span class="st">/local/libffi/include&quot;</span> <span class="dt">\</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  LDFLAGS=<span class="st">&quot;-L</span><span class="va">$HOME</span><span class="st">/local/libffi/lib&quot;</span> <span class="dt">\</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  PKG_CONFIG_PATH=<span class="st">&quot;</span><span class="va">$HOME</span><span class="st">/local/libffi/lib/pkgconfig&quot;</span> <span class="dt">\</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  pyenv install 3.10.14</span></code></pre></div>
+                        <p>この途中で死ぬ。死んだ上にログインできなくなる。</p>
+                        <div class="sourceCode" id="cb6"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ssh k011700@kugui1.issp.u-tokyo.ac.jp</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">shell</span> request failed on channel 0</span></code></pre></div>
+                        <p>他の端末で監視すると、途中でccが呼ばれなくなっている。インストール中のターミナルでCtrl+Cによりインストールプロセスを殺すとログインできるようになる。なんだこれ？</p>
+                        <p>システムBではどうだろう？</p>
+                        <div class="sourceCode" id="cb7"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> https://pyenv.run <span class="kw">|</span> <span class="fu">bash</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">PYENV_ROOT</span><span class="op">=</span><span class="st">&quot;</span><span class="va">$HOME</span><span class="st">/.pyenv&quot;</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="kw">[[</span> <span class="ot">-d</span> <span class="va">$PYENV_ROOT</span>/bin <span class="kw">]]</span> <span class="kw">&amp;&amp;</span> <span class="bu">export</span> <span class="va">PATH</span><span class="op">=</span><span class="st">&quot;</span><span class="va">$PYENV_ROOT</span><span class="st">/bin:</span><span class="va">$PATH</span><span class="st">&quot;</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="bu">eval</span> <span class="st">&quot;</span><span class="va">$(</span><span class="ex">pyenv</span> init <span class="at">-</span> bash<span class="va">)</span><span class="st">&quot;</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="bu">eval</span> <span class="st">&quot;</span><span class="va">$(</span><span class="ex">pyenv</span> virtualenv-init <span class="at">-</span><span class="va">)</span><span class="st">&quot;</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">MAKEOPTS</span><span class="op">=</span><span class="st">&quot;-j1&quot;</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="ex">pyenv</span> install 3.10.14</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="ex">pyenv</span> gloval 3.10.14</span></code></pre></div>
+                        <div class="sourceCode" id="cb8"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> python3 <span class="at">--version</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Python</span> 3.10.14</span></code></pre></div>
+                        <p>問題なくインストールできた。リソース制限の問題か？</p>
+                        <p>リソース制限の問題だった。</p>
+                        <div class="sourceCode" id="cb9"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="bu">ulimit</span> <span class="at">-u</span> 300</span></code></pre></div>
+                        <p>でうまくいった。<code>make -j 1</code>を指定しているのに、後ろでプロセスを100個立ち上げている？なぜ？どこで？</p>
+                        <h2 id="月23日月"><a href="#23">06月23日(月)</a>
+                        <a id="23"></a></h2>
+                        <p>定期更新した。優勝。</p>
+                        <p>数理物理第6回。今日は変分原理。わりといい感じにできたと思う。</p>
+                        <h2 id="月22日日"><a href="#22">06月22日(日)</a>
+                        <a id="22"></a></h2>
+                        <p>シミュレーション工学のレポート採点。7割くらいおわった。</p>
+                        <h2 id="月21日土"><a href="#21">06月21日(土)</a>
+                        <a id="21"></a></h2>
+                        <p>NOP</p>
                         <h2 id="月20日金"><a href="#20">06月20日(金)</a>
                         <a id="20"></a></h2>
                         <p>数理物理第5回。仮想仕事の原理の復習、ハミルトンの原理、そして変分原理の最初のスネルの法則まで。わりと時間的にぴったりだったのではないか。去年の反省が活きたな。</p>
@@ -38,27 +150,27 @@
                         <h2 id="月17日火"><a href="#17">06月17日(火)</a>
                         <a id="17"></a></h2>
                         <p>latexindentが死んでる。</p>
-                        <div class="sourceCode" id="cb1"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> latexindent <span class="at">-vv</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Attempt</span> to call undefined import method with arguments <span class="er">(</span><span class="st">&quot;@logFileLines&quot;</span><span class="kw">)</span> <span class="ex">via</span> package <span class="st">&quot;LatexIndent::Logger&quot;</span> <span class="er">(</span><span class="ex">Perhaps</span> you forgot to load the package<span class="pp">?</span><span class="kw">)</span> <span class="ex">at</span> /usr/local/texlive/2022/texmf-dist/scripts/latexindent/LatexIndent/Document.pm line 28.</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Attempt</span> to call undefined import method with arguments <span class="er">(</span><span class="st">&quot;</span><span class="va">$ifElseFiBasicRegExp</span><span class="st">&quot;</span><span class="kw">)</span> <span class="ex">via</span> package <span class="st">&quot;LatexIndent::IfElseFi&quot;</span> <span class="er">(</span><span class="ex">Perhaps</span> you forgot to load the package<span class="pp">?</span><span class="kw">)</span> <span class="ex">at</span> /usr/local/texlive/2022/texmf-dist/scripts/latexindent/LatexIndent/Special.pm line 25.</span></code></pre></div>
+                        <div class="sourceCode" id="cb10"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> latexindent <span class="at">-vv</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Attempt</span> to call undefined import method with arguments <span class="er">(</span><span class="st">&quot;@logFileLines&quot;</span><span class="kw">)</span> <span class="ex">via</span> package <span class="st">&quot;LatexIndent::Logger&quot;</span> <span class="er">(</span><span class="ex">Perhaps</span> you forgot to load the package<span class="pp">?</span><span class="kw">)</span> <span class="ex">at</span> /usr/local/texlive/2022/texmf-dist/scripts/latexindent/LatexIndent/Document.pm line 28.</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Attempt</span> to call undefined import method with arguments <span class="er">(</span><span class="st">&quot;</span><span class="va">$ifElseFiBasicRegExp</span><span class="st">&quot;</span><span class="kw">)</span> <span class="ex">via</span> package <span class="st">&quot;LatexIndent::IfElseFi&quot;</span> <span class="er">(</span><span class="ex">Perhaps</span> you forgot to load the package<span class="pp">?</span><span class="kw">)</span> <span class="ex">at</span> /usr/local/texlive/2022/texmf-dist/scripts/latexindent/LatexIndent/Special.pm line 25.</span></code></pre></div>
                         <p>なんかChatGPTが「TeXLiveは毎年更新」という恐ろしいことを言ってるんだけど。</p>
                         <p>TexLiveの最新版をインストール。</p>
-                        <div class="sourceCode" id="cb2"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> xvzf install-tl-unx.tar.gz</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> install-tl-20250616</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> ./install-tl <span class="at">--no-interaction</span></span></code></pre></div>
+                        <div class="sourceCode" id="cb11"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> xvzf install-tl-unx.tar.gz</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> install-tl-20250616</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> ./install-tl <span class="at">--no-interaction</span></span></code></pre></div>
                         <p>パスが更新されなかった。</p>
-                        <div class="sourceCode" id="cb3"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> /usr/local/texlive/2025/bin/universal-darwin/tlmgr path add </span></code></pre></div>
-                        <div class="sourceCode" id="cb4"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-la</span> /usr/local/bin/latex</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">lrwxr-xr-x</span>  1 root  admin  50  6 17 19:48 /usr/local/bin/latex@ <span class="at">-</span><span class="op">&gt;</span> /usr/local/texlive/2025/bin/universal-darwin/latex</span></code></pre></div>
+                        <div class="sourceCode" id="cb12"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> /usr/local/texlive/2025/bin/universal-darwin/tlmgr path add </span></code></pre></div>
+                        <div class="sourceCode" id="cb13"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-la</span> /usr/local/bin/latex</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="ex">lrwxr-xr-x</span>  1 root  admin  50  6 17 19:48 /usr/local/bin/latex@ <span class="at">-</span><span class="op">&gt;</span> /usr/local/texlive/2025/bin/universal-darwin/latex</span></code></pre></div>
                         <p>された。</p>
-                        <div class="sourceCode" id="cb5"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> latexindent <span class="at">-v</span> </span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">3.24.5,</span> 2025-03-13</span></code></pre></div>
+                        <div class="sourceCode" id="cb14"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> latexindent <span class="at">-v</span> </span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="ex">3.24.5,</span> 2025-03-13</span></code></pre></div>
                         <p>latexindentも直った。でもVSCodeのlatexindentが.latexindent/defaultSettings.yamlを読んでくれない。</p>
                         <p>輪講。今日はネーターの定理。ネーターの定理ってハミルトン形式でやったほうが楽だと思うんだけど、この本は徹底的にラグランジアンで議論しているっぽいな。</p>
                         <h2 id="月16日月"><a href="#16">06月16日(月)</a>
@@ -122,8 +234,8 @@
                         <p>間に合った。</p>
                         <p>数理物理。今日は数学的準備の内積空間まで。次回は微分と偏微分から。
                         まぁいいペースだったのではないか。ただ、安易に積分の意味を口走ったのは良くなかった。</p>
-                        <div class="sourceCode" id="cb6"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">ffmpeg</span> <span class="at">-i</span> 数理物理第02回.mkv <span class="at">-c</span> copy 数理物理第02回.mp4</span></code></pre></div>
+                        <div class="sourceCode" id="cb15"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">ffmpeg</span> <span class="at">-i</span> 数理物理第02回.mkv <span class="at">-c</span> copy 数理物理第02回.mp4</span></code></pre></div>
                         <p>動画の確認。前回と違ってGo
                         Proを使ったが、音が小さかった。もう少し音声レベルをあげないといけない。OBS
                         Studioではなく、Go Pro側でやるんだよな？</p>
@@ -173,79 +285,79 @@
                         <h2 id="月04日水"><a href="#04">06月04日(水)</a>
                         <a id="04"></a></h2>
                         <p>物性研にSLATEをインストール。</p>
-                        <div class="sourceCode" id="cb7"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> build</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone <span class="at">--recursive</span> https://github.com/icl-utk-edu/slate.git</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> slate</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> build</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> build</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="fu">cmake</span> <span class="at">-Dblas</span><span class="op">=</span>mkl <span class="at">-Dbuild_tests</span><span class="op">=</span>no <span class="at">-DCMAKE_INSTALL_PREFIX</span><span class="op">=</span>/usr/local</span></code></pre></div>
-                        <div class="sourceCode" id="cb8"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> purge</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load oneapi_compiler oneapi_mpi oneapi_mkl</span></code></pre></div>
-                        <div class="sourceCode" id="cb9"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> mpiicpc <span class="at">--version</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">icpc</span> <span class="er">(</span><span class="ex">ICC</span><span class="kw">)</span> <span class="ex">2021.8.0</span> 20221119</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Copyright</span> <span class="er">(</span><span class="ex">C</span><span class="kw">)</span> <span class="ex">1985-2022</span> Intel Corporation.  All rights reserved.</span></code></pre></div>
-                        <div class="sourceCode" id="cb10"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">CXX</span><span class="op">=</span>mpiicpc</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">FC</span><span class="op">=</span>mpiifort</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cmake</span> <span class="at">-Dblas</span><span class="op">=</span>mkl <span class="at">-Dbuild_tests</span><span class="op">=</span>no <span class="at">-Dgpu_backend</span><span class="op">=</span>none <span class="at">-DCMAKE_INSTALL_PREFIX</span><span class="op">=</span><span class="va">$HOME</span>/usr/local ..</span></code></pre></div>
-                        <div class="sourceCode" id="cb11"><pre
-                        class="sourceCode txt"><code class="sourceCode default"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>CMake Error at blaspp/CMakeLists.txt:8 (cmake_minimum_required):</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  CMake 3.21 or higher is required.  You are running version 3.19.2</span></code></pre></div>
-                        <p>CMakeが古いな。自分が入れた古いのを見てた。やりなおし。</p>
-                        <div class="sourceCode" id="cb12"><pre
-                        class="sourceCode txt"><code class="sourceCode default"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>CMake Error at blaspp/CMakeLists.txt:8 (cmake_minimum_required):</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  CMake 3.21 or higher is required.  You are running version 3.20.2</span></code></pre></div>
-                        <p>まだ古い。</p>
-                        <div class="sourceCode" id="cb13"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> build</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://github.com/Kitware/CMake/releases/download/v4.0.2/cmake-4.0.2-linux-x86_64.tar.gz</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> xvzf cmake-4.0.2-linux-x86_64.tar.gz </span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> cmake-4.0.2-linux-x86_64/</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> bin/<span class="pp">*</span> ~/usr/local/bin/</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;cp&#39;</span> <span class="at">-r</span> share ~/usr/local</span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">PATH</span><span class="op">=</span>~/usr/local/bin:<span class="va">$PATH</span></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">CMAKE_ROOT</span><span class="op">=</span>~/usr/local</span></code></pre></div>
-                        <div class="sourceCode" id="cb14"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cmake <span class="at">--version</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cmake</span> version 4.0.2</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="ex">CMake</span> suite maintained and supported by Kitware <span class="er">(</span><span class="ex">kitware.com/cmake</span><span class="kw">)</span><span class="bu">.</span></span></code></pre></div>
-                        <p>よろしい。改めて。</p>
-                        <div class="sourceCode" id="cb15"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> build</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">CXX</span><span class="op">=</span>mpiicpc</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">FC</span><span class="op">=</span>mpiifort</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cmake</span> <span class="at">-Dblas</span><span class="op">=</span>mkl <span class="at">-Dbuild_tests</span><span class="op">=</span>no <span class="at">-Dgpu_backend</span><span class="op">=</span>none <span class="at">-DCMAKE_INSTALL_PREFIX</span><span class="op">=</span><span class="va">$HOME</span>/usr/local ..</span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span></span></code></pre></div>
                         <div class="sourceCode" id="cb16"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> /opt/intel/oneapi/mpi/2021.8.0/bin/mpiicpc <span class="at">-DSLATE_ID</span><span class="op">=</span><span class="dt">\&quot;</span>f8348a7c<span class="dt">\&quot;</span> <span class="at">-Dslate_EXPORTS</span> <span class="at">-I</span>/home/k0117/k011700/build/slate/include <span class="at">-I</span>/home/k0117/k011700/build/slate/src <span class="at">-I</span>/home/k0117/k011700/build/slate/build/blaspp/include <span class="at">-I</span>/home/k0117/k011700/build/slate/blaspp/include <span class="at">-I</span>/home/k0117/k011700/build/slate/build/lapackpp/include <span class="at">-I</span>/home/k0117/k011700/build/slate/lapackpp/include <span class="at">-std</span><span class="op">=</span>c++17 <span class="at">-fPIC</span> <span class="at">-qopenmp</span> <span class="at">-MD</span> <span class="at">-MT</span> CMakeFiles/slate.dir/src/hemmA.cc.o <span class="at">-MF</span> CMakeFiles/slate.dir/src/hemmA.cc.o.d <span class="at">-o</span> CMakeFiles/slate.dir/src/hemmA.cc.o <span class="at">-c</span> /home/k0117/k011700/build/slate/src/hemmA.cc</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="ex">/home/k0117/k011700/build/slate/src/hemmA.cc</span><span class="er">(</span><span class="ex">305</span><span class="kw">)</span><span class="bu">:</span> error: unsupported lvalue expression on locator-list</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>              <span class="co">#pragma omp task depend(in:gemm[A.nt()-1])</span></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>                                         <span class="ex">^</span></span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>          <span class="ex">detected</span> during instantiation of <span class="st">&quot;void slate::hemmA(blas::Side, scalar_t, slate::HermitianMatrix&lt;scalar_t&gt; &amp;, slate::Matrix&lt;scalar_t&gt; &amp;, scalar_t, slate::Matrix&lt;scalar_t&gt; &amp;, const slate::Options &amp;) [with scalar_t=float]&quot;</span> at line 673</span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="ex">/home/k0117/k011700/build/slate/src/hemmA.cc</span><span class="er">(</span><span class="ex">553</span><span class="kw">)</span><span class="bu">:</span> error: unsupported lvalue expression on locator-list</span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>              <span class="co">#pragma omp task depend(in:gemm[A.nt()-1])</span></span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>                                         <span class="ex">^</span></span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>          <span class="ex">detected</span> during instantiation of <span class="st">&quot;void slate::hemmA(blas::Side, scalar_t, slate::HermitianMatrix&lt;scalar_t&gt; &amp;, slate::Matrix&lt;scalar_t&gt; &amp;, scalar_t, slate::Matrix&lt;scalar_t&gt; &amp;, const slate::Options &amp;) [with scalar_t=float]&quot;</span> at line 673</span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a><span class="ex">compilation</span> aborted for /home/k0117/k011700/build/slate/src/hemmA.cc <span class="er">(</span><span class="ex">code</span> 2<span class="kw">)</span></span></code></pre></div>
-                        <p>エラーだな。</p>
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> build</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone <span class="at">--recursive</span> https://github.com/icl-utk-edu/slate.git</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> slate</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> build</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> build</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="fu">cmake</span> <span class="at">-Dblas</span><span class="op">=</span>mkl <span class="at">-Dbuild_tests</span><span class="op">=</span>no <span class="at">-DCMAKE_INSTALL_PREFIX</span><span class="op">=</span>/usr/local</span></code></pre></div>
                         <div class="sourceCode" id="cb17"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">g++</span> <span class="at">-DSLATE_ID</span><span class="op">=</span><span class="dt">\&quot;</span>f8348a7c<span class="dt">\&quot;</span> <span class="at">-Dslate_EXPORTS</span> <span class="at">-I</span>/home/k0117/k011700/build/slate/include <span class="at">-I</span>/home/k0117/k011700/build/slate/src <span class="at">-I</span>/home/k0117/k011700/build/slate/build/blaspp/include <span class="at">-I</span>/home/k0117/k011700/build/slate/blaspp/include <span class="at">-I</span>/home/k0117/k011700/build/slate/build/lapackpp/include <span class="at">-I</span>/home/k0117/k011700/build/slate/lapackpp/include <span class="at">-std</span><span class="op">=</span>c++17 <span class="at">-fPIC</span> <span class="at">-fopenmp</span> <span class="at">-MD</span> <span class="at">-MT</span> CMakeFiles/slate.dir/src/hemmA.cc.o <span class="at">-MF</span> CMakeFiles/slate.dir/src/hemmA.cc.o.d <span class="at">-o</span> CMakeFiles/slate.dir/src/hemmA.cc.o <span class="at">-c</span> /home/k0117/k011700/build/slate/src/hemmA.cc</span></code></pre></div>
-                        <p>通る。</p>
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> purge</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load oneapi_compiler oneapi_mpi oneapi_mkl</span></code></pre></div>
                         <div class="sourceCode" id="cb18"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone <span class="at">--recursive</span> https://github.com/icl-utk-edu/slate.git</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> slate</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> build</span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> build</span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">CXX</span><span class="op">=</span>mpicxx</span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">FC</span><span class="op">=</span>mpiifort</span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="fu">cmake</span> <span class="at">-Dblas</span><span class="op">=</span>mkl <span class="at">-Dbuild_tests</span><span class="op">=</span>no <span class="at">-Dgpu_backend</span><span class="op">=</span>none <span class="at">-DCMAKE_INSTALL_PREFIX</span><span class="op">=</span><span class="va">$HOME</span>/usr/local ..</span></code></pre></div>
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> mpiicpc <span class="at">--version</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="ex">icpc</span> <span class="er">(</span><span class="ex">ICC</span><span class="kw">)</span> <span class="ex">2021.8.0</span> 20221119</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Copyright</span> <span class="er">(</span><span class="ex">C</span><span class="kw">)</span> <span class="ex">1985-2022</span> Intel Corporation.  All rights reserved.</span></code></pre></div>
+                        <div class="sourceCode" id="cb19"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">CXX</span><span class="op">=</span>mpiicpc</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">FC</span><span class="op">=</span>mpiifort</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cmake</span> <span class="at">-Dblas</span><span class="op">=</span>mkl <span class="at">-Dbuild_tests</span><span class="op">=</span>no <span class="at">-Dgpu_backend</span><span class="op">=</span>none <span class="at">-DCMAKE_INSTALL_PREFIX</span><span class="op">=</span><span class="va">$HOME</span>/usr/local ..</span></code></pre></div>
+                        <div class="sourceCode" id="cb20"><pre
+                        class="sourceCode txt"><code class="sourceCode default"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>CMake Error at blaspp/CMakeLists.txt:8 (cmake_minimum_required):</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  CMake 3.21 or higher is required.  You are running version 3.19.2</span></code></pre></div>
+                        <p>CMakeが古いな。自分が入れた古いのを見てた。やりなおし。</p>
+                        <div class="sourceCode" id="cb21"><pre
+                        class="sourceCode txt"><code class="sourceCode default"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>CMake Error at blaspp/CMakeLists.txt:8 (cmake_minimum_required):</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  CMake 3.21 or higher is required.  You are running version 3.20.2</span></code></pre></div>
+                        <p>まだ古い。</p>
+                        <div class="sourceCode" id="cb22"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> build</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://github.com/Kitware/CMake/releases/download/v4.0.2/cmake-4.0.2-linux-x86_64.tar.gz</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> xvzf cmake-4.0.2-linux-x86_64.tar.gz </span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> cmake-4.0.2-linux-x86_64/</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> bin/<span class="pp">*</span> ~/usr/local/bin/</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;cp&#39;</span> <span class="at">-r</span> share ~/usr/local</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">PATH</span><span class="op">=</span>~/usr/local/bin:<span class="va">$PATH</span></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">CMAKE_ROOT</span><span class="op">=</span>~/usr/local</span></code></pre></div>
+                        <div class="sourceCode" id="cb23"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cmake <span class="at">--version</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cmake</span> version 4.0.2</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="ex">CMake</span> suite maintained and supported by Kitware <span class="er">(</span><span class="ex">kitware.com/cmake</span><span class="kw">)</span><span class="bu">.</span></span></code></pre></div>
+                        <p>よろしい。改めて。</p>
+                        <div class="sourceCode" id="cb24"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> build</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">CXX</span><span class="op">=</span>mpiicpc</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">FC</span><span class="op">=</span>mpiifort</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cmake</span> <span class="at">-Dblas</span><span class="op">=</span>mkl <span class="at">-Dbuild_tests</span><span class="op">=</span>no <span class="at">-Dgpu_backend</span><span class="op">=</span>none <span class="at">-DCMAKE_INSTALL_PREFIX</span><span class="op">=</span><span class="va">$HOME</span>/usr/local ..</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span></span></code></pre></div>
+                        <div class="sourceCode" id="cb25"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> /opt/intel/oneapi/mpi/2021.8.0/bin/mpiicpc <span class="at">-DSLATE_ID</span><span class="op">=</span><span class="dt">\&quot;</span>f8348a7c<span class="dt">\&quot;</span> <span class="at">-Dslate_EXPORTS</span> <span class="at">-I</span>/home/k0117/k011700/build/slate/include <span class="at">-I</span>/home/k0117/k011700/build/slate/src <span class="at">-I</span>/home/k0117/k011700/build/slate/build/blaspp/include <span class="at">-I</span>/home/k0117/k011700/build/slate/blaspp/include <span class="at">-I</span>/home/k0117/k011700/build/slate/build/lapackpp/include <span class="at">-I</span>/home/k0117/k011700/build/slate/lapackpp/include <span class="at">-std</span><span class="op">=</span>c++17 <span class="at">-fPIC</span> <span class="at">-qopenmp</span> <span class="at">-MD</span> <span class="at">-MT</span> CMakeFiles/slate.dir/src/hemmA.cc.o <span class="at">-MF</span> CMakeFiles/slate.dir/src/hemmA.cc.o.d <span class="at">-o</span> CMakeFiles/slate.dir/src/hemmA.cc.o <span class="at">-c</span> /home/k0117/k011700/build/slate/src/hemmA.cc</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="ex">/home/k0117/k011700/build/slate/src/hemmA.cc</span><span class="er">(</span><span class="ex">305</span><span class="kw">)</span><span class="bu">:</span> error: unsupported lvalue expression on locator-list</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>              <span class="co">#pragma omp task depend(in:gemm[A.nt()-1])</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>                                         <span class="ex">^</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>          <span class="ex">detected</span> during instantiation of <span class="st">&quot;void slate::hemmA(blas::Side, scalar_t, slate::HermitianMatrix&lt;scalar_t&gt; &amp;, slate::Matrix&lt;scalar_t&gt; &amp;, scalar_t, slate::Matrix&lt;scalar_t&gt; &amp;, const slate::Options &amp;) [with scalar_t=float]&quot;</span> at line 673</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a><span class="ex">/home/k0117/k011700/build/slate/src/hemmA.cc</span><span class="er">(</span><span class="ex">553</span><span class="kw">)</span><span class="bu">:</span> error: unsupported lvalue expression on locator-list</span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>              <span class="co">#pragma omp task depend(in:gemm[A.nt()-1])</span></span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>                                         <span class="ex">^</span></span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>          <span class="ex">detected</span> during instantiation of <span class="st">&quot;void slate::hemmA(blas::Side, scalar_t, slate::HermitianMatrix&lt;scalar_t&gt; &amp;, slate::Matrix&lt;scalar_t&gt; &amp;, scalar_t, slate::Matrix&lt;scalar_t&gt; &amp;, const slate::Options &amp;) [with scalar_t=float]&quot;</span> at line 673</span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a><span class="ex">compilation</span> aborted for /home/k0117/k011700/build/slate/src/hemmA.cc <span class="er">(</span><span class="ex">code</span> 2<span class="kw">)</span></span></code></pre></div>
+                        <p>エラーだな。</p>
+                        <div class="sourceCode" id="cb26"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="ex">g++</span> <span class="at">-DSLATE_ID</span><span class="op">=</span><span class="dt">\&quot;</span>f8348a7c<span class="dt">\&quot;</span> <span class="at">-Dslate_EXPORTS</span> <span class="at">-I</span>/home/k0117/k011700/build/slate/include <span class="at">-I</span>/home/k0117/k011700/build/slate/src <span class="at">-I</span>/home/k0117/k011700/build/slate/build/blaspp/include <span class="at">-I</span>/home/k0117/k011700/build/slate/blaspp/include <span class="at">-I</span>/home/k0117/k011700/build/slate/build/lapackpp/include <span class="at">-I</span>/home/k0117/k011700/build/slate/lapackpp/include <span class="at">-std</span><span class="op">=</span>c++17 <span class="at">-fPIC</span> <span class="at">-fopenmp</span> <span class="at">-MD</span> <span class="at">-MT</span> CMakeFiles/slate.dir/src/hemmA.cc.o <span class="at">-MF</span> CMakeFiles/slate.dir/src/hemmA.cc.o.d <span class="at">-o</span> CMakeFiles/slate.dir/src/hemmA.cc.o <span class="at">-c</span> /home/k0117/k011700/build/slate/src/hemmA.cc</span></code></pre></div>
+                        <p>通る。</p>
+                        <div class="sourceCode" id="cb27"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone <span class="at">--recursive</span> https://github.com/icl-utk-edu/slate.git</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> slate</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> build</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> build</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">CXX</span><span class="op">=</span>mpicxx</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">FC</span><span class="op">=</span>mpiifort</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="fu">cmake</span> <span class="at">-Dblas</span><span class="op">=</span>mkl <span class="at">-Dbuild_tests</span><span class="op">=</span>no <span class="at">-Dgpu_backend</span><span class="op">=</span>none <span class="at">-DCMAKE_INSTALL_PREFIX</span><span class="op">=</span><span class="va">$HOME</span>/usr/local ..</span></code></pre></div>
                         <p>一応ビルドは通ったが・・・？</p>
                         <p>等周問題を考えたが、意外に難しい。うーむ。</p>
                         <p>査読した結果が次々返ってくる。他の査読者のコメント、参考になる。</p>
