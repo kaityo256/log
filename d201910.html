@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+                <title>2019年10月</title>
+    <style type="text/css">
+      code {
+        white-space: pre;
+      }
+    </style>
+        <style type="text/css"></style>
+
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- link rel="stylesheet" href="github-markdown.css" type="text/css" / -->
+          </head>
+
+  <body>
+    <article class="markdown-body">
+                        <h1 id="年10月">2019年10月</h1>
+                        <h2 id="月23日水">10月23日(水)</h2>
+                        <p>物性研にジョブを投げた。g=0.55のジョブ。
+                        様子見でサンプル数は少なめ。96サンプル* 18色。
+                        時間を測定している。うまくいったらより多くのサンプルを取る。
+                        緩和時間が短いかもしれない。</p>
+                        <p>4ノード、L=128で10000ループで40秒。サンプル数を96とすると1分程度。
+                        100倍で100分。L=256まではいける？とりあえずループ数10倍の</p>
+                        <div class="sourceCode" id="cb1"><pre
+                        class="sourceCode txt"><code class="sourceCode default"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>ThermalizationLoop = 100000</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>ObservationLoop = 100000</span></code></pre></div>
+                        <p>で様子見(g=0.55/g=0.70ともに)。</p>
+                        <p>g =
+                        0.55では、低温で明らかに緩和不足。0.7は低温過ぎる。最低でも0.75からにしたほうが良い。
+                        0.9は不要。0.85までで良い。
+                        0.75から0.85まで100点程度あれば十分。</p>
+                        <p>g =
+                        0.70では1.2から1.4まで100点あればよさそう。</p>
+                        <p>g=0.55、L=64,128,256のジョブを投げた。</p>
+                        <p>g = 0.55のデータ。</p>
+                        <div class="sourceCode" id="cb2"><pre
+                        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ND</span><span class="kw">:</span><span class="at"> </span><span class="dv">100</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tmin</span><span class="kw">:</span><span class="at"> </span><span class="fl">0.75</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tmax</span><span class="kw">:</span><span class="at"> </span><span class="fl">0.85</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">g</span><span class="kw">:</span><span class="at"> </span><span class="fl">0.55</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">SamplingNumber</span><span class="kw">:</span><span class="at"> </span><span class="dv">32</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ObservationLoop</span><span class="kw">:</span><span class="at"> </span><span class="dv">1000000</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ThermalizationLoop</span><span class="kw">:</span><span class="at"> </span><span class="dv">1000000</span></span></code></pre></div>
+                        <p>g = 0.70のデータ。</p>
+                        <div class="sourceCode" id="cb3"><pre
+                        class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ND</span><span class="kw">:</span><span class="at"> </span><span class="dv">100</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tmin</span><span class="kw">:</span><span class="at"> </span><span class="fl">1.2</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tmax</span><span class="kw">:</span><span class="at"> </span><span class="fl">1.4</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">g</span><span class="kw">:</span><span class="at"> </span><span class="fl">0.70</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">SamplingNumber</span><span class="kw">:</span><span class="at"> </span><span class="dv">32</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ObservationLoop</span><span class="kw">:</span><span class="at"> </span><span class="dv">1000000</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ThermalizationLoop</span><span class="kw">:</span><span class="at"> </span><span class="dv">1000000</span></span></code></pre></div>
+                        <h2 id="月18日金">10月18日(金)</h2>
+                        <p>CentOSにdevtoolsetを入れるとGCC
+                        7系が使えるようになる。</p>
+                        <div class="sourceCode" id="cb4"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">scl</span> enable devtoolset-7 zsh </span></code></pre></div>
+                        <p>インテルコンパイラよりGCC
+                        7の方が圧倒的に早いな。</p>
+                        <h2 id="月4日金">10月4日(金)</h2>
+                        <p>ising_frustrateのプロダクトランコード書いてwatanabe-loginに投げた。
+                        並列化はまだ。 L = 8, 16, 32, 64まで。</p>
+                        <p>インプット用のなにかが欲しい。yamlパーサとか。</p>
+                        <h2 id="月1日火">10月1日(火)</h2>
+                        <p>査読レポート投げた。</p>
+                        <p>ついでに、初めてPublonにThank you
+                        mailをフォワードしてみたが、</p>
+                        <blockquote>
+                        <p>Your review(s) is 8898th in the queue, it
+                        will take us about 4 days and 14 hours to
+                        process your email. You can track its progress
+                        on your dashboard.</p>
+                        </blockquote>
+                        <p>ですって。ひょっとして半人力なのこれ？</p>
+          </article>
+  </body>
+
+  </html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+                <title>2019年9月</title>
+    <style type="text/css">
+      code {
+        white-space: pre;
+      }
+    </style>
+        <style type="text/css"></style>
+
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- link rel="stylesheet" href="github-markdown.css" type="text/css" / -->
+          </head>
+
+  <body>
+    <article class="markdown-body">
+                        <h1 id="年9月">2019年9月</h1>
+                        <h2 id="月18日水">9月18日(水)</h2>
+                        <p>GitHub
+                        Actionsで、pandocのインストールはできるが、お片付けができていない。</p>
+                        <div class="sourceCode" id="cb1"><pre
+                        class="sourceCode txt"><code class="sourceCode default"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>E: Could not open lock file /var/lib/dpkg/lock-frontend - open (13: Permission denied)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>E: Unable to acquire the dpkg frontend lock (/var/lib/dpkg/lock-frontend), are you root?</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>##[error]Process completed with exit code 100.</span></code></pre></div>
+                        <p>sudo つけたらうまくいった。</p>
+                        <p>GitHub ActionsによるGitHub
+                        Pagesへのデプロイに失敗。
+                        おそらくTOKEN関連。これは面倒だ・・・。</p>
+                        <h2 id="月14日日">9月14日(日)</h2>
+                        <p>GitHub
+                        Actionのテストのために、ローカルにDockerを入れる。WindowsにDocker-CEを入れるには、まずDockerアカウントを作る必要がある。それをインストール。また、WSLにもDockerをインストール。WindowsはHyper-Vを有効にして再起動する必要がある。また、Docker
+                        for
+                        WindowsでExposeなんとかでサーバを見えるようにする。そして、WSL側で</p>
+                        <div class="sourceCode" id="cb2"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">DOCKER_HOST</span><span class="op">=</span>tcp://localhost:2375</span></code></pre></div>
+                        <p>とすれば、WSLでDockerが使えるようになる。</p>
+                        <p>GitHub ActionsでUbuntu
+                        18.04を使うが、どうせlatestと同じなのでlatestをひっぱる。</p>
+                        <div class="sourceCode" id="cb3"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> pull ubuntu</span></code></pre></div>
+                        <p>入ったことを確認。</p>
+                        <div class="sourceCode" id="cb4"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> docker images</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">REPOSITORY</span>          TAG                 IMAGE ID            CREATED             SIZE</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ex">ubuntu</span>              latest              a2a15febcdf3        4 weeks ago         64.2MB</span></code></pre></div>
+                        <p>起動。</p>
+                        <div class="sourceCode" id="cb5"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> docker run <span class="at">-it</span> ubuntu /bin/bash</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">root@f18b2a95711e:/#</span> apt update</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="ex">root@f18b2a95711e:/#</span> apt install <span class="at">-y</span> pandoc</span></code></pre></div>
+                        <p>で入ることを確認。</p>
+                        <p>Dockerでファイルを共有するには、Docker側でShared
+                        Driveで共有するドライブにチェックを入れる必要がある。</p>
+                        <p>とりあえず、Desktopにgithub\actions_testを</p>
+                        <div class="sourceCode" id="cb6"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run  <span class="at">-v</span> c:\\Users\\watanabe\\Desktop\\github\\actions_test:/temp ubuntu ls /temp</span></code></pre></div>
+                        <div class="sourceCode" id="cb7"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run  <span class="at">-it</span> <span class="at">-v</span> c:\\Users\\watanabe\\Desktop\\github\\actions_test:/temp ubuntu /bin/bash</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">apt</span> update</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="ex">apt</span> install <span class="at">-y</span> pandoc</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="ex">pandoc</span> <span class="at">-s</span> README.md <span class="at">-o</span> test.html <span class="at">-t</span> html <span class="at">--template</span><span class="op">=</span>template</span></code></pre></div>
+                        <p>できた。</p>
+                        <h2 id="月4日水">9月4日(水)</h2>
+                        <p>ディスプレイとノートPCの注文をした。来週水曜日受け取り。</p>
+          </article>
+  </body>
+
+  </html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+                <title>2019年7月</title>
+    <style type="text/css">
+      code {
+        white-space: pre;
+      }
+    </style>
+        <style type="text/css"></style>
+
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- link rel="stylesheet" href="github-markdown.css" type="text/css" / -->
+          </head>
+
+  <body>
+    <article class="markdown-body">
+                        <h1 id="年7月">2019年7月</h1>
+                        <h2 id="月18日木">7月18日(木)</h2>
+                        <p>午前は研究打ち合わせ。LAMMPSの使い方をマスターしないと。</p>
+                        <p>ぐるなびで納涼会の候補を探した。</p>
+                        <h2 id="月17日水">7月17日(水)</h2>
+                        <p>sshが遅い問題、ssh -vvしてみたら、</p>
+                        <div class="sourceCode" id="cb1"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">debug1:</span> SSH2_MSG_SERVICE_ACCEPT received</span></code></pre></div>
+                        <p>で時間がかかってる。ググったら以下のブログの記述に答えがあった。</p>
+                        <p><a
+                        href="http://tegetegekibaru.blogspot.com/2013/07/ssh.html">http://tegetegekibaru.blogspot.com/2013/07/ssh.html</a></p>
+                        <p>sshd_configのUseDNSをnoにしてsystemctl
+                        restart sshd.service。</p>
+                        <p>VMDのインストール。最初に適当なアカウントとパスワードを設定しないとダウンロードできない。</p>
+                        <div class="sourceCode" id="cb2"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> xvf vmd-1.9.3.bin.LINUXAMD64-CUDA8-OptiX4-OSPRay111p1.opengl.tar.gz</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> vmd-1.9.3</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">./configure</span> LINUXAMD64</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> src</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> make install</span></code></pre></div>
+                        <p>微妙に分かりづらいぞこれ。</p>
+                        <p>次、LAMMPS。</p>
+                        <div class="sourceCode" id="cb3"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone <span class="at">--depth</span> 1 git://github.com/lammps/lammps.git</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> lammps</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> src</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span></span></code></pre></div>
+                        <p><code>atoi</code>などでコケる。どうすりゃいいんだ？</p>
+                        <h2 id="月1日月">7月1日(月)</h2>
+                        <ul>
+                        <li>計算機WG</li>
+                        <li>情報処理学会の年会費、二年分(2017,2018)支払った</li>
+                        <li>学会の宿をとった</li>
+                        <li>7/21の博多の飛行機予約した。支払手続きはまだ。確認後に支払いをすること。</li>
+                        <li>齋藤さんのセミナーに出た</li>
+                        </ul>
+          </article>
+  </body>
+
+  </html>

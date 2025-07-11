@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+                <title>2019年3月</title>
+    <style type="text/css">
+      code {
+        white-space: pre;
+      }
+    </style>
+        <style type="text/css"></style>
+
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- link rel="stylesheet" href="github-markdown.css" type="text/css" / -->
+          </head>
+
+  <body>
+    <article class="markdown-body">
+                        <h1 id="年3月">2019年3月</h1>
+                        <h2 id="月29日金">3月29日(金)</h2>
+                        <p>2年生ガイダンス。研究室コンストラクタ。マウス忘れた・・・。</p>
+                        <p>スパコンの共同利用審査委員と、もうひとつスパコン関係の委嘱書類提出。</p>
+                        <p>とりえあずネットにはつながったぞ、と。</p>
+                        <h2 id="月13日水">3月13日(水)</h2>
+                        <p>健康診断で三田へ。</p>
+                        <p>引き続き金曜日のスライド作成。</p>
+                        <h2 id="月12日火">3月12日(火)</h2>
+                        <p>理論系メーリングリストの引き継ぎをした。</p>
+                        <p>金曜日のスライド作成。</p>
+                        <h2 id="月11日月">3月11日(月)</h2>
+                        <p>git clone –recursiveしたら、” Server does not
+                        allow request for unadvertised object
+                        “と言われて失敗した。
+                        家で修正したsubmoduleのpushを忘れてしまったらしい。うげぇ。</p>
+                        <p>再現方法と対策を<a
+                        href="https://qiita.com/kaityo256/items/c269b8f2cc47b4799e9f">Qiitaにまとめておいた</a>。
+                        要するにsubmoduleでgit co masterしてから、main
+                        moduleでgit add;commitすればよろしい。
+                        あとでマージすることになる。</p>
+                        <h2 id="月10日日">3月10日(日)</h2>
+                        <p>NOP</p>
+                        <p>引っ越しの準備とか。疲れた。</p>
+                        <h2 id="月9日土">3月9日(土)</h2>
+                        <p>NOP</p>
+                        <h2 id="月8日金">3月8日(金)</h2>
+                        <p>重い腰を上げて理論系メーリングリストの引き継ぎ資料作成。えらく時間がかかった。</p>
+                        <p>予算使い切った。2月に使い切ると言ってたのだが、遅くなってしまった。申し訳ありません＞事務方面</p>
+                        <p>書籍を整理してて、「萌えるシリーズ
+                        萌え萌えうにっくす! UNIXネットワーク管理ガイド —
+                        PC
+                        UNIXネットワーク管理日々の疑問に萌えの一手」を捨てるかどうか迷ってしまった。</p>
+                        <p>集中講義の委嘱についての手続きも進めたぞ。えらい。</p>
+                        <p>そして今日もコードを全く書けなかった・・・。</p>
+                        <h2 id="月7日木">3月7日(木)</h2>
+                        <p>GitHubの<a
+                        href="https://github.com/kaityo256/mdstep">分子動力学法・ステップ・バイ・ステップ</a>に星がついたのをきっかけに、
+                        少しだけREADMEを修正した。こういう、自分でも書いたのを忘れたようなものに「いいね」がつくとうれしい。</p>
+                        <div class="sourceCode" id="cb1"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/gperftools/gperftools.git</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> gperftools</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">./autogen.sh</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">./configure</span> <span class="at">--prefix</span><span class="op">=</span><span class="va">$HOME</span>/local</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> install</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">LD_LIBRARY_PATH</span><span class="op">=</span><span class="va">$HOME</span>/local/lib:<span class="va">$LD_LIBRARY_PATH</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="ex">g++</span> <span class="at">-std</span><span class="op">=</span>c++11 <span class="at">-L</span><span class="va">$HOME</span>/local/lib <span class="at">-ltcmalloc</span> <span class="at">-g</span> test.cpp</span></code></pre></div>
+                        <p>K</p>
+                        <div class="sourceCode" id="cb2"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/gperftools/gperftools.git</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> gperftools</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">./autogen.sh</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="ex">./configure</span> <span class="at">--prefix</span><span class="op">=</span><span class="va">$HOME</span>/local <span class="at">--with-CC</span><span class="op">=</span>fccpx <span class="at">--with-CXX</span><span class="op">=</span>FCCpx <span class="at">--with-CFLAGS</span><span class="op">=</span>-Xg <span class="at">--with-CPPFLAGS</span><span class="op">=</span>-Xg</span></code></pre></div>
+                        <p>ダメだ。tcmallocのクロスコンパイルが面倒すぎる。諦めよう・・・。</p>
+                        <h2 id="月6日水">3月6日(水)</h2>
+                        <p>SIMDを使うとクロックが下がる奴を調べてたのだが、Skylakeはきれいにxmm→ymm→zmmと下がるものの、
+                        Haswellは下がらない。調べてみると、HaswellまではIntel
+                        Speedstep Technology、 SkylakeからIntel Speed
+                        Shift
+                        Technologyで、動作クロック変更の振る舞いが違うらしい。</p>
+                        <p>とりあえずテストコード書いた。</p>
+                        <p><a
+                        href="https://github.com/kaityo256/simd_clock">https://github.com/kaityo256/simd_clock</a></p>
+                        <p><a
+                        href="https://en.wikichip.org/wiki/intel/frequency_behavior">ここ</a>の記述が詳しいが、まだ理解しきれていない。</p>
+                        <h2 id="月5日火">3月5日(火)</h2>
+                        <p>打ち合わせ。</p>
+                        <p>資産確認。</p>
+                        <p>mallocのTunable parameterについて調べて<a
+                        href="https://qiita.com/kaityo256/items/fc9a27d0df1371246951">Qiitaの記事</a>にした。
+                        これでもうmallocは忘れる。</p>
+                        <h2 id="月4日月">3月4日(月)</h2>
+                        <p>mallocの振る舞いについてだいぶわかってきた。
+                        多分向こうがチャンクとアリーナをごっちゃにしている。
+                        あと、環境変数変えたら10倍遅くなるってなんなの？</p>
+                        <p>所長賞授与式。ストックルームシステムの開発で、予算・決算係と情報技術室の合同チームでの受賞。
+                        ISSP学術奨励賞と、ISSP柏賞を両方受賞したのは初だとのこと。ありがたいことです。</p>
+                        <h2 id="月3日日">3月3日(日)</h2>
+                        <p>NOP</p>
+                        <h2 id="月2日土">3月2日(土)</h2>
+                        <p>NOP</p>
+                        <p>引っ越しの手続き。</p>
+                        <h2 id="月1日金">3月1日(金)</h2>
+                        <p>コードを書いてスパコンに投げた。
+                        最初、あわててRankで種を変えるのを忘れてた。</p>
+                        <p>結果はいまいちっぽいなぁ。</p>
+                        <p>mallocの振る舞いについて調べている。沼。</p>
+          </article>
+  </body>
+
+  </html>

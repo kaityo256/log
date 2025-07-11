@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+                <title>2019年5月</title>
+    <style type="text/css">
+      code {
+        white-space: pre;
+      }
+    </style>
+        <style type="text/css"></style>
+
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- link rel="stylesheet" href="github-markdown.css" type="text/css" / -->
+          </head>
+
+  <body>
+    <article class="markdown-body">
+                        <h1 id="年5月">2019年5月</h1>
+                        <h2 id="月29日水">5月29日(水)</h2>
+                        <p>TensorFlowをMacにインストールする。とりあえずpip
+                        かな。</p>
+                        <h2 id="月28日火">5月28日(火)</h2>
+                        <p>実験。久しぶりの基礎実験でいろいろ忘れている。</p>
+                        <h2 id="月27日月">5月27日(月)</h2>
+                        <p>Google ColabでMeCabを使う方法。</p>
+                        <div class="sourceCode" id="cb1"><pre
+                        class="sourceCode py"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>apt install aptitude</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>aptitude install mecab libmecab<span class="op">-</span>dev mecab<span class="op">-</span>ipadic<span class="op">-</span>utf8 git make curl xz<span class="op">-</span>utils <span class="bu">file</span> <span class="op">-</span>y</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install mecab<span class="op">-</span>python3<span class="op">==</span><span class="fl">0.7</span></span></code></pre></div>
+                        <p>これでMeCabが使えるようになる。以下は日本語の名詞だけ抜き出すサンプル。</p>
+                        <div class="sourceCode" id="cb2"><pre
+                        class="sourceCode py"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>node <span class="op">=</span> m.parseToNode(<span class="st">&quot;貴社の記者は、貴社の汽車で帰社した。&quot;</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> node:</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  a <span class="op">=</span> node.feature.split(<span class="st">&quot;,&quot;</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> a[<span class="dv">0</span>] <span class="op">==</span> <span class="st">u&quot;名詞&quot;</span>:</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>      <span class="bu">print</span>(a[<span class="dv">6</span>])</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  node <span class="op">=</span> node.<span class="bu">next</span></span></code></pre></div>
+                        <div class="sourceCode" id="cb3"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">貴社</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">記者</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ex">貴社</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="ex">汽車</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="ex">帰社</span></span></code></pre></div>
+                        <p>できたっぽい。</p>
+                        <p>MacローカルにもMeCabを入れる。</p>
+                        <div class="sourceCode" id="cb4"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> install mecab mecab-ipadic  </span></code></pre></div>
+                        <p>これでいけた。おそらくgitやxz、curlも必要だが、もともと入ってたっぽい。
+                        Pythonから使うためのバインディングも入れる。</p>
+                        <div class="sourceCode" id="cb5"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">--upgrade</span> pip</span></code></pre></div>
+                        <h2 id="月20日月">5月20日(月)</h2>
+                        <p>機器備品費の申請方法がわからなかったのでメールで聞いた。もっと早く聞くべきだった。</p>
+                        <p>お昼休みにサイゼリヤの1000円問題(ナップサック問題)のMCMC解法試した。
+                        REMCも試したが全然だめ。どうも僕はREMCを過大評価していたようだ・・・。</p>
+                        <p>お客さん来た。</p>
+                        <p>駐車場の代金払った。次回から自動のはず。</p>
+                        <p>さくらインターネットの立て替え払い手続きをしないといけないのを思い出した。明日やる。</p>
+                        <p>今日は全く集中力を欠いたな・・・。明日からがんばりたいが・・・</p>
+                        <h2 id="月17日金">5月17日(金)</h2>
+                        <p>学会申し込んだ。</p>
+                        <h2 id="月13日月">5月13日(月)</h2>
+                        <p>NEC LavieにPython環境構築。</p>
+                        <p>まずAnacondaを入れる。</p>
+                        <p>Anacondaのページに行って、ダウンロードをクリック。</p>
+                        <h2 id="月10日金">5月10日(金)</h2>
+                        <p>KLLの新任者研究推進費、申請した。危なかった。</p>
+                        <p>伊藤サプライにシュレッダーのカタログ依頼した。</p>
+                        <p>Tholabsのステッピングモータを動かすためには、Windowsの環境変数に</p>
+                        <p>C:Files</p>
+                        <p>が必要。他に設定がある場合は、直前にセミコロンを入れて区切ること。</p>
+                        <p>次、Newport Power
+                        Meter。電源を入れてからUSBに挿してみる。
+                        PMManager
+                        3.31が入っている状態だったが、デバイスドライバがインストールされない、と表示される。</p>
+                        <p><a
+                        href="ftp://download.newport.com/Software/Newport_USB_Driver/">ftp://download.newport.com/Software/Newport_USB_Driver/</a></p>
+                        <p>から、「Newport USB Driver
+                        5.0.8.zip」をダウンロード、展開。中のSetup.exeを実行。
+                        インストール前にすべてのハードウェアを切り離して置くこと。
+                        64bit mode on a 64bit Operating
+                        Systemを選ぶ。</p>
+                        <p>インストール完了後にUSBを接続し、「Newport
+                        Power
+                        Meter　デバイスドライバーソフトウェアが正しくインストールされました」と表示されれば成功。
+                        PMManagerを起動してみる。だめだ。デバイスが見つからない。1919-Rには接続できるが、1918-Rは対象外のようだ。</p>
+                        <p><a
+                        href="http://juluribk.com/2015/04/04/newport-1918-power-meter-with-python/">この記事</a>を参考に。</p>
+                        <p>プロダクトIDを調べる。
+                        Windowsのデバイスマネージャで、「Universal
+                        Serial Bus Devices」のNewport Power
+                        Meterを見る。 0xCEC7だった。</p>
+                        <h2 id="月9日木">5月9日(木)</h2>
+                        <p>科研費の実績報告書を忘れてた。送った。
+                        家賃の支払い忘れてた。
+                        駐車場の家賃支払忘れてた。払った。
+                        NTTルータゆうぱっくの再送頼んだ。</p>
+                        <p>KLLの新任者研究推進費の締切忘れてた。慌てて書く。</p>
+                        <h2 id="月8日水">5月8日(水)</h2>
+                        <p>publonsに登録した。 僕のProfileは<a
+                        href="https://publons.com/researcher/2940287/hiroshi-watanabe/">ここ</a>。
+                        通常の論文の他に、査読情報なんかを追加できるらしい。</p>
+                        <p>TholabsのステッピングモータをPCのUSBに刺す。無事にAPT
+                        USB Deviceが認識された。</p>
+                        <p>Tholabsのステッピングモータに接続、動かすことができた。問題はこいつが「integrated_stepper_motors」で、
+                        ISC_で始まる制御コマンドを発行しなければならなかった。とりあえず一安心。</p>
+                        <p>車のナンバー変更の話を通した。</p>
+                        <p>NTT東日本に、ルータ返却用郵送の再送依頼をした。</p>
+                        <p>来客用のテーブルと椅子を注文した。</p>
+          </article>
+  </body>
+
+  </html>

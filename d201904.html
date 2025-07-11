@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+                <title>2019年4月</title>
+    <style type="text/css">
+      code {
+        white-space: pre;
+      }
+    </style>
+        <style type="text/css"></style>
+
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- link rel="stylesheet" href="github-markdown.css" type="text/css" / -->
+          </head>
+
+  <body>
+    <article class="markdown-body">
+                        <h1 id="年4月">2019年4月</h1>
+                        <h2 id="月30日火">4月30日(火)</h2>
+                        <p>さくらのVPS、試用期間はネームサーバの設定ができないので本登録した。
+                        一時間ほど待つと「利用中」にステータスが変わるので、ネームサーバの登録。
+                        無料が5ドメインある。とりあえずwwwありとなしの二つのドメインを追加。
+                        それを学科の管理者に追加を依頼した。</p>
+                        <h2 id="月26日金">4月26日(金)</h2>
+                        <p>WindowsにAnacondaを入れる。</p>
+                        <p>Downloadにいって「Windowsタブ」にしてから、「Python
+                        3.7 version」のDownloadをクリック。
+                        Anaconda3-2019.03-Windows-x86_64.exeをダブルクリックしてインストール。死ぬほど時間がかかる。
+                        また、初回起動もかなり時間がかかるので、あらかじめ実行しておくと良い。</p>
+                        <p>Newport
+                        PMManagerを入れてみる。1918-Rはもうobsolete
+                        https://www.newport.com/p/1919-R</p>
+                        <p>ThorlabのステッピングモータをPythonから制御したければ、APT
+                        System Software。</p>
+                        <p>APT 32-Bit Software for 64-BIT Windows
+                        setup.exeを実行</p>
+                        <p>Anaconda Shellを使って、
+                        thorlabs_apt-masterのsetup.pyを実行</p>
+                        <p>python setup.py install</p>
+                        <p>だめだ、APT.dllが読めない。</p>
+                        <p>Thorlabs
+                        Kinesisの64bit-64bitをダウンロード。</p>
+                        <p>Windowsにおけるdllの検索パスはLD_LIBRARY_PATHではなくPATHらしい。</p>
+                        <p>Cocoonでメニューが表示されない。php-xmlがないのが原因。</p>
+                        <p>sudo yum install –enablerepo=remi,remi-php73
+                        php-xml</p>
+                        <h2 id="月25日木">4月25日(木)</h2>
+                        <p>CentOS7にPHP7を入れる。</p>
+                        <div class="sourceCode" id="cb1"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> sudo  yum install epel-release</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">パッケージ</span> epel-release-7-11.noarch はインストール済みか最新バージョンです</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">何もしません</span></span></code></pre></div>
+                        <p>EPELは入ってた。次はRemi。</p>
+                        <div class="sourceCode" id="cb2"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> yum <span class="at">-y</span> install http://rpms.famillecollet.com/enterprise/remi-release-7.rpm</span></code></pre></div>
+                        <p>PHPのリポジトリが入ってるか確認。</p>
+                        <div class="sourceCode" id="cb3"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-l</span> /etc/yum.repos.d <span class="kw">|</span> <span class="fu">grep</span> php</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">-rw-r--r--</span>  1 root root  456  3月  8 16:34 remi-php54.repo</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ex">-rw-r--r--</span>  1 root root 1314  3月  8 16:34 remi-php70.repo</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="ex">-rw-r--r--</span>  1 root root 1314  3月  8 16:34 remi-php71.repo</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="ex">-rw-r--r--</span>  1 root root 1314  3月  8 16:34 remi-php72.repo</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="ex">-rw-r--r--</span>  1 root root 1314  3月  8 16:34 remi-php73.repo</span></code></pre></div>
+                        <p>入ってた。php5を消してからphp73を入れよう。</p>
+                        <div class="sourceCode" id="cb4"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> yum remove remove php php-<span class="pp">*</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> yum install <span class="at">--enablerepo</span><span class="op">=</span>remi,remi-php73 php php-mysql php-mbstring php-gd</span></code></pre></div>
+                        <p>どれが必要なのかわからなかったので、とりあえず必要そうなもの全部指定。</p>
+                        <p>次、WordPressのCocoonテーマを入れてみる。</p>
+                        <p><a
+                        href="https://wp-cocoon.com/downloads/">https://wp-cocoon.com/downloads/</a>の「Cocoonテーマ」から
+                        親テーマと子テーマをダウンロード。<a
+                        href="https://wp-cocoon.com/theme-install/">https://wp-cocoon.com/theme-install/</a>の手順に従って入れる。</p>
+                        <p>そうしたら「アップロードしたファイルは
+                        php.ini で定義された upload_max_filesize
+                        を超過しています。」とと文句を言われたので、<code>/etc/php.ini</code>の当該項目を</p>
+                        <div class="sourceCode" id="cb5"><pre
+                        class="sourceCode ini"><code class="sourceCode ini"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="dt">upload_max_filesize </span><span class="ot">=</span><span class="st"> 8M</span></span></code></pre></div>
+                        <p>に修正。できた。あとはCSSを修正しながら様子を見る感じで。</p>
+                        <h2 id="月23日火">4月23日(火)</h2>
+                        <p>さくらVPSにWordpressを入れる。</p>
+                        <div class="sourceCode" id="cb6"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> yum install httpd mysql-server php php-mysql wget</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> yum install mariadb mariadb-server</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl start mariadb</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl enable mariadb</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="ex">mysql</span> <span class="at">-u</span> root</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="ex">MariaDB</span> [<span class="er">(</span><span class="ex">none</span><span class="kw">)</span><span class="ex">]</span><span class="op">&gt;</span> update mysql.user set password=password<span class="er">(</span><span class="st">&#39;rootパスワード入力&#39;</span><span class="kw">)</span> <span class="ex">where</span> user = <span class="st">&#39;root&#39;</span><span class="kw">;</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="ex">MariaDB</span> [<span class="er">(</span><span class="ex">none</span><span class="kw">)</span><span class="ex">]</span><span class="op">&gt;</span> flush privileges<span class="kw">;</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="ex">MariaDB</span> [<span class="er">(</span><span class="ex">none</span><span class="kw">)</span><span class="ex">]</span><span class="op">&gt;</span> exit<span class="kw">;</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co"># mysql -u root -p</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Enter password:</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="ex">MariaDB</span> [<span class="er">(</span><span class="ex">none</span><span class="kw">)</span><span class="ex">]</span><span class="op">&gt;</span> create database wordpress<span class="kw">;</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="ex">MariaDB</span> [<span class="er">(</span><span class="ex">none</span><span class="kw">)</span><span class="ex">]</span><span class="op">&gt;</span> show databases<span class="kw">;</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="ex">MariaDB</span> [<span class="er">(</span><span class="ex">none</span><span class="kw">)</span><span class="ex">]</span><span class="op">&gt;</span> exit<span class="kw">;</span></span></code></pre></div>
+                        <div class="sourceCode" id="cb7"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> build</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> build</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://ja.wordpress.org/latest-ja.zip</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">unzip</span> latest-ja.zip</span></code></pre></div>
+                        <h2 id="月22日月">4月22日(月)</h2>
+                        <p>さくらにVPSサーバを立てた。</p>
+                        <ul>
+                        <li>とりあえずPermitRootLoginをno</li>
+                        <li>ユーザ作成</li>
+                        <li>httpdのインストール</li>
+                        <li>/etc/httpd/conf.d/security.confで</li>
+                        </ul>
+                        <pre class="conf"><code>ServerTokens Prod</code></pre>
+                        <ul>
+                        <li>dockerのインストール</li>
+                        </ul>
+                        <div class="sourceCode" id="cb9"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> yum install docker</span></code></pre></div>
+                        <ul>
+                        <li>Pythonのインストール</li>
+                        </ul>
+                        <div class="sourceCode" id="cb10"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> yum install python36 python36-pip</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> ln <span class="at">-s</span> /usr/bin/pip3.6 /usr/local/bin/pip</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> /usr/local/bin/pip install pipenv </span></code></pre></div>
+                        <ul>
+                        <li>dockerファイルの場所でpipenvする</li>
+                        </ul>
+                        <div class="sourceCode" id="cb11"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> www</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> www</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># docker-compose.ymlを作成</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="ex">pipenv</span> install docker-compose</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="ex">pipenv</span> shell</span></code></pre></div>
+                        <p>docker-compose upしてみる。</p>
+                        <div class="sourceCode" id="cb12"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> docker-compose up</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="ex">ERROR:</span> Couldn<span class="st">&#39;t connect to Docker daemon at http+docker://localhost - is it running?</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="st">If it&#39;</span>s at a non-standard location, specify the URL with the DOCKER_HOST environment variable.</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">www</span><span class="kw">)</span></span></code></pre></div>
+                        <p>dockerのパーミッションが足りない。sudoでやりたくなければ、ユーザをdockerグループに所属させる。</p>
+                        <div class="sourceCode" id="cb13"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> groupadd docker</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> gpasswd <span class="at">-a</span> <span class="va">$USER</span> docker</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl restart docker</span></code></pre></div>
+                        <p>一度ログアウトして、再度ログインするとdocker-compose
+                        upできるようになる。
+                        しかし、mysqlに接続できない。firewallにmysqlを追加する。</p>
+                        <div class="sourceCode" id="cb14"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> firewall-cmd <span class="at">--add-service</span><span class="op">=</span>mysql <span class="at">--zone</span><span class="op">=</span>public <span class="at">--permanent</span></span></code></pre></div>
+                        <p>だめだ。やりなおし。</p>
+                        <div class="sourceCode" id="cb15"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> www www2</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> www</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> www</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> pull mysql:5.7.21</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> pull wordpress</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--name</span> test-mysql <span class="at">-e</span> MYSQL_ROOT_PASSWORD=test-pw <span class="at">-d</span> mysql:5.7.21</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--name</span> test-wordpress <span class="at">--link</span> test-mysql:mysql <span class="at">-d</span> <span class="at">-p</span> 8080:80 wordpress</span></code></pre></div>
+                        <p>だめだ。どうしてもデータベースにアクセスできない。まずローカルで試すか。</p>
+                        <div class="sourceCode" id="cb16"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> install docker</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> cask install docker</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="ex">open</span> /Applications/Docker.app</span></code></pre></div>
+                        <p>このあと、docker psが帰ってくるまでまつ。</p>
+                        <div class="sourceCode" id="cb17"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> www</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> www</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> pull mysql:5.7.21</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> pull wordpress</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--name</span> test-mysql <span class="at">-e</span> MYSQL_ROOT_PASSWORD=test-pw <span class="at">-d</span> mysql:5.7.21</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--name</span> test-wordpress <span class="at">--link</span> test-mysql:mysql <span class="at">-d</span> <span class="at">-p</span> 8080:80 wordpress</span></code></pre></div>
+                        <p>run時にイメージがなかったらどうせダウンロードしてくれるから、docker
+                        pullいらんかったな。
+                        うーん、ローカルではあっさり動いたなぁ。</p>
+                        <p>もう一度さくらでやったらあっさり動いた。何がわるかったんだ？mysqlのポートか？</p>
+                        <h2 id="月2日火">4月2日(火)</h2>
+                        <p>Zulipにアカウントを作る。</p>
+                        <p>https://zulipchat.com/new/</p>
+                        <p>で、自分のメールアドレスを入力。
+                        メールを受け取ったら、Organizationの名前や説明を生成。
+                        Hostingする場合は
+                        hogehoge.zulipchat.comというURLになる。</p>
+                        <p>Slackと同じような感じで使えるっぽい？</p>
+          </article>
+  </body>
+
+  </html>
