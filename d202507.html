@@ -21,6 +21,26 @@
   <body>
     <article class="markdown-body">
                         <h1 id="年7月">2025年7月</h1>
+                        <h2 id="月15日火"><a href="#15">07月15日(火)</a>
+                        <a id="15"></a></h2>
+                        <p>Rubyのパッケージ管理、まだ良くわかってない。</p>
+                        <div class="sourceCode" id="cb1"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">bundle</span> config set <span class="at">--local</span> path <span class="st">&#39;vendor/bundle&#39;</span></span></code></pre></div>
+                        <p>を実行すると、<code>.bundle/config</code>というファイルが作成される。中身は</p>
+                        <div class="sourceCode" id="cb2"><pre
+                        class="sourceCode ruby"><code class="sourceCode ruby"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">---</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="cn">BUNDLE_PATH</span>: <span class="st">&quot;vendor/bundle&quot;</span></span></code></pre></div>
+                        <p>これがあると、</p>
+                        <div class="sourceCode" id="cb3"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">bundle</span> install</span></code></pre></div>
+                        <p>とだけした場合でも、ローカルにインストールしてくれる。<code>source .venv/bin/activate</code>が不要なのは良さげ。</p>
+                        <p><code>bundle install</code>を実行すると、そこにある<code>Gemfile</code>を参照する。今回はHexaPDFを使いたいので以下のように記述する。</p>
+                        <div class="sourceCode" id="cb4"><pre
+                        class="sourceCode ruby"><code class="sourceCode ruby"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Gemfile</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>source <span class="st">&quot;https://rubygems.org&quot;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>gem <span class="st">&quot;hexapdf&quot;</span>, <span class="st">&quot;~&gt; 1.3&quot;</span></span></code></pre></div>
+                        <p><code>.gitignore</code>には、<code>vendor</code>は追加するが、<code>.bundle</code>は入れない、すなわち<code>.bundle</code>はリポジトリ管理する。</p>
                         <h2 id="月11日金"><a href="#11">07月11日(金)</a>
                         <a id="11"></a></h2>
                         <p>頭が良い人がたまにする「なるほど、一般大衆はこんなこともわからないのか」という驚きをSNSにポストしちゃうの、普段なら良いとして、選挙活動としてはマイナスだと思う。</p>
