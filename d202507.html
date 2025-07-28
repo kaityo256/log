@@ -21,99 +21,409 @@
   <body>
     <article class="markdown-body">
                         <h1 id="年7月">2025年7月</h1>
+                        <h2 id="月28日月"><a href="#28">07月28日(月)</a>
+                        <a id="28"></a></h2>
+                        <p>物性研でのLAMMPSビルド。</p>
+                        <div class="sourceCode" id="cb1"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone <span class="at">-b</span> release <span class="at">--depth</span> 1  https://github.com/lammps/lammps.git</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> lammps</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> src</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> purge</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load aocc/4.0.0 openmpi/4.1.5-aocc-4.0</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="bu">time</span> make mpi CC=mpicxx LINK=mpicxx CCFLAGS=<span class="st">&quot;-g -O3 -std=c++11 -fopenmp&quot;</span> LINKFLAGS=<span class="st">&quot;-g -O3 -std=c++11 -fopenmp&quot;</span> <span class="at">-j</span> 4</span></code></pre></div>
+                        <p>解析力学の問題ででた双子のパラドックスの解説がよくわからなかったので調べたが、やはり「折り返すあたりでおかしなことが起きる」という理解で正しいらしい。</p>
+                        <div class="sourceCode" id="cb2"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> module purge</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> module load aocc/4.0.0 openmpi/4.1.5-aocc-4.0</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> srun ~/usr/local/bin/lmp_mpi  <span class="op">&lt;</span> phase_separation.input </span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="ex">LAMMPS</span> <span class="er">(</span><span class="ex">22</span> Jul 2025<span class="kw">)</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="ex">using</span> 1 OpenMP thread<span class="er">(</span><span class="ex">s</span><span class="kw">)</span> <span class="ex">per</span> MPI task</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="ex">Reading</span> data file ...</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="ex">orthogonal</span> box = <span class="er">(</span><span class="ex">-40</span> <span class="at">-40</span> <span class="at">-40</span><span class="kw">)</span> <span class="ex">to</span> <span class="er">(</span><span class="ex">40</span> 40 40<span class="kw">)</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="ex">4</span> by 4 by 8 MPI processor grid</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="ex">reading</span> atoms ...</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="ex">256000</span> atoms</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="ex">reading</span> velocities ...</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  <span class="ex">256000</span> velocities</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>  <span class="ex">read_data</span> CPU = 0.943 seconds</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="ex">Generated</span> 0 of 1 mixed pair_coeff terms from geometric mixing rule</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="ex">Neighbor</span> list info ...</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>  <span class="ex">update:</span> every = 1 steps, delay = 0 steps, check = yes</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>  <span class="ex">max</span> neighbors/atom: 2000, page size: 100000</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>  <span class="ex">master</span> list distance cutoff = 2.8</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>  <span class="ex">ghost</span> atom cutoff = 2.8</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>  <span class="ex">binsize</span> = 1.4, bins = 58 58 58</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>  <span class="ex">1</span> neighbor lists, perpetual/occasional/extra = 1 0 0</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>  <span class="kw">(</span><span class="ex">1</span><span class="kw">)</span> <span class="ex">pair</span> lj/cut, perpetual</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>      <span class="ex">attributes:</span> half, newton on</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>      <span class="ex">pair</span> build: half/bin/atomonly/newton</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>      <span class="ex">stencil:</span> half/bin/3d</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>      <span class="ex">bin:</span> standard</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a><span class="ex">Setting</span> up Verlet run ...</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>  <span class="ex">Unit</span> style    : lj</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>  <span class="ex">Current</span> step  : 0</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>  <span class="ex">Time</span> step     : 0.005</span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a><span class="ex">Per</span> MPI rank memory allocation <span class="er">(</span><span class="ex">min/avg/max</span><span class="kw">)</span> <span class="ex">=</span> 3.229 <span class="kw">|</span> <span class="ex">3.229</span> <span class="kw">|</span> <span class="ex">3.229</span> Mbytes</span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>   <span class="ex">Step</span>          Temp          E_pair         E_mol          TotEng         Press     </span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>         <span class="ex">0</span>   0.33307603    <span class="at">-1.516316</span>       0             <span class="at">-1.0167039</span>     <span class="at">-1.1601574</span>    </span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>      <span class="ex">1000</span>   0.87146409    <span class="at">-2.6897609</span>      0             <span class="at">-1.3825698</span>      0.38526114   </span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>      <span class="ex">2000</span>   0.81123753    <span class="at">-3.1135239</span>      0             <span class="at">-1.8966724</span>      0.19467012   </span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>      <span class="ex">3000</span>   0.7510551     <span class="at">-3.4628316</span>      0             <span class="at">-2.3362533</span>      0.080998673  </span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>      <span class="ex">4000</span>   0.71569221    <span class="at">-3.7310777</span>      0             <span class="at">-2.6575436</span>      0.02935777   </span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>      <span class="ex">5000</span>   0.70218845    <span class="at">-3.9131948</span>      0             <span class="at">-2.8599162</span>     <span class="at">-3.3590328e-05</span></span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>      <span class="ex">6000</span>   0.69958594    <span class="at">-4.0285214</span>      0             <span class="at">-2.9791466</span>      0.0019604976 </span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>      <span class="ex">7000</span>   0.69929718    <span class="at">-4.1104325</span>      0             <span class="at">-3.0614908</span>      0.00073366793</span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>      <span class="ex">8000</span>   0.70048815    <span class="at">-4.1759958</span>      0             <span class="at">-3.1252677</span>     <span class="at">-0.014501419</span>  </span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>      <span class="ex">9000</span>   0.69942675    <span class="at">-4.2346808</span>      0             <span class="at">-3.1855447</span>     <span class="at">-0.012403831</span>  </span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>     <span class="ex">10000</span>   0.70026975    <span class="at">-4.2789932</span>      0             <span class="at">-3.2285927</span>     <span class="at">-0.013685938</span>  </span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>     <span class="ex">11000</span>   0.70028975    <span class="at">-4.3268318</span>      0             <span class="at">-3.2764013</span>     <span class="at">-0.010995688</span>  </span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>     <span class="ex">12000</span>   0.69958231    <span class="at">-4.3594105</span>      0             <span class="at">-3.3100412</span>     <span class="at">-0.0057749137</span> </span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>     <span class="ex">13000</span>   0.69922989    <span class="at">-4.3923621</span>      0             <span class="at">-3.3435214</span>     <span class="at">-0.0058298883</span> </span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a>     <span class="ex">14000</span>   0.70132799    <span class="at">-4.4257153</span>      0             <span class="at">-3.3737274</span>     <span class="at">-0.0089451312</span> </span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>     <span class="ex">15000</span>   0.69953001    <span class="at">-4.4560105</span>      0             <span class="at">-3.4067196</span>     <span class="at">-0.012706115</span>  </span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>     <span class="ex">16000</span>   0.69992825    <span class="at">-4.4876111</span>      0             <span class="at">-3.4377228</span>      0.0023749477 </span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a>     <span class="ex">17000</span>   0.70077277    <span class="at">-4.5137957</span>      0             <span class="at">-3.4626407</span>     <span class="at">-0.0052607339</span> </span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>     <span class="ex">18000</span>   0.70010359    <span class="at">-4.5435306</span>      0             <span class="at">-3.4933793</span>     <span class="at">-0.017378879</span>  </span>
+<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a>     <span class="ex">19000</span>   0.6986348     <span class="at">-4.5602393</span>      0             <span class="at">-3.5122912</span>      0.0031205848 </span>
+<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a>     <span class="ex">20000</span>   0.6997015     <span class="at">-4.5904728</span>      0             <span class="at">-3.5409246</span>     <span class="at">-0.012427492</span>  </span>
+<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a><span class="ex">Loop</span> time of 39.1545 on 128 procs for 20000 steps with 256000 atoms</span>
+<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a><span class="ex">Performance:</span> 220664.164 tau/day, 510.797 timesteps/s, 130.764 Matom-step/s</span>
+<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a><span class="ex">99.5%</span> CPU use with 128 MPI tasks x 1 OpenMP threads</span>
+<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a><span class="ex">MPI</span> task timing breakdown:</span>
+<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a><span class="ex">Section</span> <span class="kw">|</span>  <span class="ex">min</span> time  <span class="kw">|</span>  <span class="ex">avg</span> time  <span class="kw">|</span>  <span class="ex">max</span> time  <span class="kw">|</span><span class="ex">%varavg</span><span class="kw">|</span> <span class="ex">%total</span></span>
+<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a><span class="ex">---------------------------------------------------------------</span></span>
+<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a><span class="ex">Pair</span>    <span class="kw">|</span> <span class="ex">8.8906</span>     <span class="kw">|</span> <span class="ex">14.499</span>     <span class="kw">|</span> <span class="ex">17.607</span>     <span class="kw">|</span>  <span class="ex">43.1</span> <span class="kw">|</span> <span class="ex">37.03</span></span>
+<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a><span class="ex">Neigh</span>   <span class="kw">|</span> <span class="ex">5.4021</span>     <span class="kw">|</span> <span class="ex">8.2887</span>     <span class="kw">|</span> <span class="ex">9.6775</span>     <span class="kw">|</span>  <span class="ex">27.5</span> <span class="kw">|</span> <span class="ex">21.17</span></span>
+<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a><span class="ex">Comm</span>    <span class="kw">|</span> <span class="ex">6.6103</span>     <span class="kw">|</span> <span class="ex">10.863</span>     <span class="kw">|</span> <span class="ex">19.973</span>     <span class="kw">|</span>  <span class="ex">75.0</span> <span class="kw">|</span> <span class="ex">27.74</span></span>
+<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a><span class="ex">Output</span>  <span class="kw">|</span> <span class="ex">0.47748</span>    <span class="kw">|</span> <span class="ex">1.7681</span>     <span class="kw">|</span> <span class="ex">3.0791</span>     <span class="kw">|</span>  <span class="ex">58.5</span> <span class="kw">|</span>  <span class="ex">4.52</span></span>
+<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a><span class="ex">Modify</span>  <span class="kw">|</span> <span class="ex">1.3164</span>     <span class="kw">|</span> <span class="ex">2.0326</span>     <span class="kw">|</span> <span class="ex">3.061</span>      <span class="kw">|</span>  <span class="ex">26.1</span> <span class="kw">|</span>  <span class="ex">5.19</span></span>
+<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a><span class="ex">Other</span>   <span class="kw">|</span>            <span class="kw">|</span> <span class="ex">1.704</span>      <span class="kw">|</span>            <span class="kw">|</span>       <span class="kw">|</span>  <span class="ex">4.35</span></span>
+<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a><span class="ex">Nlocal:</span>           2000 ave        2618 max         710 min</span>
+<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a><span class="ex">Histogram:</span> 1 3 2 8 13 15 18 26 22 20</span>
+<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a><span class="ex">Nghost:</span>        3100.74 ave        3873 max        2046 min</span>
+<span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a><span class="ex">Histogram:</span> 2 3 6 16 18 22 23 17 12 9</span>
+<span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a><span class="ex">Neighs:</span>        57534.8 ave       81404 max       19211 min</span>
+<span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a><span class="ex">Histogram:</span> 3 2 5 14 10 22 19 28 12 13</span>
+<span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-76"><a href="#cb2-76" aria-hidden="true" tabindex="-1"></a><span class="ex">Total</span> <span class="co"># of neighbors = 7364453</span></span>
+<span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a><span class="ex">Ave</span> neighs/atom = 28.767395</span>
+<span id="cb2-78"><a href="#cb2-78" aria-hidden="true" tabindex="-1"></a><span class="ex">Neighbor</span> list builds = 2824</span>
+<span id="cb2-79"><a href="#cb2-79" aria-hidden="true" tabindex="-1"></a><span class="ex">Dangerous</span> builds = 0</span>
+<span id="cb2-80"><a href="#cb2-80" aria-hidden="true" tabindex="-1"></a><span class="ex">Total</span> wall time: 0:00:40</span></code></pre></div>
+                        <ul>
+                        <li>上記でビルドした奴</li>
+                        <li>256000 atoms</li>
+                        <li>Total wall time: 0:00:40</li>
+                        </ul>
+                        <div class="sourceCode" id="cb3"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> source /home/issp/materiapps/intel/lammps/lammpsvars.sh</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">WARNING:</span> Preinstalled software under /home/issp/materiapps/intel may not work well</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>         <span class="ex">because</span> the old Intel compiler and environment are no longer available</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>         <span class="ex">due</span> to the vulenerability from April 2023.</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>         <span class="ex">Insteadly,</span> please use software under</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>         <span class="ex">/home/issp/materiapps/oneapi_compiler_classic-2023.0.0--openmpi-4.1.5</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> srun lammps <span class="op">&lt;</span> phase_separation.input </span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="ex">LAMMPS</span> <span class="er">(</span><span class="ex">23</span> Jun 2022 <span class="at">-</span> Update 1<span class="kw">)</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="ex">using</span> 1 OpenMP thread<span class="er">(</span><span class="ex">s</span><span class="kw">)</span> <span class="ex">per</span> MPI task</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="ex">Reading</span> data file ...</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="ex">orthogonal</span> box = <span class="er">(</span><span class="ex">-40</span> <span class="at">-40</span> <span class="at">-40</span><span class="kw">)</span> <span class="ex">to</span> <span class="er">(</span><span class="ex">40</span> 40 40<span class="kw">)</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  <span class="ex">4</span> by 4 by 8 MPI processor grid</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  <span class="ex">reading</span> atoms ...</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  <span class="ex">256000</span> atoms</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>  <span class="ex">reading</span> velocities ...</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>  <span class="ex">256000</span> velocities</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>  <span class="ex">read_data</span> CPU = 2.224 seconds</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="ex">Generated</span> 0 of 1 mixed pair_coeff terms from geometric mixing rule</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="ex">Neighbor</span> list info ...</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>  <span class="ex">update</span> every 1 steps, delay 10 steps, check yes</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>  <span class="ex">max</span> neighbors/atom: 2000, page size: 100000</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>  <span class="ex">master</span> list distance cutoff = 2.8</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>  <span class="ex">ghost</span> atom cutoff = 2.8</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>  <span class="ex">binsize</span> = 1.4, bins = 58 58 58</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>  <span class="ex">1</span> neighbor lists, perpetual/occasional/extra = 1 0 0</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>  <span class="kw">(</span><span class="ex">1</span><span class="kw">)</span> <span class="ex">pair</span> lj/cut, perpetual</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>      <span class="ex">attributes:</span> half, newton on</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>      <span class="ex">pair</span> build: half/bin/atomonly/newton</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>      <span class="ex">stencil:</span> half/bin/3d</span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>      <span class="ex">bin:</span> standard</span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a><span class="ex">Setting</span> up Verlet run ...</span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>  <span class="ex">Unit</span> style    : lj</span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>  <span class="ex">Current</span> step  : 0</span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>  <span class="ex">Time</span> step     : 0.005</span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a><span class="ex">Per</span> MPI rank memory allocation <span class="er">(</span><span class="ex">min/avg/max</span><span class="kw">)</span> <span class="ex">=</span> 4.306 <span class="kw">|</span> <span class="ex">4.306</span> <span class="kw">|</span> <span class="ex">4.306</span> Mbytes</span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>   <span class="ex">Step</span>          Temp          E_pair         E_mol          TotEng         Press     </span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>         <span class="ex">0</span>   0.33307603    <span class="at">-1.516316</span>       0             <span class="at">-1.0167039</span>     <span class="at">-1.1601574</span>    </span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>      <span class="ex">1000</span>   0.87146409    <span class="at">-2.6897609</span>      0             <span class="at">-1.3825698</span>      0.38526114   </span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>      <span class="ex">2000</span>   0.80962765    <span class="at">-3.1111547</span>      0             <span class="at">-1.8967179</span>      0.19000521   </span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>      <span class="ex">3000</span>   0.75045823    <span class="at">-3.4638154</span>      0             <span class="at">-2.3381324</span>      0.070515194  </span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>      <span class="ex">4000</span>   0.71566284    <span class="at">-3.7342073</span>      0             <span class="at">-2.6607173</span>      0.029782565  </span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>      <span class="ex">5000</span>   0.70476387    <span class="at">-3.9191839</span>      0             <span class="at">-2.8620423</span>      0.010235361  </span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>      <span class="ex">6000</span>   0.70002178    <span class="at">-4.0315351</span>      0             <span class="at">-2.9815066</span>     <span class="at">-0.0023020533</span> </span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>      <span class="ex">7000</span>   0.69981926    <span class="at">-4.1168468</span>      0             <span class="at">-3.067122</span>       0.0050582736 </span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>      <span class="ex">8000</span>   0.69854175    <span class="at">-4.1865747</span>      0             <span class="at">-3.1387661</span>     <span class="at">-0.0058356486</span> </span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>      <span class="ex">9000</span>   0.69866897    <span class="at">-4.2469661</span>      0             <span class="at">-3.1989668</span>     <span class="at">-0.0064063014</span> </span>
+<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a>     <span class="ex">10000</span>   0.70036779    <span class="at">-4.2888114</span>      0             <span class="at">-3.2382638</span>     <span class="at">-0.0063266451</span> </span>
+<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a>     <span class="ex">11000</span>   0.69836934    <span class="at">-4.3444797</span>      0             <span class="at">-3.2969298</span>     <span class="at">-0.0080423013</span> </span>
+<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a>     <span class="ex">12000</span>   0.70151992    <span class="at">-4.3749402</span>      0             <span class="at">-3.3226644</span>     <span class="at">-0.011008209</span>  </span>
+<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a>     <span class="ex">13000</span>   0.69913454    <span class="at">-4.411778</span>       0             <span class="at">-3.3630803</span>     <span class="at">-0.0098862328</span> </span>
+<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a>     <span class="ex">14000</span>   0.69903093    <span class="at">-4.4429242</span>      0             <span class="at">-3.3943819</span>     <span class="at">-0.010131298</span>  </span>
+<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a>     <span class="ex">15000</span>   0.70053583    <span class="at">-4.4741996</span>      0             <span class="at">-3.4233999</span>     <span class="at">-0.012884346</span>  </span>
+<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a>     <span class="ex">16000</span>   0.69868448    <span class="at">-4.5000671</span>      0             <span class="at">-3.4520444</span>     <span class="at">-0.014619224</span>  </span>
+<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a>     <span class="ex">17000</span>   0.7005849     <span class="at">-4.5230098</span>      0             <span class="at">-3.4721366</span>     <span class="at">-0.011477545</span>  </span>
+<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a>     <span class="ex">18000</span>   0.69949419    <span class="at">-4.540732</span>       0             <span class="at">-3.4914948</span>     <span class="at">-0.0068405286</span> </span>
+<span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a>     <span class="ex">19000</span>   0.70035761    <span class="at">-4.5630048</span>      0             <span class="at">-3.5124725</span>     <span class="at">-0.0082542691</span> </span>
+<span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a>     <span class="ex">20000</span>   0.69967689    <span class="at">-4.5866956</span>      0             <span class="at">-3.5371843</span>     <span class="at">-0.0059617226</span> </span>
+<span id="cb3-58"><a href="#cb3-58" aria-hidden="true" tabindex="-1"></a><span class="ex">Loop</span> time of 182.152 on 128 procs for 20000 steps with 256000 atoms</span>
+<span id="cb3-59"><a href="#cb3-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-60"><a href="#cb3-60" aria-hidden="true" tabindex="-1"></a><span class="ex">Performance:</span> 47432.855 tau/day, 109.798 timesteps/s</span>
+<span id="cb3-61"><a href="#cb3-61" aria-hidden="true" tabindex="-1"></a><span class="ex">96.3%</span> CPU use with 128 MPI tasks x 1 OpenMP threads</span>
+<span id="cb3-62"><a href="#cb3-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-63"><a href="#cb3-63" aria-hidden="true" tabindex="-1"></a><span class="ex">MPI</span> task timing breakdown:</span>
+<span id="cb3-64"><a href="#cb3-64" aria-hidden="true" tabindex="-1"></a><span class="ex">Section</span> <span class="kw">|</span>  <span class="ex">min</span> time  <span class="kw">|</span>  <span class="ex">avg</span> time  <span class="kw">|</span>  <span class="ex">max</span> time  <span class="kw">|</span><span class="ex">%varavg</span><span class="kw">|</span> <span class="ex">%total</span></span>
+<span id="cb3-65"><a href="#cb3-65" aria-hidden="true" tabindex="-1"></a><span class="ex">---------------------------------------------------------------</span></span>
+<span id="cb3-66"><a href="#cb3-66" aria-hidden="true" tabindex="-1"></a><span class="ex">Pair</span>    <span class="kw">|</span> <span class="ex">15.524</span>     <span class="kw">|</span> <span class="ex">24.057</span>     <span class="kw">|</span> <span class="ex">28.719</span>     <span class="kw">|</span>  <span class="ex">55.4</span> <span class="kw">|</span> <span class="ex">13.21</span></span>
+<span id="cb3-67"><a href="#cb3-67" aria-hidden="true" tabindex="-1"></a><span class="ex">Neigh</span>   <span class="kw">|</span> <span class="ex">3.9487</span>     <span class="kw">|</span> <span class="ex">5.7312</span>     <span class="kw">|</span> <span class="ex">6.8138</span>     <span class="kw">|</span>  <span class="ex">24.5</span> <span class="kw">|</span>  <span class="ex">3.15</span></span>
+<span id="cb3-68"><a href="#cb3-68" aria-hidden="true" tabindex="-1"></a><span class="ex">Comm</span>    <span class="kw">|</span> <span class="ex">57.198</span>     <span class="kw">|</span> <span class="ex">88.669</span>     <span class="kw">|</span> <span class="ex">123.09</span>     <span class="kw">|</span> <span class="ex">168.2</span> <span class="kw">|</span> <span class="ex">48.68</span></span>
+<span id="cb3-69"><a href="#cb3-69" aria-hidden="true" tabindex="-1"></a><span class="ex">Output</span>  <span class="kw">|</span> <span class="ex">6.2454</span>     <span class="kw">|</span> <span class="ex">32.804</span>     <span class="kw">|</span> <span class="ex">59.523</span>     <span class="kw">|</span> <span class="ex">275.8</span> <span class="kw">|</span> <span class="ex">18.01</span></span>
+<span id="cb3-70"><a href="#cb3-70" aria-hidden="true" tabindex="-1"></a><span class="ex">Modify</span>  <span class="kw">|</span> <span class="ex">25.603</span>     <span class="kw">|</span> <span class="ex">29.808</span>     <span class="kw">|</span> <span class="ex">35.164</span>     <span class="kw">|</span>  <span class="ex">36.0</span> <span class="kw">|</span> <span class="ex">16.36</span></span>
+<span id="cb3-71"><a href="#cb3-71" aria-hidden="true" tabindex="-1"></a><span class="ex">Other</span>   <span class="kw">|</span>            <span class="kw">|</span> <span class="ex">1.083</span>      <span class="kw">|</span>            <span class="kw">|</span>       <span class="kw">|</span>  <span class="ex">0.59</span></span>
+<span id="cb3-72"><a href="#cb3-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-73"><a href="#cb3-73" aria-hidden="true" tabindex="-1"></a><span class="ex">Nlocal:</span>           2000 ave        2697 max         731 min</span>
+<span id="cb3-74"><a href="#cb3-74" aria-hidden="true" tabindex="-1"></a><span class="ex">Histogram:</span> 2 0 9 7 11 18 19 28 29 5</span>
+<span id="cb3-75"><a href="#cb3-75" aria-hidden="true" tabindex="-1"></a><span class="ex">Nghost:</span>         3165.7 ave        3959 max        2059 min</span>
+<span id="cb3-76"><a href="#cb3-76" aria-hidden="true" tabindex="-1"></a><span class="ex">Histogram:</span> 2 3 8 8 22 25 19 23 14 4</span>
+<span id="cb3-77"><a href="#cb3-77" aria-hidden="true" tabindex="-1"></a><span class="ex">Neighs:</span>        57489.3 ave       84939 max       15694 min</span>
+<span id="cb3-78"><a href="#cb3-78" aria-hidden="true" tabindex="-1"></a><span class="ex">Histogram:</span> 1 1 11 6 16 19 29 25 16 4</span>
+<span id="cb3-79"><a href="#cb3-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-80"><a href="#cb3-80" aria-hidden="true" tabindex="-1"></a><span class="ex">Total</span> <span class="co"># of neighbors = 7358635</span></span>
+<span id="cb3-81"><a href="#cb3-81" aria-hidden="true" tabindex="-1"></a><span class="ex">Ave</span> neighs/atom = 28.744668</span>
+<span id="cb3-82"><a href="#cb3-82" aria-hidden="true" tabindex="-1"></a><span class="ex">Neighbor</span> list builds = 1998</span>
+<span id="cb3-83"><a href="#cb3-83" aria-hidden="true" tabindex="-1"></a><span class="ex">Dangerous</span> builds = 1994</span>
+<span id="cb3-84"><a href="#cb3-84" aria-hidden="true" tabindex="-1"></a><span class="ex">Total</span> wall time: 0:03:06</span></code></pre></div>
+                        <p>なんでこんなに遅いんだ？</p>
+                        <p>温度制御なし、ダンプなしでやってみる。</p>
+                        <div class="sourceCode" id="cb4"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> srun lammps <span class="op">&lt;</span> phase_separation.input </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">LAMMPS</span> <span class="er">(</span><span class="ex">23</span> Jun 2022 <span class="at">-</span> Update 1<span class="kw">)</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="ex">using</span> 1 OpenMP thread<span class="er">(</span><span class="ex">s</span><span class="kw">)</span> <span class="ex">per</span> MPI task</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="ex">Reading</span> data file ...</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="ex">orthogonal</span> box = <span class="er">(</span><span class="ex">-40</span> <span class="at">-40</span> <span class="at">-40</span><span class="kw">)</span> <span class="ex">to</span> <span class="er">(</span><span class="ex">40</span> 40 40<span class="kw">)</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="ex">4</span> by 4 by 8 MPI processor grid</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="ex">reading</span> atoms ...</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="ex">256000</span> atoms</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="ex">reading</span> velocities ...</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="ex">256000</span> velocities</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  <span class="ex">read_data</span> CPU = 0.717 seconds</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="ex">Generated</span> 0 of 1 mixed pair_coeff terms from geometric mixing rule</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="ex">Neighbor</span> list info ...</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  <span class="ex">update</span> every 1 steps, delay 10 steps, check yes</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>  <span class="ex">max</span> neighbors/atom: 2000, page size: 100000</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>  <span class="ex">master</span> list distance cutoff = 2.8</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>  <span class="ex">ghost</span> atom cutoff = 2.8</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>  <span class="ex">binsize</span> = 1.4, bins = 58 58 58</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>  <span class="ex">1</span> neighbor lists, perpetual/occasional/extra = 1 0 0</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>  <span class="kw">(</span><span class="ex">1</span><span class="kw">)</span> <span class="ex">pair</span> lj/cut, perpetual</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>      <span class="ex">attributes:</span> half, newton on</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>      <span class="ex">pair</span> build: half/bin/atomonly/newton</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>      <span class="ex">stencil:</span> half/bin/3d</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>      <span class="ex">bin:</span> standard</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a><span class="ex">Setting</span> up Verlet run ...</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>  <span class="ex">Unit</span> style    : lj</span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>  <span class="ex">Current</span> step  : 0</span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>  <span class="ex">Time</span> step     : 0.005</span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a><span class="ex">Per</span> MPI rank memory allocation <span class="er">(</span><span class="ex">min/avg/max</span><span class="kw">)</span> <span class="ex">=</span> 3.229 <span class="kw">|</span> <span class="ex">3.229</span> <span class="kw">|</span> <span class="ex">3.229</span> Mbytes</span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>   <span class="ex">Step</span>          Temp          E_pair         E_mol          TotEng         Press     </span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>         <span class="ex">0</span>   0.33307603    <span class="at">-1.516316</span>       0             <span class="at">-1.0167039</span>     <span class="at">-1.1601574</span>    </span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>      <span class="ex">1000</span>   0.97815002    <span class="at">-2.6011809</span>      0             <span class="at">-1.1339616</span>      0.52297807   </span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>      <span class="ex">2000</span>   1.0779394     <span class="at">-2.7468018</span>      0             <span class="at">-1.1298991</span>      0.5633349    </span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>      <span class="ex">3000</span>   1.1282011     <span class="at">-2.8204732</span>      0             <span class="at">-1.1281782</span>      0.56862548   </span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>      <span class="ex">4000</span>   1.156782      <span class="at">-2.8627757</span>      0             <span class="at">-1.1276094</span>      0.57878785   </span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>      <span class="ex">5000</span>   1.1758223     <span class="at">-2.8912819</span>      0             <span class="at">-1.1275553</span>      0.57678955   </span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>      <span class="ex">6000</span>   1.1910381     <span class="at">-2.9150934</span>      0             <span class="at">-1.1285432</span>      0.56857324   </span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>      <span class="ex">7000</span>   1.2023978     <span class="at">-2.9315842</span>      0             <span class="at">-1.1279945</span>      0.5805573    </span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>      <span class="ex">8000</span>   1.207307      <span class="at">-2.9386324</span>      0             <span class="at">-1.127679</span>       0.57309582   </span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>      <span class="ex">9000</span>   1.2193711     <span class="at">-2.9575387</span>      0             <span class="at">-1.1284892</span>      0.57309902   </span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>     <span class="ex">10000</span>   1.2241679     <span class="at">-2.9644462</span>      0             <span class="at">-1.1282014</span>      0.57488072   </span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a>     <span class="ex">11000</span>   1.2305362     <span class="at">-2.9734281</span>      0             <span class="at">-1.127631</span>       0.56729845   </span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a>     <span class="ex">12000</span>   1.2371822     <span class="at">-2.9826972</span>      0             <span class="at">-1.1269312</span>      0.56772114   </span>
+<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a>     <span class="ex">13000</span>   1.2407996     <span class="at">-2.9885648</span>      0             <span class="at">-1.1273726</span>      0.57271685   </span>
+<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a>     <span class="ex">14000</span>   1.2459587     <span class="at">-2.9959874</span>      0             <span class="at">-1.1270567</span>      0.55516076   </span>
+<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>     <span class="ex">15000</span>   1.2478928     <span class="at">-2.9990612</span>      0             <span class="at">-1.1272293</span>      0.56499782   </span>
+<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a>     <span class="ex">16000</span>   1.2498853     <span class="at">-3.0025854</span>      0             <span class="at">-1.1277648</span>      0.5536481    </span>
+<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a>     <span class="ex">17000</span>   1.2540465     <span class="at">-3.0078717</span>      0             <span class="at">-1.1268094</span>      0.56287692   </span>
+<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a>     <span class="ex">18000</span>   1.2549821     <span class="at">-3.009273</span>       0             <span class="at">-1.1268071</span>      0.55989435   </span>
+<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a>     <span class="ex">19000</span>   1.2571933     <span class="at">-3.0127934</span>      0             <span class="at">-1.1270108</span>      0.55622421   </span>
+<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a>     <span class="ex">20000</span>   1.2611402     <span class="at">-3.0186255</span>      0             <span class="at">-1.1269226</span>      0.55445958   </span>
+<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a><span class="ex">Loop</span> time of 77.7506 on 128 procs for 20000 steps with 256000 atoms</span>
+<span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a><span class="ex">Performance:</span> 111124.505 tau/day, 257.233 timesteps/s</span>
+<span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a><span class="ex">95.0%</span> CPU use with 128 MPI tasks x 1 OpenMP threads</span>
+<span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-57"><a href="#cb4-57" aria-hidden="true" tabindex="-1"></a><span class="ex">MPI</span> task timing breakdown:</span>
+<span id="cb4-58"><a href="#cb4-58" aria-hidden="true" tabindex="-1"></a><span class="ex">Section</span> <span class="kw">|</span>  <span class="ex">min</span> time  <span class="kw">|</span>  <span class="ex">avg</span> time  <span class="kw">|</span>  <span class="ex">max</span> time  <span class="kw">|</span><span class="ex">%varavg</span><span class="kw">|</span> <span class="ex">%total</span></span>
+<span id="cb4-59"><a href="#cb4-59" aria-hidden="true" tabindex="-1"></a><span class="ex">---------------------------------------------------------------</span></span>
+<span id="cb4-60"><a href="#cb4-60" aria-hidden="true" tabindex="-1"></a><span class="ex">Pair</span>    <span class="kw">|</span> <span class="ex">17.788</span>     <span class="kw">|</span> <span class="ex">19.366</span>     <span class="kw">|</span> <span class="ex">20.743</span>     <span class="kw">|</span>  <span class="ex">14.1</span> <span class="kw">|</span> <span class="ex">24.91</span></span>
+<span id="cb4-61"><a href="#cb4-61" aria-hidden="true" tabindex="-1"></a><span class="ex">Neigh</span>   <span class="kw">|</span> <span class="ex">5.1141</span>     <span class="kw">|</span> <span class="ex">5.4157</span>     <span class="kw">|</span> <span class="ex">5.8469</span>     <span class="kw">|</span>   <span class="ex">6.9</span> <span class="kw">|</span>  <span class="ex">6.97</span></span>
+<span id="cb4-62"><a href="#cb4-62" aria-hidden="true" tabindex="-1"></a><span class="ex">Comm</span>    <span class="kw">|</span> <span class="ex">49.704</span>     <span class="kw">|</span> <span class="ex">51.449</span>     <span class="kw">|</span> <span class="ex">53.18</span>      <span class="kw">|</span>  <span class="ex">10.4</span> <span class="kw">|</span> <span class="ex">66.17</span></span>
+<span id="cb4-63"><a href="#cb4-63" aria-hidden="true" tabindex="-1"></a><span class="ex">Output</span>  <span class="kw">|</span> <span class="ex">0.0035131</span>  <span class="kw">|</span> <span class="ex">0.0037755</span>  <span class="kw">|</span> <span class="ex">0.004142</span>   <span class="kw">|</span>   <span class="ex">0.3</span> <span class="kw">|</span>  <span class="ex">0.00</span></span>
+<span id="cb4-64"><a href="#cb4-64" aria-hidden="true" tabindex="-1"></a><span class="ex">Modify</span>  <span class="kw">|</span> <span class="ex">0.42471</span>    <span class="kw">|</span> <span class="ex">0.4391</span>     <span class="kw">|</span> <span class="ex">0.45213</span>    <span class="kw">|</span>   <span class="ex">0.9</span> <span class="kw">|</span>  <span class="ex">0.56</span></span>
+<span id="cb4-65"><a href="#cb4-65" aria-hidden="true" tabindex="-1"></a><span class="ex">Other</span>   <span class="kw">|</span>            <span class="kw">|</span> <span class="ex">1.077</span>      <span class="kw">|</span>            <span class="kw">|</span>       <span class="kw">|</span>  <span class="ex">1.39</span></span>
+<span id="cb4-66"><a href="#cb4-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-67"><a href="#cb4-67" aria-hidden="true" tabindex="-1"></a><span class="ex">Nlocal:</span>           2000 ave        2132 max        1894 min</span>
+<span id="cb4-68"><a href="#cb4-68" aria-hidden="true" tabindex="-1"></a><span class="ex">Histogram:</span> 6 11 19 22 18 23 12 8 7 2</span>
+<span id="cb4-69"><a href="#cb4-69" aria-hidden="true" tabindex="-1"></a><span class="ex">Nghost:</span>        3117.23 ave        3246 max        2993 min</span>
+<span id="cb4-70"><a href="#cb4-70" aria-hidden="true" tabindex="-1"></a><span class="ex">Histogram:</span> 3 10 13 14 23 24 20 15 4 2</span>
+<span id="cb4-71"><a href="#cb4-71" aria-hidden="true" tabindex="-1"></a><span class="ex">Neighs:</span>        41621.2 ave       47436 max       36409 min</span>
+<span id="cb4-72"><a href="#cb4-72" aria-hidden="true" tabindex="-1"></a><span class="ex">Histogram:</span> 5 12 11 24 18 22 17 7 3 9</span>
+<span id="cb4-73"><a href="#cb4-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-74"><a href="#cb4-74" aria-hidden="true" tabindex="-1"></a><span class="ex">Total</span> <span class="co"># of neighbors = 5327513</span></span>
+<span id="cb4-75"><a href="#cb4-75" aria-hidden="true" tabindex="-1"></a><span class="ex">Ave</span> neighs/atom = 20.810598</span>
+<span id="cb4-76"><a href="#cb4-76" aria-hidden="true" tabindex="-1"></a><span class="ex">Neighbor</span> list builds = 1998</span>
+<span id="cb4-77"><a href="#cb4-77" aria-hidden="true" tabindex="-1"></a><span class="ex">Dangerous</span> builds = 1994</span>
+<span id="cb4-78"><a href="#cb4-78" aria-hidden="true" tabindex="-1"></a><span class="ex">Total</span> wall time: 0:01:18</span></code></pre></div>
+                        <p>二回目。</p>
+                        <div class="sourceCode" id="cb5"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Total</span> wall time: 0:01:19</span></code></pre></div>
+                        <div class="sourceCode" id="cb6"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> module purge</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> module load aocc/4.0.0 openmpi/4.1.5-aocc-4.0</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> srun ~/usr/local/bin/lmp_mpi  <span class="op">&lt;</span> phase_separation.input </span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="ex">Total</span> wall time: 0:00:32</span></code></pre></div>
+                        <p>二回目。</p>
+                        <div class="sourceCode" id="cb7"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Total</span> wall time: 0:00:31</span></code></pre></div>
+                        <p>うお、三倍くらい早い。</p>
+                        <p>2ノード。</p>
+                        <div class="sourceCode" id="cb8"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> salloc <span class="at">-N</span> 2 <span class="at">-n</span> 256 <span class="at">-p</span> i8cpu</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Total</span> wall time: 0:00:21</span></code></pre></div>
+                        <p>2度目。</p>
+                        <div class="sourceCode" id="cb9"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Total</span> wall time: 0:00:19</span></code></pre></div>
+                        <p>1ノード128プロセスから2ノード256プロセスで1.5倍。まぁそんなものだろう。</p>
+                        <div class="sourceCode" id="cb10"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> module list</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Currently</span> Loaded Modulefiles:</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a> <span class="ex">1</span><span class="er">)</span> <span class="ex">oneapi_compiler/2023.0.0</span>   2<span class="er">)</span> <span class="ex">oneapi_mpi/2023.0.0</span>  </span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="ex">Total</span> wall time: 0:01:40</span></code></pre></div>
+                        <p>まとめると、</p>
+                        <ul>
+                        <li>ビルドしたLAMMPS (LAMMPS (22 Jul 2025)
+                        <ul>
+                        <li>1ノード128プロセス：32秒</li>
+                        <li>2ノード256プロセス：20秒</li>
+                        </ul></li>
+                        <li>デフォルトのLAMMPS (LAMMPS (23 Jun 2022 -
+                        Update 1))
+                        <ul>
+                        <li>1ノード128プロセス：78秒</li>
+                        <li>2ノード256プロセス：96秒</li>
+                        </ul></li>
+                        </ul>
+                        <p>ビルドした奴の方が数倍早いな。</p>
+                        <p>数理物理期末テスト。半分くらい採点したが、かなりよくできている。難易度は例年並みだと思うのだが。</p>
+                        <h2 id="月27日日"><a href="#27">07月27日(日)</a>
+                        <a id="27"></a></h2>
+                        <p>あまりにも進捗がないので、部屋の片付け、息子のベッドの</p>
+                        <h2 id="月26日土"><a href="#26">07月26日(土)</a>
+                        <a id="26"></a></h2>
+                        <p>NOP</p>
                         <h2 id="月25日金"><a href="#25">07月25日(金)</a>
                         <a id="25"></a></h2>
-                        <div class="sourceCode" id="cb1"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> <span class="at">-m</span> venv .venv</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> .venv/bin/activate</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> <span class="at">-m</span> pip install <span class="at">--upgrade</span> pip setuptools wheel</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> <span class="at">-m</span> pip install Cython</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> <span class="at">-m</span> pip install nemo_toolkit<span class="pp">[</span><span class="st">&#39;all&#39;</span><span class="pp">]</span></span></code></pre></div>
-                        <div class="sourceCode" id="cb2"><pre
-                        class="sourceCode py"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>np.<span class="bu">int</span> <span class="op">=</span> <span class="bu">int</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>np.<span class="bu">float</span> <span class="op">=</span> <span class="bu">float</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>np.<span class="bu">str</span> <span class="op">=</span> <span class="bu">str</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> nemo.core</span></code></pre></div>
+                        <div class="sourceCode" id="cb11"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> <span class="at">-m</span> venv .venv</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> .venv/bin/activate</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> <span class="at">-m</span> pip install <span class="at">--upgrade</span> pip setuptools wheel</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> <span class="at">-m</span> pip install Cython</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> <span class="at">-m</span> pip install nemo_toolkit<span class="pp">[</span><span class="st">&#39;all&#39;</span><span class="pp">]</span></span></code></pre></div>
+                        <div class="sourceCode" id="cb12"><pre
+                        class="sourceCode py"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>np.<span class="bu">int</span> <span class="op">=</span> <span class="bu">int</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>np.<span class="bu">float</span> <span class="op">=</span> <span class="bu">float</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>np.<span class="bu">str</span> <span class="op">=</span> <span class="bu">str</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> nemo.core</span></code></pre></div>
                         <p>駄目だ。GitHubから行く。</p>
-                        <div class="sourceCode" id="cb3"><pre
-                        class="sourceCode py"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pip install <span class="op">--</span>upgrade pip setuptools wheel</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>pip install Cython ninja</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>git clone https:<span class="op">//</span>github.com<span class="op">/</span>NVIDIA<span class="op">/</span>NeMo.git</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>cd NeMo</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>pip install <span class="op">-</span>e .[<span class="bu">all</span>]</span></code></pre></div>
+                        <div class="sourceCode" id="cb13"><pre
+                        class="sourceCode py"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>pip install <span class="op">--</span>upgrade pip setuptools wheel</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>pip install Cython ninja</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>git clone https:<span class="op">//</span>github.com<span class="op">/</span>NVIDIA<span class="op">/</span>NeMo.git</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>cd NeMo</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>pip install <span class="op">-</span>e .[<span class="bu">all</span>]</span></code></pre></div>
                         <p>Pythonのバージョンが足りない。Kuguiにはcondaで入れたな。</p>
-                        <div class="sourceCode" id="cb4"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> python3 <span class="at">--version</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Python</span> 3.12.10</span></code></pre></div>
+                        <div class="sourceCode" id="cb14"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> python3 <span class="at">--version</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Python</span> 3.12.10</span></code></pre></div>
                         <p>駄目だ。NeMoの要求するPythonのバージョン範囲が厳しい。3.12では駄目。3.11でも駄目。</p>
-                        <div class="sourceCode" id="cb5"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> install python=3.10</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> llama2-test</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> llama2-test</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> <span class="at">-m</span> venv .venv</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> .venv/bin/activate</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">--upgrade</span> pip setuptools wheel</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install Cython ninja</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install hydra-core omegaconf</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install lightning</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install braceexpand</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install webdataset</span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install einops</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install transformers</span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install sentencepiece</span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install h5py</span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install pandas</span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install matplotlib</span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install megatron</span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/NVIDIA/NeMo.git</span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> NeMo</span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install .</span></code></pre></div>
-                        <div class="sourceCode" id="cb6"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/NVIDIA/Megatron-LM.git</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> Megatron-LM</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-e</span> .</span></code></pre></div>
-                        <div class="sourceCode" id="cb7"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load cuda/11.2</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install torch</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/NVIDIA/apex</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install . <span class="at">--no-build-isolation</span></span></code></pre></div>
+                        <div class="sourceCode" id="cb15"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> install python=3.10</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> llama2-test</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> llama2-test</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> <span class="at">-m</span> venv .venv</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> .venv/bin/activate</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">--upgrade</span> pip setuptools wheel</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install Cython ninja</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install hydra-core omegaconf</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install lightning</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install braceexpand</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install webdataset</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install einops</span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install transformers</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install sentencepiece</span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install h5py</span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install pandas</span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install matplotlib</span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install megatron</span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/NVIDIA/NeMo.git</span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> NeMo</span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install .</span></code></pre></div>
+                        <div class="sourceCode" id="cb16"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/NVIDIA/Megatron-LM.git</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> Megatron-LM</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-e</span> .</span></code></pre></div>
+                        <div class="sourceCode" id="cb17"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load cuda/11.2</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install torch</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/NVIDIA/apex</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install . <span class="at">--no-build-isolation</span></span></code></pre></div>
                         <p>できたか？</p>
-                        <div class="sourceCode" id="cb8"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ipython</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">import</span> os</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="ex">os.environ[</span><span class="st">&quot;NVIDIA_PYTORCH_VERSION&quot;</span><span class="ex">]</span> = <span class="st">&quot;24.03&quot;</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="ex">from</span> nemo.core import ModelPT</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="ex">model</span> = ModelPT.restore_from<span class="er">(</span><span class="st">&quot;llama2-7b-nemo.nemo&quot;</span><span class="kw">)</span></span></code></pre></div>
-                        <div class="sourceCode" id="cb9"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://huggingface.co/pe-nlp/llama2-7b-nemo/resolve/main/llama2-7b-nemo.nemo</span></code></pre></div>
+                        <div class="sourceCode" id="cb18"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ipython</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="ex">import</span> os</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="ex">os.environ[</span><span class="st">&quot;NVIDIA_PYTORCH_VERSION&quot;</span><span class="ex">]</span> = <span class="st">&quot;24.03&quot;</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="ex">from</span> nemo.core import ModelPT</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="ex">model</span> = ModelPT.restore_from<span class="er">(</span><span class="st">&quot;llama2-7b-nemo.nemo&quot;</span><span class="kw">)</span></span></code></pre></div>
+                        <div class="sourceCode" id="cb19"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://huggingface.co/pe-nlp/llama2-7b-nemo/resolve/main/llama2-7b-nemo.nemo</span></code></pre></div>
                         <p>先にAPEXのインストールが必要か?</p>
-                        <div class="sourceCode" id="cb10"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load cuda/11.2 </span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> <span class="at">-m</span> venv .venv</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">--upgrade</span> pip</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install ninja</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install packaging</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/NVIDIA/apex</span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install torch==1.13.0 torchvision==0.14.0 torchaudio==0.13.0</span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> apex</span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="va">APEX_CPP_EXT</span><span class="op">=</span>1 <span class="va">APEX_CUDA_EXT</span><span class="op">=</span>1 <span class="ex">pip</span> install <span class="at">-v</span> <span class="at">--no-build-isolation</span> .</span></code></pre></div>
+                        <div class="sourceCode" id="cb20"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load cuda/11.2 </span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> <span class="at">-m</span> venv .venv</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">--upgrade</span> pip</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install ninja</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install packaging</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/NVIDIA/apex</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install torch==1.13.0 torchvision==0.14.0 torchaudio==0.13.0</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> apex</span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a><span class="va">APEX_CPP_EXT</span><span class="op">=</span>1 <span class="va">APEX_CUDA_EXT</span><span class="op">=</span>1 <span class="ex">pip</span> install <span class="at">-v</span> <span class="at">--no-build-isolation</span> .</span></code></pre></div>
                         <p>駄目。物性研のCUDAが古い(11.2)のがまずいらしい。</p>
                         <p>Google Colabで試してみる？</p>
-                        <div class="sourceCode" id="cb11"><pre
-                        class="sourceCode py"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install nemo_toolkit</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install hydra<span class="op">-</span>core</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install lightning</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install braceexpand</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install webdataset</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install ijson</span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install megatron megatron<span class="op">-</span>core</span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install sacrebleu</span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install rouge_score</span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install opencc</span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nemo.collections.nlp.models.language_modeling <span class="im">import</span> MegatronGPTModel</span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> ModelPT.from_pretrained(<span class="st">&quot;pe-nlp/llama2-7b-nemo&quot;</span>)</span></code></pre></div>
+                        <div class="sourceCode" id="cb21"><pre
+                        class="sourceCode py"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install nemo_toolkit</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install hydra<span class="op">-</span>core</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install lightning</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install braceexpand</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install webdataset</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install ijson</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install megatron megatron<span class="op">-</span>core</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install sacrebleu</span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install rouge_score</span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install opencc</span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nemo.collections.nlp.models.language_modeling <span class="im">import</span> MegatronGPTModel</span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> ModelPT.from_pretrained(<span class="st">&quot;pe-nlp/llama2-7b-nemo&quot;</span>)</span></code></pre></div>
                         <p>駄目だ。MegatronGPTModelが入らない。どうにもできない。</p>
                         <h2 id="月24日木"><a href="#24">07月24日(木)</a>
                         <a id="24"></a></h2>
@@ -137,19 +447,19 @@
                         <a id="19"></a></h2>
                         <p>修論中間発表。皆さんちゃんとできて良かった。</p>
                         <p>家のPCのUbuntuが古く、aptで入るGoが古い。そのせいで、ooxgrepが使えない。</p>
-                        <div class="sourceCode" id="cb12"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="at">-q</span> https://go.dev/dl/go1.24.5.linux-amd64.tar.gz </span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> tar <span class="at">-C</span> /usr/local <span class="at">-xvf</span> go1.24.5.linux-amd64.tar.gz  </span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">PATH</span><span class="op">=</span><span class="va">$PATH</span>:/usr/local/go/bin </span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">PATH</span><span class="op">=</span><span class="va">$PATH</span>:~/go/bin</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="ex">go</span> install github.com/kaityo256/ooxmlgrep@latest</span></code></pre></div>
-                        <div class="sourceCode" id="cb13"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ooxmlgrep </span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Options:</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-n,</span> <span class="at">--number</span>        Show slide number only <span class="er">(</span><span class="ex">like</span> grep <span class="at">-n</span><span class="kw">)</span></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-i,</span> <span class="at">--ignore-case</span>   Ignore case distinctions</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="ex">--version</span>           Show version and exit</span></code></pre></div>
+                        <div class="sourceCode" id="cb22"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="at">-q</span> https://go.dev/dl/go1.24.5.linux-amd64.tar.gz </span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> tar <span class="at">-C</span> /usr/local <span class="at">-xvf</span> go1.24.5.linux-amd64.tar.gz  </span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">PATH</span><span class="op">=</span><span class="va">$PATH</span>:/usr/local/go/bin </span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">PATH</span><span class="op">=</span><span class="va">$PATH</span>:~/go/bin</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="ex">go</span> install github.com/kaityo256/ooxmlgrep@latest</span></code></pre></div>
+                        <div class="sourceCode" id="cb23"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ooxmlgrep </span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Options:</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-n,</span> <span class="at">--number</span>        Show slide number only <span class="er">(</span><span class="ex">like</span> grep <span class="at">-n</span><span class="kw">)</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-i,</span> <span class="at">--ignore-case</span>   Ignore case distinctions</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>  <span class="ex">--version</span>           Show version and exit</span></code></pre></div>
                         <p>できた。</p>
                         <h2 id="月18日金"><a href="#18">07月18日(金)</a>
                         <a id="18"></a></h2>
@@ -162,22 +472,22 @@
                         <a id="16"></a></h2>
                         <p>参院選が近いせいか、SNSで選挙の話題になることが多い。それで思うのは、「正しいことを言う事」が「正しいこと」に繋がらないこと。多くの場合、「X支持、X不支持」を決めている人は、その意見を変えることがない。で、例えばXを支持する人が、不支持の人の意見について間違いを指摘する。この時、不支持の人が「ごめんなさい」をすることはほぼないので、レスバ泥仕合となることが多い。すると、その指摘が正しかったとしても、Xについての悪印象を聴衆に植え付ける。X支持の人の目的は、「現在、Xを支持するかどうか決めかねている人たち」を取り込むことのはずで、そのためには「Xを支持する人たち」の言葉を取り上げ、「多くの人がXを支持している」という雰囲気を作らなければならない。いちいちX不支持の人の意見にコメントしていると、聴衆は「X不支持の人、結構いるんだなぁ」と思ってしまい、少なくともX支持にはまわらなくなるだろう。</p>
                         <p>なんというか、Xを支持する人の言動が、X支持の拡大に繋がらないように見えて、いろいろむずかしいな、と思う。</p>
-                        <div class="sourceCode" id="cb14"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> which ruby</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="ex">/usr/bin/ruby</span></span></code></pre></div>
+                        <div class="sourceCode" id="cb24"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> which ruby</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="ex">/usr/bin/ruby</span></span></code></pre></div>
                         <p>rbenvが有効になっていないな。なにかで問題起こしたから消したんだっけ？</p>
                         <p><code>.zshrc</code>の最後に</p>
-                        <div class="sourceCode" id="cb15"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="bu">eval</span> <span class="st">&quot;</span><span class="va">$(</span><span class="ex">rbenv</span> init <span class="at">-</span><span class="va">)</span><span class="st">&quot;</span></span></code></pre></div>
+                        <div class="sourceCode" id="cb25"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="bu">eval</span> <span class="st">&quot;</span><span class="va">$(</span><span class="ex">rbenv</span> init <span class="at">-</span><span class="va">)</span><span class="st">&quot;</span></span></code></pre></div>
                         <p>を追加。</p>
-                        <div class="sourceCode" id="cb16"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> which ruby </span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="ex">/Users/watanabe/.rbenv/shims/ruby</span></span></code></pre></div>
+                        <div class="sourceCode" id="cb26"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> which ruby </span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="ex">/Users/watanabe/.rbenv/shims/ruby</span></span></code></pre></div>
                         <p>OK。</p>
                         <p>bundleは最初にconfigでローカルの<code>vendor/bundle</code>をセットして、後は単に<code>bundle install</code>で良さそう。するとカレントディレクトリに<code>.bundle</code>ができる。bundleはまず<code>.bundle/config</code>をチェックするので、そこに</p>
-                        <div class="sourceCode" id="cb17"><pre
-                        class="sourceCode txt"><code class="sourceCode default"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>BUNDLE_PATH: &quot;vendor/bundle&quot;</span></code></pre></div>
+                        <div class="sourceCode" id="cb27"><pre
+                        class="sourceCode txt"><code class="sourceCode default"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>BUNDLE_PATH: &quot;vendor/bundle&quot;</span></code></pre></div>
                         <p>と書いてあれば、デフォルトでそこに入れてくれる。いちいち<code>bundle install --path vendor/bundle --local</code>とする必要はない。Pythonのvenvよりスマートだな。</p>
                         <p>質問メールに返事。ついでに論文データリポジトリを修正しておく。</p>
                         <p><a
@@ -186,36 +496,36 @@
                         <h2 id="月15日火"><a href="#15">07月15日(火)</a>
                         <a id="15"></a></h2>
                         <p>Rubyのパッケージ管理、まだ良くわかってない。</p>
-                        <div class="sourceCode" id="cb18"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">bundle</span> config set <span class="at">--local</span> path <span class="st">&#39;vendor/bundle&#39;</span></span></code></pre></div>
+                        <div class="sourceCode" id="cb28"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="ex">bundle</span> config set <span class="at">--local</span> path <span class="st">&#39;vendor/bundle&#39;</span></span></code></pre></div>
                         <p>を実行すると、<code>.bundle/config</code>というファイルが作成される。中身は</p>
-                        <div class="sourceCode" id="cb19"><pre
-                        class="sourceCode ruby"><code class="sourceCode ruby"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="kw">---</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="cn">BUNDLE_PATH</span>: <span class="st">&quot;vendor/bundle&quot;</span></span></code></pre></div>
+                        <div class="sourceCode" id="cb29"><pre
+                        class="sourceCode ruby"><code class="sourceCode ruby"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="kw">---</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="cn">BUNDLE_PATH</span>: <span class="st">&quot;vendor/bundle&quot;</span></span></code></pre></div>
                         <p>これがあると、</p>
-                        <div class="sourceCode" id="cb20"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="ex">bundle</span> install</span></code></pre></div>
+                        <div class="sourceCode" id="cb30"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="ex">bundle</span> install</span></code></pre></div>
                         <p>とだけした場合でも、ローカルにインストールしてくれる。<code>source .venv/bin/activate</code>が不要なのは良さげ。</p>
                         <p><code>bundle install</code>を実行すると、そこにある<code>Gemfile</code>を参照する。今回はHexaPDFを使いたいので以下のように記述する。</p>
-                        <div class="sourceCode" id="cb21"><pre
-                        class="sourceCode ruby"><code class="sourceCode ruby"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Gemfile</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>source <span class="st">&quot;https://rubygems.org&quot;</span></span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>gem <span class="st">&quot;hexapdf&quot;</span>, <span class="st">&quot;~&gt; 1.3&quot;</span></span></code></pre></div>
+                        <div class="sourceCode" id="cb31"><pre
+                        class="sourceCode ruby"><code class="sourceCode ruby"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Gemfile</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>source <span class="st">&quot;https://rubygems.org&quot;</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>gem <span class="st">&quot;hexapdf&quot;</span>, <span class="st">&quot;~&gt; 1.3&quot;</span></span></code></pre></div>
                         <p><code>.gitignore</code>には、<code>vendor</code>は追加するが、<code>.bundle</code>は入れない、すなわち<code>.bundle</code>はリポジトリ管理する。</p>
                         <p>HexaPDFをインストールしようとしたら、</p>
-                        <div class="sourceCode" id="cb22"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="ex">An</span> error occurred while installing openssl <span class="er">(</span><span class="ex">3.3.0</span><span class="kw">)</span><span class="ex">,</span> and Bundler cannot continue.</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="ex">In</span> Gemfile:</span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="ex">hexapdf</span> was resolved to 1.3.0, which depends on</span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>    <span class="ex">openssl</span></span></code></pre></div>
+                        <div class="sourceCode" id="cb32"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="ex">An</span> error occurred while installing openssl <span class="er">(</span><span class="ex">3.3.0</span><span class="kw">)</span><span class="ex">,</span> and Bundler cannot continue.</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="ex">In</span> Gemfile:</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>  <span class="ex">hexapdf</span> was resolved to 1.3.0, which depends on</span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>    <span class="ex">openssl</span></span></code></pre></div>
                         <p>なんでPDF解析ライブラリがopensslに依存しているんだ？</p>
-                        <div class="sourceCode" id="cb23"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get install libssl-dev </span></code></pre></div>
+                        <div class="sourceCode" id="cb33"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get install libssl-dev </span></code></pre></div>
                         <p>このあと、</p>
-                        <div class="sourceCode" id="cb24"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="ex">bundle</span> install</span></code></pre></div>
+                        <div class="sourceCode" id="cb34"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="ex">bundle</span> install</span></code></pre></div>
                         <p>したらうまくいった。</p>
                         <p>なんか昔の論文に質問が来たので答えた。</p>
                         <p>数理物理の講義後半予想問題集および解答例を作ってアップロードし、期末試験の案内流した。</p>
