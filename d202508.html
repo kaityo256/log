@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="generator" content="pandoc">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-                <title>2025年7月</title>
+                <title>2025年8月</title>
     <style type="text/css">
       code {
         white-space: pre;
@@ -20,7 +20,7 @@
 
   <body>
     <article class="markdown-body">
-                        <h1 id="年7月">2025年7月</h1>
+                        <h1 id="年8月">2025年8月</h1>
                         <h2 id="月01日金"><a href="#01">08月01日(金)</a>
                         <a id="01"></a></h2>
                         <p>LAMMPS最新版のクローンとビルド。</p>
@@ -44,12 +44,16 @@
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">cmake</span> ../cmake <span class="dt">\</span></span>
 <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">-D</span> CMAKE_C_COMPILER=mpicc <span class="dt">\</span></span>
 <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">-D</span> CMAKE_CXX_COMPILER=mpicxx <span class="dt">\</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">-D</span> CMAKE_INSTALL_PREFIX=~/usr/local/bin <span class="dt">\</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">-D</span> CMAKE_CXX_FLAGS=<span class="st">&quot;-g -O3 -std=c++11 -fopenmp&quot;</span> <span class="dt">\</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">-D</span> CMAKE_EXE_LINKER_FLAGS=<span class="st">&quot;-g -O3 -std=c++11 -fopenmp&quot;</span> <span class="dt">\</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">-D</span> BUILD_MPI=on <span class="dt">\</span></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">-D</span> PKG_BOND=on</span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> <span class="at">-j</span> 4</span></code></pre></div>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">-D</span> CMAKE_INSTALL_PREFIX=~/usr/local <span class="dt">\</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">-D</span> CMAKE_CXX_FLAGS=<span class="st">&quot;-O3 -std=c++11 -fopenmp&quot;</span> <span class="dt">\</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">-D</span> BUILD_MPI=yes</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-D</span> BUILD_OMP=yes   </span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-D</span> CMAKE_EXE_LINKER_FLAGS=<span class="st">&quot;-O3 -std=c++11 -fopenmp&quot;</span> <span class="dt">\</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">-D</span> PKG_MOLECULE=on</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> <span class="at">-j</span> 4</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> install</span></code></pre></div>
+                        <p>これでいったかな？できたっぽい。</p>
+                        <p>しかし、なんで令和にもなって僕はパッケージのビルドで苦労しているのか。</p>
                         <p>シミュレーション工学の評語確定。</p>
                         <p>いろいろ偉そうに話したりノウハウとか公開してるんだけど、いつも心の中の自分が「なんでお前が偉そうに話してるんだ？」と問いかける。でも、いつか見た「ロールモデルは手が届かないと意味がない」という言葉を旨に、できる限りこういうのを公開するようにしてる。</p>
                         <p>すごすぎる人のノウハウってあんまり参考にならんのよね。ちょうどいい人のノウハウがちょうどいい。</p>
