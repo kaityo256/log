@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+                <title>2025年7月</title>
+    <style type="text/css">
+      code {
+        white-space: pre;
+      }
+    </style>
+        <style type="text/css"></style>
+
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- link rel="stylesheet" href="github-markdown.css" type="text/css" / -->
+          </head>
+
+  <body>
+    <article class="markdown-body">
+                        <h1 id="年7月">2025年7月</h1>
+                        <h2 id="月01日金"><a href="#01">08月01日(金)</a>
+                        <a id="01"></a></h2>
+                        <p>LAMMPS最新版のクローンとビルド。</p>
+                        <div class="sourceCode" id="cb1"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> github</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone <span class="at">-b</span> release <span class="at">--depth</span> 1  https://github.com/lammps/lammps.git</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> lammps</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> src</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> purge</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load aocc/4.0.0 openmpi/4.1.5-aocc-4.0</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> mpi CC=mpicxx LINK=mpicxx CCFLAGS=<span class="st">&quot;-g -O3 -std=c++11 -fopenmp&quot;</span> LINKFLAGS=<span class="st">&quot;-g -O3 -std=c++11 -fopenmp&quot;</span> <span class="at">-j</span> 4</span></code></pre></div>
+                        <p>これのcmake版を作る。</p>
+                        <div class="sourceCode" id="cb2"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> github</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone <span class="at">-b</span> release <span class="at">--depth</span> 1  https://github.com/lammps/lammps.git</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> lammps</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> build</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> build</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> purge</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load aocc/4.0.0 openmpi/4.1.5-aocc-4.0</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">cmake</span> ../cmake <span class="dt">\</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">-D</span> CMAKE_C_COMPILER=mpicc <span class="dt">\</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">-D</span> CMAKE_CXX_COMPILER=mpicxx <span class="dt">\</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">-D</span> CMAKE_INSTALL_PREFIX=~/usr/local/bin <span class="dt">\</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">-D</span> CMAKE_CXX_FLAGS=<span class="st">&quot;-g -O3 -std=c++11 -fopenmp&quot;</span> <span class="dt">\</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">-D</span> CMAKE_EXE_LINKER_FLAGS=<span class="st">&quot;-g -O3 -std=c++11 -fopenmp&quot;</span> <span class="dt">\</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">-D</span> BUILD_MPI=on <span class="dt">\</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">-D</span> PKG_BOND=on</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> <span class="at">-j</span> 4</span></code></pre></div>
+                        <p>シミュレーション工学の評語確定。</p>
+                        <p>いろいろ偉そうに話したりノウハウとか公開してるんだけど、いつも心の中の自分が「なんでお前が偉そうに話してるんだ？」と問いかける。でも、いつか見た「ロールモデルは手が届かないと意味がない」という言葉を旨に、できる限りこういうのを公開するようにしてる。</p>
+                        <p>すごすぎる人のノウハウってあんまり参考にならんのよね。ちょうどいい人のノウハウがちょうどいい。</p>
+          </article>
+  </body>
+
+  </html>
