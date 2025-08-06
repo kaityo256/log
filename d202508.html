@@ -21,6 +21,44 @@
   <body>
     <article class="markdown-body">
                         <h1 id="年8月">2025年8月</h1>
+                        <h2 id="月06日水"><a href="#06">08月06日(水)</a>
+                        <a id="06"></a></h2>
+                        <p>Docker + CrowdWalkを試してみる。</p>
+                        <div class="sourceCode" id="cb1"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">LANG</span><span class="op">=</span>ja_JP.UTF-8</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">JAVA_OPTS</span><span class="op">=</span><span class="st">&#39;-Dgroovy.source.encoding=UTF-8 -Dfile.encoding=UTF-8&#39;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/crest-cassia/CrowdWalk.git</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/CrowdWalk/crowdwalk</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">./gradlew</span></span></code></pre></div>
+                        <div class="sourceCode" id="cb2"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> build <span class="at">-t</span> crowdwalk-docker .</span></code></pre></div>
+                        <p>Ubuntuにxeyesをインストール。</p>
+                        <div class="sourceCode" id="cb3"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install <span class="at">-y</span> x11-apps</span></code></pre></div>
+                        <div class="sourceCode" id="cb4"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">xhost</span> + localhost</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--rm</span> <span class="at">-e</span> DISPLAY=host.docker.internal:0 crowdwalk-docker</span></code></pre></div>
+                        <p>これでうまくいった。</p>
+                        <p>Rockeyにxclockをインストール。</p>
+                        <div class="sourceCode" id="cb5"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> dnf install <span class="at">-y</span> xclock</span></code></pre></div>
+                        <p>サーバ側で<code>/etc/ssh/sshd_config</code>で以下を設定してからsshd再起動。</p>
+                        <div class="sourceCode" id="cb6"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">X11Forwarding</span> yes</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">X11UseLocalhost</span> yes </span></code></pre></div>
+                        <div class="sourceCode" id="cb7"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl restart sshd</span></code></pre></div>
+                        <p>xauthをインストール。</p>
+                        <div class="sourceCode" id="cb8"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> dnf install <span class="at">-y</span> xauth</span></code></pre></div>
+                        <p>xclockで動作確認。</p>
+                        <div class="sourceCode" id="cb9"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">xclock</span></span></code></pre></div>
+                        <p>OK。</p>
+                        <p>Rockeyにxauthをインストール。</p>
+                        <div class="sourceCode" id="cb10"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> dnf install xorg-x11-server-utils</span></code></pre></div>
+                        <p>駄目だ。どうしてもSSH+Docker+X11ができない。後回し。</p>
                         <h2 id="月05日火"><a href="#05">08月05日(火)</a>
                         <a id="05"></a></h2>
                         <p>全く頭が回っていない。</p>
@@ -43,34 +81,34 @@
                         <h2 id="月01日金"><a href="#01">08月01日(金)</a>
                         <a id="01"></a></h2>
                         <p>LAMMPS最新版のクローンとビルド。</p>
-                        <div class="sourceCode" id="cb1"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> github</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone <span class="at">-b</span> release <span class="at">--depth</span> 1  https://github.com/lammps/lammps.git</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> lammps</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> src</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> purge</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load aocc/4.0.0 openmpi/4.1.5-aocc-4.0</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> mpi CC=mpicxx LINK=mpicxx CCFLAGS=<span class="st">&quot;-g -O3 -std=c++11 -fopenmp&quot;</span> LINKFLAGS=<span class="st">&quot;-g -O3 -std=c++11 -fopenmp&quot;</span> <span class="at">-j</span> 4</span></code></pre></div>
+                        <div class="sourceCode" id="cb11"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> github</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone <span class="at">-b</span> release <span class="at">--depth</span> 1  https://github.com/lammps/lammps.git</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> lammps</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> src</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> purge</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load aocc/4.0.0 openmpi/4.1.5-aocc-4.0</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> mpi CC=mpicxx LINK=mpicxx CCFLAGS=<span class="st">&quot;-g -O3 -std=c++11 -fopenmp&quot;</span> LINKFLAGS=<span class="st">&quot;-g -O3 -std=c++11 -fopenmp&quot;</span> <span class="at">-j</span> 4</span></code></pre></div>
                         <p>これのcmake版を作る。</p>
-                        <div class="sourceCode" id="cb2"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> github</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone <span class="at">-b</span> release <span class="at">--depth</span> 1  https://github.com/lammps/lammps.git</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> lammps</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> build</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> build</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> purge</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load aocc/4.0.0 openmpi/4.1.5-aocc-4.0</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">cmake</span> ../cmake <span class="dt">\</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">-D</span> CMAKE_C_COMPILER=mpicc <span class="dt">\</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">-D</span> CMAKE_CXX_COMPILER=mpicxx <span class="dt">\</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">-D</span> CMAKE_INSTALL_PREFIX=~/usr/local <span class="dt">\</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">-D</span> CMAKE_CXX_FLAGS=<span class="st">&quot;-O3 -std=c++11 -fopenmp&quot;</span> <span class="dt">\</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">-D</span> BUILD_MPI=yes</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-D</span> BUILD_OMP=yes   </span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-D</span> CMAKE_EXE_LINKER_FLAGS=<span class="st">&quot;-O3 -std=c++11 -fopenmp&quot;</span> <span class="dt">\</span></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">-D</span> PKG_MOLECULE=on</span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> <span class="at">-j</span> 4</span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> install</span></code></pre></div>
+                        <div class="sourceCode" id="cb12"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> github</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone <span class="at">-b</span> release <span class="at">--depth</span> 1  https://github.com/lammps/lammps.git</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> lammps</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> build</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> build</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> purge</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load aocc/4.0.0 openmpi/4.1.5-aocc-4.0</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="fu">cmake</span> ../cmake <span class="dt">\</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">-D</span> CMAKE_C_COMPILER=mpicc <span class="dt">\</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">-D</span> CMAKE_CXX_COMPILER=mpicxx <span class="dt">\</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">-D</span> CMAKE_INSTALL_PREFIX=~/usr/local <span class="dt">\</span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">-D</span> CMAKE_CXX_FLAGS=<span class="st">&quot;-O3 -std=c++11 -fopenmp&quot;</span> <span class="dt">\</span></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">-D</span> BUILD_MPI=yes</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-D</span> BUILD_OMP=yes   </span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-D</span> CMAKE_EXE_LINKER_FLAGS=<span class="st">&quot;-O3 -std=c++11 -fopenmp&quot;</span> <span class="dt">\</span></span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">-D</span> PKG_MOLECULE=on</span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> <span class="at">-j</span> 4</span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> install</span></code></pre></div>
                         <p>これでいったかな？できたっぽい。</p>
                         <p>しかし、なんで令和にもなって僕はパッケージのビルドで苦労しているのか。</p>
                         <p>シミュレーション工学の評語確定。</p>
