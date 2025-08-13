@@ -21,6 +21,30 @@
   <body>
     <article class="markdown-body">
                         <h1 id="年8月">2025年8月</h1>
+                        <h2 id="月13日水"><a href="#13">08月13日(水)</a>
+                        <a id="13"></a></h2>
+                        <p>ずっとNOPなのは悲しいので、無理やり時間を作って記事を書いた。</p>
+                        <p><a
+                        href="https://zenn.dev/kaityo256/articles/brachistochrone_curve">最速降下曲線の話</a></p>
+                        <p>あと、表の階段の掃除をした。えらい。</p>
+                        <h2 id="月12日火"><a href="#12">08月12日(火)</a>
+                        <a id="12"></a></h2>
+                        <p>NOP</p>
+                        <h2 id="月11日月"><a href="#11">08月11日(月)</a>
+                        <a id="11"></a></h2>
+                        <p>NOP</p>
+                        <h2 id="月10日日"><a href="#10">08月10日(日)</a>
+                        <a id="10"></a></h2>
+                        <p>NOP</p>
+                        <h2 id="月09日土"><a href="#09">08月09日(土)</a>
+                        <a id="09"></a></h2>
+                        <p>査読レポートを返したりしたはず。</p>
+                        <h2 id="月08日金"><a href="#08">08月08日(金)</a>
+                        <a id="08"></a></h2>
+                        <p>自分が何をしていたか、Todoistのアクティビティログを調べたが、ろくになにもしていない。</p>
+                        <p>で、Google
+                        Calendarみたら、長時間のオンライン会議があった。ふー。</p>
+                        <p>せっかく社会人博士の学生さんが来てたので、もう少し議論とかしたかったのだが。</p>
                         <h2 id="月07日木"><a href="#07">08月07日(木)</a>
                         <a id="07"></a></h2>
                         <p>夏休み前の研究室ミーティング。どちらも面白い。</p>
@@ -76,6 +100,20 @@
                         <a id="05"></a></h2>
                         <p>全く頭が回っていない。</p>
                         <p>論文を少しだけ進めた。</p>
+                        <div class="sourceCode" id="cb11"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> npm install <span class="at">-g</span> npm@11.5.2</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> error code EBADENGINE</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> error engine Unsupported engine</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> error engine Not compatible with your version of node/npm: npm@11.5.2</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> error notsup Not compatible with your version of node/npm: npm@11.5.2</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> error notsup Required: {<span class="st">&quot;node&quot;</span>:<span class="st">&quot;^20.17.0 || &gt;=22.9.0&quot;</span>}</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> error notsup Actual:   <span class="dt">{</span><span class="st">&quot;npm&quot;</span><span class="dt">:</span><span class="st">&quot;10.9.0&quot;</span><span class="op">,</span><span class="st">&quot;node&quot;</span><span class="dt">:</span><span class="st">&quot;v20.9.0&quot;</span><span class="dt">}</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> error A complete log of this run can be found in: /home/watanabe/.npm/_logs/2025-08-05T13_33_39_019Z-debug-0.log</span></code></pre></div>
+                        <p>ありゃ。Node.jsが古い。</p>
+                        <div class="sourceCode" id="cb12"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">nvm</span> install 22.9.0</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="ex">nvm</span> use 22.9.0</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> install <span class="at">-g</span> npm@11.5.2</span></code></pre></div>
                         <h2 id="月04日月"><a href="#04">08月04日(月)</a>
                         <a id="04"></a></h2>
                         <p>なんか忙しすぎて、いろいろ全く回ってない。</p>
@@ -94,34 +132,34 @@
                         <h2 id="月01日金"><a href="#01">08月01日(金)</a>
                         <a id="01"></a></h2>
                         <p>LAMMPS最新版のクローンとビルド。</p>
-                        <div class="sourceCode" id="cb11"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> github</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone <span class="at">-b</span> release <span class="at">--depth</span> 1  https://github.com/lammps/lammps.git</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> lammps</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> src</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> purge</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load aocc/4.0.0 openmpi/4.1.5-aocc-4.0</span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> mpi CC=mpicxx LINK=mpicxx CCFLAGS=<span class="st">&quot;-g -O3 -std=c++11 -fopenmp&quot;</span> LINKFLAGS=<span class="st">&quot;-g -O3 -std=c++11 -fopenmp&quot;</span> <span class="at">-j</span> 4</span></code></pre></div>
+                        <div class="sourceCode" id="cb13"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> github</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone <span class="at">-b</span> release <span class="at">--depth</span> 1  https://github.com/lammps/lammps.git</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> lammps</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> src</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> purge</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load aocc/4.0.0 openmpi/4.1.5-aocc-4.0</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> mpi CC=mpicxx LINK=mpicxx CCFLAGS=<span class="st">&quot;-g -O3 -std=c++11 -fopenmp&quot;</span> LINKFLAGS=<span class="st">&quot;-g -O3 -std=c++11 -fopenmp&quot;</span> <span class="at">-j</span> 4</span></code></pre></div>
                         <p>これのcmake版を作る。</p>
-                        <div class="sourceCode" id="cb12"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> github</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone <span class="at">-b</span> release <span class="at">--depth</span> 1  https://github.com/lammps/lammps.git</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> lammps</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> build</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> build</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> purge</span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load aocc/4.0.0 openmpi/4.1.5-aocc-4.0</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="fu">cmake</span> ../cmake <span class="dt">\</span></span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">-D</span> CMAKE_C_COMPILER=mpicc <span class="dt">\</span></span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">-D</span> CMAKE_CXX_COMPILER=mpicxx <span class="dt">\</span></span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">-D</span> CMAKE_INSTALL_PREFIX=~/usr/local <span class="dt">\</span></span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">-D</span> CMAKE_CXX_FLAGS=<span class="st">&quot;-O3 -std=c++11 -fopenmp&quot;</span> <span class="dt">\</span></span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">-D</span> BUILD_MPI=yes</span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-D</span> BUILD_OMP=yes   </span>
-<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-D</span> CMAKE_EXE_LINKER_FLAGS=<span class="st">&quot;-O3 -std=c++11 -fopenmp&quot;</span> <span class="dt">\</span></span>
-<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">-D</span> PKG_MOLECULE=on</span>
-<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> <span class="at">-j</span> 4</span>
-<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> install</span></code></pre></div>
+                        <div class="sourceCode" id="cb14"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> github</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone <span class="at">-b</span> release <span class="at">--depth</span> 1  https://github.com/lammps/lammps.git</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> lammps</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> build</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> build</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> purge</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load aocc/4.0.0 openmpi/4.1.5-aocc-4.0</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="fu">cmake</span> ../cmake <span class="dt">\</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">-D</span> CMAKE_C_COMPILER=mpicc <span class="dt">\</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">-D</span> CMAKE_CXX_COMPILER=mpicxx <span class="dt">\</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">-D</span> CMAKE_INSTALL_PREFIX=~/usr/local <span class="dt">\</span></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">-D</span> CMAKE_CXX_FLAGS=<span class="st">&quot;-O3 -std=c++11 -fopenmp&quot;</span> <span class="dt">\</span></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">-D</span> BUILD_MPI=yes</span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-D</span> BUILD_OMP=yes   </span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-D</span> CMAKE_EXE_LINKER_FLAGS=<span class="st">&quot;-O3 -std=c++11 -fopenmp&quot;</span> <span class="dt">\</span></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">-D</span> PKG_MOLECULE=on</span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> <span class="at">-j</span> 4</span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> install</span></code></pre></div>
                         <p>これでいったかな？できたっぽい。</p>
                         <p>しかし、なんで令和にもなって僕はパッケージのビルドで苦労しているのか。</p>
                         <p>シミュレーション工学の評語確定。</p>
