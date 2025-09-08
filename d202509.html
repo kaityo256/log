@@ -21,6 +21,37 @@
   <body>
     <article class="markdown-body">
                         <h1 id="年9月">2025年9月</h1>
+                        <h2 id="月08日月"><a href="#08">09月08日(月)</a>
+                        <a id="08"></a></h2>
+                        <p>小林さんのRBM論文がarXivに出た。</p>
+                        <p><a
+                        href="https://arxiv.org/abs/2509.04899">https://arxiv.org/abs/2509.04899</a></p>
+                        <p>RBMライブラリも公開。</p>
+                        <p><a
+                        href="https://github.com/watanabe-appi/simple_rbm">https://github.com/watanabe-appi/simple_rbm</a></p>
+                        <p>RBMが作曲した曲や和音進行が聞けるサイトも作成。</p>
+                        <p><a
+                        href="https://watanabe-appi.github.io/rbm-music-demo/">https://watanabe-appi.github.io/rbm-music-demo/</a></p>
+                        <p>ずっとarXivでのコンパイルに苦労していたのだが、<code>graphicx</code>パッケージの<code>dvipdfmx</code>オプションが悪さをしていることが判明。</p>
+                        <p>REVTeXなら、</p>
+                        <div class="sourceCode" id="cb1"><pre
+                        class="sourceCode tex"><code class="sourceCode latex"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">\usepackage</span>{<span class="ex">graphicx</span>}</span></code></pre></div>
+                        <p>として、JPSJなら<code>jpsj3.cls</code>の</p>
+                        <div class="sourceCode" id="cb2"><pre
+                        class="sourceCode tex"><code class="sourceCode latex"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">\RequirePackage</span>[dvipdfmx]{graphicx}</span></code></pre></div>
+                        <p>を</p>
+                        <div class="sourceCode" id="cb3"><pre
+                        class="sourceCode tex"><code class="sourceCode latex"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">\RequirePackage</span>{graphicx}</span></code></pre></div>
+                        <p>に変えて、コンパイラを<code>pdflatex</code>にしたらarXivでもすぐにビルドできて、図も正しく表示できるようになった。</p>
+                        <p>これまで、PDFをepsに変えて対応していたのだが、これからはそれをしなくて良さそう。やれやれだ。</p>
+                        <p>JPJSの著作権移譲書類、前回は忘れていたので、今回はすぐに返さないと。これ、ウェブでなんとかならんかなぁ。</p>
+                        <h2 id="月07日日"><a href="#07">09月07日(日)</a>
+                        <a id="07"></a></h2>
+                        <p>今週は体調が思わしくなかった。しかし、科研費を申請し、論文を一編投稿し、査読が一編返ってきた。とりあえず良しとしよう。</p>
+                        <p>しかし、これからしばらく土日はしんどい感じがする。平日に食い込みそう。</p>
+                        <h2 id="月06日土"><a href="#06">09月06日(土)</a>
+                        <a id="06"></a></h2>
+                        <p>RP論文の査読が返ってきた。どちらのレフェリーもかなり好意的。ちゃんと返事をすれば通るだろう。ひとまずは安心。</p>
                         <h2 id="月05日金"><a href="#05">09月05日(金)</a>
                         <a id="05"></a></h2>
                         <p>RBM論文投稿した。結構RBMについて研究してきたが、ようやく最初の論文として結実。同時にライブラリも公開。</p>
