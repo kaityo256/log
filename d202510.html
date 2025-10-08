@@ -29,6 +29,29 @@
                         href="https://www.theguardian.com/australia-news/2025/oct/06/deloitte-to-pay-money-back-to-albanese-government-after-using-ai-in-440000-report">デロイトがオーストラリア連邦政府から受託した報告書をAIを使って書いたのがバレて返金</a></p>
                         <p>存在しない参考文献でバレたとのこと。デロイトは「報告内容には変更はない」と言っているけれど、「主要な部分もAIで書いたのでは？」と思われるよね・・・</p>
                         <p>研究室ミーティング。シアシックニングと格闘ゲームの強化学習。今日から本格的に英語での発表です。</p>
+                        <p>NIS共有の設定続き。うまくNIS共有できなかったのはサーバ側のポートが閉じていたから。</p>
+                        <p>サーバ側で</p>
+                        <div class="sourceCode" id="cb1"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> firewall-cmd <span class="at">--permanent</span> <span class="at">--add-port</span><span class="op">=</span>861/tcp</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> firewall-cmd <span class="at">--permanent</span> <span class="at">--add-port</span><span class="op">=</span>861/udp</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> firewall-cmd <span class="at">--permanent</span> <span class="at">--add-port</span><span class="op">=</span>111/tcp</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> firewall-cmd <span class="at">--permanent</span> <span class="at">--add-port</span><span class="op">=</span>111/udp</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> firewall-cmd <span class="at">--reload</span></span></code></pre></div>
+                        <p>を実行することでポートが通った。</p>
+                        <p>クライアント側で</p>
+                        <div class="sourceCode" id="cb2"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> /usr/sbin/ypbind <span class="at">-d</span></span></code></pre></div>
+                        <p>を実行することでどこでこけているかがわかる。ypwhichやgetentが通るようになった時点で</p>
+                        <div class="sourceCode" id="cb3"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl start ypbind</span></code></pre></div>
+                        <p>で通った。</p>
+                        <p>クライアントでypbindが自動起動するか確認。</p>
+                        <div class="sourceCode" id="cb4"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> sudo systemctl is-enabled ypbind</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">enabled</span></span></code></pre></div>
+                        <p>大丈夫ですね。</p>
+                        <p>Slurmのインストール途中で時間切れ。</p>
+                        <p>ノーベル化学賞が日本人受賞でバタバタ・・・</p>
                         <h2 id="月07日火"><a href="#07">10月07日(火)</a>
                         <a id="07"></a></h2>
                         <p>田園都市線、昨日の深夜に復旧。今日は普通につかえてよかった。</p>
