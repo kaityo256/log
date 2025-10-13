@@ -129,6 +129,22 @@
                         <p>を設定して自動起動をONにしていなかったのが原因。起動してからログインノードで以下を実行したら復活。</p>
                         <div class="sourceCode" id="cb20"><pre
                         class="sourceCode sh"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> scontrol update nodename=yagami03.appi.keio.ac.jp state=resume</span></code></pre></div>
+                        <p>新たにyagami01をセットアップ。今度こそ手順完全版を作る。</p>
+                        <p>USBでRockey Linux 9.6をインストール</p>
+                        <p><code>/etc/hosts</code>の内容をyagami02からコピー</p>
+                        <p>ホスト名の設定。</p>
+                        <div class="sourceCode" id="cb21"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> hostnamectl set-hostname yagami01</span></code></pre></div>
+                        <p>これで<code>hostname</code>と<code>hostname -f</code>が想定通りになることを確認。</p>
+                        <p>固定IPをふり、かつDNSやDefault GWを設定。</p>
+                        <div class="sourceCode" id="cb22"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> nmcli connection modify eno1 ipv4.addresses 192.168.1.11/24</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> nmcli connection modify eno1 ipv4.gateway 192.168.1.2</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> nmcli connection modify eno1 ipv4.dns <span class="st">&quot;1.1.1.1&quot;</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> nmcli connection modify eno1 ipv4.method manual</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> nmcli connection modify eno1 ipv6.method ignore</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> nmcli connection up eno1</span></code></pre></div>
+                        <p>を実行してから念のためreboot(NetworkManagerだけで良いかもしれないが、接続中だと変な設定が残ることがあるので)。</p>
                         <h2 id="月12日日"><a href="#12">10月12日(日)</a>
                         <a id="12"></a></h2>
                         <p>子どものスマホを契約。契約にすげー時間がかかった上、その後の設定にもすげー時間がかかって消耗・・・</p>
@@ -140,9 +156,9 @@
                         <h2 id="月10日金"><a href="#10">10月10日(金)</a>
                         <a id="10"></a></h2>
                         <p>故障したサーバにRockeyを入れ直す。別の計算ノードでバージョン確認。</p>
-                        <div class="sourceCode" id="cb21"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cat /etc/redhat-release </span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Rocky</span> Linux release 9.6 <span class="er">(</span><span class="ex">Blue</span> Onyx<span class="kw">)</span></span></code></pre></div>
+                        <div class="sourceCode" id="cb23"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cat /etc/redhat-release </span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Rocky</span> Linux release 9.6 <span class="er">(</span><span class="ex">Blue</span> Onyx<span class="kw">)</span></span></code></pre></div>
                         <p>9.6ですね。</p>
                         <p>MacのターミナルからRockey Linux release
                         9.6のブータブルUSBを作ろうとしたが、ddを使ったりして危ないな。
@@ -162,65 +178,65 @@
                         <li><p>起動後、最初に自分のユーザアカウントを追加</p></li>
                         <li><p>自分をsudoersに追加</p></li>
                         <li><p>ホスト名の設定</p>
-                        <div class="sourceCode" id="cb22"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> hostnamectl</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="ex">Static</span> hostname: <span class="er">(</span><span class="bu">unset</span><span class="kw">)</span>                           </span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Transient</span> hostname: localhost</span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>        <span class="ex">Icon</span> name: computer-server</span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>          <span class="ex">Chassis:</span> server 🖳</span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>        <span class="ex">Machine</span> ID: 203813d2d4d548c5a2fa0799e8e79eaf</span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>          <span class="ex">Boot</span> ID: ff05f843ffa64940916e346d133e6e97</span>
-<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>  <span class="ex">Operating</span> System: Rocky Linux 9.6 <span class="er">(</span><span class="ex">Blue</span> Onyx<span class="kw">)</span>       </span>
-<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>      <span class="ex">CPE</span> OS Name: cpe:/o:rocky:rocky:9::baseos</span>
-<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>            <span class="ex">Kernel:</span> Linux 5.14.0-570.17.1.el9_6.x86_64</span>
-<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>      <span class="ex">Architecture:</span> x86-64</span>
-<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>  <span class="ex">Hardware</span> Vendor: Dell Inc.</span>
-<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>    <span class="ex">Hardware</span> Model: PowerEdge R640</span>
-<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>  <span class="ex">Firmware</span> Version: 2.8.1</span>
-<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> sudo hostnamectl set-hostname yagami03</span>
-<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> hostnamectl</span>
-<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a><span class="ex">Static</span> hostname: yagami03</span>
-<span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a>      <span class="ex">Icon</span> name: computer-server</span>
-<span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a>        <span class="ex">Chassis:</span> server 🖳</span>
-<span id="cb22-22"><a href="#cb22-22" aria-hidden="true" tabindex="-1"></a>      <span class="ex">Machine</span> ID: 203813d2d4d548c5a2fa0799e8e79eaf</span>
-<span id="cb22-23"><a href="#cb22-23" aria-hidden="true" tabindex="-1"></a>        <span class="ex">Boot</span> ID: ff05f843ffa64940916e346d133e6e97</span>
-<span id="cb22-24"><a href="#cb22-24" aria-hidden="true" tabindex="-1"></a><span class="ex">Operating</span> System: Rocky Linux 9.6 <span class="er">(</span><span class="ex">Blue</span> Onyx<span class="kw">)</span>       </span>
-<span id="cb22-25"><a href="#cb22-25" aria-hidden="true" tabindex="-1"></a>    <span class="ex">CPE</span> OS Name: cpe:/o:rocky:rocky:9::baseos</span>
-<span id="cb22-26"><a href="#cb22-26" aria-hidden="true" tabindex="-1"></a>          <span class="ex">Kernel:</span> Linux 5.14.0-570.17.1.el9_6.x86_64</span>
-<span id="cb22-27"><a href="#cb22-27" aria-hidden="true" tabindex="-1"></a>    <span class="ex">Architecture:</span> x86-64</span>
-<span id="cb22-28"><a href="#cb22-28" aria-hidden="true" tabindex="-1"></a><span class="ex">Hardware</span> Vendor: Dell Inc.</span>
-<span id="cb22-29"><a href="#cb22-29" aria-hidden="true" tabindex="-1"></a>  <span class="ex">Hardware</span> Model: PowerEdge R640</span>
-<span id="cb22-30"><a href="#cb22-30" aria-hidden="true" tabindex="-1"></a><span class="ex">Firmware</span> Version: 2.8.1</span></code></pre></div>
+                        <div class="sourceCode" id="cb24"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> hostnamectl</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="ex">Static</span> hostname: <span class="er">(</span><span class="bu">unset</span><span class="kw">)</span>                           </span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Transient</span> hostname: localhost</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>        <span class="ex">Icon</span> name: computer-server</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>          <span class="ex">Chassis:</span> server 🖳</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>        <span class="ex">Machine</span> ID: 203813d2d4d548c5a2fa0799e8e79eaf</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>          <span class="ex">Boot</span> ID: ff05f843ffa64940916e346d133e6e97</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>  <span class="ex">Operating</span> System: Rocky Linux 9.6 <span class="er">(</span><span class="ex">Blue</span> Onyx<span class="kw">)</span>       </span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>      <span class="ex">CPE</span> OS Name: cpe:/o:rocky:rocky:9::baseos</span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>            <span class="ex">Kernel:</span> Linux 5.14.0-570.17.1.el9_6.x86_64</span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>      <span class="ex">Architecture:</span> x86-64</span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>  <span class="ex">Hardware</span> Vendor: Dell Inc.</span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>    <span class="ex">Hardware</span> Model: PowerEdge R640</span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>  <span class="ex">Firmware</span> Version: 2.8.1</span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> sudo hostnamectl set-hostname yagami03</span>
+<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> hostnamectl</span>
+<span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a><span class="ex">Static</span> hostname: yagami03</span>
+<span id="cb24-20"><a href="#cb24-20" aria-hidden="true" tabindex="-1"></a>      <span class="ex">Icon</span> name: computer-server</span>
+<span id="cb24-21"><a href="#cb24-21" aria-hidden="true" tabindex="-1"></a>        <span class="ex">Chassis:</span> server 🖳</span>
+<span id="cb24-22"><a href="#cb24-22" aria-hidden="true" tabindex="-1"></a>      <span class="ex">Machine</span> ID: 203813d2d4d548c5a2fa0799e8e79eaf</span>
+<span id="cb24-23"><a href="#cb24-23" aria-hidden="true" tabindex="-1"></a>        <span class="ex">Boot</span> ID: ff05f843ffa64940916e346d133e6e97</span>
+<span id="cb24-24"><a href="#cb24-24" aria-hidden="true" tabindex="-1"></a><span class="ex">Operating</span> System: Rocky Linux 9.6 <span class="er">(</span><span class="ex">Blue</span> Onyx<span class="kw">)</span>       </span>
+<span id="cb24-25"><a href="#cb24-25" aria-hidden="true" tabindex="-1"></a>    <span class="ex">CPE</span> OS Name: cpe:/o:rocky:rocky:9::baseos</span>
+<span id="cb24-26"><a href="#cb24-26" aria-hidden="true" tabindex="-1"></a>          <span class="ex">Kernel:</span> Linux 5.14.0-570.17.1.el9_6.x86_64</span>
+<span id="cb24-27"><a href="#cb24-27" aria-hidden="true" tabindex="-1"></a>    <span class="ex">Architecture:</span> x86-64</span>
+<span id="cb24-28"><a href="#cb24-28" aria-hidden="true" tabindex="-1"></a><span class="ex">Hardware</span> Vendor: Dell Inc.</span>
+<span id="cb24-29"><a href="#cb24-29" aria-hidden="true" tabindex="-1"></a>  <span class="ex">Hardware</span> Model: PowerEdge R640</span>
+<span id="cb24-30"><a href="#cb24-30" aria-hidden="true" tabindex="-1"></a><span class="ex">Firmware</span> Version: 2.8.1</span></code></pre></div>
                         <p><code>hostnamectl</code>で現状確認、<code>hostnamectl set-hostname</code>で名前設定。</p></li>
                         <li><p>ネットワークを固定IPに。</p>
                         <ul>
                         <li><code>nmcli connection show</code>で現状確認。</li>
                         </ul>
-                        <div class="sourceCode" id="cb23"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> nmcli connection show</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="ex">NAME</span>  UUID                                  TYPE      DEVICE </span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="ex">eno1</span>  97a43ef0-4f9d-39ba-b999-8213ca8b2f38  ethernet  eno1   </span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="ex">lo</span>    9e831b82-81ee-4317-b89e-1faf308b3e3b  loopback  lo     </span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="ex">eno2</span>  ae6e89b9-e5aa-462e-b45f-dcf149d13056  ethernet  <span class="at">--</span>     </span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="ex">eno3</span>  46292068-2837-4836-916d-9b4477bf5b68  ethernet  <span class="at">--</span>     </span>
-<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="ex">eno4</span>  fc161a70-08b3-4f82-ab17-d2f854f084b6  ethernet  <span class="at">--</span> </span></code></pre></div>
+                        <div class="sourceCode" id="cb25"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> nmcli connection show</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="ex">NAME</span>  UUID                                  TYPE      DEVICE </span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="ex">eno1</span>  97a43ef0-4f9d-39ba-b999-8213ca8b2f38  ethernet  eno1   </span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="ex">lo</span>    9e831b82-81ee-4317-b89e-1faf308b3e3b  loopback  lo     </span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="ex">eno2</span>  ae6e89b9-e5aa-462e-b45f-dcf149d13056  ethernet  <span class="at">--</span>     </span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="ex">eno3</span>  46292068-2837-4836-916d-9b4477bf5b68  ethernet  <span class="at">--</span>     </span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="ex">eno4</span>  fc161a70-08b3-4f82-ab17-d2f854f084b6  ethernet  <span class="at">--</span> </span></code></pre></div>
                         <ul>
                         <li>DEVICEに出てきたのでeno1で接続していることがわかる。</li>
                         <li>eno1に192.168.1.13を設定(192.168.1.12を参考に)</li>
                         </ul>
-                        <div class="sourceCode" id="cb24"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> nmcli connection modify eno1 ipv4.addresses 192.168.1.13/24</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> nmcli connection modify eno1 ipv4.gateway 192.168.1.2</span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> nmcli connection modify eno1 ipv4.dns <span class="st">&quot;1.1.1.1&quot;</span></span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> nmcli connection modify eno1 ipv4.method manual</span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> nmcli connection modify eno1 ipv6.method ignore</span></code></pre></div>
+                        <div class="sourceCode" id="cb26"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> nmcli connection modify eno1 ipv4.addresses 192.168.1.13/24</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> nmcli connection modify eno1 ipv4.gateway 192.168.1.2</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> nmcli connection modify eno1 ipv4.dns <span class="st">&quot;1.1.1.1&quot;</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> nmcli connection modify eno1 ipv4.method manual</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> nmcli connection modify eno1 ipv6.method ignore</span></code></pre></div>
                         <ul>
                         <li>ネットワーク再起動</li>
                         </ul>
-                        <div class="sourceCode" id="cb25"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl restart NetworkManager</span></code></pre></div>
+                        <div class="sourceCode" id="cb27"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl restart NetworkManager</span></code></pre></div>
                         <ul>
                         <li>別窓から新しいIPで接続して成功したことを確認。</li>
                         </ul></li>
@@ -228,235 +244,235 @@
                         <ul>
                         <li>Gitのインストール</li>
                         </ul>
-                        <div class="sourceCode" id="cb26"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> dnf update <span class="at">-y</span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> dnf install <span class="at">-y</span> git</span></code></pre></div>
+                        <div class="sourceCode" id="cb28"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> dnf update <span class="at">-y</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> dnf install <span class="at">-y</span> git</span></code></pre></div>
                         <ul>
                         <li><a
                         href="https://web.chaperone.jp/w/index.php?NIS/rockylinux9">ここ</a>の通りに実行</li>
                         </ul>
-                        <div class="sourceCode" id="cb27"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> build</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> build</span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/thkukuk/ypbind-mt</span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ypbind-mt</span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout v2.7.2</span>
-<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ..</span>
-<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> <span class="at">--exclude-vcs</span> <span class="at">--transform</span> <span class="st">&#39;s/ypbind-mt/ypbind-mt-2.7.2/&#39;</span> <span class="at">-cvzf</span> ypbind-mt-2.7.2.tar.gz ypbind-mt</span></code></pre></div>
+                        <div class="sourceCode" id="cb29"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> build</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> build</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/thkukuk/ypbind-mt</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ypbind-mt</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout v2.7.2</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ..</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> <span class="at">--exclude-vcs</span> <span class="at">--transform</span> <span class="st">&#39;s/ypbind-mt/ypbind-mt-2.7.2/&#39;</span> <span class="at">-cvzf</span> ypbind-mt-2.7.2.tar.gz ypbind-mt</span></code></pre></div>
                         <p>これで<code>ypbind-mt-2.7.2.tar.gz</code>が作られる。</p>
                         <ul>
                         <li>ypbindの作成</li>
                         </ul>
-                        <div class="sourceCode" id="cb28"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-O</span> http://dl.rockylinux.org/pub/rocky/8/AppStream/source/tree/Packages/y/ypbind-2.5-2.el8.src.rpm</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="ex">rpm</span> <span class="at">-Uvh</span> ypbind-2.5-2.el8.src.rpm</span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="fu">vi</span> ~/rpmbuild/SPECS/ypbind.spec <span class="co"># ブログ記事を参考に修正</span></span></code></pre></div>
-                        <div class="sourceCode" id="cb29"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="ex">dnf</span> <span class="at">--enablerepo</span><span class="op">=</span>devel install <span class="at">-y</span> dbus-glib-devel libnsl2-devel libtirpc-devel systemd-devel</span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> build</span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> ypbind-mt-2.7.2.tar.gz ~/rpmbuild/SOURCES/</span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> dnf install <span class="at">-y</span> rpm-build</span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> dnf install <span class="at">-y</span> autoconf automake gettext-devel docbook-style-xsl</span>
-<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> dnf groupinstall <span class="at">-y</span> <span class="st">&quot;Development Tools&quot;</span></span>
-<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a><span class="ex">rpmbuild</span> <span class="at">-bb</span> ~/rpmbuild/SPECS/ypbind.spec</span></code></pre></div>
+                        <div class="sourceCode" id="cb30"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-O</span> http://dl.rockylinux.org/pub/rocky/8/AppStream/source/tree/Packages/y/ypbind-2.5-2.el8.src.rpm</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="ex">rpm</span> <span class="at">-Uvh</span> ypbind-2.5-2.el8.src.rpm</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="fu">vi</span> ~/rpmbuild/SPECS/ypbind.spec <span class="co"># ブログ記事を参考に修正</span></span></code></pre></div>
+                        <div class="sourceCode" id="cb31"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="ex">dnf</span> <span class="at">--enablerepo</span><span class="op">=</span>devel install <span class="at">-y</span> dbus-glib-devel libnsl2-devel libtirpc-devel systemd-devel</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> build</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> ypbind-mt-2.7.2.tar.gz ~/rpmbuild/SOURCES/</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> dnf install <span class="at">-y</span> rpm-build</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> dnf install <span class="at">-y</span> autoconf automake gettext-devel docbook-style-xsl</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> dnf groupinstall <span class="at">-y</span> <span class="st">&quot;Development Tools&quot;</span></span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a><span class="ex">rpmbuild</span> <span class="at">-bb</span> ~/rpmbuild/SPECS/ypbind.spec</span></code></pre></div>
                         <ul>
                         <li>nss_nis</li>
                         </ul>
-                        <div class="sourceCode" id="cb30"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span></span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> build</span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/thkukuk/libnss_nis</span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> libnss_nis</span>
-<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout v3.2</span>
-<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ..</span>
-<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> <span class="at">--exclude-vcs</span> <span class="at">--transform</span> <span class="st">&#39;s/libnss_nis/libnss_nis-3.2/&#39;</span> <span class="at">-cvzf</span> libnss_nis-3.2.tar.gz libnss_nis</span></code></pre></div>
+                        <div class="sourceCode" id="cb32"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> build</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/thkukuk/libnss_nis</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> libnss_nis</span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout v3.2</span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ..</span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> <span class="at">--exclude-vcs</span> <span class="at">--transform</span> <span class="st">&#39;s/libnss_nis/libnss_nis-3.2/&#39;</span> <span class="at">-cvzf</span> libnss_nis-3.2.tar.gz libnss_nis</span></code></pre></div>
                         <p>ibnss_nis-3.2.tar.gzができる。</p>
                         <ul>
                         <li>rpm作成</li>
                         </ul>
-                        <div class="sourceCode" id="cb31"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-O</span> http://dl.rockylinux.org/pub/rocky/8/BaseOS/source/tree/Packages/n/nss_nis-3.0-8.el8.src.rpm</span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="ex">rpm</span> <span class="at">-Uvh</span> nss_nis-3.0-8.el8.src.rpm</span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="fu">vi</span> ~/rpmbuild/SPECS/nss_nis.spec  <span class="co"># ブログ記事を参考に修正</span></span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> libnss_nis-3.2.tar.gz ~/rpmbuild/SOURCES/</span>
-<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="ex">rpmbuild</span> <span class="at">-bb</span> ~/rpmbuild/SPECS/nss_nis.spec</span></code></pre></div>
+                        <div class="sourceCode" id="cb33"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-O</span> http://dl.rockylinux.org/pub/rocky/8/BaseOS/source/tree/Packages/n/nss_nis-3.0-8.el8.src.rpm</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="ex">rpm</span> <span class="at">-Uvh</span> nss_nis-3.0-8.el8.src.rpm</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="fu">vi</span> ~/rpmbuild/SPECS/nss_nis.spec  <span class="co"># ブログ記事を参考に修正</span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> libnss_nis-3.2.tar.gz ~/rpmbuild/SOURCES/</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="ex">rpmbuild</span> <span class="at">-bb</span> ~/rpmbuild/SPECS/nss_nis.spec</span></code></pre></div>
                         <p>できたかどうか確認。</p>
-                        <div class="sourceCode" id="cb32"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls ~/rpmbuild/RPMS/x86_64/nss_nis-<span class="pp">*</span></span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="ex">/home/watanabe/rpmbuild/RPMS/x86_64/nss_nis-3.2-8.el9.x86_64.rpm</span></span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="ex">/home/watanabe/rpmbuild/RPMS/x86_64/nss_nis-debuginfo-3.2-8.el9.x86_64.rpm</span></span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="ex">/home/watanabe/rpmbuild/RPMS/x86_64/nss_nis-debugsource-3.2-8.el9.x86_64.rpm</span></span></code></pre></div>
+                        <div class="sourceCode" id="cb34"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls ~/rpmbuild/RPMS/x86_64/nss_nis-<span class="pp">*</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="ex">/home/watanabe/rpmbuild/RPMS/x86_64/nss_nis-3.2-8.el9.x86_64.rpm</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="ex">/home/watanabe/rpmbuild/RPMS/x86_64/nss_nis-debuginfo-3.2-8.el9.x86_64.rpm</span></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="ex">/home/watanabe/rpmbuild/RPMS/x86_64/nss_nis-debugsource-3.2-8.el9.x86_64.rpm</span></span></code></pre></div>
                         <ul>
                         <li>yp-tools</li>
                         </ul>
-                        <div class="sourceCode" id="cb33"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span></span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> build</span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-O</span> http://dl.rockylinux.org/pub/rocky/8/AppStream/source/tree/Packages/y/yp-tools-4.2.3-2.el8.src.rpm</span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="ex">rpmbuild</span> <span class="at">--rebuild</span> yp-tools-4.2.3-2.el8.src.rpm</span></code></pre></div>
+                        <div class="sourceCode" id="cb35"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> build</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-O</span> http://dl.rockylinux.org/pub/rocky/8/AppStream/source/tree/Packages/y/yp-tools-4.2.3-2.el8.src.rpm</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="ex">rpmbuild</span> <span class="at">--rebuild</span> yp-tools-4.2.3-2.el8.src.rpm</span></code></pre></div>
                         <p>できたかどうか確認</p>
-                        <div class="sourceCode" id="cb34"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls ~/rpmbuild/RPMS/x86_64/yp-tools-<span class="pp">*</span></span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="ex">/home/watanabe/rpmbuild/RPMS/x86_64/yp-tools-4.2.3-2.el9.x86_64.rpm</span></span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="ex">/home/watanabe/rpmbuild/RPMS/x86_64/yp-tools-debuginfo-4.2.3-2.el9.x86_64.rpm</span></span>
-<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="ex">/home/watanabe/rpmbuild/RPMS/x86_64/yp-tools-debugsource-4.2.3-2.el9.x86_64.rpm</span></span></code></pre></div>
+                        <div class="sourceCode" id="cb36"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls ~/rpmbuild/RPMS/x86_64/yp-tools-<span class="pp">*</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="ex">/home/watanabe/rpmbuild/RPMS/x86_64/yp-tools-4.2.3-2.el9.x86_64.rpm</span></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="ex">/home/watanabe/rpmbuild/RPMS/x86_64/yp-tools-debuginfo-4.2.3-2.el9.x86_64.rpm</span></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="ex">/home/watanabe/rpmbuild/RPMS/x86_64/yp-tools-debugsource-4.2.3-2.el9.x86_64.rpm</span></span></code></pre></div>
                         <ul>
                         <li>できたRPMのインストール。</li>
                         </ul>
-                        <div class="sourceCode" id="cb35"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> dnf localinstall <span class="at">-y</span> ~/rpmbuild/RPMS/x86_64/ypbind-2.7.2-2.el9.x86_64.rpm ~/rpmbuild/RPMS/x86_64/nss_nis-3.2-8.el9.x86_64.rpm ~/rpmbuild/RPMS/x86_64/yp-tools-4.2.3-2.el9.x86_64.rpm</span></code></pre></div>
+                        <div class="sourceCode" id="cb37"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> dnf localinstall <span class="at">-y</span> ~/rpmbuild/RPMS/x86_64/ypbind-2.7.2-2.el9.x86_64.rpm ~/rpmbuild/RPMS/x86_64/nss_nis-3.2-8.el9.x86_64.rpm ~/rpmbuild/RPMS/x86_64/yp-tools-4.2.3-2.el9.x86_64.rpm</span></code></pre></div>
                         <ul>
                         <li>/etc/yum.confに以下を追加。</li>
                         </ul>
-                        <div class="sourceCode" id="cb36"><pre
-                        class="sourceCode txt"><code class="sourceCode default"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>exclude=ypbind nss_nis yp-tools authselect-libs autofs</span></code></pre></div>
+                        <div class="sourceCode" id="cb38"><pre
+                        class="sourceCode txt"><code class="sourceCode default"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>exclude=ypbind nss_nis yp-tools authselect-libs autofs</span></code></pre></div>
                         <ul>
                         <li>ypbind起動。</li>
                         </ul>
-                        <div class="sourceCode" id="cb37"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl enable ypbind <span class="at">--now</span></span></code></pre></div>
+                        <div class="sourceCode" id="cb39"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl enable ypbind <span class="at">--now</span></span></code></pre></div>
                         <p>失敗。</p>
                         <ul>
                         <li><code>rpcinfo -p NISサーバ名</code>
                         が通らない。/etc/hostsをyagami02と同じものに書き換えたら、通った。</li>
                         <li>ypdomainnameをwatanabe-groupに</li>
                         </ul>
-                        <div class="sourceCode" id="cb38"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> ypdomainname watanabe-group</span></code></pre></div>
+                        <div class="sourceCode" id="cb40"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> ypdomainname watanabe-group</span></code></pre></div>
                         <ul>
                         <li>/etc/yp.confを以下のように修正。</li>
                         </ul>
-                        <div class="sourceCode" id="cb39"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="ex">domain</span> watanabe-group server watanabe-login</span></code></pre></div>
+                        <div class="sourceCode" id="cb41"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="ex">domain</span> watanabe-group server watanabe-login</span></code></pre></div>
                         <ul>
                         <li>動作確認</li>
                         </ul>
-                        <div class="sourceCode" id="cb40"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl start ypbind</span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="ex">ypwhich</span></span></code></pre></div>
+                        <div class="sourceCode" id="cb42"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl start ypbind</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="ex">ypwhich</span></span></code></pre></div>
                         <p>ypwhichまでは通るがgetnetできない。</p>
                         <ul>
                         <li><code>/etc/nsswitch.conf</code>をNISを先に見るように直接編集(あまりよくないが)</li>
                         </ul>
-                        <div class="sourceCode" id="cb41"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>  <span class="ex">passwd:</span>     nis files sss systemd</span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  <span class="ex">group:</span>      nis files <span class="pp">[</span><span class="ss">SUCCESS=merge</span><span class="pp">]</span> sss <span class="pp">[</span><span class="ss">SUCCESS=merge</span><span class="pp">]</span> systemd</span>
-<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>  <span class="ex">shadow:</span>     nis files</span></code></pre></div>
+                        <div class="sourceCode" id="cb43"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>  <span class="ex">passwd:</span>     nis files sss systemd</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>  <span class="ex">group:</span>      nis files <span class="pp">[</span><span class="ss">SUCCESS=merge</span><span class="pp">]</span> sss <span class="pp">[</span><span class="ss">SUCCESS=merge</span><span class="pp">]</span> systemd</span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>  <span class="ex">shadow:</span>     nis files</span></code></pre></div>
                         <p>getentが通ることを確認。</p></li>
                         <li><p>ホストベース認証</p>
                         <ul>
                         <li>サーバ側で</li>
                         </ul>
-                        <div class="sourceCode" id="cb42"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-keyscan</span> <span class="at">-t</span> ed25519 yagami03 <span class="kw">|</span> <span class="fu">sudo</span> tee <span class="at">-a</span> /etc/ssh/ssh_known_hosts</span></code></pre></div>
+                        <div class="sourceCode" id="cb44"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-keyscan</span> <span class="at">-t</span> ed25519 yagami03 <span class="kw">|</span> <span class="fu">sudo</span> tee <span class="at">-a</span> /etc/ssh/ssh_known_hosts</span></code></pre></div>
                         <ul>
                         <li>クライアント側で</li>
                         </ul>
-                        <div class="sourceCode" id="cb43"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-keyscan</span> <span class="at">-t</span> ed25519 watanabe-login.appi.keio.ac.jp <span class="kw">|</span> <span class="fu">sudo</span> tee <span class="at">-a</span> /etc/ssh/ssh_known_hosts</span></code></pre></div>
+                        <div class="sourceCode" id="cb45"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-keyscan</span> <span class="at">-t</span> ed25519 watanabe-login.appi.keio.ac.jp <span class="kw">|</span> <span class="fu">sudo</span> tee <span class="at">-a</span> /etc/ssh/ssh_known_hosts</span></code></pre></div>
                         <p>/etc/ssh/sshd_configで</p>
-                        <div class="sourceCode" id="cb44"><pre
-                        class="sourceCode txt"><code class="sourceCode default"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>HostKey /etc/ssh/ssh_host_ed25519_key</span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>IgnoreUserKnownHosts no</span>
-<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>HostbasedAuthentication yes</span>
-<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>UseDNS yes</span></code></pre></div>
+                        <div class="sourceCode" id="cb46"><pre
+                        class="sourceCode txt"><code class="sourceCode default"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>HostKey /etc/ssh/ssh_host_ed25519_key</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>IgnoreUserKnownHosts no</span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>HostbasedAuthentication yes</span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>UseDNS yes</span></code></pre></div>
                         <p>にする。
                         その上で、<code>/etc/ssh/shosts.equiv</code>にホストベース認証したいホストをずらずら書く(今回これを忘れていた)。</p>
                         <p>ホスト側(計算ノード)で</p>
-                        <div class="sourceCode" id="cb45"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> firewall-cmd <span class="at">--add-port</span><span class="op">=</span>2222/tcp</span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> /usr/sbin/sshd <span class="at">-d</span> <span class="at">-p</span> 2222</span></code></pre></div>
+                        <div class="sourceCode" id="cb47"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> firewall-cmd <span class="at">--add-port</span><span class="op">=</span>2222/tcp</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> /usr/sbin/sshd <span class="at">-d</span> <span class="at">-p</span> 2222</span></code></pre></div>
                         <p>クライアント側(ログインノード)で</p>
-                        <div class="sourceCode" id="cb46"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> <span class="at">-o</span> PreferredAuthentications=hostbased yagami03</span></code></pre></div>
+                        <div class="sourceCode" id="cb48"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> <span class="at">-o</span> PreferredAuthentications=hostbased yagami03</span></code></pre></div>
                         <p>を実行し、通ればOK。sshdをrestart。</p></li>
                         </ul>
                         <p>疲れたなぁ。</p>
                         <p>yagai03にNFSのインストール。</p>
-                        <div class="sourceCode" id="cb47"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> dnf install <span class="at">-y</span> nfs-utils</span>
-<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /mnt</span>
-<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> mkdir home_nfs</span></code></pre></div>
-                        <p>失敗する。firewall?</p>
-                        <div class="sourceCode" id="cb48"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> firewall-cmd <span class="at">--permanent</span> <span class="at">--add-service</span><span class="op">=</span>nfs</span>
-<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> firewall-cmd <span class="at">--permanent</span> <span class="at">--add-service</span><span class="op">=</span>rpc-bind</span>
-<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> firewall-cmd <span class="at">--permanent</span> <span class="at">--add-service</span><span class="op">=</span>mountd</span>
-<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> firewall-cmd <span class="at">--reload</span></span></code></pre></div>
-                        <p>ChatGPTの言う通りに作業してて、</p>
                         <div class="sourceCode" id="cb49"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> nmcli con down eno1</span>
-<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> nmcli con up eno1</span></code></pre></div>
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> dnf install <span class="at">-y</span> nfs-utils</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /mnt</span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> mkdir home_nfs</span></code></pre></div>
+                        <p>失敗する。firewall?</p>
+                        <div class="sourceCode" id="cb50"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> firewall-cmd <span class="at">--permanent</span> <span class="at">--add-service</span><span class="op">=</span>nfs</span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> firewall-cmd <span class="at">--permanent</span> <span class="at">--add-service</span><span class="op">=</span>rpc-bind</span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> firewall-cmd <span class="at">--permanent</span> <span class="at">--add-service</span><span class="op">=</span>mountd</span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> firewall-cmd <span class="at">--reload</span></span></code></pre></div>
+                        <p>ChatGPTの言う通りに作業してて、</p>
+                        <div class="sourceCode" id="cb51"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> nmcli con down eno1</span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> nmcli con up eno1</span></code></pre></div>
                         <p>を叩いてしまい、ネットワーク接続が切れてリモートから作業ができなくなってしまった。アホすぎる。</p>
                         <h2 id="月09日木"><a href="#09">10月09日(木)</a>
                         <a id="09"></a></h2>
                         <p>サーバ設定。Rockeyで</p>
-                        <div class="sourceCode" id="cb50"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> dnf update <span class="at">-y</span></span></code></pre></div>
-                        <p>とすると</p>
-                        <div class="sourceCode" id="cb51"><pre
-                        class="sourceCode txt"><code class="sourceCode default"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>Error: </span>
-<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a> Problem 1: package authselect-1.2.6-3.el9.x86_64 from baseos requires authselect-libs(x86-64) = 1.2.6-3.el9, but none of the providers can be installed</span>
-<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>  - cannot install the best update candidate for package authselect-1.2.6-2.el9.x86_64</span>
-<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>  - package authselect-libs-1.2.6-3.el9.x86_64 from baseos is filtered out by exclude filtering</span>
-<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a> Problem 2: package authselect-compat-1.2.6-3.el9.x86_64 from appstream requires authselect(x86-64) = 1.2.6-3.el9, but none of the providers can be installed</span>
-<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a>  - package authselect-1.2.6-3.el9.x86_64 from baseos requires authselect-libs(x86-64) = 1.2.6-3.el9, but none of the providers can be installed</span>
-<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a>  - cannot install the best update candidate for package authselect-compat-1.2.6-2.el9.x86_64</span>
-<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a>  - package authselect-libs-1.2.6-3.el9.x86_64 from baseos is filtered out by exclude filtering</span>
-<span id="cb51-9"><a href="#cb51-9" aria-hidden="true" tabindex="-1"></a>(try to add &#39;--skip-broken&#39; to skip uninstallable packages or &#39;--nobest&#39; to use not only best candidate packages)</span></code></pre></div>
-                        <p>のようなエラーがでる。これは、<code>/etc/dnf/dnf.conf</code>に</p>
                         <div class="sourceCode" id="cb52"><pre
-                        class="sourceCode txt"><code class="sourceCode default"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>exclude=ypbind nss_nis yp-tools authselect-libs autofs</span></code></pre></div>
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> dnf update <span class="at">-y</span></span></code></pre></div>
+                        <p>とすると</p>
+                        <div class="sourceCode" id="cb53"><pre
+                        class="sourceCode txt"><code class="sourceCode default"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>Error: </span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a> Problem 1: package authselect-1.2.6-3.el9.x86_64 from baseos requires authselect-libs(x86-64) = 1.2.6-3.el9, but none of the providers can be installed</span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>  - cannot install the best update candidate for package authselect-1.2.6-2.el9.x86_64</span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>  - package authselect-libs-1.2.6-3.el9.x86_64 from baseos is filtered out by exclude filtering</span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a> Problem 2: package authselect-compat-1.2.6-3.el9.x86_64 from appstream requires authselect(x86-64) = 1.2.6-3.el9, but none of the providers can be installed</span>
+<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a>  - package authselect-1.2.6-3.el9.x86_64 from baseos requires authselect-libs(x86-64) = 1.2.6-3.el9, but none of the providers can be installed</span>
+<span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a>  - cannot install the best update candidate for package authselect-compat-1.2.6-2.el9.x86_64</span>
+<span id="cb53-8"><a href="#cb53-8" aria-hidden="true" tabindex="-1"></a>  - package authselect-libs-1.2.6-3.el9.x86_64 from baseos is filtered out by exclude filtering</span>
+<span id="cb53-9"><a href="#cb53-9" aria-hidden="true" tabindex="-1"></a>(try to add &#39;--skip-broken&#39; to skip uninstallable packages or &#39;--nobest&#39; to use not only best candidate packages)</span></code></pre></div>
+                        <p>のようなエラーがでる。これは、<code>/etc/dnf/dnf.conf</code>に</p>
+                        <div class="sourceCode" id="cb54"><pre
+                        class="sourceCode txt"><code class="sourceCode default"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>exclude=ypbind nss_nis yp-tools authselect-libs autofs</span></code></pre></div>
                         <p>と、authselect-libの除外設定があるから。</p>
                         <p>Rockeyにslurmインストール。最初にソースからインストールしてしまったので話がややこしくなった。素直にdnfを使うべき。</p>
                         <p>ログインノードでのジョブ投入は成功。計算ノードからつながらない。</p>
-                        <div class="sourceCode" id="cb53"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> nc <span class="at">-zv</span> login-node-name 6817</span>
-<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Ncat:</span> Version 7.92 <span class="er">(</span> <span class="ex">https://nmap.org/ncat</span> <span class="kw">)</span></span>
-<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Ncat:</span> No route to host.</span></code></pre></div>
-                        <p>ポートが塞がってますね。ログインノードで以下を実行。</p>
-                        <div class="sourceCode" id="cb54"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> firewall-cmd <span class="at">--zone</span><span class="op">=</span>public <span class="at">--add-port</span><span class="op">=</span>6817/tcp <span class="at">--permanent</span></span>
-<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> firewall-cmd <span class="at">--zone</span><span class="op">=</span>public <span class="at">--add-port</span><span class="op">=</span>6818/tcp <span class="at">--permanent</span></span>
-<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> firewall-cmd <span class="at">--reload</span></span></code></pre></div>
-                        <p>計算ノードは6818をあける必要がある。</p>
                         <div class="sourceCode" id="cb55"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> firewall-cmd <span class="at">--permanent</span> <span class="at">--add-port</span><span class="op">=</span>6818/tcp</span>
-<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl restart firewalld</span></code></pre></div>
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> nc <span class="at">-zv</span> login-node-name 6817</span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Ncat:</span> Version 7.92 <span class="er">(</span> <span class="ex">https://nmap.org/ncat</span> <span class="kw">)</span></span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Ncat:</span> No route to host.</span></code></pre></div>
+                        <p>ポートが塞がってますね。ログインノードで以下を実行。</p>
+                        <div class="sourceCode" id="cb56"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> firewall-cmd <span class="at">--zone</span><span class="op">=</span>public <span class="at">--add-port</span><span class="op">=</span>6817/tcp <span class="at">--permanent</span></span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> firewall-cmd <span class="at">--zone</span><span class="op">=</span>public <span class="at">--add-port</span><span class="op">=</span>6818/tcp <span class="at">--permanent</span></span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> firewall-cmd <span class="at">--reload</span></span></code></pre></div>
+                        <p>計算ノードは6818をあける必要がある。</p>
+                        <div class="sourceCode" id="cb57"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> firewall-cmd <span class="at">--permanent</span> <span class="at">--add-port</span><span class="op">=</span>6818/tcp</span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl restart firewalld</span></code></pre></div>
                         <p>通った(firewalldを再起動忘れて繋がらなかった・・・)。</p>
                         <p>次はMPI。計算ノードで以下を実行。</p>
-                        <div class="sourceCode" id="cb56"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> dnf install <span class="at">-y</span> openmpi openmpi-devel</span></code></pre></div>
-                        <p>パスを通す。/etc/bashrcに以下を追加。</p>
-                        <div class="sourceCode" id="cb57"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">PATH</span><span class="op">=</span>/usr/lib64/openmpi/bin:<span class="va">$PATH</span></span></code></pre></div>
                         <div class="sourceCode" id="cb58"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="va">PartitionName</span><span class="op">=</span>default <span class="va">Nodes</span><span class="op">=</span>ALL <span class="va">Default</span><span class="op">=</span>YES <span class="va">MaxTime</span><span class="op">=</span>INFINITE <span class="va">State</span><span class="op">=</span>UP</span></code></pre></div>
-                        <p>としたらエラー。defaultは予約後だそうで。</p>
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> dnf install <span class="at">-y</span> openmpi openmpi-devel</span></code></pre></div>
+                        <p>パスを通す。/etc/bashrcに以下を追加。</p>
                         <div class="sourceCode" id="cb59"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="va">PartitionName</span><span class="op">=</span>main <span class="va">Nodes</span><span class="op">=</span>ALL <span class="va">Default</span><span class="op">=</span>YES <span class="va">MaxTime</span><span class="op">=</span>INFINITE <span class="va">State</span><span class="op">=</span>UP</span></code></pre></div>
-                        <p>としたら通った。</p>
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">PATH</span><span class="op">=</span>/usr/lib64/openmpi/bin:<span class="va">$PATH</span></span></code></pre></div>
                         <div class="sourceCode" id="cb60"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="va">PartitionName</span><span class="op">=</span>main <span class="va">Nodes</span><span class="op">=</span>ALL <span class="va">Default</span><span class="op">=</span>YES <span class="va">MaxTime</span><span class="op">=</span>1-00:00:00 <span class="va">State</span><span class="op">=</span>UP</span></code></pre></div>
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="va">PartitionName</span><span class="op">=</span>default <span class="va">Nodes</span><span class="op">=</span>ALL <span class="va">Default</span><span class="op">=</span>YES <span class="va">MaxTime</span><span class="op">=</span>INFINITE <span class="va">State</span><span class="op">=</span>UP</span></code></pre></div>
+                        <p>としたらエラー。defaultは予約後だそうで。</p>
+                        <div class="sourceCode" id="cb61"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="va">PartitionName</span><span class="op">=</span>main <span class="va">Nodes</span><span class="op">=</span>ALL <span class="va">Default</span><span class="op">=</span>YES <span class="va">MaxTime</span><span class="op">=</span>INFINITE <span class="va">State</span><span class="op">=</span>UP</span></code></pre></div>
+                        <p>としたら通った。</p>
+                        <div class="sourceCode" id="cb62"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="va">PartitionName</span><span class="op">=</span>main <span class="va">Nodes</span><span class="op">=</span>ALL <span class="va">Default</span><span class="op">=</span>YES <span class="va">MaxTime</span><span class="op">=</span>1-00:00:00 <span class="va">State</span><span class="op">=</span>UP</span></code></pre></div>
                         <p>と、24時間制限をつけた。</p>
                         <p>クラスタにlammpsインストール</p>
-                        <div class="sourceCode" id="cb61"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> github</span>
-<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone <span class="at">-b</span> release <span class="at">--depth</span> 1  https://github.com/lammps/lammps.git</span>
-<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> lammps</span>
-<span id="cb61-4"><a href="#cb61-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> build</span>
-<span id="cb61-5"><a href="#cb61-5" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> build</span>
-<span id="cb61-6"><a href="#cb61-6" aria-hidden="true" tabindex="-1"></a><span class="fu">cmake</span> ../cmake <span class="dt">\</span></span>
-<span id="cb61-7"><a href="#cb61-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">-D</span> CMAKE_C_COMPILER=mpicc <span class="dt">\</span></span>
-<span id="cb61-8"><a href="#cb61-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">-D</span> CMAKE_CXX_COMPILER=mpicxx <span class="dt">\</span></span>
-<span id="cb61-9"><a href="#cb61-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">-D</span> CMAKE_INSTALL_PREFIX=~/usr/local <span class="dt">\</span></span>
-<span id="cb61-10"><a href="#cb61-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">-D</span> CMAKE_CXX_FLAGS=<span class="st">&quot;-O3 -std=c++11 -fopenmp&quot;</span> <span class="dt">\</span></span>
-<span id="cb61-11"><a href="#cb61-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">-D</span> BUILD_MPI=yes <span class="dt">\</span></span>
-<span id="cb61-12"><a href="#cb61-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">-D</span> BUILD_OMP=yes <span class="dt">\</span></span>
-<span id="cb61-13"><a href="#cb61-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">-D</span> CMAKE_EXE_LINKER_FLAGS=<span class="st">&quot;-O3 -std=c++11 -fopenmp&quot;</span> <span class="dt">\</span></span>
-<span id="cb61-14"><a href="#cb61-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">-D</span> PKG_MOLECULE=on</span>
-<span id="cb61-15"><a href="#cb61-15" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> <span class="at">-j</span> 4</span>
-<span id="cb61-16"><a href="#cb61-16" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> install</span></code></pre></div>
+                        <div class="sourceCode" id="cb63"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> github</span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone <span class="at">-b</span> release <span class="at">--depth</span> 1  https://github.com/lammps/lammps.git</span>
+<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> lammps</span>
+<span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> build</span>
+<span id="cb63-5"><a href="#cb63-5" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> build</span>
+<span id="cb63-6"><a href="#cb63-6" aria-hidden="true" tabindex="-1"></a><span class="fu">cmake</span> ../cmake <span class="dt">\</span></span>
+<span id="cb63-7"><a href="#cb63-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">-D</span> CMAKE_C_COMPILER=mpicc <span class="dt">\</span></span>
+<span id="cb63-8"><a href="#cb63-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">-D</span> CMAKE_CXX_COMPILER=mpicxx <span class="dt">\</span></span>
+<span id="cb63-9"><a href="#cb63-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">-D</span> CMAKE_INSTALL_PREFIX=~/usr/local <span class="dt">\</span></span>
+<span id="cb63-10"><a href="#cb63-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">-D</span> CMAKE_CXX_FLAGS=<span class="st">&quot;-O3 -std=c++11 -fopenmp&quot;</span> <span class="dt">\</span></span>
+<span id="cb63-11"><a href="#cb63-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">-D</span> BUILD_MPI=yes <span class="dt">\</span></span>
+<span id="cb63-12"><a href="#cb63-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">-D</span> BUILD_OMP=yes <span class="dt">\</span></span>
+<span id="cb63-13"><a href="#cb63-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">-D</span> CMAKE_EXE_LINKER_FLAGS=<span class="st">&quot;-O3 -std=c++11 -fopenmp&quot;</span> <span class="dt">\</span></span>
+<span id="cb63-14"><a href="#cb63-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">-D</span> PKG_MOLECULE=on</span>
+<span id="cb63-15"><a href="#cb63-15" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> <span class="at">-j</span> 4</span>
+<span id="cb63-16"><a href="#cb63-16" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> install</span></code></pre></div>
                         <p>無事にログインノード、計算ノードでlammpsも並列に走った。よし。これで研究室クラスター復活。</p>
                         <p>・・・疲れたなぁ。</p>
                         <h2 id="月08日水"><a href="#08">10月08日(水)</a>
@@ -469,24 +485,24 @@
                         <p>研究室ミーティング。シアシックニングと格闘ゲームの強化学習。今日から本格的に英語での発表です。</p>
                         <p>NIS共有の設定続き。うまくNIS共有できなかったのはサーバ側のポートが閉じていたから。</p>
                         <p>サーバ側で</p>
-                        <div class="sourceCode" id="cb62"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> firewall-cmd <span class="at">--permanent</span> <span class="at">--add-port</span><span class="op">=</span>861/tcp</span>
-<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> firewall-cmd <span class="at">--permanent</span> <span class="at">--add-port</span><span class="op">=</span>861/udp</span>
-<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> firewall-cmd <span class="at">--permanent</span> <span class="at">--add-port</span><span class="op">=</span>111/tcp</span>
-<span id="cb62-4"><a href="#cb62-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> firewall-cmd <span class="at">--permanent</span> <span class="at">--add-port</span><span class="op">=</span>111/udp</span>
-<span id="cb62-5"><a href="#cb62-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> firewall-cmd <span class="at">--reload</span></span></code></pre></div>
+                        <div class="sourceCode" id="cb64"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> firewall-cmd <span class="at">--permanent</span> <span class="at">--add-port</span><span class="op">=</span>861/tcp</span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> firewall-cmd <span class="at">--permanent</span> <span class="at">--add-port</span><span class="op">=</span>861/udp</span>
+<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> firewall-cmd <span class="at">--permanent</span> <span class="at">--add-port</span><span class="op">=</span>111/tcp</span>
+<span id="cb64-4"><a href="#cb64-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> firewall-cmd <span class="at">--permanent</span> <span class="at">--add-port</span><span class="op">=</span>111/udp</span>
+<span id="cb64-5"><a href="#cb64-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> firewall-cmd <span class="at">--reload</span></span></code></pre></div>
                         <p>を実行することでポートが通った。</p>
                         <p>クライアント側で</p>
-                        <div class="sourceCode" id="cb63"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> /usr/sbin/ypbind <span class="at">-d</span></span></code></pre></div>
+                        <div class="sourceCode" id="cb65"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> /usr/sbin/ypbind <span class="at">-d</span></span></code></pre></div>
                         <p>を実行することでどこでこけているかがわかる。ypwhichやgetentが通るようになった時点で</p>
-                        <div class="sourceCode" id="cb64"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl start ypbind</span></code></pre></div>
+                        <div class="sourceCode" id="cb66"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl start ypbind</span></code></pre></div>
                         <p>で通った。</p>
                         <p>クライアントでypbindが自動起動するか確認。</p>
-                        <div class="sourceCode" id="cb65"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> sudo systemctl is-enabled ypbind</span>
-<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a><span class="ex">enabled</span></span></code></pre></div>
+                        <div class="sourceCode" id="cb67"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> sudo systemctl is-enabled ypbind</span>
+<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a><span class="ex">enabled</span></span></code></pre></div>
                         <p>大丈夫ですね。</p>
                         <p>Slurmのインストール途中で時間切れ。</p>
                         <p>ノーベル化学賞が日本人受賞でバタバタ・・・</p>
