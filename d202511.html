@@ -21,8 +21,37 @@
   <body>
     <article class="markdown-body">
                         <h1 id="年11月">2025年11月</h1>
+                        <h2 id="月20日木"><a href="#20">11月20日(木)</a>
+                        <a id="20"></a></h2>
+                        <p>D論予備審査。</p>
+                        <p>Cloudflareの障害の詳細が出ている。</p>
+                        <p><a
+                        href="https://blog.cloudflare.com/18-november-2025-outage/">Cloudflare
+                        outage on November 18, 2025</a></p>
+                        <p>個人的にはこちらがわかりやすかった。</p>
+                        <p><a
+                        href="https://medium.com/%40ajaygohil2563/understanding-the-cloudflare-outage-a-simple-explanation-be7b88f7d339">Understanding
+                        the Cloudflare Outage: A Simple
+                        Explanation</a></p>
+                        <p>GitLabのデータベースふっとばし事件を思い出した。</p>
+                        <p><a
+                        href="https://about.gitlab.com/blog/gitlab-dot-com-database-incident/">GitLab.com
+                        database incident</a></p>
+                        <p>簡単なまとめ *
+                        Cloudflareがセキュリティ対応のためデータベース権限を変更。これまでユーザから見えなかったデータベースが見えるようなった。
+                        *
+                        しかし、クエリにデータベースの指定文を追加し忘れる
+                        *
+                        同じクエリに対して、複数のデータベースが答えを返し、結果が重複。Bot判定のための特徴量に関する情報が増えてしまう
+                        *
+                        Bot判定(アクセスの人間らしさのスコア付与)は機械学習でやっていたが、その入力特徴量の上限を超えてしまい、エラーを返す
+                        *
+                        Bot判定がエラーを返すことが想定されておらず、コアプロキシが5xxを返す
+                        *
+                        多くのサービスがコアプロキシに依存していたため、ドミノ倒し的に全滅</p>
                         <h2 id="月19日水"><a href="#19">11月19日(水)</a>
                         <a id="19"></a></h2>
+                        <p>朝、日吉のITCにいってアダプター回収。</p>
                         <p>卒論執筆ガイダンス。</p>
                         <p>研究室分け説明会の準備。</p>
                         <p>研究室分け説明会。来年はもう少し工夫するかな。</p>
