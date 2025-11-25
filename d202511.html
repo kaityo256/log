@@ -21,6 +21,28 @@
   <body>
     <article class="markdown-body">
                         <h1 id="年11月">2025年11月</h1>
+                        <h2 id="月25日火"><a href="#25">11月25日(火)</a>
+                        <a id="25"></a></h2>
+                        <p>午前中はD論予備審査。</p>
+                        <p>午後、1on1したりとか。</p>
+                        <p>土日の疲れが溜まっており、全く頭が働かない。</p>
+                        <p>計算ノードにImageMagick入れた。</p>
+                        <p>ずっとファイルサーバにログインできなかったのをなんとかした。rootパスワードを引っ張り出す。そして入って調べた。ログインできなかった理由は、ファイルサーバにユーザがなかったため。ファイルサーバなので<code>/home</code>は存在していてNFS
+                        exportしている。それとgidやuidを無矛盾に作らないといけない。
+                        自分のアカウントのログインノードでのuid,
+                        gidは1001なので、</p>
+                        <div class="sourceCode" id="cb1"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">groupadd</span> <span class="at">-g</span> 1001 watanabe</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">useradd</span> <span class="dt">\</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">-u</span> 1001 <span class="dt">\</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">-g</span> 1001 <span class="dt">\</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">-d</span> /home/watanabe <span class="dt">\</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">-s</span> /bin/bash <span class="dt">\</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  watanabe</span></code></pre></div>
+                        <p>これでできた。あとはsudoersに追加したり、パスワードを設定したり。これでファイルサーバにアクセスできるようになった。</p>
+                        <p>これで、ログインノード、計算ノード x
+                        N、ファイルサーバという構成を作る記事を書く準備はできた。書くのか？令和にもなってNIS+NFS+ホストベース認証+Slurmという記事を？</p>
+                        <p>頭が全く働かず、論文修正までいけない。</p>
                         <h2 id="月24日月"><a href="#24">11月24日(月)</a>
                         <a id="24"></a></h2>
                         <p>メールをたくさん書いた。</p>
@@ -127,10 +149,10 @@
                         <p>国外招聘関係の書類(旅費申請書、海外送金依頼書)を提出した。ついでにInvitation
                         Letterも。</p>
                         <p>nodeのバージョンが古い。</p>
-                        <div class="sourceCode" id="cb1"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> nvm install node</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> node <span class="at">-v</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">v25.2.0</span></span></code></pre></div>
+                        <div class="sourceCode" id="cb2"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> nvm install node</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> node <span class="at">-v</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">v25.2.0</span></span></code></pre></div>
                         <p><a
                         href="https://zenn.dev/kaityo256/articles/hidden_line_normal">隠線処理の話</a></p>
                         <p>書いた。</p>
