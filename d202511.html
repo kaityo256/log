@@ -21,6 +21,17 @@
   <body>
     <article class="markdown-body">
                         <h1 id="年11月">2025年11月</h1>
+                        <h2 id="月26日水"><a href="#26">11月26日(水)</a>
+                        <a id="26"></a></h2>
+                        <p>Tahoeになってから、「ブラウザからターミナルにフォーカスを移そうとしたら、しばらく反応しない」というのが頻発。
+                        頻発といっても一日に数回なので、現場を抑えることが難しい。調べたら<a
+                        href="https://iboysoft.com/howto/macos-tahoe-freezing.html">オートフィルヒューリスティックが悪さをしている</a>っぽいのだが、その現場を押さえられない。オートフィルのCPU利用率を監視するため、</p>
+                        <div class="sourceCode" id="cb1"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">top</span> <span class="at">-o</span> cpu <span class="at">-stats</span> pid,command,cpu,mem,time <span class="kw">|</span> <span class="fu">grep</span> <span class="at">-i</span> autofill</span></code></pre></div>
+                        <p>を実行して、しばらくブラウザで作業して、戻ったのだが何もおきない。うーむむ。</p>
+                        <p>なんか、Windowsで作業してからMacを開くと起きるっぽい。しばらく放置してから触るのがトリガーっぽいな。</p>
+                        <p>論文一つ修正完了。土曜日には再投稿したい。</p>
+                        <p>物性研スパコンの申請、仮申請して、申請書をあらかた書いた。</p>
                         <h2 id="月25日火"><a href="#25">11月25日(火)</a>
                         <a id="25"></a></h2>
                         <p>午前中はD論予備審査。</p>
@@ -31,14 +42,14 @@
                         exportしている。それとgidやuidを無矛盾に作らないといけない。
                         自分のアカウントのログインノードでのuid,
                         gidは1001なので、</p>
-                        <div class="sourceCode" id="cb1"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">groupadd</span> <span class="at">-g</span> 1001 watanabe</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">useradd</span> <span class="dt">\</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">-u</span> 1001 <span class="dt">\</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">-g</span> 1001 <span class="dt">\</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">-d</span> /home/watanabe <span class="dt">\</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">-s</span> /bin/bash <span class="dt">\</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  watanabe</span></code></pre></div>
+                        <div class="sourceCode" id="cb2"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">groupadd</span> <span class="at">-g</span> 1001 watanabe</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">useradd</span> <span class="dt">\</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">-u</span> 1001 <span class="dt">\</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">-g</span> 1001 <span class="dt">\</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">-d</span> /home/watanabe <span class="dt">\</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">-s</span> /bin/bash <span class="dt">\</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  watanabe</span></code></pre></div>
                         <p>これでできた。あとはsudoersに追加したり、パスワードを設定したり。これでファイルサーバにアクセスできるようになった。</p>
                         <p>これで、ログインノード、計算ノード x
                         N、ファイルサーバという構成を作る記事を書く準備はできた。書くのか？令和にもなってNIS+NFS+ホストベース認証+Slurmという記事を？</p>
@@ -149,10 +160,10 @@
                         <p>国外招聘関係の書類(旅費申請書、海外送金依頼書)を提出した。ついでにInvitation
                         Letterも。</p>
                         <p>nodeのバージョンが古い。</p>
-                        <div class="sourceCode" id="cb2"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> nvm install node</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> node <span class="at">-v</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">v25.2.0</span></span></code></pre></div>
+                        <div class="sourceCode" id="cb3"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> nvm install node</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> node <span class="at">-v</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ex">v25.2.0</span></span></code></pre></div>
                         <p><a
                         href="https://zenn.dev/kaityo256/articles/hidden_line_normal">隠線処理の話</a></p>
                         <p>書いた。</p>
