@@ -21,8 +21,13 @@
   <body>
     <article class="markdown-body">
                         <h1 id="年12月">2025年12月</h1>
+                        <h2 id="月14日日"><a href="#14">12月14日(日)</a>
+                        <a id="14"></a></h2>
+                        <p>冬タイヤに履き替えた。</p>
+                        <p>プログラミング基礎同演習のレポート採点終わった。</p>
                         <h2 id="月13日土"><a href="#13">12月13日(土)</a>
                         <a id="13"></a></h2>
+                        <p>長い会議。</p>
                         <p>家のPCのセットアップ。</p>
                         <ol type="1">
                         <li>WSLをインストール</li>
@@ -32,6 +37,23 @@
                         <li>Subversionで研究用のリポジトリ落とす</li>
                         </ol>
                         <p>論文やコードはGit管理してるんだけど、セミナー用のスライドや日々の会議、授業管理などはすべてSubversion管理している。で、仕事用リポジトリとセミナー用リポジトリにすべてまとめているので、それらを落とせば研究環境構築完了。やっぱり便利だ。</p>
+                        <div class="sourceCode" id="cb1"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">svnserve:</span> warning: cannot set LC_CTYPE locale</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">svnserve:</span> warning: environment variable LANG is C.UTF-8</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">svnserve:</span> warning: please check that your locale name is correct</span></code></pre></div>
+                        <p>これはサーバ側にC.UTF-8やja_JP.utf8がないから。サーバのOSをアップデートしないとダメだな・・・</p>
+                        <p><code>.bashrc</code>に</p>
+                        <div class="sourceCode" id="cb2"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">alias</span> rm=<span class="st">&#39;rm -i&#39;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">alias</span> cp=<span class="st">&#39;cp -i&#39;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="bu">alias</span> mv=<span class="st">&#39;mv -i&#39;</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="bu">alias</span> dc=<span class="st">&#39;cd&#39;</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="bu">alias</span> ls=<span class="st">&#39;ls --show-control-char -F --color&#39;</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="bu">bind</span> <span class="st">&#39;&quot;\C-n&quot;: history-search-forward&#39;</span> <span class="dv">2</span><span class="op">&gt;</span>/dev/null</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="bu">bind</span> <span class="st">&#39;&quot;\C-p&quot;: history-search-backward&#39;</span> <span class="dv">2</span><span class="op">&gt;</span>/dev/null</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="va">HISTSIZE</span><span class="op">=</span>100000</span></code></pre></div>
+                        <p>を書かせるようにしたほうが良いな。</p>
                         <h2 id="月12日金"><a href="#12">12月12日(金)</a>
                         <a id="12"></a></h2>
                         <p>ディスクが溢れたが、仮想ディスクが大きくてうまく消せなかったPC、初期化した。</p>
