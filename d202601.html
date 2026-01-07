@@ -25,14 +25,21 @@
                         <a id="07"></a></h2>
                         <p>採点した実験レポートを提出。これで一段落。</p>
                         <p>あ、来週の研究室ミーティング、会議とぶつかっている。予定を調節しなければ・・・</p>
+                        <p>あまりに集中力がなくて、机の上の整理とかはじめちゃった。</p>
                         <p>ガイダンスの準備。 * <a
                         href="https://speakerdeck.com/kaityo256/slack-local-rule">渡辺研Slackの使い方</a>の内容を更新した。
                         * esaはURLで共有することにする。 * 研究室Google
                         Calendarの招待メール送った。</p>
+                        <p>研究室ガイダンス。居室の紹介とナンバーキーの使い方の説明を忘れてた。esaの「新メンバーにやることリスト」を追加。</p>
                         <p>時間厳守の、しかもまぁまぁ作業量が多い依頼が締め切りの42時間前に送られてくるってのはどうなのか？</p>
                         <p>Todoistに2ヶ月近く塩漬けになっていた、Zennのタイポを修正。単に「zennの頂点の座標が間違ってる」としか書いておらず、どこがミスになっているかを探すのに少し時間がかかった。すぐにやらないと駄目だな。</p>
                         <p>2023年4月openのissueを閉じた。3年・・・。</p>
-                        <p>研究室ガイダンス。居室の紹介とナンバーキーの使い方の説明を忘れてた。esaの「新メンバーにやることリスト」を追加。</p>
+                        <p>重い腰をついにあげてWordPressの移行準備。とりあえずwp-contentのダウンロードとmysql(MariaDB)のダンプの取得。</p>
+                        <div class="sourceCode" id="cb1"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mysqldump</span> <span class="at">-u</span> root <span class="at">-p</span> wordpress <span class="op">&gt;</span> wordpress.sql </span></code></pre></div>
+                        <p>うぅ、wp-contentが5GBあるので、Git管理は無理。NASにバックアップして、.gitignoreして、Dockerで表示確認とかだな。でも、これで最低限、サーバが死んでも復活可能のはず・・・？(Dockerで見てみないとわからないが)。</p>
+                        <p>また査読みたいな奴の対応。まずは準備。</p>
+                        <p>Boxのバックアップ確認。たぶん大丈夫かな。多分いらないけど、念の為いくつかダウンロードしておいた。</p>
                         <h2 id="月06日火"><a href="#06">01月06日(火)</a>
                         <a id="06"></a></h2>
                         <p>SNS、マジで「砂糖は甘いなぁ」というポストに対して「塩はしょっぱくないっていうんですか！」という反応がくるなぁ。「SNSで学ぶ国語の重要性」とかいう本書いたら売れるんじゃなかろうか。</p>
@@ -60,68 +67,68 @@
                         submoduleで管理しているが、submodule
                         addした時点でのハッシュに固定されてしまうので、一度
                         mainにswitch してからpullしないといけない。</p>
-                        <div class="sourceCode" id="cb1"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> submodule update <span class="at">--init</span> <span class="at">--recursive</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> submodule foreach <span class="st">&#39;git switch main&#39;</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> submodule foreach <span class="st">&#39;git pull&#39;</span></span></code></pre></div>
-                        <p>これだと、すべての年度の卒論・修論にアップデートかかるんだよなぁ。</p>
                         <div class="sourceCode" id="cb2"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">thesis_list</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> README.md</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> graduate_thesis</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="ex">│  </span> ├── 2020</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="ex">│  </span> ├── 2021</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="ex">│  </span> ├── 2022</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="ex">│  </span> ├── 2023</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="ex">│  </span> ├── 2024</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="ex">│  </span> └── 2025</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> makefile</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="ex">└──</span> master_thesis</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    <span class="ex">├──</span> 2022</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    <span class="ex">├──</span> 2023</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    <span class="ex">├──</span> 2024</span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    <span class="ex">└──</span> 2025</span></code></pre></div>
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> submodule update <span class="at">--init</span> <span class="at">--recursive</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> submodule foreach <span class="st">&#39;git switch main&#39;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> submodule foreach <span class="st">&#39;git pull&#39;</span></span></code></pre></div>
+                        <p>これだと、すべての年度の卒論・修論にアップデートかかるんだよなぁ。</p>
+                        <div class="sourceCode" id="cb3"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">thesis_list</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> README.md</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> graduate_thesis</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="ex">│  </span> ├── 2020</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="ex">│  </span> ├── 2021</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="ex">│  </span> ├── 2022</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="ex">│  </span> ├── 2023</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="ex">│  </span> ├── 2024</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="ex">│  </span> └── 2025</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> makefile</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="ex">└──</span> master_thesis</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="ex">├──</span> 2022</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="ex">├──</span> 2023</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    <span class="ex">├──</span> 2024</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    <span class="ex">└──</span> 2025</span></code></pre></div>
                         <p>いま、こんな構造なんだけど、GitはSubversionと違って部分更新できないから、全部を見に行って時間がかかってしまう。うーむ。</p>
                         <p>修論1編見た。</p>
                         <h2 id="月02日金"><a href="#02">01月02日(金)</a>
                         <a id="02"></a></h2>
                         <p>研究室のウェブサーバにhttpsで接続できずに焦る。</p>
                         <p>curlで見てみる。</p>
-                        <div class="sourceCode" id="cb3"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> curl <span class="at">-Iv</span> https://calc.appi.keio.ac.jp/</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">*</span>   Trying 133.167.114.81:443...</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ex">*</span> TCP_NODELAY set</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="ex">*</span> Connected to calc.appi.keio.ac.jp <span class="er">(</span><span class="ex">133.167.114.81</span><span class="kw">)</span> <span class="ex">port</span> 443 <span class="er">(</span><span class="co">#0)</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="ex">*</span> ALPN, offering h2</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="ex">*</span> ALPN, offering http/1.1</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="ex">*</span> successfully set certificate verify locations:</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="ex">*</span>   CAfile: /etc/ssl/certs/ca-certificates.crt</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="ex">CApath:</span> /etc/ssl/certs</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="ex">*</span> TLSv1.3 <span class="er">(</span><span class="ex">OUT</span><span class="kw">)</span><span class="ex">,</span> TLS handshake, Client hello <span class="er">(</span><span class="ex">1</span><span class="kw">)</span><span class="bu">:</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="ex">*</span> TLSv1.3 <span class="er">(</span><span class="ex">IN</span><span class="kw">)</span><span class="ex">,</span> TLS handshake, Server hello <span class="er">(</span><span class="ex">2</span><span class="kw">)</span><span class="bu">:</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="ex">*</span> TLSv1.2 <span class="er">(</span><span class="ex">IN</span><span class="kw">)</span><span class="ex">,</span> TLS handshake, Certificate <span class="er">(</span><span class="ex">11</span><span class="kw">)</span><span class="bu">:</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="ex">*</span> TLSv1.2 <span class="er">(</span><span class="ex">IN</span><span class="kw">)</span><span class="ex">,</span> TLS handshake, Server key exchange <span class="er">(</span><span class="ex">12</span><span class="kw">)</span><span class="bu">:</span></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="ex">*</span> TLSv1.2 <span class="er">(</span><span class="ex">IN</span><span class="kw">)</span><span class="ex">,</span> TLS handshake, Server finished <span class="er">(</span><span class="ex">14</span><span class="kw">)</span><span class="bu">:</span></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="ex">*</span> TLSv1.2 <span class="er">(</span><span class="ex">OUT</span><span class="kw">)</span><span class="ex">,</span> TLS handshake, Client key exchange <span class="er">(</span><span class="ex">16</span><span class="kw">)</span><span class="bu">:</span></span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="ex">*</span> TLSv1.2 <span class="er">(</span><span class="ex">OUT</span><span class="kw">)</span><span class="ex">,</span> TLS change cipher, Change cipher spec <span class="er">(</span><span class="ex">1</span><span class="kw">)</span><span class="bu">:</span></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="ex">*</span> TLSv1.2 <span class="er">(</span><span class="ex">OUT</span><span class="kw">)</span><span class="ex">,</span> TLS handshake, Finished <span class="er">(</span><span class="ex">20</span><span class="kw">)</span><span class="bu">:</span></span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="ex">*</span> TLSv1.2 <span class="er">(</span><span class="ex">IN</span><span class="kw">)</span><span class="ex">,</span> TLS handshake, Finished <span class="er">(</span><span class="ex">20</span><span class="kw">)</span><span class="bu">:</span></span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="ex">*</span> SSL connection using TLSv1.2 / ECDHE-RSA-AES256-GCM-SHA384</span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="ex">*</span> ALPN, server did not agree to a protocol</span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="ex">*</span> Server certificate:</span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="ex">*</span>  subject: CN=www.calc.appi.keio.ac.jp</span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="ex">*</span>  start date: Dec 26 18:02:40 2025 GMT</span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a><span class="ex">*</span>  expire date: Mar 26 18:02:39 2026 GMT</span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a><span class="ex">*</span>  subjectAltName does not match calc.appi.keio.ac.jp</span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a><span class="ex">*</span> SSL: no alternative certificate subject name matches target host name <span class="st">&#39;calc.appi.keio.ac.jp&#39;</span></span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a><span class="ex">*</span> Closing connection 0</span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a><span class="ex">*</span> TLSv1.2 <span class="er">(</span><span class="ex">OUT</span><span class="kw">)</span><span class="ex">,</span> TLS alert, close notify <span class="er">(</span><span class="ex">256</span><span class="kw">)</span><span class="bu">:</span></span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a><span class="ex">curl:</span> <span class="er">(</span><span class="ex">60</span><span class="kw">)</span> <span class="ex">SSL:</span> no alternative certificate subject name matches target host name <span class="st">&#39;calc.appi.keio.ac.jp&#39;</span></span>
-<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a><span class="ex">More</span> details here: https://curl.haxx.se/docs/sslcerts.html</span>
-<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> failed to verify the legitimacy of the server and therefore could not</span>
-<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a><span class="ex">establish</span> a secure connection to it. To learn more about this situation and</span>
-<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a><span class="ex">how</span> to fix it, please visit the web page mentioned above.</span></code></pre></div>
+                        <div class="sourceCode" id="cb4"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> curl <span class="at">-Iv</span> https://calc.appi.keio.ac.jp/</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">*</span>   Trying 133.167.114.81:443...</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ex">*</span> TCP_NODELAY set</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="ex">*</span> Connected to calc.appi.keio.ac.jp <span class="er">(</span><span class="ex">133.167.114.81</span><span class="kw">)</span> <span class="ex">port</span> 443 <span class="er">(</span><span class="co">#0)</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="ex">*</span> ALPN, offering h2</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="ex">*</span> ALPN, offering http/1.1</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="ex">*</span> successfully set certificate verify locations:</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="ex">*</span>   CAfile: /etc/ssl/certs/ca-certificates.crt</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="ex">CApath:</span> /etc/ssl/certs</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="ex">*</span> TLSv1.3 <span class="er">(</span><span class="ex">OUT</span><span class="kw">)</span><span class="ex">,</span> TLS handshake, Client hello <span class="er">(</span><span class="ex">1</span><span class="kw">)</span><span class="bu">:</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="ex">*</span> TLSv1.3 <span class="er">(</span><span class="ex">IN</span><span class="kw">)</span><span class="ex">,</span> TLS handshake, Server hello <span class="er">(</span><span class="ex">2</span><span class="kw">)</span><span class="bu">:</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="ex">*</span> TLSv1.2 <span class="er">(</span><span class="ex">IN</span><span class="kw">)</span><span class="ex">,</span> TLS handshake, Certificate <span class="er">(</span><span class="ex">11</span><span class="kw">)</span><span class="bu">:</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="ex">*</span> TLSv1.2 <span class="er">(</span><span class="ex">IN</span><span class="kw">)</span><span class="ex">,</span> TLS handshake, Server key exchange <span class="er">(</span><span class="ex">12</span><span class="kw">)</span><span class="bu">:</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="ex">*</span> TLSv1.2 <span class="er">(</span><span class="ex">IN</span><span class="kw">)</span><span class="ex">,</span> TLS handshake, Server finished <span class="er">(</span><span class="ex">14</span><span class="kw">)</span><span class="bu">:</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="ex">*</span> TLSv1.2 <span class="er">(</span><span class="ex">OUT</span><span class="kw">)</span><span class="ex">,</span> TLS handshake, Client key exchange <span class="er">(</span><span class="ex">16</span><span class="kw">)</span><span class="bu">:</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="ex">*</span> TLSv1.2 <span class="er">(</span><span class="ex">OUT</span><span class="kw">)</span><span class="ex">,</span> TLS change cipher, Change cipher spec <span class="er">(</span><span class="ex">1</span><span class="kw">)</span><span class="bu">:</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="ex">*</span> TLSv1.2 <span class="er">(</span><span class="ex">OUT</span><span class="kw">)</span><span class="ex">,</span> TLS handshake, Finished <span class="er">(</span><span class="ex">20</span><span class="kw">)</span><span class="bu">:</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="ex">*</span> TLSv1.2 <span class="er">(</span><span class="ex">IN</span><span class="kw">)</span><span class="ex">,</span> TLS handshake, Finished <span class="er">(</span><span class="ex">20</span><span class="kw">)</span><span class="bu">:</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="ex">*</span> SSL connection using TLSv1.2 / ECDHE-RSA-AES256-GCM-SHA384</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="ex">*</span> ALPN, server did not agree to a protocol</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="ex">*</span> Server certificate:</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a><span class="ex">*</span>  subject: CN=www.calc.appi.keio.ac.jp</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a><span class="ex">*</span>  start date: Dec 26 18:02:40 2025 GMT</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a><span class="ex">*</span>  expire date: Mar 26 18:02:39 2026 GMT</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a><span class="ex">*</span>  subjectAltName does not match calc.appi.keio.ac.jp</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a><span class="ex">*</span> SSL: no alternative certificate subject name matches target host name <span class="st">&#39;calc.appi.keio.ac.jp&#39;</span></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a><span class="ex">*</span> Closing connection 0</span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a><span class="ex">*</span> TLSv1.2 <span class="er">(</span><span class="ex">OUT</span><span class="kw">)</span><span class="ex">,</span> TLS alert, close notify <span class="er">(</span><span class="ex">256</span><span class="kw">)</span><span class="bu">:</span></span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a><span class="ex">curl:</span> <span class="er">(</span><span class="ex">60</span><span class="kw">)</span> <span class="ex">SSL:</span> no alternative certificate subject name matches target host name <span class="st">&#39;calc.appi.keio.ac.jp&#39;</span></span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a><span class="ex">More</span> details here: https://curl.haxx.se/docs/sslcerts.html</span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> failed to verify the legitimacy of the server and therefore could not</span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a><span class="ex">establish</span> a secure connection to it. To learn more about this situation and</span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a><span class="ex">how</span> to fix it, please visit the web page mentioned above.</span></code></pre></div>
                         <p>証明書が<code>www.calc.appi.keio.ac.jp</code>になってる。これで接続すれば良いのか。Chromeがwww.を表示しないので、<code>calc.appi.keio.ac.jp</code>だと思ってたわ。</p>
                         <p>っていうか、サーバが古いのでなんとかしなければならない。卒論・修論シーズンが終わったらやる。でもその後春の学校が・・・</p>
                         <p>体調がいまいち。</p>
