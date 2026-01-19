@@ -1,4 +1,4 @@
-# ログ
+# 日記のようなもの
 
 * Author: [kaityo256](https://github.com/kaityo256)
 * Repository: [log](https://github.com/kaityo256/log)
