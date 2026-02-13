@@ -25,6 +25,188 @@
                         <a id="13"></a></h2>
                         <p>卒論と修論を製本に出した。こういうのが研究室に溜まっていくとうれしいですね。</p>
                         <p>輪講用の本を注文。</p>
+                        <div class="sourceCode" id="cb1"><pre
+                        class="sourceCode txt"><code class="sourceCode default"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>** WARNING: connection is not using a post-quantum key exchange algorithm.</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>** This session may be vulnerable to &quot;store now, decrypt later&quot; attacks.</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>** The server may need to be upgraded. See https://openssh.com/pq.html</span></code></pre></div>
+                        <p>マジか。もう耐量子アルゴリズムの時代なのか。</p>
+                        <p>サーバを更新しないといけない。まずはWordpressのwp-contentのバックアップのためにrsyncを走らせる。rsyncはいつも最後の「/」がどっちかわからなくなるので、Makefileに残しておく。後でDockerでなんとかする。</p>
+                        <p>lammpstrj-parserのテスト。</p>
+                        <div class="sourceCode" id="cb2"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> lammpstrj-parser-sample </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> init .</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> submodule add https://github.com/kaityo256/lammpstrj-parser external/lammpstrj-parser</span></code></pre></div>
+                        <p><code>main.cpp</code>を作成。</p>
+                        <div class="sourceCode" id="cb3"><pre
+                        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;lammpstrj/lammpstrj.hpp&gt;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+                        <p><code>Makefile</code>を作成。</p>
+                        <div class="sourceCode" id="cb4"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">CXX</span> = g++</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">CXXFLAGS</span> = <span class="at">-std</span><span class="op">=</span>c++14 <span class="at">-O2</span> <span class="at">-Iexternal</span>/lammpstrj-parser/include</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="ex">all:</span> lammpstrj-sample</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="ex">lammpstrj-sample:</span> main.cpp</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="va">$(</span><span class="ex">CXX</span><span class="va">)</span> <span class="va">$(</span><span class="ex">CXXFLAGS</span><span class="va">)</span> main.cpp <span class="at">-o</span> <span class="va">$@</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="ex">.PHONY:</span> clean</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="ex">clean:</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rm</span> <span class="at">-f</span> lammpstrj-sample</span></code></pre></div>
+                        <p><code>make</code>できることを確認。</p>
+                        <div class="sourceCode" id="cb5"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> make </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">g++</span> <span class="at">-std</span><span class="op">=</span>c++14 <span class="at">-O2</span> <span class="at">-Iexternal</span>/lammpstrj-parser/include main.cpp <span class="at">-o</span> lammpstrj-sample</span></code></pre></div>
+                        <p>うまくいっていたら、以下の内容の<code>.gitignore</code>を追加。</p>
+                        <div class="sourceCode" id="cb6"><pre
+                        class="sourceCode txt"><code class="sourceCode default"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>lammpstrj-sample</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>*.lammpstrj</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>log.lammps</span></code></pre></div>
+                        <p>後のためにlammpsの出力ファイルも追加しておく。</p>
+                        <p>ここまでで以下のような表示になるはず。</p>
+                        <div class="sourceCode" id="cb7"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git st</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">A</span>  .gitmodules</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="ex">A</span>  external/lammpstrj-parser</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="ex">??</span> .gitignore</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="ex">??</span> Makefile</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="ex">??</span> main.cpp</span></code></pre></div>
+                        <p>これらを全て追加してコミットする。</p>
+                        <div class="sourceCode" id="cb8"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-am</span> <span class="st">&quot;:tada: initial commit&quot;</span></span></code></pre></div>
+                        <p>相分離シミュレーションを実施。以下のようなインプットファイルを<code>test.input</code>として作成。</p>
+                        <div class="sourceCode" id="cb9"><pre
+                        class="sourceCode txt"><code class="sourceCode default"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>units       lj</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>atom_style  atomic</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>boundary p p p</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>timestep 0.001</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>variable rho equal 0.5</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>variable L equal 10.0</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>lattice fcc ${rho}</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>region box block 0 ${L} 0 ${L} 0 ${L}</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>create_box 2 box</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>create_atoms 1 box</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>set type 1 type/fraction 2 0.5 98765</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>mass 1 1.0</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>mass 2 1.0</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>pair_style lj/cut 2.5</span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>pair_coeff 1 1 1.0 1.0 2.5</span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>pair_coeff 1 2 1.0 1.0 1.12246</span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>pair_coeff 2 2 1.0 1.0 2.5</span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>velocity all create 1.0 12345 mom yes rot yes dist gaussian</span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>fix 1 all nvt temp 0.7 0.7 1.0</span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>dump 1 all custom 500 test.lammpstrj id type x y z vx vy vz</span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>thermo 500</span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>run 25000</span></code></pre></div>
+                        <p>密度0.5、同種原子はLJ、異種原子はWCAとして温度0.7に固定する。後のために速度も出力しておく。</p>
+                        <p>実行。</p>
+                        <div class="sourceCode" id="cb10"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> lmp_serial <span class="at">-i</span> test.input</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ex">LAMMPS</span> <span class="er">(</span><span class="ex">22</span> Jul 2025<span class="kw">)</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Lattice</span> spacing in x,y,z = 2 2 2</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="ex">Created</span> orthogonal box = <span class="er">(</span><span class="ex">0</span> 0 0<span class="kw">)</span> <span class="ex">to</span> <span class="er">(</span><span class="ex">20</span> 20 20<span class="kw">)</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="ex">1</span> by 1 by 1 MPI processor grid</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="ex">Created</span> 4000 atoms</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">snip</span><span class="kw">)</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>   <span class="ex">Step</span>          Temp          E_pair         E_mol          TotEng         Press </span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>         <span class="ex">0</span>   1             <span class="at">-1.505224</span>       0             <span class="at">-0.005599034</span>   <span class="at">-0.81748395</span>   </span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>       <span class="ex">500</span>   1.0379285     <span class="at">-1.9071175</span>      0             <span class="at">-0.350614</span>       0.89774455   </span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>      <span class="ex">1000</span>   1.0320452     <span class="at">-1.9831115</span>      0             <span class="at">-0.4354307</span>      0.83759061   </span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>      <span class="ex">1500</span>   1.0048542     <span class="at">-2.0875114</span>      0             <span class="at">-0.58060687</span>     0.68268169   </span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>      <span class="ex">2000</span>   0.95389438    <span class="at">-2.1579864</span>      0             <span class="at">-0.72750253</span>     0.7033103    </span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>      <span class="ex">2500</span>   0.92615458    <span class="at">-2.2477533</span>      0             <span class="at">-0.85886878</span>     0.64168551   </span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>      <span class="ex">3000</span>   0.90328012    <span class="at">-2.3386703</span>      0             <span class="at">-0.98408884</span>     0.50502435   </span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>      <span class="ex">3500</span>   0.86221052    <span class="at">-2.4125228</span>      0             <span class="at">-1.1195303</span>      0.51427453   </span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>      <span class="ex">4000</span>   0.83401226    <span class="at">-2.485898</span>       0             <span class="at">-1.2351923</span>      0.41993354   </span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">snip</span><span class="kw">)</span></span></code></pre></div>
+                        <p>まずはこのサイズと原子数を取得する。<code>main.cpp</code>を以下のように書き換える。</p>
+                        <div class="sourceCode" id="cb11"><pre
+                        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;cstdio&gt;</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;lammpstrj/lammpstrj.hpp&gt;</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;string&gt;</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">const</span> <span class="kw">auto</span> filename <span class="op">=</span> <span class="st">&quot;test.lammpstrj&quot;</span><span class="op">;</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>  <span class="kw">auto</span> si <span class="op">=</span> lammpstrj<span class="op">::</span>read_info<span class="op">(</span>filename<span class="op">);</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  printf<span class="op">(</span><span class="st">&quot;(LX, LY, LZ) = (</span><span class="sc">%f</span><span class="st">, </span><span class="sc">%f</span><span class="st">, </span><span class="sc">%f</span><span class="st">)</span><span class="sc">\n</span><span class="st">&quot;</span><span class="op">,</span> si<span class="op">-&gt;</span>LX<span class="op">,</span> si<span class="op">-&gt;</span>LY<span class="op">,</span> si<span class="op">-&gt;</span>LZ<span class="op">);</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>  printf<span class="op">(</span><span class="st">&quot;N = </span><span class="sc">%d\n</span><span class="st">&quot;</span><span class="op">,</span> si<span class="op">-&gt;</span>atoms<span class="op">);</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+                        <p>コンパイル、実行する。</p>
+                        <div class="sourceCode" id="cb12"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> make</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ./lammpstrj-sample </span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">LX,</span> LY, LZ<span class="kw">)</span> <span class="ex">=</span> <span class="er">(</span><span class="ex">20.000000,</span> 20.000000, 20.000000<span class="kw">)</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="ex">N</span> = 4000</span></code></pre></div>
+                        <p>情報が正しく取れている。</p>
+                        <p>温度の取得。以下のようなクラスを作成。</p>
+                        <div class="sourceCode" id="cb13"><pre
+                        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> LammpsAnalyzer <span class="op">{</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">const</span> <span class="bu">std::</span>string <span class="va">filename_</span><span class="op">;</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span> <span class="va">frame_</span><span class="op">;</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  LammpsAnalyzer<span class="op">(</span><span class="at">const</span> <span class="bu">std::</span>string filename<span class="op">)</span> <span class="op">:</span> <span class="va">filename_</span><span class="op">(</span>filename<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>    <span class="va">frame_</span> <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>  <span class="dt">void</span> calc_temperature<span class="op">(</span><span class="at">const</span> <span class="bu">std::</span>unique_ptr<span class="op">&lt;</span>lammpstrj<span class="op">::</span>SystemInfo<span class="op">&gt;</span> <span class="op">&amp;</span>si<span class="op">,</span> <span class="at">const</span> <span class="bu">std::</span>vector<span class="op">&lt;</span>lammpstrj<span class="op">::</span>Atom<span class="op">&gt;</span> <span class="op">&amp;</span>atoms<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>    <span class="dt">double</span> e <span class="op">=</span> <span class="fl">0.0</span><span class="op">;</span></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="op">(</span><span class="kw">auto</span> <span class="op">&amp;</span>a <span class="op">:</span> atoms<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>      e <span class="op">+=</span> a<span class="op">.</span>vx <span class="op">*</span> a<span class="op">.</span>vx <span class="op">+</span> a<span class="op">.</span>vy <span class="op">*</span> a<span class="op">.</span>vy <span class="op">+</span> a<span class="op">.</span>vz <span class="op">*</span> a<span class="op">.</span>vz<span class="op">;</span></span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>    e <span class="op">/=</span> <span class="kw">static_cast</span><span class="op">&lt;</span><span class="dt">double</span><span class="op">&gt;(</span>si<span class="op">-&gt;</span>atoms<span class="op">);</span></span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>    e <span class="op">/=</span> <span class="fl">3.0</span><span class="op">;</span></span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>    printf<span class="op">(</span><span class="st">&quot;</span><span class="sc">%d</span><span class="st"> </span><span class="sc">%f\n</span><span class="st">&quot;</span><span class="op">,</span> <span class="va">frame_</span> <span class="op">*</span> <span class="dv">500</span><span class="op">,</span> e<span class="op">);</span></span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>    <span class="va">frame_</span><span class="op">++;</span></span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>  <span class="dt">void</span> calculate<span class="op">(</span><span class="dt">void</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>    lammpstrj<span class="op">::</span>for_each_frame<span class="op">(</span><span class="va">filename_</span><span class="op">,</span></span>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>                              <span class="op">[</span><span class="kw">this</span><span class="op">](</span><span class="at">const</span> <span class="bu">std::</span>unique_ptr<span class="op">&lt;</span>lammpstrj<span class="op">::</span>SystemInfo<span class="op">&gt;</span> <span class="op">&amp;</span>si<span class="op">,</span> <span class="bu">std::</span>vector<span class="op">&lt;</span>lammpstrj<span class="op">::</span>Atom<span class="op">&gt;</span> <span class="op">&amp;</span>atoms<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a>                                <span class="kw">this</span><span class="op">-&gt;</span>calc_temperature<span class="op">(</span>si<span class="op">,</span> atoms<span class="op">);</span></span>
+<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a>                              <span class="op">});</span></span>
+<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
+<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span></code></pre></div>
+                        <p><code>main</code>関数を以下のように書き換え。</p>
+                        <div class="sourceCode" id="cb14"><pre
+                        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">const</span> <span class="kw">auto</span> filename <span class="op">=</span> <span class="st">&quot;test.lammpstrj&quot;</span><span class="op">;</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">auto</span> si <span class="op">=</span> lammpstrj<span class="op">::</span>read_info<span class="op">(</span>filename<span class="op">);</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  printf<span class="op">(</span><span class="st">&quot;(LX, LY, LZ) = (</span><span class="sc">%f</span><span class="st">, </span><span class="sc">%f</span><span class="st">, </span><span class="sc">%f</span><span class="st">)</span><span class="sc">\n</span><span class="st">&quot;</span><span class="op">,</span> si<span class="op">-&gt;</span>LX<span class="op">,</span> si<span class="op">-&gt;</span>LY<span class="op">,</span> si<span class="op">-&gt;</span>LZ<span class="op">);</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  printf<span class="op">(</span><span class="st">&quot;N = </span><span class="sc">%d\n</span><span class="st">&quot;</span><span class="op">,</span> si<span class="op">-&gt;</span>atoms<span class="op">);</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  LammpsAnalyzer la<span class="op">(</span>filename<span class="op">);</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>  la<span class="op">.</span>calculate<span class="op">();</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+                        <p>コンパイル、実行する。</p>
+                        <div class="sourceCode" id="cb15"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> make</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ./lammpstrj-sample </span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">LX,</span> LY, LZ<span class="kw">)</span> <span class="ex">=</span> <span class="er">(</span><span class="ex">20.000000,</span> 20.000000, 20.000000<span class="kw">)</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="ex">N</span> = 4000</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="ex">0</span> 0.999750</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="ex">500</span> 1.037669</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="ex">1000</span> 1.031787</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="ex">1500</span> 1.004603</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="ex">2000</span> 0.953656</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="ex">2500</span> 0.925923</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="ex">3000</span> 0.903054</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a><span class="ex">3500</span> 0.861995</span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a><span class="ex">4000</span> 0.833804</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">snip</span><span class="kw">)</span></span></code></pre></div>
+                        <p>あとは好き勝手できる(密度場の計算とVTKの出力までサンプルを作成すること)。</p>
                         <h2 id="月12日木"><a href="#12">02月12日(木)</a>
                         <a id="12"></a></h2>
                         <p>卒論、修論の論文と要旨をesaにアップロードした。</p>
