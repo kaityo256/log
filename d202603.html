@@ -28,6 +28,21 @@
                         <p>研究室ミーティング。StarCraft
                         IIの話。RTSのAIももう一度研究してみたい。</p>
                         <p>研究室飲み会の場所を予約した。条件をChatGPTに食わせて候補を出してもらって、URLに飛んで調べて予約。楽ちん。これは人生変わるな・・・</p>
+                        <p>機械学習がらみ、すぐにバージョン不整合が起きるな・・・</p>
+                        <p>TensorFlowのモデルをJSにエクスポートするやつ、うまく動かなかったので、えらく苦労して動くようにした。ついでにvenvではなくuvにしてみたら動かなくなった。原因不明。</p>
+                        <p>で、時間切れで家に返ってvenvでやろうとしたらPythonが古いっぽい。pyenvで入れようとしたら古いバージョンしかない。pyenvも古かった。pyenvも入れ直し。</p>
+                        <div class="sourceCode" id="cb1"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> https://pyenv.run <span class="kw">|</span> <span class="fu">bash</span></span></code></pre></div>
+                        <p><code>.zshenv</code>に</p>
+                        <div class="sourceCode" id="cb2"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">PYENV_ROOT</span><span class="op">=</span><span class="va">${HOME}</span>/.pyenv</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">PATH</span><span class="op">=</span><span class="va">${PYENV_ROOT}</span>/bin:<span class="va">${PATH}</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="bu">eval</span> <span class="st">&quot;</span><span class="va">$(</span><span class="ex">pyenv</span> init <span class="at">-</span><span class="va">)</span><span class="st">&quot;</span></span></code></pre></div>
+                        <p>Python 3.11系を入れる。</p>
+                        <div class="sourceCode" id="cb3"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pyenv</span> install 3.11</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pyenv</span> global 3.11.15</span></code></pre></div>
+                        <p>これで学習、エクスポート、JS変換、HTMLからインポート全てできた。uvでやり直す元気はない。明日ここの講義ノート書いたら春の学校の準備おしまい。結構なエフォート持ってかれたな・・・</p>
                         <h2 id="月04日水"><a href="#04">03月04日(水)</a>
                         <a id="04"></a></h2>
                         <p>情報処理学会の会費、2年分払った。去年も払い忘れてたらしい。自動引き落としだと思ってた。</p>
