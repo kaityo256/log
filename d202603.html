@@ -23,19 +23,24 @@
                         <h1 id="年3月">2026年3月</h1>
                         <h2 id="月06日金"><a href="#06">03月06日(金)</a>
                         <a id="06"></a></h2>
+                        <p>午前中は病院。うーん。</p>
+                        <p>Macにpyenvを入れてみるテスト。</p>
+                        <div class="sourceCode" id="cb1"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> install pyenv</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pyenv</span> install 3.11</span></code></pre></div>
                         <p>最新のWSL(Ubuntu)にはPython
                         3.12が入っている。これなら大丈夫かな。</p>
                         <p>Python3のvenvが入ってなかった。</p>
-                        <div class="sourceCode" id="cb1"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt update</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install python3.12-venv</span></code></pre></div>
-                        <p>tensorflowjs_converterを実行したら</p>
                         <div class="sourceCode" id="cb2"><pre
-                        class="sourceCode txt"><code class="sourceCode default"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>ModuleNotFoundError: No module named &#39;pkg_resources&#39;</span></code></pre></div>
-                        <p>というエラーが出る問題、setuptoolsのバージョンが新しすぎるのが原因だったらしい。おそらくuvで入れたときにうまくいかなかったエラーもこれだな。以下のように一度アンインストールし、古いバージョンを指定して入れなおせばOK。</p>
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt update</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install python3.12-venv</span></code></pre></div>
+                        <p>tensorflowjs_converterを実行したら</p>
                         <div class="sourceCode" id="cb3"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> <span class="at">-m</span> pip uninstall setuptools</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> <span class="at">-m</span> pip install <span class="st">&quot;setuptools==80.9.0&quot;</span></span></code></pre></div>
+                        class="sourceCode txt"><code class="sourceCode default"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>ModuleNotFoundError: No module named &#39;pkg_resources&#39;</span></code></pre></div>
+                        <p>というエラーが出る問題、setuptoolsのバージョンが新しすぎるのが原因だったらしい。おそらくuvで入れたときにうまくいかなかったエラーもこれだな。以下のように一度アンインストールし、古いバージョンを指定して入れなおせばOK。</p>
+                        <div class="sourceCode" id="cb4"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> <span class="at">-m</span> pip uninstall setuptools</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> <span class="at">-m</span> pip install <span class="st">&quot;setuptools==80.9.0&quot;</span></span></code></pre></div>
                         <p>これ、また一年くらいしたら動かなくなってそうだな・・・</p>
                         <h2 id="月05日木"><a href="#05">03月05日(木)</a>
                         <a id="05"></a></h2>
@@ -47,17 +52,17 @@
                         <p>機械学習がらみ、すぐにバージョン不整合が起きるな・・・</p>
                         <p>TensorFlowのモデルをJSにエクスポートするやつ、うまく動かなかったので、えらく苦労して動くようにした。ついでにvenvではなくuvにしてみたら動かなくなった。原因不明。</p>
                         <p>で、時間切れで家に返ってvenvでやろうとしたらPythonが古いっぽい。pyenvで入れようとしたら古いバージョンしかない。pyenvも古かった。pyenvも入れ直し。</p>
-                        <div class="sourceCode" id="cb4"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> https://pyenv.run <span class="kw">|</span> <span class="fu">bash</span></span></code></pre></div>
-                        <p><code>.zshenv</code>に</p>
                         <div class="sourceCode" id="cb5"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">PYENV_ROOT</span><span class="op">=</span><span class="va">${HOME}</span>/.pyenv</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">PATH</span><span class="op">=</span><span class="va">${PYENV_ROOT}</span>/bin:<span class="va">${PATH}</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="bu">eval</span> <span class="st">&quot;</span><span class="va">$(</span><span class="ex">pyenv</span> init <span class="at">-</span><span class="va">)</span><span class="st">&quot;</span></span></code></pre></div>
-                        <p>Python 3.11系を入れる。</p>
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> https://pyenv.run <span class="kw">|</span> <span class="fu">bash</span></span></code></pre></div>
+                        <p><code>.zshenv</code>に</p>
                         <div class="sourceCode" id="cb6"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pyenv</span> install 3.11</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pyenv</span> global 3.11.15</span></code></pre></div>
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">PYENV_ROOT</span><span class="op">=</span><span class="va">${HOME}</span>/.pyenv</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">PATH</span><span class="op">=</span><span class="va">${PYENV_ROOT}</span>/bin:<span class="va">${PATH}</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="bu">eval</span> <span class="st">&quot;</span><span class="va">$(</span><span class="ex">pyenv</span> init <span class="at">-</span><span class="va">)</span><span class="st">&quot;</span></span></code></pre></div>
+                        <p>Python 3.11系を入れる。</p>
+                        <div class="sourceCode" id="cb7"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pyenv</span> install 3.11</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pyenv</span> global 3.11.15</span></code></pre></div>
                         <p>これで学習、エクスポート、JS変換、HTMLからインポート全てできた。uvでやり直す元気はない。明日ここの講義ノート書いたら春の学校の準備おしまい。結構なエフォート持ってかれたな・・・</p>
                         <h2 id="月04日水"><a href="#04">03月04日(水)</a>
                         <a id="04"></a></h2>
