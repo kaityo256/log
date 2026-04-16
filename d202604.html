@@ -21,6 +21,74 @@
   <body>
     <article class="markdown-body">
                         <h1 id="年4月">2026年4月</h1>
+                        <h2 id="月16日木"><a href="#16">04月16日(木)</a>
+                        <a id="16"></a></h2>
+                        <p>計算ノードがNISクライアントにならない。無事なノードも</p>
+                        <div class="sourceCode" id="cb1"><pre
+                        class="sourceCode txt"><code class="sourceCode default"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>RPC: Unable to receive; errno = No route to host</span></code></pre></div>
+                        <p>と出るので、RPCによる通信に失敗しており、新規のNISクライアントが受付られていなさそう。</p>
+                        <ul>
+                        <li>ログインノードからsshは通る</li>
+                        </ul>
+                        <div class="sourceCode" id="cb2"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> rpcinfo <span class="at">-p</span> 192.168.1.10</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>   <span class="ex">program</span> vers proto   port  service</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="ex">100000</span>    4   tcp    111  portmapper</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="ex">100000</span>    3   tcp    111  portmapper</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="ex">100000</span>    2   tcp    111  portmapper</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="ex">100000</span>    4   udp    111  portmapper</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="ex">100000</span>    3   udp    111  portmapper</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="ex">100000</span>    2   udp    111  portmapper</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="ex">100004</span>    2   udp    887  ypserv</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="ex">100004</span>    1   udp    887  ypserv</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    <span class="ex">100004</span>    2   tcp    887  ypserv</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    <span class="ex">100004</span>    1   tcp    887  ypserv</span></code></pre></div>
+                        <div class="sourceCode" id="cb3"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> nc <span class="at">-vz</span> 192.168.1.10 887</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Ncat:</span> Version 7.92 <span class="er">(</span> <span class="ex">https://nmap.org/ncat</span> <span class="kw">)</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Ncat:</span> No route to host.</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> nc <span class="at">-vz</span> 192.168.1.10 111</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="ex">Ncat:</span> Version 7.92 <span class="er">(</span> <span class="ex">https://nmap.org/ncat</span> <span class="kw">)</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="ex">Ncat:</span> Connected to 192.168.1.10:111.</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="ex">Ncat:</span> 0 bytes sent, 0 bytes received in 0.01 seconds.</span></code></pre></div>
+                        <p>うん、111は通るけど、887が駄目ですね。</p>
+                        <p>サーバ側で開ける。</p>
+                        <div class="sourceCode" id="cb4"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">firewall-cmd</span> <span class="at">--permanent</span> <span class="at">--add-port</span><span class="op">=</span>887/tcp</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">firewall-cmd</span> <span class="at">--permanent</span> <span class="at">--add-port</span><span class="op">=</span>887/udp</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ex">firewall-cmd</span> <span class="at">--reload</span></span></code></pre></div>
+                        <p>クライアントで確認。</p>
+                        <div class="sourceCode" id="cb5"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> nc <span class="at">-vz</span> 192.168.1.10 887</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Ncat:</span> Version 7.92 <span class="er">(</span> <span class="ex">https://nmap.org/ncat</span> <span class="kw">)</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Ncat:</span> Connected to 192.168.1.10:887.</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="ex">Ncat:</span> 0 bytes sent, 0 bytes received in 0.01 seconds.</span></code></pre></div>
+                        <p>通った。ypservが使うポートが起動するたびに変わるのが原因だった。</p>
+                        <p>計算ノードでypbindが起動したが、まだNISを認識しない。これは<code>/etc/nsswitch.conf</code>の順序が問題だった。passwd,
+                        group,
+                        shadowに対してnisを有線するように書き換えて</p>
+                        <div class="sourceCode" id="cb6"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl restart ypbind</span></code></pre></div>
+                        <p>してからログインしなおしたらうまくいった。まとめると、</p>
+                        <ul>
+                        <li>ypservが起動の度に異なるポートを使う設定になっていた</li>
+                        <li>計算ノードがメモリ枯渇で死亡。この時、ypbindも死亡。</li>
+                        <li>つながらない原因を調べるため、ログインノードを再起動。このせいでypservが異なるポートを掴む</li>
+                        <li>計算ノードはログインノードが指定するポートで通信しようとするが、計算ノードのファイアウォールのせいで通信できずNISクライアントになれなかった。</li>
+                        </ul>
+                        <p>つまり、計算ノードのypbindが死んだだけなら計算ノードの再起動でうまくいくはずだったが、ログインノードを再起動したために新たな問題を持ち込み、その切り分けができていなかった。</p>
+                        <p>これ、正しい実装は、計算ノード側でypservが使うポートを固定することなんだけど、これやると全部再起動になって面倒だな・・・次の停電の時の対応にしよう(忘れそう)。</p>
+                        <p>というわけで計算ノードを復帰。</p>
+                        <div class="sourceCode" id="cb7"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> scontrol update NodeName=yagami01.appi.keio.ac.jp State=RESUME</span></code></pre></div>
+                        <div class="sourceCode" id="cb8"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> sinfo</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">PARTITION</span> AVAIL  TIMELIMIT  NODES  STATE NODELIST</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="ex">main*</span>        up 1-00:00:00      3   idle yagami01.appi.keio.ac.jp,yagami02.appi.keio.ac.jp,yagami03.appi.keio.ac.jp</span></code></pre></div>
+                        <p>復帰した！一週間かかったぞ。</p>
+                        <p>結局、問題はログインノードのファイアウォールだったのだが、「ypservが起動するたびに異なるポートを掴むという仕様を知らなかった」「他のノードは無事だったのでログインノードを疑わなかった」のが原因究明を阻んだ。NISクライアントとして掴む時だけそのポートを使い、後は使わないので、一度NISクライアントになったノードはポートが移ってもNISクライアントであり続ける。</p>
+                        <p>さすがにNISは卒業しないとだめか。でもLDAP面倒くさい・・・</p>
                         <h2 id="月15日水"><a href="#15">04月15日(水)</a>
                         <a id="15"></a></h2>
                         <p>最近は○✕△を入力するメールが死ぬほど飛んでくるので、脊髄反射で○✕△を入力しているのだが、もうそれがどの会議の日程を調整しているのか全く把握できていない。リマインダが飛んできて、「あ、あの時の○✕△はこの会議だったのか」と認識しなおす、みたいな。</p>
@@ -38,6 +106,7 @@
                         Windowの設定をすることをメモしておかないと。今年は研究室サーバの調子が悪かったのと、WSLがデフォルトでXに対応したことでXの設定をする必要性が薄れていた。</p>
                         <p>会議とか会議とか会議とか、さらに会議とか。</p>
                         <p>Zoomで参加者の出欠をとりたいニーズがあった。あらかじめ招待しておくと参加予定者が表示され、招待者のうち誰がまだ来ていないかがわかる、と言われてやってみたが、全く表示されない。結局「ブラウザから起動したZoomは機能が最小限であり、WindowsやMacネイティブアプリとしてのZoomじゃないとその機能が有効でない」ということがわかった。なんやねん。</p>
+                        <p>Microsoftアカウント、セキュリティ用の2つ目のメールアドレスが物性研のもので、いまはアクセスができない。仕方ないので別のアドレスを追加したら、1ヶ月後に有効になるとのこと。1ヶ月後まで覚えてられるかな。</p>
                         <h2 id="月14日火"><a href="#14">04月14日(火)</a>
                         <a id="14"></a></h2>
                         <p>論文再投稿に向け、スタイルファイルを修正。思ったより時間がかかった。</p>
@@ -79,8 +148,8 @@
                         <h2 id="月09日木"><a href="#09">04月09日(木)</a>
                         <a id="09"></a></h2>
                         <p>研究室サーバの計算ノードが死んだ。ログインに死ぬほど時間がかかる。しかし、topでも特に重い処理は走っていない。</p>
-                        <div class="sourceCode" id="cb1"><pre
-                        class="sourceCode txt"><code class="sourceCode default"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>do_ypcall: clnt_call: RPC: Unable to receive; errno = ホストへの経路がありません</span></code></pre></div>
+                        <div class="sourceCode" id="cb9"><pre
+                        class="sourceCode txt"><code class="sourceCode default"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>do_ypcall: clnt_call: RPC: Unable to receive; errno = ホストへの経路がありません</span></code></pre></div>
                         <p>というエラーが頻出。どうもNISが通っていないらしい。計算ノードも無事なはずのyagami03も接続できない。</p>
                         <p>いろいろ試したがどうにもならないので、まずはログインノードを再起動してみる。</p>
                         <p>なんかすっかりSEみたいな仕事をしてるんだが、理事ってこんなだっけ？</p>
