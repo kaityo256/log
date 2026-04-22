@@ -21,22 +21,72 @@
   <body>
     <article class="markdown-body">
                         <h1 id="年4月">2026年4月</h1>
+                        <h2 id="月22日水"><a href="#22">04月22日(水)</a>
+                        <a id="22"></a></h2>
+                        <p>明日の発表スライド完成したことにする。LightGBMの理解の準備のために勾配ブースティングと決定木を説明する。</p>
+                        <p>BitLockerで暗号化されたDynabookを再インストールしようとしたが、Intel
+                        Rapid Storage
+                        Technologyでディスクがマウントされており、通常のWindowsインストーラからはディスクが見えない。で、ドライバファイルをダウンロードしたが、自己解凍exe。あまり実行したくない。</p>
+                        <p>で、チャッピーに聞いたら「7zipで解凍できますよ」マジで？</p>
+                        <div class="sourceCode" id="cb1"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> 7z x TCH0959000A.exe</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">7-Zip</span> <span class="pp">[</span><span class="ss">64</span><span class="pp">]</span> 17.05 : Copyright <span class="er">(</span><span class="ex">c</span><span class="kw">)</span> <span class="ex">1999-2021</span> Igor Pavlov : 2017-08-28</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">p7zip</span> Version 17.05 <span class="er">(</span><span class="va">locale</span><span class="op">=</span>utf8,Utf16=on,HugeFiles=on,64 <span class="ex">bits,20</span> CPUs x64<span class="kw">)</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="ex">Scanning</span> the drive for archives:</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="ex">1</span> file, 8877768 bytes <span class="er">(</span><span class="ex">8670</span> KiB<span class="kw">)</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="ex">Extracting</span> archive: TCH0959000A.exe</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">snip</span><span class="kw">)</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="ex">Everything</span> is Ok</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="ex">Folders:</span> 2</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="ex">Files:</span> 31</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="ex">Size:</span>       21331486</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="ex">Compressed:</span> 8877768</span></code></pre></div>
+                        <p>マジだ。これでDriversというフォルダができるので、そこにVMDのドライバファイルがある。</p>
+                        <p>これをブート用USBにコピー。</p>
+                        <ul>
+                        <li>ブート用USBを挿入した状態で起動。タッチパッドが認識しないのでマウスが必須。</li>
+                        <li>起動時に「0(をわ)キー」を連打(テンキーじゃないほう)</li>
+                        <li>ダイアログがでてくるのでY</li>
+                        <li>「オプションの選択」で「デバイスの使用」→USB
+                        Memory</li>
+                        <li>再起動してWindows 11セットアップ画面に</li>
+                        <li>言語設定を選択→次へ</li>
+                        <li>キーボード設定を選択→次へ</li>
+                        <li>セットアップオプションの選択。「WIndows
+                        11のインストール」を希望し、ファイル、アプリなどが消えることに同意して次へ。</li>
+                        <li>ライセンスに同意</li>
+                        <li>Windows
+                        11をインストールする場所の選択：ここで内臓ディスクが見えない。「ドライバーのロード(L)」を選んでIntel
+                        VMDドライバをロード。</li>
+                        <li>Windows
+                        11をインストールする場所の選択：に戻ってくる。ディスク1パーティション3に種類「第1」が現れるのでそれを選択。そのままではBitLockerで暗号化されててインストールできないので「パーティションの削除」により未割当領域に。それを選んだまま「次へ」</li>
+                        <li>インストール準備完了：「インストール(I)」</li>
+                        </ul>
+                        <p>初期化できた！なんかひと仕事終えた感。</p>
+                        <p>来客。頑張ってください。</p>
+                        <p>理事会の仕事とか、ネットワーク委員の仕事とか。なんとか。かんとか。</p>
+                        <p>無限に仕事が増えていくが、なんとか論文再投稿のための論文を読んでいる。</p>
+                        <p>あと、本の執筆も少しずつ始めた。</p>
                         <h2 id="月21日火"><a href="#21">04月21日(火)</a>
                         <a id="21"></a></h2>
                         <p>Rocky Linuxにxeyesインストール(←なぜ？)。</p>
-                        <div class="sourceCode" id="cb1"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://gitlab.freedesktop.org/xorg/app/xeyes.git</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> dnf install <span class="dt">\</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  libX11-devel <span class="dt">\</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  libXext-devel <span class="dt">\</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  libXt-devel <span class="dt">\</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  libXi-devel <span class="dt">\</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  libXmu-devel <span class="dt">\</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  xorg-x11-proto-devel <span class="dt">\</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  xorg-x11-util-macros</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="ex">./autogen.sh</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> make install</span></code></pre></div>
+                        <div class="sourceCode" id="cb2"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://gitlab.freedesktop.org/xorg/app/xeyes.git</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> dnf install <span class="dt">\</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  libX11-devel <span class="dt">\</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  libXext-devel <span class="dt">\</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  libXt-devel <span class="dt">\</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  libXi-devel <span class="dt">\</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  libXmu-devel <span class="dt">\</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  xorg-x11-proto-devel <span class="dt">\</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  xorg-x11-util-macros</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="ex">./autogen.sh</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> make install</span></code></pre></div>
                         <p>できた。</p>
                         <p>Xの開通確認で<code>xeyes</code>便利なんだけど、なんでデフォルトで入ってないんだろ。<code>xclock</code>使えってか？</p>
                         <p>バッチシステムハンズオン。内容がOpenPBSのままになっていることに直前で気づいて修正。いかん。今年度はマジでバタバタしてる。</p>
@@ -83,52 +133,52 @@
                         <h2 id="月16日木"><a href="#16">04月16日(木)</a>
                         <a id="16"></a></h2>
                         <p>計算ノードがNISクライアントにならない。無事なノードも</p>
-                        <div class="sourceCode" id="cb2"><pre
-                        class="sourceCode txt"><code class="sourceCode default"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>RPC: Unable to receive; errno = No route to host</span></code></pre></div>
+                        <div class="sourceCode" id="cb3"><pre
+                        class="sourceCode txt"><code class="sourceCode default"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>RPC: Unable to receive; errno = No route to host</span></code></pre></div>
                         <p>と出るので、RPCによる通信に失敗しており、新規のNISクライアントが受付られていなさそう。</p>
                         <ul>
                         <li>ログインノードからsshは通る</li>
                         </ul>
-                        <div class="sourceCode" id="cb3"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> rpcinfo <span class="at">-p</span> 192.168.1.10</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>   <span class="ex">program</span> vers proto   port  service</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="ex">100000</span>    4   tcp    111  portmapper</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="ex">100000</span>    3   tcp    111  portmapper</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="ex">100000</span>    2   tcp    111  portmapper</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="ex">100000</span>    4   udp    111  portmapper</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="ex">100000</span>    3   udp    111  portmapper</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="ex">100000</span>    2   udp    111  portmapper</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="ex">100004</span>    2   udp    887  ypserv</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="ex">100004</span>    1   udp    887  ypserv</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="ex">100004</span>    2   tcp    887  ypserv</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="ex">100004</span>    1   tcp    887  ypserv</span></code></pre></div>
                         <div class="sourceCode" id="cb4"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> nc <span class="at">-vz</span> 192.168.1.10 887</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Ncat:</span> Version 7.92 <span class="er">(</span> <span class="ex">https://nmap.org/ncat</span> <span class="kw">)</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Ncat:</span> No route to host.</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> nc <span class="at">-vz</span> 192.168.1.10 111</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="ex">Ncat:</span> Version 7.92 <span class="er">(</span> <span class="ex">https://nmap.org/ncat</span> <span class="kw">)</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="ex">Ncat:</span> Connected to 192.168.1.10:111.</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="ex">Ncat:</span> 0 bytes sent, 0 bytes received in 0.01 seconds.</span></code></pre></div>
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> rpcinfo <span class="at">-p</span> 192.168.1.10</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>   <span class="ex">program</span> vers proto   port  service</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="ex">100000</span>    4   tcp    111  portmapper</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="ex">100000</span>    3   tcp    111  portmapper</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="ex">100000</span>    2   tcp    111  portmapper</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="ex">100000</span>    4   udp    111  portmapper</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="ex">100000</span>    3   udp    111  portmapper</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="ex">100000</span>    2   udp    111  portmapper</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    <span class="ex">100004</span>    2   udp    887  ypserv</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    <span class="ex">100004</span>    1   udp    887  ypserv</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    <span class="ex">100004</span>    2   tcp    887  ypserv</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    <span class="ex">100004</span>    1   tcp    887  ypserv</span></code></pre></div>
+                        <div class="sourceCode" id="cb5"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> nc <span class="at">-vz</span> 192.168.1.10 887</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Ncat:</span> Version 7.92 <span class="er">(</span> <span class="ex">https://nmap.org/ncat</span> <span class="kw">)</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Ncat:</span> No route to host.</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> nc <span class="at">-vz</span> 192.168.1.10 111</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="ex">Ncat:</span> Version 7.92 <span class="er">(</span> <span class="ex">https://nmap.org/ncat</span> <span class="kw">)</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="ex">Ncat:</span> Connected to 192.168.1.10:111.</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="ex">Ncat:</span> 0 bytes sent, 0 bytes received in 0.01 seconds.</span></code></pre></div>
                         <p>うん、111は通るけど、887が駄目ですね。</p>
                         <p>サーバ側で開ける。</p>
-                        <div class="sourceCode" id="cb5"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">firewall-cmd</span> <span class="at">--permanent</span> <span class="at">--add-port</span><span class="op">=</span>887/tcp</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">firewall-cmd</span> <span class="at">--permanent</span> <span class="at">--add-port</span><span class="op">=</span>887/udp</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="ex">firewall-cmd</span> <span class="at">--reload</span></span></code></pre></div>
-                        <p>クライアントで確認。</p>
                         <div class="sourceCode" id="cb6"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> nc <span class="at">-vz</span> 192.168.1.10 887</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Ncat:</span> Version 7.92 <span class="er">(</span> <span class="ex">https://nmap.org/ncat</span> <span class="kw">)</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Ncat:</span> Connected to 192.168.1.10:887.</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="ex">Ncat:</span> 0 bytes sent, 0 bytes received in 0.01 seconds.</span></code></pre></div>
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">firewall-cmd</span> <span class="at">--permanent</span> <span class="at">--add-port</span><span class="op">=</span>887/tcp</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">firewall-cmd</span> <span class="at">--permanent</span> <span class="at">--add-port</span><span class="op">=</span>887/udp</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="ex">firewall-cmd</span> <span class="at">--reload</span></span></code></pre></div>
+                        <p>クライアントで確認。</p>
+                        <div class="sourceCode" id="cb7"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> nc <span class="at">-vz</span> 192.168.1.10 887</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Ncat:</span> Version 7.92 <span class="er">(</span> <span class="ex">https://nmap.org/ncat</span> <span class="kw">)</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Ncat:</span> Connected to 192.168.1.10:887.</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="ex">Ncat:</span> 0 bytes sent, 0 bytes received in 0.01 seconds.</span></code></pre></div>
                         <p>通った。ypservが使うポートが起動するたびに変わるのが原因だった。</p>
                         <p>計算ノードでypbindが起動したが、まだNISを認識しない。これは<code>/etc/nsswitch.conf</code>の順序が問題だった。passwd,
                         group,
                         shadowに対してnisを有線するように書き換えて</p>
-                        <div class="sourceCode" id="cb7"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl restart ypbind</span></code></pre></div>
+                        <div class="sourceCode" id="cb8"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl restart ypbind</span></code></pre></div>
                         <p>してからログインしなおしたらうまくいった。まとめると、</p>
                         <ul>
                         <li>ypservが起動の度に異なるポートを使う設定になっていた</li>
@@ -139,12 +189,12 @@
                         <p>つまり、計算ノードのypbindが死んだだけなら計算ノードの再起動でうまくいくはずだったが、ログインノードを再起動したために新たな問題を持ち込み、その切り分けができていなかった。</p>
                         <p>これ、正しい実装は、計算ノード側でypservが使うポートを固定することなんだけど、これやると全部再起動になって面倒だな・・・次の停電の時の対応にしよう(忘れそう)。</p>
                         <p>というわけで計算ノードを復帰。</p>
-                        <div class="sourceCode" id="cb8"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> scontrol update NodeName=yagami01.appi.keio.ac.jp State=RESUME</span></code></pre></div>
                         <div class="sourceCode" id="cb9"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> sinfo</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">PARTITION</span> AVAIL  TIMELIMIT  NODES  STATE NODELIST</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="ex">main*</span>        up 1-00:00:00      3   idle yagami01.appi.keio.ac.jp,yagami02.appi.keio.ac.jp,yagami03.appi.keio.ac.jp</span></code></pre></div>
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> scontrol update NodeName=yagami01.appi.keio.ac.jp State=RESUME</span></code></pre></div>
+                        <div class="sourceCode" id="cb10"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> sinfo</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ex">PARTITION</span> AVAIL  TIMELIMIT  NODES  STATE NODELIST</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="ex">main*</span>        up 1-00:00:00      3   idle yagami01.appi.keio.ac.jp,yagami02.appi.keio.ac.jp,yagami03.appi.keio.ac.jp</span></code></pre></div>
                         <p>復帰した！一週間かかったぞ。</p>
                         <p>結局、問題はログインノードのファイアウォールだったのだが、「ypservが起動するたびに異なるポートを掴むという仕様を知らなかった」「他のノードは無事だったのでログインノードを疑わなかった」のが原因究明を阻んだ。NISクライアントとして掴む時だけそのポートを使い、後は使わないので、一度NISクライアントになったノードはポートが移ってもNISクライアントであり続ける。</p>
                         <p>さすがにNISは卒業しないとだめか。でもLDAP面倒くさい・・・</p>
@@ -209,8 +259,8 @@
                         <h2 id="月09日木"><a href="#09">04月09日(木)</a>
                         <a id="09"></a></h2>
                         <p>研究室サーバの計算ノードが死んだ。ログインに死ぬほど時間がかかる。しかし、topでも特に重い処理は走っていない。</p>
-                        <div class="sourceCode" id="cb10"><pre
-                        class="sourceCode txt"><code class="sourceCode default"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>do_ypcall: clnt_call: RPC: Unable to receive; errno = ホストへの経路がありません</span></code></pre></div>
+                        <div class="sourceCode" id="cb11"><pre
+                        class="sourceCode txt"><code class="sourceCode default"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>do_ypcall: clnt_call: RPC: Unable to receive; errno = ホストへの経路がありません</span></code></pre></div>
                         <p>というエラーが頻出。どうもNISが通っていないらしい。計算ノードも無事なはずのyagami03も接続できない。</p>
                         <p>いろいろ試したがどうにもならないので、まずはログインノードを再起動してみる。</p>
                         <p>なんかすっかりSEみたいな仕事をしてるんだが、理事ってこんなだっけ？</p>
