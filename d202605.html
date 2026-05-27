@@ -32,6 +32,21 @@
                         <p>おそらくこのようなコードの書き方もすぐにobsoleteになるのであろう。その記憶として。</p>
                         <p>どうでも良いが、QRコードを作成したら短縮URLを作って、一度そのサイトに飛んでからリダイレクトさせるevilなサイト、いま探したら見つからないな。Google
                         BANされたか？それとも僕の勘違いだったのだろうか？</p>
+                        <p>ついでにfaviconも作った。</p>
+                        <div class="sourceCode" id="cb1"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">magick</span> robo.png <span class="at">-resize</span> 32x32 favicon-32x32.png</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">magick</span> robo.png <span class="at">-resize</span> 16x16 favicon-16x16.png</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">magick</span> robo.png <span class="at">-resize</span> 180x180 apple-touch-icon.png</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">magick</span> robo.png <span class="at">-define</span> icon:auto-resize=16,32,48 favicon.ico</span></code></pre></div>
+                        <p>学生さん論文その1のカバーレターも作った。</p>
+                        <p><a href="https://journals.aps.org/apsos/">APS
+                        Open
+                        Science</a>というジャーナルがLaunchされたらしい。2026年からのオープンアクセス誌。High
+                        Impact追求ではなく、科学的に妥当なら掲載する、というスタンス。どこかで見たな。</p>
+                        <p>しばらく前に査読した論文の、もう一人の査読者の査読レポートをようやく真面目に読んだ。自分がかなり厳しいレポートを書いたのに、もう一人はポジティブだった、みたいに日記に書いたのだが、もう一人の査読者も(口調が柔らかいだけで)かなり厳しかった。まぁそうだよな。少し安心。</p>
+                        <p>作業量的に重いタスクを1つ、気分的に重いタスクを1つ片付けた。だいぶ軽くなってきたぞ。</p>
+                        <p>シミュレーション工学のレポートを公開。</p>
+                        <p>数理物理のモジュール公開。</p>
                         <h2 id="月26日火"><a href="#26">05月26日(火)</a>
                         <a id="26"></a></h2>
                         <p>通勤の途中で見慣れない鳥がいたので写真にとり、後で検索したらおそらくムクドリだった。ムクドリってよく聞く名前だけど、間近で見たのは初めてかもしれない。こんなにくちばしと足がきれいなオレンジなんだな。</p>
@@ -137,19 +152,19 @@
                         <p>シミュレーション工学、講義の感想に返事。感想が減ってきて悲しいね。</p>
                         <p>ハンズオンの準備。Macでサーバ越しにVMDを起動できない(OpenGLがおかしい)のが面倒だ。</p>
                         <p>まず、Macで</p>
-                        <div class="sourceCode" id="cb1"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> glxinfo  </span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">name</span> of display: /private/tmp/com.apple.launchd.C9pbzRLXL1/org.xquartz:0</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">X</span> Error of failed request:  BadValue <span class="er">(</span><span class="ex">integer</span> parameter out of range for operation<span class="kw">)</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="ex">Major</span> opcode of failed request:  129 <span class="er">(</span><span class="ex">Apple-DRI</span><span class="kw">)</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="ex">Minor</span> opcode of failed request:  2 <span class="er">(</span><span class="kw">)</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="ex">Value</span> in failed request:  0x600003</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="ex">Serial</span> number of failed request:  22</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="ex">Current</span> serial number in output stream:  22</span></code></pre></div>
-                        <p>なんかApple-DRIを使おうとして死んでいるらしい。</p>
                         <div class="sourceCode" id="cb2"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">defaults</span> write org.xquartz.X11 enable_iglx <span class="at">-bool</span> true</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">defaults</span> write org.xquartz.X11 nolisten_tcp <span class="at">-bool</span> false</span></code></pre></div>
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> glxinfo  </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">name</span> of display: /private/tmp/com.apple.launchd.C9pbzRLXL1/org.xquartz:0</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">X</span> Error of failed request:  BadValue <span class="er">(</span><span class="ex">integer</span> parameter out of range for operation<span class="kw">)</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="ex">Major</span> opcode of failed request:  129 <span class="er">(</span><span class="ex">Apple-DRI</span><span class="kw">)</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="ex">Minor</span> opcode of failed request:  2 <span class="er">(</span><span class="kw">)</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="ex">Value</span> in failed request:  0x600003</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="ex">Serial</span> number of failed request:  22</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="ex">Current</span> serial number in output stream:  22</span></code></pre></div>
+                        <p>なんかApple-DRIを使おうとして死んでいるらしい。</p>
+                        <div class="sourceCode" id="cb3"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">defaults</span> write org.xquartz.X11 enable_iglx <span class="at">-bool</span> true</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">defaults</span> write org.xquartz.X11 nolisten_tcp <span class="at">-bool</span> false</span></code></pre></div>
                         <p>研究室ミーティング。今日は「Diplomacy」というゲームのAIの紹介と、PPOの紹介。すっかりゲーム＆機械学習の研究室になりつつあるな・・・</p>
                         <p>ずっと積んでた旅費の申請した。</p>
                         <p>なんかいろいろ片付けたんだけど、研究が進んでないのが悲しいなぁ。</p>
