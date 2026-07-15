@@ -21,6 +21,39 @@
   <body>
     <article class="markdown-body">
                         <h1 id="年7月">2026年7月</h1>
+                        <h2 id="月15日水"><a href="#15">07月15日(水)</a>
+                        <a id="15"></a></h2>
+                        <p>自分が昔書いたコードを修正するため、codexに読ませて「まず内容を理解してください」と言ったら、「ODR違反の可能性があります」「返り値に問題があります」「テンプレートの定義に問題があります」「テスト項目が足りません」とかボロクソに言われたんだけど。</p>
+                        <p>物性研スパコンにuvを入れる。</p>
+                        <div class="sourceCode" id="cb1"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-LsSf</span> https://astral.sh/uv/install.sh <span class="kw">|</span> <span class="fu">sh</span></span></code></pre></div>
+                        <p>PATHに<code>~/.local/bin</code>が必要だが、すでに入れてた。</p>
+                        <div class="sourceCode" id="cb2"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone <span class="at">--recursive</span> https://github.com/kaityo256/pycpp-parallel-pipeline.git</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> pycpp-parallel-pipeline</span></code></pre></div>
+                        <div class="sourceCode" id="cb3"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> venv</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> .venv/bin/activate</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> pip install numpy pyyaml</span></code></pre></div>
+                        <div class="sourceCode" id="cb4"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> cpp</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ..</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> cps</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ..</span></code></pre></div>
+                        <div class="sourceCode" id="cb5"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> generate_inputs.py input.yaml </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">sbatch</span> job.sh</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> analyze_results.py input.yaml </span></code></pre></div>
+                        <p>できた。</p>
+                        <p>解説も書いた。</p>
+                        <p><a
+                        href="https://kaityo256.github.io/pycpp-parallel-pipeline">Pythonで準備してC++で計算する自明並列ワークフロー</a></p>
+                        <p>うーん、サンプルコードを作って、リポジトリにまとめ、それをスパコンで動作確認して、解説記事を書くまでにほぼ一日使ってしまった。</p>
+                        <p>最近忙しくてこういう記事書けてないなと思ったんだけど、そもそもこういう記事を書くのは結構時間がかかっていたんだなぁ。</p>
+                        <p>講義準備途中まで。査読も進めないと・・・</p>
                         <h2 id="月14日火"><a href="#14">07月14日(火)</a>
                         <a id="14"></a></h2>
                         <p>輪講。8.3まで。来週で読み終わる予定。</p>
@@ -73,12 +106,12 @@
                         <h2 id="月04日土"><a href="#04">07月04日(土)</a>
                         <a id="04"></a></h2>
                         <p>Macのgnuplotがエラーを出す。</p>
-                        <div class="sourceCode" id="cb1"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">qt.qpa.plugin:</span> Could not find the Qt platform plugin <span class="st">&quot;cocoa&quot;</span> in <span class="st">&quot;&quot;</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">This</span> application failed to start because no Qt platform plugin could be initialized. Reinstalling the application may fix this problem.</span></code></pre></div>
+                        <div class="sourceCode" id="cb6"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">qt.qpa.plugin:</span> Could not find the Qt platform plugin <span class="st">&quot;cocoa&quot;</span> in <span class="st">&quot;&quot;</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">This</span> application failed to start because no Qt platform plugin could be initialized. Reinstalling the application may fix this problem.</span></code></pre></div>
                         <p>gnuplot再インストールしてもだめ。qtを再インストールしてみる。</p>
-                        <div class="sourceCode" id="cb2"><pre
-                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> reinstall qt</span></code></pre></div>
+                        <div class="sourceCode" id="cb7"><pre
+                        class="sourceCode sh"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> reinstall qt</span></code></pre></div>
                         <p>これで直った。</p>
                         <p>42110字。</p>
                         <h2 id="月03日金"><a href="#03">07月03日(金)</a>
