@@ -47,3 +47,7 @@ disableKinds = ["taxonomy", "term"]
 [[module.mounts]]
   source = "log/images"
   target = "static/images"
+
+[[module.mounts]]
+  source = "robo.png"
+  target = "static/favicon.png"
