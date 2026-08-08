@@ -18,7 +18,7 @@
 - 月冒頭にあった `## TODO` は削除済みで、日付以外のレベル2見出しは原稿の構造として使用しない。
 - 同じ日付の見出しが複数ある既存データは、警告を表示したうえで本文順を保って一つの日別記事へ結合する。
 - `log/images/` の画像、月をまたぐ Markdown リンク、HTML のアンカー、コードブロック、MathJax 記法を維持する必要がある。
-- 現在は Makefile から Pandoc を呼び、生成した `docs/` を GitHub Actions で Pages にデプロイしている。
+- Hugoのproduction buildで生成した `public/` を、GitHub ActionsからGitHub Pagesへデプロイする。
 
 ## 3. 採用する構成
 
@@ -168,7 +168,7 @@ Pull Request ではデプロイせず、変換テストと Hugo build だけを�
 - README をHugo版のセットアップ、編集、確認、トラブルシュート手順に更新する。
 - Pandoc固有のファイルや処理は、Hugo版の動作確認後に削除する。
 
-### Phase 5: CI/CD と切り替え
+### Phase 5: CI/CD と切り替え（完了）
 
 - GitHub Actions を更新し、PRで検証、`main` でデプロイする。
 - 初回は生成artifactを確認し、既存サイトとの主要ページ比較を行う。

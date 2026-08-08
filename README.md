@@ -85,7 +85,7 @@ python3 scripts/split_diary.py --all
 
 ## 公開
 
-GitHub PagesへのデプロイはPhase 5でGitHub ActionsをHugo用に切り替えます。それまでは既存のPandoc版ワークフローが残っています。
+Pull Requestでは、GitHub Actionsが分割処理のテスト、生成物検証、Hugoのproduction build、内部リンクとRSSの検査を行います。`main`へのpushでは同じ検証後、生成した `public/` をGitHub Pagesへデプロイします。
 
 公開URLは以下の構成です。
 
