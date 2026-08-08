@@ -125,13 +125,13 @@ Makefile に少なくとも次の入口を用意し、README に必要な Hugo �
 - `make check`: 変換結果、リンク、Hugo 設定を検証
 - `make serve`: 変換後に `hugo server` を起動し、`/log/` を含む公開時と同じパスで確認
 - `make build`: production 用の `baseURL` で静的サイトを生成
-- `make clean`: Hugo の公開物やキャッシュのみを消し、月別原稿と管理対象の生成物は消さない
+- `make clean`: Hugo の公開物やキャッシュのみを消し、月別原稿とローカルの分割生成物は消さない
 
 Hugo Extended 0.159.2を使用し、ローカルとCIで同じバージョンに固定する。Python側は標準ライブラリだけを使用する。
 
 ## 8. CI/CD
 
-`.github/workflows/main.yml` を Hugo 用に置き換える。
+`.github/workflows/main.yml` は次の手順でHugoサイトをビルド・デプロイする。
 
 1. `main` への push と手動実行をトリガーにする。
 2. リポジトリを checkout する。
@@ -142,6 +142,8 @@ Hugo Extended 0.159.2を使用し、ローカルとCIで同じバージョンに
 7. GitHub Pages にデプロイする。
 
 Pull Request ではデプロイせず、変換テストと Hugo build だけを行う構成も追加する。Actions には最小権限を設定し、同時デプロイの concurrency を維持する。
+
+生成物をGit管理から外した後、2026年8月9日にclean checkout相当のGitHub Actionsで動作確認した。全月の日別コンテンツ生成は約1秒、buildジョブ全体は16秒で完了した。2,299ページのHugo buildと、2,380件のHTMLおよび50件のRSS項目の検査に成功しており、現状では全件生成の実行時間は問題にならない。
 
 ## 9. 実装フェーズ
 
@@ -172,6 +174,7 @@ Pull Request ではデプロイせず、変換テストと Hugo build だけを�
 ### Phase 5: CI/CD と切り替え（完了）
 
 - GitHub Actions を更新し、PRで検証、`main` でデプロイする。
+- `content/diary/` と `data/split-manifest.json` をGit管理から外し、CIでは毎回全件生成する。
 - 初回は生成artifactを確認し、既存サイトとの主要ページ比較を行う。
 - Pages公開後、トップ、複数の年月、日別記事、画像、内部リンク、RSSを実URLで確認する。
 
