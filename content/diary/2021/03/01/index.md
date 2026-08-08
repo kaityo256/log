@@ -1,0 +1,64 @@
+---
+title: "2021年3月1日"
+date: 2021-03-01T00:00:00+09:00
+lastmod: 2021-03-01T00:00:00+09:00
+type: diary
+source_month: "d202103.md"
+generated: true
+---
+
+<!-- Generated from log/dYYYYMM.md. Do not edit directly. -->
+
+え？もう三月なの？マジで？
+
+一応「日記」も足掛け5ヶ月目になるのか(11/18スタートだからまだ4ヶ月分書いてないけど)。これなら三日坊主にはなってないかな。
+
+学振PD受け入れ書類提出。ちょっと遅れてしまった。申し訳ない。
+
+「スパコンで食えるか(仮)」みたいなタイトルで話すことに。ほんとにこのタイトルで行くかは謎。
+
+新年度の準備。輪講とハンズオンの連絡とか。論文紹介用の論文もリストアップしておかないとな。
+
+みずほのATMに障害。関連してSuicaシステムは優れているという話を聞いてちょっと調べた。[Suicaシステムの概要(pdf)](https://www.jstage.jst.go.jp/article/ieiej/31/6/31_408/_pdf/-char/en)。普通にシステムを組むなら不正利用を防ぐためにカードにはIDだけ入れておいて、サーバに情報をすべて置いて置きたくなるが、それだとサーバが死んだら完全に交通が麻痺してしまうため、カード内、各駅のサーバ、そしてセンターサーバそれぞれに情報を貯める自立分散システムを構築。センターサーバと駅サーバの回線が切れたり、センターサーバが死んでも一部の業務を除いて運用継続が可能。また、ラッシュアワーなど、通信負荷がかかる場合でも、駅サーバが「キャッシュ」の役割を果たし、後でサーバと同期を取ることでセンターサーバの負担を軽減する。なるほど。
+
+Suicaに比べて不正操作の影響が大きい銀行ATMと直接比べることはできないが、たしかによくできたシステム。
+
+プリンタ、キャプチャデバイスの見積もり依頼。キャプチャデバイスはZoomとハンディカムの接続用。届いたらテストしなくては。
+
+忘れてた。いつの間にかMacでgit submoduleが使えなくなっていたんだ。忙しくて放置していた。
+
+```sh
+$ git submodule update --init --recursive 
+pyenv: git-submodule: command not found
+```
+
+とにかく困るので対処。
+
+```sh
+$ which git
+/usr/local/bin/git
+
+$ git --version
+git version 2.30.0
+
+$ brew uninstall git
+Uninstalling /usr/local/Cellar/git/2.30.0... (1,486 files, 40.5MB)
+
+Warning: The following may be git configuration files and have not been removed!
+If desired, remove them manually with `rm -rf`:
+  /usr/local/etc/gitconfig
+
+$ rm -rf /usr/local/etc/gitconfig
+
+$ which git
+/usr/bin/git
+
+$ git --version
+git version 2.24.3 (Apple Git-128)
+```
+
+あるやん。brewで入れたgitが`/usr/local/bin/git`に入っており、そいつが問題をおこしていた？
+
+Gitのバージョンは下がったが、submoduleは使えるようになった。
+
+Jackknifeによるバイアス補正、物性研にジョブ投げたぞ。これでうまく行ってそうなら本番コードを全部修正してデータを再取得しておしまいだ。

@@ -1,0 +1,8 @@
+{{ define "main" }}
+  <h1>{{ .Title }}</h1>
+  <ul class="month-list year-archive">
+    {{ range .Sections.ByDate.Reverse }}
+      <li><a href="{{ .RelPermalink }}">{{ .Title }}</a>（{{ len .RegularPages }}日分）</li>
+    {{ end }}
+  </ul>
+{{ end }}
