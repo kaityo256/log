@@ -19,7 +19,7 @@ make version
 
 ## 日記を書く
 
-月別Markdownの `log/dYYYYMM.md` が原稿の正本です。生成される `content/diary/` は直接編集しません。
+月別Markdownの `log/dYYYYMM.md` が原稿の正本です。生成される `content/diary/` と `data/split-manifest.json` はGit管理せず、直接編集しません。
 
 月の先頭と各日の日付は次の形式で記述します。
 
@@ -51,6 +51,7 @@ make serve LOCAL_BASE_URL=http://localhost:14131/log/ LOCAL_PORT=14131
 
 ```sh
 make generate  # 変更月だけを分割
+make generate-all # 全月を分割
 make test      # 分割スクリプトの単体テスト
 make check     # 生成物の検証とproduction build
 make build     # public/へproduction build
@@ -66,12 +67,12 @@ python3 scripts/split_diary.py --month 2026-08
 全月を再生成する場合は次のとおりです。
 
 ```sh
-python3 scripts/split_diary.py --all
+make generate-all
 ```
 
 ## 生成と検証の仕組み
 
-`data/split-manifest.json` に月別原稿のSHA-256を記録しています。内容が変わっていない月は生成先へ書き込まないため、日別ファイルの更新時刻も変わりません。
+ローカルでは `data/split-manifest.json` に月別原稿のSHA-256を記録します。内容が変わっていない月は生成先へ書き込まないため、日別ファイルの更新時刻も変わりません。このmanifestと生成先はGit管理せず、GitHub Actionsではクリーンなcheckoutから全月を生成します。
 
 変換時には以下を検証します。
 
@@ -85,7 +86,7 @@ python3 scripts/split_diary.py --all
 
 ## 公開
 
-Pull Requestでは、GitHub Actionsが分割処理のテスト、生成物検証、Hugoのproduction build、内部リンクとRSSの検査を行います。`main`へのpushでは同じ検証後、生成した `public/` をGitHub Pagesへデプロイします。
+Pull Requestでは、GitHub Actionsが全月の分割、分割処理のテスト、生成物検証、Hugoのproduction build、内部リンクとRSSの検査を行います。`main`へのpushでは同じ処理後、生成した `public/` をGitHub Pagesへデプロイします。
 
 公開URLは以下の構成です。
 

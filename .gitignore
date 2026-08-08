@@ -1,6 +1,6 @@
 node_modules
 *.json
-!data/split-manifest.json
+content/diary/
 public/
 resources/_gen/
 .hugo_build.lock
