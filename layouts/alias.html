@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex">
+    <link rel="canonical" href="{{ .Permalink }}">
+    <meta http-equiv="refresh" content="0; url={{ .Permalink }}">
+    <title>移動しました</title>
+  </head>
+  <body>
+    <p><a href="{{ .Permalink }}">新しいページへ移動</a></p>
+    <script>
+      const month = {{ .Permalink | jsonify | safeJS }};
+      const day = window.location.hash.match(/^#(\d{1,2})$/);
+      const target = day ? `${month}${day[1].padStart(2, '0')}/` : month;
+      window.location.replace(target);
+    </script>
+  </body>
+</html>

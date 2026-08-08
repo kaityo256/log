@@ -1,0 +1,12 @@
+{{ define "main" }}
+  <header class="archive-header">
+    <h1>{{ .Title }}</h1>
+    <p><a href="{{ .Parent.RelPermalink }}">{{ .Parent.Title }}の一覧へ</a></p>
+  </header>
+  {{ range .RegularPages.ByDate.Reverse }}
+    <article class="month-entry">
+      <h2><a href="{{ .RelPermalink }}">{{ .Date.Format "1月2日" }}</a></h2>
+      <div class="entry-content">{{ .Content }}</div>
+    </article>
+  {{ end }}
+{{ end }}

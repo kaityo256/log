@@ -1,2 +1,8 @@
 node_modules
 *.json
+!data/split-manifest.json
+public/
+resources/_gen/
+.hugo_build.lock
+__pycache__/
+*.pyc

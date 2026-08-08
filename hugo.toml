@@ -1,0 +1,49 @@
+baseURL = "https://kaityo256.github.io/log/"
+title = "日記のようなもの"
+languageCode = "ja-jp"
+defaultContentLanguage = "ja"
+timeZone = "Asia/Tokyo"
+enableRobotsTXT = true
+disableKinds = ["taxonomy", "term"]
+
+[params]
+  author = "kaityo256"
+  description = "kaityo256の日記のようなもの"
+
+[permalinks]
+  diary = "/:year/:month/:day/"
+
+[outputs]
+  home = ["HTML", "RSS"]
+  section = ["HTML"]
+
+[outputFormats.RSS]
+  mediaType = "application/rss+xml"
+  baseName = "index"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+  [markup.highlight]
+    noClasses = false
+
+[[module.mounts]]
+  source = "assets"
+  target = "assets"
+
+[[module.mounts]]
+  source = "content"
+  target = "content"
+
+[[module.mounts]]
+  source = "layouts"
+  target = "layouts"
+
+[[module.mounts]]
+  source = "static"
+  target = "static"
+
+[[module.mounts]]
+  source = "log/images"
+  target = "static/images"

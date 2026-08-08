@@ -1,0 +1,15 @@
+{{ define "main" }}
+  <article class="diary-entry">
+    <header>
+      <h1>{{ .Title }}</h1>
+      <p><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006年1月2日" }}</time></p>
+    </header>
+    <div class="entry-content">{{ .Content }}</div>
+  </article>
+  {{ $entries := (where site.RegularPages "Type" "diary").ByDate }}
+  <nav class="entry-nav" aria-label="前後の日記">
+    <div>{{ with $entries.Next . }}← 前日: <a href="{{ .RelPermalink }}">{{ .Title }}</a>{{ end }}</div>
+    <a href="{{ .Parent.RelPermalink }}">{{ .Parent.Title }}</a>
+    <div>{{ with $entries.Prev . }}翌日: <a href="{{ .RelPermalink }}">{{ .Title }}</a> →{{ end }}</div>
+  </nav>
+{{ end }}

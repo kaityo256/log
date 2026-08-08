@@ -1,0 +1,25 @@
+{{ define "main" }}
+  <h1>{{ .Title }}</h1>
+  {{ $entries := where site.RegularPages "Type" "diary" }}
+  <section aria-labelledby="recent-heading">
+    <h2 id="recent-heading">最近の日記</h2>
+    <ul class="entry-list">
+      {{ range first 20 $entries.ByDate.Reverse }}
+        <li><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006年1月2日" }}</time> <a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+      {{ end }}
+    </ul>
+  </section>
+  <section aria-labelledby="archive-heading">
+    <h2 id="archive-heading">月別アーカイブ</h2>
+    {{ with site.GetPage "/diary" }}{{ range .Sections.ByTitle.Reverse }}
+      <section class="year-group">
+        <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+        <ul class="month-list">
+          {{ range .Sections.ByDate.Reverse }}
+            <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+          {{ end }}
+        </ul>
+      </section>
+    {{ end }}{{ end }}
+  </section>
+{{ end }}

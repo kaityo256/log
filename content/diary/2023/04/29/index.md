@@ -1,0 +1,12 @@
+---
+title: "2023年4月29日"
+date: 2023-04-29T00:00:00+09:00
+lastmod: 2023-04-29T00:00:00+09:00
+type: diary
+source_month: "d202304.md"
+generated: true
+---
+
+<!-- Generated from log/dYYYYMM.md. Do not edit directly. -->
+
+外壁を掃除した。
