@@ -1,6 +1,6 @@
 baseURL = "https://kaityo256.github.io/log/"
 title = "日記のようなもの"
-languageCode = "ja-jp"
+locale = "ja-JP"
 defaultContentLanguage = "ja"
 timeZone = "Asia/Tokyo"
 enableRobotsTXT = true
